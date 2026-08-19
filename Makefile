@@ -1,11 +1,13 @@
 UV := uv run --with pyyaml --with openpyxl --no-project python
 
-.PHONY: help yaml xlsx verify
+.PHONY: help yaml xlsx verify check origins
 
 help:
 	@echo "yaml    - regenerate db/*.yml and schema/tables.yml from database.xlsx"
 	@echo "xlsx    - regenerate database.xlsx from db/*.yml"
 	@echo "verify  - prove db/*.yml reproduces database.xlsx cell for cell"
+	@echo "check   - referential, linkage and hygiene checks over db/*.yml"
+	@echo "origins - refresh schema/origins_inventory.yml from db/*.yml"
 
 yaml:
 	$(UV) scripts/xlsx_to_yaml.py
@@ -15,3 +17,9 @@ xlsx:
 
 verify:
 	$(UV) scripts/verify_roundtrip.py
+
+check:
+	$(UV) scripts/check_consistency.py
+
+origins:
+	$(UV) scripts/build_origins_inventory.py
