@@ -22,6 +22,13 @@ workbook is generated from it.
   Database Manager and Prepare QGIS plugins still ship a copy of it. Do not
   edit it; changes made there will be overwritten by `make xlsx`.
 
+The committed workbook is still the original file, not yet a regenerated one.
+The first `make xlsx` will rewrite it through openpyxl: every value is
+identical — `make verify` checks exactly that, cell by cell and type by type,
+and the workbook contains no formulas — but column widths and cell styling are
+not carried over, so expect a total binary diff on that one commit. Worth
+confirming the plugins read values only before it is done.
+
 ## Commands
 
 - `make yaml` — rebuild `db/` and `schema/tables.yml` from `database.xlsx`.
