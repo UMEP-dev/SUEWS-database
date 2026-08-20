@@ -207,6 +207,66 @@ def supy_check(records, sources):
     return errors, n_checked
 
 
+def _leaves(node, prefix=""):
+    if isinstance(node, dict):
+        for k, v in node.items():
+            yield from _leaves(v, f"{prefix}.{k}" if prefix else str(k))
+    elif isinstance(node, list):
+        for i, v in enumerate(node):
+            yield from _leaves(v, f"{prefix}.{i}")
+    else:
+        yield prefix, node
+
+
+SUSPECT_MARKERS = ("sample run", "sample data", "test", "placeholder",
+                   "dummy", "not recommended", "unclear")
+
+
+def quality_check(records):
+    """Data-quality warnings for human adjudication, never auto-fixed.
+
+    - duplicate records: same target with an identical parameter-leaf set
+      (candidates for merging, or evidence of copied rather than measured
+      values)
+    - suspect entries: names that read as test fixtures or bookkeeping
+      rather than data
+    """
+    warnings = []
+    by_content = {}
+    profile_groups = {}
+    for path, rec in sorted(records.items()):
+        if not path.startswith("records/"):
+            continue
+        params = rec.get("parameters")
+        if not params:
+            continue
+        key = (str(rec.get("target")),
+               tuple(sorted((k, str(v)) for k, v in _leaves(params))))
+        if path.startswith("records/profiles/"):
+            # per-country profiles share value sets by design (a handful of
+            # classes applied to many countries): summarise, don't spam
+            group = path.rsplit("/", 1)[0]
+            profile_groups.setdefault(group, {}).setdefault(key, []).append(path)
+            continue
+        if key in by_content:
+            warnings.append(f"duplicate values: {path} repeats "
+                            f"{by_content[key]} exactly")
+        else:
+            by_content[key] = path
+    for group, sets in sorted(profile_groups.items()):
+        n = sum(len(v) for v in sets.values())
+        if n > len(sets):
+            warnings.append(f"shared profiles: {group}: {n} records carry "
+                            f"{len(sets)} distinct value sets")
+    for path, rec in sorted(records.items()):
+        name = str(rec.get("name") or "").lower()
+        hits = [m for m in SUSPECT_MARKERS if m in name]
+        if hits:
+            warnings.append(f"suspect name: {path} ({rec.get('name')!r} "
+                            f"reads as {'/'.join(hits)})")
+    return warnings
+
+
 def linkage_check(records):
     """Cross-record coupling rules from schema/parameter_groups.yml.
 
@@ -248,6 +308,13 @@ def main():
         print("  ~", w)
     if args.strict:
         errors += warnings
+
+    quality = quality_check(records)
+    print(f"quality: {len(quality)} warnings (for review, never auto-fixed)")
+    for w in quality[:40]:
+        print("  ~", w)
+    if len(quality) > 40:
+        print(f"  ~ ... and {len(quality) - 40} more")
 
     if args.supy:
         supy_errors, n = supy_check(records, sources)

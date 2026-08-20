@@ -7,831 +7,1094 @@ places:
     lat: 57.15
     lon: -2.09
     koppen: Cfb
+    country: united-kingdom
   afghanistan:
     kind: country
     name: Afghanistan
+    region: Asia
   albania:
     kind: country
     name: Albania
+    region: Europe
   algeria:
     kind: country
     name: Algeria
+    region: Africa
   american-samoa:
     kind: country
     name: American Samoa
+    region: Oceania
   andorra:
     kind: country
     name: Andorra
+    region: Europe
   angola:
     kind: country
     name: Angola
+    region: Africa
   anguilla:
     kind: country
     name: Anguilla
+    region: North America
   antigua-and-barbuda:
     kind: country
     name: Antigua and Barbuda
+    region: North America
   argentina:
     kind: country
     name: Argentina
+    region: South America
   armenia:
     kind: country
     name: Armenia
+    region: Asia
   aruba:
     kind: country
     name: Aruba
+    region: North America
   australia:
     kind: country
     name: Australia
+    region: Oceania
   austria:
     kind: country
     name: Austria
+    region: Europe
   azerbaijan:
     kind: country
     name: Azerbaijan
+    region: Asia
   bahamas:
     kind: country
     name: Bahamas
+    region: North America
   bahrain:
     kind: country
     name: Bahrain
+    region: Asia
   bangladesh:
     kind: country
     name: Bangladesh
+    region: Asia
   barbados:
     kind: country
     name: Barbados
+    region: North America
   basel:
     name: Basel
     lat: 47.56
     lon: 7.59
     koppen: Cfb
+    country: switzerland
   beijing:
     name: Beijing
     lat: 39.9
     lon: 116.41
     koppen: Dwa
+    country: china
   belarus:
     kind: country
     name: Belarus
+    region: Europe
   belfast:
     name: Belfast
     lat: 54.6
     lon: -5.93
     koppen: Cfb
+    country: united-kingdom
   belgium:
     kind: country
     name: Belgium
+    region: Europe
   belize:
     kind: country
     name: Belize
+    region: North America
   benin:
     kind: country
     name: Benin
+    region: Africa
   bermuda:
     kind: country
     name: Bermuda
+    region: North America
   bhutan:
     kind: country
     name: Bhutan
+    region: Asia
   birmingham:
     name: Birmingham
     lat: 52.48
     lon: -1.9
     koppen: Cfb
+    country: united-kingdom
   bolivia:
     kind: country
     name: Bolivia
+    region: South America
   bosnia-herzegovina:
     kind: country
     name: Bosnia-Herzegovina
+    region: Europe
   botswana:
     kind: country
     name: Botswana
+    region: Africa
   brazil:
     kind: country
     name: Brazil
+    region: South America
   british-virgin-islands:
     kind: country
     name: British Virgin Islands
+    region: North America
   brunei-darussalam:
     kind: country
     name: Brunei Darussalam
+    region: Asia
   bulgaria:
     kind: country
     name: Bulgaria
+    region: Europe
   burkina-faso:
     kind: country
     name: Burkina Faso
+    region: Africa
   burundi:
     kind: country
     name: Burundi
+    region: Africa
   cambodia:
     kind: country
     name: Cambodia
+    region: Asia
   cameroon:
     kind: country
     name: Cameroon
+    region: Africa
   canada:
     kind: country
     name: Canada
+    region: North America
   cape-verde:
     kind: country
     name: Cape Verde
+    region: Africa
   cardiff:
     name: Cardiff
     lat: 51.48
     lon: -3.18
     koppen: Cfb
+    country: united-kingdom
   cayman-islands:
     kind: country
     name: Cayman Islands
+    region: North America
   central-african-republic:
     kind: country
     name: Central African Republic
+    region: Africa
   chad:
     kind: country
     name: Chad
+    region: Africa
   chile:
     kind: country
     name: Chile
+    region: South America
   china:
     kind: country
     name: China
+    region: Asia
   colombia:
     kind: country
     name: Colombia
+    region: South America
   commonwealth-of-dominica:
     kind: country
     name: Commonwealth of Dominica
+    region: North America
   comoros:
     kind: country
     name: Comoros
+    region: Africa
   congo:
     kind: country
     name: Congo
+    region: Africa
   congo-democratic-republic:
     kind: country
     name: Congo, Democratic Republic
+    region: Africa
   cook-islands:
     kind: country
     name: Cook Islands
+    region: Oceania
   costa-rica:
     kind: country
     name: Costa Rica
+    region: North America
   croatia:
     kind: country
     name: Croatia
+    region: Europe
   cuba:
     kind: country
     name: Cuba
+    region: North America
   cyprus:
     kind: country
     name: Cyprus
+    region: Europe
   czech-republic:
     kind: country
     name: Czech Republic
+    region: Europe
   denmark:
     kind: country
     name: Denmark
+    region: Europe
   djibouti:
     kind: country
     name: Djibouti
+    region: Africa
   dominican-republic:
     kind: country
     name: Dominican Republic
+    region: North America
   east-timor:
     kind: country
     name: East Timor
+    region: Asia
   ecuador:
     kind: country
     name: Ecuador
+    region: South America
   edinburgh:
     name: Edinburgh
     lat: 55.95
     lon: -3.19
     koppen: Cfb
+    country: united-kingdom
   egypt:
     kind: country
     name: Egypt
+    region: Africa
   el-salvador:
     kind: country
     name: El Salvador
+    region: North America
   equatorial-guinea:
     kind: country
     name: Equatorial Guinea
+    region: Africa
   eritrea:
     kind: country
     name: Eritrea
+    region: Africa
   estonia:
     kind: country
     name: Estonia
+    region: Europe
   ethiopia:
     kind: country
     name: Ethiopia
+    region: Africa
   faeroe-islands:
     kind: country
     name: Faeroe Islands
+    region: Europe
   falkland-islands:
     kind: country
     name: Falkland Islands
+    region: South America
   federated-state-of-micronesia:
     kind: country
     name: Federated State of Micronesia
+    region: Oceania
   fiji:
     kind: country
     name: Fiji
+    region: Oceania
   finland:
     kind: country
     name: Finland
+    region: Europe
   france:
     kind: country
     name: France
+    region: Europe
   french-guiana:
     kind: country
     name: French Guiana
+    region: South America
   french-polynesia:
     kind: country
     name: French Polynesia
+    region: Oceania
   gabon:
     kind: country
     name: Gabon
+    region: Africa
   gambia:
     kind: country
     name: Gambia
+    region: Africa
   generic:
     name: Generic
   georgia:
     kind: country
     name: Georgia
+    region: Asia
   germany:
     kind: country
     name: Germany
+    region: Europe
   ghana:
     kind: country
     name: Ghana
+    region: Africa
   gibraltar:
     kind: country
     name: Gibraltar
+    region: Europe
   gothenburg:
     name: Gothenburg
     lat: 57.71
     lon: 11.97
     koppen: Cfb
+    country: sweden
   greece:
     kind: country
     name: Greece
+    region: Europe
   greenland:
     kind: country
     name: Greenland
+    region: North America
   grenada:
     kind: country
     name: Grenada
+    region: North America
   guadeloupe:
     kind: country
     name: Guadeloupe
+    region: North America
   guam:
     kind: country
     name: Guam
+    region: Oceania
   guatemala:
     kind: country
     name: Guatemala
+    region: North America
   guernsey:
     kind: country
     name: Guernsey
+    region: Europe
   guinea:
     kind: country
     name: Guinea
+    region: Africa
   guinea-bissau:
     kind: country
     name: Guinea-Bissau
+    region: Africa
   guyana:
     kind: country
     name: Guyana
+    region: South America
   haiti:
     kind: country
     name: Haiti
+    region: North America
   helsinki:
     name: Helsinki
     lat: 60.17
     lon: 24.94
     koppen: Dfb
+    country: finland
   honduras:
     kind: country
     name: Honduras
+    region: North America
   hong-kong:
     kind: country
     name: Hong Kong
+    region: Asia
   hungary:
     kind: country
     name: Hungary
+    region: Europe
   iceland:
     kind: country
     name: Iceland
+    region: Europe
   india:
     kind: country
     name: India
+    region: Asia
   indonesia:
     kind: country
     name: Indonesia
+    region: Asia
   iran:
     kind: country
     name: Iran
+    region: Asia
   iraq:
     kind: country
     name: Iraq
+    region: Asia
   ireland:
     kind: country
     name: Ireland
+    region: Europe
   isle-of-man:
     kind: country
     name: Isle of Man
+    region: Europe
   israel:
     kind: country
     name: Israel
+    region: Asia
   italy:
     kind: country
     name: Italy
+    region: Europe
   ivory-coast:
     kind: country
     name: Ivory Coast
+    region: Africa
   jamaica:
     kind: country
     name: Jamaica
+    region: North America
   japan:
     kind: country
     name: Japan
+    region: Asia
   jersey:
     kind: country
     name: Jersey
+    region: Europe
   jordan:
     kind: country
     name: Jordan
+    region: Asia
   kazakhstan:
     kind: country
     name: Kazakhstan
+    region: Asia
   kenya:
     kind: country
     name: Kenya
+    region: Africa
   kiribati:
     kind: country
     name: Kiribati
+    region: Oceania
   korea:
     kind: country
     name: Korea
+    region: Asia
   korea-dem-people-s-rep-of:
     kind: country
     name: Korea, Dem. People's Rep. of
+    region: Asia
   kuwait:
     kind: country
     name: Kuwait
+    region: Asia
   kyrgyz-republic:
     kind: country
     name: Kyrgyz Republic
+    region: Asia
   lao-people-s-democratic-republic:
     kind: country
     name: Lao People's Democratic Republic
+    region: Asia
   latvia:
     kind: country
     name: Latvia
+    region: Europe
   lebanon:
     kind: country
     name: Lebanon
+    region: Asia
   lesotho:
     kind: country
     name: Lesotho
+    region: Africa
   lethbridge:
     name: Lethbridge
     lat: 49.69
     lon: -112.83
     koppen: BSk
+    country: canada
   liberia:
     kind: country
     name: Liberia
+    region: Africa
   libyan-arab-jamahiriya:
     kind: country
     name: Libyan Arab Jamahiriya
+    region: Africa
   liechtenstein:
     kind: country
     name: Liechtenstein
+    region: Europe
   lithuania:
     kind: country
     name: Lithuania
+    region: Europe
   lodz:
     name: Lodz
     lat: 51.76
     lon: 19.46
     koppen: Dfb
+    country: poland
   london:
     name: London
     lat: 51.51
     lon: -0.13
     koppen: Cfb
+    country: united-kingdom
   los-angeles:
     name: Los Angeles
     lat: 34.05
     lon: -118.24
     koppen: Csa
+    country: united-states-of-america
   luxembourg:
     kind: country
     name: Luxembourg
+    region: Europe
   macao:
     kind: country
     name: Macao
+    region: Asia
   macedonia:
     kind: country
     name: Macedonia
+    region: Europe
   madagascar:
     kind: country
     name: Madagascar
+    region: Africa
   malawi:
     kind: country
     name: Malawi
+    region: Africa
   malaysia:
     kind: country
     name: Malaysia
+    region: Asia
   maldives:
     kind: country
     name: Maldives
+    region: Asia
   mali:
     kind: country
     name: Mali
+    region: Africa
   malta:
     kind: country
     name: Malta
+    region: Europe
   manchester:
     name: Manchester
     lat: 53.48
     lon: -2.24
     koppen: Cfb
+    country: united-kingdom
   marshall-islands:
     kind: country
     name: Marshall Islands
+    region: Oceania
   martinique:
     kind: country
     name: Martinique
+    region: North America
   mauritania:
     kind: country
     name: Mauritania
+    region: Africa
   mauritius:
     kind: country
     name: Mauritius
+    region: Africa
   mayotte-qpp:
     kind: country
     name: Mayotte* qpp
+    region: Africa
   mexico:
     kind: country
     name: Mexico
+    region: North America
   midwest-usa:
-    name: Midwest Usa
+    name: Midwest USA
     lat: 41.5
     lon: -93.5
+    country: united-states-of-america
+    subnational: true
   monaco:
     kind: country
     name: Monaco
+    region: Europe
   mongolia:
     kind: country
     name: Mongolia
+    region: Asia
   montserrat:
     kind: country
     name: Montserrat
+    region: North America
   morocco-includes-western-sahara:
     kind: country
     name: Morocco (includes Western Sahara)
+    region: Africa
   mozambique:
     kind: country
     name: Mozambique
+    region: Africa
   myanmar:
     kind: country
     name: Myanmar
+    region: Asia
   namibia:
     kind: country
     name: Namibia
+    region: Africa
   nanjing:
     name: Nanjing
     lat: 32.06
     lon: 118.8
     koppen: Cfa
+    country: china
   nauru:
     kind: country
     name: Nauru
+    region: Oceania
   nepal:
     kind: country
     name: Nepal
+    region: Asia
   netherland-antilles:
     kind: country
     name: Netherland Antilles
+    region: North America
   netherlands:
     kind: country
     name: Netherlands
+    region: Europe
   new-caledonia:
     kind: country
     name: New Caledonia
+    region: Oceania
   new-york:
     name: New York
     lat: 40.71
     lon: -74.01
     koppen: Cfa
+    country: united-states-of-america
   new-zealand:
     kind: country
     name: New Zealand
+    region: Oceania
   newcastle:
     name: Newcastle
     lat: 54.98
     lon: -1.61
     koppen: Cfb
+    country: united-kingdom
   nicaragua:
     kind: country
     name: Nicaragua
+    region: North America
   niger:
     kind: country
     name: Niger
+    region: Africa
   nigeria:
     kind: country
     name: Nigeria
+    region: Africa
   niue:
     kind: country
     name: Niue
+    region: Oceania
   norfolk-island:
     kind: country
     name: Norfolk Island
+    region: Oceania
   northern-mariana-islands:
     kind: country
     name: Northern Mariana Islands
+    region: Oceania
   norway:
     kind: country
     name: Norway
+    region: Europe
   occupied-palestinian-territory:
     kind: country
     name: Occupied Palestinian Territory
+    region: Asia
   oman:
     kind: country
     name: Oman
+    region: Asia
   pakistan:
     kind: country
     name: Pakistan
+    region: Asia
   palau:
     kind: country
     name: Palau
+    region: Oceania
   panama:
     kind: country
     name: Panama
+    region: North America
   papua-new-guinea:
     kind: country
     name: Papua New Guinea
+    region: Oceania
   paraguay:
     kind: country
     name: Paraguay
+    region: South America
   peru:
     kind: country
     name: Peru
+    region: South America
   philippines:
     kind: country
     name: Philippines
+    region: Asia
   pitcairn:
     kind: country
     name: Pitcairn
+    region: Oceania
   plymouth:
     name: Plymouth
     lat: 50.38
     lon: -4.14
     koppen: Cfb
+    country: united-kingdom
   poland:
     kind: country
     name: Poland
+    region: Europe
   portugal:
     kind: country
     name: Portugal
+    region: Europe
   puerto-rico:
     kind: country
     name: Puerto Rico
+    region: North America
   qatar:
     kind: country
     name: Qatar
+    region: Asia
   republic-of-moldova:
     kind: country
     name: Republic of Moldova
+    region: Europe
   reunion:
     kind: country
     name: Reunion
+    region: Africa
   romania:
     kind: country
     name: Romania
+    region: Europe
   russia:
     kind: country
     name: Russia
+    region: Europe
   rwanda:
     kind: country
     name: Rwanda
+    region: Africa
   saint-helena-qpp:
     kind: country
     name: Saint Helena* qpp
+    region: Africa
   saint-kitts-and-nevis:
     kind: country
     name: Saint Kitts and Nevis
+    region: North America
   saint-lucia:
     kind: country
     name: Saint Lucia
+    region: North America
   saint-pierre-and-miquelon-qpp:
     kind: country
     name: Saint Pierre and Miquelon* qpp
+    region: North America
   saint-vincent:
     kind: country
     name: Saint Vincent
+    region: North America
   san-marino:
     kind: country
     name: San Marino
+    region: Europe
   sao-tome-and-principe:
     kind: country
     name: Sao Tome and Principe
+    region: Africa
   saudi-arabia:
     kind: country
     name: Saudi Arabia
+    region: Asia
   se-england:
-    name: Se England
+    name: SE England
     lat: 51.2
     lon: -0.8
     koppen: Cfb
+    country: united-kingdom
+    subnational: true
   senegal:
     kind: country
     name: Senegal
+    region: Africa
   serbia-and-montenegro:
     kind: country
     name: Serbia and Montenegro
+    region: Europe
   seychelles:
     kind: country
     name: Seychelles
+    region: Africa
   shanghai:
     name: Shanghai
     lat: 31.23
     lon: 121.47
     koppen: Cfa
+    country: china
   sierra-leone:
     kind: country
     name: Sierra Leone
+    region: Africa
   singapore:
     kind: country
     name: Singapore
+    region: Asia
   slovakia:
     kind: country
     name: Slovakia
+    region: Europe
   slovenia:
     kind: country
     name: Slovenia
+    region: Europe
   solomon-islands:
     kind: country
     name: Solomon Islands
+    region: Oceania
   somalia:
     kind: country
     name: Somalia
+    region: Africa
   south-africa:
     kind: country
     name: South Africa
+    region: Africa
   spain:
     kind: country
     name: Spain
+    region: Europe
   sri-lanka:
     kind: country
     name: Sri Lanka
+    region: Asia
   stockholm:
     name: Stockholm
     lat: 59.33
     lon: 18.07
     koppen: Dfb
+    country: sweden
   sudan:
     kind: country
     name: Sudan
+    region: Africa
   suriname:
     kind: country
     name: Suriname
+    region: South America
   svalbard-qpp:
     kind: country
     name: Svalbard* qpp
+    region: Europe
   swaziland:
     kind: country
     name: Swaziland
+    region: Africa
   sweden:
     name: Sweden
     lat: 62.0
     lon: 15.0
+    country: sweden
+    subnational: true
+    region: Europe
   swindon:
     name: Swindon
     lat: 51.56
     lon: -1.78
     koppen: Cfb
+    country: united-kingdom
   switzerland:
     kind: country
     name: Switzerland
+    region: Europe
   syrian-arab-republic:
     kind: country
     name: Syrian Arab Republic
+    region: Asia
   taiwan:
     kind: country
     name: Taiwan
+    region: Asia
   tajikistan:
     kind: country
     name: Tajikistan
+    region: Asia
   thailand:
     kind: country
     name: Thailand
+    region: Asia
   togo:
     kind: country
     name: Togo
+    region: Africa
   tokelau-qpp:
     kind: country
     name: Tokelau* qpp
+    region: Oceania
   tokyo:
     name: Tokyo
     lat: 35.68
     lon: 139.69
     koppen: Cfa
+    country: japan
   tonga:
     kind: country
     name: Tonga
+    region: Oceania
   trinidad-and-tobago:
     kind: country
     name: Trinidad and Tobago
+    region: North America
   tropics:
     name: Tropics
   tunisia:
     kind: country
     name: Tunisia
+    region: Africa
   turkey:
     kind: country
     name: Turkey
+    region: Asia
   turkmenistan:
     kind: country
     name: Turkmenistan
+    region: Asia
   turks-and-caicos-islands:
     kind: country
     name: Turks and Caicos Islands
+    region: North America
   tuvalu:
     kind: country
     name: Tuvalu
+    region: Oceania
   uganda:
     kind: country
     name: Uganda
+    region: Africa
   uk:
-    name: Uk
+    name: UK
     lat: 52.5
     lon: -1.5
+    country: united-kingdom
+    subnational: true
   ukraine:
     kind: country
     name: Ukraine
+    region: Europe
   united-arab-emirates:
     kind: country
     name: United Arab Emirates
+    region: Asia
   united-kingdom:
     kind: country
     name: United Kingdom
+    region: Europe
   united-rep-of-tanzania:
     kind: country
     name: United Rep. of Tanzania
+    region: Africa
   united-states-of-america:
     kind: country
     name: United States of America
+    region: North America
   united-states-virgin-islands:
     kind: country
     name: United States Virgin Islands
+    region: North America
   uruguay:
     kind: country
     name: Uruguay
+    region: South America
   uzbekistan:
     kind: country
     name: Uzbekistan
+    region: Asia
   vancouver:
     name: Vancouver
     lat: 49.28
     lon: -123.12
     koppen: Cfb
+    country: canada
   vanuatu:
     kind: country
     name: Vanuatu
+    region: Oceania
   venezuela:
     kind: country
     name: Venezuela
+    region: South America
   viet-nam:
     kind: country
     name: Viet Nam
+    region: Asia
   wallis-and-futuna-qpp:
     kind: country
     name: Wallis and Futuna* qpp
+    region: Oceania
   weishan:
     name: Weishan
     lat: 36.65
     lon: 116.05
     koppen: Dwa
+    country: china
   western-samoa:
     kind: country
     name: Western Samoa
+    region: Oceania
   yemen:
     kind: country
     name: Yemen
+    region: Asia
   zambia:
     kind: country
     name: Zambia
+    region: Africa
   zurich:
     name: Zurich
     lat: 47.37
     lon: 8.54
     koppen: Cfb
+    country: switzerland

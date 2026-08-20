@@ -31,6 +31,7 @@ import json
 import sys
 from collections import defaultdict
 from pathlib import Path
+from urllib.parse import quote
 
 import yaml
 
@@ -309,6 +310,29 @@ a:hover .dot, .dot:hover { fill-opacity: 1; }
 .mapcap { color: var(--text-muted); font-size: 0.8rem; margin: 0.2rem 0 1rem; }
 .placerows { columns: 3; column-gap: 2rem; margin: 0.6rem 0 1rem; }
 .placerows .fitem { break-inside: avoid; }
+header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
+.fscroll { max-height: 252px; overflow-y: auto; }
+.relfig { width: 100%; max-width: 780px; height: auto; margin: 0.4rem 0 0.8rem; }
+.otiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.6rem; margin: 0.4rem 0 0.8rem; }
+.otile { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.5rem; border: 1px solid var(--border-light);
+  border-left: 3px solid var(--acc); border-radius: 9px;
+  background: var(--bg-card); padding: 0.5rem 0.8rem;
+  color: var(--text-primary); }
+.otile:hover { background: var(--bg-card-hover); text-decoration: none;
+  border-color: var(--border-medium); border-left-color: var(--acc); }
+.otile b { font-weight: 600; font-size: 0.9rem; }
+.otile span { color: var(--text-muted); font-size: 0.78rem; }
+.orow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem; margin: 1.2rem 0 0.6rem; }
+.obig { display: block; border: 1px solid var(--border-medium);
+  border-radius: 12px; background: var(--bg-card); padding: 0.9rem 1.1rem;
+  color: var(--text-primary); }
+.obig:hover { background: var(--bg-card-hover); text-decoration: none;
+  border-color: var(--sun-gold); }
+.obig b { display: block; margin-bottom: 0.2rem; }
+.obig span { color: var(--text-muted); font-size: 0.83rem; }
 @media (max-width: 900px) {
   .layout, .cols { grid-template-columns: 1fr; }
   .placerows { columns: 1; }
@@ -349,6 +373,8 @@ def page(title, body, depth=0, script=""):
 <header class="site"><div class="wrap">
   <h1><a href="{rel}index.html">SUEWS parameter database</a></h1>
   <span class="sub">curated values, linked and searchable, a citation on every one</span>
+  <span class="nav"><a href="{rel}index.html">Home</a> ·
+  <a href="{rel}map.html">Map</a></span>
 </div></header>
 <div class="wrap">
 {body}
@@ -356,7 +382,9 @@ def page(title, body, depth=0, script=""):
 parameter names follow the
 <a href="{DOCS}/index.html">SUEWS YAML input specification</a> ·
 per-parameter definitions in the
-<a href="{DOCS_REF}/index.html">configuration reference</a></footer>
+<a href="{DOCS_REF}/index.html">configuration reference</a> ·
+cite via the <a href="{REPO_URL}/releases">archived releases</a>
+(Zenodo DOI to follow with the database paper)</footer>
 </div>
 {script}
 </body></html>"""
@@ -371,8 +399,10 @@ def family_of(path):
     if parts[0] == "records":
         if parts[1] == "surfaces":
             slug = parts[-1]
+            # "--lai" also matches "--lai-power": LAI and its growth
+            # coefficients are one coupled family (they are fitted together)
             for fam in ("albedo", "emissivity", "anohm", "water-storage",
-                        "drainage", "water-state", "snow-lim", "soil", "lai-power",
+                        "drainage", "water-state", "snow-lim", "soil",
                         "lai", "phenology", "max-conductance", "porosity",
                         "biogen-co2", "thermal-layers"):
                 if f"--{fam}" in slug:
@@ -382,6 +412,22 @@ def family_of(path):
             return f"profile: {parts[2]}"
         return parts[1]
     return parts[1]  # archetype group
+
+
+def geo_of(rec, places):
+    """(region, country name, city name) for a record's place."""
+    slug = rec.get("place")
+    if not slug:
+        return None, None, None
+    info = places.get(slug) or {}
+    if info.get("kind") == "country":
+        return info.get("region"), info.get("name", slug), None
+    country = info.get("country")
+    cinfo = (places.get(country) or {}) if country else {}
+    region = info.get("region") or cinfo.get("region")
+    country_name = cinfo.get("name", country) if country else None
+    city = info.get("name", slug) if country and not info.get("subnational") else None
+    return region, country_name, city
 
 
 def surface_of(path, rec):
@@ -490,7 +536,7 @@ def vals_preview(rec, limit=4):
 def record_page(path, rec, records, sources, used_by, cluster):
     depth = path.count("/")
     rel = "../" * depth
-    kind = "record" if path.startswith("records/") else "archetype"
+    kind = "record" if path.startswith("records/") else "typology"
     src_key = rec.get("source")
     src = sources.get(src_key) if src_key else None
     fam = family_of(path)
@@ -657,10 +703,12 @@ def record_page(path, rec, records, sources, used_by, cluster):
     # connections: used by + same-study siblings
     backlinks = sorted(set(used_by.get(path, [])))
     if backlinks:
-        label = "archetype" if kind == "record" else "entry"
-        rail.append(side_list(
-            f"Used by {len(backlinks)} {label}{'s' if len(backlinks) != 1 else ''}",
-            backlinks, 12))
+        n = len(backlinks)
+        if kind == "record":
+            label = "typology" if n == 1 else "typologies"
+        else:
+            label = "entry" if n == 1 else "entries"
+        rail.append(side_list(f"Used by {n} {label}", backlinks, 12))
 
     if rec.get("place") and rec.get("source"):
         sibs = sorted(p for p in cluster.get((rec["place"], rec["source"]), [])
@@ -672,10 +720,22 @@ def record_page(path, rec, records, sources, used_by, cluster):
                         f"{esc(rec['place'])} →</a>")
             rail.append(side_list("Same study, same place", sibs, 8, all_link))
 
+    # duplicate-as-new: the GitHub new-file editor prefilled with this
+    # record's YAML, so a contributor edits a copy rather than starting blank
+    dup_dir = f"db/{path.rsplit('/', 1)[0]}"
+    dup_url = f"{REPO_URL}/new/main?filename={quote(dup_dir + '/NEW-RECORD.yml', safe='')}"
+    try:
+        raw = (ROOT / "db" / (path + ".yml")).read_text()
+        prefilled = dup_url + "&value=" + quote(raw, safe="")
+        if len(prefilled) <= 7500:
+            dup_url = prefilled
+    except OSError:
+        pass
     rail.append(
         "<div class=\"actions\">"
         f"<a href=\"{REPO_URL}/blob/main/db/{esc(path)}.yml\">View source</a>"
         f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change</a>"
+        f"<a href=\"{esc(dup_url)}\">Duplicate as a new record</a>"
         "</div>"
     )
     body.append(f"<div class=\"cols\"><div>{''.join(main)}</div>"
@@ -827,19 +887,25 @@ in the <a href="index.html">browser</a>, or add coordinates to
 
 BROWSER_JS = """
 <script>
-const FACETS = ['kind', 'surface', 'family', 'place', 'rep', 'source'];
+const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
+                'city', 'rep', 'source'];
 let DATA = [];
-const state = { q: '', kind: null, surface: null, family: null, place: null,
-                rep: null, source: null };
+const state = { q: '', all: false };
+for (const f of FACETS) state[f] = null;
 
 function readHash() {
   const h = new URLSearchParams(location.hash.slice(1));
   state.q = h.get('q') || '';
+  state.all = h.get('all') === '1';
   for (const f of FACETS) state[f] = h.get(f);
+  // legacy links: #place=<slug> maps onto the text search
+  const legacy = h.get('place');
+  if (legacy && !state.q) state.q = legacy;
 }
 function writeHash() {
   const h = new URLSearchParams();
   if (state.q) h.set('q', state.q);
+  if (state.all) h.set('all', '1');
   for (const f of FACETS) if (state[f]) h.set(f, state[f]);
   history.replaceState(null, '', h.toString() ? '#' + h.toString() : location.pathname);
 }
@@ -860,6 +926,9 @@ function itemHTML(facet, value, count, on, swatch) {
   return `<button class="fitem${on ? ' on' : ''}" data-facet="${facet}" ` +
          `data-value="${value}">${sw}<span class="fv">${value}</span>` +
          `<span class="n">${count}</span></button>`;
+}
+function emptyState() {
+  return !state.q && !state.all && FACETS.every(f => !state[f]);
 }
 function render() {
   const hits = DATA.filter(matches);
@@ -886,26 +955,27 @@ function render() {
       el.innerHTML = out;
       continue;
     }
-    const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-    const shown = f === 'place' || f === 'source' ? entries.slice(0, 12) : entries;
-    el.innerHTML = shown.map(([v, n]) => itemHTML(f, v, n, state[f] === v)).join('');
-    if (entries.length > shown.length && !state[f]) {
-      el.innerHTML += `<div class="fmore">+${entries.length - shown.length} ` +
-                      `more — type to narrow</div>`;
-    }
+    // alphabetical, all values shown (long groups scroll)
+    const entries = Object.entries(counts)
+      .sort((a, b) => a[0].localeCompare(b[0]));
+    el.innerHTML = entries.map(([v, n]) => itemHTML(f, v, n, state[f] === v)).join('');
   }
-  document.getElementById('nres').textContent =
+  const overview = document.getElementById('overview');
+  const showOverview = emptyState();
+  if (overview) overview.classList.toggle('hidden', !showOverview);
+  document.getElementById('nres').textContent = showOverview ? '' :
     hits.length + ' of ' + DATA.length + ' entries';
-  const out = hits.slice(0, 200).map(e => {
+  const out = showOverview ? '' : hits.slice(0, 200).map(e => {
     const acc = ACC[e.surface] || 'acc-none';
-    const meta = [e.family, e.place, e.rep, e.source].filter(Boolean).join(' · ');
-    const kindTag = e.kind === 'archetype' ? ' <span class="chip">archetype</span>' : '';
+    const meta = [e.family, e.typology, e.city || e.country, e.rep, e.source]
+      .filter(Boolean).join(' · ');
+    const kindTag = e.kind === 'typology' ? ' <span class="chip">typology</span>' : '';
     return `<div class="card2 ${acc}"><div class="t"><a href="${e.path}.html">` +
            `${e.name}</a>${kindTag}</div><div class="meta2">${meta}</div>` +
            `<div>${e.vals}</div></div>`;
   }).join('');
   document.getElementById('results').innerHTML = out +
-    (hits.length > 200 ? '<div class="crumbs">…narrow the filters to see the rest</div>' : '');
+    (!showOverview && hits.length > 200 ? '<div class="crumbs">…narrow the filters to see the rest</div>' : '');
 }
 document.addEventListener('click', ev => {
   const b = ev.target.closest('button.fitem');
@@ -924,13 +994,64 @@ fetch('data/index.json').then(r => r.json()).then(d => {
 """
 
 
-def build_index_page(records, sources, places):
+RELATION_SVG = """<svg viewBox="0 0 780 210" role="img" class="relfig"
+ aria-label="How the database fits together">
+<defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7"
+ markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z"
+ fill="rgba(255,255,255,0.45)"/></marker></defs>
+<g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+<rect x="10" y="30" width="130" height="44" rx="9"
+ fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
+<text x="75" y="49" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+ font-size="13">sources</text>
+<text x="75" y="65" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+ font-size="11">citation per value</text>
+<rect x="10" y="130" width="130" height="44" rx="9"
+ fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
+<text x="75" y="149" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+ font-size="13">places</text>
+<text x="75" y="165" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+ font-size="11">region · country · city</text>
+<rect x="210" y="76" width="170" height="54" rx="10"
+ fill="rgba(247,181,56,0.12)" stroke="#F7B538"/>
+<text x="295" y="99" text-anchor="middle" fill="#F7B538" font-size="14"
+ font-weight="600">evidence records</text>
+<text x="295" y="117" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+ font-size="11">one coherent set per source</text>
+<rect x="450" y="76" width="150" height="54" rx="10"
+ fill="rgba(93,173,226,0.12)" stroke="#5DADE2"/>
+<text x="525" y="99" text-anchor="middle" fill="#5DADE2" font-size="14"
+ font-weight="600">typologies</text>
+<text x="525" y="117" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+ font-size="11">curated bundles of records</text>
+<rect x="660" y="76" width="112" height="54" rx="10"
+ fill="rgba(9,162,92,0.12)" stroke="#09a25c"/>
+<text x="716" y="99" text-anchor="middle" fill="#09a25c" font-size="13"
+ font-weight="600">your SUEWS</text>
+<text x="716" y="116" text-anchor="middle" fill="#09a25c" font-size="13"
+ font-weight="600">YAML config</text>
+<line x1="140" y1="55" x2="205" y2="90" stroke="rgba(255,255,255,0.35)"
+ marker-end="url(#arr)"/>
+<line x1="140" y1="150" x2="205" y2="116" stroke="rgba(255,255,255,0.35)"
+ marker-end="url(#arr)"/>
+<line x1="380" y1="103" x2="444" y2="103" stroke="rgba(255,255,255,0.35)"
+ marker-end="url(#arr)"/>
+<line x1="600" y1="103" x2="654" y2="103" stroke="rgba(255,255,255,0.35)"
+ marker-end="url(#arr)"/>
+<path d="M295 76 C 295 40, 560 30, 655 84" fill="none"
+ stroke="rgba(255,255,255,0.25)" stroke-dasharray="4 4" marker-end="url(#arr)"/>
+<text x="470" y="42" text-anchor="middle" fill="rgba(255,255,255,0.45)"
+ font-size="11">or paste a single record's fragment</text>
+</g></svg>"""
+
+
+def build_index_page(records, sources, places, by_place):
     n_rec = sum(1 for p in records if p.startswith("records/"))
     n_arch = sum(1 for p in records if p.startswith("archetypes/"))
     stats = (
         "<div class=\"statline\">"
         f"<span><b>{n_rec}</b>evidence records</span>"
-        f"<span><b>{n_arch}</b>archetypes</span>"
+        f"<span><b>{n_arch}</b>typologies</span>"
         f"<span><b>{len(sources)}</b>sources</span>"
         f"<span><b>{len(places)}</b>places</span>"
         "</div>"
@@ -942,40 +1063,89 @@ def build_index_page(records, sources, places):
         "source-coherent set per record, named by the model's own parameter "
         "paths. Every record exports as a fragment that pastes straight into "
         "a SUEWS YAML configuration — with the citation attached to every "
-        "value. Contribute via the "
-        f"<a href=\"{REPO_URL}/blob/main/docs/FORMAT.md\">format guide</a> "
-        "— one small YAML file in a pull request.</p></div>"
+        "value.</p></div>"
     )
 
-    def fgroup(fid, label, tail=""):
+    # ---- overview panel (arrival view: structure first, data on demand) ----
+    lc_counts = defaultdict(int)
+    typ_counts = defaultdict(int)
+    fam_records = set()
+    n_mapped = 0
+    for path, rec in records.items():
+        s = surface_of(path, rec)
+        if s:
+            lc_counts[s] += 1
+        if path.startswith("archetypes/"):
+            typ_counts[family_of(path)] += 1
+        else:
+            fam_records.add(family_of(path))
+    for slug in by_place:
+        info = places.get(slug) or {}
+        if "lat" in info and "lon" in info:
+            n_mapped += 1
+
+    lc_tiles = "".join(
+        f"<a class=\"otile {SURFACE_ACC.get(s, 'acc-none')}\" "
+        f"href=\"#surface={s}\"><b>{SURFACE_LABEL.get(s, s)}</b>"
+        f"<span>{lc_counts[s]}</span></a>"
+        for s in LC_ORDER + ["common"] if lc_counts.get(s))
+    typ_tiles = "".join(
+        f"<a class=\"otile acc-none\" href=\"#typology={t}\"><b>{esc(t)}</b>"
+        f"<span>{n}</span></a>"
+        for t, n in sorted(typ_counts.items()))
+    overview = f"""<div id="overview">
+<h3 style="margin-top:0.4rem">How it fits together</h3>
+{RELATION_SVG}
+<h3>Land cover</h3>
+<div class="otiles">{lc_tiles}</div>
+<h3>Typologies</h3>
+<div class="otiles">{typ_tiles}</div>
+<div class="orow">
+<a class="obig" href="map.html"><b>Browse by place</b>
+<span>{n_mapped} study places on the map, or by climate zone</span></a>
+<a class="obig" href="#all=1"><b>Browse all {len(records)} entries</b>
+<span>{len(fam_records)} parameter families, every value cited</span></a>
+<a class="obig" href="{REPO_URL}/blob/main/docs/FORMAT.md"><b>Contribute</b>
+<span>correct a record from its page, or add a new one — one small YAML
+file in a pull request</span></a>
+</div>
+</div>"""
+
+    def fgroup(fid, label, scroll=False, tail=""):
+        cls = " class=\"fscroll\"" if scroll else ""
         return (f"<div class=\"fgroup\"><h4>{label}</h4>"
-                f"<div id=\"facet-{fid}\"></div>{tail}</div>")
+                f"<div id=\"facet-{fid}\"{cls}></div>{tail}</div>")
 
     rail = ("<div class=\"rail\">"
             + fgroup("kind", "Kind")
             + fgroup("surface", "Land cover")
-            + fgroup("family", "Family")
-            + fgroup("place", "Place",
-                     "<a class=\"maplink\" href=\"map.html\">pick on a map →</a>")
-            + fgroup("rep", "Scope")
-            + fgroup("source", "Source")
+            + fgroup("family", "Family", scroll=True)
+            + fgroup("typology", "Typology")
+            + fgroup("region", "Region")
+            + fgroup("country", "Country", scroll=True)
+            + fgroup("city", "City", scroll=True,
+                     tail="<a class=\"maplink\" href=\"map.html\">pick on a map →</a>")
+            + fgroup("rep", "Representativeness")
+            + fgroup("source", "Source", scroll=True)
             + "</div>")
     body = (hero
             + "<input id=\"q\" class=\"search\" type=\"search\" "
               "placeholder=\"Search: parameter name, place, source, value...\">"
             + stats
             + f"<div class=\"layout\">{rail}<div>"
+            + overview
             + "<div id=\"nres\"></div><div id=\"results\" class=\"results2\"></div>"
             + "</div></div>")
     return page("Browse", body, 0, BROWSER_JS)
 
 
-def build_search_index(records, sources):
+def build_search_index(records, sources, places):
     entries = []
     for path, rec in sorted(records.items()):
-        kind = "record" if path.startswith("records/") else "archetype"
+        kind = "record" if path.startswith("records/") else "typology"
         fam = family_of(path)
         surface = surface_of(path, rec)
+        region, country, city = geo_of(rec, places)
         pairs = [(k, v) for k, v in leaf_pairs(rec.get("parameters", {}))
                  if not k.startswith("context")]
 
@@ -990,19 +1160,27 @@ def build_search_index(records, sources):
         src = sources.get(rec.get("source"), {})
         text = " ".join(str(x).lower() for x in [
             path, rec.get("name"), rec.get("place"), rec.get("origin"),
+            region, country, city,
             rec.get("source"), src.get("author"), src.get("title"),
             rec.get("target"), fam, surface or "",
             " ".join(k for k, _ in pairs),
         ] if x)
         entries.append({
             "path": path, "name": str(rec.get("name") or path.rsplit("/", 1)[-1]),
-            "kind": kind, "surface": surface, "family": fam,
-            "place": rec.get("place"), "rep": rec.get("representativeness"),
+            "kind": kind,
+            "surface": surface,
+            "family": fam if kind == "record" else None,
+            "typology": fam if kind == "typology" else None,
+            "place": rec.get("place"),
+            "region": region, "country": country, "city": city,
+            "rep": rec.get("representativeness"),
             "source": rec.get("source"), "vals": vals, "text": text,
         })
-    # evidence records with values lead; bare pointer archetypes trail, so
-    # the unfiltered first screen shows data rather than empty country cards
-    entries.sort(key=lambda e: (e["kind"] != "record", e["vals"] == "", e["path"]))
+    # evidence records with values lead; bare pointer typologies trail, so a
+    # filtered screen shows data first; alphabetical within each group so
+    # entries are findable by name
+    entries.sort(key=lambda e: (e["kind"] != "record", e["vals"] == "",
+                                e["name"].lower(), e["path"]))
     return entries
 
 
@@ -1042,8 +1220,10 @@ def main():
 
     (out / "data").mkdir(parents=True, exist_ok=True)
     (out / "data" / "index.json").write_text(
-        json.dumps(build_search_index(records, sources), ensure_ascii=False))
-    (out / "index.html").write_text(build_index_page(records, sources, places))
+        json.dumps(build_search_index(records, sources, places),
+                   ensure_ascii=False))
+    (out / "index.html").write_text(
+        build_index_page(records, sources, places, by_place))
     (out / "map.html").write_text(build_map_page(places, by_place))
     (out / ".nojekyll").write_text("")
     print(f"site: {len(records)} entry pages, {len(by_place)} place pages, "
