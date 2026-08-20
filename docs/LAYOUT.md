@@ -18,25 +18,33 @@ workbook is generated from it.
   work-list for the regional axis. Generated, but preserves what has been
   filled in by hand.
 - `scripts/` — the conversion, verification and checking tools.
-- `database.xlsx` — generated from `db/`. Retained because the UMEP SUEWS
-  Database Manager and Prepare QGIS plugins still ship a copy of it. Do not
-  edit it; changes made there will be overwritten by `make xlsx`.
+- `schema/provenance.yml` — the fingerprint of the workbook the database was
+  migrated from. What `make verify` checks against.
 
-The committed workbook is still the original file, not yet a regenerated one.
-The first `make xlsx` will rewrite it through openpyxl: every value is
-identical — `make verify` checks exactly that, cell by cell and type by type,
-and the workbook contains no formulas — but column widths and cell styling are
-not carried over, so expect a total binary diff on that one commit. Worth
-confirming the plugins read values only before it is done.
+`database.xlsx` is **not** in the repository. It is a build product: run
+`make xlsx` to produce it, and it is gitignored so it cannot be committed by
+accident. Consumers that still want a spreadsheet get it from the release
+assets, where each release carries a workbook built from that release's data.
+The original pre-migration workbook is archived as a release asset in its own
+right, and remains retrievable from git history at the commit before it was
+removed.
+
+A regenerated workbook is written by openpyxl. Every value and type is
+identical — that is what `make verify` proves, and the source workbook
+contained no formulas — but column widths and cell styling are not carried
+over. They encode nothing the database depends on.
 
 ## Commands
 
-- `make yaml` — rebuild `db/` and `schema/tables.yml` from `database.xlsx`.
-  Only needed if the workbook is edited upstream.
-- `make xlsx` — rebuild `database.xlsx` from `db/`. Run after changing data.
-- `make verify` — prove `db/` reproduces `database.xlsx` cell for cell.
+- `make xlsx` — build `database.xlsx` from `db/`, for release or for anyone
+  who needs a spreadsheet.
+- `make verify` — prove `db/` still reproduces the migrated workbook, by
+  comparing a rebuilt fingerprint against `schema/provenance.yml`. Add
+  `XLSX=<path>` to also compare cell by cell against an actual workbook.
 - `make check` — referential, linkage and hygiene checks.
 - `make origins` — refresh the `Origin` work-list.
+- `make yaml` — one-off migration bootstrap, kept for reference. It rebuilds
+  `db/` *from* a workbook and would overwrite hand edits.
 
 ## How records reference each other
 
@@ -94,4 +102,8 @@ resolving every eight-digit value back to the table owning its prefix.
    that table's prefix.
 3. Point a surface entry at it, or add a new surface entry.
 4. Record its `Origin`, then run `make origins` and fill in the new row.
-5. Run `make check`, then `make xlsx`.
+5. Run `make check`.
+
+Note that `make verify` compares against the *migrated* workbook, so it is
+expected to fail once data changes deliberately. Re-record the fingerprint with
+`scripts/record_provenance.py` when that happens, as its own reviewable commit.

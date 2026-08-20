@@ -1,8 +1,10 @@
-"""Regenerate database.xlsx from the canonical YAML files.
+"""Build database.xlsx from the canonical YAML files.
 
-The workbook is a build product. It is kept in the repository because the UMEP
-SUEWS Database Manager / Prepare QGIS plugins still ship a copy of it; edit the
-YAML and regenerate rather than editing the spreadsheet.
+The workbook is a build product and is not tracked. It exists for consumers
+that still want a spreadsheet -- notably the UMEP SUEWS Database Manager and
+Prepare QGIS plugins, which ship a bundled copy -- and is attached to releases
+so there is a stable URL to fetch it from. Edit the YAML and rebuild; never
+edit the spreadsheet.
 
     make xlsx                     # writes database.xlsx
     python scripts/yaml_to_xlsx.py OUT.xlsx

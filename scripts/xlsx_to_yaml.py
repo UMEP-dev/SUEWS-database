@@ -1,20 +1,27 @@
-"""Convert database.xlsx into the canonical per-table YAML files.
+"""Convert a workbook into the canonical per-table YAML files.
 
-This is a format-only migration: cell values are carried across verbatim,
+This is the one-off migration bootstrap, kept for reference and for the case
+where a spreadsheet has to be brought in wholesale again. It rebuilds db/ from
+a workbook and will overwrite anything edited by hand, so it is not part of the
+normal editing loop -- db/*.yml is the database now.
+
+The migration is format-only: cell values are carried across verbatim,
 including -999 sentinels, trailing spaces in names and the JSON strings
 embedded in Region/Country. Nothing is corrected here -- corrections belong in
 their own commits so that they are reviewable against a stable base.
 
-    make yaml
+    make yaml                          # expects ./database.xlsx
+    python scripts/xlsx_to_yaml.py IN.xlsx
 """
 
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 
 import openpyxl
 
-sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from suewsdb import DB_DIR, SCHEMA_DIR, TABLES_YML, XLSX, dump_yaml, slug  # noqa: E402
 
 TABLE_HEADER = """\
@@ -59,7 +66,13 @@ def detect_references(columns, entries, prefix_owner):
 
 
 def main() -> int:
-    wb = openpyxl.load_workbook(XLSX, data_only=True)
+    source = Path(sys.argv[1]) if len(sys.argv) > 1 else XLSX
+    if not source.exists():
+        raise SystemExit(
+            f"{source} not found. database.xlsx is no longer tracked; pass "
+            f"the path to a workbook, or fetch one from the releases page."
+        )
+    wb = openpyxl.load_workbook(source, data_only=True)
     DB_DIR.mkdir(exist_ok=True)
     SCHEMA_DIR.mkdir(exist_ok=True)
 
@@ -98,7 +111,7 @@ def main() -> int:
         sheets.append((ws.title, columns, entries, prefixes))
 
     # Second pass: write the table files and the registry.
-    registry = {"source": XLSX.name, "tables": []}
+    registry = {"source": source.name, "tables": []}
     total_rows = 0
 
     for title, columns, entries, prefixes in sheets:

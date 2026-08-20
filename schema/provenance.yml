@@ -1,0 +1,54 @@
+# Provenance of the migration from Excel.
+#
+# `source` identifies the exact workbook the YAML was produced from. Its
+# sha256 is the identity of the file published as a release asset.
+#
+# `content` is a digest over cell values and their types, computed by
+# scripts/suewsdb.py. Unlike the file hash it is reproducible: regenerating a
+# workbook from db/*.yml yields the same content digest, which is what
+# `make verify` checks. Formatting and column widths are not covered, because
+# they carry no information and are not reproduced.
+#
+# Do not edit by hand. If a value in db/ changes, the content digest is
+# expected to change with it; record the new one deliberately.
+source:
+  filename: database.xlsx
+  sha256: 50dfc15322115651f672fed86df1fdcc7dc8b13a58b7ced9b2e270b388aee6d3
+  bytes: 220412
+  note: The Excel workbook the database was migrated from, published as a release asset. Retrievable from git history at the commit preceding its removal.
+content:
+  algorithm: sha256 over canonical JSON of (row, col, type, text)
+  sheets: 30
+  cells: 39636
+  digest: 99fef9832960eeeb8068c0f0a34dc2038f9736a4e0d82b9374c63c85d181f738
+  per_sheet:
+    Region: 56d0d85be4302ef8bf602362dd61dc441b9201f6951dea2e1771d2d098d345b2
+    Country: f9b0323546d9a60cfe71be8441916214c3ca333b467703bea3eddd2f02b91a11
+    Types: d7fa9e4ead4de04ca9f441b8a2822fdeffd768ff3103b2db43dfcec43e41969c
+    NonVeg: b9d65adcedc09b669a0db7bc421fa05c0457b666a00c99bfecc6577dd2fdbd69
+    Veg: b5aa44b26dbbbd53adc272f1d93c4cca83481320c9fd34d0f6464adafb333a61
+    Snow: bf8f5d3685919e1c4e9c1b2b0854bb3bc1fdaf38c8b16b8e85188d363a54e1ea
+    Water: da4c6c2b9e14c9fbfb71332b845a7102e15661446280234c67a12962d5b747ec
+    Spartacus Surface: 9c5a527c647500dab356b980eb93577ba79ae883f273d281d2acbd34e7868a7a
+    Albedo: a550385df880b87ed86ddd19288e1dd9d61ba88cb80308424da0f8bbce7e2bbb
+    Spartacus Material: 6857fc9a8f4e3f8aa8586412db818dc4b6a26540571ddf61254962ee0a63c75b
+    Emissivity: 81ae2296c8c76c190314e6f48c9d01d9b0b1a8f35cb0324603f8e5ba0373a933
+    OHM: 39959662bbc14318b97f20c2ab88a648153f8674d1dc8b503790ecad4f41cae7
+    Water Storage: 3503f321d3bd12c854e558632109a317b86bf91d0d0ffee0dbdf99a98a52d29d
+    SnowLimPatch: afa6cc577add0378c575825933380237d07847941ceda93f6cad49fffded6772
+    Water State: 3f9293c52baf45f738db0cd58b6ccb9373a6260afc8b077121c24bbb18eaf746
+    Drainage: 4ee1dbe10a4c71c143a8403ad7f2beaa3770053052b4296ff3d8745a51412bd3
+    Irrigation: e6d8f0e8a3add9db2292aa615ea4b8646bf50d78ef0c2b71a0523f47b86bd623
+    Conductance: 00dde35a58d1707ca9ab4c0544f0a1b3d206ee7a8f32e4e83032642adf95e405
+    Leaf Area Index: fe36742dc325052eb6f83d398b2bb9109c4f17af86bac04a346e746d1a7b2f3c
+    Leaf Growth Power: 3826aaece6a20cda64c30c39c4cdcb359fc81d59c2caca59a1c8bf6f61d99761
+    Vegetation Growth: d5f107ae6b60e875ea518ecb450bb33c03b38476dc0fab082b93b27e2f96936e
+    Max Vegetation Conductance: 682f851e993fb022972a0f04f2175d513456a005d5ec7d0280dae58f6d23ba79
+    Porosity: bed0859f6d758e2c7837c6feb30b5d50318f8eec7ea7396dc9f0f9c6b4c993e9
+    Profiles: 4e32eb26ea9c8cf1f21bf0f816b27eeb888d6142118f35795550631e068a89d5
+    Soil: 9cb277201fc424e30c78c0ce02f9264163f1acc08367643748c1b94736b3ec90
+    AnthropogenicEmission: e836cde0081ba6daa5eefcdb96e2692096942a3f20799aee854e638506139267
+    Biogen CO2: d93bb1881601c5174af5836f478e589267ca6a9778863e5b58da9cb060ddc327
+    References: 93153c44670d324dcb86efd6e782d6c39597a9a969f246cc53c8f8401c2c5479
+    ESTM: 0869d2005dc2ca170ba0869b458b91a80e9de1a354dc571ac4270453133c997f
+    ANOHM: 365c1c55d9d8a8bfd50ebd6c7d09e4b0abbae75570832eb1a9dc0fad8354dd0e

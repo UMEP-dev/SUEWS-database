@@ -7,17 +7,22 @@ place, with a citation on every value. It is used through the **SUEWS Database
 Manager** and **SUEWS Database Prepare** plugins in
 [UMEP](https://umep-docs.readthedocs.io/).
 
+> **Using the spreadsheet?** `database.xlsx` has moved out of the repository
+> and into the [releases](https://github.com/UMEP-dev/SUEWS-database/releases).
+> The data is unchanged; it now lives in `db/` as YAML and the workbook is
+> generated from it.
+
 ## The database is the YAML files
 
 `db/` holds one file per table, each a dictionary keyed by an integer ID.
-**Edit those.** `database.xlsx` is generated from them and is kept only because
-the UMEP QGIS plugins still ship a copy of the workbook; edits made there will
-be overwritten.
+**Edit those.** The spreadsheet is no longer the database and is no longer in
+the repository: it is built on demand with `make xlsx`, and published with each
+release for anyone who needs one. The original pre-migration workbook is kept
+as a release asset in its own right.
 
 ```
-make yaml     # rebuild db/ from database.xlsx (only if the workbook changes upstream)
-make xlsx     # rebuild database.xlsx from db/
-make verify   # prove db/ reproduces database.xlsx cell for cell
+make xlsx     # build database.xlsx from db/
+make verify   # prove db/ still reproduces the migrated workbook
 make check    # referential, linkage and hygiene checks
 make origins  # refresh the Origin work-list
 ```
