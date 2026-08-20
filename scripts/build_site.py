@@ -994,53 +994,55 @@ fetch('data/index.json').then(r => r.json()).then(d => {
 """
 
 
-RELATION_SVG = """<svg viewBox="0 0 780 210" role="img" class="relfig"
+RELATION_SVG = """<svg viewBox="0 0 780 208" role="img" class="relfig"
  aria-label="How the database fits together">
 <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7"
  markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z"
  fill="rgba(255,255,255,0.45)"/></marker></defs>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-<rect x="10" y="30" width="130" height="44" rx="9"
+<rect x="10" y="14" width="130" height="44" rx="9"
  fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
-<text x="75" y="49" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+<text x="75" y="33" text-anchor="middle" fill="rgba(255,255,255,0.85)"
  font-size="13">sources</text>
-<text x="75" y="65" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+<text x="75" y="49" text-anchor="middle" fill="rgba(255,255,255,0.5)"
  font-size="11">citation per value</text>
-<rect x="10" y="130" width="130" height="44" rx="9"
+<rect x="10" y="98" width="130" height="44" rx="9"
  fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
-<text x="75" y="149" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+<text x="75" y="117" text-anchor="middle" fill="rgba(255,255,255,0.85)"
  font-size="13">places</text>
-<text x="75" y="165" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+<text x="75" y="133" text-anchor="middle" fill="rgba(255,255,255,0.5)"
  font-size="11">region · country · city</text>
-<rect x="210" y="76" width="170" height="54" rx="10"
+<rect x="210" y="50" width="170" height="54" rx="10"
  fill="rgba(247,181,56,0.12)" stroke="#F7B538"/>
-<text x="295" y="99" text-anchor="middle" fill="#F7B538" font-size="14"
+<text x="295" y="73" text-anchor="middle" fill="#F7B538" font-size="14"
  font-weight="600">evidence records</text>
-<text x="295" y="117" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+<text x="295" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)"
  font-size="11">one coherent set per source</text>
-<rect x="450" y="76" width="150" height="54" rx="10"
+<rect x="440" y="50" width="172" height="54" rx="10"
  fill="rgba(93,173,226,0.12)" stroke="#5DADE2"/>
-<text x="525" y="99" text-anchor="middle" fill="#5DADE2" font-size="14"
+<text x="526" y="73" text-anchor="middle" fill="#5DADE2" font-size="14"
  font-weight="600">typologies</text>
-<text x="525" y="117" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+<text x="526" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)"
  font-size="11">curated bundles of records</text>
-<rect x="660" y="76" width="112" height="54" rx="10"
+<rect x="660" y="50" width="112" height="54" rx="10"
  fill="rgba(9,162,92,0.12)" stroke="#09a25c"/>
-<text x="716" y="99" text-anchor="middle" fill="#09a25c" font-size="13"
+<text x="716" y="73" text-anchor="middle" fill="#09a25c" font-size="13"
  font-weight="600">your SUEWS</text>
-<text x="716" y="116" text-anchor="middle" fill="#09a25c" font-size="13"
+<text x="716" y="90" text-anchor="middle" fill="#09a25c" font-size="13"
  font-weight="600">YAML config</text>
-<line x1="140" y1="55" x2="205" y2="90" stroke="rgba(255,255,255,0.35)"
+<line x1="140" y1="42" x2="205" y2="66" stroke="rgba(255,255,255,0.35)"
  marker-end="url(#arr)"/>
-<line x1="140" y1="150" x2="205" y2="116" stroke="rgba(255,255,255,0.35)"
+<line x1="140" y1="116" x2="205" y2="90" stroke="rgba(255,255,255,0.35)"
  marker-end="url(#arr)"/>
-<line x1="380" y1="103" x2="444" y2="103" stroke="rgba(255,255,255,0.35)"
+<line x1="380" y1="77" x2="434" y2="77" stroke="rgba(255,255,255,0.35)"
  marker-end="url(#arr)"/>
-<line x1="600" y1="103" x2="654" y2="103" stroke="rgba(255,255,255,0.35)"
+<line x1="612" y1="77" x2="654" y2="77" stroke="rgba(255,255,255,0.35)"
  marker-end="url(#arr)"/>
-<path d="M295 76 C 295 40, 560 30, 655 84" fill="none"
- stroke="rgba(255,255,255,0.25)" stroke-dasharray="4 4" marker-end="url(#arr)"/>
-<text x="470" y="42" text-anchor="middle" fill="rgba(255,255,255,0.45)"
+<path d="M295 104 L295 158 L716 158 L716 110" fill="none"
+ stroke="rgba(255,255,255,0.3)" stroke-dasharray="4 4"
+ marker-end="url(#arr)"/>
+<rect x="380" y="148" width="252" height="20" rx="5" fill="#0F1119"/>
+<text x="506" y="162" text-anchor="middle" fill="rgba(255,255,255,0.5)"
  font-size="11">or paste a single record's fragment</text>
 </g></svg>"""
 
