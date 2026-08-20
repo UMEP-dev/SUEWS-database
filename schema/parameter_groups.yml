@@ -1,18 +1,27 @@
 # Physical linkage between parameters.
 #
-# The database stores every parameter independently, which lets a user assemble
-# a combination that is individually defensible and jointly wrong. The trigger
-# for this file was SDDFull sitting at -450 for both Helsinki and SE England: a
-# senescence threshold only means something in relation to the base temperature
-# it is paired with, and nothing in the database said so. Grouping records
-# which parameters have to move together, so that a naive choice can be warned
-# about instead of silently accepted.
+# The database stores parameter values as records, and a user assembling a
+# configuration one value at a time can still produce a combination that is
+# individually defensible and jointly wrong. The trigger for this file was
+# SDDFull sitting at -450 for both Helsinki and SE England: a senescence
+# threshold only means something in relation to the base temperature it is
+# paired with, and nothing in the database said so.
+#
+# The record format resolves the worst of this STRUCTURALLY: values that were
+# measured or fitted together now live in the same record file (a phenology
+# record carries base_temperature, base_temperature_senescence, gdd_full and
+# sdd_full as one set), so they cannot drift apart in storage. What remains
+# for this file is the CROSS-RECORD layer: which records must be chosen
+# consistently when an archetype or a user combines them.
+#
+# Parameter names below are supy canonical paths, as used in each record's
+# `parameters:` block.
 #
 # Scope note. Only groups with a settled classification are filled in. Every
-# other table is listed under `unclassified` on purpose: assigning tightness
-# across the whole database is a scientific judgement, and guessing it here
-# would bury real decisions inside a format migration. The unclassified list
-# is the outstanding work, not a claim of independence.
+# other record family is listed under `unclassified` on purpose: assigning
+# tightness across the whole database is a scientific judgement, and guessing
+# it here would bury real decisions inside a format migration. The
+# unclassified list is the outstanding work, not a claim of independence.
 
 linkage_levels:
   tight: >
@@ -38,18 +47,22 @@ groups:
     linkage: tight
     confidence: settled
     members:
-      - table: Vegetation Growth
-        columns: [BaseT, BaseTe, GDDFull, SDDFull]
+      - family: records/surfaces/*/*--phenology
+        paths: [lai.base_temperature, lai.base_temperature_senescence,
+                lai.gdd_full, lai.sdd_full]
+    enforced_by: >
+      Structural since the record migration: the four values arrive in one
+      phenology record and are cited, placed and revised as a unit.
     rationale: >
-      GDDFull and SDDFull are accumulated relative to BaseT and BaseTe. A
-      degree-day total carried over from one site to another without its base
-      temperature describes a different phenological cycle, so the four values
-      only have meaning as a set.
+      gdd_full and sdd_full are accumulated relative to base_temperature and
+      base_temperature_senescence. A degree-day total carried over from one
+      site to another without its base temperature describes a different
+      phenological cycle, so the four values only have meaning as a set.
     evidence: >
-      The six Vegetation Growth entries split into Helsinki (BaseT=5,
-      BaseTe=10) and SE England (BaseT=6, BaseTe=11), but both keep
-      GDDFull=300 and SDDFull=-450. The base temperature was localised and the
-      degree-day totals accumulated against it were not, which is the
+      The six phenology records split into Helsinki (base_temperature=5,
+      base_temperature_senescence=10) and SE England (6, 11), but both keep
+      gdd_full=300 and sdd_full=-450. The base temperature was localised and
+      the degree-day totals accumulated against it were not, which is the
       inconsistency this group exists to catch.
 
   leaf_area_index:
@@ -57,21 +70,24 @@ groups:
     linkage: tight
     confidence: settled
     members:
-      - table: Leaf Area Index
-        columns: [LAIEq, LAIMin, LAIMax]
-      - table: Leaf Growth Power
-        columns: [LAIEq, LeafGrowthPower1, LeafGrowthPower2, LeafOffPower1, LeafOffPower2]
+      - family: records/surfaces/*/*--lai
+        paths: [lai.lai_type, lai.lai_min, lai.lai_max]
+      - family: records/surfaces/*/*--lai-power
+        paths: [lai.lai_type, lai.lai_power.growth_lai, lai.lai_power.growth_gdd,
+                lai.lai_power.senescence_lai, lai.lai_power.senescence_sdd]
+    enforced_by: >
+      Cross-record rule in scripts/check_db.py (linkage pass): an archetype
+      whose leaf_area_index and leaf_growth_power records carry different
+      lai.lai_type values is internally contradictory.
     rationale: >
       The growth and leaf-off power coefficients parameterise the transition
-      between LAIMin and LAIMax under a particular LAI equation. Coefficients
-      fitted for one equation do not transfer to another.
+      between lai_min and lai_max under a particular LAI equation.
+      Coefficients fitted for one equation do not transfer to another.
     evidence: >
-      LAIEq appears as a column in both tables, so a Veg entry that pairs a
-      Leaf Area Index row with a Leaf Growth Power row of a different LAIEq is
-      internally contradictory. Checked by scripts/check_consistency.py, which
-      currently finds three such entries: 24240002 (Vancouver, Grass),
-      24240025 (Swindon, Grass) and 24240028 (London, Grass). The last of
-      these is the Grass default that most Region entries point at.
+      lai_type appears in both record families, and check_db currently finds
+      three archetypes that mix equations, the same three the legacy checker
+      found in the table format: grass at Vancouver (irrigated sample run),
+      Swindon and London (the Grass default most Region entries point at).
     related:
       - group: vegetation_growth_thresholds
         linkage: unclassified
@@ -85,8 +101,11 @@ groups:
     linkage: loose
     confidence: settled
     members:
-      - table: Conductance
-        columns: [G1, G2, G3, G4, G5, G6]
+      - family: records/conductance/*
+        paths: [g_max, g_k, g_q_base, g_q_shape, g_t, g_sm]
+    enforced_by: >
+      Structural since the record migration: one conductance record carries
+      the whole coefficient set.
     rationale: >
       The coefficients express physical relationships and were fitted jointly,
       so they should be moved together, but unlike the phenology parameters
@@ -94,27 +113,29 @@ groups:
     to_confirm:
       - >
         A zero-to-one constraint has been proposed for these coefficients. The
-        stored values do not show that range -- the Jarvi et al. (2011) entry
-        has G1=16.4764 and G2=566.0923 -- so either the constraint applies to a
-        subset (G3 and G6 are below 1 in all three entries) or it describes
-        something else, such as a normalised stress function. Resolve before
-        encoding it as a validation rule.
+        stored values do not show that range -- the Jarvi et al. (2011) record
+        has g_max=16.4764 and g_k=566.0923 -- so either the constraint applies
+        to a subset (g_q_base and g_sm are below 1 in all three records) or it
+        describes something else, such as a normalised stress function.
+        Resolve before encoding it as a validation rule.
       - >
-        gsModel appears to belong in this group. The two entries differ by
-        formulation (gsModel=1, Jarvi et al. 2011 and gsModel=2, Ward et al.
-        2016) and their coefficients differ by more than an order of
-        magnitude, so a coefficient set is only valid for its own gsModel.
-        TH, TL, S1, S2 and Kmax are unassessed.
+        The surface-conductance model choice (kept as
+        context.surface_conductance_model on each record, gsModel in the
+        legacy tables) appears to belong in this group. The records differ by
+        formulation (model 1, Jarvi et al. 2011 and model 2, Ward et al. 2016)
+        and their coefficients differ by more than an order of magnitude, so a
+        coefficient set is only valid for its own model. th, tl, s1, s2 and
+        kmax are unassessed.
 
   radiative_properties:
     label: Radiative surface properties
     linkage: independent
     confidence: tentative
     members:
-      - table: Albedo
-        columns: [Alb_min, Alb_max]
-      - table: Emissivity
-        columns: [Emissivity]
+      - family: records/surfaces/*/*--albedo
+        paths: [alb, alb_min, alb_max]
+      - family: records/surfaces/*/*--emissivity
+        paths: [emis]
     rationale: >
       Albedo and emissivity are measured separately and have not been shown to
       constrain each other. Held as a working assumption rather than a settled
@@ -126,38 +147,36 @@ groups:
     linkage: independent
     confidence: tentative
     members:
-      - table: Spartacus Material
-        columns: [Albedo, Emissivity, Thermal Conductivity, Specific Heat, Density]
+      - family: records/materials/*
+        paths: [albedo, emissivity, thermal_conductivity, specific_heat, density]
+    enforced_by: >
+      Structural since the record migration: one material record carries all
+      five properties.
     rationale: >
       The properties do not constrain each other directly. They are, however,
-      jointly determined by the choice of material, so a row should be taken
-      whole rather than have individual properties substituted into it.
+      jointly determined by the choice of material, so a record should be
+      taken whole rather than have individual properties substituted into it.
 
-# Tables with no linkage assessment yet. Listed so that the gap is visible
-# rather than implicit. ESTM, ANOHM, OHM and Spartacus Surface are the ones
-# most likely to need grouping, since each holds several coefficients of a
-# single fitted relationship.
+# Record families with no linkage assessment yet. Listed so that the gap is
+# visible rather than implicit. The thermal-layer, anohm and ohm families are
+# the ones most likely to need grouping, since each holds several
+# coefficients of a single fitted relationship.
 unclassified:
-  - Region
-  - Country
-  - Types
-  - NonVeg
-  - Veg
-  - Snow
-  - Water
-  - Spartacus Surface
-  - OHM
-  - Water Storage
-  - SnowLimPatch
-  - Water State
-  - Drainage
-  - Irrigation
-  - Max Vegetation Conductance
-  - Porosity
-  - Profiles
-  - Soil
-  - AnthropogenicEmission
-  - Biogen CO2
-  - References
-  - ESTM
-  - ANOHM
+  - records/ohm (a1, a2, a3 of one fitted OHM relation; also their pairing
+    with the four archetype season slots)
+  - records/surfaces/*/*--anohm
+  - records/surfaces/*/*--thermal-layers
+  - records/surfaces/*/*--water-storage
+  - records/surfaces/*/*--drainage
+  - records/surfaces/*/*--water-state
+  - records/surfaces/*/*--snow-lim
+  - records/surfaces/*/*--soil
+  - records/surfaces/*/*--biogen-co2
+  - records/surfaces/*/*--max-conductance
+  - records/surfaces/*/*--porosity
+  - records/irrigation
+  - records/anthropogenic
+  - records/profiles
+  - records/constructions
+  - archetypes (all: which record combinations a composite may legitimately
+    bundle)

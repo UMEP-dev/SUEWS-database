@@ -207,9 +207,33 @@ def supy_check(records, sources):
     return errors, n_checked
 
 
+def linkage_check(records):
+    """Cross-record coupling rules from schema/parameter_groups.yml.
+
+    Reported as warnings, not errors: they flag scientifically inconsistent
+    COMBINATIONS in curated archetypes, which need judgement to resolve.
+    """
+    warnings = []
+    for path, rec in records.items():
+        uses = rec.get("uses", {})
+        lai_ref = uses.get("leaf_area_index")
+        lgp_ref = uses.get("leaf_growth_power")
+        if lai_ref and lgp_ref and lai_ref in records and lgp_ref in records:
+            a = records[lai_ref].get("parameters", {}).get("lai", {}).get("lai_type")
+            b = records[lgp_ref].get("parameters", {}).get("lai", {}).get("lai_type")
+            if a is not None and b is not None and a != b:
+                warnings.append(
+                    f"{path}: mixes LAI records fitted for different equations "
+                    f"(lai_type {a} in {lai_ref} vs {b} in {lgp_ref})"
+                )
+    return warnings
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--supy", action="store_true", help="also validate against supy")
+    ap.add_argument("--strict", action="store_true",
+                    help="treat linkage warnings as errors")
     args = ap.parse_args()
 
     records, sources, places = load_all()
@@ -217,6 +241,13 @@ def main():
     print(f"structural: {len(records)} files checked, {len(errors)} errors")
     for e in errors[:30]:
         print("  -", e)
+
+    warnings = linkage_check(records)
+    print(f"linkage: {len(warnings)} warnings")
+    for w in warnings:
+        print("  ~", w)
+    if args.strict:
+        errors += warnings
 
     if args.supy:
         supy_errors, n = supy_check(records, sources)

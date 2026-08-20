@@ -11,6 +11,11 @@ Nothing is dropped: columns without a supy home land verbatim under each
 record's `legacy:` block, and the census (schema/migration_census.yml) proves
 every non-null cell of every legacy row landed exactly once.
 
+This is the migration bootstrap, kept for reference and reproducibility.
+It reads the table-format db/*.yml files, which were removed once the
+record tree landed -- to re-run it, check out the commit before the
+removal (the tree where schema/tables.yml's files still exist in db/).
+
 Usage: python scripts/migrate_to_records.py
 """
 

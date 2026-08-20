@@ -3,69 +3,84 @@
 Curated parameter values for [SUEWS](https://github.com/UMEP-dev/SUEWS) —
 albedo, emissivity, thermal and material properties, surface conductance,
 hourly profiles and more — organised by surface type, building typology and
-place, with a citation on every value. It is used through the **SUEWS Database
-Manager** and **SUEWS Database Prepare** plugins in
-[UMEP](https://umep-docs.readthedocs.io/).
+place, with a citation on every value.
 
-> **Using the spreadsheet?** `database.xlsx` has moved out of the repository
-> and into the [releases](https://github.com/UMEP-dev/SUEWS-database/releases).
-> The data is unchanged; it now lives in `db/` as YAML and the workbook is
-> generated from it.
+## The database is records
 
-## The database is the YAML files
+`db/records/` holds the evidence: one YAML file per source-coherent
+parameter set, its parameters named by the [SUEWS YAML data
+model](https://suews.readthedocs.io/)'s canonical paths so a record exports
+straight into a modern SUEWS configuration. `db/archetypes/` holds curated
+combinations — complete surface descriptions, regional default sets,
+building typologies — that reference records rather than copy their values,
+so provenance survives assembly.
 
-`db/` holds one file per table, each a dictionary keyed by an integer ID.
-**Edit those.** The spreadsheet is no longer the database and is no longer in
-the repository: it is built on demand with `make xlsx`, and published with each
-release for anyone who needs one. The original pre-migration workbook is kept
-as a release asset in its own right.
-
+```yaml
+# db/records/surfaces/grass/helsinki--jarvi2014--phenology.yml
+target: land_cover.grass
+place: helsinki
+representativeness: city
+source: jarvi2014
+parameters:
+  lai:
+    base_temperature: 5
+    base_temperature_senescence: 10
+    gdd_full: 300
+    sdd_full: -450
 ```
-make xlsx     # build database.xlsx from db/
-make verify   # prove db/ still reproduces the migrated workbook
-make check    # referential, linkage and hygiene checks
-make origins  # refresh the Origin work-list
+
+```sh
+make check        # structure, references and coupling rules
+make validate     # + validate every fragment against the supy data model
+make export REC=archetypes/surfaces/bldgs/helsinki--kumpula
 ```
 
-`docs/LAYOUT.md` explains the layout, the ID scheme and how to add a value.
+`make export` renders any record or archetype as a fragment that pastes
+directly into a SUEWS YAML configuration, each value carrying its citation
+in supy's native `{value, ref: {ID, DOI}}` form.
 
-## Two things the database is starting to record
+`docs/FORMAT.md` specifies the format and how to contribute a value;
+`docs/LAYOUT.md` maps the repository.
 
-A parameter value on its own is not enough to use it well, so alongside the
-values the repository carries two further layers.
+## What a record knows besides its values
 
-**Which parameters move together.** Parameters are not independent of one
-another, and until now nothing said so. Senescing-degree-day totals mean
-nothing apart from the base temperature they were accumulated against; leaf
-growth-power coefficients only apply to the LAI equation they were fitted for.
-A user assembling a set one value at a time can produce a combination that is
-individually defensible and jointly wrong, with no signal that they have.
-`schema/parameter_groups.yml` records the groups and how tightly each is
-coupled, and `make check` enforces the rules that are checkable.
+**Which parameters move together.** Values that were measured or fitted
+together live in the same record — the degree-day totals arrive with the
+base temperatures they were accumulated against, a conductance set stays
+whole. `schema/parameter_groups.yml` records the couplings that cross
+record boundaries, and `make check` warns when an archetype combines
+records inconsistently (it currently finds three, inherited from the
+original data).
 
-**Where a value is from, and how far it travels.** Every value has an origin,
-but a rooftop measurement at one site and a value offered as typical of a
-region currently look identical. `schema/regional_axis.yml` sets out how the
-database is to be sliced geographically, reusing the 22-region vocabulary and
-229-country mapping already in `db/region.yml` and `db/country.yml`. This is
-what makes it possible to ask what a typical Scandinavian or northern Chinese
-combination looks like — not as the right answer, but as a defensible default
-when nothing else is known.
+**Where a value is from, and how far it travels.** Every record resolves
+its origin to a place in `db/places.yml` and declares its
+representativeness: a rooftop measurement (`site`) and a value offered as
+typical of a region (`regional`) are no longer indistinguishable. The
+regional and country default sets in `db/archetypes/` make "a defensible
+default when nothing else is known" an explicit, queryable thing.
 
-Both layers are partly populated, and both mark what remains unassessed rather
-than guessing it.
+## Using the spreadsheet?
+
+The spreadsheet-based UMEP plugins (**SUEWS Database Manager**, **SUEWS
+Database Prepare**) predate this format. The last `database.xlsx` built
+from the table-format database is frozen as a
+[release](https://github.com/UMEP-dev/SUEWS-database/releases) asset — the
+data it carries is exactly what the record migration preserved
+(`schema/migration_census.yml` is the proof) — and the original
+pre-migration workbook remains a release asset in its own right. The
+workbook is no longer generated from the database.
 
 ## Known issues
 
 `docs/FINDINGS.md` lists data-quality problems found but deliberately not
-fixed: an LAI range that appears at three sites under three citations, three
-citations pointing at reference IDs that do not exist, three surface entries
-mixing LAI parameters fitted for different equations, and the free-text state
-of the `Origin` column.
+fixed: an LAI range that appears at three sites under three citations,
+citations pointing at reference IDs that do not exist, three surface
+archetypes mixing LAI parameters fitted for different equations, and the
+legacy free-text origins now quarantined in `schema/origins_map.yml`.
 
 ## Useful links
 
+- [SUEWS documentation](https://suews.readthedocs.io/)
 - [UMEP website](https://umep-docs.readthedocs.io/en/latest/index.html)
 - [Manual for the database plugin](https://umep-docs.readthedocs.io/en/latest/pre-processor/Urban%20Energy%20Balance%20SUEWS%20Database%20Manager.html#)
-- [Tutorial for the database plugin](https://umep-docs.readthedocs.io/projects/tutorial/en/latest/Tutorials/SUEWSDatabase.html#suewsdatabase)
 - [Installing UMEP](https://umep-docs.readthedocs.io/en/latest/Getting_Started.html)
