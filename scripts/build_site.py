@@ -523,7 +523,6 @@ def record_page(path, rec, records, sources, used_by, cluster):
 
     try:
         frag = assemble(path, records, sources)
-        frag.pop("_notes", None)
         if frag:
             body.append("<h3>Model-ready fragment</h3>"
                         "<p class=\"crumbs\">Paste under "

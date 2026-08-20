@@ -64,17 +64,16 @@ def assemble(path, records, sources, depth=0):
                       "snow_lim_patch", "vegetation_growth"):
             deep_merge(fragment, supy_fragment(records[ref], sources))
         elif slot == "construction":
-            # layered fabric: not a flat surface parameter; surfaced as a
-            # note so the user assembles vertical_layers deliberately
-            fragment.setdefault("_notes", []).append(
-                f"construction assembly: {ref} (feeds vertical_layers)"
-            )
+            # layered fabric feeds vertical_layers, not a flat surface
+            # parameter; it stays a reference (visible under uses:) rather
+            # than entering the fragment
+            continue
         elif isinstance(ref, str) and ref in records:
             deep_merge(
                 fragment, {slot: assemble(ref, records, sources, depth + 1)}
             )
-        else:
-            fragment.setdefault("_unresolved", {})[slot] = ref
+        # unresolved references are a data error make check reports; they
+        # never enter a fragment
     own = supy_fragment(rec, sources)
     deep_merge(fragment, own)
     return fragment
