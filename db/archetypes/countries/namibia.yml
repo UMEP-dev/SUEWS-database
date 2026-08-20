@@ -1,0 +1,14 @@
+archetype: archetypes/countries/namibia
+schema_version: '2026.5'
+target: site
+name: Namibia
+legacy_id: 11240142
+country: Namibia
+region_ref: archetypes/regions/southern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/namibia
+    energy_use: records/profiles/traffic/lucy/namibia
+    human_activity: records/profiles/human-activity/lucy/namibia
+    population: records/profiles/human-activity/lucy/namibia

@@ -1,0 +1,22 @@
+record: records/constructions/uk--hertwig2024a--residential-pre-1900-1944-pitched-roof-type-all
+schema_version: '2026.5'
+target: construction
+name: 'Residential, pre-1900-1944, pitched roof, type: all'
+place: uk
+origin: UK
+representativeness: regional
+source: hertwig2024a
+legacy_id: 37240896
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--clay-tile
+    thickness: 0.012
+  - material: records/materials/generic--unreferenced--gypsum-plasterboard
+    thickness: 0.02
+  roof_insulation_layer: 6
+  wall:
+  - material: records/materials/generic--hertwig2024a--brick-exposed
+    thickness: 0.22
+  - material: records/materials/generic--hertwig2024a--plaster-dense
+    thickness: 0.013
+  wall_insulation_layer: 6

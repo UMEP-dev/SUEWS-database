@@ -1,0 +1,11 @@
+record: records/surfaces/paved/london--ward2016--emissivity
+schema_version: '2026.5'
+target: land_cover.paved
+name: Central London
+place: london
+origin: London, UK
+representativeness: city
+source: ward2016
+legacy_id: 40240051
+parameters:
+  emis: 0.95

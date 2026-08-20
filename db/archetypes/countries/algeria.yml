@@ -1,0 +1,14 @@
+archetype: archetypes/countries/algeria
+schema_version: '2026.5'
+target: site
+name: Algeria
+legacy_id: 11240003
+country: Algeria
+region_ref: archetypes/regions/northern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/algeria
+    energy_use: records/profiles/traffic/lucy/algeria
+    human_activity: records/profiles/human-activity/lucy/algeria
+    population: records/profiles/human-activity/lucy/algeria

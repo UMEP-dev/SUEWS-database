@@ -1,0 +1,11 @@
+record: records/surfaces/grass/helsinki--havu-m2024--max-conductance
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: havu-m2024
+legacy_id: 33240045
+parameters:
+  max_conductance: 3.7

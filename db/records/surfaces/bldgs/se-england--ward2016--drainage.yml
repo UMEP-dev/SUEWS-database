@@ -1,0 +1,15 @@
+record: records/surfaces/bldgs/se-england--ward2016--drainage
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Buildings
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 45240042
+parameters:
+  storage_drain_params:
+    drain_eq: 3
+    drain_coef_1: 10
+    drain_coef_2: 3
+  wet_threshold: 0.6

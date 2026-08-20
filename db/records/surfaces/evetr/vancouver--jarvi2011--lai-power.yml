@@ -1,0 +1,17 @@
+record: records/surfaces/evetr/vancouver--jarvi2011--lai-power
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree, LaiEq = 0
+place: vancouver
+origin: Vancouver
+representativeness: city
+source: jarvi2011
+legacy_id: 32240004
+parameters:
+  lai:
+    lai_power:
+      growth_lai: 0.03
+      growth_gdd: 0.0005
+      senescence_lai: 0.03
+      senescence_sdd: 0.0005
+    lai_type: 0

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/senegal
+schema_version: '2026.5'
+target: site
+name: Senegal
+legacy_id: 11240183
+country: Senegal
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/senegal
+    energy_use: records/profiles/traffic/lucy/senegal
+    human_activity: records/profiles/human-activity/lucy/senegal
+    population: records/profiles/human-activity/lucy/senegal

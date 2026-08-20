@@ -1,0 +1,38 @@
+record: records/irrigation/helsinki--jarvi2019
+schema_version: '2026.5'
+target: irrigation
+name: Irrigation
+place: helsinki
+origin: Helsinki-Kumpula
+representativeness: site
+source: jarvi2019
+legacy_id: 61240007
+parameters:
+  ie_start: 152
+  ie_end: 243
+  internalwateruse_h: 0
+  faut: 0
+  h_maintain: -999
+  daywat:
+    sunday: 1
+    monday: 1
+    tuesday: 1
+    wednesday: 1
+    thursday: 1
+    friday: 1
+    saturday: 1
+  daywatper:
+    sunday: 1
+    monday: 1
+    tuesday: 1
+    wednesday: 1
+    thursday: 1
+    friday: 1
+    saturday: 1
+legacy:
+  Ie_a1: -19.1853
+  Ie_a2: 2.2195
+  Ie_a3: 0.7836
+  Ie_m1: -5.7556
+  Ie_m2: 0.6658
+  Ie_m3: 0.2351

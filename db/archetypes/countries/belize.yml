@@ -1,0 +1,14 @@
+archetype: archetypes/countries/belize
+schema_version: '2026.5'
+target: site
+name: Belize
+legacy_id: 11240021
+country: Belize
+region_ref: archetypes/regions/central-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/belize
+    energy_use: records/profiles/traffic/lucy/belize
+    human_activity: records/profiles/human-activity/lucy/belize
+    population: records/profiles/human-activity/lucy/belize

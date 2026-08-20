@@ -1,0 +1,14 @@
+archetype: archetypes/countries/slovakia
+schema_version: '2026.5'
+target: site
+name: Slovakia
+legacy_id: 11240188
+country: Slovakia
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/slovakia
+    energy_use: records/profiles/traffic/lucy/slovakia
+    human_activity: records/profiles/human-activity/lucy/slovakia
+    population: records/profiles/human-activity/lucy/slovakia

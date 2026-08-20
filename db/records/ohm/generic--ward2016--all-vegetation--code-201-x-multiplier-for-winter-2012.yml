@@ -1,0 +1,11 @@
+record: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Code 201 x Multiplier for winter [2012]
+source: ward2016
+legacy_id: 50240011
+season_label: Winter
+parameters:
+  a1: 0.27
+  a2: 0.325
+  a3: 6.62

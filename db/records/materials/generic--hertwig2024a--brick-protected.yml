@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--brick-protected
+schema_version: '2026.5'
+target: material
+name: Brick, protected
+source: hertwig2024a
+legacy_id: 36243791
+category: Masonry
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.56
+  specific_heat: 1000
+  density: 1750

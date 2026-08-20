@@ -1,0 +1,15 @@
+archetype: archetypes/typologies/finland--sub-urban
+schema_version: '2026.5'
+target: typology
+name: Sub-urban
+place: finland
+origin: Finland
+representativeness: regional
+legacy_id: 13240000
+description: Helsinki (sub-urban, mixed)
+author: LJ
+profile_type: Industrial
+period: Pst80
+uses:
+  bldgs: archetypes/surfaces/bldgs/helsinki--kumpula
+  paved: archetypes/surfaces/paved/helsinki--kumpula

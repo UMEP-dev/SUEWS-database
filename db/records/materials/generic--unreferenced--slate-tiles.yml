@@ -1,0 +1,14 @@
+record: records/materials/generic--unreferenced--slate-tiles
+schema_version: '2026.5'
+target: material
+name: Slate Tiles
+source: unreferenced
+legacy_id: 36248180
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.25
+  emissivity: 0.9
+  thermal_conductivity: 2
+  specific_heat: 753
+  density: 2700

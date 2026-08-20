@@ -1,0 +1,14 @@
+archetype: archetypes/countries/lithuania
+schema_version: '2026.5'
+target: site
+name: Lithuania
+legacy_id: 11240121
+country: Lithuania
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/lithuania
+    energy_use: records/profiles/traffic/lucy/lithuania
+    human_activity: records/profiles/human-activity/lucy/lithuania
+    population: records/profiles/human-activity/lucy/lithuania

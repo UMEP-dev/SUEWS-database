@@ -1,0 +1,14 @@
+archetype: archetypes/countries/yemen
+schema_version: '2026.5'
+target: site
+name: Yemen
+legacy_id: 11240228
+country: Yemen
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/yemen
+    energy_use: records/profiles/traffic/lucy/yemen
+    human_activity: records/profiles/human-activity/lucy/yemen
+    population: records/profiles/human-activity/lucy/yemen

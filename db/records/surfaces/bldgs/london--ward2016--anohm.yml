@@ -1,0 +1,13 @@
+record: records/surfaces/bldgs/london--ward2016--anohm
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Building [sample run]
+place: london
+origin: London
+representativeness: city
+source: ward2016
+legacy_id: 51240005
+parameters:
+  rho_cp_anohm: 6000000
+  k_anohm: 1.3
+  ch_anohm: 6

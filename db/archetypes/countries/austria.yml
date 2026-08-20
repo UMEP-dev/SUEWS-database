@@ -1,0 +1,14 @@
+archetype: archetypes/countries/austria
+schema_version: '2026.5'
+target: site
+name: Austria
+legacy_id: 11240013
+country: Austria
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/austria
+    energy_use: records/profiles/traffic/lucy/austria
+    human_activity: records/profiles/human-activity/lucy/austria
+    population: records/profiles/human-activity/lucy/austria

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/saint-helena-qpp
+schema_version: '2026.5'
+target: site
+name: Saint Helena* qpp
+legacy_id: 11240175
+country: Saint Helena* qpp
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/saint-helena-qpp
+    energy_use: records/profiles/traffic/lucy/saint-helena-qpp
+    human_activity: records/profiles/human-activity/lucy/saint-helena-qpp
+    population: records/profiles/human-activity/lucy/saint-helena-qpp

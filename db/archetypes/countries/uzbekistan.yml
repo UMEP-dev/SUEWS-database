@@ -1,0 +1,14 @@
+archetype: archetypes/countries/uzbekistan
+schema_version: '2026.5'
+target: site
+name: Uzbekistan
+legacy_id: 11240222
+country: Uzbekistan
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/uzbekistan
+    energy_use: records/profiles/traffic/lucy/uzbekistan
+    human_activity: records/profiles/human-activity/lucy/uzbekistan
+    population: records/profiles/human-activity/lucy/uzbekistan

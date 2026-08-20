@@ -1,0 +1,14 @@
+archetype: archetypes/countries/eritrea
+schema_version: '2026.5'
+target: site
+name: Eritrea
+legacy_id: 11240062
+country: Eritrea
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/eritrea
+    energy_use: records/profiles/traffic/lucy/eritrea
+    human_activity: records/profiles/human-activity/lucy/eritrea
+    population: records/profiles/human-activity/lucy/eritrea

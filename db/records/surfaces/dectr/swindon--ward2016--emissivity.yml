@@ -1,0 +1,11 @@
+record: records/surfaces/dectr/swindon--ward2016--emissivity
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous trees
+place: swindon
+origin: Swindon, UK
+representativeness: city
+source: ward2016
+legacy_id: 40240045
+parameters:
+  emis: 0.98

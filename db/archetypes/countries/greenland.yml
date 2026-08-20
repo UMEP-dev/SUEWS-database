@@ -1,0 +1,14 @@
+archetype: archetypes/countries/greenland
+schema_version: '2026.5'
+target: site
+name: Greenland
+legacy_id: 11240080
+country: Greenland
+region_ref: archetypes/regions/north-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/greenland
+    energy_use: records/profiles/traffic/lucy/greenland
+    human_activity: records/profiles/human-activity/lucy/greenland
+    population: records/profiles/human-activity/lucy/greenland

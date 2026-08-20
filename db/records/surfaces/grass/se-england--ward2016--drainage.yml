@@ -1,0 +1,15 @@
+record: records/surfaces/grass/se-england--ward2016--drainage
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 45240046
+parameters:
+  storage_drain_params:
+    drain_eq: 2
+    drain_coef_1: 0.013
+    drain_coef_2: 1.71
+  wet_threshold: 2

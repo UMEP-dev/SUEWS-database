@@ -1,0 +1,14 @@
+archetype: archetypes/countries/switzerland
+schema_version: '2026.5'
+target: site
+name: Switzerland
+legacy_id: 11240200
+country: Switzerland
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/switzerland
+    energy_use: records/profiles/traffic/lucy/switzerland
+    human_activity: records/profiles/human-activity/lucy/switzerland
+    population: records/profiles/human-activity/lucy/switzerland

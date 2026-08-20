@@ -1,0 +1,14 @@
+record: records/materials/generic--unreferenced--roofing-shingle
+schema_version: '2026.5'
+target: material
+name: Roofing shingle
+source: unreferenced
+legacy_id: 36243783
+category: Generic
+display_colour: Black
+parameters:
+  albedo: 0.06
+  emissivity: 0.95
+  thermal_conductivity: 2
+  specific_heat: 753
+  density: 1013

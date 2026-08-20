@@ -1,0 +1,13 @@
+record: records/surfaces/paved/helsinki--jarvi2014--albedo
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 41240001
+parameters:
+  alb: 0.09
+legacy:
+  Alb_max: 0.09

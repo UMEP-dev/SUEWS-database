@@ -1,0 +1,14 @@
+archetype: archetypes/countries/mauritania
+schema_version: '2026.5'
+target: site
+name: Mauritania
+legacy_id: 11240132
+country: Mauritania
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/mauritania
+    energy_use: records/profiles/traffic/lucy/mauritania
+    human_activity: records/profiles/human-activity/lucy/mauritania
+    population: records/profiles/human-activity/lucy/mauritania

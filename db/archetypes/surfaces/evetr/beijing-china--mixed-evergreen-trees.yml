@@ -1,0 +1,25 @@
+archetype: archetypes/surfaces/evetr/beijing-china--mixed-evergreen-trees
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Mixed Evergreen Trees
+place: beijing
+origin: Beijing, China
+representativeness: city
+legacy_id: 24240009
+uses:
+  albedo: records/surfaces/evetr/se-england--ward2016--albedo
+  emissivity: records/surfaces/evetr/se-england--ward2016--emissivity
+  water_storage: records/surfaces/evetr/se-england--ward2016--water-storage
+  leaf_area_index: records/surfaces/evetr/beijing--ward2016--lai
+  leaf_growth_power: records/surfaces/evetr/beijing--zheng-y2023--lai-power
+  drainage: records/surfaces/evetr/london--havu-m2024--drainage
+  max_vegetation_conductance: records/surfaces/evetr/beijing--zheng-y2023--max-conductance
+  porosity: records/surfaces/evetr/generic--unreferenced--porosity
+  biogen_co2: records/surfaces/common/beijing--zheng-y2023--biogen-co2
+  snow_lim_patch: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+  vegetation_growth: records/surfaces/evetr/helsinki--jarvi2014--phenology
+  ohm:
+    summer_wet: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    summer_dry: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    winter_wet: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    winter_dry: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985

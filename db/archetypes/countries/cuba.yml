@@ -1,0 +1,14 @@
+archetype: archetypes/countries/cuba
+schema_version: '2026.5'
+target: site
+name: Cuba
+legacy_id: 11240051
+country: Cuba
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/cuba
+    energy_use: records/profiles/traffic/lucy/cuba
+    human_activity: records/profiles/human-activity/lucy/cuba
+    population: records/profiles/human-activity/lucy/cuba

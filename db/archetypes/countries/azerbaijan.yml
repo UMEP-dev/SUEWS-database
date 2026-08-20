@@ -1,0 +1,14 @@
+archetype: archetypes/countries/azerbaijan
+schema_version: '2026.5'
+target: site
+name: Azerbaijan
+legacy_id: 11240014
+country: Azerbaijan
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/azerbaijan
+    energy_use: records/profiles/traffic/lucy/azerbaijan
+    human_activity: records/profiles/human-activity/lucy/azerbaijan
+    population: records/profiles/human-activity/lucy/azerbaijan

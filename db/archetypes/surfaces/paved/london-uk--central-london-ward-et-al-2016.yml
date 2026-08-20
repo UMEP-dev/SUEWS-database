@@ -1,0 +1,20 @@
+archetype: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+schema_version: '2026.5'
+target: land_cover.paved
+name: Central London, Ward et al. (2016)
+place: london
+origin: London, UK
+representativeness: city
+legacy_id: 20240023
+uses:
+  albedo: records/surfaces/paved/se-england--ward2016--albedo
+  emissivity: records/surfaces/paved/london--ward2016--emissivity
+  water_storage: records/surfaces/paved/se-england--ward2016--water-storage
+  drainage: records/surfaces/paved/se-england--ward2016--drainage
+  construction: records/constructions/generic--lindberg-f2020--placeholder
+  snow_lim_patch: records/surfaces/paved/helsinki--jarvi2014--snow-lim
+  ohm:
+    summer_wet: records/ohm/generic--ward2016--paved
+    summer_dry: records/ohm/generic--ward2016--paved
+    winter_wet: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+    winter_dry: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512

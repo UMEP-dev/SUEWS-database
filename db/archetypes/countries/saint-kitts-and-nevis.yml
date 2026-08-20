@@ -1,0 +1,14 @@
+archetype: archetypes/countries/saint-kitts-and-nevis
+schema_version: '2026.5'
+target: site
+name: Saint Kitts and Nevis
+legacy_id: 11240176
+country: Saint Kitts and Nevis
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/saint-kitts-and-nevis
+    energy_use: records/profiles/traffic/lucy/saint-kitts-and-nevis
+    human_activity: records/profiles/human-activity/lucy/saint-kitts-and-nevis
+    population: records/profiles/human-activity/lucy/saint-kitts-and-nevis

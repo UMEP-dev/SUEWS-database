@@ -1,0 +1,15 @@
+archetype: archetypes/typologies/sweden--industrial
+schema_version: '2026.5'
+target: typology
+name: Industrial
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240009
+description: Extensive low warehouse type buildings
+author: FL
+profile_type: Industrial
+period: Pst80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--industry
+  paved: archetypes/surfaces/paved/helsinki--kumpula

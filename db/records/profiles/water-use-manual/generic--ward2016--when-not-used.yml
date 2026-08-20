@@ -1,0 +1,35 @@
+record: records/profiles/water-use-manual/generic--ward2016--when-not-used
+schema_version: '2026.5'
+target: profile.water-use-manual
+attaches_to: irrigation.wuprofm_24hr
+profile_type: Water use (manual)
+name: When not used
+source: ward2016
+legacy_id:
+- 60240014
+parameters:
+  working_day:
+    1: -999
+    2: -999
+    3: -999
+    4: -999
+    5: -999
+    6: -999
+    7: -999
+    8: -999
+    9: -999
+    10: -999
+    11: -999
+    12: -999
+    13: -999
+    14: -999
+    15: -999
+    16: -999
+    17: -999
+    18: -999
+    19: -999
+    20: -999
+    21: -999
+    22: -999
+    23: -999
+    24: -999

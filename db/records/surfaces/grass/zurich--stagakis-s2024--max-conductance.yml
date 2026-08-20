@@ -1,0 +1,11 @@
+record: records/surfaces/grass/zurich--stagakis-s2024--max-conductance
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 33240041
+parameters:
+  max_conductance: 3.7

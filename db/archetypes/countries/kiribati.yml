@@ -1,0 +1,14 @@
+archetype: archetypes/countries/kiribati
+schema_version: '2026.5'
+target: site
+name: Kiribati
+legacy_id: 11240109
+country: Kiribati
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/kiribati
+    energy_use: records/profiles/traffic/lucy/kiribati
+    human_activity: records/profiles/human-activity/lucy/kiribati
+    population: records/profiles/human-activity/lucy/kiribati

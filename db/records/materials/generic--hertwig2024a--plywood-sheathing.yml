@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--plywood-sheathing
+schema_version: '2026.5'
+target: material
+name: plywood sheathing
+source: hertwig2024a
+legacy_id: 36248198
+category: Generic
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.13
+  specific_heat: 1600
+  density: 500

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/pakistan
+schema_version: '2026.5'
+target: site
+name: Pakistan
+legacy_id: 11240158
+country: Pakistan
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/pakistan
+    energy_use: records/profiles/traffic/lucy/pakistan
+    human_activity: records/profiles/human-activity/lucy/pakistan
+    population: records/profiles/human-activity/lucy/pakistan

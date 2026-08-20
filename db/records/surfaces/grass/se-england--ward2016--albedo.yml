@@ -1,0 +1,12 @@
+record: records/surfaces/grass/se-england--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 41240046
+parameters:
+  alb_min: 0.18
+  alb_max: 0.21

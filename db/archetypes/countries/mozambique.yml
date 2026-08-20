@@ -1,0 +1,14 @@
+archetype: archetypes/countries/mozambique
+schema_version: '2026.5'
+target: site
+name: Mozambique
+legacy_id: 11240140
+country: Mozambique
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/mozambique
+    energy_use: records/profiles/traffic/lucy/mozambique
+    human_activity: records/profiles/human-activity/lucy/mozambique
+    population: records/profiles/human-activity/lucy/mozambique

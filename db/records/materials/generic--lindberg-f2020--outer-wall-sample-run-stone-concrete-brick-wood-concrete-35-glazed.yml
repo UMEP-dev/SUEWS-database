@@ -1,0 +1,13 @@
+record: records/materials/generic--lindberg-f2020--outer-wall-sample-run-stone-concrete-brick-wood-concrete-35-glazed
+schema_version: '2026.5'
+target: material
+name: Outer wall [sample run] stone | concrete | brick | wood + concrete 35% glazed
+source: lindberg-f2020
+legacy_id: 36243787
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.5
+  emissivity: 0.95
+  thermal_conductivity: 0.760645
+  specific_heat: 1050

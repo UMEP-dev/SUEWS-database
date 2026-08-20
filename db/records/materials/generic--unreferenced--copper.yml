@@ -1,0 +1,14 @@
+record: records/materials/generic--unreferenced--copper
+schema_version: '2026.5'
+target: material
+name: Copper
+source: unreferenced
+legacy_id: 36248171
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.45
+  emissivity: 0.94
+  thermal_conductivity: 200
+  specific_heat: 418
+  density: 8900

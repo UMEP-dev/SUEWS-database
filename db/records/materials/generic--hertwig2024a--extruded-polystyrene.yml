@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--extruded-polystyrene
+schema_version: '2026.5'
+target: material
+name: extruded polystyrene
+source: hertwig2024a
+legacy_id: 36248194
+category: Insulation
+display_colour: Grey
+parameters:
+  thermal_conductivity: 0.035
+  specific_heat: 1400
+  density: 40

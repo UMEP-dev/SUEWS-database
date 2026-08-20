@@ -1,0 +1,12 @@
+record: records/surfaces/dectr/london--jarvi2011--porosity
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree
+place: london
+origin: London
+representativeness: city
+source: jarvi2011
+legacy_id: 34240002
+parameters:
+  porosity_min_deciduous: 0.2
+  porosity_max_deciduous: 0.6

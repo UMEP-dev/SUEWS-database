@@ -1,0 +1,18 @@
+record: records/surfaces/grass/lethbridge--flanagan2002--biogen-co2
+schema_version: '2026.5'
+target: land_cover.grass
+name: Temperate grassland
+place: lethbridge
+origin: Lethbridge, Alberta, Canada
+representativeness: site
+source: flanagan2002
+legacy_id: 30240009
+parameters:
+  alpha_bio_co2: 0.0205
+  beta_bio_co2: 16.3
+  theta_bio_co2: -999
+  alpha_enh_bioco2: -999
+  beta_enh_bioco2: -999
+  resp_a: 1.08
+  resp_b: 0.064
+  min_res_bioco2: 0.6

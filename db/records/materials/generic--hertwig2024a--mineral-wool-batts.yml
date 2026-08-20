@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--mineral-wool-batts
+schema_version: '2026.5'
+target: material
+name: Mineral wool (batts)
+source: hertwig2024a
+legacy_id: 36243797
+category: Insulation
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.038
+  specific_heat: 1030
+  density: 25

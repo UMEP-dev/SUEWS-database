@@ -1,0 +1,14 @@
+archetype: archetypes/countries/peru
+schema_version: '2026.5'
+target: site
+name: Peru
+legacy_id: 11240163
+country: Peru
+region_ref: archetypes/regions/western-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/peru
+    energy_use: records/profiles/traffic/lucy/peru
+    human_activity: records/profiles/human-activity/lucy/peru
+    population: records/profiles/human-activity/lucy/peru

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/american-samoa
+schema_version: '2026.5'
+target: site
+name: American Samoa
+legacy_id: 11240004
+country: American Samoa
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/american-samoa
+    energy_use: records/profiles/traffic/lucy/american-samoa
+    human_activity: records/profiles/human-activity/lucy/american-samoa
+    population: records/profiles/human-activity/lucy/american-samoa

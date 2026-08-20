@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--external-render-lime-sand
+schema_version: '2026.5'
+target: material
+name: external render (lime, sand)
+source: hertwig2024a
+legacy_id: 36248193
+category: Surface
+display_colour: Grey
+parameters:
+  albedo: 0.57
+  emissivity: 0.915
+  thermal_conductivity: 0.8
+  specific_heat: 1000
+  density: 1600

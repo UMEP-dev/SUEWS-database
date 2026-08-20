@@ -1,0 +1,66 @@
+record: records/surfaces/bldgs/london--cleugh2001--thermal-layers
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: GLA Urban fabric 50-80 (suburb)
+place: london
+origin: London
+representativeness: city
+source: cleugh2001
+legacy_id: 52240010
+parameters:
+  thermal_layers:
+    dz:
+    - 0.03
+    - 0.2
+    - 0.12
+    - -999
+    - -999
+    k:
+    - 1.455
+    - 0.19
+    - 0.05
+    - -999
+    - -999
+    rho_cp:
+    - 1766550
+    - 1520000
+    - 290000
+    - -999
+    - -999
+legacy:
+  Wall_thick1: 0.087
+  Wall_k1: 1.845925
+  Wall_rhoCp1: 1342218.25
+  Wall_thick2: 0.12
+  Wall_k2: 0.05
+  Wall_rhoCp2: 290000
+  Wall_thick3: 0.05
+  Wall_k3: 0.19
+  Wall_rhoCp3: 1520000
+  Wall_thick4: -999
+  Wall_k4: -999
+  Wall_rhoCp4: -999
+  Wall_thick5: -999
+  Wall_k5: -999
+  Wall_rhoCp5: -999
+  Internal_thick1: 0.035
+  Internal_k1: 0.93
+  Internal_rhoCp1: 1500000
+  Internal_thick2: 0.035
+  Internal_k2: 0.93
+  Internal_rhoCp2: 1500000
+  Internal_thick3: 0.035
+  Internal_k3: 0.93
+  Internal_rhoCp3: 1500000
+  Internal_thick4: -999
+  Internal_k4: -999
+  Internal_rhoCp4: -999
+  Internal_thick5: -999
+  Internal_k5: -999
+  Internal_rhoCp5: -999
+  nroom: 10
+  Internal_albedo: 0.5
+  Internal_emissivity: 1
+  Internal_CHwall: 0.0015
+  Internal_CHroof: 0.0015
+  Internal_CHbld: 0.0015

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/mexico
+schema_version: '2026.5'
+target: site
+name: Mexico
+legacy_id: 11240135
+country: Mexico
+region_ref: archetypes/regions/north-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/mexico
+    energy_use: records/profiles/traffic/lucy/mexico
+    human_activity: records/profiles/human-activity/lucy/mexico
+    population: records/profiles/human-activity/lucy/mexico

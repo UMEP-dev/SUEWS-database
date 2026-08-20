@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/sweden--modernism
+schema_version: '2026.5'
+target: typology
+name: 'Modernism '
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240001
+description: Million programme. Mid 20th century modernistic suburban neighbourhood development
+author: OB
+url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Rinkeby_mot_nordost_1988.jpg/375px-Rinkeby_mot_nordost_1988.jpg
+image_source: By Holger.Ellgaard, CC BY-SA 3.0
+profile_type: Residential
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--concrete-million-program
+  paved: archetypes/surfaces/paved/sweden--asphalt-mixed-city

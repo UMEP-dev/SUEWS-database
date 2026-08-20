@@ -1,0 +1,14 @@
+archetype: archetypes/countries/nepal
+schema_version: '2026.5'
+target: site
+name: Nepal
+legacy_id: 11240144
+country: Nepal
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/nepal
+    energy_use: records/profiles/traffic/lucy/nepal
+    human_activity: records/profiles/human-activity/lucy/nepal
+    population: records/profiles/human-activity/lucy/nepal

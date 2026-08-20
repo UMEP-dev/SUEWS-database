@@ -1,0 +1,14 @@
+archetype: archetypes/countries/united-states-virgin-islands
+schema_version: '2026.5'
+target: site
+name: United States Virgin Islands
+legacy_id: 11240220
+country: United States Virgin Islands
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/united-states-virgin-islands
+    energy_use: records/profiles/traffic/lucy/united-states-virgin-islands
+    human_activity: records/profiles/human-activity/lucy/united-states-virgin-islands
+    population: records/profiles/human-activity/lucy/united-states-virgin-islands

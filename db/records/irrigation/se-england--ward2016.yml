@@ -1,0 +1,38 @@
+record: records/irrigation/se-england--ward2016
+schema_version: '2026.5'
+target: irrigation
+name: No Irrigation
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 61240050
+parameters:
+  ie_start: 1
+  ie_end: 366
+  internalwateruse_h: 0
+  faut: 0
+  h_maintain: -999
+  daywat:
+    sunday: 0
+    monday: 0
+    tuesday: 0
+    wednesday: 0
+    thursday: 0
+    friday: 0
+    saturday: 0
+  daywatper:
+    sunday: 0
+    monday: 0
+    tuesday: 0
+    wednesday: 0
+    thursday: 0
+    friday: 0
+    saturday: 0
+legacy:
+  Ie_a1: 0
+  Ie_a2: 0
+  Ie_a3: 0
+  Ie_m1: 0
+  Ie_m2: 0
+  Ie_m3: 0

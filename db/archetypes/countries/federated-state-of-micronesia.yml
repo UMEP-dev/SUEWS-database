@@ -1,0 +1,14 @@
+archetype: archetypes/countries/federated-state-of-micronesia
+schema_version: '2026.5'
+target: site
+name: Federated State of Micronesia
+legacy_id: 11240067
+country: Federated State of Micronesia
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/federated-state-of-micronesia
+    energy_use: records/profiles/traffic/lucy/federated-state-of-micronesia
+    human_activity: records/profiles/human-activity/lucy/federated-state-of-micronesia
+    population: records/profiles/human-activity/lucy/federated-state-of-micronesia

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/slovenia
+schema_version: '2026.5'
+target: site
+name: Slovenia
+legacy_id: 11240189
+country: Slovenia
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/slovenia
+    energy_use: records/profiles/traffic/lucy/slovenia
+    human_activity: records/profiles/human-activity/lucy/slovenia
+    population: records/profiles/human-activity/lucy/slovenia

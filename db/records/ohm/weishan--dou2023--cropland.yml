@@ -1,0 +1,14 @@
+record: records/ohm/weishan--dou2023--cropland
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Wheat
+place: weishan
+origin: Weishan, Shandong Province, China
+representativeness: site
+source: dou2023
+legacy_id: 50240037
+season_label: Spring
+parameters:
+  a1: 0.29
+  a2: -0.19
+  a3: -20.7

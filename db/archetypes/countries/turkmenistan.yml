@@ -1,0 +1,14 @@
+archetype: archetypes/countries/turkmenistan
+schema_version: '2026.5'
+target: site
+name: Turkmenistan
+legacy_id: 11240211
+country: Turkmenistan
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/turkmenistan
+    energy_use: records/profiles/traffic/lucy/turkmenistan
+    human_activity: records/profiles/human-activity/lucy/turkmenistan
+    population: records/profiles/human-activity/lucy/turkmenistan

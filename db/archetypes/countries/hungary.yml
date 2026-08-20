@@ -1,0 +1,14 @@
+archetype: archetypes/countries/hungary
+schema_version: '2026.5'
+target: site
+name: Hungary
+legacy_id: 11240092
+country: Hungary
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/hungary
+    energy_use: records/profiles/traffic/lucy/hungary
+    human_activity: records/profiles/human-activity/lucy/hungary
+    population: records/profiles/human-activity/lucy/hungary

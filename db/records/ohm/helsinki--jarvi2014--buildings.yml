@@ -1,0 +1,13 @@
+record: records/ohm/helsinki--jarvi2014--buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Roof (own for SMEAR III, Helsinki) [750]
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 50240002
+parameters:
+  a1: 0.19
+  a2: 0.54
+  a3: -15.125

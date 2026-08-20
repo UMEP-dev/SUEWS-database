@@ -1,0 +1,14 @@
+archetype: archetypes/countries/guinea
+schema_version: '2026.5'
+target: site
+name: Guinea
+legacy_id: 11240086
+country: Guinea
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/guinea
+    energy_use: records/profiles/traffic/lucy/guinea
+    human_activity: records/profiles/human-activity/lucy/guinea
+    population: records/profiles/human-activity/lucy/guinea

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/israel
+schema_version: '2026.5'
+target: site
+name: Israel
+legacy_id: 11240100
+country: Israel
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/israel
+    energy_use: records/profiles/traffic/lucy/israel
+    human_activity: records/profiles/human-activity/lucy/israel
+    population: records/profiles/human-activity/lucy/israel

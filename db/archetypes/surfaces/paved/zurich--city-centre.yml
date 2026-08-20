@@ -1,0 +1,20 @@
+archetype: archetypes/surfaces/paved/zurich--city-centre
+schema_version: '2026.5'
+target: land_cover.paved
+name: City centre
+place: zurich
+origin: Zurich
+representativeness: city
+legacy_id: 20240018
+uses:
+  albedo: records/surfaces/paved/helsinki--jarvi2014--albedo
+  emissivity: records/surfaces/paved/helsinki--jarvi2014--emissivity
+  water_storage: records/surfaces/paved/helsinki--jarvi2014--water-storage
+  drainage: records/surfaces/paved/london--jarvi2011--drainage
+  construction: records/constructions/generic--lindberg-f2020--placeholder
+  snow_lim_patch: records/surfaces/paved/helsinki--jarvi2014--snow-lim
+  ohm:
+    summer_wet: records/ohm/generic--unreferenced--paved
+    summer_dry: records/ohm/generic--unreferenced--paved
+    winter_wet: records/ohm/generic--unreferenced--paved
+    winter_dry: records/ohm/generic--unreferenced--paved

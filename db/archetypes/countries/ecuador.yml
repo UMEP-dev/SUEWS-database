@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ecuador
+schema_version: '2026.5'
+target: site
+name: Ecuador
+legacy_id: 11240058
+country: Ecuador
+region_ref: archetypes/regions/northern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ecuador
+    energy_use: records/profiles/traffic/lucy/ecuador
+    human_activity: records/profiles/human-activity/lucy/ecuador
+    population: records/profiles/human-activity/lucy/ecuador

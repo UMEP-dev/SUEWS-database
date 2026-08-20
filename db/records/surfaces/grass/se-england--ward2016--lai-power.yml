@@ -1,0 +1,17 @@
+record: records/surfaces/grass/se-england--ward2016--lai-power
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass (SE England)
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 32240046
+parameters:
+  lai:
+    lai_power:
+      growth_lai: 0.04
+      growth_gdd: 0.001
+      senescence_lai: -1.5
+      senescence_sdd: 0.0015
+    lai_type: 1

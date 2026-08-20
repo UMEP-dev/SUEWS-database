@@ -1,0 +1,11 @@
+record: records/surfaces/paved/generic--kotthaus2014--emissivity--grey-cement-weathered
+schema_version: '2026.5'
+target: land_cover.paved
+name: Grey Cement, Weathered
+place: generic
+origin: Generic
+representativeness: generic
+source: kotthaus2014
+legacy_id: 40241251
+parameters:
+  emis: 0.91

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/italy
+schema_version: '2026.5'
+target: site
+name: Italy
+legacy_id: 11240101
+country: Italy
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/italy
+    energy_use: records/profiles/traffic/lucy/italy
+    human_activity: records/profiles/human-activity/lucy/italy
+    population: records/profiles/human-activity/lucy/italy

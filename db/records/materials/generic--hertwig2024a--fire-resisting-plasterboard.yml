@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--fire-resisting-plasterboard
+schema_version: '2026.5'
+target: material
+name: fire resisting plasterboard
+source: hertwig2024a
+legacy_id: 36248195
+category: Surface
+display_colour: Grey
+parameters:
+  albedo: 0.6
+  emissivity: 0.91
+  thermal_conductivity: 0.25
+  specific_heat: 1000
+  density: 900

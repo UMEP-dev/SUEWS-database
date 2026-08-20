@@ -1,0 +1,14 @@
+archetype: archetypes/countries/honduras
+schema_version: '2026.5'
+target: site
+name: Honduras
+legacy_id: 11240090
+country: Honduras
+region_ref: archetypes/regions/central-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/honduras
+    energy_use: records/profiles/traffic/lucy/honduras
+    human_activity: records/profiles/human-activity/lucy/honduras
+    population: records/profiles/human-activity/lucy/honduras

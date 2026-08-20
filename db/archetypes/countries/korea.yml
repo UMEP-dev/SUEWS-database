@@ -1,0 +1,14 @@
+archetype: archetypes/countries/korea
+schema_version: '2026.5'
+target: site
+name: Korea
+legacy_id: 11240110
+country: Korea
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/korea
+    energy_use: records/profiles/traffic/lucy/korea
+    human_activity: records/profiles/human-activity/lucy/korea
+    population: records/profiles/human-activity/lucy/korea

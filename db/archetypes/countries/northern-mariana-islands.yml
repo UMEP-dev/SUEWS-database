@@ -1,0 +1,14 @@
+archetype: archetypes/countries/northern-mariana-islands
+schema_version: '2026.5'
+target: site
+name: Northern Mariana Islands
+legacy_id: 11240154
+country: Northern Mariana Islands
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/northern-mariana-islands
+    energy_use: records/profiles/traffic/lucy/northern-mariana-islands
+    human_activity: records/profiles/human-activity/lucy/northern-mariana-islands
+    population: records/profiles/human-activity/lucy/northern-mariana-islands

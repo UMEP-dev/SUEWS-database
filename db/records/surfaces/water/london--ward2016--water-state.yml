@@ -1,0 +1,13 @@
+record: records/surfaces/water/london--ward2016--water-state
+schema_version: '2026.5'
+target: land_cover.water
+name: London (River Thames), UK
+place: london
+origin: London (River Thames), UK
+representativeness: site
+source: ward2016
+legacy_id: 42240057
+parameters:
+  state_limit: 30000
+legacy:
+  WaterDepth: 20000

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/denmark
+schema_version: '2026.5'
+target: site
+name: Denmark
+legacy_id: 11240054
+country: Denmark
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/denmark
+    energy_use: records/profiles/traffic/lucy/denmark
+    human_activity: records/profiles/human-activity/lucy/denmark
+    population: records/profiles/human-activity/lucy/denmark

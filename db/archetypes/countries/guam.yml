@@ -1,0 +1,14 @@
+archetype: archetypes/countries/guam
+schema_version: '2026.5'
+target: site
+name: Guam
+legacy_id: 11240083
+country: Guam
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/guam
+    energy_use: records/profiles/traffic/lucy/guam
+    human_activity: records/profiles/human-activity/lucy/guam
+    population: records/profiles/human-activity/lucy/guam

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ukraine
+schema_version: '2026.5'
+target: site
+name: Ukraine
+legacy_id: 11240215
+country: Ukraine
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ukraine
+    energy_use: records/profiles/traffic/lucy/ukraine
+    human_activity: records/profiles/human-activity/lucy/ukraine
+    population: records/profiles/human-activity/lucy/ukraine

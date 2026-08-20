@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/uk--sub-urban
+schema_version: '2026.5'
+target: typology
+name: Sub-urban
+place: uk
+origin: UK
+representativeness: regional
+legacy_id: 12240007
+description: Swindon (sub-urban)
+author: HW
+url: http://biggeo.gvc.gu.se/PictureShare/swindon.jpg
+image_source: By Helen Ward
+profile_type: Residential
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
+  paved: archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016

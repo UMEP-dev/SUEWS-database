@@ -1,0 +1,12 @@
+record: records/surfaces/dectr/se-england--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous trees
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 41240045
+parameters:
+  alb_min: 0.12
+  alb_max: 0.18

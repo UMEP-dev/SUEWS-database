@@ -1,0 +1,14 @@
+archetype: archetypes/countries/south-africa
+schema_version: '2026.5'
+target: site
+name: South Africa
+legacy_id: 11240192
+country: South Africa
+region_ref: archetypes/regions/southern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/south-africa
+    energy_use: records/profiles/traffic/lucy/south-africa
+    human_activity: records/profiles/human-activity/lucy/south-africa
+    population: records/profiles/human-activity/lucy/south-africa

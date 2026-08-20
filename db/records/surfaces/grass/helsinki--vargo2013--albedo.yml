@@ -1,0 +1,12 @@
+record: records/surfaces/grass/helsinki--vargo2013--albedo
+schema_version: '2026.5'
+target: land_cover.grass
+name: Unirrigated Grass
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: vargo2013
+legacy_id: 41240029
+parameters:
+  alb_min: 0.19
+  alb_max: 0.19

@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/sweden--sub-urban
+schema_version: '2026.5'
+target: typology
+name: Sub-urban
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240005
+description: Wooden detached houses
+author: OB
+url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Smedslatten_2008c.jpg/1920px-Smedslatten_2008c.jpg
+image_source: By Holger.Ellgaard, CC BY-SA 3.0
+profile_type: Residential
+period: Pst80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--detached-houses-wood
+  paved: archetypes/surfaces/paved/helsinki--kumpula

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/finland
+schema_version: '2026.5'
+target: site
+name: Finland
+legacy_id: 11240069
+country: Finland
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/helsinki--jarvi2019--traffic
+    energy_use: records/profiles/energy-use/helsinki--jarvi2019--energy-use
+    human_activity: records/profiles/human-activity/helsinki--jarvi2019--human-activity
+    population: records/profiles/population/helsinki--jarvi2019--population-profile

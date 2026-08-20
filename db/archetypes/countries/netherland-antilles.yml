@@ -1,0 +1,14 @@
+archetype: archetypes/countries/netherland-antilles
+schema_version: '2026.5'
+target: site
+name: Netherland Antilles
+legacy_id: 11240145
+country: Netherland Antilles
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/netherland-antilles
+    energy_use: records/profiles/traffic/lucy/netherland-antilles
+    human_activity: records/profiles/human-activity/lucy/netherland-antilles
+    population: records/profiles/human-activity/lucy/netherland-antilles

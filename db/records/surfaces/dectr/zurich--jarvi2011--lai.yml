@@ -1,0 +1,14 @@
+record: records/surfaces/dectr/zurich--jarvi2011--lai
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree (sample data) a
+place: zurich
+origin: Zurich
+representativeness: city
+source: jarvi2011
+legacy_id: 31240021
+parameters:
+  lai:
+    lai_type: 1
+    lai_min: 0
+    lai_max: 4.8

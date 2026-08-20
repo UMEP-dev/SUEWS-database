@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--polyurethane-foam
+schema_version: '2026.5'
+target: material
+name: Polyurethane foam
+source: hertwig2024a
+legacy_id: 36243795
+category: Insulation
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.025
+  specific_heat: 1400
+  density: 30

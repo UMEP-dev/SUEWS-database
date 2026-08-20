@@ -1,0 +1,14 @@
+archetype: archetypes/countries/korea-dem-people-s-rep-of
+schema_version: '2026.5'
+target: site
+name: Korea, Dem. People's Rep. of
+legacy_id: 11240111
+country: Korea, Dem. People's Rep. of
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/korea-dem-people-s-rep-of
+    energy_use: records/profiles/traffic/lucy/korea-dem-people-s-rep-of
+    human_activity: records/profiles/human-activity/lucy/korea-dem-people-s-rep-of
+    population: records/profiles/human-activity/lucy/korea-dem-people-s-rep-of

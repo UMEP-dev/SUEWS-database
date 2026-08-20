@@ -1,0 +1,13 @@
+record: records/ohm/london--xie2024--buildings--flats-with-air-source-heat-pumps-operated-in-whole-buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Flats with air source heat pumps operated in whole buildings
+place: london
+origin: London
+representativeness: city
+source: xie2024
+legacy_id: 50240035
+parameters:
+  a1: 0.319
+  a2: 0.213
+  a3: -41.6

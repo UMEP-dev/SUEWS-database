@@ -1,0 +1,14 @@
+archetype: archetypes/countries/antigua-and-barbuda
+schema_version: '2026.5'
+target: site
+name: Antigua and Barbuda
+legacy_id: 11240008
+country: Antigua and Barbuda
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/antigua-and-barbuda
+    energy_use: records/profiles/traffic/lucy/antigua-and-barbuda
+    human_activity: records/profiles/human-activity/lucy/antigua-and-barbuda
+    population: records/profiles/human-activity/lucy/antigua-and-barbuda

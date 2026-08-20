@@ -1,0 +1,11 @@
+record: records/surfaces/paved/london--kotthaus2014--emissivity
+schema_version: '2026.5'
+target: land_cover.paved
+name: 'Black/grey asphalt, weathered '
+place: london
+origin: London
+representativeness: city
+source: kotthaus2014
+legacy_id: 40241247
+parameters:
+  emis: 0.9366666666666666

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/macao
+schema_version: '2026.5'
+target: site
+name: Macao
+legacy_id: 11240123
+country: Macao
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/macao
+    energy_use: records/profiles/traffic/lucy/macao
+    human_activity: records/profiles/human-activity/lucy/macao
+    population: records/profiles/human-activity/lucy/macao

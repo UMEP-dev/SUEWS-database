@@ -1,0 +1,11 @@
+record: records/surfaces/dectr/helsinki--havu-m2024--max-conductance
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Dec Tree - forest
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: havu-m2024
+legacy_id: 33240043
+parameters:
+  max_conductance: 3.6

@@ -1,0 +1,14 @@
+record: records/ohm/nanjing--wang2008--buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Concrete roof
+place: nanjing
+origin: Nanjing
+representativeness: city
+source: wang2008
+legacy_id: 50240041
+season_label: Summer
+parameters:
+  a1: 0.83
+  a2: 0.52
+  a3: -16.95

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/afghanistan
+schema_version: '2026.5'
+target: site
+name: Afghanistan
+legacy_id: 11240001
+country: Afghanistan
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/afghanistan
+    energy_use: records/profiles/traffic/lucy/afghanistan
+    human_activity: records/profiles/human-activity/lucy/afghanistan
+    population: records/profiles/human-activity/lucy/afghanistan

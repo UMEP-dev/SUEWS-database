@@ -1,0 +1,14 @@
+archetype: archetypes/countries/new-zealand
+schema_version: '2026.5'
+target: site
+name: New Zealand
+legacy_id: 11240148
+country: New Zealand
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/new-zealand
+    energy_use: records/profiles/traffic/lucy/new-zealand
+    human_activity: records/profiles/human-activity/lucy/new-zealand
+    population: records/profiles/human-activity/lucy/new-zealand

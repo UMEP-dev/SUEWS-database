@@ -1,0 +1,20 @@
+archetype: archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016
+schema_version: '2026.5'
+target: land_cover.bsoil
+name: Suburban residential, Ward et al. (2016)
+place: swindon
+origin: Swindon, UK
+representativeness: city
+legacy_id: 20240022
+uses:
+  albedo: records/surfaces/bsoil/se-england--ward2016--albedo
+  emissivity: records/surfaces/bsoil/se-england--ward2016--emissivity
+  water_storage: records/surfaces/bsoil/se-england--ward2016--water-storage
+  drainage: records/surfaces/bsoil/se-england--ward2016--drainage
+  construction: records/constructions/uk--lindberg-f2020--central-london-sample-run
+  snow_lim_patch: records/surfaces/bsoil/helsinki--jarvi2014--snow-lim
+  ohm:
+    summer_wet: records/ohm/generic--ward2016--bare-soil
+    summer_dry: records/ohm/generic--ward2016--bare-soil
+    winter_wet: records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
+    winter_dry: records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552

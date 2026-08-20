@@ -1,0 +1,14 @@
+archetype: archetypes/countries/united-rep-of-tanzania
+schema_version: '2026.5'
+target: site
+name: United Rep. of Tanzania
+legacy_id: 11240218
+country: United Rep. of Tanzania
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/united-rep-of-tanzania
+    energy_use: records/profiles/traffic/lucy/united-rep-of-tanzania
+    human_activity: records/profiles/human-activity/lucy/united-rep-of-tanzania
+    population: records/profiles/human-activity/lucy/united-rep-of-tanzania

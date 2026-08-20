@@ -1,0 +1,66 @@
+record: records/surfaces/bsoil/london--grimmond2002--thermal-layers
+schema_version: '2026.5'
+target: land_cover.bsoil
+name: Bare Soil
+place: london
+origin: Barbican, London
+representativeness: site
+source: grimmond2002
+legacy_id: 52240005
+parameters:
+  thermal_layers:
+    dz:
+    - 0.1
+    - 0.1
+    - 0.5
+    - 0.7
+    - -999
+    k:
+    - 0.911
+    - 0.93
+    - 0.63
+    - 0.63
+    - -999
+    rho_cp:
+    - 1500000
+    - 1500000
+    - 1200000
+    - 1200000
+    - -999
+legacy:
+  Wall_thick1: -999
+  Wall_k1: -999
+  Wall_rhoCp1: -999
+  Wall_thick2: -999
+  Wall_k2: -999
+  Wall_rhoCp2: -999
+  Wall_thick3: -999
+  Wall_k3: -999
+  Wall_rhoCp3: -999
+  Wall_thick4: -999
+  Wall_k4: -999
+  Wall_rhoCp4: -999
+  Wall_thick5: -999
+  Wall_k5: -999
+  Wall_rhoCp5: -999
+  Internal_thick1: -999
+  Internal_k1: -999
+  Internal_rhoCp1: -999
+  Internal_thick2: -999
+  Internal_k2: -999
+  Internal_rhoCp2: -999
+  Internal_thick3: -999
+  Internal_k3: -999
+  Internal_rhoCp3: -999
+  Internal_thick4: -999
+  Internal_k4: -999
+  Internal_rhoCp4: -999
+  Internal_thick5: -999
+  Internal_k5: -999
+  Internal_rhoCp5: -999
+  nroom: -999
+  Internal_albedo: -999
+  Internal_emissivity: -999
+  Internal_CHwall: -999
+  Internal_CHroof: -999
+  Internal_CHbld: -999

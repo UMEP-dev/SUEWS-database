@@ -1,0 +1,14 @@
+archetype: archetypes/countries/united-kingdom
+schema_version: '2026.5'
+target: site
+name: United Kingdom
+legacy_id: 11240217
+country: United Kingdom
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/united-kingdom
+    energy_use: records/profiles/traffic/lucy/united-kingdom
+    human_activity: records/profiles/human-activity/lucy/united-kingdom
+    population: records/profiles/human-activity/lucy/united-kingdom

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/dominican-republic
+schema_version: '2026.5'
+target: site
+name: Dominican Republic
+legacy_id: 11240056
+country: Dominican Republic
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/dominican-republic
+    energy_use: records/profiles/traffic/lucy/dominican-republic
+    human_activity: records/profiles/human-activity/lucy/dominican-republic
+    population: records/profiles/human-activity/lucy/dominican-republic

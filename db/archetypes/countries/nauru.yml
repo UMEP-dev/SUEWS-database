@@ -1,0 +1,14 @@
+archetype: archetypes/countries/nauru
+schema_version: '2026.5'
+target: site
+name: Nauru
+legacy_id: 11240143
+country: Nauru
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/nauru
+    energy_use: records/profiles/traffic/lucy/nauru
+    human_activity: records/profiles/human-activity/lucy/nauru
+    population: records/profiles/human-activity/lucy/nauru

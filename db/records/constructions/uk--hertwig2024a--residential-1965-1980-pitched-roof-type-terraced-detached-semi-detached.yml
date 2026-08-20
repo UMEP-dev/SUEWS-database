@@ -1,0 +1,28 @@
+record: records/constructions/uk--hertwig2024a--residential-1965-1980-pitched-roof-type-terraced-detached-semi-detached
+schema_version: '2026.5'
+target: construction
+name: 'Residential,1965-1980, pitched roof, type: terraced, detached, semi-detached'
+place: uk
+origin: UK
+representativeness: regional
+source: hertwig2024a
+legacy_id: 37240899
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--clay-tile
+    thickness: 0.012
+  - material: records/materials/generic--hertwig2024a--mineral-wool-quilt
+    thickness: 0.0123
+  - material: records/materials/generic--hertwig2024a--plasterboard-standard
+    thickness: 0.0125
+  roof_insulation_layer: 2
+  wall:
+  - material: records/materials/generic--hertwig2024a--brick-exposed
+    thickness: 0.07
+  - material: records/materials/generic--bellucco2017--air
+    thickness: 0.05
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.07
+  - material: records/materials/generic--hertwig2024a--plasterboard-standard
+    thickness: 0.0125
+  wall_insulation_layer: 2

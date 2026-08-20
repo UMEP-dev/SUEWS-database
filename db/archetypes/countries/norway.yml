@@ -1,0 +1,14 @@
+archetype: archetypes/countries/norway
+schema_version: '2026.5'
+target: site
+name: Norway
+legacy_id: 11240155
+country: Norway
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/norway
+    energy_use: records/profiles/traffic/lucy/norway
+    human_activity: records/profiles/human-activity/lucy/norway
+    population: records/profiles/human-activity/lucy/norway

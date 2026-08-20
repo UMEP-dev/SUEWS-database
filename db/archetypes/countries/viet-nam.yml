@@ -1,0 +1,14 @@
+archetype: archetypes/countries/viet-nam
+schema_version: '2026.5'
+target: site
+name: Viet Nam
+legacy_id: 11240225
+country: Viet Nam
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/viet-nam
+    energy_use: records/profiles/traffic/lucy/viet-nam
+    human_activity: records/profiles/human-activity/lucy/viet-nam
+    population: records/profiles/human-activity/lucy/viet-nam

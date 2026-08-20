@@ -1,0 +1,14 @@
+archetype: archetypes/countries/nicaragua
+schema_version: '2026.5'
+target: site
+name: Nicaragua
+legacy_id: 11240149
+country: Nicaragua
+region_ref: archetypes/regions/central-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/nicaragua
+    energy_use: records/profiles/traffic/lucy/nicaragua
+    human_activity: records/profiles/human-activity/lucy/nicaragua
+    population: records/profiles/human-activity/lucy/nicaragua

@@ -1,0 +1,17 @@
+record: records/surfaces/dectr/zurich--stagakis-s2024--lai-power
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree, LaiEq = 1
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 32240031
+parameters:
+  lai:
+    lai_power:
+      growth_lai: 0.04
+      growth_gdd: 0.0005
+      senescence_lai: -1.5
+      senescence_sdd: 0.0025
+    lai_type: 1

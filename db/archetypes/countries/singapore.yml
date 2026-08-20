@@ -1,0 +1,14 @@
+archetype: archetypes/countries/singapore
+schema_version: '2026.5'
+target: site
+name: Singapore
+legacy_id: 11240187
+country: Singapore
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/singapore
+    energy_use: records/profiles/traffic/lucy/singapore
+    human_activity: records/profiles/human-activity/lucy/singapore
+    population: records/profiles/human-activity/lucy/singapore

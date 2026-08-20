@@ -1,0 +1,13 @@
+record: records/surfaces/evetr/se-england--ward2016--water-state
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 42240044
+parameters:
+  state_limit: 1.3
+legacy:
+  WaterDepth: -999

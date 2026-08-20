@@ -1,0 +1,13 @@
+record: records/surfaces/bldgs/se-england--ward2016--water-state
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Buildings
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 42240042
+parameters:
+  state_limit: 0.25
+legacy:
+  WaterDepth: -999

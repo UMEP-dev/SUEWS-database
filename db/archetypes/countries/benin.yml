@@ -1,0 +1,14 @@
+archetype: archetypes/countries/benin
+schema_version: '2026.5'
+target: site
+name: Benin
+legacy_id: 11240022
+country: Benin
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/benin
+    energy_use: records/profiles/traffic/lucy/benin
+    human_activity: records/profiles/human-activity/lucy/benin
+    population: records/profiles/human-activity/lucy/benin

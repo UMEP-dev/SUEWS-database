@@ -1,0 +1,23 @@
+record: records/conductance/generic--ward2016
+schema_version: '2026.5'
+target: conductance
+name: Updated Ward  et al. (2016) gsModel=2 [sample run]
+place: generic
+origin: Unspecified
+representativeness: generic
+source: ward2016
+legacy_id: 44240002
+parameters:
+  g_max: 3.5
+  g_k: 200
+  g_q_base: 0.13
+  g_q_shape: 0.7
+  g_t: 30
+  g_sm: 0.05
+  th: 55
+  tl: -10
+  s1: 5.56
+  s2: 0
+  kmax: 1200
+  context:
+    surface_conductance_model: 2

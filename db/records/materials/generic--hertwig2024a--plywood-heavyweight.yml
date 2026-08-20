@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--plywood-heavyweight
+schema_version: '2026.5'
+target: material
+name: Plywood (Heavyweight)
+source: hertwig2024a
+legacy_id: 36248182
+category: Generic
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.15
+  specific_heat: 1420
+  density: 700

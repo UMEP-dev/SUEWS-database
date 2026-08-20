@@ -1,0 +1,14 @@
+archetype: archetypes/countries/monaco
+schema_version: '2026.5'
+target: site
+name: Monaco
+legacy_id: 11240136
+country: Monaco
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/monaco
+    energy_use: records/profiles/traffic/lucy/monaco
+    human_activity: records/profiles/human-activity/lucy/monaco
+    population: records/profiles/human-activity/lucy/monaco

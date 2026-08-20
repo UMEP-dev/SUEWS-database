@@ -1,0 +1,14 @@
+archetype: archetypes/countries/sierra-leone
+schema_version: '2026.5'
+target: site
+name: Sierra Leone
+legacy_id: 11240186
+country: Sierra Leone
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/sierra-leone
+    energy_use: records/profiles/traffic/lucy/sierra-leone
+    human_activity: records/profiles/human-activity/lucy/sierra-leone
+    population: records/profiles/human-activity/lucy/sierra-leone

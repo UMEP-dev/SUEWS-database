@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--plywood-lightweight
+schema_version: '2026.5'
+target: material
+name: Plywood (Lightweight)
+source: hertwig2024a
+legacy_id: 36248181
+category: Generic
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.15
+  specific_heat: 2500
+  density: 560

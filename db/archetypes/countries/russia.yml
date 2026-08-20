@@ -1,0 +1,14 @@
+archetype: archetypes/countries/russia
+schema_version: '2026.5'
+target: site
+name: Russia
+legacy_id: 11240173
+country: Russia
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/russia
+    energy_use: records/profiles/traffic/lucy/russia
+    human_activity: records/profiles/human-activity/lucy/russia
+    population: records/profiles/human-activity/lucy/russia

@@ -1,0 +1,31 @@
+archetype: archetypes/snow/helsinki--snow
+schema_version: '2026.5'
+target: snow
+name: Snow
+place: helsinki
+origin: Helsinki
+representativeness: city
+legacy_id: 23240006
+source: jarvi2014
+uses:
+  albedo: records/snow/helsinki--jarvi2014--albedo
+  emissivity: records/snow/helsinki--jarvi2014--emissivity
+parameters:
+  radiation_melt_factor: 0.0016
+  temperature_melt_factor: 0.12
+  tau_cold_snow: 0.018
+  tau_melting_snow: 0.11
+  precipitation_threshold_albedo_reset: 2
+  snow_density_min: 100
+  snow_density_max: 400
+  tau_refreezing_snow: 0.043
+  water_holding_capacity_min: 0.05
+  water_holding_capacity_max: 0.2
+  temperature_rain_snow_threshold: 2.2
+legacy:
+  OHMSummerWet: 50240016
+  OHMSummerDry: 50240016
+  OHMWinterWet: 50240016
+  OHMWinterDry: 50240016
+  OHMThresh_SW: 10
+  OHMThresh_WD: 0.9

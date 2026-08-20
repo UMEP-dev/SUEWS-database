@@ -1,0 +1,14 @@
+archetype: archetypes/countries/venezuela
+schema_version: '2026.5'
+target: site
+name: Venezuela
+legacy_id: 11240224
+country: Venezuela
+region_ref: archetypes/regions/northern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/venezuela
+    energy_use: records/profiles/traffic/lucy/venezuela
+    human_activity: records/profiles/human-activity/lucy/venezuela
+    population: records/profiles/human-activity/lucy/venezuela

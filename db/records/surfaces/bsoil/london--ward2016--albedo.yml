@@ -1,0 +1,13 @@
+record: records/surfaces/bsoil/london--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.bsoil
+name: BareSoil
+place: london
+origin: London
+representativeness: city
+source: ward2016
+legacy_id: 41240006
+parameters:
+  alb: 0.21
+legacy:
+  Alb_max: 0.21

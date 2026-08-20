@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--stainless-steel
+schema_version: '2026.5'
+target: material
+name: stainless steel
+source: hertwig2024a
+legacy_id: 36248201
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.8
+  emissivity: 0.0855
+  thermal_conductivity: 17
+  specific_heat: 460
+  density: 7900

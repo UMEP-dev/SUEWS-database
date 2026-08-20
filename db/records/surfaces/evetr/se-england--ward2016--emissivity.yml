@@ -1,0 +1,11 @@
+record: records/surfaces/evetr/se-england--ward2016--emissivity
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen trees
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 40240044
+parameters:
+  emis: 0.98

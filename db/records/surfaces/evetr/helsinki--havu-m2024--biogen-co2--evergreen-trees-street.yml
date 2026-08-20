@@ -1,0 +1,18 @@
+record: records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen trees - street
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: havu-m2024
+legacy_id: 30240015
+parameters:
+  alpha_bio_co2: 0.031
+  beta_bio_co2: 7
+  theta_bio_co2: 0.723
+  alpha_enh_bioco2: -999
+  beta_enh_bioco2: -999
+  resp_a: 0.78
+  resp_b: 0.08
+  min_res_bioco2: 0.6

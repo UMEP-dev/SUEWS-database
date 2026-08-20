@@ -1,0 +1,11 @@
+record: records/snow/helsinki--jarvi2014--emissivity
+schema_version: '2026.5'
+target: snow
+name: Snow (sample data)
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 40241245
+parameters:
+  narp_emissivity_snow: 0.99

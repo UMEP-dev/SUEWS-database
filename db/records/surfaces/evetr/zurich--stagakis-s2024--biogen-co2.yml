@@ -1,0 +1,18 @@
+record: records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen trees
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 30240100
+parameters:
+  alpha_bio_co2: 0.031
+  beta_bio_co2: 29.2138
+  theta_bio_co2: 0.723
+  alpha_enh_bioco2: -999
+  beta_enh_bioco2: -999
+  resp_a: 2.88
+  resp_b: 0.06
+  min_res_bioco2: 0.6

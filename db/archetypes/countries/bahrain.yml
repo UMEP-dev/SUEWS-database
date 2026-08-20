@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bahrain
+schema_version: '2026.5'
+target: site
+name: Bahrain
+legacy_id: 11240016
+country: Bahrain
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bahrain
+    energy_use: records/profiles/traffic/lucy/bahrain
+    human_activity: records/profiles/human-activity/lucy/bahrain
+    population: records/profiles/human-activity/lucy/bahrain

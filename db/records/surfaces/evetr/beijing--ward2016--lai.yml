@@ -1,0 +1,14 @@
+record: records/surfaces/evetr/beijing--ward2016--lai
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree (sample data)
+place: beijing
+origin: Beijing
+representativeness: city
+source: ward2016
+legacy_id: 31240023
+parameters:
+  lai:
+    lai_type: 0
+    lai_min: 4
+    lai_max: 5.1

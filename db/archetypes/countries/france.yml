@@ -1,0 +1,14 @@
+archetype: archetypes/countries/france
+schema_version: '2026.5'
+target: site
+name: France
+legacy_id: 11240070
+country: France
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/france
+    energy_use: records/profiles/traffic/lucy/france
+    human_activity: records/profiles/human-activity/lucy/france
+    population: records/profiles/human-activity/lucy/france

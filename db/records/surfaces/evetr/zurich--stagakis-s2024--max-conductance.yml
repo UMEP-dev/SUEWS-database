@@ -1,0 +1,11 @@
+record: records/surfaces/evetr/zurich--stagakis-s2024--max-conductance
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 33240009
+parameters:
+  max_conductance: 7.4

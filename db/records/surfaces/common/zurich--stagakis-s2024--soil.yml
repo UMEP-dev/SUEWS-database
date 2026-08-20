@@ -1,0 +1,20 @@
+record: records/surfaces/common/zurich--stagakis-s2024--soil
+schema_version: '2026.5'
+target: land_cover.common
+name: Trees
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 22240064
+parameters:
+  soil_depth: 349
+  soil_store_capacity: 130
+  saturated_hydraulic_conductivity: 0.0005
+  soil_density: 1.16
+  soil_observation:
+    depth: -999
+    smcap: -999
+    soil_not_rocks: -999
+legacy:
+  InfiltrationRate: 10

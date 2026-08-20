@@ -1,0 +1,64 @@
+record: records/profiles/traffic/lucy/tokelau-qpp
+schema_version: '2026.5'
+target: profile.traffic
+attaches_to: anthropogenic_emissions.co2.traffprof_24hr
+profile_type: Traffic
+name: Traffic
+place: tokelau-qpp
+origin: LUCY, Tokelau* qpp
+representativeness: regional
+source: allen2011
+legacy_id:
+- 60240896
+- 60240897
+parameters:
+  holiday:
+    1: 0
+    2: 0
+    3: 0
+    4: 0
+    5: 0
+    6: 0
+    7: 0
+    8: 0
+    9: 0
+    10: 0
+    11: 0
+    12: 0
+    13: 0
+    14: 0
+    15: 0
+    16: 0
+    17: 0
+    18: 0
+    19: 0
+    20: 0
+    21: 0
+    22: 0
+    23: 0
+    24: 0
+  working_day:
+    1: 0
+    2: 0
+    3: 0
+    4: 0
+    5: 0
+    6: 0
+    7: 0
+    8: 0
+    9: 0
+    10: 0
+    11: 0
+    12: 0
+    13: 0
+    14: 0
+    15: 0
+    16: 0
+    17: 0
+    18: 0
+    19: 0
+    20: 0
+    21: 0
+    22: 0
+    23: 0
+    24: 0

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/botswana
+schema_version: '2026.5'
+target: site
+name: Botswana
+legacy_id: 11240027
+country: Botswana
+region_ref: archetypes/regions/southern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/botswana
+    energy_use: records/profiles/traffic/lucy/botswana
+    human_activity: records/profiles/human-activity/lucy/botswana
+    population: records/profiles/human-activity/lucy/botswana

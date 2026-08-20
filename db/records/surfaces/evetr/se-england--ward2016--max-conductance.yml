@@ -1,0 +1,11 @@
+record: records/surfaces/evetr/se-england--ward2016--max-conductance
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree (SE England)
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 33240046
+parameters:
+  max_conductance: 7.4

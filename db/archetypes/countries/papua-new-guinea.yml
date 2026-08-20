@@ -1,0 +1,14 @@
+archetype: archetypes/countries/papua-new-guinea
+schema_version: '2026.5'
+target: site
+name: Papua New Guinea
+legacy_id: 11240161
+country: Papua New Guinea
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/papua-new-guinea
+    energy_use: records/profiles/traffic/lucy/papua-new-guinea
+    human_activity: records/profiles/human-activity/lucy/papua-new-guinea
+    population: records/profiles/human-activity/lucy/papua-new-guinea

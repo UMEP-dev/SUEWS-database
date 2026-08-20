@@ -1,0 +1,13 @@
+record: records/surfaces/paved/se-england--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 41240041
+parameters:
+  alb: 0.1
+legacy:
+  Alb_max: 0.1

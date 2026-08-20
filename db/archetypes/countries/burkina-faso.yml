@@ -1,0 +1,14 @@
+archetype: archetypes/countries/burkina-faso
+schema_version: '2026.5'
+target: site
+name: Burkina Faso
+legacy_id: 11240032
+country: Burkina Faso
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/burkina-faso
+    energy_use: records/profiles/traffic/lucy/burkina-faso
+    human_activity: records/profiles/human-activity/lucy/burkina-faso
+    population: records/profiles/human-activity/lucy/burkina-faso

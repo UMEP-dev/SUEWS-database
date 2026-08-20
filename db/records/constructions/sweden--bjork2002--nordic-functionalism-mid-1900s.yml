@@ -1,0 +1,34 @@
+record: records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s
+schema_version: '2026.5'
+target: construction
+name: 'Nordic Functionalism, mid 1900s '
+place: sweden
+origin: Sweden
+representativeness: regional
+source: bjork2002
+legacy_id: 37249758
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--clay-tile
+    thickness: 0.054
+  - material: records/materials/generic--hertwig2024a--wood-wool-slab
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--waterproof-roof-covering
+    thickness: 0.005
+  - material: records/materials/generic--hertwig2024a--wood-wool-slab
+    thickness: 0.025
+  - material: records/materials/generic--bellucco2017--air
+    thickness: 0.03
+  roof_insulation_layer: 4
+  wall:
+  - material: records/materials/generic--cibse2015--limestone-bright
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.012
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.012
+  - material: records/materials/generic--hertwig2024a--mineral-wool-batts
+    thickness: 0.05
+  - material: records/materials/generic--hertwig2024a--plaster-dense
+    thickness: 0.025
+  wall_insulation_layer: 4

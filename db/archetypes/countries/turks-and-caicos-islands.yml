@@ -1,0 +1,14 @@
+archetype: archetypes/countries/turks-and-caicos-islands
+schema_version: '2026.5'
+target: site
+name: Turks and Caicos Islands
+legacy_id: 11240212
+country: Turks and Caicos Islands
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/turks-and-caicos-islands
+    energy_use: records/profiles/traffic/lucy/turks-and-caicos-islands
+    human_activity: records/profiles/human-activity/lucy/turks-and-caicos-islands
+    population: records/profiles/human-activity/lucy/turks-and-caicos-islands

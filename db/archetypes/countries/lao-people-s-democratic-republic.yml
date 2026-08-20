@@ -1,0 +1,14 @@
+archetype: archetypes/countries/lao-people-s-democratic-republic
+schema_version: '2026.5'
+target: site
+name: Lao People's Democratic Republic
+legacy_id: 11240114
+country: Lao People's Democratic Republic
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/lao-people-s-democratic-republic
+    energy_use: records/profiles/traffic/lucy/lao-people-s-democratic-republic
+    human_activity: records/profiles/human-activity/lucy/lao-people-s-democratic-republic
+    population: records/profiles/human-activity/lucy/lao-people-s-democratic-republic

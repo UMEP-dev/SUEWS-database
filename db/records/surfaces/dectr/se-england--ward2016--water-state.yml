@@ -1,0 +1,13 @@
+record: records/surfaces/dectr/se-england--ward2016--water-state
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 42240045
+parameters:
+  state_limit: 0.8
+legacy:
+  WaterDepth: -999

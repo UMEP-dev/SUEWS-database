@@ -1,0 +1,14 @@
+archetype: archetypes/countries/martinique
+schema_version: '2026.5'
+target: site
+name: Martinique
+legacy_id: 11240131
+country: Martinique
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/martinique
+    energy_use: records/profiles/traffic/lucy/martinique
+    human_activity: records/profiles/human-activity/lucy/martinique
+    population: records/profiles/human-activity/lucy/martinique

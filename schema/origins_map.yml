@@ -1,0 +1,81 @@
+# Resolution of every distinct legacy `Origin` string to a place slug.
+#
+# This is the human-judgement layer regional_axis.yml called for. Each entry
+# resolves one raw Origin string to a place (db/places.yml) and a
+# representativeness class, with a confidence flag:
+#   certain      - unambiguous reading of the string
+#   needs-review - a judgement call; listed in the migration report for Ting
+#
+# Representativeness: how far the value travels beyond where it was obtained.
+#   site      - a specific measurement site
+#   city      - offered as typical of a city
+#   regional  - typical of a region or country
+#   generic   - not tied to any place
+#
+# The raw string is also kept verbatim on every migrated record (`origin:`),
+# so this mapping adds interpretation without destroying information.
+
+origins:
+  Helsinki:                {place: helsinki, representativeness: city, confidence: certain}
+  Helsinki, Finland:       {place: helsinki, representativeness: city, confidence: certain}
+  Helsinki-Kumpula:        {place: helsinki, representativeness: site, confidence: certain,
+                            note: Kumpula measurement site}
+  London:                  {place: london, representativeness: city, confidence: certain}
+  London, UK:              {place: london, representativeness: city, confidence: certain}
+  Barbican, London:        {place: london, representativeness: site, confidence: certain,
+                            note: Barbican estate}
+  London (River Thames), UK: {place: london, representativeness: site, confidence: certain,
+                            note: River Thames}
+  SE England:              {place: se-england, representativeness: regional, confidence: certain}
+  UK, SE England:          {place: se-england, representativeness: regional, confidence: certain}
+  UK:                      {place: uk, representativeness: regional, confidence: certain}
+  Sweden:                  {place: sweden, representativeness: regional, confidence: certain}
+  Finland:                 {place: finland, representativeness: regional, confidence: certain}
+  China:                   {place: china, representativeness: regional, confidence: certain}
+  Switzerland:             {place: switzerland, representativeness: regional, confidence: certain}
+  Zurich:                  {place: zurich, representativeness: city, confidence: certain}
+  Zurich, Switzerland:     {place: zurich, representativeness: city, confidence: certain}
+  Beijing:                 {place: beijing, representativeness: city, confidence: certain}
+  Beijing, China:          {place: beijing, representativeness: city, confidence: certain}
+  Shanghai:                {place: shanghai, representativeness: city, confidence: certain}
+  Nanjing:                 {place: nanjing, representativeness: city, confidence: certain}
+  Tokyo:                   {place: tokyo, representativeness: city, confidence: certain}
+  Basel:                   {place: basel, representativeness: city, confidence: certain}
+  Vancouver:               {place: vancouver, representativeness: city, confidence: certain}
+  Vanvouver:               {place: vancouver, representativeness: city, confidence: certain,
+                            note: typo in source data}
+  Gothenburg:              {place: gothenburg, representativeness: city, confidence: certain}
+  Gothenburg, Sweden:      {place: gothenburg, representativeness: city, confidence: certain}
+  Stockholm, Sweden:       {place: stockholm, representativeness: city, confidence: certain}
+  Lodz, Poland:            {place: lodz, representativeness: city, confidence: certain}
+  Swindon:                 {place: swindon, representativeness: city, confidence: certain}
+  Swindon, UK:             {place: swindon, representativeness: city, confidence: certain}
+  Swindon, UK (not used):  {place: swindon, representativeness: city, confidence: needs-review,
+                            note: source data marks the value "(not used)"}
+  Aberdeen:                {place: aberdeen, representativeness: city, confidence: certain}
+  Belfast:                 {place: belfast, representativeness: city, confidence: certain}
+  Birmingham:              {place: birmingham, representativeness: city, confidence: certain}
+  Cardiff:                 {place: cardiff, representativeness: city, confidence: certain}
+  Edinburgh:               {place: edinburgh, representativeness: city, confidence: certain}
+  Manchester:              {place: manchester, representativeness: city, confidence: certain}
+  Newcastle:               {place: newcastle, representativeness: city, confidence: needs-review,
+                            note: assumed Newcastle upon Tyne, UK (QF study context)}
+  Plymouth:                {place: plymouth, representativeness: city, confidence: certain}
+  New York:                {place: new-york, representativeness: city, confidence: certain}
+  Los Angeles:             {place: los-angeles, representativeness: city, confidence: certain,
+                            note: appears as a profile City, not an Origin column value}
+  Weishan, Shandong Province, China: {place: weishan, representativeness: site, confidence: certain}
+  Lethbridge, Alberta, Canada: {place: lethbridge, representativeness: site, confidence: certain}
+  Midwest America:         {place: midwest-usa, representativeness: regional, confidence: certain}
+  Tropics:                 {place: tropics, representativeness: regional, confidence: needs-review,
+                            note: not a place; a climatic zone kept as a pseudo-place}
+  Generic:                 {place: generic, representativeness: generic, confidence: certain}
+  Unspecified:             {place: generic, representativeness: generic, confidence: certain}
+  Unknown:                 {place: generic, representativeness: generic, confidence: certain}
+  SUEWS:                   {place: generic, representativeness: generic, confidence: needs-review,
+                            note: "Origin given as the model name itself"}
+  Placeholder:             {place: generic, representativeness: generic, confidence: needs-review,
+                            note: placeholder entry in source data}
+  Porisity only used for Deciduous Tree. This is a Dummy Variable:
+                           {place: generic, representativeness: generic, confidence: needs-review,
+                            note: not a place; a data-entry comment in the Origin column}

@@ -1,0 +1,14 @@
+record: records/ohm/nanjing--dou2023--buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Concrete roof (Summer and winter mean)
+place: nanjing
+origin: Nanjing
+representativeness: city
+source: dou2023
+legacy_id: 50240043
+season_label: Spring/autumn
+parameters:
+  a1: 0.845
+  a2: 0.395
+  a3: -13.295

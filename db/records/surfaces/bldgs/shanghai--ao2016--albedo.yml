@@ -1,0 +1,13 @@
+record: records/surfaces/bldgs/shanghai--ao2016--albedo
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: CBD roofs
+place: shanghai
+origin: Shanghai
+representativeness: city
+source: ao2016
+legacy_id: 41240031
+parameters:
+  alb: 0.18
+legacy:
+  Alb_max: 0.18

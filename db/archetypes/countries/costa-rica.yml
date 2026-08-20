@@ -1,0 +1,14 @@
+archetype: archetypes/countries/costa-rica
+schema_version: '2026.5'
+target: site
+name: Costa Rica
+legacy_id: 11240049
+country: Costa Rica
+region_ref: archetypes/regions/central-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/costa-rica
+    energy_use: records/profiles/traffic/lucy/costa-rica
+    human_activity: records/profiles/human-activity/lucy/costa-rica
+    population: records/profiles/human-activity/lucy/costa-rica

@@ -1,0 +1,14 @@
+record: records/ohm/weishan--dou2023--cropland--wheat
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Wheat
+place: weishan
+origin: Weishan, Shandong Province, China
+representativeness: site
+source: dou2023
+legacy_id: 50240040
+season_label: Winter
+parameters:
+  a1: 0.07
+  a2: -0.29
+  a3: -11.8

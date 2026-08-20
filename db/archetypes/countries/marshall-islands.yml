@@ -1,0 +1,14 @@
+archetype: archetypes/countries/marshall-islands
+schema_version: '2026.5'
+target: site
+name: Marshall Islands
+legacy_id: 11240130
+country: Marshall Islands
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/marshall-islands
+    energy_use: records/profiles/traffic/lucy/marshall-islands
+    human_activity: records/profiles/human-activity/lucy/marshall-islands
+    population: records/profiles/human-activity/lucy/marshall-islands

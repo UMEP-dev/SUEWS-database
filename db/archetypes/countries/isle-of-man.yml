@@ -1,0 +1,14 @@
+archetype: archetypes/countries/isle-of-man
+schema_version: '2026.5'
+target: site
+name: Isle of Man
+legacy_id: 11240099
+country: Isle of Man
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/isle-of-man
+    energy_use: records/profiles/traffic/lucy/isle-of-man
+    human_activity: records/profiles/human-activity/lucy/isle-of-man
+    population: records/profiles/human-activity/lucy/isle-of-man

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/japan
+schema_version: '2026.5'
+target: site
+name: Japan
+legacy_id: 11240104
+country: Japan
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/japan
+    energy_use: records/profiles/traffic/lucy/japan
+    human_activity: records/profiles/human-activity/lucy/japan
+    population: records/profiles/human-activity/lucy/japan

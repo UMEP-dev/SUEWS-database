@@ -1,0 +1,14 @@
+archetype: archetypes/countries/philippines
+schema_version: '2026.5'
+target: site
+name: Philippines
+legacy_id: 11240164
+country: Philippines
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/philippines
+    energy_use: records/profiles/traffic/lucy/philippines
+    human_activity: records/profiles/human-activity/lucy/philippines
+    population: records/profiles/human-activity/lucy/philippines

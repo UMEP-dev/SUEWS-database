@@ -1,0 +1,14 @@
+archetype: archetypes/countries/haiti
+schema_version: '2026.5'
+target: site
+name: Haiti
+legacy_id: 11240089
+country: Haiti
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/haiti
+    energy_use: records/profiles/traffic/lucy/haiti
+    human_activity: records/profiles/human-activity/lucy/haiti
+    population: records/profiles/human-activity/lucy/haiti

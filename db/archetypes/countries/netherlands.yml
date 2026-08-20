@@ -1,0 +1,14 @@
+archetype: archetypes/countries/netherlands
+schema_version: '2026.5'
+target: site
+name: Netherlands
+legacy_id: 11240146
+country: Netherlands
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/netherlands
+    energy_use: records/profiles/traffic/lucy/netherlands
+    human_activity: records/profiles/human-activity/lucy/netherlands
+    population: records/profiles/human-activity/lucy/netherlands

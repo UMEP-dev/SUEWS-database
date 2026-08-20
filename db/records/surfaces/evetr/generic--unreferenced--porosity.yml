@@ -1,0 +1,13 @@
+record: records/surfaces/evetr/generic--unreferenced--porosity
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Dummy value
+place: generic
+origin: Porisity only used for Deciduous Tree. This is a Dummy Variable
+representativeness: generic
+source: unreferenced
+source_legacy_ref: 90241000
+legacy_id: 34240010
+parameters:
+  porosity_min_deciduous: -999
+  porosity_max_deciduous: -999

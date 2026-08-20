@@ -1,0 +1,14 @@
+archetype: archetypes/countries/liechtenstein
+schema_version: '2026.5'
+target: site
+name: Liechtenstein
+legacy_id: 11240120
+country: Liechtenstein
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/liechtenstein
+    energy_use: records/profiles/traffic/lucy/liechtenstein
+    human_activity: records/profiles/human-activity/lucy/liechtenstein
+    population: records/profiles/human-activity/lucy/liechtenstein

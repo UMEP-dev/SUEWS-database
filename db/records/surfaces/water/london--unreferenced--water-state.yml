@@ -1,0 +1,13 @@
+record: records/surfaces/water/london--unreferenced--water-state
+schema_version: '2026.5'
+target: land_cover.water
+name: Small Fountain
+place: london
+origin: London
+representativeness: city
+source: unreferenced
+legacy_id: 42240002
+parameters:
+  state_limit: 15
+legacy:
+  WaterDepth: 10

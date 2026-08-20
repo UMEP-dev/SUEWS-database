@@ -1,0 +1,38 @@
+record: records/irrigation/vancouver--unreferenced
+schema_version: '2026.5'
+target: irrigation
+name: Irrigation
+place: vancouver
+origin: Vancouver
+representativeness: city
+source: unreferenced
+legacy_id: 61240005
+parameters:
+  ie_start: 152
+  ie_end: 243
+  internalwateruse_h: 0
+  faut: 0.2
+  h_maintain: -999
+  daywat:
+    sunday: 1
+    monday: 1
+    tuesday: 1
+    wednesday: 1
+    thursday: 1
+    friday: 1
+    saturday: 1
+  daywatper:
+    sunday: 1
+    monday: 1
+    tuesday: 1
+    wednesday: 1
+    thursday: 1
+    friday: 1
+    saturday: 1
+legacy:
+  Ie_a1: -84.535
+  Ie_a2: 9.959
+  Ie_a3: 3.674
+  Ie_m1: -25.36
+  Ie_m2: 2.988
+  Ie_m3: 1.102

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/guernsey
+schema_version: '2026.5'
+target: site
+name: Guernsey
+legacy_id: 11240085
+country: Guernsey
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/guernsey
+    energy_use: records/profiles/traffic/lucy/guernsey
+    human_activity: records/profiles/human-activity/lucy/guernsey
+    population: records/profiles/human-activity/lucy/guernsey

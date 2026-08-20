@@ -1,0 +1,14 @@
+archetype: archetypes/countries/republic-of-moldova
+schema_version: '2026.5'
+target: site
+name: Republic of Moldova
+legacy_id: 11240170
+country: Republic of Moldova
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/republic-of-moldova
+    energy_use: records/profiles/traffic/lucy/republic-of-moldova
+    human_activity: records/profiles/human-activity/lucy/republic-of-moldova
+    population: records/profiles/human-activity/lucy/republic-of-moldova

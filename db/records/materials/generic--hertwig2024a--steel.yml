@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--steel
+schema_version: '2026.5'
+target: material
+name: steel
+source: hertwig2024a
+legacy_id: 36248202
+category: Generic
+display_colour: Red
+parameters:
+  albedo: 0.8
+  emissivity: 0.805
+  thermal_conductivity: 50
+  specific_heat: 450
+  density: 7800

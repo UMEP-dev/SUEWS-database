@@ -1,0 +1,14 @@
+archetype: archetypes/countries/luxembourg
+schema_version: '2026.5'
+target: site
+name: Luxembourg
+legacy_id: 11240122
+country: Luxembourg
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/luxembourg
+    energy_use: records/profiles/traffic/lucy/luxembourg
+    human_activity: records/profiles/human-activity/lucy/luxembourg
+    population: records/profiles/human-activity/lucy/luxembourg

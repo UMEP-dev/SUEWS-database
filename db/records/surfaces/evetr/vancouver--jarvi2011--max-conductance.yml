@@ -1,0 +1,11 @@
+record: records/surfaces/evetr/vancouver--jarvi2011--max-conductance
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree
+place: vancouver
+origin: Vancouver
+representativeness: city
+source: jarvi2011
+legacy_id: 33240003
+parameters:
+  max_conductance: 7.4

@@ -1,0 +1,64 @@
+record: records/profiles/population/helsinki--jarvi2019--population-profile
+schema_version: '2026.5'
+target: profile.population
+attaches_to: anthropogenic_emissions.heat.popprof_24hr
+profile_type: Population density
+name: Population profile
+place: helsinki
+origin: Helsinki, Finland
+representativeness: city
+source: jarvi2019
+legacy_id:
+- 60240953
+- 60240954
+parameters:
+  holiday:
+    1: 1
+    2: 1
+    3: 1
+    4: 1
+    5: 1
+    6: 1
+    7: 1
+    8: 1
+    9: 1.5
+    10: 2
+    11: 2
+    12: 2
+    13: 2
+    14: 2
+    15: 2
+    16: 2
+    17: 2
+    18: 2
+    19: 2
+    20: 2
+    21: 2
+    22: 2
+    23: 1.5
+    24: 1
+  working_day:
+    1: 1
+    2: 1
+    3: 1
+    4: 1
+    5: 1
+    6: 1.5
+    7: 2
+    8: 2
+    9: 2
+    10: 2
+    11: 2
+    12: 2
+    13: 2
+    14: 2
+    15: 2
+    16: 2
+    17: 2
+    18: 2
+    19: 2
+    20: 2
+    21: 2
+    22: 1.5
+    23: 1
+    24: 1

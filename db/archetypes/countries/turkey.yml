@@ -1,0 +1,14 @@
+archetype: archetypes/countries/turkey
+schema_version: '2026.5'
+target: site
+name: Turkey
+legacy_id: 11240210
+country: Turkey
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/turkey
+    energy_use: records/profiles/traffic/lucy/turkey
+    human_activity: records/profiles/human-activity/lucy/turkey
+    population: records/profiles/human-activity/lucy/turkey

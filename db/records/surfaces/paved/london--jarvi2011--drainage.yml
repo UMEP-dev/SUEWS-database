@@ -1,0 +1,15 @@
+record: records/surfaces/paved/london--jarvi2011--drainage
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved [sample run]
+place: london
+origin: London
+representativeness: city
+source: jarvi2011
+legacy_id: 45240001
+parameters:
+  storage_drain_params:
+    drain_eq: 3
+    drain_coef_1: 10
+    drain_coef_2: 3
+  wet_threshold: 0.48

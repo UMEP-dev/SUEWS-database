@@ -1,0 +1,11 @@
+record: records/surfaces/grass/beijing--zheng-y2023--max-conductance
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: beijing
+origin: Beijing
+representativeness: city
+source: zheng-y2023
+legacy_id: 33240008
+parameters:
+  max_conductance: 3.7

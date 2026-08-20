@@ -1,0 +1,17 @@
+record: records/surfaces/common/generic--unreferenced--soil--silt-52
+schema_version: '2026.5'
+target: land_cover.common
+name: silt [52]
+source: unreferenced
+legacy_id: 22240055
+parameters:
+  soil_depth: 300
+  soil_store_capacity: 150
+  saturated_hydraulic_conductivity: 0.01
+  soil_density: -999
+  soil_observation:
+    depth: -999
+    smcap: -999
+    soil_not_rocks: -999
+legacy:
+  InfiltrationRate: 15

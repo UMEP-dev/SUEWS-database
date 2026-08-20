@@ -1,0 +1,14 @@
+archetype: archetypes/countries/saint-pierre-and-miquelon-qpp
+schema_version: '2026.5'
+target: site
+name: Saint Pierre and Miquelon* qpp
+legacy_id: 11240178
+country: Saint Pierre and Miquelon* qpp
+region_ref: archetypes/regions/north-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/saint-pierre-and-miquelon-qpp
+    energy_use: records/profiles/traffic/lucy/saint-pierre-and-miquelon-qpp
+    human_activity: records/profiles/human-activity/lucy/saint-pierre-and-miquelon-qpp
+    population: records/profiles/human-activity/lucy/saint-pierre-and-miquelon-qpp

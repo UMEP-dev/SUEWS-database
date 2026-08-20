@@ -1,0 +1,14 @@
+archetype: archetypes/countries/niue
+schema_version: '2026.5'
+target: site
+name: Niue
+legacy_id: 11240152
+country: Niue
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/niue
+    energy_use: records/profiles/traffic/lucy/niue
+    human_activity: records/profiles/human-activity/lucy/niue
+    population: records/profiles/human-activity/lucy/niue

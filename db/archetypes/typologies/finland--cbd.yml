@@ -1,0 +1,15 @@
+archetype: archetypes/typologies/finland--cbd
+schema_version: '2026.5'
+target: typology
+name: CBD
+place: finland
+origin: Finland
+representativeness: regional
+legacy_id: 13240001
+description: Central Helsinki
+author: LJ
+profile_type: Commercial
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/helsinki--city-centre
+  paved: archetypes/surfaces/paved/helsinki--city-centre
