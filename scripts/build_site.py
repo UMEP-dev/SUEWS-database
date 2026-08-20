@@ -98,6 +98,16 @@ SURFACE_LABEL = {
     "water": "Water", "snow": "Snow", "common": "Any surface",
 }
 
+# land-cover accent colour class (drives card top borders and title tags)
+SURFACE_ACC = {
+    "grass": "acc-veg", "dectr": "acc-veg", "evetr": "acc-veg",
+    "water": "acc-water", "paved": "acc-built", "bldgs": "acc-built",
+    "bsoil": "acc-soil", "snow": "acc-snow", "common": "acc-none",
+}
+# the browser's land-cover facet order: the 7 SUEWS covers, then a divider,
+# then cross-surface entries
+LC_ORDER = ["paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water"]
+
 
 def doc_url(target, dotted):
     """Docs page + anchor for one parameter path, or None for repo-local."""
@@ -217,6 +227,93 @@ table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 .copywrap button.copy:hover { border-color: var(--sun-gold); color: var(--text-primary); }
 .copywrap button.copy.ok { background: var(--veg-green); color: #fff;
   border-color: var(--veg-green); }
+.acc-veg { --acc: var(--veg-green); }
+.acc-water { --acc: var(--water-blue-light); }
+.acc-built { --acc: var(--energy-orange); }
+.acc-soil { --acc: var(--sun-gold); }
+.acc-snow { --acc: #cfe8ff; }
+.acc-none { --acc: rgba(255,255,255,0.25); }
+.hero { padding: 1.6rem 0 0.2rem; }
+.hero h2 { margin: 0 0 0.3rem; font-size: 1.75rem; letter-spacing: -0.01em; }
+.hero p { margin: 0; color: var(--text-secondary); max-width: 680px; }
+.statline { display: flex; flex-wrap: wrap; gap: 1.8rem; margin: 1rem 0 1.4rem;
+  color: var(--text-muted); font-size: 0.85rem; }
+.statline b { color: var(--sun-gold); font-weight: 600; margin-right: 0.3rem; }
+.layout { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 1.8rem; }
+.rail h4 { margin: 0 0 0.4rem; font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600; }
+.fgroup { margin-bottom: 1.35rem; }
+.fitem { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 0.4rem; width: 100%; padding: 0.22rem 0.55rem; border: none;
+  border-radius: 7px; font-size: 0.88rem; color: var(--text-secondary);
+  cursor: pointer; background: transparent; font-family: inherit;
+  text-align: left; }
+.fitem:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.fitem.on { background: var(--sun-gold); color: #1A1D2E; font-weight: 600; }
+.fitem .fv { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap; }
+.fitem .n { font-size: 0.75rem; opacity: 0.6; }
+.fitem .sw { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 2px;
+  background: var(--acc); align-self: center; }
+.fdiv { border-top: 1px solid var(--border-light); margin: 0.45rem 0.55rem; }
+.fmore { padding: 0.22rem 0.55rem; font-size: 0.8rem; color: var(--text-muted); }
+.maplink { display: block; padding: 0.22rem 0.55rem; font-size: 0.8rem; }
+.results2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.8rem; }
+.card2 { border: 1px solid var(--border-light); border-top: 3px solid var(--acc);
+  border-radius: 10px; background: var(--bg-card); padding: 0.75rem 0.95rem 0.85rem; }
+.card2:hover { background: var(--bg-card-hover); border-color: var(--border-medium);
+  border-top-color: var(--acc); }
+.card2 .t { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
+.card2 .meta2 { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem; }
+.pv { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.76rem; background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-light); border-radius: 6px;
+  padding: 0.08rem 0.45rem; margin: 0 0.25rem 0.25rem 0; color: var(--text-secondary); }
+.pv b { color: var(--sun-gold); font-weight: 600; }
+.heroval { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 0.8rem 0 1.2rem; }
+.hv { border: 1px solid var(--border-light); border-left: 3px solid var(--acc);
+  border-radius: 10px; background: var(--bg-card); padding: 0.55rem 1rem 0.6rem; }
+.hv .k { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.1rem; }
+.hv .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.35rem; font-weight: 600; color: var(--sun-gold); }
+.cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.8rem;
+  align-items: start; }
+.side { border: 1px solid var(--border-light); border-radius: 12px;
+  background: var(--bg-card); padding: 0.95rem 1.1rem 1rem; margin-bottom: 1rem; }
+.side h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600; }
+.side .prow { display: flex; gap: 0.8rem; padding: 0.3rem 0;
+  border-bottom: 1px solid var(--border-light); font-size: 0.88rem; }
+.side .prow:last-child { border-bottom: none; }
+.side .prow .pk { flex: 0 0 88px; color: var(--text-muted); font-size: 0.8rem;
+  padding-top: 0.1rem; }
+.side ul.linked li { font-size: 0.86rem; }
+.side details summary { cursor: pointer; color: var(--text-muted);
+  font-size: 0.83rem; margin: 0.3rem 0; }
+.side .allof { display: block; margin-top: 0.5rem; font-size: 0.83rem; }
+.stag { display: inline-block; padding: 0.14rem 0.7rem; border-radius: 999px;
+  font-size: 0.78rem; background: var(--acc); color: #10131c; font-weight: 600;
+  vertical-align: 0.18em; margin-left: 0.55rem; }
+.mapwrap { position: relative; border: 1px solid var(--border-light);
+  border-radius: 14px; background: var(--bg-secondary); padding: 0.6rem;
+  margin: 1rem 0 0.4rem; }
+.mapwrap svg { display: block; width: 100%; height: auto; }
+.land { fill: rgba(255,255,255,0.10); stroke: rgba(255,255,255,0.16);
+  stroke-width: 0.5; }
+.dot { fill: var(--sun-gold); fill-opacity: 0.75; stroke: rgba(0,0,0,0.35);
+  stroke-width: 0.6; }
+a:hover .dot, .dot:hover { fill-opacity: 1; }
+.dot.dim { fill-opacity: 0.15; }
+.mapcap { color: var(--text-muted); font-size: 0.8rem; margin: 0.2rem 0 1rem; }
+.placerows { columns: 3; column-gap: 2rem; margin: 0.6rem 0 1rem; }
+.placerows .fitem { break-inside: avoid; }
+@media (max-width: 900px) {
+  .layout, .cols { grid-template-columns: 1fr; }
+  .placerows { columns: 1; }
+  table.params td:first-child { width: auto; }
+}
 """
 
 COPY_JS = """
@@ -415,16 +512,18 @@ def record_page(path, rec, records, sources, used_by, cluster):
     qualifier = (f" <span class=\"subtitle\">— {esc(name)}</span>"
                  if name and slugify_ish(name) not in what.lower() else "")
     title_text = what
+    acc = SURFACE_ACC.get(surface, "acc-none")
     headline_pairs = [(k, v) for k, v in leaf_pairs(rec.get("parameters", {}))
-                      if not k.startswith("context")][:3]
+                      if not k.startswith("context")
+                      and not (isinstance(v, str) and v.count(" ") > 10)][:4]
     headline = ""
     if headline_pairs and kind == "record":
-        bits = " · ".join(
-            f"<b>{esc(k)}</b> <span class=\"v\">{esc(v)}</span>"
-            for k, v in headline_pairs
-            if not (isinstance(v, str) and v.count(" ") > 10))
-        if bits:
-            headline = f"<div class=\"headline\">{bits}</div>"
+        blocks = "".join(
+            f"<div class=\"hv {acc}\"><span class=\"k\">{esc(k)}</span>"
+            f"<span class=\"v\">{esc(v)}</span></div>"
+            for k, v in headline_pairs)
+        if blocks:
+            headline = f"<div class=\"heroval\">{blocks}</div>"
 
     # clickable facet chips under the title
     chips = []
@@ -444,22 +543,13 @@ def record_page(path, rec, records, sources, used_by, cluster):
         chips.append(chip_link(f"{rel}source/{esc(src_key)}.html", label))
     chip_row = f"<div class=\"pill-row\">{''.join(chips)}</div>"
 
-    meta_rows = []
+    prov_rows = []
 
     def row(k, v):
         if v:
-            meta_rows.append(f"<tr><th>{esc(k)}</th><td>{v}</td></tr>")
+            prov_rows.append(f"<div class=\"prow\"><span class=\"pk\">{esc(k)}"
+                             f"</span><span>{v}</span></div>")
 
-    target = rec.get("target")
-    target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
-                  else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
-                  if target in TARGET_DOC else None)
-    row("Target", f"<code>{esc(target)}</code>"
-        + (f" · <a href=\"{target_doc}\">documentation</a>" if target_doc else ""))
-    if rec.get("attaches_to"):
-        row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>")
-    if rec.get("origin"):
-        row("Origin (verbatim legacy string)", esc(rec["origin"]))
     if src:
         doi = src.get("doi")
         doi_html = (f" · <a href=\"https://doi.org/{esc(doi)}\">doi:{esc(doi)}</a>"
@@ -467,20 +557,39 @@ def record_page(path, rec, records, sources, used_by, cluster):
         row("Source", f"<a href=\"{rel}source/{esc(src_key)}.html\">"
             f"{esc(src.get('author', src_key))} ({esc(src.get('year', '?'))})</a>"
             f"{doi_html}")
+    if rec.get("place"):
+        row("Place", f"<a href=\"{rel}place/{esc(rec['place'])}.html\">"
+            f"{esc(rec['place'])}</a>")
+    row("Scope", esc(rec.get("representativeness")))
+    target = rec.get("target")
+    target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
+                  else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
+                  if target in TARGET_DOC else None)
+    row("Target", f"<code>{esc(target)}</code>"
+        + (f" · <a href=\"{target_doc}\">docs</a>" if target_doc else ""))
+    if rec.get("attaches_to"):
+        row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>")
+    if rec.get("origin"):
+        row("Origin", f"“{esc(rec['origin'])}” (verbatim legacy string)")
     if rec.get("season_label"):
-        row("Season label", esc(rec["season_label"]))
-    row("Schema version", esc(rec.get("schema_version")))
-    row("Legacy row ID", esc(rec.get("legacy_id")))
-    meta = "<table class=\"kv\">" + "".join(meta_rows) + "</table>"
+        row("Season", esc(rec["season_label"]))
+    schema_bits = esc(rec.get("schema_version"))
+    if rec.get("legacy_id"):
+        schema_bits += f" · legacy row {esc(rec['legacy_id'])}"
+    row("Schema", schema_bits)
+    rail = ["<div class=\"side\"><h4>Provenance</h4>"
+            + "".join(prov_rows) + "</div>"]
 
     body = [crumbs,
-            f"<h2>{esc(title_text)}{qualifier} "
-            f"<span class=\"chip\">{kind}</span></h2>",
-            headline, chip_row, meta]
+            f"<h2>{esc(title_text)}{qualifier}"
+            + (f"<span class=\"stag {acc}\">{esc(surface)}</span>" if surface else "")
+            + f" <span class=\"chip\">{kind}</span></h2>",
+            headline, chip_row]
+    main = []
 
     uses = rec.get("uses")
     if uses:
-        body.append("<h3>Uses</h3><table class=\"kv\">")
+        main.append("<h3>Uses</h3><table class=\"kv\">")
 
         def use_rows(u, prefix=""):
             for slot, ref in u.items():
@@ -496,70 +605,81 @@ def record_page(path, rec, records, sources, used_by, cluster):
                                f"{vals_preview(target_rec, 3)}"
                     else:
                         link = esc(ref)
-                    body.append(f"<tr><th>{esc(prefix + slot)}</th><td>{link}</td></tr>")
+                    main.append(f"<tr><th>{esc(prefix + slot)}</th><td>{link}</td></tr>")
 
         use_rows(uses)
-        body.append("</table>")
+        main.append("</table>")
 
     if rec.get("parameters"):
         params = {k: v for k, v in rec["parameters"].items() if k != "context"}
         context = rec["parameters"].get("context")
         if params:
-            body.append("<h3>Parameters</h3>"
+            main.append("<h3>Parameters</h3>"
                         "<p class=\"crumbs\">Names follow the SUEWS YAML "
                         "specification; click one for its definition in the "
                         "configuration reference.</p>")
-            body.append(params_table(params, rec.get("target")))
+            main.append(params_table(params, rec.get("target")))
         if context:
-            body.append("<h3>Context</h3>"
+            main.append("<h3>Context</h3>"
                         "<p class=\"crumbs\">Conditions the set was derived "
                         "under; not model inputs themselves.</p>")
-            body.append(params_table({"context": context}, None, linked=False))
+            main.append(params_table({"context": context}, None, linked=False))
 
     if rec.get("legacy"):
-        body.append("<h3>Legacy values (no home in the current model; "
+        main.append("<h3>Legacy values (no home in the current model; "
                     "kept verbatim under their original column names)</h3>")
-        body.append(params_table(rec["legacy"], None, muted=True, linked=False))
+        main.append(params_table(rec["legacy"], None, muted=True, linked=False))
 
     try:
         frag = assemble(path, records, sources)
         if frag:
-            body.append("<h3>Model-ready fragment</h3>"
+            main.append("<h3>Model-ready fragment</h3>"
                         "<p class=\"crumbs\">Paste under "
                         f"<code>{esc(rec.get('target'))}</code> in a SUEWS YAML "
                         "configuration; every value carries its citation.</p>")
-            body.append("<div class=\"copywrap\"><pre>"
+            main.append("<div class=\"copywrap\"><pre>"
                         + esc(yaml.dump(frag, Dumper=PlainDumper,
                               sort_keys=False, allow_unicode=True, width=80))
                         + "</pre></div>")
     except Exception:
         pass
 
+    def side_list(title, paths_list, cap, tail=""):
+        items = [entry_link(p, records, depth) for p in paths_list]
+        head = "".join(items[:cap])
+        more = ""
+        if len(items) > cap:
+            more = (f"<details><summary>+{len(items) - cap} more</summary>"
+                    f"<ul class=\"linked\">{''.join(items[cap:])}</ul></details>")
+        return (f"<div class=\"side\"><h4>{title}</h4>"
+                f"<ul class=\"linked\">{head}</ul>{more}{tail}</div>")
+
     # connections: used by + same-study siblings
     backlinks = sorted(set(used_by.get(path, [])))
     if backlinks:
-        body.append(f"<h3>Used by {len(backlinks)} archetype"
-                    f"{'s' if len(backlinks) != 1 else ''}</h3><ul class=\"linked\">")
-        body.extend(entry_link(p, records, depth) for p in backlinks)
-        body.append("</ul>")
+        label = "archetype" if kind == "record" else "entry"
+        rail.append(side_list(
+            f"Used by {len(backlinks)} {label}{'s' if len(backlinks) != 1 else ''}",
+            backlinks, 12))
 
     if rec.get("place") and rec.get("source"):
-        sibs = [p for p in cluster.get((rec["place"], rec["source"]), [])
-                if p != path]
+        sibs = sorted(p for p in cluster.get((rec["place"], rec["source"]), [])
+                      if p != path)
         if sibs:
-            body.append(f"<h3>Same study, same place ({len(sibs)})</h3>"
-                        "<p class=\"crumbs\">Other parameter sets from "
-                        f"{esc(src_key)} at {esc(rec['place'])} — values that "
-                        "travelled together.</p><ul class=\"linked\">")
-            body.extend(entry_link(p, records, depth) for p in sorted(sibs))
-            body.append("</ul>")
+            all_link = (f"<a class=\"allof\" href=\"{rel}index.html#place="
+                        f"{esc(rec['place'])}&amp;source={esc(src_key)}\">all "
+                        f"{len(sibs) + 1} sets from {esc(src_key)} at "
+                        f"{esc(rec['place'])} →</a>")
+            rail.append(side_list("Same study, same place", sibs, 8, all_link))
 
-    body.append(
+    rail.append(
         "<div class=\"actions\">"
-        f"<a href=\"{REPO_URL}/blob/main/db/{esc(path)}.yml\">View source on GitHub</a>"
-        f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change (fork &amp; PR)</a>"
+        f"<a href=\"{REPO_URL}/blob/main/db/{esc(path)}.yml\">View source</a>"
+        f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change</a>"
         "</div>"
     )
+    body.append(f"<div class=\"cols\"><div>{''.join(main)}</div>"
+                f"<div>{''.join(rail)}</div></div>")
     return page(title_text, "\n".join(body), depth, COPY_JS)
 
 
@@ -603,6 +723,106 @@ def source_page(key, src, paths, records):
     return page(key, "\n".join(body), 1)
 
 
+# ---------------- the map ----------------
+
+MAP_W, MAP_LAT_TOP, MAP_LAT_BOT = 1000.0, 85.0, -60.0
+MAP_H = round(MAP_W * (MAP_LAT_TOP - MAP_LAT_BOT) / 360.0, 1)
+
+MAP_JS = """
+<script>
+let zone = null;
+document.addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-zone]');
+  if (!b) return;
+  zone = zone === b.dataset.zone ? null : b.dataset.zone;
+  document.querySelectorAll('button[data-zone]').forEach(c =>
+    c.classList.toggle('on', c.dataset.zone === zone));
+  document.querySelectorAll('.dot').forEach(d =>
+    d.classList.toggle('dim', !!zone && d.dataset.koppen !== zone));
+  document.querySelectorAll('.placerows .fitem').forEach(r => {
+    r.style.display = (!zone || r.dataset.koppen === zone) ? '' : 'none';
+  });
+});
+</script>
+"""
+
+KOPPEN_LABEL = {
+    "Af": "tropical rainforest", "Am": "tropical monsoon", "Aw": "savanna",
+    "BSk": "cold semi-arid", "BSh": "hot semi-arid", "BWh": "hot desert",
+    "Cfa": "humid subtropical", "Cfb": "temperate oceanic",
+    "Csa": "hot-summer mediterranean", "Csb": "warm-summer mediterranean",
+    "Dfa": "hot-summer continental", "Dfb": "cold, warm summer",
+    "Dwa": "cold, dry winter", "Dfc": "subarctic",
+}
+
+
+def map_xy(lon, lat):
+    return ((lon + 180.0) / 360.0 * MAP_W,
+            (MAP_LAT_TOP - lat) / (MAP_LAT_TOP - MAP_LAT_BOT) * MAP_H)
+
+
+def build_map_page(places, by_place):
+    """map.html: pick a study place geographically, or by Köppen zone."""
+    land_d = (ROOT / "scripts" / "data" / "ne110m_land.svgpath").read_text().strip()
+
+    import math
+    mapped = []
+    for slug, paths in by_place.items():
+        info = places.get(slug) or {}
+        if "lat" not in info or "lon" not in info:
+            continue
+        mapped.append((len(paths), slug, info))
+    mapped.sort(reverse=True)
+
+    dots, rows = [], []
+    zone_counts = defaultdict(int)
+    for n, slug, info in mapped:
+        x, y = map_xy(info["lon"], info["lat"])
+        r = round(2.2 + 2.1 * math.sqrt(n), 1)
+        kz = info.get("koppen", "")
+        if kz:
+            zone_counts[kz] += n
+        name = info.get("name", slug)
+        dots.append(
+            f"<a href=\"place/{esc(slug)}.html\"><circle class=\"dot\" "
+            f"cx=\"{x:.1f}\" cy=\"{y:.1f}\" r=\"{r}\" data-koppen=\"{esc(kz)}\">"
+            f"<title>{esc(name)} · {n} entries</title></circle></a>")
+        rows.append(
+            f"<a class=\"fitem\" href=\"place/{esc(slug)}.html\" "
+            f"data-koppen=\"{esc(kz)}\"><span class=\"fv\">{esc(name)}"
+            + (f" <span class=\"n\">{esc(kz)}</span>" if kz else "")
+            + f"</span><span class=\"n\">{n}</span></a>")
+    # big dots first so small neighbours stay hoverable on top
+    n_unmapped = len(by_place) - len(mapped)
+
+    zone_chips = "".join(
+        f"<button class=\"chip\" data-zone=\"{esc(z)}\">{esc(z)} · "
+        f"{esc(KOPPEN_LABEL.get(z, ''))}<span class=\"n\">{n}</span></button>"
+        for z, n in sorted(zone_counts.items(), key=lambda kv: -kv[1]))
+
+    body = f"""<div class="hero"><h2>Browse by place</h2>
+<p>Every record is anchored to the place its values were measured or fitted
+for. Pick a study city on the map, or filter by climate zone — dot size is
+the number of entries.</p></div>
+<div class="mapwrap">
+<svg viewBox="0 0 1000 {MAP_H}" role="img" aria-label="World map of study places">
+<path class="land" d="{land_d}"></path>
+{''.join(dots)}
+</svg>
+</div>
+<p class="mapcap">Coordinates come from the place registry
+(<code>db/places.yml</code>); a climate-zone chip highlights its places.</p>
+<h3>By climate zone (Köppen)</h3>
+<div class="pill-row">{zone_chips}</div>
+<h3>Mapped places</h3>
+<div class="placerows">{''.join(rows)}</div>
+<p class="crumbs">{n_unmapped} more places carry entries but no coordinates
+yet — mostly the per-country default sets. Find them through the Place facet
+in the <a href="index.html">browser</a>, or add coordinates to
+<code>db/places.yml</code>.</p>"""
+    return page("Map", body, 0, MAP_JS)
+
+
 # ---------------- the faceted browser ----------------
 
 BROWSER_JS = """
@@ -631,9 +851,15 @@ function matches(e) {
   }
   return true;
 }
-function chipHTML(facet, value, count, on) {
-  return `<button class="chip${on ? ' on' : ''}" data-facet="${facet}" ` +
-         `data-value="${value}">${value}<span class="n">${count}</span></button>`;
+const LC_ORDER = ['paved', 'bldgs', 'evetr', 'dectr', 'grass', 'bsoil', 'water'];
+const ACC = { grass: 'acc-veg', dectr: 'acc-veg', evetr: 'acc-veg',
+              water: 'acc-water', paved: 'acc-built', bldgs: 'acc-built',
+              bsoil: 'acc-soil', snow: 'acc-snow', common: 'acc-none' };
+function itemHTML(facet, value, count, on, swatch) {
+  const sw = swatch ? `<span class="sw ${ACC[value] || 'acc-none'}"></span>` : '';
+  return `<button class="fitem${on ? ' on' : ''}" data-facet="${facet}" ` +
+         `data-value="${value}">${sw}<span class="fv">${value}</span>` +
+         `<span class="n">${count}</span></button>`;
 }
 function render() {
   const hits = DATA.filter(matches);
@@ -646,29 +872,43 @@ function render() {
     const counts = {};
     for (const e of sub) if (e[f]) counts[e[f]] = (counts[e[f]] || 0) + 1;
     const el = document.getElementById('facet-' + f);
+    if (f === 'surface') {
+      // the 7 SUEWS land covers in canonical order, a divider, then
+      // cross-surface entries below it
+      let out = LC_ORDER.filter(v => counts[v])
+        .map(v => itemHTML(f, v, counts[v], state[f] === v, true)).join('');
+      const rest = Object.keys(counts)
+        .filter(v => !LC_ORDER.includes(v)).sort();
+      if (rest.length) {
+        out += '<div class="fdiv"></div>' + rest
+          .map(v => itemHTML(f, v, counts[v], state[f] === v, true)).join('');
+      }
+      el.innerHTML = out;
+      continue;
+    }
     const entries = Object.entries(counts).sort((a, b) => b[1] - a[1]);
-    const shown = f === 'place' || f === 'source' ? entries.slice(0, 24) : entries;
-    el.innerHTML = shown.map(([v, n]) => chipHTML(f, v, n, state[f] === v)).join('');
+    const shown = f === 'place' || f === 'source' ? entries.slice(0, 12) : entries;
+    el.innerHTML = shown.map(([v, n]) => itemHTML(f, v, n, state[f] === v)).join('');
     if (entries.length > shown.length && !state[f]) {
-      el.innerHTML += `<span class="chip" style="cursor:default;opacity:0.5">` +
-                      `+${entries.length - shown.length} more (type to narrow)</span>`;
+      el.innerHTML += `<div class="fmore">+${entries.length - shown.length} ` +
+                      `more — type to narrow</div>`;
     }
   }
   document.getElementById('nres').textContent =
     hits.length + ' of ' + DATA.length + ' entries';
   const out = hits.slice(0, 200).map(e => {
-    const chips = [e.kind, e.surface, e.family, e.place, e.rep]
-      .filter(Boolean)
-      .map(v => `<span class="chip">${v}</span>`).join('');
-    return `<div class="rcard"><div class="t"><a href="${e.path}.html">` +
-           `${e.name}</a></div><div class="meta">${chips}</div>` +
-           `<div class="vals">${e.vals}</div></div>`;
+    const acc = ACC[e.surface] || 'acc-none';
+    const meta = [e.family, e.place, e.rep, e.source].filter(Boolean).join(' · ');
+    const kindTag = e.kind === 'archetype' ? ' <span class="chip">archetype</span>' : '';
+    return `<div class="card2 ${acc}"><div class="t"><a href="${e.path}.html">` +
+           `${e.name}</a>${kindTag}</div><div class="meta2">${meta}</div>` +
+           `<div>${e.vals}</div></div>`;
   }).join('');
   document.getElementById('results').innerHTML = out +
     (hits.length > 200 ? '<div class="crumbs">…narrow the filters to see the rest</div>' : '');
 }
 document.addEventListener('click', ev => {
-  const b = ev.target.closest('button.chip');
+  const b = ev.target.closest('button.fitem');
   if (!b) return;
   const f = b.dataset.facet, v = b.dataset.value;
   state[f] = state[f] === v ? null : v;
@@ -688,34 +928,45 @@ def build_index_page(records, sources, places):
     n_rec = sum(1 for p in records if p.startswith("records/"))
     n_arch = sum(1 for p in records if p.startswith("archetypes/"))
     stats = (
-        "<div class=\"stats\">"
-        f"<div class=\"stat\"><b>{n_rec}</b><span>evidence records</span></div>"
-        f"<div class=\"stat\"><b>{n_arch}</b><span>archetypes</span></div>"
-        f"<div class=\"stat\"><b>{len(sources)}</b><span>cited sources</span></div>"
-        f"<div class=\"stat\"><b>{len(places)}</b><span>places</span></div>"
+        "<div class=\"statline\">"
+        f"<span><b>{n_rec}</b>evidence records</span>"
+        f"<span><b>{n_arch}</b>archetypes</span>"
+        f"<span><b>{len(sources)}</b>sources</span>"
+        f"<span><b>{len(places)}</b>places</span>"
         "</div>"
     )
-    intro = (
-        "<p>Curated parameter values for "
+    hero = (
+        "<div class=\"hero\"><h2>Find a parameter value you can cite</h2>"
+        "<p>Curated values for "
         "<a href=\"https://github.com/UMEP-dev/SUEWS\">SUEWS</a>: one "
         "source-coherent set per record, named by the model's own parameter "
-        "paths, a citation on every value. Every record exports as a fragment "
-        "that pastes straight into a SUEWS YAML configuration. Contribute via "
-        f"the <a href=\"{REPO_URL}/blob/main/docs/FORMAT.md\">format guide</a> "
-        "— one small YAML file in a pull request.</p>"
+        "paths. Every record exports as a fragment that pastes straight into "
+        "a SUEWS YAML configuration — with the citation attached to every "
+        "value. Contribute via the "
+        f"<a href=\"{REPO_URL}/blob/main/docs/FORMAT.md\">format guide</a> "
+        "— one small YAML file in a pull request.</p></div>"
     )
-    facets = "".join(
-        f"<div class=\"facet-group\"><span class=\"fl\">{label}</span>"
-        f"<span class=\"facet-body\" id=\"facet-{fid}\"></span></div>"
-        for fid, label in (("kind", "Kind"), ("surface", "Surface"),
-                           ("family", "Family"), ("place", "Place"),
-                           ("rep", "Scope"), ("source", "Source"))
-    )
-    body = (intro + stats
+
+    def fgroup(fid, label, tail=""):
+        return (f"<div class=\"fgroup\"><h4>{label}</h4>"
+                f"<div id=\"facet-{fid}\"></div>{tail}</div>")
+
+    rail = ("<div class=\"rail\">"
+            + fgroup("kind", "Kind")
+            + fgroup("surface", "Land cover")
+            + fgroup("family", "Family")
+            + fgroup("place", "Place",
+                     "<a class=\"maplink\" href=\"map.html\">pick on a map →</a>")
+            + fgroup("rep", "Scope")
+            + fgroup("source", "Source")
+            + "</div>")
+    body = (hero
             + "<input id=\"q\" class=\"search\" type=\"search\" "
               "placeholder=\"Search: parameter name, place, source, value...\">"
-            + facets
-            + "<div id=\"nres\"></div><div id=\"results\" class=\"results\"></div>")
+            + stats
+            + f"<div class=\"layout\">{rail}<div>"
+            + "<div id=\"nres\"></div><div id=\"results\" class=\"results2\"></div>"
+            + "</div></div>")
     return page("Browse", body, 0, BROWSER_JS)
 
 
@@ -727,8 +978,15 @@ def build_search_index(records, sources):
         surface = surface_of(path, rec)
         pairs = [(k, v) for k, v in leaf_pairs(rec.get("parameters", {}))
                  if not k.startswith("context")]
-        vals = " · ".join(f"<b>{html.escape(str(k))}</b> {html.escape(str(v))}"
-                          for k, v in pairs[:5])
+
+        def pv(k, v):
+            s = str(v)
+            if len(s) > 26:
+                s = s[:24] + "…"
+            return (f"<span class=\"pv\">{html.escape(str(k))} "
+                    f"<b>{html.escape(s)}</b></span>")
+
+        vals = "".join(pv(k, v) for k, v in pairs[:5])
         src = sources.get(rec.get("source"), {})
         text = " ".join(str(x).lower() for x in [
             path, rec.get("name"), rec.get("place"), rec.get("origin"),
@@ -786,6 +1044,7 @@ def main():
     (out / "data" / "index.json").write_text(
         json.dumps(build_search_index(records, sources), ensure_ascii=False))
     (out / "index.html").write_text(build_index_page(records, sources, places))
+    (out / "map.html").write_text(build_map_page(places, by_place))
     (out / ".nojekyll").write_text("")
     print(f"site: {len(records)} entry pages, {len(by_place)} place pages, "
           f"{len(by_source)} source pages -> {out}")

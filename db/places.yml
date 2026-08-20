@@ -4,6 +4,9 @@
 places:
   aberdeen:
     name: Aberdeen
+    lat: 57.15
+    lon: -2.09
+    koppen: Cfb
   afghanistan:
     kind: country
     name: Afghanistan
@@ -60,13 +63,22 @@ places:
     name: Barbados
   basel:
     name: Basel
+    lat: 47.56
+    lon: 7.59
+    koppen: Cfb
   beijing:
     name: Beijing
+    lat: 39.9
+    lon: 116.41
+    koppen: Dwa
   belarus:
     kind: country
     name: Belarus
   belfast:
     name: Belfast
+    lat: 54.6
+    lon: -5.93
+    koppen: Cfb
   belgium:
     kind: country
     name: Belgium
@@ -84,6 +96,9 @@ places:
     name: Bhutan
   birmingham:
     name: Birmingham
+    lat: 52.48
+    lon: -1.9
+    koppen: Cfb
   bolivia:
     kind: country
     name: Bolivia
@@ -125,6 +140,9 @@ places:
     name: Cape Verde
   cardiff:
     name: Cardiff
+    lat: 51.48
+    lon: -3.18
+    koppen: Cfb
   cayman-islands:
     kind: country
     name: Cayman Islands
@@ -190,6 +208,9 @@ places:
     name: Ecuador
   edinburgh:
     name: Edinburgh
+    lat: 55.95
+    lon: -3.19
+    koppen: Cfb
   egypt:
     kind: country
     name: Egypt
@@ -254,6 +275,9 @@ places:
     name: Gibraltar
   gothenburg:
     name: Gothenburg
+    lat: 57.71
+    lon: 11.97
+    koppen: Cfb
   greece:
     kind: country
     name: Greece
@@ -289,6 +313,9 @@ places:
     name: Haiti
   helsinki:
     name: Helsinki
+    lat: 60.17
+    lon: 24.94
+    koppen: Dfb
   honduras:
     kind: country
     name: Honduras
@@ -375,6 +402,9 @@ places:
     name: Lesotho
   lethbridge:
     name: Lethbridge
+    lat: 49.69
+    lon: -112.83
+    koppen: BSk
   liberia:
     kind: country
     name: Liberia
@@ -389,10 +419,19 @@ places:
     name: Lithuania
   lodz:
     name: Lodz
+    lat: 51.76
+    lon: 19.46
+    koppen: Dfb
   london:
     name: London
+    lat: 51.51
+    lon: -0.13
+    koppen: Cfb
   los-angeles:
     name: Los Angeles
+    lat: 34.05
+    lon: -118.24
+    koppen: Csa
   luxembourg:
     kind: country
     name: Luxembourg
@@ -422,6 +461,9 @@ places:
     name: Malta
   manchester:
     name: Manchester
+    lat: 53.48
+    lon: -2.24
+    koppen: Cfb
   marshall-islands:
     kind: country
     name: Marshall Islands
@@ -442,6 +484,8 @@ places:
     name: Mexico
   midwest-usa:
     name: Midwest Usa
+    lat: 41.5
+    lon: -93.5
   monaco:
     kind: country
     name: Monaco
@@ -465,6 +509,9 @@ places:
     name: Namibia
   nanjing:
     name: Nanjing
+    lat: 32.06
+    lon: 118.8
+    koppen: Cfa
   nauru:
     kind: country
     name: Nauru
@@ -482,11 +529,17 @@ places:
     name: New Caledonia
   new-york:
     name: New York
+    lat: 40.71
+    lon: -74.01
+    koppen: Cfa
   new-zealand:
     kind: country
     name: New Zealand
   newcastle:
     name: Newcastle
+    lat: 54.98
+    lon: -1.61
+    koppen: Cfb
   nicaragua:
     kind: country
     name: Nicaragua
@@ -540,6 +593,9 @@ places:
     name: Pitcairn
   plymouth:
     name: Plymouth
+    lat: 50.38
+    lon: -4.14
+    koppen: Cfb
   poland:
     kind: country
     name: Poland
@@ -593,6 +649,9 @@ places:
     name: Saudi Arabia
   se-england:
     name: Se England
+    lat: 51.2
+    lon: -0.8
+    koppen: Cfb
   senegal:
     kind: country
     name: Senegal
@@ -604,6 +663,9 @@ places:
     name: Seychelles
   shanghai:
     name: Shanghai
+    lat: 31.23
+    lon: 121.47
+    koppen: Cfa
   sierra-leone:
     kind: country
     name: Sierra Leone
@@ -633,6 +695,9 @@ places:
     name: Sri Lanka
   stockholm:
     name: Stockholm
+    lat: 59.33
+    lon: 18.07
+    koppen: Dfb
   sudan:
     kind: country
     name: Sudan
@@ -647,8 +712,13 @@ places:
     name: Swaziland
   sweden:
     name: Sweden
+    lat: 62.0
+    lon: 15.0
   swindon:
     name: Swindon
+    lat: 51.56
+    lon: -1.78
+    koppen: Cfb
   switzerland:
     kind: country
     name: Switzerland
@@ -672,6 +742,9 @@ places:
     name: Tokelau* qpp
   tokyo:
     name: Tokyo
+    lat: 35.68
+    lon: 139.69
+    koppen: Cfa
   tonga:
     kind: country
     name: Tonga
@@ -700,6 +773,8 @@ places:
     name: Uganda
   uk:
     name: Uk
+    lat: 52.5
+    lon: -1.5
   ukraine:
     kind: country
     name: Ukraine
@@ -726,6 +801,9 @@ places:
     name: Uzbekistan
   vancouver:
     name: Vancouver
+    lat: 49.28
+    lon: -123.12
+    koppen: Cfb
   vanuatu:
     kind: country
     name: Vanuatu
@@ -740,6 +818,9 @@ places:
     name: Wallis and Futuna* qpp
   weishan:
     name: Weishan
+    lat: 36.65
+    lon: 116.05
+    koppen: Dwa
   western-samoa:
     kind: country
     name: Western Samoa
@@ -751,3 +832,6 @@ places:
     name: Zambia
   zurich:
     name: Zurich
+    lat: 47.37
+    lon: 8.54
+    koppen: Cfb
