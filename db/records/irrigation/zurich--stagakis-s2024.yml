@@ -12,7 +12,6 @@ parameters:
   ie_end: 366
   internalwateruse_h: 0
   faut: 0
-  h_maintain: -999
   daywat:
     sunday: 0
     monday: 0
@@ -30,6 +29,7 @@ parameters:
     friday: 0
     saturday: 0
 legacy:
+  H_maintain: -999
   Ie_a1: 0
   Ie_a2: 0
   Ie_a3: 0

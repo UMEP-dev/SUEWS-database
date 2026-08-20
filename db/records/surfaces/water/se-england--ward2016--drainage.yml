@@ -8,8 +8,8 @@ representativeness: regional
 source: ward2016
 legacy_id: 45240047
 parameters:
-  storage_drain_params:
-    drain_eq: -999
-    drain_coef_1: -999
-    drain_coef_2: -999
   wet_threshold: 0.5
+legacy:
+  DrainageEq: -999
+  DrainageCoef1: -999
+  DrainageCoef2: -999

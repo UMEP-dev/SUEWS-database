@@ -30,7 +30,6 @@ parameters:
       working_day: 2.7
       holiday: 2.7
     baset_heating:
-      working_day: -999
       holiday: 7
     baset_cooling:
       working_day: 7
@@ -51,4 +50,5 @@ parameters:
     trafficunits: 1
 legacy:
   BaseT_HC: 18.2
+  TCritic_Heating_WD: -999
   FrPDDwe: 1

@@ -7,8 +7,10 @@ name: When not used
 source: ward2016
 legacy_id:
 - 60240014
-parameters:
+parameters: {}
+legacy:
   working_day:
+    0: -999
     1: -999
     2: -999
     3: -999
@@ -32,4 +34,3 @@ parameters:
     21: -999
     22: -999
     23: -999
-    24: -999

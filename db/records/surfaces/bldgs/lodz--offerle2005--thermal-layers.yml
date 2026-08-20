@@ -13,21 +13,21 @@ parameters:
     - 0.03
     - 0.12
     - 0.05
-    - -999
-    - -999
     k:
     - 0.74
     - 0.93
     - 0.06
-    - -999
-    - -999
     rho_cp:
     - 1900000
     - 1500000
     - 70000
-    - -999
-    - -999
 legacy:
+  Surf_thick4: -999
+  Surf_k4: -999
+  Surf_rhoCp4: -999
+  Surf_thick5: -999
+  Surf_k5: -999
+  Surf_rhoCp5: -999
   Wall_thick1: 0.1
   Wall_k1: 0.95
   Wall_rhoCp1: 1600000

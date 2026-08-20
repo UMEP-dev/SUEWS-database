@@ -10,19 +10,18 @@ source: unreferenced
 uses:
   albedo: records/snow/helsinki--jarvi2014--albedo
   emissivity: records/snow/helsinki--jarvi2014--emissivity
-parameters:
-  radiation_melt_factor: -999
-  temperature_melt_factor: -999
-  tau_cold_snow: -999
-  tau_melting_snow: -999
-  precipitation_threshold_albedo_reset: -999
-  snow_density_min: -999
-  snow_density_max: -999
-  tau_refreezing_snow: -999
-  water_holding_capacity_min: -999
-  water_holding_capacity_max: -999
-  temperature_rain_snow_threshold: -999
 legacy:
+  RadMeltFactor: -999
+  TempMeltFactor: -999
+  tau_a: -999
+  tau_f: -999
+  PrecipLimAlb: -999
+  SnowDensMin: -999
+  SnowDensMax: -999
+  tau_r: -999
+  CRWMin: -999
+  CRWMax: -999
+  PrecipLimSnow: -999
   OHMSummerWet: 50240016
   OHMSummerDry: 50240016
   OHMWinterWet: 50240016

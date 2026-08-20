@@ -73,6 +73,11 @@ def is_missing(v):
     return v is None or (isinstance(v, str) and v.strip().lower() in ("", "nan", "none"))
 
 
+def is_sentinel(v):
+    """-999 is the classic SUEWS missing-value marker, never a real value."""
+    return isinstance(v, (int, float)) and v == -999
+
+
 class Migration:
     def __init__(self):
         self.origins_map = yaml.safe_load((SCHEMA / "origins_map.yml").read_text())["origins"]
@@ -269,7 +274,7 @@ class Migration:
                 if col in envelope_cols or is_missing(val):
                     continue
                 dest = colmap_fn(col, surface, row)
-                if dest is None:
+                if dest is None or is_sentinel(val):
                     legacy[col] = val
                 else:
                     self.set_path(params, dest, val)
@@ -336,7 +341,10 @@ class Migration:
         for rid in sorted(self.tables[sheet]):
             row = self.tables[sheet][rid]
             surface = SURFACE_NAMES.get(row.get("Surface"), "common")
-            params = {k: row[k] for k in ("a1", "a2", "a3") if not is_missing(row.get(k))}
+            params = {
+                k: row[k] for k in ("a1", "a2", "a3")
+                if not is_missing(row.get(k)) and not is_sentinel(row.get(k))
+            }
             extra = {}
             if not is_missing(row.get("Season")):
                 extra["season_label"] = row["Season"]
@@ -428,19 +436,40 @@ class Migration:
             dz, k, rho = [], [], []
             for i in range(1, 6):
                 t, kk, rc = row.get(f"Surf_thick{i}"), row.get(f"Surf_k{i}"), row.get(f"Surf_rhoCp{i}")
-                if not (is_missing(t) and is_missing(kk) and is_missing(rc)):
-                    dz.append(t)
-                    k.append(kk)
-                    rho.append(rc)
-            if dz:
+                # -999 layer cells are placeholders: keep them under legacy
+                # and leave a None gap in the array (supy allows nulls)
+                triple = []
+                for col, v in ((f"Surf_thick{i}", t), (f"Surf_k{i}", kk), (f"Surf_rhoCp{i}", rc)):
+                    if is_sentinel(v):
+                        legacy[col] = v
+                        triple.append(None)
+                    else:
+                        triple.append(None if is_missing(v) else v)
+                if any(x is not None for x in triple):
+                    dz.append(triple[0])
+                    k.append(triple[1])
+                    rho.append(triple[2])
+            if dz and surface != "snow":
                 params["thermal_layers"] = {"dz": dz, "k": k, "rho_cp": rho}
+            elif dz:
+                # supy's SnowParams has no thermal-layer fields: keep the snow
+                # row's layer set verbatim under legacy
+                for i in range(1, 6):
+                    for col in (f"Surf_thick{i}", f"Surf_k{i}", f"Surf_rhoCp{i}"):
+                        if not is_missing(row.get(col)) and col not in legacy:
+                            legacy[col] = row[col]
             for col, val in row.items():
                 if col in envelope_cols or is_missing(val) or col.startswith("Surf_"):
                     continue
                 legacy[col] = val
+            if surface == "snow":
+                directory, target = "records/snow", "snow"
+            elif surface == "common":
+                directory, target = "records/surfaces/common", "land_cover.common"
+            else:
+                directory, target = f"records/surfaces/{surface}", f"land_cover.{surface}"
             self.add_record(
-                f"records/surfaces/{surface}", rid, row,
-                f"land_cover.{surface}" if surface != "common" else "land_cover.common",
+                directory, rid, row, target,
                 params, legacy or None, slug_hint="thermal-layers",
             )
             self.count(sheet, row, params, legacy, envelope_cols)
@@ -624,16 +653,27 @@ class Migration:
                 subdir = f"records/profiles/{kind_slug}"
                 slug = None
             params = {}
+            legacy_sides = {}
             hours_counted = 0
+            legacy_hours_counted = 0
             for side, rid in sorted(sides.items()):
                 row = rows[rid]
-                prof = {}
+                prof, sentinels = {}, {}
                 for h in range(24):
                     v = row.get(h)
-                    if not is_missing(v):
+                    if is_missing(v):
+                        continue
+                    if is_sentinel(v):
+                        # -999 placeholder hours stay under legacy
+                        sentinels[h] = v
+                    else:
                         prof[h + 1] = v
                         hours_counted += 1
-                params[side] = prof
+                if prof:
+                    params[side] = prof
+                if sentinels:
+                    legacy_sides[side] = sentinels
+                    legacy_hours_counted += len(sentinels)
             source = self.source_key(row0.get("Ref"))
             base = slug or f"{place or 'generic'}--{source}"
             if city == "LUCY":
@@ -670,11 +710,14 @@ class Migration:
             self.attach_dangling(rec, row0.get("Ref"))
             rec["legacy_id"] = sorted(sides.values())
             rec["parameters"] = params
+            if legacy_sides:
+                rec["legacy"] = legacy_sides
             self.records[path] = rec
             for rid in sides.values():
                 self.id_to_record[rid] = path
                 self.count(sheet, rows[rid], {}, {}, envelope_cols)
             self.census[sheet]["cells_mapped"] += hours_counted
+            self.census[sheet]["cells_legacy"] += legacy_hours_counted
 
     # ---------------- archetype handlers ----------------
 
@@ -807,7 +850,7 @@ class Migration:
                     continue
                 if col in pointer_cols:
                     uses[pointer_cols[col]] = self.resolve(val, f"Snow {rid} {col}")
-                elif col in colmap:
+                elif col in colmap and not is_sentinel(val):
                     params[colmap[col]] = val
                 else:
                     legacy[col] = val
@@ -880,7 +923,7 @@ class Migration:
                         surfaces[surface_slots[col]] = self.resolve(val, f"{sheet} {rid} {col}")
                     elif col in other_slots:
                         uses[other_slots[col]] = self.resolve(val, f"{sheet} {rid} {col}")
-                    elif col in scalar_map:
+                    elif col in scalar_map and not is_sentinel(val):
                         self.set_path(params, scalar_map[col], val)
                     else:
                         legacy[col] = val

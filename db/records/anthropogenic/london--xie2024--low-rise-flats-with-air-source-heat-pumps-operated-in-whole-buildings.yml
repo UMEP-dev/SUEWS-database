@@ -20,15 +20,6 @@ parameters:
     qf_c:
       working_day: 0.0004
       holiday: 0.0004
-    ah_min:
-      working_day: -999
-      holiday: -999
-    ah_slope_heating:
-      working_day: -999
-      holiday: -999
-    ah_slope_cooling:
-      working_day: -999
-      holiday: -999
     baset_heating:
       working_day: 18.4
       holiday: 18.4
@@ -51,4 +42,10 @@ parameters:
     trafficunits: 1
 legacy:
   BaseT_HC: -999
+  AHMin_WD: -999
+  AHMin_WE: -999
+  AHSlope_Heating_WD: -999
+  AHSlope_Heating_WE: -999
+  AHSlope_Cooling_WD: -999
+  AHSlope_Cooling_WE: -999
   FrPDDwe: 1

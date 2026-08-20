@@ -23,14 +23,14 @@ tables:
     rows: 32
     cells_in: 1088
     cells_envelope: 96
-    cells_mapped: 928
-    cells_legacy: 64
+    cells_mapped: 671
+    cells_legacy: 321
   Biogen CO2:
     rows: 18
     cells_in: 216
     cells_envelope: 72
-    cells_mapped: 144
-    cells_legacy: 0
+    cells_mapped: 104
+    cells_legacy: 40
   Conductance:
     rows: 3
     cells_in: 45
@@ -48,14 +48,14 @@ tables:
     rows: 18
     cells_in: 144
     cells_envelope: 72
-    cells_mapped: 72
-    cells_legacy: 0
+    cells_mapped: 69
+    cells_legacy: 3
   ESTM:
     rows: 13
     cells_in: 712
     cells_envelope: 49
-    cells_mapped: 195
-    cells_legacy: 468
+    cells_mapped: 132
+    cells_legacy: 531
   Emissivity:
     rows: 22
     cells_in: 110
@@ -66,8 +66,8 @@ tables:
     rows: 5
     cells_in: 140
     cells_envelope: 15
-    cells_mapped: 95
-    cells_legacy: 30
+    cells_mapped: 90
+    cells_legacy: 35
   Leaf Area Index:
     rows: 13
     cells_in: 91
@@ -103,14 +103,14 @@ tables:
     rows: 3
     cells_in: 18
     cells_envelope: 12
-    cells_mapped: 6
-    cells_legacy: 0
+    cells_mapped: 2
+    cells_legacy: 4
   Profiles:
     rows: 947
     cells_in: 28406
     cells_envelope: 5678
-    cells_mapped: 22728
-    cells_legacy: 0
+    cells_mapped: 22680
+    cells_legacy: 48
   References:
     rows: 67
     cells_in: 384
@@ -127,8 +127,8 @@ tables:
     rows: 3
     cells_in: 66
     cells_envelope: 9
-    cells_mapped: 33
-    cells_legacy: 18
+    cells_mapped: 22
+    cells_legacy: 29
     cells_pointers: 6
   SnowLimPatch:
     rows: 6
@@ -140,8 +140,8 @@ tables:
     rows: 13
     cells_in: 152
     cells_envelope: 48
-    cells_mapped: 91
-    cells_legacy: 13
+    cells_mapped: 47
+    cells_legacy: 57
   Spartacus Material:
     rows: 62
     cells_in: 516
@@ -196,8 +196,8 @@ tables:
 totals:
   rows: 1696
   cells_in: 37461
-  cells_legacy: 668
-  cells_mapped: 25847
+  cells_legacy: 1143
+  cells_mapped: 25372
   cells_envelope: 7817
   cells_pointers: 3129
 flags:

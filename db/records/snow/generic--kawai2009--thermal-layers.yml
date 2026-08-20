@@ -1,30 +1,26 @@
-record: records/surfaces/snow/generic--kawai2009--thermal-layers
+record: records/snow/generic--kawai2009--thermal-layers
 schema_version: '2026.5'
-target: land_cover.snow
+target: snow
 name: Snow
 source: kawai2009
 legacy_id: 52240019
-parameters:
-  thermal_layers:
-    dz:
-    - 1.1
-    - 1.1
-    - 1.1
-    - 1.1
-    - -999
-    k:
-    - 0.602
-    - 0.602
-    - 0.602
-    - 0.602
-    - -999
-    rho_cp:
-    - 4170000
-    - 4170000
-    - 4170000
-    - 4170000
-    - -999
+parameters: {}
 legacy:
+  Surf_thick5: -999
+  Surf_k5: -999
+  Surf_rhoCp5: -999
+  Surf_thick1: 1.1
+  Surf_k1: 0.602
+  Surf_rhoCp1: 4170000
+  Surf_thick2: 1.1
+  Surf_k2: 0.602
+  Surf_rhoCp2: 4170000
+  Surf_thick3: 1.1
+  Surf_k3: 0.602
+  Surf_rhoCp3: 4170000
+  Surf_thick4: 1.1
+  Surf_k4: 0.602
+  Surf_rhoCp4: 4170000
   Wall_thick1: -999
   Wall_k1: -999
   Wall_rhoCp1: -999

@@ -12,9 +12,8 @@ parameters:
   soil_store_capacity: 229
   saturated_hydraulic_conductivity: 0.0005
   soil_density: 1.16
-  soil_observation:
-    depth: -999
-    smcap: -999
-    soil_not_rocks: -999
 legacy:
   InfiltrationRate: 10
+  OBS_SMDepth: -999
+  OBS_SMCap: -999
+  OBS_SoilNotRocks: -999
