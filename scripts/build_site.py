@@ -174,7 +174,8 @@ h2, h3 { text-wrap: balance; }
 p { text-wrap: pretty; }
 .wrap { max-width: 1160px; margin: 0 auto; padding: 1.6rem 1.25rem 4rem; }
 header.site { border-bottom: 1px solid var(--border-light); background: var(--bg-secondary); }
-header.site .wrap { display: flex; align-items: baseline; gap: 1rem; padding: 1rem 1.25rem; }
+header.site .wrap { display: flex; align-items: baseline; gap: 0.35rem 1rem;
+  padding: 1rem 1.25rem; flex-wrap: wrap; }
 header.site h1 { font-size: 1.1rem; margin: 0; white-space: nowrap; }
 header.site h1 a { color: var(--text-primary); }
 header.site .sub { color: var(--text-muted); font-size: 0.85rem; }
@@ -201,11 +202,12 @@ input.search:focus { outline: 2px solid var(--sun-gold); border-color: transpare
 .vals b { color: var(--water-blue-light); font-weight: 500; }
 table.kv { border-collapse: collapse; width: 100%; margin: 0.6rem 0 1rem; }
 table.kv td, table.kv th { text-align: left; padding: 0.4rem 0.75rem;
+  overflow-wrap: anywhere;
   border-bottom: 1px solid var(--border-light); font-size: 0.92rem; vertical-align: top; }
 table.kv th { color: var(--text-muted); font-weight: 500; width: 220px; }
 code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 code { background: var(--bg-card); padding: 0.1rem 0.35rem; border-radius: 5px;
-  font-size: 0.88em; }
+  font-size: 0.88em; overflow-wrap: anywhere; }
 pre { background: var(--bg-secondary); border: 1px solid var(--border-light);
   border-radius: 10px; padding: 1rem 1.2rem; overflow-x: auto; font-size: 0.84rem;
   line-height: 1.5; }
@@ -322,6 +324,7 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .side .prow:last-child { border-bottom: none; }
 .side .prow .pk { flex: 0 0 88px; color: var(--text-muted); font-size: 0.8rem;
   padding-top: 0.1rem; }
+.side .prow > span:last-child { min-width: 0; overflow-wrap: anywhere; }
 .side ul.linked li { font-size: 0.86rem; }
 .side details summary { cursor: pointer; color: var(--text-muted);
   font-size: 0.83rem; margin: 0.3rem 0; }
@@ -375,7 +378,102 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
   .card2 { transition: none; }
   .card2:hover { transform: none; }
 }
+
+/* --- arrival: two doors ------------------------------------------------ */
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem;
+  margin: 1.3rem 0 1rem; align-items: stretch; }
+.door { border: 1px solid var(--border-light); border-radius: 14px;
+  background: var(--bg-card); padding: 1.15rem 1.25rem 1.3rem; }
+.dlab { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-muted); font-weight: 600; margin: 0 0 0.65rem; }
+.door input.search { margin: 0 0 0.55rem; }
+.tahead { border: 1px solid var(--border-medium); border-radius: 10px;
+  background: var(--bg-secondary); overflow: hidden; margin-bottom: 0.6rem; }
+.tahead a { display: flex; justify-content: space-between; gap: 1rem;
+  padding: 0.42rem 0.8rem; color: var(--text-primary); font-size: 0.88rem;
+  border-bottom: 1px solid var(--border-light); }
+.tahead a:last-child { border-bottom: 0; }
+.tahead a:hover { background: var(--bg-card-hover); text-decoration: none; }
+.tahead .k { color: var(--text-muted); font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.45rem; }
+.famgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.3rem; }
+a.grow { display: flex; justify-content: space-between; gap: 0.8rem;
+  padding: 0.24rem 0; font-size: 0.88rem; color: var(--text-secondary);
+  border-bottom: 1px solid rgba(255,255,255,0.04); }
+a.grow:hover { color: var(--text-primary); text-decoration: none; }
+a.grow .n { flex: 0 0 auto; }
+.mapbox { border: 1px solid var(--border-light); border-radius: 10px;
+  background: #0c0e16; padding: 0.4rem; }
+.mapbox svg { width: 100%; height: auto; display: block; }
+.geocols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  margin-top: 1rem; }
+.gscroll { max-height: 186px; overflow-y: auto; padding-right: 0.3rem;
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 22px), transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 22px),
+    transparent); }
+.tband { display: grid; grid-template-columns: 168px repeat(auto-fit,
+  minmax(132px, 1fr)); gap: 0.6rem; align-items: stretch; margin: 0 0 1.3rem; }
+.tlead { display: flex; align-items: center; font-size: 0.82rem;
+  color: var(--text-muted); }
+.invstrip { display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border-light); border-radius: 14px; overflow: hidden;
+  margin-bottom: 2rem; }
+.icell { display: block; padding: 1rem 1.15rem; color: var(--text-secondary);
+  border-right: 1px solid var(--border-light); }
+.icell:last-child { border-right: 0; }
+.icell:hover { background: var(--bg-card-hover); text-decoration: none; }
+.icell b { display: block; font-size: 1.65rem; color: var(--sun-gold);
+  font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.icell span { font-size: 0.82rem; }
+.icell.quiet b { color: var(--text-secondary); }
+/* coverage matrix: what the database holds, and where it does not */
+.matrixwrap { overflow-x: auto; border: 1px solid var(--border-light);
+  border-radius: 12px; }
+table.matrix { border-collapse: separate; border-spacing: 0; width: 100%;
+  font-size: 0.8rem; font-variant-numeric: tabular-nums; table-layout: fixed;
+  min-width: 720px; }
+table.matrix th { font-weight: 500; color: var(--text-muted); text-align: left;
+  padding: 0.5rem 0.6rem; white-space: nowrap; line-height: 1.35;
+  border-bottom: 1px solid var(--border-light); background: var(--bg-secondary);
+  position: sticky; top: 0; z-index: 2; font-size: 0.74rem; }
+table.matrix thead th:not(.corner) { white-space: normal; width: 68px;
+  padding: 0.45rem 0.4rem; }
+table.matrix thead th.corner { left: 0; z-index: 3; text-transform: uppercase;
+  letter-spacing: 0.05em; }
+table.matrix tbody th { position: sticky; left: 0; z-index: 1; top: auto;
+  background: var(--bg-primary); color: var(--text-secondary); font-size: 0.8rem;
+  border-right: 1px solid var(--border-light); }
+table.matrix tbody th a { color: inherit; display: inline-block;
+  max-width: calc(100% - 2.6rem); overflow: hidden; text-overflow: ellipsis;
+  white-space: nowrap; vertical-align: bottom; }
+.rn { float: right; color: var(--text-muted); font-size: 0.74rem;
+  font-variant-numeric: tabular-nums; }
+table.matrix td { padding: 0; text-align: center; height: 27px;
+  border-bottom: 1px solid rgba(255,255,255,0.045);
+  border-right: 1px solid rgba(255,255,255,0.045); }
+table.matrix td a { display: block; padding: 0.42rem 0.3rem; font-weight: 600; }
+table.matrix td a:hover { text-decoration: none;
+  outline: 1px solid var(--sun-gold); outline-offset: -1px; }
+table.matrix td.mt { background: repeating-linear-gradient(135deg,
+  transparent 0 5px, rgba(255,255,255,0.035) 5px 6px); }
+.mcap { color: var(--text-muted); font-size: 0.82rem; margin: 0.6rem 0 1.8rem; }
+.lowcards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.lcard { border: 1px solid var(--border-light); border-radius: 12px;
+  padding: 0.9rem 1.1rem; background: var(--bg-card);
+  color: var(--text-secondary); }
+.lcard:hover { background: var(--bg-card-hover); text-decoration: none;
+  border-color: var(--border-medium); }
+.lcard b { display: block; color: var(--text-primary); margin-bottom: 0.2rem;
+  font-size: 0.95rem; }
+.lcard span { font-size: 0.85rem; }
+a.backdoors { display: inline-block; margin: 0.2rem 0 0.7rem;
+  font-size: 0.85rem; }
 @media (max-width: 900px) {
+  .doors, .lowcards { grid-template-columns: 1fr; }
+  .geocols, .famgrid { grid-template-columns: 1fr; }
+  .invstrip { grid-template-columns: 1fr 1fr; }
+  .icell { border-bottom: 1px solid var(--border-light); }
+  .tband { grid-template-columns: 1fr 1fr; }
   .layout, .cols { grid-template-columns: 1fr; }
   .layout > .rail { order: 2; }
   .placerows { columns: 1; }
@@ -1053,9 +1151,10 @@ function render() {
   document.querySelectorAll('details.fgroup').forEach(d => {
     if (state[d.dataset.facet]) d.open = true;
   });
-  const overview = document.getElementById('overview');
+  // arrival (the two doors) and the results view are the page's two states
   const showOverview = emptyState();
-  if (overview) overview.classList.toggle('hidden', !showOverview);
+  document.getElementById('arrival').classList.toggle('hidden', !showOverview);
+  document.getElementById('browse').classList.toggle('hidden', showOverview);
   // every active filter gets a visible, dismissible chip — including the
   // hidden place key record-page links arrive with
   const af = document.getElementById('afilters');
@@ -1111,11 +1210,14 @@ function clearAll() {
   state.q = ''; state.all = false;
   for (const f of KEYS) state[f] = null;
   document.getElementById('q').value = '';
+  pq.value = ''; ta.classList.add('hidden'); ta.innerHTML = '';
   writeHash(); render();
 }
 document.addEventListener('click', ev => {
   const c = ev.target.closest('a.doclear');
   if (c) { ev.preventDefault(); clearAll(); return; }
+  const ds = ev.target.closest('a.dosearch');
+  if (ds) { ev.preventDefault(); runSearch(); return; }
   const ax = ev.target.closest('button.afx');
   if (ax) { state[ax.dataset.key] = null; writeHash(); render(); return; }
   const b = ev.target.closest('button.fitem');
@@ -1134,6 +1236,51 @@ document.addEventListener('input', ev => {
   ffind[ff.dataset.facet] = ff.value;
   render();
 });
+const pq = document.getElementById('pq');
+const ta = document.getElementById('ta');
+let FAMS = [];
+function typeahead() {
+  const raw = pq.value.trim();
+  if (!raw) { ta.classList.add('hidden'); ta.innerHTML = ''; return; }
+  ta.classList.remove('hidden');
+  if (!DATA.length) {
+    ta.innerHTML = '<a><span class="k">wait</span>the index is still loading…</a>';
+    return;
+  }
+  const t = raw.toLowerCase();
+  const toks = t.split(/\\s+/).filter(Boolean);
+  const out = [];
+  for (const f of FAMS) {
+    if (out.length >= 4) break;
+    if (f.toLowerCase().includes(t)) {
+      const n = DATA.filter(e => e.family === f).length;
+      out.push(`<a href="#family=${encodeURIComponent(f)}">` +
+        `<span><span class="k">family</span>${f}</span>` +
+        `<span class="n">${n} records</span></a>`);
+    }
+  }
+  for (const e of DATA) {
+    if (out.length >= 9) break;
+    if (toks.every(x => e.text.includes(x))) {
+      out.push(`<a href="${e.path}.html">` +
+        `<span><span class="k">${e.kind}</span>${e.name}</span>` +
+        `<span class="n">${e.city || e.country || e.source || ''}</span></a>`);
+    }
+  }
+  out.push('<a href="#" class="dosearch"><span><span class="k">search</span>' +
+    'every entry matching “' + raw + '”</span><span class="n">↵</span></a>');
+  ta.innerHTML = out.join('');
+}
+function runSearch() {
+  state.q = pq.value.trim();
+  writeHash(); render();
+  const target = document.getElementById('q');
+  target.value = state.q; target.focus();
+}
+pq.addEventListener('input', typeahead);
+pq.addEventListener('keydown', ev => {
+  if (ev.key === 'Enter') { ev.preventDefault(); runSearch(); }
+});
 const input = document.getElementById('q');
 input.addEventListener('input', () => { state.q = input.value; writeHash(); render(); });
 window.addEventListener('hashchange', () => { readHash(); input.value = state.q; render(); });
@@ -1141,11 +1288,16 @@ fetch('data/index.json').then(r => {
   if (!r.ok) throw new Error(r.status);
   return r.json();
 }).then(d => {
-  DATA = d; readHash(); input.value = state.q; render();
+  DATA = d;
+  FAMS = [...new Set(DATA.filter(e => e.kind === 'record' && e.family)
+    .map(e => e.family))].sort();
+  readHash(); input.value = state.q; render();
 }).catch(() => {
-  document.getElementById('nres').innerHTML =
-    'The search index failed to load — <a href="">reload the page</a>. ' +
-    'Browsing record pages directly still works.';
+  const msg = 'The search index failed to load — <a href="">reload the ' +
+    'page</a>. Browsing record pages directly still works.';
+  document.getElementById('nres').innerHTML = msg;
+  const ae = document.getElementById('arrerr');
+  ae.innerHTML = msg; ae.classList.remove('hidden');
 });
 </script>
 """
@@ -1230,53 +1382,166 @@ def build_index_page(records, sources, places, by_place):
         "flagged <span class=\"badge-unref\">unreferenced</span>.</p></div>"
     )
 
-    # ---- overview panel (arrival view: structure first, data on demand) ----
+    # ---- arrival: two doors ------------------------------------------------
+    # A modeller arrives holding one of two things: a parameter name, or a
+    # place. Each door owns half the fold; the facet rail belongs to the
+    # results view, not to arrival.
+    fam_counts = defaultdict(int)
     lc_counts = defaultdict(int)
     typ_counts = defaultdict(int)
-    fam_records = set()
-    n_mapped = 0
+    grid = defaultdict(int)
+    region_c, country_c, city_c = defaultdict(int), defaultdict(int), defaultdict(int)
     for path, rec in records.items():
-        s = surface_of(path, rec)
-        if s:
-            lc_counts[s] += 1
+        s_ = surface_of(path, rec)
+        if s_:
+            lc_counts[s_] += 1
         if path.startswith("archetypes/"):
             typ_counts[family_of(path)] += 1
         else:
-            fam_records.add(family_of(path))
-    for slug in by_place:
-        info = places.get(slug) or {}
-        if "lat" in info and "lon" in info:
-            n_mapped += 1
+            fam = family_of(path)
+            fam_counts[fam] += 1
+            grid[(fam, s_ or "")] += 1
+        reg, cty, city = geo_of(rec, places)
+        if reg:
+            region_c[reg] += 1
+        if cty:
+            country_c[cty] += 1
+        if city:
+            city_c[city] += 1
 
-    lc_tiles = "".join(
-        f"<a class=\"otile {SURFACE_ACC.get(s, 'acc-none')}\" "
-        f"href=\"#surface={s}\"><span class=\"sw\"></span>"
-        f"<b>{SURFACE_LABEL.get(s, s)}</b>"
-        f"<span>{lc_counts[s]}</span></a>"
-        for s in LC_ORDER + ["common"] if lc_counts.get(s))
-    typ_tiles = "".join(
-        f"<a class=\"otile acc-none\" href=\"#typology={t}\">"
-        f"<span class=\"sw\"></span><b>{esc(TYP_LABEL.get(t, t))}</b>"
-        f"<span>{n}</span></a>"
-        for t, n in sorted(typ_counts.items()))
-    overview = f"""<div id="overview">
-<h3 style="margin-top:0.4rem">Land cover</h3>
-<div class="otiles">{lc_tiles}</div>
-<h3>Typologies</h3>
-<div class="otiles">{typ_tiles}</div>
-<div class="orow">
-<a class="obig" href="map.html"><b>Browse by place</b>
-<span>{n_mapped} study places on the map, or by climate zone</span></a>
-<a class="obig" href="#all=1"><b>Browse all {len(records)} entries</b>
-<span>{len(fam_records)} parameter families, citations flagged on every
-card</span></a>
-<a class="obig" href="{REPO_URL}/blob/main/docs/FORMAT.md"><b>Contribute</b>
-<span>correct a record from its page, or add a new one — one small YAML
-file in a pull request</span></a>
+    def grow(href, label, n):
+        return (f"<a class=\"grow\" href=\"{esc(href)}\"><span>{esc(label)}</span>"
+                f"<span class=\"n\">{n}</span></a>")
+
+    fam_list = "".join(grow(f"#family={f}", f, n)
+                       for f, n in sorted(fam_counts.items()))
+
+    def geo_col(title, counts, key, cap=None):
+        rows = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
+        if cap:
+            rows = rows[:cap]
+        items = "".join(grow(f"#{key}={v}", v, n) for v, n in rows)
+        return (f"<div><p class=\"dlab\">{esc(title)} "
+                f"<span class=\"n\">{len(counts)}</span></p>"
+                f"<div class=\"gscroll\">{items}</div></div>")
+
+    land_d = (ROOT / "scripts" / "data" / "ne110m_land.svgpath").read_text().strip()
+    dots = []
+    for slug in sorted(by_place):
+        info = places.get(slug) or {}
+        if "lat" not in info or "lon" not in info:
+            continue
+        n = len(by_place[slug])
+        x, y = map_xy(info["lon"], info["lat"])
+        r = 3.2 + min(6.0, n ** 0.5)
+        dots.append(
+            f"<a href=\"#place={esc(slug)}\"><circle class=\"dot\" "
+            f"cx=\"{x:.1f}\" cy=\"{y:.1f}\" r=\"{r:.1f}\">"
+            f"<title>{esc(info.get('name', slug))} — {n} entries</title>"
+            "</circle></a>")
+    n_mapped = len(dots)
+
+    doors = f"""<div class="doors">
+<section class="door">
+<p class="dlab">I know the parameter</p>
+<input id="pq" class="search" type="search" autocomplete="off"
+ placeholder="albedo, emissivity, ohm, conductance&hellip;"
+ aria-label="search by parameter, record or source">
+<div id="ta" class="tahead hidden" role="listbox"></div>
+<p class="dlab" style="margin-top:1rem">All {len(fam_counts)} parameter
+families</p>
+<div class="famgrid">{fam_list}</div>
+</section>
+<section class="door">
+<p class="dlab">I know my site</p>
+<div class="mapbox"><svg viewBox="0 0 {MAP_W:.0f} {MAP_H:.0f}" role="img"
+ aria-label="{n_mapped} study places with coordinates">
+<path d="{land_d}" class="land"/>{''.join(dots)}</svg></div>
+<div class="geocols">
+{geo_col("Region", region_c, "region")}
+{geo_col("Country", country_c, "country", 40)}
+{geo_col("City", city_c, "city", 40)}
 </div>
-<h3>How it fits together</h3>
-{RELATION_SVG}
+</section>
 </div>"""
+
+    # typologies are neither a parameter nor a place — they are the bundle you
+    # take wholesale, so they read as a shortcut rather than a third door
+    typ_band = ("<div class=\"tband\"><p class=\"tlead\">"
+                "&hellip;or take a ready-made typology</p>"
+                + "".join(
+                    f"<a class=\"otile acc-none\" href=\"#typology={t}\">"
+                    f"<span class=\"sw\"></span>"
+                    f"<b>{esc(TYP_LABEL.get(t, t))}</b><span>{n}</span></a>"
+                    for t, n in sorted(typ_counts.items(),
+                                       key=lambda kv: -kv[1]))
+                + "</div>")
+
+    strip = f"""<div class="invstrip">
+<a class="icell" href="#kind=record"><b>{n_rec}</b>
+<span>evidence records</span></a>
+<a class="icell" href="#kind=typology"><b>{n_arch}</b>
+<span>typologies</span></a>
+<a class="icell" href="#all=1"><b>{len(cited)}</b>
+<span>cited sources across {len(places)} places</span></a>
+<a class="icell quiet" href="#source=unreferenced"><b>{n_unref}</b>
+<span>records with no source on file</span></a>
+</div>"""
+
+    # the coverage matrix replaces the old land-cover and typology tiles: it
+    # says what they said and also where the evidence is not
+    cols = LC_ORDER + ["common", ""]
+    col_label = dict(SURFACE_LABEL)
+    col_label[""] = "Not surface-specific"
+    mx = max(grid.values()) if grid else 1
+    head = "".join(
+        f"<th class=\"{SURFACE_ACC.get(c, 'acc-none')}\">"
+        f"<span class=\"sw\"></span>{esc(col_label.get(c, c))}</th>"
+        for c in cols)
+    rows_html = []
+    filled = 0
+    for fam in sorted(fam_counts):
+        tds = []
+        for c in cols:
+            n = grid.get((fam, c), 0)
+            if not n:
+                tds.append("<td class=\"mt\"></td>")
+                continue
+            filled += 1
+            a = 0.10 + 0.62 * (n / mx) ** 0.45
+            ink = "#14172a" if a >= 0.42 else "rgba(255,255,255,0.86)"
+            href = f"#family={fam}" + (f"&surface={c}" if c else "")
+            tds.append(f"<td style=\"background:rgba(247,181,56,{a:.3f})\">"
+                       f"<a style=\"color:{ink}\" href=\"{esc(href)}\">{n}</a></td>")
+        rows_html.append(
+            f"<tr><th><a title=\"{esc(fam)}\" href=\"#family={esc(fam)}\">"
+            f"{esc(fam)}</a><span class=\"rn\">{fam_counts[fam]}</span></th>"
+            + "".join(tds) + "</tr>")
+    cells = len(fam_counts) * len(cols)
+    matrix = f"""<h3>What the database covers</h3>
+<div class="matrixwrap"><table class="matrix">
+<thead><tr><th class="corner">family <span class="rn">all</span></th>
+{head}</tr></thead>
+<tbody>{''.join(rows_html)}</tbody></table></div>
+<p class="mcap">Shading is depth of evidence, from 1 record to {mx}.
+{filled} of {cells} cells carry evidence; the {cells - filled} hatched cells
+are real gaps, not hidden rows. Duplicate value sets and sample-run names are
+reported by <code>make check</code> and await scientific adjudication — nothing
+is excluded from these counts.</p>"""
+
+    contribute = f"""<h3>How it fits together</h3>
+{RELATION_SVG}
+<div class="lowcards">
+<a class="lcard" href="{REPO_URL}/blob/main/docs/FORMAT.md"><b>Contribute</b>
+<span>Correct a record from its own page, or add a new one — one small YAML
+file in a pull request.</span></a>
+<a class="lcard" href="{REPO_URL}/releases"><b>Cite this database</b>
+<span>Archived releases; the DOI follows with the database paper.</span></a>
+</div>"""
+
+    arrival = ("<div id=\"arrival\">" + hero
+               + "<div id=\"arrerr\" class=\"crumbs hidden\"></div>"
+               + doors + typ_band + strip + matrix + contribute + "</div>")
 
     def fgroup(fid, label, scroll=False, is_open=False, cap="", find=False):
         cls = " class=\"fscroll\"" if scroll else ""
@@ -1305,17 +1570,19 @@ file in a pull request</span></a>
                          "a region, or generic")
             + fgroup("source", FACET_TITLE["source"], scroll=True, find=True)
             + "</div>")
-    body = (hero
+    body = (arrival
+            + "<div id=\"browse\" class=\"hidden\">"
+            + "<a href=\"#\" class=\"doclear backdoors\">← back to the two "
+              "doors</a>"
             + "<input id=\"q\" class=\"search\" type=\"search\" "
               "placeholder=\"Search: parameter name, place, source, value...\">"
             + stats
             + f"<div class=\"layout\">{rail}<div>"
-            + overview
             + "<div id=\"afilters\" class=\"pill-row\"></div>"
             + "<div id=\"nres\" role=\"status\" aria-live=\"polite\">"
               "loading the index…</div>"
               "<div id=\"results\" class=\"results2\"></div>"
-            + "</div></div>")
+            + "</div></div></div>")
     # the browser shares the generator's label/order/accent tables: emitted
     # once here so Python and JS cannot drift
     js_consts = (
