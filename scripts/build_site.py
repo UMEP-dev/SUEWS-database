@@ -99,6 +99,14 @@ SURFACE_LABEL = {
     "water": "Water", "snow": "Snow", "common": "Any surface",
 }
 
+# typology (assembly) group -> display label
+TYP_LABEL = {
+    "surfaces": "Surface bundles", "countries": "Country defaults",
+    "regions": "Regional defaults", "typologies": "Urban types",
+    "materials": "Materials", "constructions": "Constructions",
+    "snow": "Snow bundles",
+}
+
 # land-cover accent colour class (drives card top borders and title tags)
 SURFACE_ACC = {
     "grass": "acc-veg", "dectr": "acc-veg", "evetr": "acc-veg",
@@ -150,11 +158,6 @@ header.site .wrap { display: flex; align-items: baseline; gap: 1rem; padding: 1r
 header.site h1 { font-size: 1.1rem; margin: 0; white-space: nowrap; }
 header.site h1 a { color: var(--text-primary); }
 header.site .sub { color: var(--text-muted); font-size: 0.85rem; }
-.stats { display: flex; flex-wrap: wrap; gap: 2rem; margin: 1.4rem 0;
-  padding: 1rem 1.4rem; border: 1px solid var(--border-light); border-radius: 12px;
-  background: var(--bg-card); }
-.stat b { display: block; font-size: 1.45rem; color: var(--sun-gold); }
-.stat span { color: var(--text-muted); font-size: 0.82rem; }
 h2 { margin: 2rem 0 0.8rem; font-size: 1.2rem; }
 h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--text-secondary); }
 .chip { display: inline-block; padding: 0.12rem 0.65rem; border-radius: 999px;
@@ -166,24 +169,11 @@ a.chip:hover { text-decoration: none; border-color: var(--sky-blue); }
 .chip.on { background: var(--sun-gold); color: #1A1D2E; border-color: var(--sun-gold);
   font-weight: 600; }
 .chip .n { opacity: 0.65; font-size: 0.72rem; margin-left: 0.25rem; }
-.facet-group { margin: 0.35rem 0; }
-.facet-group .fl { display: inline-block; width: 110px; color: var(--text-muted);
-  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
-  vertical-align: top; padding-top: 0.2rem; }
-.facet-body { display: inline-block; max-width: calc(100% - 120px); }
 input.search { width: 100%; padding: 0.7rem 1.1rem; border-radius: 10px;
   border: 1px solid var(--border-medium); background: var(--bg-secondary);
   color: var(--text-primary); font-size: 1rem; margin: 0.9rem 0 0.9rem; }
 input.search:focus { outline: 2px solid var(--sun-gold); border-color: transparent; }
 #nres { color: var(--text-muted); font-size: 0.85rem; margin: 0.4rem 0 0.8rem; }
-.results { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 0.7rem; }
-.rcard { border: 1px solid var(--border-light); border-radius: 10px;
-  background: var(--bg-card); padding: 0.75rem 0.95rem; }
-.rcard:hover { background: var(--bg-card-hover); border-color: var(--border-medium); }
-.rcard .t { font-weight: 600; font-size: 0.93rem; }
-.rcard .meta { margin: 0.25rem 0 0.35rem; }
-.rcard .meta .chip { cursor: default; }
 .vals { color: var(--text-secondary); font-size: 0.8rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.7; }
 .vals b { color: var(--water-blue-light); font-weight: 500; }
@@ -241,24 +231,39 @@ table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   color: var(--text-muted); font-size: 0.85rem; }
 .statline b { color: var(--sun-gold); font-weight: 600; margin-right: 0.3rem; }
 .layout { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 1.8rem; }
-.rail h4 { margin: 0 0 0.4rem; font-size: 0.72rem; text-transform: uppercase;
-  letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600; }
-.fgroup { margin-bottom: 1.35rem; }
+details.fgroup { margin-bottom: 0.9rem; }
+details.fgroup summary { cursor: pointer; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+  font-weight: 600; padding: 0.3rem 0; list-style-position: outside; }
+details.fgroup summary:hover { color: var(--text-primary); }
+.gcap { font-size: 0.75rem; color: var(--text-muted); margin: 0 0 0.35rem;
+  line-height: 1.45; }
+.sw { display: inline-block; width: 8px; height: 8px; border-radius: 2px;
+  background: var(--acc); }
 .fitem { display: flex; justify-content: space-between; align-items: baseline;
-  gap: 0.4rem; width: 100%; padding: 0.22rem 0.55rem; border: none;
+  gap: 0.4rem; width: 100%; padding: 0.42rem 0.55rem; border: none;
   border-radius: 7px; font-size: 0.88rem; color: var(--text-secondary);
   cursor: pointer; background: transparent; font-family: inherit;
   text-align: left; }
 .fitem:hover { background: var(--bg-card-hover); color: var(--text-primary); }
 .fitem.on { background: var(--sun-gold); color: #1A1D2E; font-weight: 600; }
+.fitem.warnv .fv { color: var(--sun-gold); font-style: italic; }
 .fitem .fv { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; }
 .fitem .n { font-size: 0.75rem; opacity: 0.6; }
-.fitem .sw { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 2px;
-  background: var(--acc); align-self: center; }
+.fitem .sw { flex: 0 0 8px; align-self: center; }
 .fdiv { border-top: 1px solid var(--border-light); margin: 0.45rem 0.55rem; }
 .fmore { padding: 0.22rem 0.55rem; font-size: 0.8rem; color: var(--text-muted); }
 .maplink { display: block; padding: 0.22rem 0.55rem; font-size: 0.8rem; }
+input.ffind { width: 100%; padding: 0.3rem 0.55rem; margin: 0 0 0.3rem;
+  border-radius: 7px; border: 1px solid var(--border-light);
+  background: var(--bg-secondary); color: var(--text-primary);
+  font: inherit; font-size: 0.82rem; }
+input.ffind:focus { outline: 1px solid var(--sun-gold); }
+.badge-unref { display: inline-block; padding: 0.05rem 0.5rem;
+  border-radius: 999px; border: 1px solid rgba(247,181,56,0.55);
+  color: var(--sun-gold); font-size: 0.72rem; font-style: italic;
+  vertical-align: 0.1em; }
 .results2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem; }
 .card2 { border: 1px solid var(--border-light); border-top: 3px solid var(--acc);
@@ -273,10 +278,11 @@ table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   padding: 0.08rem 0.45rem; margin: 0 0.25rem 0.25rem 0; color: var(--text-secondary); }
 .pv b { color: var(--sun-gold); font-weight: 600; }
 .heroval { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 0.8rem 0 1.2rem; }
-.hv { border: 1px solid var(--border-light); border-left: 3px solid var(--acc);
+.hv { border: 1px solid var(--border-light);
   border-radius: 10px; background: var(--bg-card); padding: 0.55rem 1rem 0.6rem; }
 .hv .k { display: block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.1rem; }
+.hv .k .sw { margin-right: 0.45rem; vertical-align: 0.05em; }
 .hv .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 1.35rem; font-weight: 600; color: var(--sun-gold); }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.8rem;
@@ -315,13 +321,14 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .relfig { width: 100%; max-width: 780px; height: auto; margin: 0.4rem 0 0.8rem; }
 .otiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.6rem; margin: 0.4rem 0 0.8rem; }
-.otile { display: flex; justify-content: space-between; align-items: baseline;
-  gap: 0.5rem; border: 1px solid var(--border-light);
-  border-left: 3px solid var(--acc); border-radius: 9px;
-  background: var(--bg-card); padding: 0.5rem 0.8rem;
+.otile { display: flex; align-items: baseline;
+  gap: 0.55rem; border: 1px solid var(--border-light); border-radius: 9px;
+  background: var(--bg-card); padding: 0.55rem 0.8rem;
   color: var(--text-primary); }
 .otile:hover { background: var(--bg-card-hover); text-decoration: none;
-  border-color: var(--border-medium); border-left-color: var(--acc); }
+  border-color: var(--border-medium); }
+.otile .sw { flex: 0 0 8px; align-self: center; }
+.otile b { flex: 1; }
 .otile b { font-weight: 600; font-size: 0.9rem; }
 .otile span { color: var(--text-muted); font-size: 0.78rem; }
 .orow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -335,6 +342,7 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .obig span { color: var(--text-muted); font-size: 0.83rem; }
 @media (max-width: 900px) {
   .layout, .cols { grid-template-columns: 1fr; }
+  .layout > .rail { order: 2; }
   .placerows { columns: 1; }
   table.params td:first-child { width: auto; }
 }
@@ -349,6 +357,14 @@ document.querySelectorAll('.copywrap').forEach(w => {
     navigator.clipboard.writeText(w.querySelector('pre').textContent).then(() => {
       btn.textContent = 'Copied'; btn.classList.add('ok');
       setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500);
+    }).catch(() => {
+      // clipboard denied: select the fragment so a manual copy is one keystroke
+      const r = document.createRange();
+      r.selectNodeContents(w.querySelector('pre'));
+      const s = window.getSelection();
+      s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected — press Ctrl/Cmd+C';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 3000);
     });
   });
   w.appendChild(btn);
@@ -565,8 +581,8 @@ def record_page(path, rec, records, sources, used_by, cluster):
     headline = ""
     if headline_pairs and kind == "record":
         blocks = "".join(
-            f"<div class=\"hv {acc}\"><span class=\"k\">{esc(k)}</span>"
-            f"<span class=\"v\">{esc(v)}</span></div>"
+            f"<div class=\"hv {acc}\"><span class=\"k\"><span class=\"sw\">"
+            f"</span>{esc(k)}</span><span class=\"v\">{esc(v)}</span></div>"
             for k, v in headline_pairs)
         if blocks:
             headline = f"<div class=\"heroval\">{blocks}</div>"
@@ -596,7 +612,10 @@ def record_page(path, rec, records, sources, used_by, cluster):
             prov_rows.append(f"<div class=\"prow\"><span class=\"pk\">{esc(k)}"
                              f"</span><span>{v}</span></div>")
 
-    if src:
+    if src_key == "unreferenced":
+        row("Source", "<span class=\"badge-unref\">unreferenced</span> — no "
+            "citation was recorded in the legacy database; treat with care")
+    elif src:
         doi = src.get("doi")
         doi_html = (f" · <a href=\"https://doi.org/{esc(doi)}\">doi:{esc(doi)}</a>"
                     if doi else "")
@@ -626,10 +645,12 @@ def record_page(path, rec, records, sources, used_by, cluster):
     rail = ["<div class=\"side\"><h4>Provenance</h4>"
             + "".join(prov_rows) + "</div>"]
 
+    unref_badge = (" <span class=\"badge-unref\">unreferenced</span>"
+                   if src_key == "unreferenced" else "")
     body = [crumbs,
             f"<h2>{esc(title_text)}{qualifier}"
             + (f"<span class=\"stag {acc}\">{esc(surface)}</span>" if surface else "")
-            + f" <span class=\"chip\">{kind}</span></h2>",
+            + f" <span class=\"chip\">{kind}</span>{unref_badge}</h2>",
             headline, chip_row]
     main = []
 
@@ -890,7 +911,9 @@ BROWSER_JS = """
 const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
                 'city', 'rep', 'source'];
 let DATA = [];
+let LOADED = false;
 const state = { q: '', all: false };
+const ffind = {};
 for (const f of FACETS) state[f] = null;
 
 function readHash() {
@@ -921,14 +944,31 @@ const LC_ORDER = ['paved', 'bldgs', 'evetr', 'dectr', 'grass', 'bsoil', 'water']
 const ACC = { grass: 'acc-veg', dectr: 'acc-veg', evetr: 'acc-veg',
               water: 'acc-water', paved: 'acc-built', bldgs: 'acc-built',
               bsoil: 'acc-soil', snow: 'acc-snow', common: 'acc-none' };
+const LC_LABEL = { paved: 'Paved', bldgs: 'Buildings', evetr: 'Evergreen trees',
+                   dectr: 'Deciduous trees', grass: 'Grass', bsoil: 'Bare soil',
+                   water: 'Water', snow: 'Snow', common: 'Any surface' };
+const TYP_LABEL = { surfaces: 'Surface bundles', countries: 'Country defaults',
+                    regions: 'Regional defaults', typologies: 'Urban types',
+                    materials: 'Materials', constructions: 'Constructions',
+                    snow: 'Snow bundles' };
+function displayVal(facet, value) {
+  if (facet === 'surface') return LC_LABEL[value] || value;
+  if (facet === 'typology') return TYP_LABEL[value] || value;
+  return value;
+}
 function itemHTML(facet, value, count, on, swatch) {
   const sw = swatch ? `<span class="sw ${ACC[value] || 'acc-none'}"></span>` : '';
-  return `<button class="fitem${on ? ' on' : ''}" data-facet="${facet}" ` +
-         `data-value="${value}">${sw}<span class="fv">${value}</span>` +
+  const warn = facet === 'source' && value === 'unreferenced' ? ' warnv' : '';
+  return `<button class="fitem${on ? ' on' : ''}${warn}" data-facet="${facet}" ` +
+         `data-value="${value}" aria-pressed="${on ? 'true' : 'false'}">${sw}` +
+         `<span class="fv">${displayVal(facet, value)}</span>` +
          `<span class="n">${count}</span></button>`;
 }
 function emptyState() {
   return !state.q && !state.all && FACETS.every(f => !state[f]);
+}
+function anyActive() {
+  return state.q || state.all || FACETS.some(f => state[f]);
 }
 function render() {
   const hits = DATA.filter(matches);
@@ -955,40 +995,101 @@ function render() {
       el.innerHTML = out;
       continue;
     }
-    // alphabetical, all values shown (long groups scroll)
-    const entries = Object.entries(counts)
-      .sort((a, b) => a[0].localeCompare(b[0]));
-    el.innerHTML = entries.map(([v, n]) => itemHTML(f, v, n, state[f] === v)).join('');
+    // alphabetical by display label; the active value pinned first; long
+    // groups scroll and can be narrowed by their filter box
+    let entries = Object.entries(counts)
+      .sort((a, b) => displayVal(f, a[0]).localeCompare(displayVal(f, b[0])));
+    const needle = (ffind[f] || '').toLowerCase();
+    if (needle) {
+      entries = entries.filter(([v]) =>
+        displayVal(f, v).toLowerCase().includes(needle));
+    }
+    if (state[f]) {
+      entries = entries.filter(([v]) => v !== state[f]);
+      entries.unshift([state[f],
+        counts[state[f]] !== undefined ? counts[state[f]] : 0]);
+    }
+    el.innerHTML = entries.map(([v, n]) =>
+      itemHTML(f, v, n, state[f] === v)).join('');
   }
+  // a group holding an active filter is always open
+  document.querySelectorAll('details.fgroup').forEach(d => {
+    if (state[d.dataset.facet]) d.open = true;
+  });
   const overview = document.getElementById('overview');
   const showOverview = emptyState();
   if (overview) overview.classList.toggle('hidden', !showOverview);
-  document.getElementById('nres').textContent = showOverview ? '' :
-    hits.length + ' of ' + DATA.length + ' entries';
-  const out = showOverview ? '' : hits.slice(0, 200).map(e => {
-    const acc = ACC[e.surface] || 'acc-none';
-    const meta = [e.family, e.typology, e.city || e.country, e.rep, e.source]
-      .filter(Boolean).join(' · ');
-    const kindTag = e.kind === 'typology' ? ' <span class="chip">typology</span>' : '';
-    return `<div class="card2 ${acc}"><div class="t"><a href="${e.path}.html">` +
-           `${e.name}</a>${kindTag}</div><div class="meta2">${meta}</div>` +
-           `<div>${e.vals}</div></div>`;
-  }).join('');
-  document.getElementById('results').innerHTML = out +
-    (!showOverview && hits.length > 200 ? '<div class="crumbs">…narrow the filters to see the rest</div>' : '');
+  const nres = document.getElementById('nres');
+  if (showOverview) {
+    nres.textContent = '';
+  } else {
+    nres.innerHTML = hits.length + ' of ' + DATA.length + ' entries' +
+      (anyActive() ? ' · <a href="#" class="doclear">clear filters ×</a>' : '');
+  }
+  let out = '';
+  if (!showOverview) {
+    if (hits.length === 0) {
+      out = '<div class="crumbs">No matches — ' +
+            '<a href="#" class="doclear">clear the filters</a> or try the ' +
+            '<a href="map.html">map</a>.</div>';
+    } else {
+      out = hits.slice(0, 200).map(e => {
+        const acc = ACC[e.surface] || 'acc-none';
+        const src = e.source === 'unreferenced'
+          ? '<span class="badge-unref">unreferenced</span>' : e.source;
+        const meta = [e.family, TYP_LABEL[e.typology],
+                      e.city || e.country, e.rep, src]
+          .filter(Boolean).join(' · ');
+        const kindTag = e.kind === 'typology'
+          ? ' <span class="chip">typology</span>' : '';
+        return `<div class="card2 ${acc}"><div class="t"><a href="${e.path}.html">` +
+               `${e.name}</a>${kindTag}</div><div class="meta2">${meta}</div>` +
+               `<div>${e.vals}</div></div>`;
+      }).join('');
+      if (hits.length > 200) {
+        out += '<div class="crumbs">…narrow the filters to see the rest</div>';
+      }
+    }
+  }
+  document.getElementById('results').innerHTML = out;
+}
+function clearAll() {
+  state.q = ''; state.all = false;
+  for (const f of FACETS) state[f] = null;
+  document.getElementById('q').value = '';
+  writeHash(); render();
 }
 document.addEventListener('click', ev => {
+  const c = ev.target.closest('a.doclear');
+  if (c) { ev.preventDefault(); clearAll(); return; }
   const b = ev.target.closest('button.fitem');
   if (!b) return;
   const f = b.dataset.facet, v = b.dataset.value;
   state[f] = state[f] === v ? null : v;
   writeHash(); render();
+  // render() replaced the button; put keyboard focus back on its successor
+  const nb = document.querySelector(
+    `button.fitem[data-facet="${CSS.escape(f)}"][data-value="${CSS.escape(v)}"]`);
+  if (nb) nb.focus();
+});
+document.addEventListener('input', ev => {
+  const ff = ev.target.closest('input.ffind');
+  if (!ff) return;
+  ffind[ff.dataset.facet] = ff.value;
+  render();
 });
 const input = document.getElementById('q');
 input.addEventListener('input', () => { state.q = input.value; writeHash(); render(); });
 window.addEventListener('hashchange', () => { readHash(); input.value = state.q; render(); });
-fetch('data/index.json').then(r => r.json()).then(d => {
-  DATA = d; readHash(); input.value = state.q; render();
+fetch('data/index.json').then(r => {
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}).then(d => {
+  DATA = d; LOADED = true; readHash(); input.value = state.q; render();
+}).catch(() => {
+  document.getElementById('nres').innerHTML =
+    'The search index failed to load — <a href="">reload the page</a>. ' +
+    'Browsing record pages directly still works.';
 });
 </script>
 """
@@ -1050,11 +1151,15 @@ RELATION_SVG = """<svg viewBox="0 0 780 208" role="img" class="relfig"
 def build_index_page(records, sources, places, by_place):
     n_rec = sum(1 for p in records if p.startswith("records/"))
     n_arch = sum(1 for p in records if p.startswith("archetypes/"))
+    cited = {r.get("source") for r in records.values()
+             if r.get("source") and r.get("source") != "unreferenced"}
+    n_unref = sum(1 for p, r in records.items()
+                  if p.startswith("records/") and r.get("source") == "unreferenced")
     stats = (
         "<div class=\"statline\">"
         f"<span><b>{n_rec}</b>evidence records</span>"
         f"<span><b>{n_arch}</b>typologies</span>"
-        f"<span><b>{len(sources)}</b>sources</span>"
+        f"<span><b>{len(cited)}</b>cited sources</span>"
         f"<span><b>{len(places)}</b>places</span>"
         "</div>"
     )
@@ -1064,8 +1169,9 @@ def build_index_page(records, sources, places, by_place):
         "<a href=\"https://github.com/UMEP-dev/SUEWS\">SUEWS</a>: one "
         "source-coherent set per record, named by the model's own parameter "
         "paths. Every record exports as a fragment that pastes straight into "
-        "a SUEWS YAML configuration — with the citation attached to every "
-        "value.</p></div>"
+        "a SUEWS YAML configuration, with its citation attached to every "
+        f"value. {n_unref} legacy records with no recorded source are "
+        "flagged <span class=\"badge-unref\">unreferenced</span>.</p></div>"
     )
 
     # ---- overview panel (arrival view: structure first, data on demand) ----
@@ -1088,17 +1194,17 @@ def build_index_page(records, sources, places, by_place):
 
     lc_tiles = "".join(
         f"<a class=\"otile {SURFACE_ACC.get(s, 'acc-none')}\" "
-        f"href=\"#surface={s}\"><b>{SURFACE_LABEL.get(s, s)}</b>"
+        f"href=\"#surface={s}\"><span class=\"sw\"></span>"
+        f"<b>{SURFACE_LABEL.get(s, s)}</b>"
         f"<span>{lc_counts[s]}</span></a>"
         for s in LC_ORDER + ["common"] if lc_counts.get(s))
     typ_tiles = "".join(
-        f"<a class=\"otile acc-none\" href=\"#typology={t}\"><b>{esc(t)}</b>"
+        f"<a class=\"otile acc-none\" href=\"#typology={t}\">"
+        f"<span class=\"sw\"></span><b>{esc(TYP_LABEL.get(t, t))}</b>"
         f"<span>{n}</span></a>"
         for t, n in sorted(typ_counts.items()))
     overview = f"""<div id="overview">
-<h3 style="margin-top:0.4rem">How it fits together</h3>
-{RELATION_SVG}
-<h3>Land cover</h3>
+<h3 style="margin-top:0.4rem">Land cover</h3>
 <div class="otiles">{lc_tiles}</div>
 <h3>Typologies</h3>
 <div class="otiles">{typ_tiles}</div>
@@ -1106,29 +1212,41 @@ def build_index_page(records, sources, places, by_place):
 <a class="obig" href="map.html"><b>Browse by place</b>
 <span>{n_mapped} study places on the map, or by climate zone</span></a>
 <a class="obig" href="#all=1"><b>Browse all {len(records)} entries</b>
-<span>{len(fam_records)} parameter families, every value cited</span></a>
+<span>{len(fam_records)} parameter families, citations flagged on every
+card</span></a>
 <a class="obig" href="{REPO_URL}/blob/main/docs/FORMAT.md"><b>Contribute</b>
 <span>correct a record from its page, or add a new one — one small YAML
 file in a pull request</span></a>
 </div>
+<h3>How it fits together</h3>
+{RELATION_SVG}
 </div>"""
 
-    def fgroup(fid, label, scroll=False, tail=""):
+    def fgroup(fid, label, scroll=False, is_open=False, cap="", find=False):
         cls = " class=\"fscroll\"" if scroll else ""
-        return (f"<div class=\"fgroup\"><h4>{label}</h4>"
-                f"<div id=\"facet-{fid}\"{cls}></div>{tail}</div>")
+        cap_html = f"<div class=\"gcap\">{cap}</div>" if cap else ""
+        find_html = (f"<input class=\"ffind\" data-facet=\"{fid}\" "
+                     f"type=\"search\" placeholder=\"filter {label.lower()}…\" "
+                     "aria-label=\"filter this list\">" if find else "")
+        return (f"<details class=\"fgroup\" data-facet=\"{fid}\""
+                + (" open" if is_open else "") + f"><summary>{label}</summary>"
+                f"{cap_html}{find_html}<div id=\"facet-{fid}\"{cls}></div>"
+                "</details>")
 
     rail = ("<div class=\"rail\">"
-            + fgroup("kind", "Kind")
-            + fgroup("surface", "Land cover")
-            + fgroup("family", "Family", scroll=True)
+            + fgroup("kind", "Kind", is_open=True,
+                     cap="records hold the evidence; typologies bundle it")
+            + fgroup("surface", "Land cover", is_open=True)
+            + fgroup("family", "Family", scroll=True, is_open=True, find=True)
             + fgroup("typology", "Typology")
             + fgroup("region", "Region")
-            + fgroup("country", "Country", scroll=True)
-            + fgroup("city", "City", scroll=True,
-                     tail="<a class=\"maplink\" href=\"map.html\">pick on a map →</a>")
-            + fgroup("rep", "Representativeness")
-            + fgroup("source", "Source", scroll=True)
+            + fgroup("country", "Country", scroll=True, find=True)
+            + fgroup("city", "City", scroll=True, find=True)
+            + "<a class=\"maplink\" href=\"map.html\">pick a place on the map →</a>"
+            + fgroup("rep", "Representativeness",
+                     cap="what a value stands for: one site, a whole city, "
+                         "a region, or generic")
+            + fgroup("source", "Source", scroll=True, find=True)
             + "</div>")
     body = (hero
             + "<input id=\"q\" class=\"search\" type=\"search\" "
@@ -1136,7 +1254,9 @@ file in a pull request</span></a>
             + stats
             + f"<div class=\"layout\">{rail}<div>"
             + overview
-            + "<div id=\"nres\"></div><div id=\"results\" class=\"results2\"></div>"
+            + "<div id=\"nres\" role=\"status\" aria-live=\"polite\">"
+              "loading the index…</div>"
+              "<div id=\"results\" class=\"results2\"></div>"
             + "</div></div>")
     return page("Browse", body, 0, BROWSER_JS)
 
@@ -1166,6 +1286,7 @@ def build_search_index(records, sources, places):
             rec.get("source"), src.get("author"), src.get("title"),
             rec.get("target"), fam, surface or "",
             " ".join(k for k, _ in pairs),
+            " ".join(str(v) for _, v in pairs),
         ] if x)
         entries.append({
             "path": path, "name": str(rec.get("name") or path.rsplit("/", 1)[-1]),
