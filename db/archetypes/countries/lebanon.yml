@@ -1,0 +1,14 @@
+archetype: archetypes/countries/lebanon
+schema_version: '2026.5'
+target: site
+name: Lebanon
+legacy_id: 11240116
+country: Lebanon
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/lebanon
+    energy_use: records/profiles/traffic/lucy/lebanon
+    human_activity: records/profiles/human-activity/lucy/lebanon
+    population: records/profiles/human-activity/lucy/lebanon

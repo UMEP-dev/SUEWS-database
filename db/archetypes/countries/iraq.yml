@@ -1,0 +1,14 @@
+archetype: archetypes/countries/iraq
+schema_version: '2026.5'
+target: site
+name: Iraq
+legacy_id: 11240097
+country: Iraq
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/iraq
+    energy_use: records/profiles/traffic/lucy/iraq
+    human_activity: records/profiles/human-activity/lucy/iraq
+    population: records/profiles/human-activity/lucy/iraq

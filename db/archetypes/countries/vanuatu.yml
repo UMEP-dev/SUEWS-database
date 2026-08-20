@@ -1,0 +1,14 @@
+archetype: archetypes/countries/vanuatu
+schema_version: '2026.5'
+target: site
+name: Vanuatu
+legacy_id: 11240223
+country: Vanuatu
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/vanuatu
+    energy_use: records/profiles/traffic/lucy/vanuatu
+    human_activity: records/profiles/human-activity/lucy/vanuatu
+    population: records/profiles/human-activity/lucy/vanuatu

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/svalbard-qpp
+schema_version: '2026.5'
+target: site
+name: Svalbard* qpp
+legacy_id: 11240197
+country: Svalbard* qpp
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/svalbard-qpp
+    energy_use: records/profiles/traffic/lucy/svalbard-qpp
+    human_activity: records/profiles/human-activity/lucy/svalbard-qpp
+    population: records/profiles/human-activity/lucy/svalbard-qpp

@@ -1,0 +1,32 @@
+record: records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks
+schema_version: '2026.5'
+target: construction
+name: 'Residential,from 2010, flat roof, type: multi-family, apartment blocks'
+place: uk
+origin: UK
+representativeness: regional
+source: hertwig2024a
+legacy_id: 37240907
+parameters:
+  roof:
+  - material: records/materials/generic--hertwig2024a--waterproof-roof-covering
+    thickness: 0.0012
+  - material: records/materials/generic--hertwig2024a--polyurethane-foam
+    thickness: 0.089
+  - material: records/materials/generic--hertwig2024a--screed
+    thickness: 0.075
+  - material: records/materials/generic--hertwig2024a--cast-concrete
+    thickness: 0.15
+  - material: records/materials/generic--hertwig2024a--plaster-dense
+    thickness: 0.013
+  roof_insulation_layer: 2
+  wall:
+  - material: records/materials/generic--hertwig2024a--brick-exposed
+    thickness: 0.17
+  - material: records/materials/generic--hertwig2024a--polyurethane-foam
+    thickness: 0.07
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.17
+  - material: records/materials/generic--hertwig2024a--plaster-leightweight
+    thickness: 0.0125
+  wall_insulation_layer: 2

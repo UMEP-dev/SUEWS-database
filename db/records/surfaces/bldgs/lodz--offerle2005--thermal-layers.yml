@@ -1,0 +1,66 @@
+record: records/surfaces/bldgs/lodz--offerle2005--thermal-layers
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Buildings
+place: lodz
+origin: Lodz, Poland
+representativeness: city
+source: offerle2005
+legacy_id: 52240002
+parameters:
+  thermal_layers:
+    dz:
+    - 0.03
+    - 0.12
+    - 0.05
+    k:
+    - 0.74
+    - 0.93
+    - 0.06
+    rho_cp:
+    - 1900000
+    - 1500000
+    - 70000
+legacy:
+  Surf_thick4: -999
+  Surf_k4: -999
+  Surf_rhoCp4: -999
+  Surf_thick5: -999
+  Surf_k5: -999
+  Surf_rhoCp5: -999
+  Wall_thick1: 0.1
+  Wall_k1: 0.95
+  Wall_rhoCp1: 1600000
+  Wall_thick2: 0.1
+  Wall_k2: 0.95
+  Wall_rhoCp2: 1600000
+  Wall_thick3: 0.1
+  Wall_k3: 0.95
+  Wall_rhoCp3: 1600000
+  Wall_thick4: -999
+  Wall_k4: -999
+  Wall_rhoCp4: -999
+  Wall_thick5: -999
+  Wall_k5: -999
+  Wall_rhoCp5: -999
+  Internal_thick1: 0.05
+  Internal_k1: 0.93
+  Internal_rhoCp1: 1500000
+  Internal_thick2: 0.05
+  Internal_k2: 0.93
+  Internal_rhoCp2: 1500000
+  Internal_thick3: 0.05
+  Internal_k3: 0.93
+  Internal_rhoCp3: 1500000
+  Internal_thick4: -999
+  Internal_k4: -999
+  Internal_rhoCp4: -999
+  Internal_thick5: -999
+  Internal_k5: -999
+  Internal_rhoCp5: -999
+  nroom: 10
+  Internal_albedo: 0.2
+  Internal_emissivity: 1
+  Internal_CHwall: 0.001
+  Internal_CHroof: 0.001
+  Internal_CHbld: 0.001

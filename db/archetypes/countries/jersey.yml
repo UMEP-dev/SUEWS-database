@@ -1,0 +1,14 @@
+archetype: archetypes/countries/jersey
+schema_version: '2026.5'
+target: site
+name: Jersey
+legacy_id: 11240105
+country: Jersey
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/jersey
+    energy_use: records/profiles/traffic/lucy/jersey
+    human_activity: records/profiles/human-activity/lucy/jersey
+    population: records/profiles/human-activity/lucy/jersey

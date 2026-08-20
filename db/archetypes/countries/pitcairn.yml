@@ -1,0 +1,14 @@
+archetype: archetypes/countries/pitcairn
+schema_version: '2026.5'
+target: site
+name: Pitcairn
+legacy_id: 11240165
+country: Pitcairn
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/pitcairn
+    energy_use: records/profiles/traffic/lucy/pitcairn
+    human_activity: records/profiles/human-activity/lucy/pitcairn
+    population: records/profiles/human-activity/lucy/pitcairn

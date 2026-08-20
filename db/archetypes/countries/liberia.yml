@@ -1,0 +1,14 @@
+archetype: archetypes/countries/liberia
+schema_version: '2026.5'
+target: site
+name: Liberia
+legacy_id: 11240118
+country: Liberia
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/liberia
+    energy_use: records/profiles/traffic/lucy/liberia
+    human_activity: records/profiles/human-activity/lucy/liberia
+    population: records/profiles/human-activity/lucy/liberia

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/serbia-and-montenegro
+schema_version: '2026.5'
+target: site
+name: Serbia and Montenegro
+legacy_id: 11240184
+country: Serbia and Montenegro
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/serbia-and-montenegro
+    energy_use: records/profiles/traffic/lucy/serbia-and-montenegro
+    human_activity: records/profiles/human-activity/lucy/serbia-and-montenegro
+    population: records/profiles/human-activity/lucy/serbia-and-montenegro

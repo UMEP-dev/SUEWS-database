@@ -1,0 +1,14 @@
+archetype: archetypes/countries/tajikistan
+schema_version: '2026.5'
+target: site
+name: Tajikistan
+legacy_id: 11240203
+country: Tajikistan
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/tajikistan
+    energy_use: records/profiles/traffic/lucy/tajikistan
+    human_activity: records/profiles/human-activity/lucy/tajikistan
+    population: records/profiles/human-activity/lucy/tajikistan

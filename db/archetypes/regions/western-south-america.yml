@@ -1,0 +1,41 @@
+archetype: archetypes/regions/western-south-america
+schema_version: '2026.5'
+target: site
+name: Western South America
+legacy_id: 10240023
+region: Western South America
+uses:
+  anthropogenic_emissions: records/anthropogenic/london--ward2016
+  irrigation: records/irrigation/vancouver--unreferenced
+  soil: records/surfaces/common/se-england--ward2016--soil
+  snow: archetypes/snow/helsinki--snow
+  conductance: records/conductance/generic--ward2016
+  land_cover:
+    paved: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+    bldgs: archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+    bsoil: archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
+    grass: archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016
+    evetr: archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016
+    dectr: archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
+    water: archetypes/surfaces/water/swindon-uk--water
+  profiles:
+    snow_clearing: records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
+    water_use_manual:
+      working_day: records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11
+      holiday: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
+    water_use_automatic:
+      working_day: records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11
+      holiday: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
+parameters:
+  anthropogenic_emissions:
+    heat:
+      baset_heating:
+        working_day: 7
+        holiday: 7
+      baset_cooling:
+        working_day: 7
+        holiday: 7
+legacy:
+  BaseT_HC: 18.2
+  Traffic_multiplier_OSM: '{"Tertiary":16.0,"Primary":110.8, "Motorway":159.2, "Motorway Road":36.0,"Secondary":52.1,"Residential,
+    Living street":6.6}'

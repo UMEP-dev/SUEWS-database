@@ -1,0 +1,11 @@
+record: records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Vegetation (average). [200] This is the average of Codes 20, 30, 50, 51, 52, 53, 60
+  (i.e. includes soil and water).
+source: unreferenced
+legacy_id: 50240008
+parameters:
+  a1: 0.336
+  a2: 0.313
+  a3: -31.4

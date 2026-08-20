@@ -1,0 +1,14 @@
+archetype: archetypes/countries/libyan-arab-jamahiriya
+schema_version: '2026.5'
+target: site
+name: Libyan Arab Jamahiriya
+legacy_id: 11240119
+country: Libyan Arab Jamahiriya
+region_ref: archetypes/regions/northern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/libyan-arab-jamahiriya
+    energy_use: records/profiles/traffic/lucy/libyan-arab-jamahiriya
+    human_activity: records/profiles/human-activity/lucy/libyan-arab-jamahiriya
+    population: records/profiles/human-activity/lucy/libyan-arab-jamahiriya

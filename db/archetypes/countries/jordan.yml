@@ -1,0 +1,14 @@
+archetype: archetypes/countries/jordan
+schema_version: '2026.5'
+target: site
+name: Jordan
+legacy_id: 11240106
+country: Jordan
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/jordan
+    energy_use: records/profiles/traffic/lucy/jordan
+    human_activity: records/profiles/human-activity/lucy/jordan
+    population: records/profiles/human-activity/lucy/jordan

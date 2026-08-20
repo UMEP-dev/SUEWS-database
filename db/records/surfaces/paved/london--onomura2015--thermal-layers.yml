@@ -1,0 +1,66 @@
+record: records/surfaces/paved/london--onomura2015--thermal-layers
+schema_version: '2026.5'
+target: land_cover.paved
+name: Fast transit roads
+place: london
+origin: London
+representativeness: city
+source: onomura2015
+legacy_id: 52240011
+parameters:
+  thermal_layers:
+    dz:
+    - 0.04
+    - 0.06
+    - 0.5
+    - 0.94
+    k:
+    - 0.762
+    - 0.762
+    - 0.63
+    - 0.63
+    rho_cp:
+    - 1890000
+    - 1890000
+    - 1200000
+    - 1200000
+legacy:
+  Surf_thick5: -999
+  Surf_k5: -999
+  Surf_rhoCp5: -999
+  Wall_thick1: -999
+  Wall_k1: -999
+  Wall_rhoCp1: -999
+  Wall_thick2: -999
+  Wall_k2: -999
+  Wall_rhoCp2: -999
+  Wall_thick3: -999
+  Wall_k3: -999
+  Wall_rhoCp3: -999
+  Wall_thick4: -999
+  Wall_k4: -999
+  Wall_rhoCp4: -999
+  Wall_thick5: -999
+  Wall_k5: -999
+  Wall_rhoCp5: -999
+  Internal_thick1: -999
+  Internal_k1: -999
+  Internal_rhoCp1: -999
+  Internal_thick2: -999
+  Internal_k2: -999
+  Internal_rhoCp2: -999
+  Internal_thick3: -999
+  Internal_k3: -999
+  Internal_rhoCp3: -999
+  Internal_thick4: -999
+  Internal_k4: -999
+  Internal_rhoCp4: -999
+  Internal_thick5: -999
+  Internal_k5: -999
+  Internal_rhoCp5: -999
+  nroom: -999
+  Internal_albedo: -999
+  Internal_emissivity: -999
+  Internal_CHwall: -999
+  Internal_CHroof: -999
+  Internal_CHbld: -999

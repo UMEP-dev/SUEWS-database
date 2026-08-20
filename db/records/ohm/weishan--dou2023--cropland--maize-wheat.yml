@@ -1,0 +1,14 @@
+record: records/ohm/weishan--dou2023--cropland--maize-wheat
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Maize-wheat
+place: weishan
+origin: Weishan, Shandong Province, China
+representativeness: site
+source: dou2023
+legacy_id: 50240039
+season_label: Autumn
+parameters:
+  a1: 0.21
+  a2: -0.14
+  a3: -17.6

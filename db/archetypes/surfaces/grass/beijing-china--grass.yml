@@ -1,0 +1,25 @@
+archetype: archetypes/surfaces/grass/beijing-china--grass
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: beijing
+origin: Beijing, China
+representativeness: city
+legacy_id: 24240011
+uses:
+  albedo: records/surfaces/grass/helsinki--vargo2013--albedo
+  emissivity: records/surfaces/grass/se-england--ward2016--emissivity
+  water_storage: records/surfaces/grass/se-england--ward2016--water-storage
+  leaf_area_index: records/surfaces/grass/se-england--ward2016--lai
+  leaf_growth_power: records/surfaces/grass/beijing--zheng-y2023--lai-power
+  drainage: records/surfaces/grass/london--havu-m2024--drainage
+  max_vegetation_conductance: records/surfaces/grass/beijing--zheng-y2023--max-conductance
+  porosity: records/surfaces/grass/generic--unreferenced--porosity
+  biogen_co2: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
+  snow_lim_patch: records/surfaces/grass/helsinki--jarvi2014--snow-lim
+  vegetation_growth: records/surfaces/grass/helsinki--jarvi2014--phenology
+  ohm:
+    summer_wet: records/ohm/generic--unreferenced--grass
+    summer_dry: records/ohm/generic--unreferenced--grass
+    winter_wet: records/ohm/generic--unreferenced--grass
+    winter_dry: records/ohm/generic--unreferenced--grass

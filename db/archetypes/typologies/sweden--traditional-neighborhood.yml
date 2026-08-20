@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/sweden--traditional-neighborhood
+schema_version: '2026.5'
+target: typology
+name: Traditional neighborhood
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240002
+description: Traditional neighborhood (Stone houses)
+author: FL
+url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%C3%85kermyntan.jpg/1024px-%C3%85kermyntan.jpg
+image_source: 'By Hojemo at English Wikipedia. '
+profile_type: Residential
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood
+  paved: archetypes/surfaces/paved/sweden--asphalt-mixed-city

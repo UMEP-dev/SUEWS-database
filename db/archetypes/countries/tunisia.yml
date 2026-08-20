@@ -1,0 +1,14 @@
+archetype: archetypes/countries/tunisia
+schema_version: '2026.5'
+target: site
+name: Tunisia
+legacy_id: 11240209
+country: Tunisia
+region_ref: archetypes/regions/northern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/tunisia
+    energy_use: records/profiles/traffic/lucy/tunisia
+    human_activity: records/profiles/human-activity/lucy/tunisia
+    population: records/profiles/human-activity/lucy/tunisia

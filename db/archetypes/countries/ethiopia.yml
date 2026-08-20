@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ethiopia
+schema_version: '2026.5'
+target: site
+name: Ethiopia
+legacy_id: 11240064
+country: Ethiopia
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ethiopia
+    energy_use: records/profiles/traffic/lucy/ethiopia
+    human_activity: records/profiles/human-activity/lucy/ethiopia
+    population: records/profiles/human-activity/lucy/ethiopia

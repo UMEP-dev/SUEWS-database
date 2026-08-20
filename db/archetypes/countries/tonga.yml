@@ -1,0 +1,14 @@
+archetype: archetypes/countries/tonga
+schema_version: '2026.5'
+target: site
+name: Tonga
+legacy_id: 11240207
+country: Tonga
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/tonga
+    energy_use: records/profiles/traffic/lucy/tonga
+    human_activity: records/profiles/human-activity/lucy/tonga
+    population: records/profiles/human-activity/lucy/tonga

@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--ballast-chips-or-paving-slab
+schema_version: '2026.5'
+target: material
+name: ballast (chips or paving slab)
+source: hertwig2024a
+legacy_id: 36248185
+category: Masonry
+display_colour: Brown
+parameters:
+  thermal_conductivity: 1.13
+  specific_heat: 1000
+  density: 1800

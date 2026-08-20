@@ -1,0 +1,14 @@
+archetype: archetypes/countries/new-caledonia
+schema_version: '2026.5'
+target: site
+name: New Caledonia
+legacy_id: 11240147
+country: New Caledonia
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/new-caledonia
+    energy_use: records/profiles/traffic/lucy/new-caledonia
+    human_activity: records/profiles/human-activity/lucy/new-caledonia
+    population: records/profiles/human-activity/lucy/new-caledonia

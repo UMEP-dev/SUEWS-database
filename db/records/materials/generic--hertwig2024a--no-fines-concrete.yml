@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--no-fines-concrete
+schema_version: '2026.5'
+target: material
+name: no fines concrete
+source: hertwig2024a
+legacy_id: 36248197
+category: Masonry
+display_colour: Generic
+parameters:
+  albedo: 0.375
+  emissivity: 0.9
+  thermal_conductivity: 1.33
+  specific_heat: 1000
+  density: 2000

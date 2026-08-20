@@ -1,0 +1,14 @@
+archetype: archetypes/countries/french-guiana
+schema_version: '2026.5'
+target: site
+name: French Guiana
+legacy_id: 11240071
+country: French Guiana
+region_ref: archetypes/regions/northern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/french-guiana
+    energy_use: records/profiles/traffic/lucy/french-guiana
+    human_activity: records/profiles/human-activity/lucy/french-guiana
+    population: records/profiles/human-activity/lucy/french-guiana

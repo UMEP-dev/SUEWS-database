@@ -1,30 +1,34 @@
-UV := uv run --with pyyaml --with openpyxl --no-project python
+PY := python3
+# VIRTUAL_ENV= keeps an active venv from leaking into uv's resolution; the
+# supy pin is the version the records' schema_version was verified against.
+SUPY_VERSION := 2026.6.5
+UV := VIRTUAL_ENV= uv run --with pyyaml --no-project python
+UVSUPY := VIRTUAL_ENV= uv run --with pyyaml --with "supy==$(SUPY_VERSION)" --no-project python
 
-# Optional reference workbook for `make verify`, e.g. the release asset:
-#   make verify XLSX=~/Downloads/database.xlsx
-XLSX ?=
-
-.PHONY: help xlsx verify check origins yaml
+.PHONY: help check check-strict validate verify export
 
 help:
-	@echo "xlsx    - build database.xlsx from db/*.yml (untracked; the release asset)"
-	@echo "verify  - prove db/*.yml still reproduces the migrated workbook"
-	@echo "          add XLSX=<path> to also compare cell by cell"
-	@echo "check   - referential, linkage and hygiene checks over db/*.yml"
-	@echo "origins - refresh schema/origins_inventory.yml from db/*.yml"
-	@echo "yaml    - one-off: rebuild db/ from a workbook (migration bootstrap)"
-
-xlsx:
-	$(UV) scripts/yaml_to_xlsx.py
-
-verify:
-	$(UV) scripts/verify_roundtrip.py $(XLSX)
+	@echo "check        - structure, references, places/sources and coupling rules"
+	@echo "check-strict - as check, but coupling warnings fail the run"
+	@echo "validate     - check + validate every fragment against the supy data model"
+	@echo "verify       - reverse-verify the record tree against the pre-migration tables in git history"
+	@echo "export       - usage: make export REC=records/surfaces/grass/helsinki--jarvi2014--phenology"
+	@echo ""
+	@echo "The legacy spreadsheet toolchain (xlsx/verify/origins/yaml) is retired:"
+	@echo "the last workbook built from the table-format database is a release"
+	@echo "asset, and the pre-migration tooling lives in scripts/legacy/."
 
 check:
-	$(UV) scripts/check_consistency.py
+	$(UV) scripts/check_db.py
 
-origins:
-	$(UV) scripts/build_origins_inventory.py
+check-strict:
+	$(UV) scripts/check_db.py --strict
 
-yaml:
-	$(UV) scripts/xlsx_to_yaml.py
+validate:
+	$(UVSUPY) scripts/check_db.py --supy
+
+verify:
+	$(UV) scripts/verify_migration.py
+
+export:
+	$(UV) scripts/export_record.py $(REC)

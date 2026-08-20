@@ -1,0 +1,14 @@
+archetype: archetypes/countries/cyprus
+schema_version: '2026.5'
+target: site
+name: Cyprus
+legacy_id: 11240052
+country: Cyprus
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/cyprus
+    energy_use: records/profiles/traffic/lucy/cyprus
+    human_activity: records/profiles/human-activity/lucy/cyprus
+    population: records/profiles/human-activity/lucy/cyprus

@@ -1,0 +1,11 @@
+record: records/surfaces/bsoil/se-england--ward2016--emissivity
+schema_version: '2026.5'
+target: land_cover.bsoil
+name: Bare soil
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 40240043
+parameters:
+  emis: 0.94

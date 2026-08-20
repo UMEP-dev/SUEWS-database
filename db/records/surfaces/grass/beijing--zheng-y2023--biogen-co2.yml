@@ -1,0 +1,19 @@
+record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: beijing
+origin: Beijing
+representativeness: city
+source: zheng-y2023
+legacy_id: 30240001
+parameters:
+  alpha_bio_co2: 0.031
+  beta_bio_co2: 5.4973
+  resp_a: 2.1
+  resp_b: 0.06
+  min_res_bioco2: 0.6
+legacy:
+  theta: -999
+  alpha_enh: -999
+  beta_enh: -999

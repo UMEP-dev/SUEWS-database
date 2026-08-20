@@ -1,8 +1,17 @@
 # Data-quality findings
 
 Issues visible in the database as it stands. **Nothing here has been changed.**
-The migration to YAML was format-only, so that these can be reviewed and fixed
-one at a time against a stable base.
+Both migrations — workbook to tables, tables to records — were format-only,
+so that these can be reviewed and fixed one at a time against a stable base.
+
+The findings below were written against the table format; the values they
+describe now live in `db/records/` and `db/archetypes/`, and every record's
+`legacy_id` field traces back to the row IDs cited here. The record
+migration itself surfaced a few more: the `-999` placeholder cells now
+quarantined under records' `legacy:` blocks, two dangling reference IDs
+(90241000, 90240027) kept as `source_legacy_ref`, and a third (Holiday)
+day type on the Shanghai commercial energy-use profile, kept as a
+`public_holiday` side.
 
 Findings marked *(automated)* are re-checked by `make check`.
 

@@ -1,0 +1,13 @@
+record: records/surfaces/paved/london--ward2016--anohm
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved [sample run]
+place: london
+origin: London
+representativeness: city
+source: ward2016
+legacy_id: 51240004
+parameters:
+  rho_cp_anohm: 1500000
+  k_anohm: 0.1
+  ch_anohm: 2

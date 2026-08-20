@@ -1,0 +1,14 @@
+record: records/materials/generic--cibse2015--limestone-bright
+schema_version: '2026.5'
+target: material
+name: Limestone Bright
+source: cibse2015
+legacy_id: 36248153
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.68
+  emissivity: 0.93
+  thermal_conductivity: 0.93
+  specific_heat: 909
+  density: 2711

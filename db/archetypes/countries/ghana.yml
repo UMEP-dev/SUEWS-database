@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ghana
+schema_version: '2026.5'
+target: site
+name: Ghana
+legacy_id: 11240077
+country: Ghana
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ghana
+    energy_use: records/profiles/traffic/lucy/ghana
+    human_activity: records/profiles/human-activity/lucy/ghana
+    population: records/profiles/human-activity/lucy/ghana

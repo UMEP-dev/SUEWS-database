@@ -1,0 +1,13 @@
+record: records/surfaces/grass/london--jarvi2014--anohm
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: london
+origin: London
+representativeness: city
+source: jarvi2014
+legacy_id: 51240009
+parameters:
+  rho_cp_anohm: 1000000
+  k_anohm: 1.2
+  ch_anohm: 4

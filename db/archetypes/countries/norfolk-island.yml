@@ -1,0 +1,14 @@
+archetype: archetypes/countries/norfolk-island
+schema_version: '2026.5'
+target: site
+name: Norfolk Island
+legacy_id: 11240153
+country: Norfolk Island
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/norfolk-island
+    energy_use: records/profiles/traffic/lucy/norfolk-island
+    human_activity: records/profiles/human-activity/lucy/norfolk-island
+    population: records/profiles/human-activity/lucy/norfolk-island

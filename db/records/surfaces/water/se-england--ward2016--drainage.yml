@@ -1,0 +1,15 @@
+record: records/surfaces/water/se-england--ward2016--drainage
+schema_version: '2026.5'
+target: land_cover.water
+name: Water
+place: se-england
+origin: SE England
+representativeness: regional
+source: ward2016
+legacy_id: 45240047
+parameters:
+  wet_threshold: 0.5
+legacy:
+  DrainageEq: -999
+  DrainageCoef1: -999
+  DrainageCoef2: -999

@@ -1,0 +1,15 @@
+record: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass, irrigated
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 45240015
+parameters:
+  storage_drain_params:
+    drain_eq: 3
+    drain_coef_1: 10
+    drain_coef_2: 3
+  wet_threshold: 1.9

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/croatia
+schema_version: '2026.5'
+target: site
+name: Croatia
+legacy_id: 11240050
+country: Croatia
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/croatia
+    energy_use: records/profiles/traffic/lucy/croatia
+    human_activity: records/profiles/human-activity/lucy/croatia
+    population: records/profiles/human-activity/lucy/croatia

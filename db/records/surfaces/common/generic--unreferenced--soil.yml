@@ -1,0 +1,16 @@
+record: records/surfaces/common/generic--unreferenced--soil
+schema_version: '2026.5'
+target: land_cover.common
+name: sand [51]
+source: unreferenced
+legacy_id: 22240054
+parameters:
+  soil_depth: 333
+  soil_store_capacity: 150
+  saturated_hydraulic_conductivity: 0.05
+legacy:
+  SoilDensity: -999
+  InfiltrationRate: 25
+  OBS_SMDepth: -999
+  OBS_SMCap: -999
+  OBS_SoilNotRocks: -999

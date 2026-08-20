@@ -1,0 +1,11 @@
+record: records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered
+schema_version: '2026.5'
+target: land_cover.paved
+name: 'Black tarmac, weathered '
+place: london
+origin: London
+representativeness: city
+source: kotthaus2014
+legacy_id: 40241248
+parameters:
+  emis: 0.9533333333333333

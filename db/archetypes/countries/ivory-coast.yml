@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ivory-coast
+schema_version: '2026.5'
+target: site
+name: Ivory Coast
+legacy_id: 11240102
+country: Ivory Coast
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ivory-coast
+    energy_use: records/profiles/traffic/lucy/ivory-coast
+    human_activity: records/profiles/human-activity/lucy/ivory-coast
+    population: records/profiles/human-activity/lucy/ivory-coast

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/latvia
+schema_version: '2026.5'
+target: site
+name: Latvia
+legacy_id: 11240115
+country: Latvia
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/latvia
+    energy_use: records/profiles/traffic/lucy/latvia
+    human_activity: records/profiles/human-activity/lucy/latvia
+    population: records/profiles/human-activity/lucy/latvia

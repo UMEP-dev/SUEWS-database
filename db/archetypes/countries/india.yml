@@ -1,0 +1,14 @@
+archetype: archetypes/countries/india
+schema_version: '2026.5'
+target: site
+name: India
+legacy_id: 11240094
+country: India
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/india
+    energy_use: records/profiles/traffic/lucy/india
+    human_activity: records/profiles/human-activity/lucy/india
+    population: records/profiles/human-activity/lucy/india

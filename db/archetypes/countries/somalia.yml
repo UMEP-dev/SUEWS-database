@@ -1,0 +1,14 @@
+archetype: archetypes/countries/somalia
+schema_version: '2026.5'
+target: site
+name: Somalia
+legacy_id: 11240191
+country: Somalia
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/somalia
+    energy_use: records/profiles/traffic/lucy/somalia
+    human_activity: records/profiles/human-activity/lucy/somalia
+    population: records/profiles/human-activity/lucy/somalia

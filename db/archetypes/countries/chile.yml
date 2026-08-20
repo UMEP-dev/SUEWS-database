@@ -1,0 +1,14 @@
+archetype: archetypes/countries/chile
+schema_version: '2026.5'
+target: site
+name: Chile
+legacy_id: 11240041
+country: Chile
+region_ref: archetypes/regions/western-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/chile
+    energy_use: records/profiles/traffic/lucy/chile
+    human_activity: records/profiles/human-activity/lucy/chile
+    population: records/profiles/human-activity/lucy/chile

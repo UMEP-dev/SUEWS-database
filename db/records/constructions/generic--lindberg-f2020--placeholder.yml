@@ -1,0 +1,18 @@
+record: records/constructions/generic--lindberg-f2020--placeholder
+schema_version: '2026.5'
+target: construction
+name: Placeholder
+place: generic
+origin: Placeholder
+representativeness: generic
+source: lindberg-f2020
+legacy_id: 37240000
+parameters:
+  roof:
+  - material: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
+    thickness: 0.1
+  roof_insulation_layer: 1
+  wall:
+  - material: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
+    thickness: 0.1
+  wall_insulation_layer: 1

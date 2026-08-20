@@ -1,0 +1,14 @@
+archetype: archetypes/countries/mayotte-qpp
+schema_version: '2026.5'
+target: site
+name: Mayotte* qpp
+legacy_id: 11240134
+country: Mayotte* qpp
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/mayotte-qpp
+    energy_use: records/profiles/traffic/lucy/mayotte-qpp
+    human_activity: records/profiles/human-activity/lucy/mayotte-qpp
+    population: records/profiles/human-activity/lucy/mayotte-qpp

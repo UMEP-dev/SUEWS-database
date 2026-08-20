@@ -1,0 +1,25 @@
+archetype: archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree Ward et al. (2016)
+place: london
+origin: London, UK
+representativeness: city
+legacy_id: 24240026
+uses:
+  albedo: records/surfaces/evetr/se-england--ward2016--albedo
+  emissivity: records/surfaces/evetr/se-england--ward2016--emissivity
+  water_storage: records/surfaces/evetr/se-england--ward2016--water-storage
+  leaf_area_index: records/surfaces/evetr/se-england--ward2016--lai
+  leaf_growth_power: records/surfaces/evetr/se-england--ward2016--lai-power
+  drainage: records/surfaces/evetr/se-england--ward2016--drainage
+  max_vegetation_conductance: records/surfaces/evetr/se-england--ward2016--max-conductance
+  porosity: records/surfaces/evetr/generic--unreferenced--porosity
+  biogen_co2: records/surfaces/common/se-england--ruimy1995--biogen-co2
+  snow_lim_patch: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+  vegetation_growth: records/surfaces/evetr/helsinki--jarvi2014--phenology
+  ohm:
+    summer_wet: records/ohm/generic--ward2016--all-vegetation
+    summer_dry: records/ohm/generic--ward2016--all-vegetation
+    winter_wet: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+    winter_dry: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012

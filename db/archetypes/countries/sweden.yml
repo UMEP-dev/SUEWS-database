@@ -1,0 +1,14 @@
+archetype: archetypes/countries/sweden
+schema_version: '2026.5'
+target: site
+name: Sweden
+legacy_id: 11240199
+country: Sweden
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/sweden
+    energy_use: records/profiles/traffic/lucy/sweden
+    human_activity: records/profiles/human-activity/lucy/sweden
+    population: records/profiles/human-activity/lucy/sweden

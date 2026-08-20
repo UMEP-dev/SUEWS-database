@@ -1,0 +1,17 @@
+record: records/surfaces/grass/helsinki--havu-m2024--lai-power
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass, LaiEq = 1
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: havu-m2024
+legacy_id: 32240035
+parameters:
+  lai:
+    lai_power:
+      growth_lai: 0.04
+      growth_gdd: 0.002
+      senescence_lai: -1.5
+      senescence_sdd: 0.0005
+    lai_type: 1

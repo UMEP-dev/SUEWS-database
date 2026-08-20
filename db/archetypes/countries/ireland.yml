@@ -1,0 +1,14 @@
+archetype: archetypes/countries/ireland
+schema_version: '2026.5'
+target: site
+name: Ireland
+legacy_id: 11240098
+country: Ireland
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/ireland
+    energy_use: records/profiles/traffic/lucy/ireland
+    human_activity: records/profiles/human-activity/lucy/ireland
+    population: records/profiles/human-activity/lucy/ireland

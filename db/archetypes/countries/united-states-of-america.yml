@@ -1,0 +1,14 @@
+archetype: archetypes/countries/united-states-of-america
+schema_version: '2026.5'
+target: site
+name: United States of America
+legacy_id: 11240219
+country: United States of America
+region_ref: archetypes/regions/north-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/united-states-of-america
+    energy_use: records/profiles/traffic/lucy/united-states-of-america
+    human_activity: records/profiles/human-activity/lucy/united-states-of-america
+    population: records/profiles/human-activity/lucy/united-states-of-america

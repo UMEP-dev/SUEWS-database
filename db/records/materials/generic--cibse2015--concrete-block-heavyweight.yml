@@ -1,0 +1,14 @@
+record: records/materials/generic--cibse2015--concrete-block-heavyweight
+schema_version: '2026.5'
+target: material
+name: Concrete Block (Heavyweight)
+source: cibse2015
+legacy_id: 36248160
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.37
+  emissivity: 0.92
+  thermal_conductivity: 1.63
+  specific_heat: 1000
+  density: 2300

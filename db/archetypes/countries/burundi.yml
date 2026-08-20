@@ -1,0 +1,14 @@
+archetype: archetypes/countries/burundi
+schema_version: '2026.5'
+target: site
+name: Burundi
+legacy_id: 11240033
+country: Burundi
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/burundi
+    energy_use: records/profiles/traffic/lucy/burundi
+    human_activity: records/profiles/human-activity/lucy/burundi
+    population: records/profiles/human-activity/lucy/burundi

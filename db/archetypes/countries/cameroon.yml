@@ -1,0 +1,14 @@
+archetype: archetypes/countries/cameroon
+schema_version: '2026.5'
+target: site
+name: Cameroon
+legacy_id: 11240035
+country: Cameroon
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/cameroon
+    energy_use: records/profiles/traffic/lucy/cameroon
+    human_activity: records/profiles/human-activity/lucy/cameroon
+    population: records/profiles/human-activity/lucy/cameroon

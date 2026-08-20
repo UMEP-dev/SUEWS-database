@@ -1,0 +1,16 @@
+record: records/surfaces/common/generic--unreferenced--soil--clay-54
+schema_version: '2026.5'
+target: land_cover.common
+name: clay [54]
+source: unreferenced
+legacy_id: 22240057
+parameters:
+  soil_depth: 250
+  soil_store_capacity: 150
+  saturated_hydraulic_conductivity: 5.0e-05
+legacy:
+  SoilDensity: -999
+  InfiltrationRate: 2.5
+  OBS_SMDepth: -999
+  OBS_SMCap: -999
+  OBS_SoilNotRocks: -999

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/czech-republic
+schema_version: '2026.5'
+target: site
+name: Czech Republic
+legacy_id: 11240053
+country: Czech Republic
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/czech-republic
+    energy_use: records/profiles/traffic/lucy/czech-republic
+    human_activity: records/profiles/human-activity/lucy/czech-republic
+    population: records/profiles/human-activity/lucy/czech-republic

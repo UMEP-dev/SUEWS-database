@@ -1,0 +1,14 @@
+archetype: archetypes/countries/cape-verde
+schema_version: '2026.5'
+target: site
+name: Cape Verde
+legacy_id: 11240037
+country: Cape Verde
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/cape-verde
+    energy_use: records/profiles/traffic/lucy/cape-verde
+    human_activity: records/profiles/human-activity/lucy/cape-verde
+    population: records/profiles/human-activity/lucy/cape-verde

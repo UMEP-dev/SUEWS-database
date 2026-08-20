@@ -1,0 +1,14 @@
+record: records/surfaces/dectr/shanghai--ao2018--lai
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree
+place: shanghai
+origin: Shanghai
+representativeness: city
+source: ao2018
+legacy_id: 31240019
+parameters:
+  lai:
+    lai_type: 1
+    lai_min: 1
+    lai_max: 5.5

@@ -1,0 +1,12 @@
+record: records/surfaces/dectr/helsinki--vargo2013--albedo
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Mixed Deciduous Tree
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: vargo2013
+legacy_id: 41240027
+parameters:
+  alb_min: 0.16
+  alb_max: 0.16

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/guinea-bissau
+schema_version: '2026.5'
+target: site
+name: Guinea-Bissau
+legacy_id: 11240087
+country: Guinea-Bissau
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/guinea-bissau
+    energy_use: records/profiles/traffic/lucy/guinea-bissau
+    human_activity: records/profiles/human-activity/lucy/guinea-bissau
+    population: records/profiles/human-activity/lucy/guinea-bissau

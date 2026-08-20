@@ -1,0 +1,14 @@
+archetype: archetypes/countries/kuwait
+schema_version: '2026.5'
+target: site
+name: Kuwait
+legacy_id: 11240112
+country: Kuwait
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/kuwait
+    energy_use: records/profiles/traffic/lucy/kuwait
+    human_activity: records/profiles/human-activity/lucy/kuwait
+    population: records/profiles/human-activity/lucy/kuwait

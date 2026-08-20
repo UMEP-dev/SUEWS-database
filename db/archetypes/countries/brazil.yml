@@ -1,0 +1,14 @@
+archetype: archetypes/countries/brazil
+schema_version: '2026.5'
+target: site
+name: Brazil
+legacy_id: 11240028
+country: Brazil
+region_ref: archetypes/regions/central-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/brazil
+    energy_use: records/profiles/traffic/lucy/brazil
+    human_activity: records/profiles/human-activity/lucy/brazil
+    population: records/profiles/human-activity/lucy/brazil

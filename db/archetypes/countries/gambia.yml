@@ -1,0 +1,14 @@
+archetype: archetypes/countries/gambia
+schema_version: '2026.5'
+target: site
+name: Gambia
+legacy_id: 11240074
+country: Gambia
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/gambia
+    energy_use: records/profiles/traffic/lucy/gambia
+    human_activity: records/profiles/human-activity/lucy/gambia
+    population: records/profiles/human-activity/lucy/gambia

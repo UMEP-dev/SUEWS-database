@@ -1,0 +1,14 @@
+record: records/surfaces/evetr/shanghai--ao2018--lai
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree
+place: shanghai
+origin: Shanghai
+representativeness: city
+source: ao2018
+legacy_id: 31240018
+parameters:
+  lai:
+    lai_type: 1
+    lai_min: 4
+    lai_max: 5.1

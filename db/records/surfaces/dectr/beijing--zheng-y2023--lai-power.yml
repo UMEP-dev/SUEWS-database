@@ -1,0 +1,17 @@
+record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree, LaiEq = 0
+place: beijing
+origin: Beijing
+representativeness: city
+source: zheng-y2023
+legacy_id: 32240008
+parameters:
+  lai:
+    lai_power:
+      growth_lai: -1.42
+      growth_gdd: 0.00258
+      senescence_lai: 2
+      senescence_sdd: 0.001
+    lai_type: 0

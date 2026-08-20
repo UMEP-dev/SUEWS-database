@@ -1,0 +1,14 @@
+archetype: archetypes/countries/uruguay
+schema_version: '2026.5'
+target: site
+name: Uruguay
+legacy_id: 11240221
+country: Uruguay
+region_ref: archetypes/regions/central-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/uruguay
+    energy_use: records/profiles/traffic/lucy/uruguay
+    human_activity: records/profiles/human-activity/lucy/uruguay
+    population: records/profiles/human-activity/lucy/uruguay

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/commonwealth-of-dominica
+schema_version: '2026.5'
+target: site
+name: Commonwealth of Dominica
+legacy_id: 11240044
+country: Commonwealth of Dominica
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/commonwealth-of-dominica
+    energy_use: records/profiles/traffic/lucy/commonwealth-of-dominica
+    human_activity: records/profiles/human-activity/lucy/commonwealth-of-dominica
+    population: records/profiles/human-activity/lucy/commonwealth-of-dominica

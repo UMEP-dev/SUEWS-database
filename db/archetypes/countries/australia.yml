@@ -1,0 +1,14 @@
+archetype: archetypes/countries/australia
+schema_version: '2026.5'
+target: site
+name: Australia
+legacy_id: 11240012
+country: Australia
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/australia
+    energy_use: records/profiles/traffic/lucy/australia
+    human_activity: records/profiles/human-activity/lucy/australia
+    population: records/profiles/human-activity/lucy/australia

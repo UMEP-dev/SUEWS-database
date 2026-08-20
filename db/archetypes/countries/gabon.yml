@@ -1,0 +1,14 @@
+archetype: archetypes/countries/gabon
+schema_version: '2026.5'
+target: site
+name: Gabon
+legacy_id: 11240073
+country: Gabon
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/gabon
+    energy_use: records/profiles/traffic/lucy/gabon
+    human_activity: records/profiles/human-activity/lucy/gabon
+    population: records/profiles/human-activity/lucy/gabon

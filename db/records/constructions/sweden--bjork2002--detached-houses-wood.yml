@@ -1,0 +1,34 @@
+record: records/constructions/sweden--bjork2002--detached-houses-wood
+schema_version: '2026.5'
+target: construction
+name: Detached houses, Wood
+place: sweden
+origin: Sweden
+representativeness: regional
+source: bjork2002
+legacy_id: 37240893
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--clay-tile
+    thickness: 0.054
+  - material: records/materials/generic--bellucco2017--air
+    thickness: 0.025
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.015
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.005
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.005
+  roof_insulation_layer: 2
+  wall:
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.0127
+  - material: records/materials/generic--unreferenced--glasswool
+    thickness: 0.0254
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.015
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.005
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.005
+  wall_insulation_layer: 2

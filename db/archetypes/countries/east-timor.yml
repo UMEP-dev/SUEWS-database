@@ -1,0 +1,14 @@
+archetype: archetypes/countries/east-timor
+schema_version: '2026.5'
+target: site
+name: East Timor
+legacy_id: 11240057
+country: East Timor
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/east-timor
+    energy_use: records/profiles/traffic/lucy/east-timor
+    human_activity: records/profiles/human-activity/lucy/east-timor
+    population: records/profiles/human-activity/lucy/east-timor

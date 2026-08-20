@@ -1,0 +1,10 @@
+record: records/ohm/generic--unreferenced--buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Rooftop average (of Taesler, Yap and Yoshida, as in Grimmond et al. 1992) [798]
+source: unreferenced
+legacy_id: 50240023
+parameters:
+  a1: 0.477
+  a2: 0.337
+  a3: -33.87

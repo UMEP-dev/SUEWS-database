@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--timber-battens
+schema_version: '2026.5'
+target: material
+name: timber battens
+source: hertwig2024a
+legacy_id: 36248204
+category: Generic
+display_colour: Grey
+parameters:
+  thermal_conductivity: 0.13
+  specific_heat: 1600
+  density: 500

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/poland
+schema_version: '2026.5'
+target: site
+name: Poland
+legacy_id: 11240166
+country: Poland
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/poland
+    energy_use: records/profiles/traffic/lucy/poland
+    human_activity: records/profiles/human-activity/lucy/poland
+    population: records/profiles/human-activity/lucy/poland

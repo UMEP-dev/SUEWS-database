@@ -1,0 +1,14 @@
+archetype: archetypes/countries/anguilla
+schema_version: '2026.5'
+target: site
+name: Anguilla
+legacy_id: 11240007
+country: Anguilla
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/anguilla
+    energy_use: records/profiles/traffic/lucy/anguilla
+    human_activity: records/profiles/human-activity/lucy/anguilla
+    population: records/profiles/human-activity/lucy/anguilla

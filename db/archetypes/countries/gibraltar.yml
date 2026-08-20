@@ -1,0 +1,14 @@
+archetype: archetypes/countries/gibraltar
+schema_version: '2026.5'
+target: site
+name: Gibraltar
+legacy_id: 11240078
+country: Gibraltar
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/gibraltar
+    energy_use: records/profiles/traffic/lucy/gibraltar
+    human_activity: records/profiles/human-activity/lucy/gibraltar
+    population: records/profiles/human-activity/lucy/gibraltar

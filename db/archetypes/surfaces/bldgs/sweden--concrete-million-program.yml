@@ -1,0 +1,20 @@
+archetype: archetypes/surfaces/bldgs/sweden--concrete-million-program
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Concrete (Million Program)
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 20240007
+uses:
+  albedo: records/surfaces/bldgs/london--ward2016--albedo
+  emissivity: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+  water_storage: records/surfaces/bldgs/helsinki--ward2016--water-storage
+  drainage: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+  construction: records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s
+  snow_lim_patch: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+  ohm:
+    summer_wet: records/ohm/helsinki--jarvi2014--buildings
+    summer_dry: records/ohm/helsinki--jarvi2014--buildings
+    winter_wet: records/ohm/helsinki--jarvi2014--buildings
+    winter_dry: records/ohm/helsinki--jarvi2014--buildings

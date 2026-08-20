@@ -1,0 +1,19 @@
+record: records/surfaces/common/beijing--zheng-y2023--soil
+schema_version: '2026.5'
+target: land_cover.common
+name: Below mixed vegetation
+place: beijing
+origin: Beijing
+representativeness: city
+source: zheng-y2023
+legacy_id: 22240058
+parameters:
+  soil_depth: 1000
+  soil_store_capacity: 141
+  saturated_hydraulic_conductivity: 0.0005
+  soil_density: 1.16
+legacy:
+  InfiltrationRate: 10
+  OBS_SMDepth: -999
+  OBS_SMCap: -999
+  OBS_SoilNotRocks: -999

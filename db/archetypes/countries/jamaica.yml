@@ -1,0 +1,14 @@
+archetype: archetypes/countries/jamaica
+schema_version: '2026.5'
+target: site
+name: Jamaica
+legacy_id: 11240103
+country: Jamaica
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/jamaica
+    energy_use: records/profiles/traffic/lucy/jamaica
+    human_activity: records/profiles/human-activity/lucy/jamaica
+    population: records/profiles/human-activity/lucy/jamaica

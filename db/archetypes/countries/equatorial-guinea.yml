@@ -1,0 +1,14 @@
+archetype: archetypes/countries/equatorial-guinea
+schema_version: '2026.5'
+target: site
+name: Equatorial Guinea
+legacy_id: 11240061
+country: Equatorial Guinea
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/equatorial-guinea
+    energy_use: records/profiles/traffic/lucy/equatorial-guinea
+    human_activity: records/profiles/human-activity/lucy/equatorial-guinea
+    population: records/profiles/human-activity/lucy/equatorial-guinea

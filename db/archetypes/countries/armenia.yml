@@ -1,0 +1,14 @@
+archetype: archetypes/countries/armenia
+schema_version: '2026.5'
+target: site
+name: Armenia
+legacy_id: 11240010
+country: Armenia
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/armenia
+    energy_use: records/profiles/traffic/lucy/armenia
+    human_activity: records/profiles/human-activity/lucy/armenia
+    population: records/profiles/human-activity/lucy/armenia

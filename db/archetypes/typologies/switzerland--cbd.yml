@@ -1,0 +1,15 @@
+archetype: archetypes/typologies/switzerland--cbd
+schema_version: '2026.5'
+target: typology
+name: CBD
+place: switzerland
+origin: Switzerland
+representativeness: regional
+legacy_id: 13240002
+description: Central Zurich
+author: LJ
+profile_type: Residential
+period: Pst80
+uses:
+  bldgs: archetypes/surfaces/bldgs/zurich--city-centre
+  paved: archetypes/surfaces/paved/zurich--city-centre

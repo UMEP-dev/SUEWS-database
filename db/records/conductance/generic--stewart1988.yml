@@ -1,0 +1,23 @@
+record: records/conductance/generic--stewart1988
+schema_version: '2026.5'
+target: conductance
+name: Stewart (1988)
+place: generic
+origin: Unspecified
+representativeness: generic
+source: stewart1988
+legacy_id: 44240003
+parameters:
+  g_max: 23.53
+  g_k: 104.4
+  g_q_base: 0.0812
+  g_q_shape: 9.44
+  g_t: 18.35
+  g_sm: 0.081
+  th: 40
+  tl: 0
+  s1: 1.08
+  s2: 69.7
+  kmax: 1000
+  context:
+    surface_conductance_model: 1

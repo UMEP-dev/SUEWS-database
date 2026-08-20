@@ -1,0 +1,14 @@
+record: records/materials/generic--unreferenced--roofing-felt
+schema_version: '2026.5'
+target: material
+name: Roofing Felt
+source: unreferenced
+legacy_id: 36248156
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.18
+  emissivity: 0.92
+  thermal_conductivity: 0.19
+  specific_heat: 837
+  density: 960

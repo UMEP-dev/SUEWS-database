@@ -1,0 +1,14 @@
+archetype: archetypes/countries/chad
+schema_version: '2026.5'
+target: site
+name: Chad
+legacy_id: 11240040
+country: Chad
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/chad
+    energy_use: records/profiles/traffic/lucy/chad
+    human_activity: records/profiles/human-activity/lucy/chad
+    population: records/profiles/human-activity/lucy/chad

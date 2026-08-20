@@ -1,0 +1,4 @@
+2026-08-20 10:15:56,737 - SuPy - INFO - Loading config with schema version: 2026.5
+2026-08-20 10:27:21,716 - SuPy - INFO - No schema version specified, assuming current (0.1)
+2026-08-20 10:27:21,717 - SuPy - INFO - Running comprehensive Pydantic validation with conditional checks.
+2026-08-20 10:29:14,686 - SuPy - INFO - Loading config with schema version: 2026.5

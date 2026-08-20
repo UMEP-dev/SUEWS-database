@@ -1,0 +1,14 @@
+archetype: archetypes/countries/el-salvador
+schema_version: '2026.5'
+target: site
+name: El Salvador
+legacy_id: 11240060
+country: El Salvador
+region_ref: archetypes/regions/central-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/el-salvador
+    energy_use: records/profiles/traffic/lucy/el-salvador
+    human_activity: records/profiles/human-activity/lucy/el-salvador
+    population: records/profiles/human-activity/lucy/el-salvador

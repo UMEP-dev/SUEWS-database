@@ -1,0 +1,15 @@
+record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 35240002
+parameters:
+  lai:
+    base_temperature: 5
+    base_temperature_senescence: 10
+    gdd_full: 300
+    sdd_full: -450

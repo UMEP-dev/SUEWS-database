@@ -1,0 +1,14 @@
+archetype: archetypes/countries/paraguay
+schema_version: '2026.5'
+target: site
+name: Paraguay
+legacy_id: 11240162
+country: Paraguay
+region_ref: archetypes/regions/central-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/paraguay
+    energy_use: records/profiles/traffic/lucy/paraguay
+    human_activity: records/profiles/human-activity/lucy/paraguay
+    population: records/profiles/human-activity/lucy/paraguay

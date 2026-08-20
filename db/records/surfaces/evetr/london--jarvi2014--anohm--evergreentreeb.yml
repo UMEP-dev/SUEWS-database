@@ -1,0 +1,13 @@
+record: records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb
+schema_version: '2026.5'
+target: land_cover.evetr
+name: EvergreenTreeB
+place: london
+origin: London
+representativeness: city
+source: jarvi2014
+legacy_id: 51240010
+parameters:
+  rho_cp_anohm: 1000000
+  k_anohm: 1.2
+  ch_anohm: 4

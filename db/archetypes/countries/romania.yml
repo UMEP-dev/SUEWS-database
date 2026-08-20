@@ -1,0 +1,14 @@
+archetype: archetypes/countries/romania
+schema_version: '2026.5'
+target: site
+name: Romania
+legacy_id: 11240172
+country: Romania
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/romania
+    energy_use: records/profiles/traffic/lucy/romania
+    human_activity: records/profiles/human-activity/lucy/romania
+    population: records/profiles/human-activity/lucy/romania

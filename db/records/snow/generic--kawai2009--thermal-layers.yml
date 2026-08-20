@@ -1,0 +1,59 @@
+record: records/snow/generic--kawai2009--thermal-layers
+schema_version: '2026.5'
+target: snow
+name: Snow
+source: kawai2009
+legacy_id: 52240019
+parameters: {}
+legacy:
+  Surf_thick5: -999
+  Surf_k5: -999
+  Surf_rhoCp5: -999
+  Surf_thick1: 1.1
+  Surf_k1: 0.602
+  Surf_rhoCp1: 4170000
+  Surf_thick2: 1.1
+  Surf_k2: 0.602
+  Surf_rhoCp2: 4170000
+  Surf_thick3: 1.1
+  Surf_k3: 0.602
+  Surf_rhoCp3: 4170000
+  Surf_thick4: 1.1
+  Surf_k4: 0.602
+  Surf_rhoCp4: 4170000
+  Wall_thick1: -999
+  Wall_k1: -999
+  Wall_rhoCp1: -999
+  Wall_thick2: -999
+  Wall_k2: -999
+  Wall_rhoCp2: -999
+  Wall_thick3: -999
+  Wall_k3: -999
+  Wall_rhoCp3: -999
+  Wall_thick4: -999
+  Wall_k4: -999
+  Wall_rhoCp4: -999
+  Wall_thick5: -999
+  Wall_k5: -999
+  Wall_rhoCp5: -999
+  Internal_thick1: -999
+  Internal_k1: -999
+  Internal_rhoCp1: -999
+  Internal_thick2: -999
+  Internal_k2: -999
+  Internal_rhoCp2: -999
+  Internal_thick3: -999
+  Internal_k3: -999
+  Internal_rhoCp3: -999
+  Internal_thick4: -999
+  Internal_k4: -999
+  Internal_rhoCp4: -999
+  Internal_thick5: -999
+  Internal_k5: -999
+  Internal_rhoCp5: -999
+  nroom: -999
+  Internal_albedo: -999
+  Internal_emissivity: -999
+  Internal_CHwall: -999
+  Internal_CHroof: -999
+  Internal_CHbld: -999

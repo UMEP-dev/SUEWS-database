@@ -1,0 +1,14 @@
+archetype: archetypes/countries/western-samoa
+schema_version: '2026.5'
+target: site
+name: Western Samoa
+legacy_id: 11240227
+country: Western Samoa
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/western-samoa
+    energy_use: records/profiles/traffic/lucy/western-samoa
+    human_activity: records/profiles/human-activity/lucy/western-samoa
+    population: records/profiles/human-activity/lucy/western-samoa

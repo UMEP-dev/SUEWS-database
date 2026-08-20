@@ -1,0 +1,14 @@
+archetype: archetypes/countries/tuvalu
+schema_version: '2026.5'
+target: site
+name: Tuvalu
+legacy_id: 11240213
+country: Tuvalu
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/tuvalu
+    energy_use: records/profiles/traffic/lucy/tuvalu
+    human_activity: records/profiles/human-activity/lucy/tuvalu
+    population: records/profiles/human-activity/lucy/tuvalu

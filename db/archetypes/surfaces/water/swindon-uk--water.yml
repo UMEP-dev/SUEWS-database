@@ -1,0 +1,19 @@
+archetype: archetypes/surfaces/water/swindon-uk--water
+schema_version: '2026.5'
+target: land_cover.water
+name: Water
+place: swindon
+origin: Swindon, UK
+representativeness: city
+legacy_id: 25240003
+uses:
+  albedo: records/surfaces/water/se-england--ward2016--albedo
+  emissivity: records/surfaces/water/se-england--ward2016--emissivity
+  water_storage: records/surfaces/water/se-england--ward2016--water-storage
+  water_state: records/surfaces/water/swindon--ward2016--water-state
+  drainage: records/surfaces/water/se-england--ward2016--drainage
+  ohm:
+    summer_wet: records/ohm/generic--ward2016--water
+    summer_dry: records/ohm/generic--ward2016--water
+    winter_wet: records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602
+    winter_dry: records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602

@@ -1,0 +1,14 @@
+record: records/materials/generic--lindberg-f2020--asphalt-shingles
+schema_version: '2026.5'
+target: material
+name: Asphalt shingles
+source: lindberg-f2020
+legacy_id: 36243781
+category: Generic
+display_colour: Grey
+parameters:
+  albedo: 0.12
+  emissivity: 0.92
+  thermal_conductivity: 0.33
+  specific_heat: 1390
+  density: 1700

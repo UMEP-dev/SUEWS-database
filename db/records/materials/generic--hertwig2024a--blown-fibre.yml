@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--blown-fibre
+schema_version: '2026.5'
+target: material
+name: blown fibre
+source: hertwig2024a
+legacy_id: 36248186
+category: Insulation
+display_colour: White
+parameters:
+  thermal_conductivity: 0.04
+  specific_heat: 1030
+  density: 12

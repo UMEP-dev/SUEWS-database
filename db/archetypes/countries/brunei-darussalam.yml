@@ -1,0 +1,14 @@
+archetype: archetypes/countries/brunei-darussalam
+schema_version: '2026.5'
+target: site
+name: Brunei Darussalam
+legacy_id: 11240030
+country: Brunei Darussalam
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/brunei-darussalam
+    energy_use: records/profiles/traffic/lucy/brunei-darussalam
+    human_activity: records/profiles/human-activity/lucy/brunei-darussalam
+    population: records/profiles/human-activity/lucy/brunei-darussalam

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/kenya
+schema_version: '2026.5'
+target: site
+name: Kenya
+legacy_id: 11240108
+country: Kenya
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/kenya
+    energy_use: records/profiles/traffic/lucy/kenya
+    human_activity: records/profiles/human-activity/lucy/kenya
+    population: records/profiles/human-activity/lucy/kenya

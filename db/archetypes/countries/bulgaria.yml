@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bulgaria
+schema_version: '2026.5'
+target: site
+name: Bulgaria
+legacy_id: 11240031
+country: Bulgaria
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bulgaria
+    energy_use: records/profiles/traffic/lucy/bulgaria
+    human_activity: records/profiles/human-activity/lucy/bulgaria
+    population: records/profiles/human-activity/lucy/bulgaria

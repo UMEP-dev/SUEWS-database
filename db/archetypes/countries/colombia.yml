@@ -1,0 +1,14 @@
+archetype: archetypes/countries/colombia
+schema_version: '2026.5'
+target: site
+name: Colombia
+legacy_id: 11240043
+country: Colombia
+region_ref: archetypes/regions/northern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/colombia
+    energy_use: records/profiles/traffic/lucy/colombia
+    human_activity: records/profiles/human-activity/lucy/colombia
+    population: records/profiles/human-activity/lucy/colombia

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/portugal
+schema_version: '2026.5'
+target: site
+name: Portugal
+legacy_id: 11240167
+country: Portugal
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/portugal
+    energy_use: records/profiles/traffic/lucy/portugal
+    human_activity: records/profiles/human-activity/lucy/portugal
+    population: records/profiles/human-activity/lucy/portugal

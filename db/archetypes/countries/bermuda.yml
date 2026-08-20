@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bermuda
+schema_version: '2026.5'
+target: site
+name: Bermuda
+legacy_id: 11240023
+country: Bermuda
+region_ref: archetypes/regions/north-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bermuda
+    energy_use: records/profiles/traffic/lucy/bermuda
+    human_activity: records/profiles/human-activity/lucy/bermuda
+    population: records/profiles/human-activity/lucy/bermuda

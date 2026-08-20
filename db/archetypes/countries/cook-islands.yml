@@ -1,0 +1,14 @@
+archetype: archetypes/countries/cook-islands
+schema_version: '2026.5'
+target: site
+name: Cook Islands
+legacy_id: 11240048
+country: Cook Islands
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/cook-islands
+    energy_use: records/profiles/traffic/lucy/cook-islands
+    human_activity: records/profiles/human-activity/lucy/cook-islands
+    population: records/profiles/human-activity/lucy/cook-islands

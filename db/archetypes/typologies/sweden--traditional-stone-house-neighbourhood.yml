@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/sweden--traditional-stone-house-neighbourhood
+schema_version: '2026.5'
+target: typology
+name: Traditional Stone House Neighbourhood
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12251392
+description: Traditional City Centre Stone House Neighbourhood, early 1900s
+author: OB
+url: https://upload.wikimedia.org/wikipedia/commons/a/ad/G%C3%B6teborg_%28Gothenburg%29%2C_V%C3%A4sterg%C3%B6tland%2C_Sweden_%286149988490%29.jpg
+image_source: Riksantikvarieämbetet - Göteborg (Gothenburg), Västergötland, Sweden,
+profile_type: Residential
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+  paved: archetypes/surfaces/paved/helsinki--city-centre

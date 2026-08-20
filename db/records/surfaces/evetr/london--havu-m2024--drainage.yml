@@ -1,0 +1,15 @@
+record: records/surfaces/evetr/london--havu-m2024--drainage
+schema_version: '2026.5'
+target: land_cover.evetr
+name: EvergreenTree - Helsinki, Zurich, Beijing
+place: london
+origin: London
+representativeness: city
+source: havu-m2024
+legacy_id: 45240061
+parameters:
+  storage_drain_params:
+    drain_eq: 3
+    drain_coef_1: 0.013
+    drain_coef_2: 1.71
+  wet_threshold: 1.3

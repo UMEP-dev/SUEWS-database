@@ -1,0 +1,54 @@
+record: records/anthropogenic/helsinki--jarvi2014--unclear-two
+schema_version: '2026.5'
+target: anthropogenic_emissions
+name: Unclear two
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 53240051
+parameters:
+  context:
+    qf_model: 4
+  heat:
+    qf_a:
+      working_day: 0.1337
+      holiday: 0.1153
+    qf_b:
+      working_day: 0.0099
+      holiday: 0.0099
+    qf_c:
+      working_day: 0.0149
+      holiday: 0.0149
+    ah_min:
+      working_day: 15
+      holiday: 15
+    ah_slope_heating:
+      working_day: 2.7
+      holiday: 2.7
+    ah_slope_cooling:
+      working_day: 2.7
+      holiday: 2.7
+    baset_heating:
+      working_day: 7
+      holiday: 7
+    baset_cooling:
+      working_day: 7
+      holiday: 7
+  co2:
+    minqfmetab: 75
+    maxqfmetab: 175
+    minfcmetab: 120
+    maxfcmetab: 280
+    frfossilfuel_heat: 0.05
+    frfossilfuel_nonheat: 0
+    ef_umolco2perj: 0
+    enef_v_jkm: 4110000
+    fcef_v_kgkm:
+      working_day: 0.29
+      holiday: 0.29
+    co2pointsource: 0
+    trafficunits: 1
+legacy:
+  BaseT_HC: 18.2
+  FrPDDwe: 0.68

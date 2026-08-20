@@ -1,0 +1,14 @@
+archetype: archetypes/countries/hong-kong
+schema_version: '2026.5'
+target: site
+name: Hong Kong
+legacy_id: 11240091
+country: Hong Kong
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/hong-kong
+    energy_use: records/profiles/traffic/lucy/hong-kong
+    human_activity: records/profiles/human-activity/lucy/hong-kong
+    population: records/profiles/human-activity/lucy/hong-kong

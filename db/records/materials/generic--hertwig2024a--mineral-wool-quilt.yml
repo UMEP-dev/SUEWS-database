@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--mineral-wool-quilt
+schema_version: '2026.5'
+target: material
+name: Mineral wool (quilt)
+source: hertwig2024a
+legacy_id: 36243796
+category: Insulation
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.042
+  specific_heat: 1030
+  density: 12

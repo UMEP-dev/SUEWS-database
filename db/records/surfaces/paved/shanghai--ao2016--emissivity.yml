@@ -1,0 +1,11 @@
+record: records/surfaces/paved/shanghai--ao2016--emissivity
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved
+place: shanghai
+origin: Shanghai
+representativeness: city
+source: ao2016
+legacy_id: 40241259
+parameters:
+  emis: 0.95

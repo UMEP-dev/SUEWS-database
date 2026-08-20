@@ -1,0 +1,14 @@
+archetype: archetypes/countries/angola
+schema_version: '2026.5'
+target: site
+name: Angola
+legacy_id: 11240006
+country: Angola
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/angola
+    energy_use: records/profiles/traffic/lucy/angola
+    human_activity: records/profiles/human-activity/lucy/angola
+    population: records/profiles/human-activity/lucy/angola

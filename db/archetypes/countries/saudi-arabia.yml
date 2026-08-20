@@ -1,0 +1,14 @@
+archetype: archetypes/countries/saudi-arabia
+schema_version: '2026.5'
+target: site
+name: Saudi Arabia
+legacy_id: 11240182
+country: Saudi Arabia
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/saudi-arabia
+    energy_use: records/profiles/traffic/lucy/saudi-arabia
+    human_activity: records/profiles/human-activity/lucy/saudi-arabia
+    population: records/profiles/human-activity/lucy/saudi-arabia

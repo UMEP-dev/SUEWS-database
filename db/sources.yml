@@ -1,0 +1,570 @@
+# Citation registry: every record's `source:` key resolves here.
+# Keys are <firstauthor><year>; `unreferenced` marks legacy values
+# that carried no citation.
+sources:
+  allen2011:
+    author: Allen, L.; Lindberg, F.; Grimmond, C. S. B.
+    doi: 10.1002/joc.2210
+    journal: International Journal of Climatology
+    legacy_id: 90240008
+    title: 'Global to city scale urban anthropogenic heat flux: model and variability'
+    type: journalArticle
+    year: 2011
+  ao2016:
+    author: Ao, X., C. S. B. Grimmond, D. Liu, Z. Han, P. Hu, Y. Wang, X. Zhen, and J. Tan
+    doi: 10.1175/JAMC-D-16-0082.1
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240065
+    title: Radiation fluxes in a business district of Shanghai, China
+    type: journalArticle
+    year: 2016
+  ao2018:
+    author: Ao, X., S. Grimmond, H.C. Ward, A.M. Gabey, J. Tan, X.-Q. Yang, D. Liu, X. Zhi,
+      H. Liu, N. Zhang
+    doi: 10.1016/j.uclim.2024.101851
+    journal: Journal of Hydrometeorology
+    legacy_id: 90240064
+    title: "Evaluation of the Surface Urban Energy and Water balance Scheme \n(SUEWS) at a\
+      \ dense urban site in Shanghai: Sensitivity to anthropogenic heat and irrigation"
+    type: journalArticle
+    year: 2018
+  auer1974:
+    author: Auer, August H.
+    doi: 10.1080/00431672.1974.9931684
+    journal: Weatherwise
+    legacy_id: 90240034
+    title: The Rain versus Snow Threshold temperatures
+    type: journalArticle
+    year: 1974
+  bellucco2017:
+    author: Bellucco, Veronica; Marras, Serena; Grimmond, C. Susan B.; Järvi, Leena; Sirca,
+      Costantino; Spano, Donatella
+    doi: 10.1016/j.agrformet.2016.12.011
+    journal: Agricultural and Forest Meteorology
+    legacy_id: 90240045
+    title: Modelling the biogenic CO2 exchange in urban and non-urban ecosystems through the
+      assessment of light-response curve parameters
+    type: journalArticle
+    year: 2017
+  bjork2002:
+    author: Björk, Cecilia; Kallstenius, Per; Reppen, Laila;
+    journal: Book
+    legacy_id: 90242357
+    title: Så byggdes husen 1880-200. Arkitektur, konstruktion och material i våra flerbostadshus
+      under 120 år
+    type: book
+    year: 2002
+  breuer2003:
+    author: Breuer, Lutz; Eckhardt, Klaus; Frede, Hans-Georg
+    doi: 10.1016/S0304-3800(03)00274-6
+    journal: Ecological Modelling
+    legacy_id: 90240031
+    title: Plant parameter values for models in Temperate climates
+    type: journalArticle
+    year: 2003
+  brutsaert2005:
+    author: Brutsaert, Wilfried
+    legacy_id: 90240048
+    title: 'Hydrology: An Introduction'
+    type: book
+    year: 2005
+  businger1971:
+    author: Businger, J. A.; Wyngaard, J. C.; Izumi, Y.; Bradley, E. F.
+    doi: 10.1175/1520-0469(1971)028<0181:FPRITA>2.0.CO;2
+    journal: Journal of the Atmospheric Sciences
+    legacy_id: 90240023
+    title: Flux-Pile Relationships in the Atmospheric Surface Layer
+    type: journalArticle
+    year: 1971
+  calder1986:
+    author: Calder, I. R.; Wright, I. R.
+    doi: 10.1029/WR022i003p00409
+    journal: Water Resources Research
+    legacy_id: 90240032
+    title: 'Gamma Ray Attenuation Studies of Interception From Sitka Spruce: Some Evidence
+      for an Additional Transport Mechanism'
+    type: journalArticle
+    year: 1986
+  campbell2012:
+    author: Campbell, Gaylon S.; Norman, John
+    legacy_id: 90240022
+    title: An Introduction to Environmental Biophysics
+    type: book
+    year: 2012
+  cibse2015:
+    author: CIBSE
+    doi: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+    journal: Chartered Institution of Building Services Engineers, UK
+    legacy_id: 90240071
+    title: 'Guide A: Environmental design'
+    type: Guideline
+    year: 2015
+  cleugh2001:
+    author: Cleugh, H. A.; Grimmond, C. S. B.
+    doi: 10.1023/A:1018798928158
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240016
+    title: Modelling Regional Scale Surface Energy Exchanges And Cbl Growth In A Heterogeneous,
+      Urban-Rural Landscape
+    type: journalArticle
+    year: 2001
+  dou2023:
+    author: Dou, J. X., Grimmond, C. S. B., Miao, S. G., Huang, B., Lei, H. M., and Liao,
+      M. S.
+    doi: 10.5194/acp-23-13143-2023
+    journal: Atmospheric Chemistry and Physics
+    legacy_id: 90240062
+    title: 'Surface energy balance fluxes in a suburban area of Beijing: energy partitioning
+      variability'
+    type: journalArticle
+    year: 2023
+  dyer1974:
+    author: Dyer, A. J.
+    doi: 10.1007/BF00240838
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240020
+    title: A review of flux-Pile relationships
+    type: journalArticle
+    year: 1974
+  eppelbaum2014:
+    author: Eppelbaum, Kutasov and Pilchin
+    legacy_id: 90240059
+    title: Applied Geothermics
+    type: journalArticle
+    year: 2014
+  flanagan2002:
+    author: Flanagan, Lb; Weaver, La; Carlson, Pj
+    doi: 10.1046/j.1365-2486.2002.00491.x
+    journal: Global Change biology.
+    legacy_id: 90240046
+    title: Seasonal and interannual variation in carbon dioxide exchange and carbon balance
+      in a northern Temperate grassland.
+    type: journalArticle
+    year: 2002
+  grimmond1986:
+    author: Grimmond, C. S. B.; Oke, T. R.; Steyn, D. G.
+    doi: https://www.sciencedirect.com/science/article/pii/B9780444418449500123
+    journal: Water Resources Research
+    legacy_id: 90240014
+    title: 'Urban Water Balance: 1. A Model for Daily Totals'
+    type: journalArticle
+    year: 1986
+  grimmond1991a:
+    author: Grimmond, C. S. B.; Oke, T. R.
+    doi: 10.1029/91WR00557
+    journal: Water Resources Research
+    legacy_id: 90240003
+    title: An evapotranspiration-interception model for urban areas
+    type: journalArticle
+    year: 1991
+  grimmond1991b:
+    author: Grimmond, C. S. B.; Cleugh, H. A.; Oke, T. R.
+    doi: 10.1016/0957-1272(91)90003-W
+    journal: Atmospheric Environment Part B
+    legacy_id: 90240009
+    title: An objective urban heat storage model and its comparison with other schemes
+    type: journalArticle
+    year: 1991
+  grimmond1999:
+    author: Grimmond, C. S. B.; Oke, T. R.
+    doi: 10.1175/1520-0450(1999)038<0922:HSIUAL>2.0.CO;2
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240010
+    title: 'Heat storage in Urban Areas: Local-Scale Observations and Evaluation of a Simple
+      Model'
+    type: journalArticle
+    year: 1999
+  grimmond2002:
+    author: Grimmond, C S B; Oke, T R
+    doi: 10.1175/1520-0450(2002)041<0792:THFIUA>2.0.CO;2
+    journal: JOURNAL OF APPLIED METEOROLOGY
+    legacy_id: 90240011
+    title: 'Turbulent Heat Fluxes in Urban Areas: Observations and a Local-Scale Urban Meteorological
+      Parameterization Scheme (LUMPS)'
+    type: journalArticle
+    year: 2002
+  halldin1979:
+    author: Halldin, S.; Grip, H.; Perttu, K.
+    journal: Developments in Agricultural and Managed Forest Ecology
+    legacy_id: 90240030
+    title: Model for Energy Exchange of a Pine Forest Canopy
+    type: bookSection
+    year: 1979
+  harman2007:
+    author: Harman, Ian N.; Finnigan, John J.
+    doi: 10.1007/s10546-006-9145-6
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240049
+    title: A simple unified theory for flow in the canopy and roughness sublayer
+    type: journalArticle
+    year: 2007
+  havu-m2024:
+    author: Havu M., Kulmala L., Lee H.S., Saranko O., Soininen J., Ahongshabam J. and Järvi
+      L
+    doi: 10.1016/j.ufug.2024.128261
+    journal: Urban Forestry and Urban Greening
+    legacy_id: 90240066
+    title: CO2 uptake of urban green in a warming Nordic city
+    type: journalArticle
+    year: 2024
+  hertwig2024a:
+    author: Hertwig, D., McGrory, M., Paskin, M., Liu, Y., Lo Piano, S., Llanwarne, H., Smith,
+      S. T., & Grimmond, S.
+    doi: 10.5281/zenodo.12190341
+    journal: Zenodo
+    legacy_id: 90240069
+    title: 'Multi-scale harmonisation Across Physical and Socio-Economic Characteristics of
+      a City region (MAPSECC): London, UK [Data set]'
+    type: dataRepository
+    year: 2024a
+  hertwig2024b:
+    author: Hertwig, D., McGrory, M., Paskin, M., Liu, Y., Lo Piano, S., Llanwarne, H., Smith,
+      S. T., & Grimmond, S.
+    journal: Geoscience Data Journal, in review
+    legacy_id: 90240070
+    title: 'Connecting physical and socio-economic spaces for multi-scale urban modelling:
+      a dataset for London'
+    type: journalArticle
+    year: 2024b
+  hogstrom1988:
+    author: Högström, Ulf
+    doi: 10.1007/BF00119875
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240039
+    title: 'Non-dimensional wind and temperature Piles in the atmospheric surface layer: A
+      re-evaluation'
+    type: journalArticle
+    year: 1988
+  iamarino2012:
+    author: Iamarino, Mario; Beevers, Sean; Grimmond, C. S. B.
+    doi: 10.1002/joc.2390
+    journal: International Journal of Climatology
+    legacy_id: 90240007
+    title: 'High-resolution (space, time) anthropogenic heat emissions: London 1970–2025'
+    type: journalArticle
+    year: 2012
+  jarvi2011:
+    author: Järvi, L., Grimmond, C. S. B., & Christen, A.
+    doi: 10.1016/j.jhydrol.2011.10.001
+    journal: Journal of Hydrology,
+    legacy_id: 90240054
+    title: 'The Surface Urban Energy and Water Balance Scheme (SUEWS): Evaluation in Los Angeles
+      and Vancouver.'
+    type: journalArticle
+    year: 2011
+  jarvi2012:
+    author: Järvi, L.; Nordbo, A.; Junninen, H.; Riikonen, A.; Moilanen, J.; Nikinmaa, E.;
+      Vesala, T.
+    doi: 10.5194/acp-12-8475-2012
+    journal: Atmospheric Chemistry and Physics
+    legacy_id: 90240047
+    title: Seasonal and annual variation of carbon dioxide surface fluxes in Helsinki, Finland,
+      in 2006–2010
+    type: journalArticle
+    year: 2012
+  jarvi2014:
+    author: Järvi, L.; Grimmond, C. S. B.; Taka, M.; Nordbo, A.; Setälä, H.; Strachan, I.
+      B.
+    doi: 10.5194/gmd-7-1691-2014
+    journal: Geoscientific Model Development
+    legacy_id: 90240015
+    title: Development of the Surface Urban Energy and Water Balance Scheme (SUEWS) for cold
+      climate cities
+    type: journalArticle
+    year: 2014
+  jarvi2019:
+    author: Järvi, Leena; Havu, Minttu; Ward, Helen C.; Bellucco, Veronica; McFadden, Joseph
+      P.; Toivonen, Tuuli; Heikinheimo, Vuokko; Kolari, Pasi; Riikonen, Anu; Grimmond, C.
+      Sue B.
+    doi: 10.1029/2018JD029576
+    journal: 'Journal of Geophysical Research: Atmospheres'
+    legacy_id: 90240051
+    title: Spatial Modeling of Local-Scale Biogenic and Anthropogenic Carbon Dioxide emissions
+      in Helsinki
+    type: journalArticle
+    year: 2019
+  jarvis1976:
+    author: Jarvis, P. G.; Monteith, John Lennox; Weatherley, Paul Egerton
+    doi: 10.1098/rstb.1976.0035
+    journal: Philosophical Transactions of the Royal Society of London. B, Biological Sciences
+    legacy_id: 90240033
+    title: The interpretation of the variations in leaf water potential and stomatal conductance
+      found in canopies in the field
+    type: journalArticle
+    year: 1976
+  kanda2007:
+    author: Kanda, M.; Kanega, M.; Kawai, T.; Moriwaki, R.; Sugawara, H.
+    doi: 10.1175/JAM2500.1
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240026
+    title: Roughness Lengths for Momentum and Heat Derived from Outdoor Urban Scale Models
+    type: journalArticle
+    year: 2007
+  kawai2009:
+    author: Kawai, Toru; Ridwan, Mohammad Kholid; Kanda, Manabu
+    doi: 10.1175/2008JAMC1891.1
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240025
+    title: Evaluation of the Simple Urban Energy Balance Model Using Selected Data from 1-yr
+      Flux Observations at Two Cities
+    type: journalArticle
+    year: 2009
+  kent2017a:
+    author: Kent, Christoph W.; Grimmond, Sue; Barlow, Janet; Gatey, David; Kotthaus, Simone;
+      Lindberg, Fredrik; Halios, Christos H.
+    doi: 10.1007/s10546-017-0248-z
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240040
+    title: 'Evaluation of Urban Local-Scale Aerodynamic Parameters: Implications for the Vertical
+      Pile of Wind Speed and for Source Areas'
+    type: journalArticle
+    year: 2017
+  kent2017b:
+    author: Kent, Christoph W.; Grimmond, Sue; Gatey, David
+    doi: 10.1016/j.jweia.2017.07.016
+    journal: Journal of Wind Engineering and Industrial Aerodynamics
+    legacy_id: 90240041
+    title: 'Aerodynamic roughness parameters in cities: Inclusion of Vegetation'
+    type: journalArticle
+    year: 2017
+  kokkonen2018:
+    author: Kokkonen, T. V.; Grimmond, C. S. B.; Räty, O.; Ward, H. C.; Christen, A.; Oke,
+      T. R.; Kotthaus, S.; Järvi, L.
+    doi: 10.1016/j.uclim.2017.05.001
+    journal: Urban Climate
+    legacy_id: 90240018
+    title: Sensitivity of Surface Urban Energy and Water Balance Scheme (SUEWS) to downscaling
+      of reanalysis forcing data
+    type: journalArticle
+    year: 2018
+  kotthaus2014:
+    author: Kotthaus, S., Smith, T. E. L., Wooster, M. J., & Grimmond, C. S. B.
+    doi: http://dx.doi.org/10.1016/j.isprsjprs.2014.05.005
+    journal: ISPRS Journal of Photogrammetry and Remote Sensing,
+    legacy_id: 90240055
+    title: Derivation of an urban materials spectral library through adittance and reflectance
+      spectroscopy
+    type: journalArticle
+    year: 2014
+  lindberg-f2020:
+    author: Lindberg F, K. F. G. Olofson, T. Sun, C. S. B. Grimmond, and C. Feigenwinter
+    doi: 10.1007/s00704-020-03189-1
+    journal: TAAC
+    legacy_id: 90240057
+    title: Urban Storage Heat Flux Variability Explored Using Satellite, Meteorological and
+      Geodata.
+    type: journalArticle
+    year: 2020
+  lindberg2013:
+    author: Lindberg, F.; Grimmond, C. S. B.; Yogeswaran, N.; Kotthaus, S.; Allen, L.
+    doi: 10.1016/j.uclim.2013.03.002
+    journal: Urban Climate
+    legacy_id: 90240006
+    title: Impact of city changes and weather on anthropogenic heat flux in Europe 1995–2015
+    type: journalArticle
+    year: 2013
+  loridan2011:
+    author: Loridan, Thomas; Grimmond, Christine; Offerle, B.; Young, Duick; Smith, Thomas;
+      Järvi, Leena; Lindberg, Fredrik
+    doi: 10.1175/2010JAMC2474.1
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240005
+    title: 'Local-Scale Urban Meteorological Parameterization Scheme (LUMPS): Longwave Radiation
+      Parameterization and Seasonality-Related Developments'
+    type: journalArticle
+    year: 2011
+  loridan2012:
+    author: Loridan, Thomas; Grimmond, C S B
+    doi: 10.1175/JAMC-D-11-038.1
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240038
+    title: 'Characterization of Energy Flux Partitioning in Urban Environments: Links with
+      Surface Seasonal Properties'
+    type: journalArticle
+    year: 2012
+  offerle2003:
+    author: Offerle, B.; Grimmond, C. S. B.; Oke, T. R.
+    doi: 10.1175/1520-0450(2003)042<1157:PONARF>2.0.CO;2
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240004
+    title: Parameterization of Net All-Wave Radiation for Urban Areas
+    type: journalArticle
+    year: 2003
+  offerle2005:
+    author: Offerle, B.; Grimmond, C. S. B.; Fortuniak, K.
+    doi: 10.1002/joc.1198
+    journal: International Journal of Climatology
+    legacy_id: 90240013
+    title: Heat storage and anthropogenic heat flux in relation to the energy balance of a
+      central European city centre
+    type: journalArticle
+    year: 2005
+  oke1987:
+    author: Oke, T. R.
+    legacy_id: 90240001
+    title: Boundary Layer Climates
+    type: book
+    year: 1987
+  onomura2015:
+    author: Onomura, S.; Grimmond, C. S. B.; Lindberg, F.; Holmer, B.; Thorsson, S.
+    doi: 10.1016/j.uclim.2014.11.001
+    journal: Urban Climate
+    legacy_id: 90240017
+    title: Meteorological forcing data for urban outdoor thermal comfort models from a coupled
+      convective boundary layer and surface energy balance Scheme
+    type: journalArticle
+    year: 2015
+  oskar-checks-this1010:
+    author: OSKAR CHECKS THIS
+    journal: OSKAR CHECK
+    legacy_id: 90240991
+    title: OSKAR CHEKS
+    type: Guideline
+    year: 1010
+  ruimy1995:
+    author: Ruimy, A.; Jarvis, P.G.; Baldocchi, D.D.; Saugier, Bernard
+    legacy_id: 90240043
+    title: 'CO2 Fluxes over Plant Canopies and Solar Radiation: A Review Advances in Ecological
+      Research'
+    type: book
+    year: 1995
+  sailor2004:
+    author: Sailor, David J.; Lu, Lu
+    doi: 10.1016/j.atmosenv.2004.01.034
+    journal: Atmospheric Environment
+    legacy_id: 90240044
+    title: A top-down methodology for developing diurnal and seasonal anthropogenic heating
+      Piles for urban areas
+    type: journalArticle
+    year: 2004
+  sailor2006:
+    author: Sailor, David J.; Vasireddy, Chittaranjan
+    doi: 10.1016/j.envsoft.2005.08.001
+    journal: Environmental Modelling & Software
+    legacy_id: 90240035
+    title: Correcting aggregate energy consumption data to account for variability in local
+      weather
+    type: journalArticle
+    year: 2006
+  schmid2000:
+    author: Schmid, Hans; Grimmond, Christine; Cropley, Ford; Offerle, B.; Su, Hong-Bing
+    doi: 10.1016/S0168-1923(00)00140-4
+    journal: Agricultural and Forest Meteorology
+    legacy_id: 90240042
+    title: Measurements of CO2 and Energy Fluxes over a Mixed Hardwood Forest in the Mid-Western
+      United states
+    type: journalArticle
+    year: 2000
+  stagakis-s2024:
+    author: Stagakis S., Brunner D., Li J., Backman L., Karvonen A., Constantin L., Järvi
+      L., Havu M., Chen J., Emberger S. and Kulmala L.
+    doi: 10.5194/egusphere-2024-2475
+    journal: EGUsphere
+    legacy_id: 90240068
+    title: Intercomparison of biogenic CO2 flux models in four urban parks in the city of
+      Zurich
+    type: journalArticle
+    year: 2024
+  stewart1988:
+    author: Stewart, J.B
+    doi: 10.1016/0168-1923(88)90003-2
+    journal: Agricultural and Forest Meteorology
+    legacy_id: 90240058
+    title: Modelling surface conductance of pine forest.
+    type: journalArticle
+    year: 1988
+  sun2017:
+    author: Sun, Ting; Wang, Zhi-Hua; Oechel, Walter C.; Grimmond, Sue
+    doi: 10.5194/gmd-10-2875-2017
+    journal: Geoscientific Model Development
+    legacy_id: 90240012
+    title: 'The Analytical Objective Hysteresis Model (AnOHM v1.0): methodology to determine
+      bulk storage heat flux coefficients'
+    type: journalArticle
+    year: 2017
+  theeuwes2019:
+    author: Theeuwes, Natalie E.; Ronda, Reinder J.; Harman, Ian N.; Christen, Andreas; Grimmond,
+      C. Sue B.
+    doi: 10.1007/s10546-019-00472-1
+    journal: Boundary-Layer Meteorology
+    legacy_id: 90240050
+    title: Parametrizing Horizontally-Averaged Wind and Temperature Piles in the Urban Roughness
+      Sublayer
+    type: journalArticle
+    year: 2019
+  ulden1985:
+    author: Ulden, A. P. Van; Holtslag, A. a. M.
+    doi: 10.1175/1520-0450(1985)024<1196:EOABLP>2.0.CO;2
+    journal: Journal of Applied Meteorology and Climatology
+    legacy_id: 90240021
+    title: Estimation of Atmospheric Boundary Layer Parameters for Diffusion Applications
+    type: journalArticle
+    year: 1985
+  unreferenced:
+    legacy_ids:
+    - 90240000
+    - 99240099
+    note: 'legacy placeholder row: value carried no citation'
+  vargo2013:
+    author: Vargo, Habeeb and Stone
+    doi: 10.1016/j.jenvman.2012.10.007
+    journal: Journal of Environmental Management
+    legacy_id: 90240060
+    title: The importance of land cover change across urban–rural typologies for climate modeling
+    type: journalArticle
+    year: 2013
+  voogt2000:
+    author: Voogt, James; Grimmond, Christine
+    doi: 10.1175/1520-0450-39.10.1679
+    journal: Journal of Applied Meteorology
+    legacy_id: 90240024
+    title: Modeling Surface Sensible Heat Flux Using Surface Radiative Témperatures in a Simple
+      Urban Area
+    type: journalArticle
+    year: 2000
+  wang2008:
+    author: Wang, C. G., Sun, J. N., and Jiang, W. M.
+    journal: Acta Energiae Solaris Sinica
+    legacy_id: 90240063
+    title: "Observation and analysis on thermodynamic characteristics of heat storage of urban\
+      \ roof\n analysis on thermodynamic characteristics of heat storage\n of urban roof"
+    type: journalArticle
+    year: 2008
+  ward2013:
+    author: Ward, H. C., Evans, J. G., & Grimmond, C. S. B.
+    doi: 10.5194/acp-13-4645-2013
+    journal: Atmospheric Chemistry and Physics
+    legacy_id: 90240056
+    title: Multi-season eddy covariance observations of energy, water and carbon fluxes over
+      a suburban area in Swindon, UK
+    type: journalArticle
+    year: 2013
+  ward2016:
+    author: Ward, H. C.; Kotthaus, S.; Järvi, L.; Grimmond, C. S. B.
+    doi: 10.1016/j.uclim.2016.05.001
+    journal: Urban Climate
+    legacy_id: 90240002
+    title: 'Surface Urban Energy and Water Balance Scheme (SUEWS): Development and evaluation
+      at two UK sites'
+    type: journalArticle
+    year: 2016
+  xie2024:
+    author: Xie, X., Luo, Z., Grimmond, S., Liu, Y., Ugalde-Loo, C. E., Bailey, M. T., Wang,
+      X.
+    doi: 10.1016/j.scs.2024.105811
+    journal: Sustainable Cities and Society
+    legacy_id: 90240061
+    title: Could residential air-source heat pumps exacerbate outdoor summer overheating and
+      winter overcooling in UK 2050s climate scenarios?
+    type: journalArticle
+    year: 2024
+  zheng-y2023:
+    author: Zheng Y., Havu M., Liu H., Cheng X., Wen Y., Lee H.S., Ahongshangbam J. and Järvi
+      L.
+    doi: 10.5194/gmd-16-4551-2023
+    journal: Geoscientific Model Development
+    legacy_id: 90240067
+    title: 'Simulating heat and CO2 fluxes in Beijing using SUEWS V2020b: Sensitivity to vegetation
+      phenology and maximum conductance'
+    type: journalArticle
+    year: 2023

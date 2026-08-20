@@ -1,0 +1,14 @@
+archetype: archetypes/countries/swaziland
+schema_version: '2026.5'
+target: site
+name: Swaziland
+legacy_id: 11240198
+country: Swaziland
+region_ref: archetypes/regions/southern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/swaziland
+    energy_use: records/profiles/traffic/lucy/swaziland
+    human_activity: records/profiles/human-activity/lucy/swaziland
+    population: records/profiles/human-activity/lucy/swaziland

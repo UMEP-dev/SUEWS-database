@@ -1,0 +1,12 @@
+record: records/snow/helsinki--jarvi2014--albedo
+schema_version: '2026.5'
+target: snow
+name: Snow
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 41240016
+parameters:
+  snow_albedo_min: 0.18
+  snow_albedo_max: 0.85

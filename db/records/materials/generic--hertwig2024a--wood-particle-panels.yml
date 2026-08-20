@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--wood-particle-panels
+schema_version: '2026.5'
+target: material
+name: Wood particle panels
+source: hertwig2024a
+legacy_id: 36248206
+category: Generic
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.29
+  specific_heat: 1990
+  density: 1000

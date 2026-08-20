@@ -1,0 +1,13 @@
+record: records/surfaces/bldgs/swindon--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Suburban residential
+place: swindon
+origin: Swindon, UK
+representativeness: city
+source: ward2016
+legacy_id: 41240042
+parameters:
+  alb: 0.12
+legacy:
+  Alb_max: 0.12

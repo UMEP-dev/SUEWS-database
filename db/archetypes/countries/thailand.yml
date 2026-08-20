@@ -1,0 +1,14 @@
+archetype: archetypes/countries/thailand
+schema_version: '2026.5'
+target: site
+name: Thailand
+legacy_id: 11240204
+country: Thailand
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/thailand
+    energy_use: records/profiles/traffic/lucy/thailand
+    human_activity: records/profiles/human-activity/lucy/thailand
+    population: records/profiles/human-activity/lucy/thailand

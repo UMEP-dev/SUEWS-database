@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bangladesh
+schema_version: '2026.5'
+target: site
+name: Bangladesh
+legacy_id: 11240017
+country: Bangladesh
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bangladesh
+    energy_use: records/profiles/traffic/lucy/bangladesh
+    human_activity: records/profiles/human-activity/lucy/bangladesh
+    population: records/profiles/human-activity/lucy/bangladesh

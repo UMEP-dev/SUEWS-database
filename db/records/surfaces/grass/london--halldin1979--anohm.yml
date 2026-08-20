@@ -1,0 +1,13 @@
+record: records/surfaces/grass/london--halldin1979--anohm
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass (UF)
+place: london
+origin: London
+representativeness: city
+source: halldin1979
+legacy_id: 51240012
+parameters:
+  rho_cp_anohm: 500000
+  k_anohm: 0.2
+  ch_anohm: 1

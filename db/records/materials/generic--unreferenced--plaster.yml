@@ -1,0 +1,14 @@
+record: records/materials/generic--unreferenced--plaster
+schema_version: '2026.5'
+target: material
+name: Plaster
+source: unreferenced
+legacy_id: 36248147
+category: Indoor
+display_colour: Generic
+parameters:
+  albedo: 0.4
+  emissivity: 0.89
+  thermal_conductivity: 0.74
+  specific_heat: 800
+  density: 1000

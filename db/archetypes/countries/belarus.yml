@@ -1,0 +1,14 @@
+archetype: archetypes/countries/belarus
+schema_version: '2026.5'
+target: site
+name: Belarus
+legacy_id: 11240019
+country: Belarus
+region_ref: archetypes/regions/eastern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/belarus
+    energy_use: records/profiles/traffic/lucy/belarus
+    human_activity: records/profiles/human-activity/lucy/belarus
+    population: records/profiles/human-activity/lucy/belarus

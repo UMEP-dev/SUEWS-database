@@ -1,0 +1,14 @@
+archetype: archetypes/countries/syrian-arab-republic
+schema_version: '2026.5'
+target: site
+name: Syrian Arab Republic
+legacy_id: 11240201
+country: Syrian Arab Republic
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/syrian-arab-republic
+    energy_use: records/profiles/traffic/lucy/syrian-arab-republic
+    human_activity: records/profiles/human-activity/lucy/syrian-arab-republic
+    population: records/profiles/human-activity/lucy/syrian-arab-republic

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/kazakhstan
+schema_version: '2026.5'
+target: site
+name: Kazakhstan
+legacy_id: 11240107
+country: Kazakhstan
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/kazakhstan
+    energy_use: records/profiles/traffic/lucy/kazakhstan
+    human_activity: records/profiles/human-activity/lucy/kazakhstan
+    population: records/profiles/human-activity/lucy/kazakhstan

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/estonia
+schema_version: '2026.5'
+target: site
+name: Estonia
+legacy_id: 11240063
+country: Estonia
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/estonia
+    energy_use: records/profiles/traffic/lucy/estonia
+    human_activity: records/profiles/human-activity/lucy/estonia
+    population: records/profiles/human-activity/lucy/estonia

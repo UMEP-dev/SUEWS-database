@@ -1,0 +1,14 @@
+archetype: archetypes/countries/sudan
+schema_version: '2026.5'
+target: site
+name: Sudan
+legacy_id: 11240195
+country: Sudan
+region_ref: archetypes/regions/northern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/sudan
+    energy_use: records/profiles/traffic/lucy/sudan
+    human_activity: records/profiles/human-activity/lucy/sudan
+    population: records/profiles/human-activity/lucy/sudan

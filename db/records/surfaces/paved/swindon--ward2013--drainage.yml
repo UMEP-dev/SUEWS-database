@@ -1,0 +1,15 @@
+record: records/surfaces/paved/swindon--ward2013--drainage
+schema_version: '2026.5'
+target: land_cover.paved
+name: Paved
+place: swindon
+origin: Swindon
+representativeness: city
+source: ward2013
+legacy_id: 45240004
+parameters:
+  storage_drain_params:
+    drain_eq: 3
+    drain_coef_1: 0.013
+    drain_coef_2: 1.71
+  wet_threshold: 0.6

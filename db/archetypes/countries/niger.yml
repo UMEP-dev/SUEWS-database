@@ -1,0 +1,14 @@
+archetype: archetypes/countries/niger
+schema_version: '2026.5'
+target: site
+name: Niger
+legacy_id: 11240150
+country: Niger
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/niger
+    energy_use: records/profiles/traffic/lucy/niger
+    human_activity: records/profiles/human-activity/lucy/niger
+    population: records/profiles/human-activity/lucy/niger

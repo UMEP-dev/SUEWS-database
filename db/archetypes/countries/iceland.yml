@@ -1,0 +1,16 @@
+archetype: archetypes/countries/iceland
+schema_version: '2026.5'
+target: site
+name: Iceland
+legacy_id: 11240093
+country: Iceland
+region_ref: archetypes/regions/northern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/iceland
+    energy_use:
+      working_day: records/profiles/traffic/lucy/iceland
+      holiday: records/profiles/energy-use/helsinki--jarvi2019--energy-use
+    human_activity: records/profiles/human-activity/lucy/iceland
+    population: records/profiles/human-activity/lucy/iceland

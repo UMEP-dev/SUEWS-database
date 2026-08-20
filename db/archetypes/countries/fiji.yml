@@ -1,0 +1,14 @@
+archetype: archetypes/countries/fiji
+schema_version: '2026.5'
+target: site
+name: Fiji
+legacy_id: 11240068
+country: Fiji
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/fiji
+    energy_use: records/profiles/traffic/lucy/fiji
+    human_activity: records/profiles/human-activity/lucy/fiji
+    population: records/profiles/human-activity/lucy/fiji

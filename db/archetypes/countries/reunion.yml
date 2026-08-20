@@ -1,0 +1,14 @@
+archetype: archetypes/countries/reunion
+schema_version: '2026.5'
+target: site
+name: Reunion
+legacy_id: 11240171
+country: Reunion
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/reunion
+    energy_use: records/profiles/traffic/lucy/reunion
+    human_activity: records/profiles/human-activity/lucy/reunion
+    population: records/profiles/human-activity/lucy/reunion

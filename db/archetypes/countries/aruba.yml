@@ -1,0 +1,14 @@
+archetype: archetypes/countries/aruba
+schema_version: '2026.5'
+target: site
+name: Aruba
+legacy_id: 11240011
+country: Aruba
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/aruba
+    energy_use: records/profiles/traffic/lucy/aruba
+    human_activity: records/profiles/human-activity/lucy/aruba
+    population: records/profiles/human-activity/lucy/aruba

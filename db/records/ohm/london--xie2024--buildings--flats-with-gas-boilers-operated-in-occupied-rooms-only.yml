@@ -1,0 +1,13 @@
+record: records/ohm/london--xie2024--buildings--flats-with-gas-boilers-operated-in-occupied-rooms-only
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Flats with gas boilers operated in occupied rooms only
+place: london
+origin: London
+representativeness: city
+source: xie2024
+legacy_id: 50240032
+parameters:
+  a1: 0.343
+  a2: 0.152
+  a3: -44.4

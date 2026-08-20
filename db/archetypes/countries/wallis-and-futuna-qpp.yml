@@ -1,0 +1,14 @@
+archetype: archetypes/countries/wallis-and-futuna-qpp
+schema_version: '2026.5'
+target: site
+name: Wallis and Futuna* qpp
+legacy_id: 11240226
+country: Wallis and Futuna* qpp
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/wallis-and-futuna-qpp
+    energy_use: records/profiles/traffic/lucy/wallis-and-futuna-qpp
+    human_activity: records/profiles/human-activity/lucy/wallis-and-futuna-qpp
+    population: records/profiles/human-activity/lucy/wallis-and-futuna-qpp

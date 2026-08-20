@@ -1,0 +1,14 @@
+archetype: archetypes/countries/kyrgyz-republic
+schema_version: '2026.5'
+target: site
+name: Kyrgyz Republic
+legacy_id: 11240113
+country: Kyrgyz Republic
+region_ref: archetypes/regions/central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/kyrgyz-republic
+    energy_use: records/profiles/traffic/lucy/kyrgyz-republic
+    human_activity: records/profiles/human-activity/lucy/kyrgyz-republic
+    population: records/profiles/human-activity/lucy/kyrgyz-republic

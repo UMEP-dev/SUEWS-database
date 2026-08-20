@@ -1,0 +1,14 @@
+record: records/materials/generic--eppelbaum2014--sandstone
+schema_version: '2026.5'
+target: material
+name: Sandstone
+source: eppelbaum2014
+legacy_id: 36248175
+category: Masonry
+display_colour: Generic
+parameters:
+  albedo: 0.35
+  emissivity: 0.915
+  thermal_conductivity: 1.8
+  specific_heat: 1000
+  density: 2300

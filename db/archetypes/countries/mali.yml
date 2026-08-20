@@ -1,0 +1,14 @@
+archetype: archetypes/countries/mali
+schema_version: '2026.5'
+target: site
+name: Mali
+legacy_id: 11240128
+country: Mali
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/mali
+    energy_use: records/profiles/traffic/lucy/mali
+    human_activity: records/profiles/human-activity/lucy/mali
+    population: records/profiles/human-activity/lucy/mali

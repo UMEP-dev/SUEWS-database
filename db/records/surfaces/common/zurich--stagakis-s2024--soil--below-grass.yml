@@ -1,0 +1,19 @@
+record: records/surfaces/common/zurich--stagakis-s2024--soil--below-grass
+schema_version: '2026.5'
+target: land_cover.common
+name: Below Grass
+place: zurich
+origin: Zurich
+representativeness: city
+source: stagakis-s2024
+legacy_id: 22240065
+parameters:
+  soil_depth: 349
+  soil_store_capacity: 150
+  saturated_hydraulic_conductivity: 0.0005
+  soil_density: 1.16
+legacy:
+  InfiltrationRate: 10
+  OBS_SMDepth: -999
+  OBS_SMCap: -999
+  OBS_SoilNotRocks: -999

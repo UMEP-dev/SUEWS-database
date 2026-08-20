@@ -1,0 +1,11 @@
+record: records/surfaces/bldgs/swindon--ward2016--emissivity
+schema_version: '2026.5'
+target: land_cover.bldgs
+name: Suburban residential
+place: swindon
+origin: Swindon, UK
+representativeness: city
+source: ward2016
+legacy_id: 40240042
+parameters:
+  emis: 0.91

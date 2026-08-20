@@ -1,0 +1,14 @@
+archetype: archetypes/countries/taiwan
+schema_version: '2026.5'
+target: site
+name: Taiwan
+legacy_id: 11240202
+country: Taiwan
+region_ref: archetypes/regions/eastern-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/taiwan
+    energy_use: records/profiles/traffic/lucy/taiwan
+    human_activity: records/profiles/human-activity/lucy/taiwan
+    population: records/profiles/human-activity/lucy/taiwan

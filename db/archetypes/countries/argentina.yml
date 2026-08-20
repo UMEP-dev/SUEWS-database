@@ -1,0 +1,14 @@
+archetype: archetypes/countries/argentina
+schema_version: '2026.5'
+target: site
+name: Argentina
+legacy_id: 11240009
+country: Argentina
+region_ref: archetypes/regions/southern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/argentina
+    energy_use: records/profiles/traffic/lucy/argentina
+    human_activity: records/profiles/human-activity/lucy/argentina
+    population: records/profiles/human-activity/lucy/argentina

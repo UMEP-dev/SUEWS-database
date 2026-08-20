@@ -1,0 +1,14 @@
+archetype: archetypes/countries/germany
+schema_version: '2026.5'
+target: site
+name: Germany
+legacy_id: 11240076
+country: Germany
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/germany
+    energy_use: records/profiles/traffic/lucy/germany
+    human_activity: records/profiles/human-activity/lucy/germany
+    population: records/profiles/human-activity/lucy/germany

@@ -1,0 +1,25 @@
+archetype: archetypes/surfaces/dectr/helsinki-finland--deciduous-forest-trees-havu-et-al-2024
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Forest trees, Havu et al. 2024
+place: helsinki
+origin: Helsinki, Finland
+representativeness: city
+legacy_id: 24240013
+uses:
+  albedo: records/surfaces/dectr/helsinki--vargo2013--albedo
+  emissivity: records/surfaces/dectr/london--ward2016--emissivity
+  water_storage: records/surfaces/dectr/se-england--ward2016--water-storage
+  leaf_area_index: records/surfaces/dectr/se-england--ward2016--lai
+  leaf_growth_power: records/surfaces/dectr/helsinki--havu-m2024--lai-power
+  drainage: records/surfaces/dectr/london--havu-m2024--drainage
+  max_vegetation_conductance: records/surfaces/dectr/helsinki--havu-m2024--max-conductance
+  porosity: records/surfaces/dectr/london--jarvi2011--porosity
+  biogen_co2: records/surfaces/dectr/helsinki--havu-m2024--biogen-co2
+  snow_lim_patch: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+  vegetation_growth: records/surfaces/dectr/helsinki--jarvi2014--phenology
+  ohm:
+    summer_wet: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    summer_dry: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    winter_wet: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    winter_dry: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985

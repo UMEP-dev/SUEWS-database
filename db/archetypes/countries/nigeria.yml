@@ -1,0 +1,14 @@
+archetype: archetypes/countries/nigeria
+schema_version: '2026.5'
+target: site
+name: Nigeria
+legacy_id: 11240151
+country: Nigeria
+region_ref: archetypes/regions/west-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/nigeria
+    energy_use: records/profiles/traffic/lucy/nigeria
+    human_activity: records/profiles/human-activity/lucy/nigeria
+    population: records/profiles/human-activity/lucy/nigeria

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/montserrat
+schema_version: '2026.5'
+target: site
+name: Montserrat
+legacy_id: 11240138
+country: Montserrat
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/montserrat
+    energy_use: records/profiles/traffic/lucy/montserrat
+    human_activity: records/profiles/human-activity/lucy/montserrat
+    population: records/profiles/human-activity/lucy/montserrat

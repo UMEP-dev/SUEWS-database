@@ -1,0 +1,14 @@
+archetype: archetypes/countries/congo
+schema_version: '2026.5'
+target: site
+name: Congo
+legacy_id: 11240046
+country: Congo
+region_ref: archetypes/regions/central-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/congo
+    energy_use: records/profiles/traffic/lucy/congo
+    human_activity: records/profiles/human-activity/lucy/congo
+    population: records/profiles/human-activity/lucy/congo

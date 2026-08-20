@@ -1,0 +1,19 @@
+record: records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous trees + grass
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: havu-m2024
+legacy_id: 30240019
+parameters:
+  alpha_bio_co2: 0.031
+  beta_bio_co2: 11.5
+  theta_bio_co2: 0.723
+  resp_a: 2.3
+  resp_b: 0.046
+  min_res_bioco2: 0.6
+legacy:
+  alpha_enh: -999
+  beta_enh: -999

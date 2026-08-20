@@ -1,0 +1,14 @@
+archetype: archetypes/countries/united-arab-emirates
+schema_version: '2026.5'
+target: site
+name: United Arab Emirates
+legacy_id: 11240216
+country: United Arab Emirates
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/united-arab-emirates
+    energy_use: records/profiles/traffic/lucy/united-arab-emirates
+    human_activity: records/profiles/human-activity/lucy/united-arab-emirates
+    population: records/profiles/human-activity/lucy/united-arab-emirates

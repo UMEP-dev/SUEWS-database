@@ -1,0 +1,14 @@
+record: records/materials/generic--cibse2015--wood
+schema_version: '2026.5'
+target: material
+name: Wood
+source: cibse2015
+legacy_id: 36248146
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.22
+  emissivity: 0.9
+  thermal_conductivity: 0.14
+  specific_heat: 1600
+  density: 500

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/palau
+schema_version: '2026.5'
+target: site
+name: Palau
+legacy_id: 11240159
+country: Palau
+region_ref: archetypes/regions/oceania
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/palau
+    energy_use: records/profiles/traffic/lucy/palau
+    human_activity: records/profiles/human-activity/lucy/palau
+    population: records/profiles/human-activity/lucy/palau

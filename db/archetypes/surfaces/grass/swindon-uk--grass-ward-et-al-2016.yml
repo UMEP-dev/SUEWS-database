@@ -1,0 +1,25 @@
+archetype: archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass Ward et al. (2016)
+place: swindon
+origin: Swindon, UK
+representativeness: city
+legacy_id: 24240025
+uses:
+  albedo: records/surfaces/grass/se-england--ward2016--albedo
+  emissivity: records/surfaces/grass/se-england--ward2016--emissivity
+  water_storage: records/surfaces/grass/se-england--ward2016--water-storage
+  leaf_area_index: records/surfaces/grass/se-england--ward2016--lai
+  leaf_growth_power: records/surfaces/grass/se-england--ward2016--lai-power
+  drainage: records/surfaces/grass/se-england--ward2016--drainage
+  max_vegetation_conductance: records/surfaces/grass/se-england--ward2016--max-conductance
+  porosity: records/surfaces/grass/generic--unreferenced--porosity
+  biogen_co2: records/surfaces/common/se-england--ruimy1995--biogen-co2
+  snow_lim_patch: records/surfaces/grass/helsinki--jarvi2014--snow-lim
+  vegetation_growth: records/surfaces/grass/helsinki--jarvi2014--phenology
+  ohm:
+    summer_wet: records/ohm/generic--ward2016--all-vegetation
+    summer_dry: records/ohm/generic--ward2016--all-vegetation
+    winter_wet: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+    winter_dry: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/san-marino
+schema_version: '2026.5'
+target: site
+name: San Marino
+legacy_id: 11240180
+country: San Marino
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/san-marino
+    energy_use: records/profiles/traffic/lucy/san-marino
+    human_activity: records/profiles/human-activity/lucy/san-marino
+    population: records/profiles/human-activity/lucy/san-marino

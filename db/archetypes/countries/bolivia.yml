@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bolivia
+schema_version: '2026.5'
+target: site
+name: Bolivia
+legacy_id: 11240025
+country: Bolivia
+region_ref: archetypes/regions/central-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bolivia
+    energy_use: records/profiles/traffic/lucy/bolivia
+    human_activity: records/profiles/human-activity/lucy/bolivia
+    population: records/profiles/human-activity/lucy/bolivia

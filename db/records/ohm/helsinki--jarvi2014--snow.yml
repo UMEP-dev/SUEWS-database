@@ -1,0 +1,13 @@
+record: records/ohm/helsinki--jarvi2014--snow
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Snow [61]
+place: helsinki
+origin: Helsinki
+representativeness: city
+source: jarvi2014
+legacy_id: 50240016
+parameters:
+  a1: 0.25
+  a2: 0.6
+  a3: -30

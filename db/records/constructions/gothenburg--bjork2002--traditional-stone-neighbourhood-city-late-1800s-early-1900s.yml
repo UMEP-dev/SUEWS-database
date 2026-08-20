@@ -1,0 +1,28 @@
+record: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s
+schema_version: '2026.5'
+target: construction
+name: Traditional Stone Neighbourhood City, late 1800s-early 1900s
+place: gothenburg
+origin: Gothenburg, Sweden
+representativeness: city
+source: bjork2002
+legacy_id: 37259482
+parameters:
+  roof:
+  - material: records/materials/generic--hertwig2024a--steel
+    thickness: 0.01
+  - material: records/materials/generic--unreferenced--roofing-felt
+    thickness: 0.01
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  roof_insulation_layer: 6
+  wall:
+  - material: records/materials/generic--hertwig2024a--external-render-lime-sand
+    thickness: 0.01
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.29
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--plaster-dense
+    thickness: 0.01
+  wall_insulation_layer: 6

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/bhutan
+schema_version: '2026.5'
+target: site
+name: Bhutan
+legacy_id: 11240024
+country: Bhutan
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/bhutan
+    energy_use: records/profiles/traffic/lucy/bhutan
+    human_activity: records/profiles/human-activity/lucy/bhutan
+    population: records/profiles/human-activity/lucy/bhutan

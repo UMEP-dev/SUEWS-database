@@ -1,0 +1,10 @@
+record: records/ohm/generic--unreferenced--water
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Water (shallow - turbid) [60]
+source: unreferenced
+legacy_id: 50240013
+parameters:
+  a1: 0.5
+  a2: 0.21
+  a3: -39.1

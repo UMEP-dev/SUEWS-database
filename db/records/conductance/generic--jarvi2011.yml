@@ -1,0 +1,23 @@
+record: records/conductance/generic--jarvi2011
+schema_version: '2026.5'
+target: conductance
+name: Default Jarvi et al. (2011) gsModel=1
+place: generic
+origin: Unspecified
+representativeness: generic
+source: jarvi2011
+legacy_id: 44240001
+parameters:
+  g_max: 16.4764
+  g_k: 566.0923
+  g_q_base: 0.2163
+  g_q_shape: 3.3649
+  g_t: 11.0764
+  g_sm: 0.0176
+  th: 40
+  tl: 0
+  s1: 0.45
+  s2: 15
+  kmax: 1200
+  context:
+    surface_conductance_model: 1

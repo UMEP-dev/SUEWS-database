@@ -1,0 +1,14 @@
+archetype: archetypes/countries/qatar
+schema_version: '2026.5'
+target: site
+name: Qatar
+legacy_id: 11240169
+country: Qatar
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/qatar
+    energy_use: records/profiles/traffic/lucy/qatar
+    human_activity: records/profiles/human-activity/lucy/qatar
+    population: records/profiles/human-activity/lucy/qatar

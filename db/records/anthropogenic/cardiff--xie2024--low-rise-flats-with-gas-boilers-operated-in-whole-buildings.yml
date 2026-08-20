@@ -1,0 +1,49 @@
+record: records/anthropogenic/cardiff--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings
+schema_version: '2026.5'
+target: anthropogenic_emissions
+name: Low-rise flats with gas boilers operated in whole buildings
+place: cardiff
+origin: Cardiff
+representativeness: city
+source: xie2024
+legacy_id: 53240027
+parameters:
+  context:
+    qf_model: 4
+  heat:
+    qf_a:
+      working_day: 0.0276
+      holiday: 0.0276
+    qf_b:
+      working_day: 0
+      holiday: 0
+    qf_c:
+      working_day: 0.0022
+      holiday: 0.0022
+  co2:
+    minqfmetab: 75
+    maxqfmetab: 175
+    minfcmetab: 120
+    maxfcmetab: 280
+    frfossilfuel_heat: 0.7
+    frfossilfuel_nonheat: 0.7
+    ef_umolco2perj: 1.16
+    enef_v_jkm: 3970000
+    fcef_v_kgkm:
+      working_day: 0.21
+      holiday: 0.21
+    co2pointsource: 0
+    trafficunits: 1
+legacy:
+  BaseT_HC: 15.1
+  AHMin_WD: -999
+  AHMin_WE: -999
+  AHSlope_Heating_WD: -999
+  AHSlope_Heating_WE: -999
+  AHSlope_Cooling_WD: -999
+  AHSlope_Cooling_WE: -999
+  TCritic_Heating_WD: -999
+  TCritic_Heating_WE: -999
+  TCritic_Cooling_WD: -999
+  TCritic_Cooling_WE: -999
+  FrPDDwe: 1

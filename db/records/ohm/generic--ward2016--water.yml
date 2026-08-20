@@ -1,0 +1,11 @@
+record: records/ohm/generic--ward2016--water
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Code 60 x Multiplier for summer [601]
+source: ward2016
+legacy_id: 50240021
+season_label: Summer
+parameters:
+  a1: 0.534
+  a2: 0.21
+  a3: -33.31

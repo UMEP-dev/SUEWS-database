@@ -1,0 +1,31 @@
+archetype: archetypes/snow/se-england--not-used
+schema_version: '2026.5'
+target: snow
+name: Not used
+place: se-england
+origin: SE England
+representativeness: regional
+legacy_id: 23240040
+source: ward2016
+uses:
+  albedo: records/snow/helsinki--jarvi2014--albedo
+  emissivity: records/snow/helsinki--jarvi2014--emissivity
+parameters:
+  radiation_melt_factor: 0.001
+  temperature_melt_factor: 0.14
+  tau_cold_snow: 0.01
+  tau_melting_snow: 0.1
+  precipitation_threshold_albedo_reset: 2
+  snow_density_min: 100
+  snow_density_max: 450
+  tau_refreezing_snow: 0.02
+  water_holding_capacity_min: 0.03
+  water_holding_capacity_max: 0.1
+  temperature_rain_snow_threshold: 2.2
+legacy:
+  OHMSummerWet: 50240016
+  OHMSummerDry: 50240016
+  OHMWinterWet: 50240016
+  OHMWinterDry: 50240016
+  OHMThresh_SW: 10
+  OHMThresh_WD: 0.9

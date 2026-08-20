@@ -1,109 +1,90 @@
 # Repository layout
 
-The SUEWS parameter database is a small relational store. It used to live in a
-single Excel workbook; it now lives in YAML, one file per table, and the
-workbook is generated from it.
+The SUEWS parameter database stores values as records — one YAML file per
+source-coherent parameter set — organised to feed the modern SUEWS YAML
+configuration format directly. `docs/FORMAT.md` specifies the format; this
+file says where things are.
 
 ## Where things are
 
-- `db/` — the database. One YAML file per table, each a dictionary keyed by
-  the integer `ID`. **This is the canonical copy: edit these files.**
-- `schema/tables.yml` — table registry. Column order, ID prefixes, entry
-  counts, and the detected foreign keys. Generated.
-- `schema/parameter_groups.yml` — which parameters have to move together, and
-  how tightly. Hand-maintained.
-- `schema/regional_axis.yml` — how the database is to be sliced by region.
-  Hand-maintained.
-- `schema/origins_inventory.yml` — every distinct `Origin` string, as a
-  work-list for the regional axis. Generated, but preserves what has been
-  filled in by hand.
-- `scripts/` — the conversion, verification and checking tools.
-- `schema/provenance.yml` — the fingerprint of the workbook the database was
-  migrated from. What `make verify` checks against.
-
-`database.xlsx` is **not** in the repository. It is a build product: run
-`make xlsx` to produce it, and it is gitignored so it cannot be committed by
-accident. Consumers that still want a spreadsheet get it from the release
-assets, where each release carries a workbook built from that release's data.
-The original pre-migration workbook is archived as a release asset in its own
-right, and remains retrievable from git history at the commit before it was
-removed.
-
-A regenerated workbook is written by openpyxl. Every value and type is
-identical — that is what `make verify` proves, and the source workbook
-contained no formulas — but column widths and cell styling are not carried
-over. They encode nothing the database depends on.
+- `db/records/` — evidence: parameter sets as measured, fitted or published.
+  One file per set, parameters named by supy canonical paths.
+  - `surfaces/<paved|bldgs|evetr|dectr|grass|bsoil|water|common>/` — per-
+    surface properties (albedo, emissivity, drainage, soils, phenology,
+    thermal layers, ...); `common/` holds surface-agnostic sets such as
+    soil types
+  - `ohm/` — OHM coefficient sets {a1, a2, a3}
+  - `snow/` — snow-parameter fragments
+  - `conductance/`, `irrigation/`, `anthropogenic/` — site-level parameter
+    sets
+  - `profiles/<kind>/` — 24-hour profiles (traffic, human activity, energy
+    use, water use, snow removal, population); `<kind>/lucy/` holds the
+    LUCY per-country defaults
+  - `materials/`, `constructions/` — building-fabric materials and layered
+    roof/wall assemblies
+- `db/archetypes/` — assembly: curated combinations referencing records.
+  - `surfaces/<surface>/` — complete surface descriptions (the old
+    NonVeg/Veg/Water composites)
+  - `snow/` — snow parameter sets
+  - `regions/`, `countries/` — the 22-region / 229-country default sets
+  - `typologies/` — building typology metadata
+- `db/sources.yml` — citation registry (keys like `ward2016`)
+- `db/places.yml` — place registry (slugs like `helsinki`, `se-england`)
+- `schema/table_mapping.yml` — the audited legacy-column -> supy-path map
+  the migration implemented, including what has no supy home and why
+- `schema/origins_map.yml` — how each raw legacy `Origin` string resolves
+  to a place, with confidence flags
+- `schema/migration_census.yml` — generated: proof that every non-null cell
+  of every legacy row landed exactly once in the record tree
+- `schema/parameter_groups.yml` — which parameters have to move together,
+  and how tightly; the cross-record rules `make check` enforces
+- `schema/regional_axis.yml` — how the database slices by place and region
+- `scripts/` — the checking, export and migration tools
+- `scripts/legacy/` — the pre-migration spreadsheet toolchain, kept for
+  reference
 
 ## Commands
 
-- `make xlsx` — build `database.xlsx` from `db/`, for release or for anyone
-  who needs a spreadsheet.
-- `make verify` — prove `db/` still reproduces the migrated workbook, by
-  comparing a rebuilt fingerprint against `schema/provenance.yml`. Add
-  `XLSX=<path>` to also compare cell by cell against an actual workbook.
-- `make check` — referential, linkage and hygiene checks.
-- `make origins` — refresh the `Origin` work-list.
-- `make yaml` — one-off migration bootstrap, kept for reference. It rebuilds
-  `db/` *from* a workbook and would overwrite hand edits.
+- `make check` — structural integrity (paths, references, sources, places)
+  plus the coupling rules from parameter_groups; warnings for
+  scientifically inconsistent combinations
+- `make check-strict` — as check, coupling warnings fail
+- `make validate` — check plus validation of every parameter fragment
+  against the supy data model, pinned to the version the records'
+  schema_version was verified against (needs network access the first
+  time, to fetch supy)
+- `make verify` — reverse-verify the record tree against the pre-migration
+  tables in git history: coverage, value multisets, profile-hour and
+  thermal-layer positions, pointer resolution and citations
+- `make export REC=<record-path>` — render a record or archetype as a
+  model-ready fragment with per-value citations
+- `scripts/e2e_sample_config.py` — end-to-end proof: exported fragments
+  merged into supy's sample configuration load through
+  `SUEWSConfig.from_yaml` with citations intact
 
-## How records reference each other
+## Naming
 
-Every primary key is an eight-digit integer whose first two digits identify the
-owning table, so a bare `90240002` in a `Ref` column resolves without further
-context. The remaining digits are a serial with no meaning.
+Record files are `<place>--<sourcekey>[--<family>][--<qualifier>].yml`:
+`helsinki--jarvi2014--phenology.yml` reads as "measured/fitted at Helsinki,
+per Järvi et al. 2014, the phenology set". The `record:` field inside always
+equals the file's path under `db/` without `.yml`, and `make check` enforces
+the match. Citation keys are `<firstauthor><year>`; place slugs are plain
+kebab-case.
 
-- `10` — Region (`db/region.yml`, 22 entries)
-- `11` — Country (`db/country.yml`, 229 entries)
-- `12`, `13` — Types (`db/types.yml`, 14 entries)
-- `20` — NonVeg (`db/non_veg.yml`, 23 entries)
-- `22` — Soil (`db/soil.yml`, 13 entries)
-- `23` — Snow (`db/snow.yml`, 3 entries)
-- `24` — Veg (`db/veg.yml`, 26 entries)
-- `25` — Water (`db/water.yml`, 2 entries)
-- `30` — Biogen CO2 (`db/biogen_co2.yml`, 18 entries)
-- `31` — Leaf Area Index (`db/leaf_area_index.yml`, 13 entries)
-- `32` — Leaf Growth Power (`db/leaf_growth_power.yml`, 15 entries)
-- `33` — Max Vegetation Conductance (`db/max_vegetation_conductance.yml`, 17 entries)
-- `34` — Porosity (`db/porosity.yml`, 3 entries)
-- `35` — Vegetation Growth (`db/vegetation_growth.yml`, 6 entries)
-- `36` — Spartacus Material (`db/spartacus_material.yml`, 62 entries)
-- `37` — Spartacus Surface (`db/spartacus_surface.yml`, 22 entries)
-- `38` — SnowLimPatch (`db/snow_lim_patch.yml`, 6 entries)
-- `40` — Emissivity (`db/emissivity.yml`, 22 entries)
-- `41` — Albedo (`db/albedo.yml`, 19 entries)
-- `42` — Water State (`db/water_state.yml`, 10 entries)
-- `43` — Water Storage (`db/water_storage.yml`, 9 entries)
-- `44` — Conductance (`db/conductance.yml`, 3 entries)
-- `45` — Drainage (`db/drainage.yml`, 18 entries)
-- `50` — OHM (`db/ohm.yml`, 44 entries)
-- `51` — ANOHM (`db/anohm.yml`, 13 entries)
-- `52` — ESTM (`db/estm.yml`, 13 entries)
-- `53` — AnthropogenicEmission (`db/anthropogenic_emission.yml`, 32 entries)
-- `60` — Profiles (`db/profiles.yml`, 947 entries)
-- `61` — Irrigation (`db/irrigation.yml`, 5 entries)
-- `90`, `99` — References (`db/references.yml`, 67 entries)
+## History and the legacy formats
 
-The tables layer into three tiers:
+The database has lived in three shapes: a single Excel workbook, then a
+1:1 YAML rendering of its tables, then this record format. The migrations
+were scripted and census-verified, never re-keyed by hand:
 
-- **Entry points.** `Region` and `Country` hold a complete default parameter
-  set, pointing at surface and profile entries.
-- **Surface types.** `NonVeg`, `Veg`, `Water` and `Snow` describe a surface by
-  pointing at one row in each property table.
-- **Property tables.** `Albedo`, `Emissivity`, `OHM` and the rest hold the
-  values themselves, each citing a row in `References`.
+- the workbook -> table migration is provable with
+  `scripts/legacy/verify_roundtrip.py` against `schema/provenance.yml`
+- the table -> record migration is provable with
+  `scripts/migrate_to_records.py` (re-runnable from the pre-migration git
+  tree) against `schema/migration_census.yml`
+- every record carries `legacy_id`, the 8-digit row ID it came from, so any
+  value can be traced back through both migrations to a workbook cell
 
-`schema/tables.yml` lists the foreign keys for each table, detected by
-resolving every eight-digit value back to the table owning its prefix.
-
-## Adding a value
-
-1. Add the citation to `db/references.yml` if it is not already there.
-2. Add the value to the relevant property table with a new ID that continues
-   that table's prefix.
-3. Point a surface entry at it, or add a new surface entry.
-4. Record its `Origin`, then run `make origins` and fill in the new row.
-5. Run `make check`.
-
-Note that `make verify` compares against the *migrated* workbook, so it is
-expected to fail once data changes deliberately. Re-record the fingerprint with
-`scripts/record_provenance.py` when that happens, as its own reviewable commit.
+The last workbook built from the table-format database is preserved as a
+release asset for UMEP's spreadsheet-based tooling, and the original
+pre-migration workbook remains retrievable from git history.

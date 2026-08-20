@@ -1,0 +1,435 @@
+# Old-table column -> supy YAML path mapping.
+#
+# This file is the audited bridge between the legacy relational tables
+# (db/*.yml, mirroring database.xlsx) and the record format that replaces
+# them. Every column of every table is accounted for: it either maps to a
+# canonical supy data-model path (verified against supy 2026.6.5,
+# schema 2026.5), or is explicitly routed to `legacy` (kept verbatim on the
+# record so no value is lost) with a note saying why.
+#
+# Notation
+#   target:      the supy path the migrated record fragment validates against
+#   columns:     old column -> dotted path relative to the record's target,
+#                or the string `legacy` (no supy home; kept under `legacy:`),
+#                or `envelope.<field>` (feeds the record envelope, not the
+#                parameter fragment)
+#   flag:        needs-review marks a judgement call for Ting; the migration
+#                applies the stated assumption and reports it.
+#
+# Cross-checks used: supy to_df_state/from_df_state pairs (site.py,
+# human_activity.py), which carry the classic SUEWS table names alongside the
+# new attribute names (e.g. tau_a -> tau_cold_snow, G1..G6 -> g_max, g_k,
+# g_q_base, g_q_shape, g_t, g_sm).
+
+supy_version: 2026.6.5
+schema_version: "2026.5"
+
+common_columns:
+  # Columns shared by most property tables; feed the record envelope.
+  ID: envelope.legacy_id
+  Surface: envelope.surface        # routes the record directory; see surface_names
+  Name: envelope.name
+  Origin: envelope.place           # resolved via schema/origins_map.yml
+  Ref: envelope.source             # resolved via sources.yml citation keys
+
+surface_names:
+  # Old Surface strings -> supy LandCover keys.
+  Paved: paved
+  Buildings: bldgs
+  Bare Soil: bsoil
+  Grass: grass
+  Evergreen Tree: evetr
+  Deciduous Tree: dectr
+  Water: water
+  Snow: snow                        # snow records target SnowParams, not land_cover
+  No Surface: common                # surface-agnostic rows (all Soil rows);
+                                    # applicable to any surface at assembly time
+
+tables:
+
+  Albedo:
+    file: albedo.yml
+    target: land_cover.<surface>
+    columns:
+      Alb_min:
+        veg: alb_min                # evetr/dectr/grass
+        nonveg: alb                 # paved/bldgs/bsoil/water: single alb
+        snow: snow_albedo_min
+      Alb_max:
+        veg: alb_max
+        nonveg: alb                 # collapses with Alb_min when equal
+        snow: snow_albedo_max
+    flag: >
+      needs-review: non-veg rows where Alb_min != Alb_max cannot both feed the
+      single `alb` field; migration writes alb from Alb_min and keeps Alb_max
+      under legacy.
+
+  Emissivity:
+    file: emissivity.yml
+    target: land_cover.<surface>
+    columns:
+      Emissivity:
+        default: emis
+        snow: narp_emissivity_snow
+
+  OHM:
+    file: ohm.yml
+    target: ohm_coefficients         # one OHMCoefficients set {a1,a2,a3}
+    grouping: >
+      One row = one record. The observed Season values (None 27, Summer 7,
+      Winter 7, Spring 1, Autumn 1, Spring/autumn 1) show rows are NOT keyed
+      by the four supy slots (summer_dry/summer_wet/winter_dry/winter_wet):
+      the slot assignment lives in the composite tables' four pointer columns
+      (OHMSummerWet etc.), so it belongs to the archetype, not the record.
+    columns:
+      Season: envelope.season_label  # descriptive metadata only
+      a1: a1
+      a2: a2
+      a3: a3
+
+  ANOHM:
+    file: anohm.yml
+    target: land_cover.<surface>
+    columns:
+      AnOHM_Cp: rho_cp_anohm         # J m^-3 K^-1
+      AnOHM_Kk: k_anohm              # W m^-1 K^-1
+      AnOHM_Ch: ch_anohm
+
+  ESTM:
+    file: estm.yml
+    target: land_cover.<surface>
+    columns:
+      Surf_thick1: thermal_layers.dz[0]     # and so on through index 4
+      Surf_k1: thermal_layers.k[0]
+      Surf_rhoCp1: thermal_layers.rho_cp[0]
+      Wall_thick1: legacy                    # 5-layer wall/internal fabric sets:
+      Wall_k1: legacy                        # supy homes them in vertical_layers /
+      Wall_rhoCp1: legacy                    # STEBBS, which are assembly-level;
+      Internal_thick1: legacy                # kept verbatim for the construction
+      Internal_k1: legacy                    # records to pick up later
+      Internal_rhoCp1: legacy
+      nroom: legacy
+      Internal_albedo: legacy
+      Internal_emissivity: legacy
+      Internal_CHwall: legacy
+      Internal_CHroof: legacy
+      Internal_CHbld: legacy
+    flag: >
+      needs-review: wall/internal layer sets belong to building-fabric
+      assemblies (vertical_layers.walls[].thermal_layers or STEBBS); deciding
+      which archetype consumes them is a curation step, so they are retained
+      under legacy rather than guessed into a supy path.
+
+  Water Storage:
+    file: water_storage.yml
+    target: land_cover.<surface>
+    columns:
+      StorageMin: storage_drain_params.store_min
+      StorageMax: storage_drain_params.store_max
+    flag: >
+      needs-review: for dectr the seasonal storage range also informs
+      capacity_min_deciduous/capacity_max_deciduous; migration maps to
+      store_min/store_max only and notes dectr rows in the report.
+
+  Drainage:
+    file: drainage.yml
+    target: land_cover.<surface>
+    columns:
+      DrainageEq: storage_drain_params.drain_eq
+      DrainageCoef1: storage_drain_params.drain_coef_1
+      DrainageCoef2: storage_drain_params.drain_coef_2
+      WetThreshold: wet_threshold
+
+  Water State:
+    file: water_state.yml
+    target: land_cover.<surface>
+    columns:
+      StateLimit: state_limit
+      WaterDepth: legacy             # no released-supy home; initial water
+                                     # depth is an initial-state concern
+
+  SnowLimPatch:
+    file: snow_lim_patch.yml
+    target: land_cover.<surface>
+    columns:
+      SnowLimPatch: snowpack_limit
+
+  Snow:
+    file: snow.yml
+    target: snow                     # SnowParams (site level)
+    columns:
+      RadMeltFactor: radiation_melt_factor
+      TempMeltFactor: temperature_melt_factor
+      Albedo: pointer                # FK to Albedo row -> snow_albedo_min/max
+      Emissivity: pointer            # FK to Emissivity row -> narp_emissivity_snow
+      tau_a: tau_cold_snow
+      tau_f: tau_melting_snow
+      tau_r: tau_refreezing_snow
+      PrecipLimAlb: precipitation_threshold_albedo_reset
+      SnowDensMin: snow_density_min
+      SnowDensMax: snow_density_max
+      CRWMin: water_holding_capacity_min
+      CRWMax: water_holding_capacity_max
+      PrecipLimSnow: temperature_rain_snow_threshold
+      OHMSummerWet: legacy           # supy SnowParams carries no OHM set
+      OHMSummerDry: legacy
+      OHMWinterWet: legacy
+      OHMWinterDry: legacy
+      OHMThresh_SW: legacy
+      OHMThresh_WD: legacy
+
+  Soil:
+    file: soil.yml
+    target: land_cover.<surface>
+    columns:
+      SoilDepth: soil_depth
+      SoilStoreCap: soil_store_capacity
+      SatHydraulicCond: saturated_hydraulic_conductivity
+      SoilDensity: soil_density
+      InfiltrationRate: legacy       # present in the classic table, unused by
+                                     # the model, no supy field
+      OBS_SMDepth: soil_observation.depth        # site-level in supy
+      OBS_SMCap: soil_observation.smcap
+      OBS_SoilNotRocks: soil_observation.soil_not_rocks
+    flag: >
+      needs-review: OBS_* columns are site-level observation config in supy
+      (SiteProperties.soil_observation) while the rest are per-surface;
+      the record keeps both and the exporter routes them.
+
+  Conductance:
+    file: conductance.yml
+    target: conductance              # site-level Conductance
+    columns:
+      G1: g_max
+      G2: g_k
+      G3: g_q_base
+      G4: g_q_shape
+      G5: g_t
+      G6: g_sm
+      TH: th
+      TL: tl
+      S1: s1
+      S2: s2
+      Kmax: kmax
+      gsModel: context.surface_conductance_model   # physics option, not a
+                                                   # site parameter
+
+  Leaf Area Index:
+    file: leaf_area_index.yml
+    target: land_cover.<surface>
+    columns:
+      LAIEq: lai.lai_type
+      LAIMin: lai.lai_min
+      LAIMax: lai.lai_max
+
+  Leaf Growth Power:
+    file: leaf_growth_power.yml
+    target: land_cover.<surface>
+    columns:
+      LeafGrowthPower1: lai.lai_power.growth_lai
+      LeafGrowthPower2: lai.lai_power.growth_gdd
+      LeafOffPower1: lai.lai_power.senescence_lai
+      LeafOffPower2: lai.lai_power.senescence_sdd
+      LAIEq: lai.lai_type
+
+  Vegetation Growth:
+    file: vegetation_growth.yml
+    target: land_cover.<surface>
+    columns:
+      BaseT: lai.base_temperature
+      BaseTe: lai.base_temperature_senescence
+      GDDFull: lai.gdd_full
+      SDDFull: lai.sdd_full
+
+  Max Vegetation Conductance:
+    file: max_vegetation_conductance.yml
+    target: land_cover.<surface>
+    columns:
+      MaxConductance: max_conductance
+
+  Porosity:
+    file: porosity.yml
+    target: land_cover.dectr
+    columns:
+      PorosityMin: porosity_min_deciduous
+      PorosityMax: porosity_max_deciduous
+
+  Biogen CO2:
+    file: biogen_co2.yml
+    target: land_cover.<surface>
+    columns:
+      alpha: alpha_bio_co2
+      beta: beta_bio_co2
+      theta: theta_bio_co2
+      alpha_enh: alpha_enh_bioco2
+      beta_enh: beta_enh_bioco2
+      resp_a: resp_a
+      resp_b: resp_b
+      min_respi: min_res_bioco2
+
+  AnthropogenicEmission:
+    file: anthropogenic_emission.yml
+    target: anthropogenic_emissions
+    columns:
+      Model: context.qf_model        # which QF formulation the set was fitted for
+      BaseT_HC: legacy               # Jarvi-method degree-day base; released
+                                     # supy exposes baset_heating/cooling
+                                     # profiles (mapped from TCritic below)
+      QF_A_WD: heat.qf_a.working_day
+      QF_A_WE: heat.qf_a.holiday
+      QF_B_WD: heat.qf_b.working_day
+      QF_B_WE: heat.qf_b.holiday
+      QF_C_WD: heat.qf_c.working_day
+      QF_C_WE: heat.qf_c.holiday
+      AHMin_WD: heat.ah_min.working_day
+      AHMin_WE: heat.ah_min.holiday
+      AHSlope_Heating_WD: heat.ah_slope_heating.working_day
+      AHSlope_Heating_WE: heat.ah_slope_heating.holiday
+      AHSlope_Cooling_WD: heat.ah_slope_cooling.working_day
+      AHSlope_Cooling_WE: heat.ah_slope_cooling.holiday
+      TCritic_Heating_WD: heat.baset_heating.working_day
+      TCritic_Heating_WE: heat.baset_heating.holiday
+      TCritic_Cooling_WD: heat.baset_cooling.working_day
+      TCritic_Cooling_WE: heat.baset_cooling.holiday
+      MinQFMetab: co2.minqfmetab
+      MaxQFMetab: co2.maxqfmetab
+      MinFCMetab: co2.minfcmetab
+      MaxFCMetab: co2.maxfcmetab
+      FrPDDwe: legacy                # weekend population-density fraction;
+                                     # supy models popdens as day profiles
+      FrFossilFuel_Heat: co2.frfossilfuel_heat
+      FrFossilFuel_NonHeat: co2.frfossilfuel_nonheat
+      EF_umolCO2perJ: co2.ef_umolco2perj
+      EnEF_v_Jkm: co2.enef_v_jkm
+      FcEF_v_kgkmWD: co2.fcef_v_kgkm.working_day
+      FcEF_v_kgkmWE: co2.fcef_v_kgkm.holiday
+      CO2PointSource: co2.co2pointsource
+      TrafficUnits: co2.trafficunits
+    flag: >
+      needs-review: BaseT_HC and TCritic_* both exist in the classic table
+      because they serve different QF formulations; the mapping above follows
+      supy's released model (TCritic -> baset_* profiles) and retains
+      BaseT_HC under legacy.
+
+  Irrigation:
+    file: irrigation.yml
+    target: irrigation               # site-level IrrigationParams
+    columns:
+      Ie_start: ie_start
+      Ie_end: ie_end
+      InternalWaterUse: internalwateruse_h
+      Faut: faut
+      H_maintain: h_maintain
+      Ie_a1: legacy                  # classic 3-coefficient irrigation model;
+      Ie_a2: legacy                  # released supy exposes a single ie_a/ie_m
+      Ie_a3: legacy                  # per vegetated surface
+      Ie_m1: legacy
+      Ie_m2: legacy
+      Ie_m3: legacy
+      DayWat(1): daywat.sunday       # classic DayWat starts on Sunday
+      DayWat(2): daywat.monday
+      DayWat(3): daywat.tuesday
+      DayWat(4): daywat.wednesday
+      DayWat(5): daywat.thursday
+      DayWat(6): daywat.friday
+      DayWat(7): daywat.saturday
+      DayWatPer(1): daywatper.sunday
+      DayWatPer(2): daywatper.monday
+      DayWatPer(3): daywatper.tuesday
+      DayWatPer(4): daywatper.wednesday
+      DayWatPer(5): daywatper.thursday
+      DayWatPer(6): daywatper.friday
+      DayWatPer(7): daywatper.saturday
+    flag: >
+      needs-review: (1) DayWat day-1 anchor assumed Sunday per classic SUEWS
+      convention -- confirm against supy's table converter; (2) Ie_a1..3/
+      Ie_m1..3 have no mechanical home in released supy and are kept under
+      legacy.
+
+  Profiles:
+    file: profiles.yml
+    target: profile.<kind>           # HourlyProfile fragments
+    grouping: >
+      Weekday/Weekend row pairs sharing (Profile Type, Name, City, Country,
+      Ref) merge into one record: Weekday -> working_day, Weekend -> holiday
+      (supy's DayProfile/HourlyProfile vocabulary treats holiday as the
+      non-working day). The 24 integer hour columns 0..23 become the
+      profile's hour dictionary 1..24 following supy's HourlyProfile keying.
+      A lone 'Holiday' row (1 exists) is treated as the holiday side and
+      flagged in the migration report.
+    columns:
+      Profile Type: kind-selector
+      Day: side-selector             # Weekday -> working_day, Weekend/Holiday -> holiday
+      City: envelope.place
+      Country: envelope.place
+    kinds:
+      # Observed Profile Type values (with row counts) -> supy attachment:
+      Human activity: anthropogenic_emissions.co2.humactivity_24hr   # 462
+      Traffic: anthropogenic_emissions.co2.traffprof_24hr            # 462
+      Energy use: anthropogenic_emissions.heat.ahprof_24hr           # 5
+      Commercial: anthropogenic_emissions.heat.ahprof_24hr           # 3, energy use by typology
+      Residential: anthropogenic_emissions.heat.ahprof_24hr          # 2, energy use by typology
+      Industry: anthropogenic_emissions.heat.ahprof_24hr             # 2, energy use by typology
+      Population density: anthropogenic_emissions.heat.popprof_24hr  # 2
+      Water use (manual): irrigation.wuprofm_24hr                    # 3
+      Water use (automatic): irrigation.wuprofa_24hr                 # 1
+      Snow removal: snow.snow_profile_24hr                           # 5
+
+  Spartacus Material:
+    file: spartacus_material.yml
+    target: material                 # repo-local record type: the material
+                                     # library feeding construction assemblies
+    columns:
+      Material Type: envelope.category
+      Albedo: albedo
+      Emissivity: emissivity
+      Thermal Conductivity: thermal_conductivity    # W m^-1 K^-1
+      Specific Heat: specific_heat                  # J kg^-1 K^-1
+      Density: density                              # kg m^-3
+      Color: envelope.display_colour
+
+  Spartacus Surface:
+    file: spartacus_surface.yml
+    target: construction             # repo-local record type: layered
+                                     # roof/wall assemblies of materials
+    columns:
+      r1Material: roof[0].material   # pointer -> material record slug
+      r1Thickness: roof[0].thickness # m
+      rInsulation: roof_insulation_layer
+      w1Material: wall[0].material
+      w1Thickness: wall[0].thickness
+      wInsulation: wall_insulation_layer
+    note: >
+      Layers 1..5 for both roof and wall follow the r1/w1 pattern. The
+      exporter compiles construction + material records into
+      vertical_layers.roofs/walls entries (thermal_layers dz/k/rho_cp plus
+      alb/emis per layer).
+
+  NonVeg:
+    file: non_veg.yml
+    role: archetype                  # composite row -> archetypes/surfaces/
+    note: FK columns resolve to migrated record slugs.
+  Veg:
+    file: veg.yml
+    role: archetype
+  Water:
+    file: water.yml
+    role: archetype
+  Region:
+    file: region.yml
+    role: archetype                  # -> archetypes/regions/
+    note: >
+      Scalar columns (TCritic_*, BaseT_HC, Traffic_multiplier_OSM) carry
+      region-default values; migrated into the archetype's parameters block
+      using the AnthropogenicEmission mapping where a path exists, legacy
+      otherwise.
+  Country:
+    file: country.yml
+    role: archetype                  # -> archetypes/countries/
+  Types:
+    file: types.yml
+    role: archetype                  # -> archetypes/typologies/ (metadata:
+                                     # building typology descriptions)
+  References:
+    file: references.yml
+    role: sources                    # -> sources.yml with citation keys

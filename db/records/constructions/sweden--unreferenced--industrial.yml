@@ -1,0 +1,26 @@
+record: records/constructions/sweden--unreferenced--industrial
+schema_version: '2026.5'
+target: construction
+name: Industrial
+place: sweden
+origin: Sweden
+representativeness: regional
+source: unreferenced
+legacy_id: 37240892
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--roofing-felt
+    thickness: 0.01
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.05
+  - material: records/materials/generic--unreferenced--plaster
+    thickness: 0.01
+  roof_insulation_layer: 6
+  wall:
+  - material: records/materials/generic--cibse2015--limestone-bright
+    thickness: 0.01
+  - material: records/materials/generic--hertwig2024a--brick-protected
+    thickness: 0.08
+  - material: records/materials/generic--unreferenced--plaster
+    thickness: 0.01
+  wall_insulation_layer: 6

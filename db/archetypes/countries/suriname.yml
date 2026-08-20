@@ -1,0 +1,14 @@
+archetype: archetypes/countries/suriname
+schema_version: '2026.5'
+target: site
+name: Suriname
+legacy_id: 11240196
+country: Suriname
+region_ref: archetypes/regions/northern-south-america
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/suriname
+    energy_use: records/profiles/traffic/lucy/suriname
+    human_activity: records/profiles/human-activity/lucy/suriname
+    population: records/profiles/human-activity/lucy/suriname

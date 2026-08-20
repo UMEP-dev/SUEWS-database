@@ -1,0 +1,14 @@
+record: records/materials/generic--hertwig2024a--dense-protected-concrete-block
+schema_version: '2026.5'
+target: material
+name: dense protected concrete block
+source: hertwig2024a
+legacy_id: 36248189
+category: Masonry
+display_colour: Generic
+parameters:
+  albedo: 0.375
+  emissivity: 0.9
+  thermal_conductivity: 1.75
+  specific_heat: 1000
+  density: 2300

@@ -1,0 +1,14 @@
+record: records/surfaces/grass/shanghai--ao2018--lai
+schema_version: '2026.5'
+target: land_cover.grass
+name: Grass
+place: shanghai
+origin: Shanghai
+representativeness: city
+source: ao2018
+legacy_id: 31240020
+parameters:
+  lai:
+    lai_type: 1
+    lai_min: 3.2
+    lai_max: 5.9

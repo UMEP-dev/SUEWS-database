@@ -1,0 +1,14 @@
+archetype: archetypes/countries/lesotho
+schema_version: '2026.5'
+target: site
+name: Lesotho
+legacy_id: 11240117
+country: Lesotho
+region_ref: archetypes/regions/southern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/lesotho
+    energy_use: records/profiles/traffic/lucy/lesotho
+    human_activity: records/profiles/human-activity/lucy/lesotho
+    population: records/profiles/human-activity/lucy/lesotho

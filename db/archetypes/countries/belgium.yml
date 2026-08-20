@@ -1,0 +1,14 @@
+archetype: archetypes/countries/belgium
+schema_version: '2026.5'
+target: site
+name: Belgium
+legacy_id: 11240020
+country: Belgium
+region_ref: archetypes/regions/western-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/belgium
+    energy_use: records/profiles/traffic/lucy/belgium
+    human_activity: records/profiles/human-activity/lucy/belgium
+    population: records/profiles/human-activity/lucy/belgium

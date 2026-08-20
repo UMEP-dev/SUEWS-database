@@ -1,0 +1,11 @@
+record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+schema_version: '2026.5'
+target: land_cover.dectr
+name: Deciduous Tree
+place: helsinki
+origin: Helsinki, Finland
+representativeness: city
+source: jarvi2014
+legacy_id: 38240005
+parameters:
+  snowpack_limit: 190

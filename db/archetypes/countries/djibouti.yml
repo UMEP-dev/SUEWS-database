@@ -1,0 +1,14 @@
+archetype: archetypes/countries/djibouti
+schema_version: '2026.5'
+target: site
+name: Djibouti
+legacy_id: 11240055
+country: Djibouti
+region_ref: archetypes/regions/eastern-africa
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/djibouti
+    energy_use: records/profiles/traffic/lucy/djibouti
+    human_activity: records/profiles/human-activity/lucy/djibouti
+    population: records/profiles/human-activity/lucy/djibouti

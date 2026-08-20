@@ -1,0 +1,14 @@
+archetype: archetypes/countries/indonesia
+schema_version: '2026.5'
+target: site
+name: Indonesia
+legacy_id: 11240095
+country: Indonesia
+region_ref: archetypes/regions/southeast-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/indonesia
+    energy_use: records/profiles/traffic/lucy/indonesia
+    human_activity: records/profiles/human-activity/lucy/indonesia
+    population: records/profiles/human-activity/lucy/indonesia

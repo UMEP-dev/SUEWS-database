@@ -1,0 +1,30 @@
+archetype: archetypes/snow/suews--no-snow
+schema_version: '2026.5'
+target: snow
+name: No Snow
+place: generic
+origin: SUEWS
+representativeness: generic
+legacy_id: 23240001
+source: unreferenced
+uses:
+  albedo: records/snow/helsinki--jarvi2014--albedo
+  emissivity: records/snow/helsinki--jarvi2014--emissivity
+legacy:
+  RadMeltFactor: -999
+  TempMeltFactor: -999
+  tau_a: -999
+  tau_f: -999
+  PrecipLimAlb: -999
+  SnowDensMin: -999
+  SnowDensMax: -999
+  tau_r: -999
+  CRWMin: -999
+  CRWMax: -999
+  PrecipLimSnow: -999
+  OHMSummerWet: 50240016
+  OHMSummerDry: 50240016
+  OHMWinterWet: 50240016
+  OHMWinterDry: 50240016
+  OHMThresh_SW: 10
+  OHMThresh_WD: 0.9

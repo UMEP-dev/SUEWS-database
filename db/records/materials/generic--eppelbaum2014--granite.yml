@@ -1,0 +1,14 @@
+record: records/materials/generic--eppelbaum2014--granite
+schema_version: '2026.5'
+target: material
+name: Granite
+source: eppelbaum2014
+legacy_id: 36248177
+category: Generic
+display_colour: Generic
+parameters:
+  albedo: 0.35
+  emissivity: 0.96
+  thermal_conductivity: 2.68
+  specific_heat: 1900
+  density: 2650

@@ -1,0 +1,13 @@
+record: records/surfaces/water/se-england--ward2016--albedo
+schema_version: '2026.5'
+target: land_cover.water
+name: Water
+place: se-england
+origin: UK, SE England
+representativeness: regional
+source: ward2016
+legacy_id: 41240047
+parameters:
+  alb: 0.1
+legacy:
+  Alb_max: 0.1

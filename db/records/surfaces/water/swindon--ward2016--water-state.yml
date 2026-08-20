@@ -1,0 +1,13 @@
+record: records/surfaces/water/swindon--ward2016--water-state
+schema_version: '2026.5'
+target: land_cover.water
+name: Swindon, UK (not used)
+place: swindon
+origin: Swindon, UK (not used)
+representativeness: city
+source: ward2016
+legacy_id: 42240047
+parameters:
+  state_limit: 1000
+legacy:
+  WaterDepth: 1000

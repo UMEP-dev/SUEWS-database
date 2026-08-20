@@ -1,0 +1,11 @@
+record: records/ohm/generic--ward2016--paved
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Code 851 x Multiplier for summer [8512]
+source: ward2016
+legacy_id: 50240027
+season_label: Summer
+parameters:
+  a1: 0.722
+  a2: 0.3
+  a3: -36.14

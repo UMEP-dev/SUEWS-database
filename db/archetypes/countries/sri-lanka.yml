@@ -1,0 +1,14 @@
+archetype: archetypes/countries/sri-lanka
+schema_version: '2026.5'
+target: site
+name: Sri Lanka
+legacy_id: 11240194
+country: Sri Lanka
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/sri-lanka
+    energy_use: records/profiles/traffic/lucy/sri-lanka
+    human_activity: records/profiles/human-activity/lucy/sri-lanka
+    population: records/profiles/human-activity/lucy/sri-lanka

@@ -1,0 +1,34 @@
+record: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s
+schema_version: '2026.5'
+target: construction
+name: Traditional Neighbourhood, early 1900s
+place: gothenburg
+origin: Gothenburg, Sweden
+representativeness: city
+source: bjork2002
+legacy_id: 37243437
+parameters:
+  roof:
+  - material: records/materials/generic--unreferenced--clay-tile
+    thickness: 0.054
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--waterproof-roof-covering
+    thickness: 0.005
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  - material: records/materials/generic--bellucco2017--air
+    thickness: 0.03
+  roof_insulation_layer: 5
+  wall:
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--felt-sheathing
+    thickness: 0.001
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.075
+  - material: records/materials/generic--cibse2015--wood
+    thickness: 0.025
+  - material: records/materials/generic--hertwig2024a--plaster-dense
+    thickness: 0.025
+  wall_insulation_layer: 6

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/albania
+schema_version: '2026.5'
+target: site
+name: Albania
+legacy_id: 11240002
+country: Albania
+region_ref: archetypes/regions/southern-europe
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/albania
+    energy_use: records/profiles/traffic/lucy/albania
+    human_activity: records/profiles/human-activity/lucy/albania
+    population: records/profiles/human-activity/lucy/albania

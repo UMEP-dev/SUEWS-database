@@ -1,0 +1,14 @@
+archetype: archetypes/countries/occupied-palestinian-territory
+schema_version: '2026.5'
+target: site
+name: Occupied Palestinian Territory
+legacy_id: 11240156
+country: Occupied Palestinian Territory
+region_ref: archetypes/regions/middle-east
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/occupied-palestinian-territory
+    energy_use: records/profiles/traffic/lucy/occupied-palestinian-territory
+    human_activity: records/profiles/human-activity/lucy/occupied-palestinian-territory
+    population: records/profiles/human-activity/lucy/occupied-palestinian-territory

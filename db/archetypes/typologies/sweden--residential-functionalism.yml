@@ -1,0 +1,17 @@
+archetype: archetypes/typologies/sweden--residential-functionalism
+schema_version: '2026.5'
+target: typology
+name: Residential Functionalism
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240003
+description: Nordic functionalism. Low dense early/mid 20th century suburban development
+author: OB
+url: https://upload.wikimedia.org/wikipedia/commons/7/7f/Allardsgata.jpg
+image_source: By Mangan2002 -Own Work, CC BY 3.
+profile_type: Residential
+period: Pre80
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+  paved: archetypes/surfaces/paved/sweden--asphalt-mixed-city

@@ -1,0 +1,14 @@
+archetype: archetypes/countries/trinidad-and-tobago
+schema_version: '2026.5'
+target: site
+name: Trinidad and Tobago
+legacy_id: 11240208
+country: Trinidad and Tobago
+region_ref: archetypes/regions/caribbean
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/trinidad-and-tobago
+    energy_use: records/profiles/traffic/lucy/trinidad-and-tobago
+    human_activity: records/profiles/human-activity/lucy/trinidad-and-tobago
+    population: records/profiles/human-activity/lucy/trinidad-and-tobago

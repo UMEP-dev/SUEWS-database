@@ -1,0 +1,16 @@
+archetype: archetypes/typologies/sweden--mixed-city-ideal
+schema_version: '2026.5'
+target: typology
+name: Mixed-City Ideal
+place: sweden
+origin: Sweden
+representativeness: regional
+legacy_id: 12240004
+description: Eco-Sustainable Residential Areas. Modern high density residential neighbourhood
+author: OB
+url: https://goteborg.se/dx/api/dam/v1/collections/709e13cc-8d2e-47e6-9c72-ff1f4d952928/items/d2a7b94f-66a9-48ed-ba92-a75f3b5413af/renditions/55447478-155b-4a64-9174-5e61d6dec314?binary=true
+profile_type: Residential
+period: New
+uses:
+  bldgs: archetypes/surfaces/bldgs/sweden--mixed-city
+  paved: archetypes/surfaces/paved/sweden--asphalt-mixed-city

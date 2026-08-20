@@ -1,0 +1,14 @@
+archetype: archetypes/countries/iran
+schema_version: '2026.5'
+target: site
+name: Iran
+legacy_id: 11240096
+country: Iran
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/iran
+    energy_use: records/profiles/traffic/lucy/iran
+    human_activity: records/profiles/human-activity/lucy/iran
+    population: records/profiles/human-activity/lucy/iran

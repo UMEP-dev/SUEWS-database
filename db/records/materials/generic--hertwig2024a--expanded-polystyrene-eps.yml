@@ -1,0 +1,12 @@
+record: records/materials/generic--hertwig2024a--expanded-polystyrene-eps
+schema_version: '2026.5'
+target: material
+name: expanded polystyrene (EPS)
+source: hertwig2024a
+legacy_id: 36248191
+category: Insulation
+display_colour: Generic
+parameters:
+  thermal_conductivity: 0.04
+  specific_heat: 1450
+  density: 15

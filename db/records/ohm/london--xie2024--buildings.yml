@@ -1,0 +1,13 @@
+record: records/ohm/london--xie2024--buildings
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Detached houses with air source heat pumps operated in occupied rooms only
+place: london
+origin: London
+representativeness: city
+source: xie2024
+legacy_id: 50240029
+parameters:
+  a1: 0.411
+  a2: 0.289
+  a3: -34.7

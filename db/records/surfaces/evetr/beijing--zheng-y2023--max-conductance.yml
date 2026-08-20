@@ -1,0 +1,11 @@
+record: records/surfaces/evetr/beijing--zheng-y2023--max-conductance
+schema_version: '2026.5'
+target: land_cover.evetr
+name: Evergreen Tree
+place: beijing
+origin: Beijing
+representativeness: city
+source: zheng-y2023
+legacy_id: 33240006
+parameters:
+  max_conductance: 1.4

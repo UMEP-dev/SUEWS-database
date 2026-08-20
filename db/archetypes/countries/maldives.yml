@@ -1,0 +1,14 @@
+archetype: archetypes/countries/maldives
+schema_version: '2026.5'
+target: site
+name: Maldives
+legacy_id: 11240127
+country: Maldives
+region_ref: archetypes/regions/south-central-asia
+city: LUCY
+uses:
+  profiles:
+    traffic: records/profiles/traffic/lucy/maldives
+    energy_use: records/profiles/traffic/lucy/maldives
+    human_activity: records/profiles/human-activity/lucy/maldives
+    population: records/profiles/human-activity/lucy/maldives
