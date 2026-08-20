@@ -36,7 +36,6 @@ def main():
     records, sources, _places = load_all()
 
     frag = assemble(ARCHETYPE, records, sources)
-    frag.pop("_notes", None)
     deep_merge(cfg["sites"][0]["properties"]["land_cover"]["bldgs"], frag)
     deep_merge(
         cfg["sites"][0]["properties"]["land_cover"]["grass"],
