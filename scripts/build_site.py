@@ -107,6 +107,15 @@ TYP_LABEL = {
     "snow": "Snow bundles",
 }
 
+# facet key -> the group title the browser shows (rail headings and the
+# active-filter chips share this table)
+FACET_TITLE = {
+    "kind": "Kind", "surface": "Land cover", "family": "Family",
+    "typology": "Typology", "region": "Region", "country": "Country",
+    "city": "City", "rep": "Representativeness", "source": "Source",
+    "place": "Place",
+}
+
 # land-cover accent colour class (drives card top borders and title tags)
 SURFACE_ACC = {
     "grass": "acc-veg", "dectr": "acc-veg", "evetr": "acc-veg",
@@ -973,8 +982,9 @@ function writeHash() {
 function matches(e) {
   for (const f of KEYS) if (state[f] && e[f] !== state[f]) return false;
   if (state.q) {
-    const q = state.q.toLowerCase();
-    if (!e.text.includes(q)) return false;
+    // every word must match somewhere: "london grass" finds London grass
+    const toks = state.q.toLowerCase().split(/\\s+/).filter(Boolean);
+    if (!toks.every(t => e.text.includes(t))) return false;
   }
   return true;
 }
@@ -1046,6 +1056,15 @@ function render() {
   const overview = document.getElementById('overview');
   const showOverview = emptyState();
   if (overview) overview.classList.toggle('hidden', !showOverview);
+  // every active filter gets a visible, dismissible chip — including the
+  // hidden place key record-page links arrive with
+  const af = document.getElementById('afilters');
+  if (af) {
+    af.innerHTML = showOverview ? '' : KEYS.filter(f => state[f]).map(f =>
+      `<button class="chip on afx" data-key="${f}" ` +
+      `aria-label="remove ${FACET_TITLE[f]} filter">` +
+      `${FACET_TITLE[f]}: ${displayVal(f, state[f])} ×</button>`).join('');
+  }
   const nres = document.getElementById('nres');
   if (showOverview) {
     nres.textContent = '';
@@ -1097,6 +1116,8 @@ function clearAll() {
 document.addEventListener('click', ev => {
   const c = ev.target.closest('a.doclear');
   if (c) { ev.preventDefault(); clearAll(); return; }
+  const ax = ev.target.closest('button.afx');
+  if (ax) { state[ax.dataset.key] = null; writeHash(); render(); return; }
   const b = ev.target.closest('button.fitem');
   if (!b) return;
   const f = b.dataset.facet, v = b.dataset.value;
@@ -1269,19 +1290,20 @@ file in a pull request</span></a>
                 "</details>")
 
     rail = ("<div class=\"rail\">"
-            + fgroup("kind", "Kind", is_open=True,
+            + fgroup("kind", FACET_TITLE["kind"], is_open=True,
                      cap="records hold the evidence; typologies bundle it")
-            + fgroup("surface", "Land cover", is_open=True)
-            + fgroup("family", "Family", scroll=True, is_open=True, find=True)
-            + fgroup("typology", "Typology")
-            + fgroup("region", "Region")
-            + fgroup("country", "Country", scroll=True, find=True)
-            + fgroup("city", "City", scroll=True, find=True)
+            + fgroup("surface", FACET_TITLE["surface"], is_open=True)
+            + fgroup("family", FACET_TITLE["family"], scroll=True,
+                     is_open=True, find=True)
+            + fgroup("typology", FACET_TITLE["typology"])
+            + fgroup("region", FACET_TITLE["region"])
+            + fgroup("country", FACET_TITLE["country"], scroll=True, find=True)
+            + fgroup("city", FACET_TITLE["city"], scroll=True, find=True)
             + "<a class=\"maplink\" href=\"map.html\">pick a place on the map →</a>"
-            + fgroup("rep", "Representativeness",
+            + fgroup("rep", FACET_TITLE["rep"],
                      cap="what a value stands for: one site, a whole city, "
                          "a region, or generic")
-            + fgroup("source", "Source", scroll=True, find=True)
+            + fgroup("source", FACET_TITLE["source"], scroll=True, find=True)
             + "</div>")
     body = (hero
             + "<input id=\"q\" class=\"search\" type=\"search\" "
@@ -1289,6 +1311,7 @@ file in a pull request</span></a>
             + stats
             + f"<div class=\"layout\">{rail}<div>"
             + overview
+            + "<div id=\"afilters\" class=\"pill-row\"></div>"
             + "<div id=\"nres\" role=\"status\" aria-live=\"polite\">"
               "loading the index…</div>"
               "<div id=\"results\" class=\"results2\"></div>"
@@ -1301,6 +1324,7 @@ file in a pull request</span></a>
         f"const ACC = {json.dumps(SURFACE_ACC)};"
         f"const LC_LABEL = {json.dumps(SURFACE_LABEL)};"
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
+        f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
         "</script>"
     )
     return page("Browse", body, 0, js_consts + BROWSER_JS)
