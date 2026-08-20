@@ -460,6 +460,13 @@ def geo_of(rec, places):
     """(region, country name, city name) for a record's place."""
     slug = rec.get("place")
     if not slug:
+        # country-default typologies carry the country by name, not a place
+        cname = rec.get("country")
+        if cname:
+            for info in places.values():
+                if (info.get("kind") == "country"
+                        and info.get("name", "").lower() == str(cname).lower()):
+                    return info.get("region"), info["name"], None
         return None, None, None
     info = places.get(slug) or {}
     if info.get("kind") == "country":
@@ -615,7 +622,11 @@ def record_page(path, rec, records, sources, used_by, cluster):
 
     # clickable facet chips under the title
     chips = []
-    chips.append(chip_link(f"{rel}index.html#family={esc(fam)}", fam))
+    if kind == "typology":
+        chips.append(chip_link(f"{rel}index.html#typology={esc(fam)}",
+                               TYP_LABEL.get(fam, fam)))
+    else:
+        chips.append(chip_link(f"{rel}index.html#family={esc(fam)}", fam))
     if surface:
         chips.append(chip_link(f"{rel}index.html#surface={esc(surface)}", surface))
     if rec.get("place"):
