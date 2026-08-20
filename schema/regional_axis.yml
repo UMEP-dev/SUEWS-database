@@ -1,0 +1,75 @@
+# The geographical axis.
+#
+# The parameters themselves do not belong to a region. But once a parameter set
+# exists, a user wants to ask what a typical Scandinavian, or northern Chinese,
+# combination looks like -- not as the right answer, but as a defensible
+# default when nothing else is known. That makes region a way of viewing the
+# database, not a property stored on each value.
+#
+# Together with schema/parameter_groups.yml this gives the matrix the database
+# is really shaped like: a parameter belongs to a group along one axis and
+# carries a regional specificity along the other.
+
+# What the axis is built from. Nothing new is invented here: the vocabulary and
+# the country mapping already exist in the database.
+backbone:
+  regions:
+    table: Region
+    n: 22
+    note: >
+      A UN-style geographic scheme (Northern Europe, Eastern Asia, ...). Each
+      Region entry already carries a complete default parameter set, so the
+      regional-default idea is present in the structure and simply has no way
+      of being queried yet.
+  countries:
+    table: Country
+    n: 229
+    note: Maps every country to one of the 22 regions.
+  values:
+    column: Origin
+    note: >
+      Present on 27 of the 30 tables and free text. This is the missing link:
+      until each Origin string resolves to a place, and each place to a region,
+      the axis cannot be queried.
+
+# Recorded rather than answered. The existing vocabulary is geographic;
+# whether that is the right basis is undecided.
+open_question: >
+  Is the grouping climatic, cultural, or merely geographic? The Region table is
+  geographic, which puts Helsinki and Reykjavik together but separates Helsinki
+  from climatically similar places elsewhere. A climate classification such as
+  Koeppen would group differently, and building typology -- which drives the
+  material and morphology parameters -- follows construction practice and
+  regulation rather than either. The three may need to be separate axes rather
+  than one compromise.
+
+# What has to be added to make the axis usable. None of this is populated yet.
+fields_to_add:
+  place: >
+    The resolved location for an Origin string, so that Helsinki,
+    "Helsinki, Finland" and Helsinki-Kumpula are recognised as one place.
+  region: >
+    A Region ID, reached via the resolved place. Derived, not stored per value.
+  representativeness: >
+    How far a value travels beyond where it was measured: site, city, regional
+    or generic. Without this a single rooftop measurement and a national survey
+    look identical in the database.
+
+# Related data that should funnel in rather than be merged, carrying its
+# provenance with it.
+external_links:
+  - source: UMEP / QGIS morphology data
+    holds: Building heights by building type.
+    relation: >
+      Overlaps the Types table and the building entries in NonVeg. The intent
+      is a funnel from one database to the other, with each value keeping a
+      record of where it came from, not a merge of the two stores.
+
+status:
+  mechanism: defined
+  populated: false
+  blocking: >
+    The 50 distinct Origin strings in schema/origins_inventory.yml are
+    unmapped. They cover roughly 20 real places; several are variants of one
+    another and two are not places at all. Mapping them is the next step and
+    is a human judgement, not a scripted one.

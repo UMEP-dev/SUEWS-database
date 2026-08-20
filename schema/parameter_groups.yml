@@ -1,0 +1,163 @@
+# Physical linkage between parameters.
+#
+# The database stores every parameter independently, which lets a user assemble
+# a combination that is individually defensible and jointly wrong. The trigger
+# for this file was SDDFull sitting at -450 for both Helsinki and SE England: a
+# senescence threshold only means something in relation to the base temperature
+# it is paired with, and nothing in the database said so. Grouping records
+# which parameters have to move together, so that a naive choice can be warned
+# about instead of silently accepted.
+#
+# Scope note. Only groups with a settled classification are filled in. Every
+# other table is listed under `unclassified` on purpose: assigning tightness
+# across the whole database is a scientific judgement, and guessing it here
+# would bury real decisions inside a format migration. The unclassified list
+# is the outstanding work, not a claim of independence.
+
+linkage_levels:
+  tight: >
+    Setting one member without revisiting the others is physically
+    inconsistent. Changing one value obliges a user to reconsider the group.
+  loose: >
+    The members are physically related and mutually constrained, but there is
+    genuine freedom within those constraints.
+  independent: >
+    Members may be taken from separate sources without introducing an
+    inconsistency.
+  unclassified: >
+    Not yet assessed. This is the default and is not a claim of independence.
+
+confidence_levels:
+  settled: The classification is agreed and can be relied on.
+  tentative: A working assumption that still needs confirming.
+
+groups:
+
+  vegetation_growth_thresholds:
+    label: Growing-degree-day and senescing-degree-day thresholds
+    linkage: tight
+    confidence: settled
+    members:
+      - table: Vegetation Growth
+        columns: [BaseT, BaseTe, GDDFull, SDDFull]
+    rationale: >
+      GDDFull and SDDFull are accumulated relative to BaseT and BaseTe. A
+      degree-day total carried over from one site to another without its base
+      temperature describes a different phenological cycle, so the four values
+      only have meaning as a set.
+    evidence: >
+      The six Vegetation Growth entries split into Helsinki (BaseT=5,
+      BaseTe=10) and SE England (BaseT=6, BaseTe=11), but both keep
+      GDDFull=300 and SDDFull=-450. The base temperature was localised and the
+      degree-day totals accumulated against it were not, which is the
+      inconsistency this group exists to catch.
+
+  leaf_area_index:
+    label: Leaf area index and its seasonal development
+    linkage: tight
+    confidence: settled
+    members:
+      - table: Leaf Area Index
+        columns: [LAIEq, LAIMin, LAIMax]
+      - table: Leaf Growth Power
+        columns: [LAIEq, LeafGrowthPower1, LeafGrowthPower2, LeafOffPower1, LeafOffPower2]
+    rationale: >
+      The growth and leaf-off power coefficients parameterise the transition
+      between LAIMin and LAIMax under a particular LAI equation. Coefficients
+      fitted for one equation do not transfer to another.
+    evidence: >
+      LAIEq appears as a column in both tables, so a Veg entry that pairs a
+      Leaf Area Index row with a Leaf Growth Power row of a different LAIEq is
+      internally contradictory. Checked by scripts/check_consistency.py, which
+      currently finds three such entries: 24240002 (Vancouver, Grass),
+      24240025 (Swindon, Grass) and 24240028 (London, Grass). The last of
+      these is the Grass default that most Region entries point at.
+    related:
+      - group: vegetation_growth_thresholds
+        linkage: unclassified
+        note: >
+          The degree-day thresholds drive the same seasonal cycle as the LAI
+          coefficients, so the two groups are plausibly one. Whether they
+          should be merged is undecided.
+
+  surface_conductance:
+    label: Surface conductance coefficients
+    linkage: loose
+    confidence: settled
+    members:
+      - table: Conductance
+        columns: [G1, G2, G3, G4, G5, G6]
+    rationale: >
+      The coefficients express physical relationships and were fitted jointly,
+      so they should be moved together, but unlike the phenology parameters
+      they tolerate some adjustment within their constraints.
+    to_confirm:
+      - >
+        A zero-to-one constraint has been proposed for these coefficients. The
+        stored values do not show that range -- the Jarvi et al. (2011) entry
+        has G1=16.4764 and G2=566.0923 -- so either the constraint applies to a
+        subset (G3 and G6 are below 1 in all three entries) or it describes
+        something else, such as a normalised stress function. Resolve before
+        encoding it as a validation rule.
+      - >
+        gsModel appears to belong in this group. The two entries differ by
+        formulation (gsModel=1, Jarvi et al. 2011 and gsModel=2, Ward et al.
+        2016) and their coefficients differ by more than an order of
+        magnitude, so a coefficient set is only valid for its own gsModel.
+        TH, TL, S1, S2 and Kmax are unassessed.
+
+  radiative_properties:
+    label: Radiative surface properties
+    linkage: independent
+    confidence: tentative
+    members:
+      - table: Albedo
+        columns: [Alb_min, Alb_max]
+      - table: Emissivity
+        columns: [Emissivity]
+    rationale: >
+      Albedo and emissivity are measured separately and have not been shown to
+      constrain each other. Held as a working assumption rather than a settled
+      one, since a surface with an unusual albedo often has an unusual
+      emissivity for the same underlying reason.
+
+  material_properties:
+    label: Construction material properties
+    linkage: independent
+    confidence: tentative
+    members:
+      - table: Spartacus Material
+        columns: [Albedo, Emissivity, Thermal Conductivity, Specific Heat, Density]
+    rationale: >
+      The properties do not constrain each other directly. They are, however,
+      jointly determined by the choice of material, so a row should be taken
+      whole rather than have individual properties substituted into it.
+
+# Tables with no linkage assessment yet. Listed so that the gap is visible
+# rather than implicit. ESTM, ANOHM, OHM and Spartacus Surface are the ones
+# most likely to need grouping, since each holds several coefficients of a
+# single fitted relationship.
+unclassified:
+  - Region
+  - Country
+  - Types
+  - NonVeg
+  - Veg
+  - Snow
+  - Water
+  - Spartacus Surface
+  - OHM
+  - Water Storage
+  - SnowLimPatch
+  - Water State
+  - Drainage
+  - Irrigation
+  - Max Vegetation Conductance
+  - Porosity
+  - Profiles
+  - Soil
+  - AnthropogenicEmission
+  - Biogen CO2
+  - References
+  - ESTM
+  - ANOHM
