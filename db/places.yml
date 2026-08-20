@@ -934,11 +934,10 @@ places:
     name: Swaziland
     region: Africa
   sweden:
+    kind: country
     name: Sweden
     lat: 62.0
     lon: 15.0
-    country: sweden
-    subnational: true
     region: Europe
   swindon:
     name: Swindon

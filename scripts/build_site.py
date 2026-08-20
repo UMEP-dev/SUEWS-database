@@ -328,8 +328,7 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .otile:hover { background: var(--bg-card-hover); text-decoration: none;
   border-color: var(--border-medium); }
 .otile .sw { flex: 0 0 8px; align-self: center; }
-.otile b { flex: 1; }
-.otile b { font-weight: 600; font-size: 0.9rem; }
+.otile b { flex: 1; font-weight: 600; font-size: 0.9rem; }
 .otile span { color: var(--text-muted); font-size: 0.78rem; }
 .orow { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.8rem; margin: 1.2rem 0 0.6rem; }
@@ -910,47 +909,36 @@ BROWSER_JS = """
 <script>
 const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
                 'city', 'rep', 'source'];
+// 'place' is a hidden exact-match key: not rendered as a facet group, but
+// honoured from the hash so record-page sibling links and old bookmarks
+// filter exactly rather than through the free-text search
+const KEYS = FACETS.concat(['place']);
 let DATA = [];
-let LOADED = false;
 const state = { q: '', all: false };
 const ffind = {};
-for (const f of FACETS) state[f] = null;
+for (const f of KEYS) state[f] = null;
 
 function readHash() {
   const h = new URLSearchParams(location.hash.slice(1));
   state.q = h.get('q') || '';
   state.all = h.get('all') === '1';
-  for (const f of FACETS) state[f] = h.get(f);
-  // legacy links: #place=<slug> maps onto the text search
-  const legacy = h.get('place');
-  if (legacy && !state.q) state.q = legacy;
+  for (const f of KEYS) state[f] = h.get(f);
 }
 function writeHash() {
   const h = new URLSearchParams();
   if (state.q) h.set('q', state.q);
   if (state.all) h.set('all', '1');
-  for (const f of FACETS) if (state[f]) h.set(f, state[f]);
+  for (const f of KEYS) if (state[f]) h.set(f, state[f]);
   history.replaceState(null, '', h.toString() ? '#' + h.toString() : location.pathname);
 }
 function matches(e) {
-  for (const f of FACETS) if (state[f] && e[f] !== state[f]) return false;
+  for (const f of KEYS) if (state[f] && e[f] !== state[f]) return false;
   if (state.q) {
     const q = state.q.toLowerCase();
     if (!e.text.includes(q)) return false;
   }
   return true;
 }
-const LC_ORDER = ['paved', 'bldgs', 'evetr', 'dectr', 'grass', 'bsoil', 'water'];
-const ACC = { grass: 'acc-veg', dectr: 'acc-veg', evetr: 'acc-veg',
-              water: 'acc-water', paved: 'acc-built', bldgs: 'acc-built',
-              bsoil: 'acc-soil', snow: 'acc-snow', common: 'acc-none' };
-const LC_LABEL = { paved: 'Paved', bldgs: 'Buildings', evetr: 'Evergreen trees',
-                   dectr: 'Deciduous trees', grass: 'Grass', bsoil: 'Bare soil',
-                   water: 'Water', snow: 'Snow', common: 'Any surface' };
-const TYP_LABEL = { surfaces: 'Surface bundles', countries: 'Country defaults',
-                    regions: 'Regional defaults', typologies: 'Urban types',
-                    materials: 'Materials', constructions: 'Constructions',
-                    snow: 'Snow bundles' };
 function displayVal(facet, value) {
   if (facet === 'surface') return LC_LABEL[value] || value;
   if (facet === 'typology') return TYP_LABEL[value] || value;
@@ -965,10 +953,10 @@ function itemHTML(facet, value, count, on, swatch) {
          `<span class="n">${count}</span></button>`;
 }
 function emptyState() {
-  return !state.q && !state.all && FACETS.every(f => !state[f]);
+  return !state.q && !state.all && KEYS.every(f => !state[f]);
 }
 function anyActive() {
-  return state.q || state.all || FACETS.some(f => state[f]);
+  return state.q || state.all || KEYS.some(f => state[f]);
 }
 function render() {
   const hits = DATA.filter(matches);
@@ -1055,7 +1043,7 @@ function render() {
 }
 function clearAll() {
   state.q = ''; state.all = false;
-  for (const f of FACETS) state[f] = null;
+  for (const f of KEYS) state[f] = null;
   document.getElementById('q').value = '';
   writeHash(); render();
 }
@@ -1085,7 +1073,7 @@ fetch('data/index.json').then(r => {
   if (!r.ok) throw new Error(r.status);
   return r.json();
 }).then(d => {
-  DATA = d; LOADED = true; readHash(); input.value = state.q; render();
+  DATA = d; readHash(); input.value = state.q; render();
 }).catch(() => {
   document.getElementById('nres').innerHTML =
     'The search index failed to load — <a href="">reload the page</a>. ' +
@@ -1258,7 +1246,17 @@ file in a pull request</span></a>
               "loading the index…</div>"
               "<div id=\"results\" class=\"results2\"></div>"
             + "</div></div>")
-    return page("Browse", body, 0, BROWSER_JS)
+    # the browser shares the generator's label/order/accent tables: emitted
+    # once here so Python and JS cannot drift
+    js_consts = (
+        "<script>"
+        f"const LC_ORDER = {json.dumps(LC_ORDER)};"
+        f"const ACC = {json.dumps(SURFACE_ACC)};"
+        f"const LC_LABEL = {json.dumps(SURFACE_LABEL)};"
+        f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
+        "</script>"
+    )
+    return page("Browse", body, 0, js_consts + BROWSER_JS)
 
 
 def build_search_index(records, sources, places):
