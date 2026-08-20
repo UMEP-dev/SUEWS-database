@@ -40,9 +40,83 @@ from export_record import PlainDumper, assemble  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 REPO_URL = "https://github.com/UMEP-dev/SUEWS-database"
+DOCS = "https://docs.suews.io/latest/inputs/yaml"
+DOCS_REF = f"{DOCS}/config-reference"
 
 SURFACES = {"paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water",
             "snow", "common"}
+
+# target -> the config-reference page documenting its fields
+TARGET_DOC = {
+    "land_cover.paved": "pavedproperties",
+    "land_cover.bldgs": "bldgsproperties",
+    "land_cover.evetr": "evetrproperties",
+    "land_cover.dectr": "dectrproperties",
+    "land_cover.grass": "grassproperties",
+    "land_cover.bsoil": "bsoilproperties",
+    "land_cover.water": "waterproperties",
+    "land_cover.common": "surfaceproperties",
+    "snow": "snowparams",
+    "conductance": "conductance",
+    "irrigation": "irrigationparams",
+    "anthropogenic_emissions": "anthropogenicemissions",
+    "ohm_coefficients": "ohmcoefficients",
+}
+
+# nested containers -> the sub-class page holding their leaf fields
+CONTAINER_DOC = [
+    ("lai.lai_power.", "laipowercoefficients"),
+    ("lai.", "laiparams"),
+    ("storage_drain_params.", "storagedrainparams"),
+    ("thermal_layers.", "thermallayers"),
+    ("soil_observation.", "soilobservationconfig"),
+    ("ohm_coef.", "ohmcoefficients"),
+    ("waterdist.", "waterdistribution"),
+    ("heat.", "anthropogenicheat"),
+    ("co2.", "co2params"),
+    ("daywat.", "weeklyprofile"),
+    ("daywatper.", "weeklyprofile"),
+]
+
+FAMILY_LABEL = {
+    "albedo": "Albedo", "emissivity": "Emissivity",
+    "anohm": "AnOHM coefficients", "water-storage": "Water storage",
+    "drainage": "Drainage", "water-state": "Water state",
+    "snow-lim": "Snowpack limit", "soil": "Soil properties",
+    "lai": "Leaf area index", "lai-power": "LAI growth coefficients",
+    "phenology": "Phenology thresholds", "max-conductance": "Maximum conductance",
+    "porosity": "Porosity", "biogen-co2": "Biogenic CO2",
+    "thermal-layers": "Thermal layers", "ohm": "OHM coefficients",
+    "conductance": "Surface conductance", "irrigation": "Irrigation",
+    "anthropogenic": "Anthropogenic emissions", "materials": "Material",
+    "constructions": "Construction", "snow": "Snow parameters",
+    "surface": "Surface properties",
+}
+SURFACE_LABEL = {
+    "paved": "Paved", "bldgs": "Buildings", "evetr": "Evergreen trees",
+    "dectr": "Deciduous trees", "grass": "Grass", "bsoil": "Bare soil",
+    "water": "Water", "snow": "Snow", "common": "Any surface",
+}
+
+
+def doc_url(target, dotted):
+    """Docs page + anchor for one parameter path, or None for repo-local."""
+    if not target or target in ("material", "construction", "typology", "site"):
+        return None
+    if target.startswith("profile."):
+        return f"{DOCS_REF}/hourlyprofile.html"
+    base = TARGET_DOC.get(target)
+    if base is None:
+        return None
+    page_slug = base
+    for prefix, sub in CONTAINER_DOC:
+        if dotted.startswith(prefix):
+            page_slug = sub
+            break
+    leaf = dotted.rsplit(".", 1)[-1]
+    if leaf.isdigit() or dotted.startswith("context"):
+        return f"{DOCS_REF}/{page_slug}.html"
+    return f"{DOCS_REF}/{page_slug}.html#input-option-{leaf}"
 
 CSS = """
 :root {
@@ -123,6 +197,42 @@ ul.linked li { margin: 0.22rem 0; font-size: 0.92rem; }
 footer { margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-light);
   color: var(--text-muted); font-size: 0.82rem; }
 .hidden { display: none; }
+.headline { margin: 0.2rem 0 0.6rem; font-size: 1.05rem; }
+.headline b { color: var(--water-blue-light); font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.headline .v { color: var(--sun-gold); font-weight: 600;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.subtitle { color: var(--text-muted); font-size: 0.95rem; font-weight: 400; }
+table.params td:first-child { width: 320px; }
+table.params .val { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--sun-gold); }
+table.params.muted .val { color: var(--text-secondary); }
+table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem; color: var(--text-secondary); word-spacing: 0.3em; }
+.copywrap { position: relative; }
+.copywrap button.copy { position: absolute; top: 0.55rem; right: 0.55rem;
+  padding: 0.3rem 0.8rem; border-radius: 7px; border: 1px solid var(--border-medium);
+  background: var(--bg-card); color: var(--text-secondary); cursor: pointer;
+  font: inherit; font-size: 0.8rem; }
+.copywrap button.copy:hover { border-color: var(--sun-gold); color: var(--text-primary); }
+.copywrap button.copy.ok { background: var(--veg-green); color: #fff;
+  border-color: var(--veg-green); }
+"""
+
+COPY_JS = """
+<script>
+document.querySelectorAll('.copywrap').forEach(w => {
+  const btn = document.createElement('button');
+  btn.className = 'copy'; btn.textContent = 'Copy';
+  btn.addEventListener('click', () => {
+    navigator.clipboard.writeText(w.querySelector('pre').textContent).then(() => {
+      btn.textContent = 'Copied'; btn.classList.add('ok');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 1500);
+    });
+  });
+  w.appendChild(btn);
+});
+</script>
 """
 
 
@@ -146,8 +256,10 @@ def page(title, body, depth=0, script=""):
 <div class="wrap">
 {body}
 <footer>Data and site: <a href="{REPO_URL}">UMEP-dev/SUEWS-database</a> ·
-fragments paste into <a href="https://suews.readthedocs.io/">SUEWS YAML
-configurations</a></footer>
+parameter names follow the
+<a href="{DOCS}/index.html">SUEWS YAML input specification</a> ·
+per-parameter definitions in the
+<a href="{DOCS_REF}/index.html">configuration reference</a></footer>
 </div>
 {script}
 </body></html>"""
@@ -185,10 +297,25 @@ def surface_of(path, rec):
     return None
 
 
+def slugify_ish(text):
+    return "".join(c for c in str(text).lower() if c.isalnum() or c == " ")
+
+
+def is_hour_dict(node):
+    return (isinstance(node, dict) and node
+            and all(isinstance(k, int) and 1 <= k <= 24 for k in node))
+
+
 def leaf_pairs(node, prefix=""):
-    """Flatten parameters to (dotted path, value) pairs for inline preview."""
+    """Flatten parameters to (dotted path, value) pairs for inline preview.
+
+    24-hour profile dictionaries collapse to one pair so a profile reads as
+    one series rather than 24 rows.
+    """
     out = []
-    if isinstance(node, dict):
+    if is_hour_dict(node):
+        out.append((prefix, " ".join(str(v) for v in node.values())))
+    elif isinstance(node, dict):
         for k, v in node.items():
             p = f"{prefix}.{k}" if prefix else str(k)
             out.extend(leaf_pairs(v, p))
@@ -197,6 +324,21 @@ def leaf_pairs(node, prefix=""):
     elif node is not None:
         out.append((prefix, node))
     return out
+
+
+def params_table(params, target, muted=False, linked=True):
+    """Render a parameter block as a table: linked name, value, docs link."""
+    rows = []
+    for dotted, value in leaf_pairs(params):
+        url = doc_url(target, dotted) if linked else None
+        name = (f"<a href=\"{esc(url)}\" title=\"definition in the SUEWS "
+                f"configuration reference\"><code>{esc(dotted)}</code></a>"
+                if url else f"<code>{esc(dotted)}</code>")
+        klass = "hrs" if isinstance(value, str) and value.count(" ") > 10 else "val"
+        rows.append(f"<tr><td>{name}</td>"
+                    f"<td><span class=\"{klass}\">{esc(value)}</span></td></tr>")
+    cls = "kv params muted" if muted else "kv params"
+    return f"<table class=\"{cls}\">" + "".join(rows) + "</table>"
 
 
 def build_graph(records):
@@ -260,6 +402,30 @@ def record_page(path, rec, records, sources, used_by, cluster):
     crumbs = (f"<div class=\"crumbs\"><a href=\"{rel}index.html\">browse</a> · "
               f"{esc(path)}.yml</div>")
 
+    # a title that says what the record physically is; the legacy name
+    # becomes a qualifier rather than the headline
+    fam_label = FAMILY_LABEL.get(fam)
+    if fam.startswith("profile:"):
+        fam_label = fam.split(":", 1)[1].strip().replace("-", " ").capitalize() \
+            + " profile"
+    what = fam_label or fam
+    if surface and fam not in ("conductance", "irrigation", "anthropogenic"):
+        what = f"{SURFACE_LABEL.get(surface, surface)} · {what.lower() if fam_label else what}"
+    name = rec.get("name")
+    qualifier = (f" <span class=\"subtitle\">— {esc(name)}</span>"
+                 if name and slugify_ish(name) not in what.lower() else "")
+    title_text = what
+    headline_pairs = [(k, v) for k, v in leaf_pairs(rec.get("parameters", {}))
+                      if not k.startswith("context")][:3]
+    headline = ""
+    if headline_pairs and kind == "record":
+        bits = " · ".join(
+            f"<b>{esc(k)}</b> <span class=\"v\">{esc(v)}</span>"
+            for k, v in headline_pairs
+            if not (isinstance(v, str) and v.count(" ") > 10))
+        if bits:
+            headline = f"<div class=\"headline\">{bits}</div>"
+
     # clickable facet chips under the title
     chips = []
     chips.append(chip_link(f"{rel}index.html#family={esc(fam)}", fam))
@@ -284,7 +450,12 @@ def record_page(path, rec, records, sources, used_by, cluster):
         if v:
             meta_rows.append(f"<tr><th>{esc(k)}</th><td>{v}</td></tr>")
 
-    row("Target", f"<code>{esc(rec.get('target'))}</code>")
+    target = rec.get("target")
+    target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
+                  else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
+                  if target in TARGET_DOC else None)
+    row("Target", f"<code>{esc(target)}</code>"
+        + (f" · <a href=\"{target_doc}\">documentation</a>" if target_doc else ""))
     if rec.get("attaches_to"):
         row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>")
     if rec.get("origin"):
@@ -303,9 +474,9 @@ def record_page(path, rec, records, sources, used_by, cluster):
     meta = "<table class=\"kv\">" + "".join(meta_rows) + "</table>"
 
     body = [crumbs,
-            f"<h2>{esc(rec.get('name') or path.rsplit('/', 1)[-1])} "
+            f"<h2>{esc(title_text)}{qualifier} "
             f"<span class=\"chip\">{kind}</span></h2>",
-            chip_row, meta]
+            headline, chip_row, meta]
 
     uses = rec.get("uses")
     if uses:
@@ -331,15 +502,24 @@ def record_page(path, rec, records, sources, used_by, cluster):
         body.append("</table>")
 
     if rec.get("parameters"):
-        params = {k: v for k, v in rec["parameters"].items()}
-        body.append("<h3>Parameters</h3>")
-        body.append("<pre>" + esc(yaml.dump(params, Dumper=PlainDumper,
-                    sort_keys=False, allow_unicode=True, width=80)) + "</pre>")
+        params = {k: v for k, v in rec["parameters"].items() if k != "context"}
+        context = rec["parameters"].get("context")
+        if params:
+            body.append("<h3>Parameters</h3>"
+                        "<p class=\"crumbs\">Names follow the SUEWS YAML "
+                        "specification; click one for its definition in the "
+                        "configuration reference.</p>")
+            body.append(params_table(params, rec.get("target")))
+        if context:
+            body.append("<h3>Context</h3>"
+                        "<p class=\"crumbs\">Conditions the set was derived "
+                        "under; not model inputs themselves.</p>")
+            body.append(params_table({"context": context}, None, linked=False))
 
     if rec.get("legacy"):
-        body.append("<h3>Legacy block (no supy home; kept verbatim)</h3>")
-        body.append("<pre>" + esc(yaml.dump(rec["legacy"], Dumper=PlainDumper,
-                    sort_keys=False, allow_unicode=True, width=80)) + "</pre>")
+        body.append("<h3>Legacy values (no home in the current model; "
+                    "kept verbatim under their original column names)</h3>")
+        body.append(params_table(rec["legacy"], None, muted=True, linked=False))
 
     try:
         frag = assemble(path, records, sources)
@@ -349,8 +529,10 @@ def record_page(path, rec, records, sources, used_by, cluster):
                         "<p class=\"crumbs\">Paste under "
                         f"<code>{esc(rec.get('target'))}</code> in a SUEWS YAML "
                         "configuration; every value carries its citation.</p>")
-            body.append("<pre>" + esc(yaml.dump(frag, Dumper=PlainDumper,
-                        sort_keys=False, allow_unicode=True, width=80)) + "</pre>")
+            body.append("<div class=\"copywrap\"><pre>"
+                        + esc(yaml.dump(frag, Dumper=PlainDumper,
+                              sort_keys=False, allow_unicode=True, width=80))
+                        + "</pre></div>")
     except Exception:
         pass
 
@@ -379,7 +561,7 @@ def record_page(path, rec, records, sources, used_by, cluster):
         f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change (fork &amp; PR)</a>"
         "</div>"
     )
-    return page(rec.get("name") or path, "\n".join(body), depth)
+    return page(title_text, "\n".join(body), depth, COPY_JS)
 
 
 def grouped_list(paths, records, depth):
