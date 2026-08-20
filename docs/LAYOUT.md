@@ -50,10 +50,17 @@ file says where things are.
   scientifically inconsistent combinations
 - `make check-strict` — as check, coupling warnings fail
 - `make validate` — check plus validation of every parameter fragment
-  against the supy data model (needs network access the first time, to
-  fetch supy)
+  against the supy data model, pinned to the version the records'
+  schema_version was verified against (needs network access the first
+  time, to fetch supy)
+- `make verify` — reverse-verify the record tree against the pre-migration
+  tables in git history: coverage, value multisets, profile-hour and
+  thermal-layer positions, pointer resolution and citations
 - `make export REC=<record-path>` — render a record or archetype as a
   model-ready fragment with per-value citations
+- `scripts/e2e_sample_config.py` — end-to-end proof: exported fragments
+  merged into supy's sample configuration load through
+  `SUEWSConfig.from_yaml` with citations intact
 
 ## Naming
 
