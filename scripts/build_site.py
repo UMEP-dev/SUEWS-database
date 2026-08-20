@@ -347,7 +347,8 @@ a:hover .dot, .dot:hover { fill-opacity: 1; }
 .placerows .fitem { break-inside: avoid; }
 header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .fscroll { max-height: 252px; overflow-y: auto; }
-.relfig { width: 100%; max-width: 780px; height: auto; margin: 0.4rem 0 0.8rem; }
+.relfig { display: block; width: 100%; max-width: 780px; height: auto;
+  margin: 0.4rem auto 1rem; }
 .otiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 0.6rem; margin: 0.4rem 0 0.8rem; }
 .otile { display: flex; align-items: baseline;
