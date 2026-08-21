@@ -7,7 +7,7 @@ dependency_revisions:
     grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
   places: {}
   records:
-    records/ohm/generic--unreferenced--paved--asphalt-902: sha256:698d1bcc202cd6f34ab66332a0dbf6fcce7b75c62bfe516e23c056f21a4fcf0a
+    records/ohm/generic--unreferenced--paved--asphalt-902: sha256:b5478d15edca4d1165d4fe29606f5e869694284659e8fe44145530f95d2abc20
 assessment:
   status: curation_required
   assessed_at: '2026-08-21T21:12:29Z'
@@ -64,6 +64,6 @@ assessment:
     note: The only named code currently represented as an atomic record.
   scientific_note: The historical release arithmetic is not a safe basis for a canonical value change
     while six atomic inputs are missing and one component value is disputed. Maintainer curation is required.
-  evidence_revision: sha256:ec9e89d794f80421bc511b0411d85655c4525fcc2d28046cda9385674afdac97
+  evidence_revision: sha256:59345f0b4a5becd3838ddcf0f8949cbedf5f98f2c01f9cc6aa0a5bc630585ac2
 verification:
   attestations: []
