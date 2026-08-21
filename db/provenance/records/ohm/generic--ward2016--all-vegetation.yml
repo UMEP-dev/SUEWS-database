@@ -1,0 +1,96 @@
+provenance_record: records/ohm/generic--ward2016--all-vegetation
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places: {}
+  records:
+    records/ohm/generic--unreferenced--all-vegetation: sha256:2aad1cdd58668c8f0d56cf1b1da05a7e8f7f4e18e3cf486e4a1bc1b16b193c52
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:13:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The companion table identifies code 2011 as code 201 multiplied for summer, with a2 unchanged.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. define these three values as coefficients in the OHM storage-heat equation.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-201
+      note: The exact code 2011 triplet 0.230, 0.325, -16.91 matches the stored values.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. state the seasonal scaling and the companion v2016a table publishes the exact
+        result.
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-201
+      note: The database adopts Ward's published output; Ward's authors produced it by scaling the compiled
+        vegetation-only code rather than by a new observation or regression.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The code, surface grouping and Summer season label agree with the v2016a table.
+  evidence:
+  - id: ward-seasonal-parameterisation
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 4.4, seasonal adjustment of OHM coefficients
+      page: 15
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: table
+      label: Table 4, pre-adjustment vegetation coefficients
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, codes 201 and 2011 and multiplier notes
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L7-L10
+    note: The article supplies the calculation rationale; the versioned companion table supplies the exact
+      result.
+  - id: ward-uk-validation
+    source: ward2016
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 8, seasonal-coefficient and constant-coefficient model results
+      page: 14
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    note: This is application and validation at London and Swindon, not the observation source for the
+      triplet.
+  - id: base-code-201
+    record: records/ohm/generic--unreferenced--all-vegetation
+    role: related
+    note: The matching database record preserves Ward's pre-adjustment code 201 input set.
+  scientific_note: Ward et al. compile the pre-adjustment vegetation coefficients from earlier studies,
+    then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
+    runs validate/apply the coefficients but are not their observation input.
+  evidence_revision: sha256:02c9aecc1be161c3febf835ffeaf849a1a78142844dff26f7635a2d83df794fc
+verification:
+  attestations: []
