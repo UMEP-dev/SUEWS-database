@@ -115,6 +115,20 @@ Both are **for human adjudication and are never auto-fixed**. Do not "clean them
 up". Do not let their count rise; state the before and after count in any pull
 request that touches data.
 
+## Licence
+
+Data (`db/`, `schema/`, `docs/`) is CC BY 4.0; code (`scripts/`, `tests/`)
+is MPL-2.0, matching SUEWS. Attribution-only rather than share-alike is
+deliberate: values travel from here into SUEWS configurations and into supy,
+and a copyleft data licence would follow them.
+
+Two consequences worth holding on to. A contribution has to be offered under
+those terms, so never import data whose own licence is more restrictive
+without saying so in the pull request. And the typology photographs are
+deliberately release assets rather than repository content, each under its
+own licence — that is what keeps a share-alike image licence out of a
+CC BY 4.0 repository.
+
 ## Contributing changes
 
 - `main` is protected: a pull request is the only route in, and CI (`check`)

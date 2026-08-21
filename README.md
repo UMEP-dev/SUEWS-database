@@ -97,6 +97,38 @@ citations pointing at reference IDs that do not exist, three surface
 archetypes mixing LAI parameters fitted for different equations, and the
 legacy free-text origins now quarantined in `schema/origins_map.yml`.
 
+## Licence
+
+The database is meant to be archived, cited and reused, so its terms are
+stated rather than assumed.
+
+- **The data** — everything under `db/`, `schema/` and `docs/` — is
+  [CC BY 4.0](LICENSE). Use it, redistribute it, build on it, including
+  commercially; credit the database and say if you changed anything. Version
+  4.0 rather than an earlier one because it grants sui generis database
+  rights explicitly, which matters for a compilation like this one.
+- **The code** — `scripts/` and `tests/` — is [MPL-2.0](LICENSE-CODE),
+  matching SUEWS itself, so tooling and model do not sit under different
+  terms.
+
+Attribution-only rather than share-alike is deliberate. Values from these
+records are meant to travel into SUEWS configurations and into supy, and a
+copyleft data licence would follow them there, which is precisely what a
+parameter database should not do to the work that uses it.
+
+Two things this licence does not cover.
+
+Photographs illustrating the typologies are **not** repository content. They
+are release assets, each under its own licence, named with its photographer
+in `db/images.yml`; see [`docs/FORMAT.md`](docs/FORMAT.md) for how they are
+published and what an offered photograph needs.
+
+The parameter values themselves come from the publications each record
+cites. CC BY 4.0 covers this compilation — the curation, the structure, the
+provenance — not the underlying findings, which remain the work of the
+authors named in `db/sources.yml` and should be cited as such when a value
+matters to a result.
+
 ## Elsewhere
 
 - [SUEWS documentation](https://suews.readthedocs.io/) — parameter names in
