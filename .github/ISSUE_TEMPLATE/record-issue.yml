@@ -1,0 +1,58 @@
+name: Problem with a record
+description: A wrong value, a wrong or missing citation, or a record that needs correcting.
+title: "[record] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If you arrived here from a record page, the first two fields are already
+        filled in — go straight to **What kind of problem**.
+
+        Nothing here is auto-applied to the database. Every change goes through a
+        pull request that a human reviews.
+  - type: input
+    id: record
+    attributes:
+      label: Record
+      description: The record's path under `db/`.
+      placeholder: records/ohm/generic--unreferenced--all-vegetation
+    validations:
+      required: true
+  - type: input
+    id: seen_at
+    attributes:
+      label: Seen at
+      description: >-
+        A link to the record as you saw it. The site fills this in pinned to the
+        commit it was built from, so the report stays readable after the record
+        changes.
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What kind of problem
+      options:
+        - The value looks wrong
+        - The citation is wrong or missing
+        - The value is derived from other data, not measured in the cited source
+        - This duplicates another record
+        - The place or representativeness is wrong
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: What is wrong
+      description: What the record says, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: >-
+        DOI or citation, and the table or figure the correct value comes from.
+        Where a parameter was fitted or derived rather than measured, both
+        sources help: the publication the underlying observations come from, and
+        the publication the fitted value comes from.

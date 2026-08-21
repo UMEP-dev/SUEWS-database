@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Questions about the SUEWS model itself
+    url: https://github.com/UMEP-dev/SUEWS/issues
+    about: For the model rather than the parameter database.
+  - name: How to add or correct a record
+    url: https://github.com/UMEP-dev/SUEWS-database/blob/main/docs/FORMAT.md
+    about: The record format, and how a change reaches the database.

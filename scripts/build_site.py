@@ -28,6 +28,8 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
+import subprocess
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -43,6 +45,23 @@ ROOT = Path(__file__).resolve().parent.parent
 REPO_URL = "https://github.com/UMEP-dev/SUEWS-database"
 DOCS = "https://docs.suews.io/latest/inputs/yaml"
 DOCS_REF = f"{DOCS}/config-reference"
+
+
+def build_ref():
+    """The commit this site was built from, for links that must not drift."""
+    sha = os.environ.get("GITHUB_SHA")
+    if sha:
+        return sha
+    try:
+        return subprocess.run(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True,
+            capture_output=True, check=True).stdout.strip() or "main"
+    except (OSError, subprocess.CalledProcessError):
+        return "main"
+
+
+BUILD_REF = build_ref()
+SITE_ISSUE_URL = f"{REPO_URL}/issues/new?template=site-issue.yml"
 
 SURFACES = {"paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water",
             "snow", "common"}
@@ -219,6 +238,9 @@ pre { background: var(--bg-secondary); border: 1px solid var(--border-light);
 ul.linked { list-style: none; padding: 0; margin: 0.4rem 0; }
 ul.linked li { margin: 0.22rem 0; font-size: 0.92rem; }
 .pill-row { margin: 0.6rem 0 1rem; }
+.actions a.report { border-color: var(--sun-gold); color: var(--sun-gold); }
+.actions a.report:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
+footer .report { color: var(--sun-gold); }
 footer { margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-light);
   color: var(--text-muted); font-size: 0.82rem; }
 .hidden { display: none; }
@@ -466,6 +488,8 @@ table.matrix td.mt { background: repeating-linear-gradient(135deg,
   border-color: var(--border-medium); }
 .lcard b { display: block; color: var(--text-primary); margin-bottom: 0.2rem;
   font-size: 0.95rem; }
+.lcard span b.report { display: inline; margin: 0; font-size: inherit;
+  color: var(--sun-gold); font-weight: 600; }
 .lcard span { font-size: 0.85rem; }
 a.backdoors { display: inline-block; margin: 0.2rem 0 0.7rem;
   font-size: 0.85rem; }
@@ -534,7 +558,9 @@ parameter names follow the
 per-parameter definitions in the
 <a href="{DOCS_REF}/index.html">configuration reference</a> ·
 cite via the <a href="{REPO_URL}/releases">archived releases</a>
-(Zenodo DOI to follow with the database paper)</footer>
+(Zenodo DOI to follow with the database paper) ·
+<a class="report" href="{SITE_ISSUE_URL}">report a problem with this site</a>
+</footer>
 </div>
 {script}
 </body></html>"""
@@ -897,11 +923,20 @@ def record_page(path, rec, records, sources, used_by, cluster):
             dup_url = prefilled
     except OSError:
         pass
+    # reporting a problem should cost one click: the record's identity travels
+    # with the report, and the link is pinned to the commit the reader saw
+    seen = f"{REPO_URL}/blob/{BUILD_REF}/db/{path}.yml"
+    report_url = (
+        f"{REPO_URL}/issues/new?template=record-issue.yml"
+        f"&title={quote('[record] ' + str(rec.get('name') or path), safe='')}"
+        f"&record={quote(path, safe='')}"
+        f"&seen_at={quote(seen, safe='')}")
     rail.append(
         "<div class=\"actions\">"
         f"<a href=\"{REPO_URL}/blob/main/db/{esc(path)}.yml\">View source</a>"
         f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change</a>"
         f"<a href=\"{esc(dup_url)}\">Duplicate as a new record</a>"
+        f"<a class=\"report\" href=\"{esc(report_url)}\">Report an issue</a>"
         "</div>"
     )
     body.append(f"<div class=\"cols\"><div>{''.join(main)}</div>"
@@ -1535,7 +1570,8 @@ is excluded from these counts.</p>"""
 <div class="lowcards">
 <a class="lcard" href="{REPO_URL}/blob/main/docs/FORMAT.md"><b>Contribute</b>
 <span>Correct a record from its own page, or add a new one — one small YAML
-file in a pull request.</span></a>
+file in a pull request. Spotted something wrong you cannot fix yourself?
+Every record page has a <b class="report">Report an issue</b> button.</span></a>
 <a class="lcard" href="{REPO_URL}/releases"><b>Cite this database</b>
 <span>Archived releases; the DOI follows with the database paper.</span></a>
 </div>"""
