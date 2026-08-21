@@ -79,7 +79,10 @@ from the table-format database is frozen as a
 data it carries is exactly what the record migration preserved
 (`schema/migration_census.yml` is the proof) — and the original
 pre-migration workbook remains a release asset in its own right. The
-workbook is no longer generated from the database.
+workbook is no longer generated from the database. Reconnecting the plugins to
+the records — by regenerating the workbook, by emitting the dictionary the
+plugin builds from it, or by reading the records directly — is open work, and
+`docs/UMEP-BRIDGE.md` sets out the three routes.
 
 ## Known issues
 
