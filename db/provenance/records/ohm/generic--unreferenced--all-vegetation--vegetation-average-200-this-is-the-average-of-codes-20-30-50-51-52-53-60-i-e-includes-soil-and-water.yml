@@ -1,0 +1,87 @@
+provenance_record: records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:cb5fd2090c28c17b90ad23574e3245f236607a739eec32602cb1c74bcbe272b4
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places: {}
+  records:
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:3e959491006a1134705c585b09797346054dcd240be055be7362ca202d5b370d
+    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+    records/ohm/generic--unreferenced--water: sha256:03cf0637f002f63c1944c0e737ed79514e28c0471f2bfe42cbc6ae6aa8b83af3
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - surface-coefficient-compilation
+    target:
+      conclusion: supported
+      note: The result is structurally an OHM coefficient set.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - surface-coefficient-compilation
+      note: The component-wise mean of Table 4 codes 20, 30, 50, 51, 52, 53 and 60 rounds to 0.336, 0.313
+        and -31.4.
+    source:
+      conclusion: not_applicable
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - mixed-forest-related
+      - short-grass-related
+      - bare-soil-related
+      - water-related
+      note: The stated arithmetic mean is recoverable, but codes 51, 52 and 53 have no current atomic
+        records, so the calculation cannot be represented as a complete database derivation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/280
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - surface-coefficient-compilation
+  evidence:
+  - id: surface-coefficient-compilation
+    source: grimmond1999
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, Greenspace/Open rows
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      note: Lists the seven component surface rows whose rounded arithmetic mean is stored.
+  - id: mixed-forest-related
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: related
+    note: Current atomic record for code 20.
+  - id: short-grass-related
+    record: records/ohm/generic--unreferenced--grass
+    role: related
+    note: Current atomic record for code 30.
+  - id: bare-soil-related
+    record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
+    role: related
+    note: Current atomic record for code 50.
+  - id: water-related
+    record: records/ohm/generic--unreferenced--water
+    role: related
+    note: Current atomic record for code 60.
+  scientific_note: The value arithmetic is supported, but three named inputs are missing as atomic records.
+    Maintainers must decide whether to restore those inputs or retain a legacy-only derivation.
+  evidence_revision: sha256:5fd5b0174a02106a6b7ca689e03f4598144047b0d603c60aea74aa604f033f93
+verification:
+  attestations: []

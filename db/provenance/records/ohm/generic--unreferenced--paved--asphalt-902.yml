@@ -1,0 +1,71 @@
+provenance_record: records/ohm/generic--unreferenced--paved--asphalt-902
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:0661777679cc7eb901334b1e7995a4273b019a12691c86e02397d567a1d748a8
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places: {}
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: supported
+      note: Asaeda and Ca's Table I identifies the fitted surface as asphalt.
+    target:
+      conclusion: supported
+      note: The transformed Table I coefficients are an OHM coefficient set.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - later-compilation
+      note: Asaeda and Ca Table I gives k1 = 0.64, k2 = 1142.16 s (0.3173 h) and k3 = -43.58 W m-2, which
+        round to the stored 0.64, 0.32 and -43.6.
+    source:
+      conclusion: correction_required
+      note: The primary parameter publication is Asaeda and Ca (1993), DOI 10.1007/BF00708822; Grimmond
+        and Oke (1999) is a later compilation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/286
+    place:
+      conclusion: correction_required
+      note: Section 3.1 locates the experiment at Saitama University campus.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+    representativeness:
+      conclusion: correction_required
+      note: The coefficients were fitted from a single instrumented 10 cm asphalt slab at one site.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+    method:
+      conclusion: supported
+      note: The article states that Table I coefficients were fitted to hourly fluxes by least squares.
+    identity:
+      conclusion: curation_required
+      note: The stable generic path conflicts with the site-specific evidence; maintainers must decide
+        how the Saitama identity is represented without renaming the record path.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+  evidence:
+  - id: later-compilation
+    source: grimmond1999
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, Asphalt — Asaeda and Ca (1993)
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      note: Repeats the rounded triplet 0.64, 0.32 h and -43.6 W m-2.
+  scientific_note: 'The UCL-authenticated primary article settles the values and fitted method. Its source
+    entry is not yet in the registry, and the record''s generic identity conflicts with a single Saitama
+    experiment, so source correction and spatial curation remain in issues #286 and #362.'
+  evidence_revision: sha256:fbb91641baa9934cc4c558f462df249088221cb0ab078622f8f2b97d57504946
+verification:
+  attestations: []

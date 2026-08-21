@@ -1,0 +1,70 @@
+provenance_record: records/ohm/generic--unreferenced--water
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:03cf0637f002f63c1944c0e737ed79514e28c0471f2bfe42cbc6ae6aa8b83af3
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    target:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    values:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - parameter-publication
+      note: Grimmond and Oke (1999) publishes the fitted tuple, while the record is unreferenced.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/288
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+  evidence:
+  - id: parameter-publication
+    source: grimmond1999
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 4, Water — shallow turbid
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      note: States 0.50, 0.21 h and -39.1 W m-2 and identifies Souch et al. as input data.
+    - kind: text
+      label: Section 7(a), paragraph following Table 4
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      note: States that the surface coefficients were derived from published data.
+  scientific_note: Grimmond and Oke (1999) is the parameter publication; Souch et al. supplied the observation
+    input. Correcting the canonical source must not attribute the fitted coefficients to Souch.
+  evidence_revision: sha256:657381c72ec6e575276e68981a2321dcf3ea1096e42a83258587c075f2d1f731
+verification:
+  attestations: []

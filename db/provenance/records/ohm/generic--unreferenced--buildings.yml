@@ -1,0 +1,68 @@
+provenance_record: records/ohm/generic--unreferenced--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:834a83a5520402fd7d33d10832209d9238ab89e0d40471eeeb3ae0ae926139c2
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places: {}
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: unresolved
+      evidence_ids:
+      - roof-compilation
+      note: The three named roof studies are identifiable, but the name's Grimmond 1992 claim was not
+        established.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+    target:
+      conclusion: supported
+      note: The result is structurally an OHM coefficient set.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - roof-compilation
+      note: The rounded component-wise mean of 0.17/0.10/-17.0, 0.44/0.57/-28.9 and 0.82/0.34/-55.7 is
+        0.477/0.337/-33.87.
+    source:
+      conclusion: not_applicable
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - roof-compilation
+      note: None of the three roof inputs exists as a current atomic record, so the mean cannot be encoded
+        as a derivation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+    identity:
+      conclusion: curation_required
+      note: Maintainers must decide whether to restore the atomic roofs or retain a legacy-only compilation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+  evidence:
+  - id: roof-compilation
+    source: grimmond1999
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, Rooftop rows
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+  scientific_note: The arithmetic is recoverable from the later compilation, but the exact production
+    artifact, input-record lineage and asserted Grimmond 1992 identity require curation.
+  evidence_revision: sha256:d6be9abf8045bcb210d0a7fe826281329a3283019a2baccead01d8f7b57cbb93
+verification:
+  attestations: []

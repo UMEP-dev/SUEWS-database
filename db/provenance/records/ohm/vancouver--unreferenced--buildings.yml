@@ -1,0 +1,87 @@
+provenance_record: records/ohm/vancouver--unreferenced--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c5e11da0c24fb338fb57de19c1d4c3e9080a15cef4e48d7535c6963146f60b33
+dependency_revisions:
+  sources:
+    grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      - later-compilation
+    target:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    values:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      - later-compilation
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - parameter-publication
+      note: Grimmond et al. (1991) publishes the fitted tuple; the record is unreferenced.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/290
+    place:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      note: The parameter table identifies the N-S canyon observation input as Vancouver.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - parameter-publication
+      note: The fit comes from one canyon dataset and supports site rather than city scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/290
+    method:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      - later-compilation
+  evidence:
+  - id: parameter-publication
+    source: grimmond1991b
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1(a), Canyon — N-S canyon
+      page: 314
+      url: https://gibbs.science/teaching/efd/projects/grimmond_etal_1991.pdf
+      note: States 0.32, 0.01 h and -27.7 W m-2 and credits Nunez (1974) observations.
+  - id: later-compilation
+    source: grimmond1999
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, N-S canyon
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+  scientific_note: Grimmond et al. (1991) is the parameter publication and Nunez is the observation source.
+    The canonical source and representativeness need correction; the raw origin typo is retained only
+    as migration history and is not treated as evidence.
+  evidence_revision: sha256:e6cea6b92536cc8cc6e21ec11d37b81bb4923cebee667791443b778b022e8ab5
+verification:
+  attestations: []
