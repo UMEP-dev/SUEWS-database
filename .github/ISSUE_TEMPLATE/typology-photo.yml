@@ -10,11 +10,26 @@ body:
         Functionalism" are far easier to recognise than to describe, so a
         photograph does more for a reader than another paragraph would.
 
-        One condition, and it is not negotiable: **the photograph can only be
+        One condition, and it is not negotiable: **a photograph can only be
         published if we can say who took it and under what licence.** A
         photograph with no stated terms cannot be shown, however good it is
-        and however clearly it belongs here — see `db/images.yml` for the two
-        already recorded that cannot be published for exactly that reason.
+        and however clearly it belongs here — `db/images.yml` records two
+        that cannot be published for exactly that reason.
+
+        **Before you fill this in.** This issue is public and permanent.
+        Whatever you write here stays readable, including in the edit
+        history, and if the photograph is published the credit and licence
+        travel with it into a public repository and its release history,
+        where they persist even if the record later changes. So give the
+        credit you are content to have published indefinitely — a name, a
+        pseudonym or your GitHub username all work, and Creative Commons
+        licences explicitly allow crediting by pseudonym.
+
+        **Please do not post an email address, a phone number or a postal
+        address**, here or in a comment. We do not need one: your GitHub
+        account is the contact, and anything we need to ask we will ask in
+        this thread. A private identifier posted in a public issue cannot
+        really be taken back.
 
         Nothing here is auto-applied. Every photograph reaches the site
         through a pull request that a human reviews.
@@ -32,24 +47,40 @@ body:
       label: Seen at
       description: >-
         The page you came from. The site fills this in for you.
+  - type: dropdown
+    id: whose
+    attributes:
+      label: Whose photograph is it
+      description: >-
+        This decides what is needed next. Pointing at someone else's
+        published photograph asks nothing of you but a link; offering your
+        own means granting a licence.
+      options:
+        - I took it myself
+        - Someone else took it, and it is already published under a licence
+    validations:
+      required: true
   - type: input
     id: photo_url
     attributes:
       label: Where the photograph is
       description: >-
-        A link to the photograph, ideally to the page that describes it rather
-        than to the image file alone — a Wikimedia Commons file page, a Flickr
-        photo page, an institutional archive entry. That page is usually where
-        the licence is stated.
+        A link. For someone else's photograph, link the page that describes
+        it rather than the image file alone — a Wikimedia Commons file page,
+        a Flickr photo page, an institutional archive entry — because that
+        page is usually where the licence is stated. For your own, anywhere
+        we can fetch it from, or attach it to this issue after posting.
     validations:
       required: true
   - type: input
-    id: photographer
+    id: credit
     attributes:
-      label: Who took it
+      label: How the photographer should be credited
       description: >-
-        The name to credit. If the rights sit with an organisation rather than
-        an individual, name the organisation.
+        The name that will appear under the image. For someone else's
+        photograph, copy the credit their licence asks for. For your own,
+        this is your choice of name, pseudonym or username, and it will be
+        published as you write it here.
     validations:
       required: true
   - type: dropdown
@@ -57,8 +88,10 @@ body:
     attributes:
       label: Licence
       description: >-
-        The terms the photograph is published under. If you took it yourself,
-        this is the licence you are offering it under.
+        The terms the photograph may be republished under. If you took it
+        yourself, this is the licence you are offering it under, so choose
+        deliberately: these licences cannot be withdrawn from copies already
+        published.
       options:
         - CC0 / public domain dedication
         - Public domain, or no known copyright restrictions
@@ -74,9 +107,9 @@ body:
     attributes:
       label: Where the licence is stated
       description: >-
-        A link to the page that states those terms, or a note that you are the
-        photographer and are offering it under the licence above. This is what
-        lets us publish the credit alongside the image.
+        For someone else's photograph, a link to the page stating those
+        terms. For your own, write "my own photograph" — the declaration
+        below is what records the grant.
     validations:
       required: true
   - type: textarea
@@ -92,10 +125,20 @@ body:
       label: Before you post
       options:
         - label: >-
-            I am the photographer, or the photograph is published under terms
-            that allow it to be republished with credit.
+            Either I am the copyright holder of this photograph and I license
+            it under the licence named above, or it is already published
+            under that licence by someone else.
           required: true
         - label: >-
             This is a photograph of a place as built, not an architect's
             visualisation or a rendering of something proposed.
+          required: true
+        - label: >-
+            No individual is the subject of the photograph. Anyone visible is
+            incidental to a view of the street or the buildings.
+          required: true
+        - label: >-
+            I understand that the credit and licence above will be published
+            on the site and in a public repository, and will remain in its
+            history.
           required: true

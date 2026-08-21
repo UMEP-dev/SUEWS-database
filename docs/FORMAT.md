@@ -558,6 +558,32 @@ anyone starts looking: a photograph offered without terms cannot be
 published, and finding that out afterwards wastes the contributor's effort
 rather than ours.
 
+#### Offering a photograph
+
+Two things are needed and nothing else: somewhere the photograph can be
+fetched from, and terms under which it may be republished with credit.
+Public domain, CC0 and the Creative Commons licences all qualify. For
+someone else's photograph, the link to the page stating those terms is the
+whole of it — a Wikimedia Commons file page or a Flickr photo page usually
+says so plainly. For your own, the issue form's declaration is the grant,
+made from your own account and timestamped, which is why it asks you to
+choose the licence deliberately: a licence cannot be withdrawn from copies
+already published.
+
+The credit you give is published as you write it, so it may be a name, a
+pseudonym or a username — Creative Commons licences allow attribution by
+pseudonym, and the site does not care which you use. It persists: a credit
+travels into this repository, its history and its release assets, and stays
+there after the record itself changes.
+
+Do not post an email address or any other private contact detail in the
+issue. None is needed — a GitHub account is contact enough, and questions
+are asked in the thread — and a public issue keeps what is posted to it,
+including in its edit history.
+
+Photographs should show a street or a group of buildings rather than any
+individual. Anyone visible should be incidental to the view.
+
 ## Using the database with SUEWS
 
 ```sh
