@@ -382,6 +382,14 @@ sources:
       Surface Seasonal Properties'
     type: journalArticle
     year: 2012
+  mccaughey1985:
+    author: McCaughey, J. H.
+    doi: 10.1007/BF00120036
+    journal: Boundary-Layer Meteorology
+    title: Energy balance storage terms in a mature mixed forest at Petawawa, Ontario — A case
+      study
+    type: journalArticle
+    year: 1985
   offerle2003:
     author: Offerle, B.; Grimmond, C. S. B.; Oke, T. R.
     doi: 10.1175/1520-0450(2003)042<1157:PONARF>2.0.CO;2
