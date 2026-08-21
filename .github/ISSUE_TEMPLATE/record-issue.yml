@@ -1,7 +1,7 @@
 name: Problem with a record
 description: A wrong value, a wrong or missing citation, or a record that needs correcting.
 title: "[record] "
-labels: ["data"]
+labels: ["data problem"]
 body:
   - type: markdown
     attributes:
