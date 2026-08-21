@@ -92,7 +92,7 @@ class PolicyTests(unittest.TestCase):
             with self.assertRaises(PolicyError):
                 load_verifier_policy(path=path)
 
-            document["required_signoffs"] = 3
+            document["required_signoffs"] = len(document["verifiers"]) + 1
             path.write_text(yaml.safe_dump(document, sort_keys=False))
             with self.assertRaisesRegex(PolicyError, "below required_signoffs"):
                 load_verifier_policy(path=path)

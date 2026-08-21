@@ -12,3 +12,7 @@ verifiers:
     github_user_id: 20229342
     scopes:
       - record
+  - github_handle: denisehertwig
+    github_user_id: 40887357
+    scopes:
+      - record
