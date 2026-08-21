@@ -1,0 +1,111 @@
+provenance_record: records/ohm/tokyo--unreferenced--buildings
+provenance_format_version: '1.0'
+record_revision: sha256:742b1a638e538c2f05bbfa836d872a2f086d55323d8894bc3df747c55fd7b136
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    yoshida1991: sha256:fcc27d46008f732a089f68bb8ebce7e2b52fdf2e13611266a26002313a7b479e
+  places:
+    kyoto: sha256:7b0f034fb43f3eadc4e833fd7b3d25adc9252eb1c910e7d4a9e96155502ffc96
+  records:
+    records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T13:07:25Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/37
+  method: fitted
+  evidence_revision: sha256:6207f2cbbe69749b7c7ee82e9621cc58ff62abaa8840df39fada0058c5b48fe2
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+        - parameter-publication
+    target:
+      conclusion: curation_required
+      evidence_ids:
+        - parameter-publication
+      note: >-
+        The atomic target ohm_coefficients is structurally correct. Deciding which building
+        archetype should attach this coefficient set is a separate assembly decision; neither
+        duplicate currently has an archetype backlink.
+      issue_urls:
+        - https://github.com/UMEP-dev/SUEWS-database/issues/19
+    values:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+    source:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+      issue_urls:
+        - https://github.com/UMEP-dev/SUEWS-database/issues/37
+    place:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+    method:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+        - parameter-publication
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+        - parameter-publication
+        - possible-duplicate
+      note: >-
+        The two legacy rows appear to represent the same publication-derived coefficient
+        set, but the checked sources do not identify either legacy row or determine which
+        should survive. Deletion or aliasing requires maintainer adjudication.
+      related_records:
+        - records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
+      issue_urls:
+        - https://github.com/UMEP-dev/SUEWS-database/issues/12
+  evidence:
+    - id: input-observations
+      source: yoshida1991
+      role: input_data
+      locators:
+        - kind: section
+          label: Sections 2–5 and Figures 3–12
+          page: 418–423
+          url: https://www.sciencedirect.com/science/article/pii/037877889090016C
+          note: >-
+            Reports energy-balance measurements at an east-west canyon on Kyoto University
+            main campus. The full text contains no OHM, hysteresis fit, a1–a3 coefficients or
+            the stored coefficient triplet.
+    - id: parameter-publication
+      source: grimmond1999
+      role: parameter_source
+      locators:
+        - kind: table
+          label: Table 4 and accompanying text
+          page: 932
+          note: >-
+            Publishes the E-W canyon values a1 = 0.71, a2 = 0.04 h and a3 = -39.7 W m-2,
+            marks them as new relative to Grimmond et al. (1991), and states that the surface
+            coefficients were derived from published data.
+    - id: possible-duplicate
+      record: records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
+      role: possible_duplicate
+      note: >-
+        Carries the same target and coefficient triplet, but is a separate legacy row without
+        code [10]; neither record has an archetype backlink.
+  scientific_note: >-
+    Yoshida et al. (1991) supplies the Kyoto canyon observations but no OHM coefficients.
+    Grimmond and Oke (1999) publishes the stored fitted triplet. The stable record path and
+    raw origin retain their migration-era Tokyo text, while the resolved place is Kyoto and
+    the site-specific representativeness is explicit. Human curation is still required for
+    the duplicate-row and building-archetype attachment decisions.
+verification:
+  attestations: []

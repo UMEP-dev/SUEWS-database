@@ -506,6 +506,12 @@ places:
     kind: country
     name: Kuwait
     region: Asia
+  kyoto:
+    name: Kyoto
+    lat: 35.03
+    lon: 135.78
+    koppen: Cfa
+    country: japan
   kyrgyz-republic:
     kind: country
     name: Kyrgyz Republic
