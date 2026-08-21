@@ -1,0 +1,93 @@
+provenance_record: records/ohm/beijing--zheng-y2023--paved
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:38e916ccd944e9bcf64e33064d843bfcada25cb908e38ad5f0c3d066c7748f41
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:21:09Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-paved-application
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-paved-application
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-paved-model-input
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-paved-application
+      - zheng-paved-model-input
+      note: Zheng et al. apply and archive the exact tuple but do not derive it; the article describes
+        it as an AN99 weighted average following earlier work.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/327
+    place:
+      conclusion: correction_required
+      note: Beijing is the model-application location, while the underlying asphalt observations were
+        made at Alland, Austria, as recorded in issue 329.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/329
+    representativeness:
+      conclusion: correction_required
+      note: The tuple is not a city-scale Beijing determination; it is an internally weighted reuse of
+        coefficients from a single asphalt-road study.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/329
+    method:
+      conclusion: curation_required
+      note: Historical SUEWS documentation identifies the tuple as an internal weighted calculation, but
+        the current record cannot express its unpublished calculation inputs and application source without
+        a maintainer decision.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/327
+    identity:
+      conclusion: supported
+      note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
+  evidence:
+  - id: zheng-paved-application
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Section 4.3, Storage heat flux
+      page: 4556
+    note: The article states that paved coefficients are AN99 asphalt weighted-average values used in
+      the Beijing SUEWS application; it does not publish their calculation.
+  - id: zheng-paved-model-input
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_OHMCoefficients.txt, code 904
+      url: https://doi.org/10.5281/zenodo.8012194
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_NonVeg.txt, code 110 maps all OHM seasons to code 904
+      url: https://doi.org/10.5281/zenodo.8012194
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing paved surface uses code 110
+      url: https://doi.org/10.5281/zenodo.8012194
+    note: The final model archive contains 0.805, -0.193, -9.39 as code 904 and traces it to the paved
+      surface used in the Beijing runs.
+  scientific_note: The exact tuple is recoverable as a Beijing model input, but Zheng et al. are a later
+    application/compilation rather than its parameter publication. Source, observation place, representativeness,
+    and the internal weighted calculation require the existing record-specific curation in issues 327
+    and 329.
+  evidence_revision: sha256:b8a5f2cb784f372252e0a8f1f1d7e37ca83d1e666564f84c474c8c6fe3d2334b
+verification:
+  attestations: []

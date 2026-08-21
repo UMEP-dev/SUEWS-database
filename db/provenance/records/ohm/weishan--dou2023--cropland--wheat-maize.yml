@@ -1,0 +1,73 @@
+provenance_record: records/ohm/weishan--dou2023--cropland--wheat-maize
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b4bda1b8c253df85dd83841132b993dedae9aaa0bec3b766f16efa98c1397c9c
+dependency_revisions:
+  sources:
+    dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
+  places:
+    weishan: sha256:16bd9bd3b74185c1999fd6ecff1d2e084103fcdebd72253b7c3915608f71597b
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:21:09Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    target:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    values:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    source:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - dou-weishan-evidence
+      note: The Weishan station is 36 degrees 39 minutes N, 116 degrees 09 minutes E; the place registry
+        longitude is 116.05 rather than 116.15.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/64
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    method:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+    identity:
+      conclusion: supported
+      note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
+  evidence:
+  - id: dou-weishan-evidence
+    source: dou2023
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Equation B1
+      page: 13160
+    - kind: section
+      label: Appendix B, Weishan coefficient fitting and evaluation text
+      page: 13161
+    - kind: table
+      label: Table B1, Wheat-maize summer row
+      page: 13162
+    note: Dou et al. fit season-specific coefficients to measured net radiation and soil heat flux, using
+      70 percent of each season for fitting and 30 percent for evaluation.
+  evidence_revision: sha256:0e088fe46acdae2368e2717c56203b72ac7be8949dc70a6a514bd844dffca278
+verification:
+  attestations: []

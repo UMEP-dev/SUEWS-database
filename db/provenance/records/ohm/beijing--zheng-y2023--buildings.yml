@@ -1,0 +1,112 @@
+provenance_record: records/ohm/beijing--zheng-y2023--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/ohm/generic--jarvi2014--buildings: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:21:09Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      note: The short name reflects legacy OHM code 799, but the publication and supplement do not publish
+        this label; its retained record identity depends on the duplicate decision.
+      related_records:
+      - records/ohm/generic--jarvi2014--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-application
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-model-input
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-building-application
+      - zheng-building-model-input
+      note: Zheng et al. apply and archive the exact tuple but do not derive it; section 4.3 says the
+        coefficients follow Kokkonen et al. rather than establishing Zheng as parameter source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    place:
+      conclusion: curation_required
+      note: Beijing is the model-application location for a reused generic SUEWS coefficient set; whether
+        a place-specific reuse remains a separate record is a maintainer decision.
+      related_records:
+      - records/ohm/generic--jarvi2014--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    representativeness:
+      conclusion: curation_required
+      note: The exact tuple is applied city-wide in the model but is not an independent Beijing city-scale
+        determination.
+      related_records:
+      - records/ohm/generic--jarvi2014--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    method:
+      conclusion: curation_required
+      note: The available Zheng evidence establishes literature/default reuse, not the production method
+        or original parameter publication for code 799.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - duplicate-generic-code-799
+      note: The Beijing record exactly duplicates the generic code-799 record; retaining a place-specific
+        reuse, aliasing it, or merging it is a curation decision.
+      related_records:
+      - records/ohm/generic--jarvi2014--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+  evidence:
+  - id: zheng-building-application
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Section 4.3, Storage heat flux
+      page: 4556
+    note: The article says all surface coefficients follow the previous Beijing SUEWS study; it does not
+      publish or derive the code-799 tuple.
+  - id: zheng-building-model-input
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_OHMCoefficients.txt, code 799
+      url: https://doi.org/10.5281/zenodo.8012194
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_NonVeg.txt, code 160 maps all OHM seasons to code 799
+      url: https://doi.org/10.5281/zenodo.8012194
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing building surface uses code 160
+      url: https://doi.org/10.5281/zenodo.8012194
+    note: The final model archive contains 0.238, 0.427, -16.7 as code 799 and traces it to the building
+      surface used in the Beijing runs.
+  - id: duplicate-generic-code-799
+    record: records/ohm/generic--jarvi2014--buildings
+    role: possible_duplicate
+    note: The generic record has the identical three coefficients and identifies legacy code 799.
+  scientific_note: Zheng et al. and their model archive establish that code 799 was reused in Beijing,
+    but do not establish its original parameter publication. The exact duplicate generic record leaves
+    the place-specific identity, source, name, representativeness, and method to curation under existing
+    issue 66.
+  evidence_revision: sha256:01c4d8af6244a61cab71c7d2c4ec1906ffd9aa6d37f49065d88b205b591812d2
+verification:
+  attestations: []
