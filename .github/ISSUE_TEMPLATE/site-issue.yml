@@ -1,7 +1,7 @@
 name: Problem with the website
 description: Something on the site is broken, unreadable, or hard to use.
 title: "[site] "
-labels: ["site"]
+labels: ["site problem"]
 body:
   - type: input
     id: page
