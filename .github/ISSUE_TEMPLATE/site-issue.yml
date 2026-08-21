@@ -8,7 +8,7 @@ body:
     attributes:
       label: Page
       description: The address of the page where you saw it.
-      placeholder: https://umep-dev.github.io/SUEWS-database/
+      placeholder: https://database.suews.io/
     validations:
       required: true
   - type: textarea
