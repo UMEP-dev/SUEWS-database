@@ -64,6 +64,14 @@ def build_ref():
 BUILD_REF = build_ref()
 SITE_ISSUE_URL = f"{REPO_URL}/issues/new?template=site-issue.yml"
 
+# A report control that follows the reader down every page. Scaffolding for
+# the phase where the site is still being shaped and structural problems are
+# found faster than they can be filed -- not the furniture of a finished site.
+# Set this to False to remove it: nothing else depends on it, the record rail
+# button and the footer link stand on their own, and no issue template, label
+# or stored state outlives it.
+FLOATING_REPORT = True
+
 SURFACES = {"paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water",
             "snow", "common"}
 
@@ -656,8 +664,53 @@ THEME_JS = """<script>
 </script>"""
 
 
-def page(title, body, depth=0, script=""):
+FAB_CSS = """
+/* the floating report control; goes with FLOATING_REPORT */
+.fab { position: fixed; right: 1.1rem; bottom: 1.1rem; z-index: 50;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1rem; border-radius: 999px; font-size: 0.85rem;
+  border: 1px solid var(--gold-ink); color: var(--gold-ink);
+  background: var(--bg-secondary);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.28); }
+.fab:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
+.fab .dot { width: 7px; height: 7px; border-radius: 50%; flex: none;
+  background: currentColor; }
+/* keep the footer clear of it once the reader reaches the bottom */
+body.hasfab .wrap { padding-bottom: 6rem; }
+@media (max-width: 560px) { .fab { right: 0.7rem; bottom: 0.7rem;
+  padding: 0.5rem 0.85rem; font-size: 0.8rem; } }
+@media print { .fab { display: none; } }
+"""
+
+if FLOATING_REPORT:
+    CSS += FAB_CSS
+
+FAB_JS = """<script>
+(function(){
+  var a = document.getElementById("fabreport");
+  if (!a || a.dataset.page !== "1") return;
+  a.href += "&page=" + encodeURIComponent(location.href);
+  a.dataset.page = "0";   // never append twice
+})();
+</script>"""
+
+
+def page(title, body, depth=0, script="", report_url=None):
+    """One page. `report_url` scopes the floating control to a record;
+    without it the control reports the page the reader is on."""
     rel = "../" * depth
+    fab = fab_js = body_cls = ""
+    if FLOATING_REPORT:
+        body_cls = ' class="hasfab"'
+        # a page-scoped report needs the page address, which only the browser
+        # knows: the site has no base URL compiled into it
+        href = report_url or (
+            f"{SITE_ISSUE_URL}&title={quote('[site] ' + title, safe='')}")
+        fab = (f'\n<a class="fab" id="fabreport" href="{esc(href)}"'
+               f' data-page="{"0" if report_url else "1"}">'
+               '<span class="dot" aria-hidden="true"></span>'
+               'Report an issue</a>')
+        fab_js = "\n" + FAB_JS
     return f"""<!DOCTYPE html>
 <html lang="en"><head>
 <meta charset="utf-8">
@@ -665,7 +718,7 @@ def page(title, body, depth=0, script=""):
 <title>{esc(title)} · SUEWS parameter database</title>
 {THEME_BOOT}
 <style>{CSS}</style>
-</head><body>
+</head><body{body_cls}>
 <header class="site"><div class="wrap">
   <a class="up" href="{SUEWS_SITE}" aria-label="Back to suews.io"><span
   class="arw" aria-hidden="true">&larr;</span>suews.io</a>
@@ -686,9 +739,9 @@ cite via the <a href="{REPO_URL}/releases">archived releases</a>
 (Zenodo DOI to follow with the database paper) ·
 <a class="report" href="{SITE_ISSUE_URL}">report a problem with this site</a>
 </footer>
-</div>
+</div>{fab}
 {THEME_JS}
-{script}
+{script}{fab_js}
 </body></html>"""
 
 
@@ -1067,7 +1120,8 @@ def record_page(path, rec, records, sources, used_by, cluster):
     )
     body.append(f"<div class=\"cols\"><div>{''.join(main)}</div>"
                 f"<div>{''.join(rail)}</div></div>")
-    return page(title_text, "\n".join(body), depth, COPY_JS)
+    return page(title_text, "\n".join(body), depth, COPY_JS,
+                report_url=report_url)
 
 
 def grouped_list(paths, records, depth):

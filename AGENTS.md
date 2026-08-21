@@ -109,3 +109,12 @@ two issue forms in `.github/ISSUE_TEMPLATE/`:
 `.github/ISSUE_TEMPLATE/site-issue.yml` (label `site problem`). A hand-written issue
 should use the same headed sections the form produces, so triage looks the same
 either way. The `mend-record` skill gives the exact shape.
+
+While the structure is still being shaped, a floating **Report an issue**
+control also rides on every page — record-scoped on a record page, page-scoped
+everywhere else, with the page address filled in for you. It is deliberately
+temporary: `FLOATING_REPORT` in `scripts/build_site.py` turns it off, and with
+it off the site builds byte for byte as it did before. Remove it once the
+structure has settled. Nothing depends on it — the record button and the footer
+link stand on their own, and it leaves behind no template, label or stored
+state.
