@@ -74,6 +74,7 @@ def build_ref():
 BUILD_REF = build_ref()
 SITE_ISSUE_URL = f"{REPO_URL}/issues/new?template=site-issue.yml"
 SIGNOFF_TEMPLATE_URL = f"{REPO_URL}/issues/new?template=provenance-signoff.yml"
+VERIFIER_REQUEST_URL = f"{REPO_URL}/issues/new?template=verifier-request.yml"
 
 PROVENANCE_STATE_LABEL = {
     "unaudited": "Unaudited",
@@ -669,8 +670,45 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   border-radius: 8px; border: 1px solid var(--gold-ink);
   color: var(--gold-ink); text-align: center; font-weight: 600; }
 .signoff:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
+.reviewguide { display: block; margin-top: 0.7rem; padding: 0.52rem 0.8rem;
+  border-radius: 8px; border: 1px solid var(--border-medium);
+  color: var(--text-primary); text-align: center; font-weight: 600; }
+.reviewguide:hover { border-color: var(--gold-ink); color: var(--gold-ink);
+  background: rgba(247,181,56,0.08); text-decoration: none; }
 .signoff-help { color: var(--text-muted); font-size: 0.78rem;
   line-height: 1.45; margin: 0.55rem 0 0; }
+.reviewhero { max-width: 760px; margin: 2.6rem 0 2rem; }
+.reviewhero h2 { max-width: 18ch; margin: 0 0 0.8rem; font-size: 2.15rem;
+  line-height: 1.12; letter-spacing: -0.025em; }
+.reviewhero > p { max-width: 68ch; color: var(--text-secondary);
+  font-size: 1.02rem; line-height: 1.65; }
+.reviewcontext { display: flex; align-items: baseline; gap: 0.65rem;
+  flex-wrap: wrap; margin-top: 1.2rem; padding: 0.85rem 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light); color: var(--text-secondary); }
+.reviewcontext code { overflow-wrap: anywhere; }
+.reviewlayout { display: grid; grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 2.4rem; align-items: start; margin-bottom: 2.6rem; }
+.reviewsteps { list-style: none; counter-reset: reviewstep; padding: 0;
+  margin: 0; max-width: 72ch; }
+.reviewsteps li { counter-increment: reviewstep; display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr); gap: 0.85rem;
+  padding: 1rem 0; border-top: 1px solid var(--border-light); }
+.reviewsteps li::before { content: counter(reviewstep); width: 1.75rem;
+  height: 1.75rem; border-radius: 999px; display: grid; place-items: center;
+  border: 1px solid var(--border-medium); color: var(--gold-ink);
+  font-size: 0.78rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.reviewsteps h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.reviewsteps p { margin: 0; color: var(--text-secondary); line-height: 1.58; }
+.reviewpolicy { border: 1px solid var(--border-light); border-radius: 14px;
+  background: var(--bg-card); padding: 1.1rem 1.2rem 1.2rem; }
+.reviewpolicy h3 { margin: 0 0 0.6rem; font-size: 1.05rem; }
+.reviewpolicy p, .reviewpolicy li { color: var(--text-secondary);
+  font-size: 0.86rem; line-height: 1.55; }
+.reviewpolicy ul { margin: 0.65rem 0 1rem; padding-left: 1.2rem; }
+.reviewgate { padding: 0.75rem 0.8rem; border-radius: 9px;
+  border: 1px solid var(--gold-ink); color: var(--text-primary) !important;
+  background: rgba(247,181,56,0.08); }
 .attestation { padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);
   font-size: 0.84rem; }
 .attestation:last-child { border-bottom: 0; }
@@ -849,6 +887,12 @@ table.matrix td.mt { background: repeating-linear-gradient(135deg,
   .icell { border-bottom: 1px solid var(--border-light); }
   .tband { grid-template-columns: 1fr 1fr; }
   .layout, .cols { grid-template-columns: 1fr; }
+  .reviewhero, .reviewlayout, .reviewpolicy { min-width: 0; }
+  .reviewhero h2 { max-width: 16ch; font-size: 1.85rem;
+    overflow-wrap: anywhere; }
+  .reviewcontext { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .reviewcontext code { min-width: 0; max-width: 100%; word-break: break-word; }
+  .reviewlayout { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; }
   .layout > .rail { order: 2; }
   .placerows { columns: 1; }
   table.params td:first-child { width: auto; }
@@ -1335,6 +1379,18 @@ def signoff_issue_url(path, sidecar, policy):
     )
 
 
+def review_guide_url(path, review_type, state, rel):
+    """Keep entry context while sending a reader to the review procedure."""
+    fields = {
+        "entry": path,
+        "review_type": review_type,
+        "state": state,
+    }
+    return f"{rel}review.html?" + "&".join(
+        f"{key}={quote(str(value), safe='')}" for key, value in fields.items()
+    )
+
+
 def provenance_blocks(path, sidecar, policy, rel, sources, records):
     """Return the main evidence section and compact review rail card."""
     state = provenance_state(sidecar, policy)
@@ -1348,6 +1404,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
     evidence_heading = (
         "Composition provenance" if is_composition else "Provenance evidence"
     )
+    guide_url = review_guide_url(path, review_type, state, rel)
     if not sidecar:
         main = (
             f"<div class=\"provhead\"><h3>{review_label}</h3>"
@@ -1362,7 +1419,11 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             f"<div class=\"side\"><h4>{review_label}</h4>"
             + _state_badge(state)
             + f"<p class=\"signoff-help\">This {'composite' if is_composition else 'record'} has not entered the "
-            "provenance review queue.</p></div>"
+            "provenance review queue.</p>"
+            f"<a class=\"reviewguide\" href=\"{esc(guide_url)}\">"
+            "Review procedure</a>"
+            "<p class=\"signoff-help\">Only a GitHub account in the verifier "
+            "registry can create a sign-off that CI accepts.</p></div>"
         )
         return main, rail
 
@@ -1527,8 +1588,105 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             "CI accepts it only when the issue author is in the verifier registry "
             "and the evidence revision is still current.</p>"
         )
+    rail.append(
+        f"<a class=\"reviewguide\" href=\"{esc(guide_url)}\">"
+        "Review procedure</a>"
+    )
     rail.append("</div>")
     return "".join(main), "".join(rail)
+
+
+REVIEW_GUIDE_JS = r"""<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var entry = params.get('entry') || '';
+  if (!/^(records|archetypes)\/[a-z0-9][a-z0-9/_-]*$/.test(entry)) return;
+  var type = params.get('review_type') === 'composition'
+    ? 'Composition review' : 'Evidence review';
+  var state = (params.get('state') || '').replaceAll('_', ' ');
+  var context = document.getElementById('reviewcontext');
+  document.getElementById('reviewentry').textContent = entry;
+  document.getElementById('reviewtype').textContent = type;
+  if (state) document.getElementById('reviewstate').textContent = ' · ' + state;
+  var back = document.getElementById('reviewreturn');
+  back.href = entry.split('/').map(encodeURIComponent).join('/') + '.html';
+  var request = document.getElementById('verifierrequest');
+  var requestUrl = new URL(request.dataset.base);
+  requestUrl.searchParams.set('title', '[verifier request] ' + entry);
+  requestUrl.searchParams.set('entry', entry);
+  requestUrl.searchParams.set('review_type', type.replace(' review', ''));
+  request.href = requestUrl.toString();
+  context.hidden = false;
+})();
+</script>"""
+
+
+def review_guide_page(policy):
+    """Explain the review path and the authenticated verifier boundary."""
+    verifiers = sorted(
+        policy.get("verifiers", {}).values(),
+        key=lambda item: item["github_handle"].casefold(),
+    )
+    verifier_items = "".join(
+        f"<li><a href=\"https://github.com/{esc(item['github_handle'])}\">"
+        f"@{esc(item['github_handle'])}</a></li>"
+        for item in verifiers
+    ) or "<li>No verifiers are currently registered.</li>"
+    body = f"""
+<p class="crumbs"><a href="index.html">Browse database</a> / Review procedure</p>
+<section class="reviewhero">
+  <h2>Review provenance with a registered verifier identity</h2>
+  <p>Read the original evidence and assess the stored claim carefully. A review
+  becomes part of the database’s verified state only when it is submitted by a
+  GitHub account in the reviewed verifier registry and passes CI.</p>
+  <p class="reviewcontext" id="reviewcontext" hidden>
+    <strong id="reviewtype">Evidence review</strong>
+    <code id="reviewentry"></code><span id="reviewstate"></span>
+    <a id="reviewreturn" href="index.html">Return to this entry</a>
+  </p>
+</section>
+<div class="reviewlayout">
+  <main>
+    <ol class="reviewsteps">
+      <li><div><h3>Check that an assessment exists</h3>
+        <p>An <strong>Unaudited</strong> entry is not ready for sign-off. It first
+        needs a structured evidence or composition assessment. Contact the team
+        to add it to the review queue; report any concrete data problem separately.</p>
+      </div></li>
+      <li><div><h3>Read the original sources</h3>
+        <p>Verify the exact values, parameter source, method, place,
+        representativeness, target and identity. For a composite, review component
+        selection, completeness and slot or season mapping instead of re-reviewing
+        each component’s values.</p>
+      </div></li>
+      <li><div><h3>Choose an evidence-based decision</h3>
+        <p>Use <strong>Verified</strong> only when the current assessment is fully
+        supported. Otherwise request changes, mark the question unresolved, or
+        require curation. Never infer a citation or correct a value by plausibility.</p>
+      </div></li>
+      <li><div><h3>Submit from your own GitHub account</h3>
+        <p>When the entry reaches <strong>Awaiting sign-off</strong>, use its GitHub
+        sign-off button. CI authenticates your immutable GitHub user ID and checks
+        the entry, evidence and policy revisions before incorporating the decision.</p>
+      </div></li>
+    </ol>
+  </main>
+  <aside class="reviewpolicy" aria-labelledby="verifier-heading">
+    <h3 id="verifier-heading">Who can sign off</h3>
+    <p class="reviewgate"><strong>Registered verifier required.</strong> A sign-off
+    from any other GitHub account is rejected by CI and is not incorporated into
+    the database’s verified state or displayed as a verifier decision.</p>
+    <p>Current registered verifiers:</p>
+    <ul>{verifier_items}</ul>
+    <a href="{REPO_URL}/blob/main/.github/provenance-verifiers.yml">View the verifier registry</a>
+    <a class="signoff" id="verifierrequest" data-base="{esc(VERIFIER_REQUEST_URL)}"
+       href="{esc(VERIFIER_REQUEST_URL)}">Contact the team to become a verifier</a>
+    <p>Opening a request does not grant verifier status. The SUEWS database team
+    reviews the request and adds approved GitHub identities through a reviewed
+    policy change.</p>
+  </aside>
+</div>"""
+    return page("Provenance review procedure", body, script=REVIEW_GUIDE_JS)
 
 
 # ---------------- per-entry pages ----------------
@@ -2722,6 +2880,7 @@ def main():
     (out / "index.html").write_text(
         build_index_page(records, sources, places, by_place))
     (out / "map.html").write_text(build_map_page(places, by_place))
+    (out / "review.html").write_text(review_guide_page(policy))
     (out / ".nojekyll").write_text("")
     print(f"site: {len(records)} entry pages, {len(by_place)} place pages, "
           f"{len(by_source)} source pages, {len(staged)} typology photographs "

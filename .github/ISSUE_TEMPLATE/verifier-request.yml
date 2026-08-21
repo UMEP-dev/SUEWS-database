@@ -1,0 +1,52 @@
+name: Ask to become a provenance verifier
+description: Contact the SUEWS database team about joining the reviewed verifier registry.
+title: "[verifier request] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Only GitHub identities listed in the repository's reviewed verifier
+        policy can create provenance sign-offs that CI accepts. Opening this
+        issue does not grant verifier status. The SUEWS database team reviews
+        the request and, when appropriate, adds the immutable GitHub user ID
+        through a separate reviewed policy change.
+
+        This issue is public. Do not include private contact details; your
+        GitHub account is sufficient for the team to respond.
+  - type: input
+    id: entry
+    attributes:
+      label: Entry you were reviewing
+      description: Optional stable evidence-record or composite path. The site fills this in.
+      placeholder: records/ohm/example
+  - type: dropdown
+    id: review_type
+    attributes:
+      label: Review type
+      options:
+        - Evidence
+        - Composition
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: expertise
+    attributes:
+      label: Relevant expertise
+      description: Your subject area and the kinds of SUEWS parameters or compositions you can review.
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: Review experience
+      description: Publications, datasets, model development, curation, or other experience relevant to provenance review.
+    validations:
+      required: true
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Before submitting
+      options:
+        - label: I understand that this request is reviewed by the team and does not itself grant verifier status.
+          required: true

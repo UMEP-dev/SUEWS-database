@@ -15,6 +15,7 @@ from build_site import (  # noqa: E402
     load_site_provenance,
     provenance_state,
     record_page,
+    review_guide_page,
     signoff_issue_url,
     source_page,
 )
@@ -85,6 +86,21 @@ class SiteProvenanceTests(unittest.TestCase):
                 self.assertEqual(
                     provenance_state(candidate, self.policy), "awaiting_signoff"
                 )
+
+    def test_unaudited_entry_links_to_gated_review_procedure(self):
+        key = next(path for path in self.records if path not in self.sidecars)
+        page = self.render(key)
+        self.assertIn("Review procedure", page)
+        self.assertIn("review.html?entry=", page)
+        self.assertIn("Only a GitHub account in the verifier registry", page)
+
+        guide = review_guide_page(self.policy)
+        self.assertIn("Registered verifier required", guide)
+        self.assertIn("rejected by CI", guide)
+        self.assertIn("not incorporated into", guide)
+        self.assertIn("template=verifier-request.yml", guide)
+        for verifier in self.policy["verifiers"].values():
+            self.assertIn(f"@{verifier['github_handle']}", guide)
 
     def test_verified_and_stale_decisions_show_linked_handle(self):
         sidecar = deepcopy(self.sidecars[MIXED])
