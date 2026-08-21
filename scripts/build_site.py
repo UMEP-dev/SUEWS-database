@@ -1547,11 +1547,6 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
         f"<div class=\"side\"><h4>{review_label}</h4>",
         _state_badge(state),
     ]
-    if method:
-        rail.append(
-            f"<div class=\"prow\"><span class=\"pk\">Method</span>"
-            f"<span>{esc(METHOD_LABEL.get(method, method))}</span></div>"
-        )
     attestations = sidecar.get("verification", {}).get("attestations", [])
     if attestations:
         states = attestation_states(sidecar, policy)

@@ -61,6 +61,7 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Awaiting sign-off", mixed)
         self.assertIn("Sign off evidence on GitHub", mixed)
         self.assertNotIn("<span class=\"pk\">Evidence</span>", mixed)
+        self.assertNotIn("<span class=\"pk\">Method</span>", mixed)
         self.assertNotIn("<code class=\"revision\"", mixed)
         self.assertIn("Parameter source", mixed)
         self.assertIn("Input observations", mixed)
