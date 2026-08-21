@@ -4,7 +4,7 @@ The database stores parameter values as records: one YAML file per
 source-coherent set of values, named by supy's canonical parameter paths so
 that a record exports mechanically into a modern SUEWS YAML configuration.
 
-Two layers make up the database.
+Three layers make up the database.
 
 - **Evidence** (`db/records/`) — values as they were measured, fitted or
   published: one file per set that shares a source, a place and a surface.
@@ -18,6 +18,10 @@ Two layers make up the database.
   `archetypes/countries/`). Archetypes carry `uses:` references to evidence
   records rather than copies of their values, so provenance survives
   assembly.
+- **Provenance review** (`db/provenance/`) — one sidecar per evidence record,
+  mirroring its stable path. A sidecar holds an agent or human assessment,
+  evidence locators and GitHub-backed verifier attestations without changing
+  the model-ready values while review is in progress.
 
 Two registries resolve the short names records use.
 
@@ -64,8 +68,8 @@ Envelope fields:
 - `place` + `representativeness` — where the values are from and how far
   they travel. A rooftop measurement (`site`) and a value offered as typical
   of a region (`regional`) are no longer indistinguishable.
-- `method` (optional) — measured | fitted | literature | assumed. Not
-  recoverable for migrated records; fill it in for new ones.
+- `method` (optional) — measured | fitted | literature | calculated | assumed.
+  Not recoverable for migrated records; fill it in for new ones.
 - `legacy:` (optional) — columns of the migrated row that have no home in
   the current supy model (documented per column in
   `schema/table_mapping.yml`), and `-999` placeholder cells. Kept verbatim
@@ -73,6 +77,342 @@ Envelope fields:
 - `context:` inside `parameters:` — values that condition the set without
   being model inputs themselves (e.g. which QF formulation an emission set
   was fitted for, which conductance model a g-set belongs to).
+
+## Provenance assessment and human verification
+
+The record's `source` remains the backwards-compatible citation that travels
+with its values into a SUEWS configuration. Under this workflow it means **the
+publication that states or derives the stored parameter values**. An assessment
+that finds a different meaning in an existing record raises a record-specific
+data problem; it does not silently redefine the citation. `source` must not be
+changed to the publication that supplied underlying observations when that
+publication did not publish the parameter itself.
+
+An internally calculated or explicitly assumed record may have no external
+parameter publication and keep `source: unreferenced`. Its sidecar makes that
+absence precise by recording the method, input records or assumption, and the
+human decision that accepted it; it does not manufacture a publication.
+
+Full provenance and its review state live in one sidecar per evidence record,
+under `db/provenance/`, mirroring the record path. For example, the assessment
+for `db/records/ohm/example.yml` is
+`db/provenance/records/ohm/example.yml`. Keeping candidate assessments outside
+the evidence record lets an agent prepare a repository-wide review queue
+without presenting its findings as accepted data or changing model exports.
+
+`schema/provenance-assessment.schema.yml` is the machine-readable sidecar
+schema. A sidecar contains:
+
+- `provenance_record` — the stable record path it assesses;
+- `provenance_format_version` — the sidecar format version, independent of the
+  record's supy `schema_version`;
+- `record_revision` — a SHA-256 fingerprint of the complete parsed record;
+- `dependency_revisions` — fingerprints of every source, place and record
+  entry on which the assessment relies;
+- `assessment` — structured findings, evidence locators, derivation and the
+  agent or human assessor;
+- `verification` — immutable GitHub-backed attestation events only.
+
+Verifier eligibility, required review scopes and sign-off thresholds are not
+stored in this agent-writable sidecar. They come from the centrally maintained
+verifier policy described below. This prevents an assessment producer from
+lowering its own verification threshold.
+
+The method vocabulary extends the optional record field to:
+
+| Method | Meaning |
+|---|---|
+| `measured` | The stored value is a direct reported measurement. |
+| `fitted` | The stored value was fitted to observations or another dataset. |
+| `literature` | The stored value was adopted from a publication without a new fit. |
+| `calculated` | The stored value was calculated from other database records. |
+| `assumed` | The stored value is an explicit assumption or default. |
+
+The evidence list separates publication roles from relationships to other
+database records:
+
+| Role | Points to | Meaning |
+|---|---|---|
+| `parameter_source` | source | States or derives the exact stored values. |
+| `input_data` | source | Supplies observations or data used in the derivation. |
+| `compilation` | source | Later republishes or collects the parameter values. |
+| `validation` | source | Later evaluates the parameter or method. |
+| `input` | record | Supplies a database value used in an internal calculation. |
+| `possible_duplicate` | record | May represent the same scientific assertion. |
+| `related` | record | Helps adjudicate the finding without being a calculation input. |
+
+Every source claim carries one or more structured locators: a table, figure,
+equation, section, page, supplementary file, dataset or exact text location.
+A source key existing in `db/sources.yml` is not enough; the locator records
+where the claimed relationship was checked.
+
+Every evidence item has an ID. Each finding cites the evidence IDs supporting
+it, or records a scientific note when no supporting evidence can exist, as for
+an unresolved question or explicit assumption. This allows the website to
+explain what settled each claim and what remains open. For a definitive
+`source`, `values`, or `method` finding on a measured, fitted or literature
+record, the checker requires evidence IDs. The checker also verifies that IDs
+are unique within an assessment, all cited IDs exist, and source and record
+keys resolve.
+
+For a measured, fitted or literature assessment to become sign-off eligible,
+at least one `parameter_source` must equal the evidence record's `source` key.
+If an assessment finds an exact-value publication for a record whose source is
+different or `unreferenced`, its source finding is `correction_required`; that
+record cannot be verified until a separate record-fix PR resolves the mismatch.
+Internally `calculated` and explicitly `assumed` records are the deliberate
+exception: they use `source: unreferenced`, do not invent a parameter
+publication, and document the calculation or assumption in the sidecar.
+
+An assessment reports a conclusion for each of eight review scopes: `name`,
+`target`, `values`, `source`, `place`, `representativeness`, `method`, and
+`identity`. The allowed conclusions are `supported`, `contradicted`,
+`correction_required`, `unresolved`, `source_inaccessible`,
+`curation_required`, and `not_applicable`. Findings may link related records
+and tracking issues. This structure keeps duplicate-record and placement
+problems reviewable instead of burying them in free text.
+
+Calculated records also carry a `derivation`. `arithmetic_mean`,
+`weighted_mean`, `scaled`, and `other` are internal calculations and require
+`method: calculated` plus input-record evidence; means require at least two
+inputs, while weighted means and scaling must record an expression.
+`regression` is a fitted method and therefore requires
+`method: fitted` plus a publication that states or derives the fitted values.
+The checker detects missing records, self-reference and cycles.
+
+### Assessment and verification states
+
+An assessor stores only one of these assessment outcomes:
+
+- `agent_assessed` — an automated assessment completed; its findings decide
+  whether remediation or sign-off comes next;
+- `unresolved` — available evidence does not settle the provenance;
+- `source_inaccessible` — a necessary source could not be read;
+- `curation_required` — the evidence leaves a choice for a maintainer.
+
+`method` is required only for `agent_assessed`. An unresolved, inaccessible or
+curation-required assessment may omit it when the available evidence does not
+establish how the value was produced. The schema requires each non-agent
+outcome to have at least one finding with the matching conclusion, and prevents
+an `agent_assessed` result from hiding unresolved, inaccessible or curation
+findings under that status.
+
+`unaudited`, `awaiting_signoff`, and `verified` are derived record states, not
+editable claims. The state is computed in this order:
+
+1. no sidecar is `unaudited`;
+2. `unresolved`, `source_inaccessible`, or `curation_required` is reported
+   directly from the assessment outcome;
+3. an `agent_assessed` sidecar with contradicted or correction-required
+   findings remains `agent_assessed` until the record or assessment is fixed;
+4. an assessment with only supported or not-applicable findings but without
+   enough current eligible attestations is `awaiting_signoff`;
+5. only the configured number of distinct eligible verifiers signing the
+   current evidence and policy revisions produces `verified`.
+
+`stale` describes an individual attestation whose evidence or policy revision
+is no longer current. A record with only stale attestations is
+`awaiting_signoff`, not a third editable record state.
+
+An agent may create an assessment but may never create a verifier attestation
+or set a verified state.
+
+### GitHub-backed verifier attestations
+
+Verifier eligibility, review scopes and thresholds are maintained separately
+by the GitHub sign-off infrastructure in a central verifier policy. An
+attestation records the verifier's GitHub handle, decision, timestamp, a
+specific GitHub review or comment event, evidence revision, verifier-policy
+revision and record scope. The handle in YAML is not proof of identity: CI
+loads the event by its immutable numeric ID and verifies its author, timestamp,
+repository and anchored URL. It then checks that the actor was eligible under
+the recorded policy revision.
+
+The sign-off button creates that authenticated GitHub event. Trusted
+automation appends the resulting attestation; agents and ordinary data-change
+commits may not hand-write one. Schema validation checks the shape, while the
+GitHub-aware checks planned with the sign-off infrastructure enforce event
+authenticity, equality between the event ID and URL anchor, and the bot-only
+append rule. The button runs in a verifier-authenticated human session; the
+audit agent must not receive or be able to invoke the verifier's credential or
+sign-off action. A matching GitHub actor proves account identity only when this
+human-intent boundary is also enforced.
+
+Attestations are immutable events. A later event can supersede or withdraw an
+earlier decision. Changing a parameter value, the source, place,
+representativeness, method, evidence relationship, derivation or locator
+changes the evidence revision, so earlier attestations no longer contribute to
+the derived verified state.
+
+The effective decision is computed, never copied into the sidecar as a status:
+
+1. unless the assessment status is `agent_assessed`, all findings are
+   `supported` or `not_applicable`, and the parameter-source alignment rule is
+   satisfied, no attestation can produce `verified`;
+2. attestations for a different evidence or verifier-policy revision are stale
+   and ignored;
+3. a withdrawal or superseding event removes the earlier event identified by
+   both its event kind and numeric ID;
+4. only attestations whose GitHub actor was eligible for the record's required
+   scopes under the attestation's verifier-policy revision are considered;
+5. any current `changes_requested`, `unresolved` or `curation_required`
+   decision blocks verification until it is superseded;
+6. otherwise, `verified` requires the configured number of distinct verifiers
+   and coverage of every required scope.
+
+Batch review is a user-interface convenience only. Each sidecar still receives
+a record-scoped attestation, so the site can always answer who signed off each
+database record and which evidence revision they reviewed.
+
+### Revision fingerprints
+
+Fingerprints use the prefix `sha256:` followed by the lowercase hexadecimal
+SHA-256 digest of JSON canonicalized according to RFC 8785. The checker rejects
+non-JSON types and non-finite numbers before hashing.
+
+`record_revision` covers the complete parsed evidence record, including
+display, attachment, seasonal and legacy fields. This deliberately favours a
+safe false-positive re-review over allowing a scientific or identity change to
+retain an old sign-off.
+
+`dependency_revisions` contains the canonical fingerprints of every referenced
+source-registry entry, place-registry entry and input or related evidence
+record. A corrected DOI, a changed place definition or an updated input record
+therefore invalidates the dependent review even when its short key is
+unchanged.
+
+`evidence_revision` covers `provenance_format_version`, `record_revision`,
+`dependency_revisions`, and the assessment's `status`, `method`, `findings`,
+`evidence`, `derivation`, `attempted_sources`, and `scientific_note` when
+present. It excludes assessor identity, assessment time, `operational_note`,
+its own digest field and all verification attestations. Re-running an unchanged
+assessment therefore keeps the revision, while any reviewed scientific claim,
+locator or dependency change invalidates earlier sign-offs.
+
+### Illustrative shapes
+
+The following fragments omit the common sidecar fields, assessment metadata,
+and eight required findings. Angle-bracketed values are placeholders, not
+database claims or proposed citations.
+
+For a direct measurement:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: measured
+  evidence:
+    - id: parameter-publication
+      source: <measurement-source-key>
+      role: parameter_source
+      locators:
+        - {kind: table, label: <table-label>, page: <page>}
+```
+
+For a fitted parameter whose observations came from an earlier study:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: fitted
+  evidence:
+    - id: fitted-parameter-publication
+      source: <parameter-source-key>
+      role: parameter_source
+      locators:
+        - {kind: table, label: <table-label>, page: <page>}
+    - id: observation-input
+      source: <observation-source-key>
+      role: input_data
+      locators:
+        - {kind: dataset, label: <dataset-or-study-site>}
+```
+
+For a literature value that a later paper compiled without becoming its
+parameter source:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: literature
+  evidence:
+    - id: original-parameter-publication
+      source: <parameter-source-key>
+      role: parameter_source
+      locators:
+        - {kind: equation, label: <equation-label>, page: <page>}
+    - id: later-compilation
+      source: <later-source-key>
+      role: compilation
+      locators:
+        - {kind: table, label: <table-label>, page: <page>}
+```
+
+For an internal arithmetic mean:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: calculated
+  evidence:
+    - {id: first-input, record: records/<first-input>, role: input}
+    - {id: second-input, record: records/<second-input>, role: input}
+  derivation:
+    kind: arithmetic_mean
+    expression: (<first-input> + <second-input>) / 2
+```
+
+For an explicit assumption with no invented publication:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: assumed
+  evidence: []
+  scientific_note: <why the assumption exists and its intended scope>
+```
+
+For an unresolved assessment there is no invented source:
+
+```yaml
+assessment:
+  status: unresolved
+  evidence: []
+  scientific_note: <what was checked and what would settle the question>
+```
+
+For an inaccessible source, the failed retrieval is recorded without inventing
+a citation:
+
+```yaml
+assessment:
+  status: source_inaccessible
+  evidence: []
+  attempted_sources:
+    - description: <legacy-reference-or-source-description>
+      url: <attempted-url>
+      attempted_at: <timestamp>
+      outcome: inaccessible
+      note: <what was attempted and what access would settle it>
+  scientific_note: <which findings remain unverified>
+```
+
+Human verification is an authenticated event bound to the evidence revision:
+
+```yaml
+verification:
+  attestations:
+    - verifier: <verified-github-handle>
+      decision: verified
+      signed_at: <github-event-timestamp>
+      event:
+        kind: pull_request_review
+        id: <github-review-id>
+        url: "https://github.com/UMEP-dev/SUEWS-database/pull/<number>#pullrequestreview-<id>"
+      evidence_revision: sha256:<64-lowercase-hex-digits>
+      verifier_policy_revision: sha256:<64-lowercase-hex-digits>
+      scope: record
+```
 
 Profile records (`records/profiles/<kind>/`) hold 24-hour profiles keyed
 1..24 with `working_day` and `holiday` sides, matching supy's

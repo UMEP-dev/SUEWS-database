@@ -28,6 +28,10 @@ file says where things are.
   - `snow/` — snow parameter sets
   - `regions/`, `countries/` — the 22-region / 229-country default sets
   - `typologies/` — building typology metadata
+- `db/provenance/` — record-path-mirrored provenance assessment sidecars:
+  evidence roles and locators prepared by an agent or human assessor, plus
+  GitHub-backed verifier attestations. The directory is populated
+  incrementally as records enter the audit workflow.
 - `db/sources.yml` — citation registry (keys like `ward2016`)
 - `db/places.yml` — place registry (slugs like `helsinki`, `se-england`)
 - `schema/table_mapping.yml` — the audited legacy-column -> supy-path map
@@ -38,6 +42,9 @@ file says where things are.
   of every legacy row landed exactly once in the record tree
 - `schema/parameter_groups.yml` — which parameters have to move together,
   and how tightly; the cross-record rules `make check` enforces
+- `schema/provenance-assessment.schema.yml` — the machine-readable format for
+  provenance sidecars, assessment states, revision fingerprints and verifier
+  attestations
 - `schema/regional_axis.yml` — how the database slices by place and region
 - `scripts/` — the checking, export and migration tools
 - `scripts/legacy/` — the pre-migration spreadsheet toolchain, kept for

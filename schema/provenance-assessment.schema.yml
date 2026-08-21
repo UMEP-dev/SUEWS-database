@@ -1,0 +1,810 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://database.suews.io/schema/provenance-assessment.schema.yml
+title: SUEWS parameter provenance assessment
+description: >-
+  A provisional or human-reviewed provenance assessment for one evidence
+  record. Assessments are sidecars keyed to stable record paths; they do not
+  replace the record's model-ready source field or parameter values.
+type: object
+additionalProperties: false
+required:
+  - provenance_record
+  - provenance_format_version
+  - record_revision
+  - dependency_revisions
+  - assessment
+  - verification
+properties:
+  provenance_record:
+    $ref: '#/$defs/record_path'
+    description: Stable record path under db, without the .yml suffix.
+  provenance_format_version:
+    const: '1.0'
+    description: Version of this provenance sidecar format.
+  record_revision:
+    $ref: '#/$defs/revision'
+    description: SHA-256 fingerprint of the complete parsed evidence record.
+  dependency_revisions:
+    $ref: '#/$defs/dependency_revisions'
+    description: >-
+      Fingerprints of every source, place and input or related record whose
+      content the assessment relies on.
+  assessment:
+    type: object
+    additionalProperties: false
+    required:
+      - status
+      - assessed_at
+      - assessor
+      - evidence_revision
+      - findings
+      - evidence
+    properties:
+      status:
+        enum:
+          - agent_assessed
+          - unresolved
+          - source_inaccessible
+          - curation_required
+      assessed_at:
+        type: string
+        format: date-time
+      assessor:
+        $ref: '#/$defs/assessor'
+      method:
+        enum:
+          - measured
+          - fitted
+          - literature
+          - calculated
+          - assumed
+      evidence_revision:
+        $ref: '#/$defs/revision'
+        description: >-
+          SHA-256 fingerprint of the record revision, dependency revisions and
+          reviewed assessment claims. Human attestations bind to this revision;
+          attestations for any other revision are stale.
+      findings:
+        $ref: '#/$defs/findings'
+      evidence:
+        type: array
+        uniqueItems: true
+        items:
+          oneOf:
+            - $ref: '#/$defs/source_evidence'
+            - $ref: '#/$defs/record_evidence'
+      derivation:
+        $ref: '#/$defs/derivation'
+      attempted_sources:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/attempted_source'
+      scientific_note:
+        type: string
+        minLength: 1
+      operational_note:
+        type: string
+        minLength: 1
+    allOf:
+      - if:
+          properties:
+            status:
+              const: agent_assessed
+        then:
+          required:
+            - method
+          properties:
+            findings:
+              $ref: '#/$defs/agent_assessed_findings'
+      - if:
+          required:
+            - method
+          properties:
+            status:
+              const: agent_assessed
+            method:
+              enum:
+                - measured
+                - fitted
+                - literature
+        then:
+          properties:
+            evidence:
+              contains:
+                allOf:
+                  - $ref: '#/$defs/source_evidence'
+                  - properties:
+                      role:
+                        const: parameter_source
+      - if:
+          required:
+            - method
+          properties:
+            method:
+              const: calculated
+        then:
+          required:
+            - derivation
+          properties:
+            derivation:
+              properties:
+                kind:
+                  enum:
+                    - arithmetic_mean
+                    - weighted_mean
+                    - scaled
+                    - other
+            evidence:
+              contains:
+                allOf:
+                  - $ref: '#/$defs/record_evidence'
+                  - properties:
+                      role:
+                        const: input
+      - if:
+          required:
+            - method
+          properties:
+            method:
+              const: assumed
+        then:
+          required:
+            - scientific_note
+      - if:
+          required:
+            - derivation
+          properties:
+            derivation:
+              properties:
+                kind:
+                  const: regression
+        then:
+          required:
+            - method
+          properties:
+            method:
+              const: fitted
+      - if:
+          required:
+            - derivation
+          properties:
+            derivation:
+              properties:
+                kind:
+                  enum:
+                    - arithmetic_mean
+                    - weighted_mean
+        then:
+          properties:
+            evidence:
+              contains:
+                allOf:
+                  - $ref: '#/$defs/record_evidence'
+                  - properties:
+                      role:
+                        const: input
+              minContains: 2
+      - if:
+          properties:
+            status:
+              not:
+                const: agent_assessed
+        then:
+          required:
+            - scientific_note
+      - if:
+          properties:
+            status:
+              const: source_inaccessible
+        then:
+          required:
+            - attempted_sources
+          properties:
+            findings:
+              $ref: '#/$defs/source_inaccessible_findings'
+      - if:
+          properties:
+            status:
+              const: unresolved
+        then:
+          properties:
+            findings:
+              $ref: '#/$defs/unresolved_findings'
+      - if:
+          properties:
+            status:
+              const: curation_required
+        then:
+          properties:
+            findings:
+              $ref: '#/$defs/curation_required_findings'
+  verification:
+    type: object
+    additionalProperties: false
+    required:
+      - attestations
+    properties:
+      attestations:
+        type: array
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/attestation'
+$defs:
+  revision:
+    type: string
+    pattern: ^sha256:[0-9a-f]{64}$
+  record_path:
+    type: string
+    pattern: ^records/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$
+  dependency_revisions:
+    type: object
+    additionalProperties: false
+    required:
+      - sources
+      - places
+      - records
+    properties:
+      sources:
+        type: object
+        propertyNames:
+          pattern: ^[a-z0-9][a-z0-9-]*$
+          not:
+            const: unreferenced
+        additionalProperties:
+          $ref: '#/$defs/revision'
+      places:
+        type: object
+        propertyNames:
+          pattern: ^[a-z0-9][a-z0-9-]*$
+        additionalProperties:
+          $ref: '#/$defs/revision'
+      records:
+        type: object
+        propertyNames:
+          $ref: '#/$defs/record_path'
+        additionalProperties:
+          $ref: '#/$defs/revision'
+  assessor:
+    type: object
+    additionalProperties: false
+    required:
+      - kind
+      - name
+    properties:
+      kind:
+        enum:
+          - agent
+          - human
+      name:
+        type: string
+        minLength: 1
+      version:
+        type: string
+        minLength: 1
+      run_url:
+        type: string
+        format: uri
+    allOf:
+      - if:
+          properties:
+            kind:
+              const: agent
+        then:
+          required:
+            - version
+  findings:
+    type: object
+    additionalProperties: false
+    required:
+      - name
+      - target
+      - values
+      - source
+      - place
+      - representativeness
+      - method
+      - identity
+    properties:
+      name:
+        $ref: '#/$defs/finding'
+      target:
+        $ref: '#/$defs/finding'
+      values:
+        $ref: '#/$defs/finding'
+      source:
+        $ref: '#/$defs/finding'
+      place:
+        $ref: '#/$defs/finding'
+      representativeness:
+        $ref: '#/$defs/finding'
+      method:
+        $ref: '#/$defs/finding'
+      identity:
+        $ref: '#/$defs/finding'
+  agent_assessed_findings:
+    allOf:
+      - $ref: '#/$defs/findings'
+      - type: object
+        properties:
+          name:
+            $ref: '#/$defs/agent_assessed_finding'
+          target:
+            $ref: '#/$defs/agent_assessed_finding'
+          values:
+            $ref: '#/$defs/agent_assessed_finding'
+          source:
+            $ref: '#/$defs/agent_assessed_finding'
+          place:
+            $ref: '#/$defs/agent_assessed_finding'
+          representativeness:
+            $ref: '#/$defs/agent_assessed_finding'
+          method:
+            $ref: '#/$defs/agent_assessed_finding'
+          identity:
+            $ref: '#/$defs/agent_assessed_finding'
+  agent_assessed_finding:
+    allOf:
+      - $ref: '#/$defs/finding'
+      - type: object
+        properties:
+          conclusion:
+            enum:
+              - supported
+              - contradicted
+              - correction_required
+              - not_applicable
+  unresolved_findings:
+    allOf:
+      - $ref: '#/$defs/findings'
+      - anyOf:
+          - properties:
+              name:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              target:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              values:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              source:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              place:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              representativeness:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              method:
+                properties:
+                  conclusion:
+                    const: unresolved
+          - properties:
+              identity:
+                properties:
+                  conclusion:
+                    const: unresolved
+  source_inaccessible_findings:
+    allOf:
+      - $ref: '#/$defs/findings'
+      - anyOf:
+          - properties:
+              name:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              target:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              values:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              source:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              place:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              representativeness:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              method:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+          - properties:
+              identity:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+  curation_required_findings:
+    allOf:
+      - $ref: '#/$defs/findings'
+      - anyOf:
+          - properties:
+              name:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              target:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              values:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              source:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              place:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              representativeness:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              method:
+                properties:
+                  conclusion:
+                    const: curation_required
+          - properties:
+              identity:
+                properties:
+                  conclusion:
+                    const: curation_required
+  finding:
+    type: object
+    additionalProperties: false
+    required:
+      - conclusion
+    properties:
+      conclusion:
+        enum:
+          - supported
+          - contradicted
+          - correction_required
+          - unresolved
+          - source_inaccessible
+          - curation_required
+          - not_applicable
+      evidence_ids:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          type: string
+          pattern: ^[a-z0-9][a-z0-9-]*$
+      note:
+        type: string
+        minLength: 1
+      related_records:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/record_path'
+      issue_urls:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          type: string
+          format: uri
+          pattern: ^https://github\.com/UMEP-dev/SUEWS-database/issues/[0-9]+$
+    allOf:
+      - if:
+          properties:
+            conclusion:
+              not:
+                const: not_applicable
+        then:
+          anyOf:
+            - required:
+                - evidence_ids
+            - required:
+                - note
+  locator:
+    type: object
+    additionalProperties: false
+    required:
+      - kind
+      - label
+    properties:
+      kind:
+        enum:
+          - table
+          - figure
+          - equation
+          - section
+          - page
+          - supplementary
+          - dataset
+          - text
+      label:
+        type: string
+        minLength: 1
+      page:
+        oneOf:
+          - type: integer
+            minimum: 1
+          - type: string
+            minLength: 1
+      url:
+        type: string
+        format: uri
+      note:
+        type: string
+        minLength: 1
+  source_evidence:
+    type: object
+    additionalProperties: false
+    required:
+      - id
+      - source
+      - role
+      - locators
+    properties:
+      id:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+      source:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+        not:
+          const: unreferenced
+        description: >-
+          Source-registry key. For a sign-off-eligible measured, fitted or
+          literature assessment, the checker requires a parameter_source key
+          equal to the evidence record's source field.
+      role:
+        enum:
+          - parameter_source
+          - input_data
+          - compilation
+          - validation
+      locators:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/locator'
+      note:
+        type: string
+        minLength: 1
+  record_evidence:
+    type: object
+    additionalProperties: false
+    required:
+      - id
+      - record
+      - role
+    properties:
+      id:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+      record:
+        $ref: '#/$defs/record_path'
+      role:
+        enum:
+          - input
+          - possible_duplicate
+          - related
+      note:
+        type: string
+        minLength: 1
+  attempted_source:
+    type: object
+    additionalProperties: false
+    required:
+      - attempted_at
+      - outcome
+      - note
+    properties:
+      source:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+        not:
+          const: unreferenced
+      description:
+        type: string
+        minLength: 1
+      url:
+        type: string
+        format: uri
+      attempted_at:
+        type: string
+        format: date-time
+      outcome:
+        enum:
+          - inaccessible
+          - not_found
+          - incomplete
+      note:
+        type: string
+        minLength: 1
+    anyOf:
+      - required:
+          - source
+      - required:
+          - description
+      - required:
+          - url
+  derivation:
+    type: object
+    additionalProperties: false
+    required:
+      - kind
+    properties:
+      kind:
+        enum:
+          - arithmetic_mean
+          - weighted_mean
+          - scaled
+          - regression
+          - other
+      description:
+        type: string
+        minLength: 1
+      expression:
+        type: string
+        minLength: 1
+    allOf:
+      - if:
+          properties:
+            kind:
+              const: other
+        then:
+          required:
+            - description
+      - if:
+          properties:
+            kind:
+              enum:
+                - weighted_mean
+                - scaled
+        then:
+          required:
+            - expression
+      - if:
+          properties:
+            kind:
+              const: regression
+        then:
+          anyOf:
+            - required:
+                - description
+            - required:
+                - expression
+  attestation_event:
+    oneOf:
+      - type: object
+        additionalProperties: false
+        required:
+          - kind
+          - id
+          - url
+        properties:
+          kind:
+            const: pull_request_review
+          id:
+            type: integer
+            minimum: 1
+          url:
+            type: string
+            format: uri
+            pattern: ^https://github\.com/UMEP-dev/SUEWS-database/pull/[0-9]+#pullrequestreview-[0-9]+$
+      - type: object
+        additionalProperties: false
+        required:
+          - kind
+          - id
+          - url
+        properties:
+          kind:
+            const: issue_comment
+          id:
+            type: integer
+            minimum: 1
+          url:
+            type: string
+            format: uri
+            pattern: ^https://github\.com/UMEP-dev/SUEWS-database/(issues|pull)/[0-9]+#issuecomment-[0-9]+$
+  attestation_event_reference:
+    type: object
+    additionalProperties: false
+    required:
+      - kind
+      - id
+    properties:
+      kind:
+        enum:
+          - pull_request_review
+          - issue_comment
+      id:
+        type: integer
+        minimum: 1
+  attestation:
+    type: object
+    additionalProperties: false
+    required:
+      - verifier
+      - decision
+      - signed_at
+      - event
+      - evidence_revision
+      - verifier_policy_revision
+      - scope
+    properties:
+      verifier:
+        type: string
+        pattern: ^[A-Za-z0-9](?:[A-Za-z0-9-]{0,37}[A-Za-z0-9])?$
+        description: GitHub handle without a leading @.
+      decision:
+        enum:
+          - verified
+          - changes_requested
+          - unresolved
+          - curation_required
+          - withdrawn
+      signed_at:
+        type: string
+        format: date-time
+      event:
+        $ref: '#/$defs/attestation_event'
+      evidence_revision:
+        $ref: '#/$defs/revision'
+      verifier_policy_revision:
+        $ref: '#/$defs/revision'
+        description: >-
+          Fingerprint of the centrally maintained verifier policy against
+          which the GitHub actor and review scopes were accepted.
+      scope:
+        const: record
+      supersedes_event:
+        $ref: '#/$defs/attestation_event_reference'
+      note:
+        type: string
+        minLength: 1
+    allOf:
+      - if:
+          properties:
+            decision:
+              const: withdrawn
+        then:
+          required:
+            - supersedes_event
