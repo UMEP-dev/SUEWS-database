@@ -1265,7 +1265,7 @@ def image_figure(path, entry, depth):
             f"</figcaption></figure>")
 
 
-def photo_invite(path, rec, blocked, depth):
+def photo_invite(path, rec, blocked):
     """Ask for a photograph where a typology has none.
 
     A typology with no picture is the weakest page on the site, and the fix
@@ -1281,9 +1281,13 @@ def photo_invite(path, rec, blocked, depth):
            f"&typology={quote(path, safe='')}")
     blocked_note = ""
     if blocked:
+        # a manifest-authored number; anything else points at the manifest
+        # rather than fabricating an issue link or failing the whole build
         issue = blocked.get("tracked_by")
-        where = (f"<a href=\"{REPO_URL}/issues/{int(issue)}\">"
-                 f"issue #{int(issue)}</a>") if issue else "db/images.yml"
+        where = "db/images.yml"
+        if isinstance(issue, int):
+            where = (f"<a href=\"{REPO_URL}/issues/{issue}\">"
+                     f"issue #{issue}</a>")
         blocked_note = (
             f"<p class=\"crumbs\">A photograph is recorded for this typology "
             f"but cannot be published: nobody has been able to establish who "
@@ -1301,6 +1305,8 @@ def photo_invite(path, rec, blocked, depth):
         "Commons licence. A photograph with no stated terms cannot be shown, "
         "however well it fits.</p>"
         "</div>")
+
+
 def _state_badge(state):
     label = PROVENANCE_STATE_LABEL.get(state, state.replace("_", " ").title())
     return (
@@ -1662,7 +1668,7 @@ def record_page(
     if image:
         main.append(image_figure(path, image, depth))
     elif invite:
-        main.append(photo_invite(path, rec, blocked, depth))
+        main.append(photo_invite(path, rec, blocked))
 
     uses = rec.get("uses")
     if uses:
@@ -2676,7 +2682,11 @@ def main():
                 image=images.get(path) if path in staged else None,
                 sidecars=sidecars, policy=policy,
                 blocked=unresolved.get(path),
-                invite=path.startswith("archetypes/typologies/"),
+                # a typology the manifest publishes but this build could not
+                # stage (an --offline run) shows nothing rather than claiming
+                # it has no photograph
+                invite=(path.startswith("archetypes/typologies/")
+                        and path not in images),
             )
         )
 
