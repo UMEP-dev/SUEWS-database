@@ -5,6 +5,17 @@ albedo, emissivity, thermal and material properties, surface conductance,
 hourly profiles and more — organised by surface type, building typology and
 place, with a citation on every value.
 
+## Browse it
+
+**[umep-dev.github.io/SUEWS-database](https://umep-dev.github.io/SUEWS-database/)**
+
+Every record and typology has a page. Arrive knowing a parameter and search the
+model's own parameter paths; arrive knowing a site and pick it off the map or
+out of the region / country / city lists. Each value shows its citation, its
+place and what it stands for, and exports as a fragment that pastes straight
+into a SUEWS YAML configuration. Anything that looks wrong can be reported from
+the record's own page.
+
 ## The database is records
 
 `db/records/` holds the evidence: one YAML file per source-coherent
@@ -78,9 +89,9 @@ citations pointing at reference IDs that do not exist, three surface
 archetypes mixing LAI parameters fitted for different equations, and the
 legacy free-text origins now quarantined in `schema/origins_map.yml`.
 
-## Useful links
+## Elsewhere
 
-- [SUEWS documentation](https://suews.readthedocs.io/)
-- [UMEP website](https://umep-docs.readthedocs.io/en/latest/index.html)
-- [Manual for the database plugin](https://umep-docs.readthedocs.io/en/latest/pre-processor/Urban%20Energy%20Balance%20SUEWS%20Database%20Manager.html#)
-- [Installing UMEP](https://umep-docs.readthedocs.io/en/latest/Getting_Started.html)
+- [SUEWS documentation](https://suews.readthedocs.io/) — parameter names in
+  this database follow its YAML input specification
+- [UMEP](https://umep-docs.readthedocs.io/en/latest/index.html) — the QGIS
+  plugin suite SUEWS is used through
