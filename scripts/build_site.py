@@ -715,8 +715,6 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .attestation .decision { color: var(--text-secondary); }
 .attestation .stale { color: var(--gold-ink); }
 .attestation .superseded { color: var(--text-muted); }
-.revision { display: block; max-width: 100%; overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap; }
 .stag { display: inline-block; padding: 0.14rem 0.7rem; border-radius: 999px;
   font-size: 0.78rem; background: var(--acc); color: var(--on-accent);
   font-weight: 600;
@@ -1539,7 +1537,6 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             f"<h3>Scientific note</h3><p>{esc(assessment['scientific_note'])}</p>"
         )
 
-    revision = assessment.get("evidence_revision", "")
     rail = [
         f"<div class=\"side\"><h4>{review_label}</h4>",
         _state_badge(state),
@@ -1549,12 +1546,6 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             f"<div class=\"prow\"><span class=\"pk\">Method</span>"
             f"<span>{esc(METHOD_LABEL.get(method, method))}</span></div>"
         )
-    rail.append(
-        "<div class=\"prow\"><span class=\"pk\">Evidence</span>"
-        f"<span><code class=\"revision\" title=\"{esc(revision)}\">"
-        f"{esc(revision)}</code></span></div>"
-    )
-
     attestations = sidecar.get("verification", {}).get("attestations", [])
     if attestations:
         states = attestation_states(sidecar, policy)

@@ -60,6 +60,8 @@ class SiteProvenanceTests(unittest.TestCase):
         mixed = self.render(MIXED)
         self.assertIn("Awaiting sign-off", mixed)
         self.assertIn("Sign off evidence on GitHub", mixed)
+        self.assertNotIn("<span class=\"pk\">Evidence</span>", mixed)
+        self.assertNotIn("<code class=\"revision\"", mixed)
         self.assertIn("Parameter source", mixed)
         self.assertIn("Input observations", mixed)
         self.assertIn("template=provenance-signoff.yml", mixed)
