@@ -217,31 +217,38 @@ is no longer current. A record with only stale attestations is
 An agent may create an assessment but may never create a verifier attestation
 or set a verified state.
 
+Verification applies only to atomic evidence records under `db/records/`.
+Archetypes and typologies under `db/archetypes/` are composites: their pages
+show the independently derived review state of each referenced evidence
+record, while database checks validate the composition links and compatible
+targets. A composite does not receive a scientific-provenance sign-off of its
+own. If a composite introduces a new scientific value, that value must first
+be represented and reviewed as an evidence record.
+
 ### GitHub-backed verifier attestations
 
 Verifier eligibility, review scopes and thresholds are maintained in the
 reviewed `.github/provenance-verifiers.yml` policy. Its revision is derived
 from its complete canonical content rather than declared by an assessment.
 An attestation records the verifier's GitHub handle and immutable numeric user
-ID, decision, timestamp, a specific GitHub comment event, evidence revision,
-verifier-policy revision and record scope. The handle in YAML is not proof of
-identity: CI reloads the comment by its immutable numeric ID and verifies its
-actor, timestamp, repository, unedited state and anchored URL. For an event on
-the current policy revision, it also checks that the actor ID and handle are
-eligible. Events on older policy revisions remain authenticated history but
-are stale and do not contribute to `verified`.
+ID, decision, timestamp, a specific GitHub issue event, evidence
+revision, verifier-policy revision and record scope. A handle written in YAML
+or an issue body is not proof of identity: CI reloads the GitHub event and
+verifies its actor ID, repository and URL against the reviewed verifier policy.
+Events on older evidence or policy revisions are stale and do not contribute
+to `verified`.
 
-The authenticated event also carries the signed decision payload: the
-provenance-record path, decision, scope, evidence revision, verifier-policy
-revision and any superseded event. Every field must equal the sidecar
-attestation. An unrelated comment cannot therefore be reinterpreted as a
-sign-off, and one GitHub event cannot be reused across several records.
+The authenticated event carries the decision payload: provenance-record path,
+decision, scope, evidence revision, verifier-policy revision and any
+superseded event. Every field must match the record assessment being reviewed.
+An unrelated issue cannot therefore be reinterpreted as a sign-off.
 
-Version 1 uses an unedited `issue_comment` containing the exact JSON envelope
-defined by `scripts/github_attestation.py`. CI reloads the comment through the
-GitHub API and requires every signed field to equal the stored attestation.
-The site sign-off button will create this event in a verifier-authenticated
-human session; the audit agent must not receive or be able to invoke the
+The site sign-off button raises a prefilled GitHub issue. CI parses the issue
+form, requires its author handle and immutable user ID to match the reviewed
+verifier registry, and rejects stale record, evidence or policy revisions.
+Site builds sweep accepted sign-off issues and convert them to the same
+attestation shape used for state derivation. The durable event remains the
+linked GitHub issue. The audit agent must not receive or be able to invoke the
 verifier's credential or sign-off action.
 
 The offline checker validates sidecar shape, fingerprints, event anchors and
@@ -249,7 +256,8 @@ supersession graphs, but never authenticates GitHub identity itself. Without
 authenticated event facts and the current central verifier policy, its state
 derivation cannot return `verified`.
 
-Attestations are immutable events. A later event can supersede or withdraw an
+Stored attestations are immutable events; an edited issue-form decision is
+revalidated and re-swept by CI. A later issue can supersede or withdraw an
 earlier decision. Changing a parameter value, the source, place,
 representativeness, method, evidence relationship, derivation or locator
 changes the evidence revision, so earlier attestations no longer contribute to
@@ -418,9 +426,9 @@ verification:
       decision: verified
       signed_at: <github-event-timestamp>
       event:
-        kind: issue_comment
-        id: <github-comment-id>
-        url: "https://github.com/UMEP-dev/SUEWS-database/issues/<number>#issuecomment-<id>"
+        kind: issue
+        id: <github-issue-number>
+        url: "https://github.com/UMEP-dev/SUEWS-database/issues/<number>"
       evidence_revision: sha256:<64-lowercase-hex-digits>
       verifier_policy_revision: sha256:<64-lowercase-hex-digits>
       scope: record

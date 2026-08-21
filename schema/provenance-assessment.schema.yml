@@ -719,14 +719,14 @@ $defs:
       - url
     properties:
       kind:
-        const: issue_comment
+        const: issue
       id:
         type: integer
         minimum: 1
       url:
         type: string
         format: uri
-        pattern: ^https://github\.com/UMEP-dev/SUEWS-database/(issues|pull)/[0-9]+#issuecomment-[0-9]+$
+        pattern: ^https://github\.com/UMEP-dev/SUEWS-database/issues/[0-9]+$
   attestation_event_reference:
     type: object
     additionalProperties: false
@@ -735,7 +735,7 @@ $defs:
       - id
     properties:
       kind:
-        const: issue_comment
+        const: issue
       id:
         type: integer
         minimum: 1

@@ -78,12 +78,9 @@ def attestation(
         "decision": decision,
         "signed_at": signed_at,
         "event": {
-            "kind": "issue_comment",
+            "kind": "issue",
             "id": event_id,
-            "url": (
-                "https://github.com/UMEP-dev/SUEWS-database/issues/21"
-                f"#issuecomment-{event_id}"
-            ),
+            "url": f"https://github.com/UMEP-dev/SUEWS-database/issues/{event_id}",
         },
         "evidence_revision": evidence,
         "verifier_policy_revision": POLICY_REVISION,
@@ -91,7 +88,7 @@ def attestation(
     }
     if supersedes is not None:
         item["supersedes_event"] = {
-            "kind": "issue_comment",
+            "kind": "issue",
             "id": supersedes,
         }
     return item
@@ -405,7 +402,7 @@ class VerificationStateTests(unittest.TestCase):
         records, sources, places, policy, facts = self.exact_state_inputs(sidecar)
 
         unrelated = deepcopy(facts)
-        unrelated[("issue_comment", 102)]["decision"] = "changes_requested"
+        unrelated[("issue", 102)]["decision"] = "changes_requested"
         self.assertEqual(
             self.derive(sidecar, facts=unrelated, policy=policy),
             "awaiting_signoff",
@@ -414,7 +411,7 @@ class VerificationStateTests(unittest.TestCase):
         stale = deepcopy(sidecar)
         stale_item = stale["verification"]["attestations"][0]
         stale_item["evidence_revision"] = "sha256:" + "9" * 64
-        stale_facts = {("issue_comment", 102): authenticated_fact(stale_item)}
+        stale_facts = {("issue", 102): authenticated_fact(stale_item)}
         self.assertEqual(
             self.derive(stale, facts=stale_facts, policy=policy),
             "awaiting_signoff",
@@ -424,7 +421,7 @@ class VerificationStateTests(unittest.TestCase):
         stale_policy_item = stale_policy["verification"]["attestations"][0]
         stale_policy_item["verifier_policy_revision"] = "sha256:" + "8" * 64
         stale_policy_facts = {
-            ("issue_comment", 102): authenticated_fact(stale_policy_item)
+            ("issue", 102): authenticated_fact(stale_policy_item)
         }
         self.assertEqual(
             self.derive(stale_policy, facts=stale_policy_facts, policy=policy),
@@ -461,7 +458,7 @@ class VerificationStateTests(unittest.TestCase):
             110, evidence=sidecar["assessment"]["evidence_revision"]
         )
         sidecar["verification"]["attestations"] = [item]
-        facts = {("issue_comment", 110): authenticated_fact(item)}
+        facts = {("issue", 110): authenticated_fact(item)}
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy()),
             "unresolved",
@@ -475,7 +472,7 @@ class VerificationStateTests(unittest.TestCase):
             111, evidence=sidecar["assessment"]["evidence_revision"]
         )
         sidecar["verification"]["attestations"] = [item]
-        facts = {("issue_comment", 111): authenticated_fact(item)}
+        facts = {("issue", 111): authenticated_fact(item)}
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy()),
             "unresolved",
@@ -488,8 +485,8 @@ class VerificationStateTests(unittest.TestCase):
         second = attestation(104, verifier="sUEvERIFIER", evidence=evidence)
         sidecar["verification"]["attestations"] = [first, second]
         facts = {
-            ("issue_comment", 103): authenticated_fact(first),
-            ("issue_comment", 104): authenticated_fact(second),
+            ("issue", 103): authenticated_fact(first),
+            ("issue", 104): authenticated_fact(second),
         }
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy(required=2)),
@@ -513,8 +510,8 @@ class VerificationStateTests(unittest.TestCase):
             supersedes=105,
         )
         facts = {
-            ("issue_comment", 105): authenticated_fact(blocked),
-            ("issue_comment", 106): authenticated_fact(approved),
+            ("issue", 105): authenticated_fact(blocked),
+            ("issue", 106): authenticated_fact(approved),
         }
         for ordered in ([approved, blocked], [blocked, approved]):
             candidate = deepcopy(sidecar)
@@ -540,8 +537,8 @@ class VerificationStateTests(unittest.TestCase):
         )
         backwards["verification"]["attestations"] = [old_approval, newer_block]
         backwards_facts = {
-            ("issue_comment", 107): authenticated_fact(old_approval),
-            ("issue_comment", 108): authenticated_fact(newer_block),
+            ("issue", 107): authenticated_fact(old_approval),
+            ("issue", 108): authenticated_fact(newer_block),
         }
         self.assertEqual(
             self.derive(

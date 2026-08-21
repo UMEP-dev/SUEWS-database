@@ -41,6 +41,7 @@ import sys
 import urllib.error
 import urllib.request
 from collections import defaultdict
+from hashlib import sha256
 from pathlib import Path
 from urllib.parse import quote
 
@@ -72,6 +73,33 @@ def build_ref():
 
 BUILD_REF = build_ref()
 SITE_ISSUE_URL = f"{REPO_URL}/issues/new?template=site-issue.yml"
+SIGNOFF_TEMPLATE_URL = f"{REPO_URL}/issues/new?template=provenance-signoff.yml"
+
+PROVENANCE_STATE_LABEL = {
+    "unaudited": "Unaudited",
+    "agent_assessed": "Agent assessed",
+    "awaiting_signoff": "Awaiting sign-off",
+    "verified": "Verified",
+    "unresolved": "Unresolved",
+    "source_inaccessible": "Source inaccessible",
+    "curation_required": "Curation required",
+}
+PROVENANCE_ROLE_LABEL = {
+    "parameter_source": "Parameter source",
+    "input_data": "Input observations",
+    "input": "Input record",
+    "compilation": "Later compilation",
+    "validation": "Validation",
+    "possible_duplicate": "Possible duplicate",
+    "related": "Related record",
+}
+METHOD_LABEL = {
+    "measured": "Measured",
+    "fitted": "Fitted",
+    "literature": "Published value",
+    "calculated": "Calculated",
+    "assumed": "Assumed",
+}
 
 # A report control that follows the reader down every page. Scaffolding for
 # the phase where the site is still being shaped and structural problems are
@@ -159,7 +187,8 @@ FACET_TITLE = {
     "kind": "Kind", "surface": "Land cover", "family": "Family",
     "typology": "Typology", "region": "Region", "country": "Country",
     "city": "City", "rep": "Representativeness", "source": "Source",
-    "place": "Place",
+    "method": "Method", "verification": "Review state",
+    "role": "Provenance role", "place": "Place",
 }
 
 # land-cover accent colour class (drives card top borders and title tags)
@@ -171,6 +200,157 @@ SURFACE_ACC = {
 # the browser's land-cover facet order: the 7 SUEWS covers, then a divider,
 # then cross-surface entries
 LC_ORDER = ["paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water"]
+
+
+def load_site_provenance(base=ROOT / "db" / "provenance"):
+    """Load sidecars without adding checker-only dependencies to site builds."""
+    sidecars = {}
+    if not base.exists():
+        return sidecars
+    for fp in sorted(base.rglob("*.yml")):
+        key = str(fp.relative_to(base).with_suffix(""))
+        sidecars[key] = yaml.safe_load(fp.read_text())
+    return sidecars
+
+
+def load_site_policy(path=ROOT / ".github" / "provenance-verifiers.yml"):
+    """Load the CI-validated policy and reproduce its RFC 8785 revision.
+
+    The policy schema permits only ASCII strings, integers, arrays and maps, so
+    sorted compact JSON is byte-identical to RFC 8785 canonicalization here.
+    """
+    if not path.exists():
+        return None
+    document = yaml.safe_load(path.read_text())
+    canonical = json.dumps(
+        document, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    ).encode("utf-8")
+    verifiers = {
+        item["github_handle"].casefold(): item
+        for item in document.get("verifiers", [])
+    }
+    return {
+        "revision": "sha256:" + sha256(canonical).hexdigest(),
+        "required_signoffs": document.get("required_signoffs", 1),
+        "required_scopes": set(document.get("required_scopes", ["record"])),
+        "verifiers": verifiers,
+    }
+
+
+def merge_github_signoffs(sidecars):
+    """Sweep authenticated sign-off issues during CI site builds."""
+    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not token:
+        return
+    from github_attestation import fetch_issue_attestations
+    from verifier_policy import load_verifier_policy
+
+    grouped, errors = fetch_issue_attestations(
+        token, load_verifier_policy(), sidecars
+    )
+    for error in errors:
+        print(f"site sign-off ignored: {error}", file=sys.stderr)
+    for record_path, attestations in grouped.items():
+        sidecars[record_path].setdefault("verification", {}).setdefault(
+            "attestations", []
+        ).extend(attestations)
+
+
+def _event_key(attestation):
+    event = attestation.get("event", {})
+    return event.get("kind"), event.get("id")
+
+
+def attestation_states(sidecar, policy):
+    """Return current, stale or superseded display state for each event."""
+    assessment = sidecar.get("assessment", {})
+    evidence_revision = assessment.get("evidence_revision")
+    policy_revision = policy.get("revision") if policy else None
+    attestations = sidecar.get("verification", {}).get("attestations", [])
+    states = {}
+    current = set()
+    for item in attestations:
+        key = _event_key(item)
+        stale = (
+            item.get("evidence_revision") != evidence_revision
+            or item.get("verifier_policy_revision") != policy_revision
+        )
+        states[key] = "stale" if stale else "current"
+        if not stale:
+            current.add(key)
+    superseded = {
+        (target.get("kind"), target.get("id"))
+        for item in attestations
+        if _event_key(item) in current
+        and (target := item.get("supersedes_event"))
+    }
+    for key in current & superseded:
+        states[key] = "superseded"
+    return states
+
+
+def provenance_state(sidecar, policy):
+    """Derive the review state displayed by the already-CI-validated site."""
+    if not sidecar:
+        return "unaudited"
+    assessment = sidecar.get("assessment", {})
+    status = assessment.get("status")
+    if status in {"unresolved", "source_inaccessible", "curation_required"}:
+        return status
+    if status != "agent_assessed":
+        return "agent_assessed"
+    findings = assessment.get("findings", {})
+    if (
+        not findings
+        or any(
+            item.get("conclusion") not in {"supported", "not_applicable"}
+            for item in findings.values()
+        )
+        or findings.get("values", {}).get("conclusion") != "supported"
+        or findings.get("method", {}).get("conclusion") != "supported"
+    ):
+        return "agent_assessed"
+    if assessment.get("method") in {"measured", "fitted", "literature"}:
+        if findings.get("source", {}).get("conclusion") != "supported":
+            return "agent_assessed"
+    if not policy:
+        return "awaiting_signoff"
+
+    attestations = sidecar.get("verification", {}).get("attestations", [])
+    states = attestation_states(sidecar, policy)
+    current = []
+    for item in attestations:
+        if states.get(_event_key(item)) != "current":
+            continue
+        verifier = policy["verifiers"].get(
+            str(item.get("verifier", "")).casefold()
+        )
+        if (
+            not verifier
+            or verifier.get("github_user_id") != item.get("verifier_id")
+            or item.get("scope") not in verifier.get("scopes", [])
+        ):
+            continue
+        current.append(item)
+    decisions = {item.get("decision") for item in current}
+    if decisions & {"changes_requested", "unresolved", "curation_required"}:
+        return "awaiting_signoff"
+    signed = {
+        item.get("verifier_id")
+        for item in current
+        if item.get("decision") == "verified"
+    }
+    scopes = {
+        item.get("scope")
+        for item in current
+        if item.get("decision") == "verified"
+    }
+    if (
+        len(signed) >= policy["required_signoffs"]
+        and policy["required_scopes"] <= scopes
+    ):
+        return "verified"
+    return "awaiting_signoff"
 
 
 def doc_url(target, dotted):
@@ -421,7 +601,7 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
    a wide table would push the whole column past the viewport and take the
    page with it. The desktop track spells this out as minmax(0, 1fr); the
    collapsed one needs it on the items. */
-.cols > div { min-width: 0; }
+.cols > *, .layout > * { min-width: 0; }
 .side { border: 1px solid var(--border-light); border-radius: 12px;
   background: var(--bg-card); padding: 0.95rem 1.1rem 1rem; margin-bottom: 1rem; }
 .side h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase;
@@ -436,6 +616,43 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .side details summary { cursor: pointer; color: var(--text-muted);
   font-size: 0.83rem; margin: 0.3rem 0; }
 .side .allof { display: block; margin-top: 0.5rem; font-size: 0.83rem; }
+.pstate { display: inline-block; padding: 0.16rem 0.65rem;
+  border: 1px solid var(--border-medium); border-radius: 999px;
+  color: var(--text-secondary); font-size: 0.75rem; font-weight: 600; }
+.pstate-verified { border-color: var(--veg-green); color: var(--fig-green); }
+.pstate-awaiting-signoff, .pstate-curation-required {
+  border-color: var(--gold-ink); color: var(--gold-ink); }
+.pstate-unresolved, .pstate-source-inaccessible {
+  border-color: var(--energy-orange); color: var(--energy-orange); }
+.provhead { display: flex; align-items: center; justify-content: space-between;
+  gap: 0.8rem; flex-wrap: wrap; margin: 2rem 0 0.75rem; }
+.provhead h3 { margin: 0; }
+.provmeta { color: var(--text-muted); font-size: 0.84rem; margin: 0 0 1rem; }
+.evidence-list { border-top: 1px solid var(--border-light); }
+.evidence-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border-light); }
+.evidence-item h4 { margin: 0 0 0.35rem; font-size: 0.95rem; font-weight: 600; }
+.erole { display: inline-block; margin-left: 0.45rem; padding: 0.08rem 0.5rem;
+  border-radius: 999px; border: 1px solid var(--border-medium);
+  color: var(--text-muted); font-size: 0.7rem; font-weight: 500;
+  vertical-align: 0.12em; }
+.locator { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.86rem; }
+.locator b { color: var(--text-primary); font-weight: 600; }
+.finding-supported { color: var(--fig-green); }
+.finding-blocked { color: var(--gold-ink); }
+.signoff { display: block; margin-top: 0.8rem; padding: 0.58rem 0.8rem;
+  border-radius: 8px; border: 1px solid var(--gold-ink);
+  color: var(--gold-ink); text-align: center; font-weight: 600; }
+.signoff:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
+.signoff-help { color: var(--text-muted); font-size: 0.78rem;
+  line-height: 1.45; margin: 0.55rem 0 0; }
+.attestation { padding: 0.5rem 0; border-bottom: 1px solid var(--border-light);
+  font-size: 0.84rem; }
+.attestation:last-child { border-bottom: 0; }
+.attestation .decision { color: var(--text-secondary); }
+.attestation .stale { color: var(--gold-ink); }
+.attestation .superseded { color: var(--text-muted); }
+.revision { display: block; max-width: 100%; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
 .stag { display: inline-block; padding: 0.14rem 0.7rem; border-radius: 999px;
   font-size: 0.78rem; background: var(--acc); color: var(--on-accent);
   font-weight: 600;
@@ -1019,15 +1236,218 @@ def image_figure(path, entry, depth):
             f"<figcaption>{caption}"
             f"<span class=\"credit\">{credit} · {licence}</span>"
             f"</figcaption></figure>")
+def _state_badge(state):
+    label = PROVENANCE_STATE_LABEL.get(state, state.replace("_", " ").title())
+    return (
+        f"<span class=\"pstate pstate-{esc(state.replace('_', '-'))}\">"
+        f"{esc(label)}</span>"
+    )
+
+
+def signoff_issue_url(path, sidecar, policy):
+    """Prefill the authenticated GitHub issue used as a verifier decision."""
+    title = f"[provenance sign-off] {path.rsplit('/', 1)[-1]}"
+    fields = {
+        "title": title,
+        "record": path,
+        "evidence_revision": sidecar["assessment"]["evidence_revision"],
+        "policy_revision": policy["revision"],
+        "decision": "Verified",
+    }
+    return SIGNOFF_TEMPLATE_URL + "&" + "&".join(
+        f"{key}={quote(str(value), safe='')}" for key, value in fields.items()
+    )
+
+
+def provenance_blocks(path, sidecar, policy, rel, sources, records):
+    """Return the main evidence section and compact review rail card."""
+    state = provenance_state(sidecar, policy)
+    if not sidecar:
+        main = (
+            "<div class=\"provhead\"><h3>Provenance review</h3>"
+            + _state_badge(state)
+            + "</div><p class=\"provmeta\">No structured assessment has been "
+            "prepared for this record yet. Its model-ready source field remains "
+            "visible above.</p>"
+        )
+        rail = (
+            "<div class=\"side\"><h4>Review status</h4>"
+            + _state_badge(state)
+            + "<p class=\"signoff-help\">This record has not entered the "
+            "provenance review queue.</p></div>"
+        )
+        return main, rail
+
+    assessment = sidecar.get("assessment", {})
+    assessor = assessment.get("assessor", {})
+    method = assessment.get("method")
+    meta = []
+    if method:
+        meta.append(METHOD_LABEL.get(method, method.replace("_", " ").title()))
+    if assessor:
+        meta.append(
+            f"assessed by {assessor.get('name', assessor.get('kind', 'unknown'))}"
+        )
+    if assessment.get("assessed_at"):
+        meta.append(str(assessment["assessed_at"])[:10])
+    main = [
+        "<div class=\"provhead\"><h3>Provenance evidence</h3>"
+        + _state_badge(state)
+        + "</div>",
+        f"<p class=\"provmeta\">{esc(' · '.join(meta))}. Agent assessment is "
+        "evidence preparation, not human verification.</p>",
+    ]
+
+    evidence = assessment.get("evidence", [])
+    if evidence:
+        main.append("<div class=\"evidence-list\">")
+        for item in evidence:
+            role = item.get("role", "related")
+            role_label = PROVENANCE_ROLE_LABEL.get(
+                role, role.replace("_", " ").title()
+            )
+            if item.get("source"):
+                key = item["source"]
+                src = sources.get(key, {})
+                title = src.get("title") or src.get("author") or key
+                subject = (
+                    f"<a href=\"{rel}source/{esc(key)}.html\">{esc(title)}</a>"
+                )
+            elif item.get("record"):
+                ref = item["record"]
+                target = records.get(ref, {})
+                title = target.get("name") or ref.rsplit("/", 1)[-1]
+                subject = f"<a href=\"{rel}{esc(ref)}.html\">{esc(title)}</a>"
+            else:
+                subject = esc(item.get("id", "Evidence"))
+            main.append(
+                "<div class=\"evidence-item\"><h4>"
+                + subject
+                + f"<span class=\"erole\">{esc(role_label)}</span></h4>"
+            )
+            for locator in item.get("locators", []):
+                label = locator.get("label") or locator.get("kind", "locator")
+                if locator.get("page"):
+                    label = f"{label}, p. {locator['page']}"
+                linked = esc(label)
+                if locator.get("url"):
+                    linked = f"<a href=\"{esc(locator['url'])}\">{linked}</a>"
+                main.append(f"<p class=\"locator\"><b>Where:</b> {linked}</p>")
+                if locator.get("note"):
+                    main.append(
+                        f"<p class=\"locator\">{esc(locator['note'])}</p>"
+                    )
+            if item.get("note"):
+                main.append(f"<p class=\"locator\">{esc(item['note'])}</p>")
+            main.append("</div>")
+        main.append("</div>")
+
+    findings = assessment.get("findings", {})
+    if findings:
+        rows = []
+        for scope, finding in findings.items():
+            conclusion = finding.get("conclusion", "unknown")
+            klass = (
+                "finding-supported"
+                if conclusion in {"supported", "not_applicable"}
+                else "finding-blocked"
+            )
+            detail = esc(conclusion.replace("_", " "))
+            if finding.get("note"):
+                detail += f"<br><span class=\"crumbs\">{esc(finding['note'])}</span>"
+            links = []
+            for url in finding.get("issue_urls", []):
+                issue = url.rstrip("/").rsplit("/", 1)[-1]
+                links.append(f"<a href=\"{esc(url)}\">issue #{esc(issue)}</a>")
+            if links:
+                detail += "<br>" + " · ".join(links)
+            rows.append(
+                f"<tr><th>{esc(scope.replace('_', ' ').title())}</th>"
+                f"<td class=\"{klass}\">{detail}</td></tr>"
+            )
+        main.append("<h3>Assessment findings</h3><table class=\"kv\">"
+                    + "".join(rows) + "</table>")
+
+    derivation = assessment.get("derivation")
+    if derivation:
+        bits = [derivation.get("kind")]
+        bits.extend(
+            derivation[key]
+            for key in ("expression", "description")
+            if derivation.get(key)
+        )
+        main.append(
+            "<h3>Derivation</h3><p>" + esc(" · ".join(bits)) + "</p>"
+        )
+    if assessment.get("scientific_note"):
+        main.append(
+            f"<h3>Scientific note</h3><p>{esc(assessment['scientific_note'])}</p>"
+        )
+
+    revision = assessment.get("evidence_revision", "")
+    rail = [
+        "<div class=\"side\"><h4>Review status</h4>",
+        _state_badge(state),
+    ]
+    if method:
+        rail.append(
+            f"<div class=\"prow\"><span class=\"pk\">Method</span>"
+            f"<span>{esc(METHOD_LABEL.get(method, method))}</span></div>"
+        )
+    rail.append(
+        "<div class=\"prow\"><span class=\"pk\">Evidence</span>"
+        f"<span><code class=\"revision\" title=\"{esc(revision)}\">"
+        f"{esc(revision)}</code></span></div>"
+    )
+
+    attestations = sidecar.get("verification", {}).get("attestations", [])
+    if attestations:
+        states = attestation_states(sidecar, policy)
+        rail.append("<h4>Verifier decisions</h4>")
+        for item in attestations:
+            verifier = item.get("verifier", "unknown")
+            event = item.get("event", {})
+            display_state = states.get(_event_key(item), "stale")
+            state_note = (
+                f" <span class=\"{esc(display_state)}\">"
+                f"{esc(display_state)}</span>"
+                if display_state != "current"
+                else ""
+            )
+            rail.append(
+                "<div class=\"attestation\">"
+                f"<a href=\"https://github.com/{esc(verifier)}\">@{esc(verifier)}</a> "
+                f"<span class=\"decision\">{esc(item.get('decision', '').replace('_', ' '))}</span>"
+                f"{state_note}<br><a href=\"{esc(event.get('url', '#'))}\">"
+                f"{esc(str(item.get('signed_at', ''))[:10] or 'GitHub event')}</a>"
+                "</div>"
+            )
+
+    if state == "awaiting_signoff" and policy:
+        issue_url = signoff_issue_url(path, sidecar, policy)
+        rail.append(
+            f"<a class=\"signoff\" href=\"{esc(issue_url)}\" target=\"_blank\" "
+            "rel=\"noopener\">"
+            "Sign off on GitHub</a>"
+            "<p class=\"signoff-help\">Raises a prefilled sign-off issue. "
+            "CI accepts it only when the issue author is in the verifier registry "
+            "and the evidence revision is still current.</p>"
+        )
+    rail.append("</div>")
+    return "".join(main), "".join(rail)
 
 
 # ---------------- per-entry pages ----------------
 
 
-def record_page(path, rec, records, sources, used_by, cluster, image=None):
+def record_page(
+    path, rec, records, sources, used_by, cluster, image=None,
+    sidecars=None, policy=None
+):
     depth = path.count("/")
     rel = "../" * depth
     kind = "record" if path.startswith("records/") else "typology"
+    kind_label = "evidence record" if kind == "record" else "composite"
     src_key = rec.get("source")
     src = sources.get(src_key) if src_key else None
     fam = family_of(path)
@@ -1104,7 +1524,10 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
     if rec.get("place"):
         row("Place", f"<a href=\"{rel}place/{esc(rec['place'])}.html\">"
             f"{esc(rec['place'])}</a>")
-    row("Scope", esc(rec.get("representativeness")))
+    row(
+        "Scope",
+        esc(rec["representativeness"]) if rec.get("representativeness") else "",
+    )
     target = rec.get("target")
     target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
                   else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
@@ -1121,15 +1544,23 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
     if rec.get("legacy_id"):
         schema_bits += f" · legacy row {esc(rec['legacy_id'])}"
     row("Schema", schema_bits)
-    rail = ["<div class=\"side\"><h4>Provenance</h4>"
-            + "".join(prov_rows) + "</div>"]
+    rail = []
+    provenance_main = ""
+    if kind == "record":
+        provenance_main, review_rail = provenance_blocks(
+            path, (sidecars or {}).get(path), policy, rel, sources, records
+        )
+        rail.append(review_rail)
+    metadata_label = "Record metadata" if kind == "record" else "Composite metadata"
+    rail.append(f"<div class=\"side\"><h4>{metadata_label}</h4>"
+                + "".join(prov_rows) + "</div>")
 
     unref_badge = (" <span class=\"badge-unref\">unreferenced</span>"
                    if src_key == "unreferenced" else "")
     body = [crumbs,
             f"<h2>{esc(title_text)}{qualifier}"
             + (f"<span class=\"stag {acc}\">{esc(surface)}</span>" if surface else "")
-            + f" <span class=\"chip\">{kind}</span>{unref_badge}</h2>",
+            + f" <span class=\"chip\">{kind_label}</span>{unref_badge}</h2>",
             headline, chip_row]
     main = []
 
@@ -1146,7 +1577,17 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
 
     uses = rec.get("uses")
     if uses:
-        main.append("<h3>Uses</h3><table class=\"kv\">")
+        if kind == "typology":
+            main.append(
+                "<h3>Composition</h3>"
+                "<p class=\"provmeta\">This composite is assembled from the "
+                "entries below. Scientific provenance and human sign-off apply "
+                "to each evidence record independently; database checks validate "
+                "the composition links and compatible targets.</p>"
+            )
+        else:
+            main.append("<h3>Uses</h3>")
+        main.append("<table class=\"kv\">")
 
         def use_rows(u, prefix=""):
             for slot, ref in u.items():
@@ -1158,6 +1599,12 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
                         nm = target_rec.get("name") or ref.rsplit("/", 1)[-1]
                         pl = target_rec.get("place")
                         extra = f" <span class=\"chip\">{esc(pl)}</span>" if pl else ""
+                        if ref.startswith("records/"):
+                            extra += " " + _state_badge(
+                                provenance_state((sidecars or {}).get(ref), policy)
+                            )
+                        else:
+                            extra += " <span class=\"chip\">composite</span>"
                         link = f"<a href=\"{rel}{esc(ref)}.html\">{esc(nm)}</a>{extra} " \
                                f"{vals_preview(target_rec, 3)}"
                     else:
@@ -1181,6 +1628,9 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
                         "<p class=\"crumbs\">Conditions the set was derived "
                         "under; not model inputs themselves.</p>")
             main.append(params_table({"context": context}, None, linked=False))
+
+    if provenance_main:
+        main.append(provenance_main)
 
     if rec.get("legacy"):
         main.append("<h3>Legacy values (no home in the current model; "
@@ -1234,7 +1684,8 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
     # duplicate-as-new: the GitHub new-file editor prefilled with this
     # record's YAML, so a contributor edits a copy rather than starting blank
     dup_dir = f"db/{path.rsplit('/', 1)[0]}"
-    dup_url = f"{REPO_URL}/new/main?filename={quote(dup_dir + '/NEW-RECORD.yml', safe='')}"
+    new_name = "NEW-RECORD.yml" if kind == "record" else "NEW-COMPOSITE.yml"
+    dup_url = f"{REPO_URL}/new/main?filename={quote(dup_dir + '/' + new_name, safe='')}"
     try:
         raw = (ROOT / "db" / (path + ".yml")).read_text()
         prefilled = dup_url + "&value=" + quote(raw, safe="")
@@ -1245,16 +1696,22 @@ def record_page(path, rec, records, sources, used_by, cluster, image=None):
     # reporting a problem should cost one click: the record's identity travels
     # with the report, and the link is pinned to the commit the reader saw
     seen = f"{REPO_URL}/blob/{BUILD_REF}/db/{path}.yml"
+    report_kind = "record" if kind == "record" else "composite"
     report_url = (
         f"{REPO_URL}/issues/new?template=record-issue.yml"
-        f"&title={quote('[record] ' + str(rec.get('name') or path), safe='')}"
+        f"&title={quote('[' + report_kind + '] ' + str(rec.get('name') or path), safe='')}"
         f"&record={quote(path, safe='')}"
         f"&seen_at={quote(seen, safe='')}")
+    duplicate_label = (
+        "Duplicate as a new record"
+        if kind == "record"
+        else "Duplicate as a new composite"
+    )
     rail.append(
         "<div class=\"actions\">"
         f"<a href=\"{REPO_URL}/blob/main/db/{esc(path)}.yml\">View source</a>"
         f"<a href=\"{REPO_URL}/edit/main/db/{esc(path)}.yml\">Propose a change</a>"
-        f"<a href=\"{esc(dup_url)}\">Duplicate as a new record</a>"
+        f"<a href=\"{esc(dup_url)}\">{duplicate_label}</a>"
         f"<a class=\"report\" href=\"{esc(report_url)}\">Report an issue</a>"
         "</div>"
     )
@@ -1277,6 +1734,55 @@ def grouped_list(paths, records, depth):
     return "".join(out)
 
 
+def provenance_source_roles(sidecars):
+    """Map each citation key to the roles it plays in reviewed records."""
+    roles = defaultdict(lambda: defaultdict(set))
+    for record_path, sidecar in sidecars.items():
+        for item in sidecar.get("assessment", {}).get("evidence", []):
+            if item.get("source"):
+                roles[item["source"]][item.get("role", "related")].add(record_path)
+    return roles
+
+
+def build_provenance_index(sidecars, policy):
+    """Generated lookup from records to their audit and sign-off issues."""
+    index = {}
+    for record_path, sidecar in sorted(sidecars.items()):
+        assessment = sidecar.get("assessment", {})
+        audit_urls = set()
+        run_url = assessment.get("assessor", {}).get("run_url")
+        if run_url and "/issues/" in run_url:
+            audit_urls.add(run_url)
+        for finding in assessment.get("findings", {}).values():
+            audit_urls.update(finding.get("issue_urls", []))
+        audit_issues = []
+        for url in sorted(audit_urls):
+            issue = url.rstrip("/").rsplit("/", 1)[-1]
+            if issue.isdigit():
+                audit_issues.append({"issue": int(issue), "url": url})
+        signoffs = []
+        for item in sidecar.get("verification", {}).get("attestations", []):
+            event = item.get("event", {})
+            if event.get("kind") != "issue":
+                continue
+            signoffs.append({
+                "issue": event.get("id"),
+                "url": event.get("url"),
+                "verifier": item.get("verifier"),
+                "verifier_id": item.get("verifier_id"),
+                "decision": item.get("decision"),
+                "signed_at": item.get("signed_at"),
+                "evidence_revision": item.get("evidence_revision"),
+                "policy_revision": item.get("verifier_policy_revision"),
+            })
+        index[record_path] = {
+            "state": provenance_state(sidecar, policy),
+            "audit_issues": audit_issues,
+            "signoff_issues": signoffs,
+        }
+    return index
+
+
 def place_page(slug, info, paths, records):
     body = [f"<div class=\"crumbs\"><a href=\"../index.html\">browse</a> · place</div>",
             f"<h2>{esc(info.get('name', slug))}</h2>",
@@ -1287,7 +1793,7 @@ def place_page(slug, info, paths, records):
     return page(info.get("name", slug), "\n".join(body), 1)
 
 
-def source_page(key, src, paths, records):
+def source_page(key, src, paths, records, role_paths=None):
     title = src.get("title") or src.get("note") or key
     doi = src.get("doi")
     cite = (f"{esc(src.get('author', ''))} ({esc(src.get('year', '?'))}). "
@@ -1299,8 +1805,31 @@ def source_page(key, src, paths, records):
             f"<p>{cite}</p>",
             f"<p class=\"crumbs\">{len(paths)} entries cite this source · "
             f"<a href=\"../index.html#source={esc(key)}\">filter the browser "
-            "to this source</a></p>",
-            grouped_list(paths, records, 1)]
+            "to this source</a></p>"]
+    if role_paths:
+        body.append(
+            "<h3>Role in reviewed provenance</h3>"
+            "<p class=\"crumbs\">Observation inputs, exact-value publications "
+            "and later compilations are listed separately.</p>"
+        )
+        for role, reviewed_paths in sorted(
+            role_paths.items(),
+            key=lambda item: PROVENANCE_ROLE_LABEL.get(item[0], item[0]),
+        ):
+            label = PROVENANCE_ROLE_LABEL.get(
+                role, role.replace("_", " ").title()
+            )
+            body.append(
+                f"<h3>{esc(label)} <span class=\"chip\">"
+                f"{len(reviewed_paths)}</span></h3><ul class=\"linked\">"
+                + "".join(
+                    entry_link(path, records, 1)
+                    for path in sorted(reviewed_paths)
+                )
+                + "</ul>"
+            )
+    body.append("<h3>Records whose main source is this publication</h3>")
+    body.append(grouped_list(paths, records, 1))
     return page(key, "\n".join(body), 1)
 
 
@@ -1409,7 +1938,7 @@ in the <a href="index.html">browser</a>, or add coordinates to
 BROWSER_JS = """
 <script>
 const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
-                'city', 'rep', 'source'];
+                'city', 'rep', 'source', 'method', 'verification', 'role'];
 // 'place' is a hidden exact-match key: not rendered as a facet group, but
 // honoured from the hash so record-page sibling links and old bookmarks
 // filter exactly rather than through the free-text search
@@ -1433,8 +1962,15 @@ function writeHash() {
   for (const f of KEYS) if (state[f]) h.set(f, state[f]);
   history.replaceState(null, '', h.toString() ? '#' + h.toString() : location.pathname);
 }
+function facetValues(e, facet) {
+  const value = e[facet];
+  if (Array.isArray(value)) return value;
+  return value ? [value] : [];
+}
 function matches(e) {
-  for (const f of KEYS) if (state[f] && e[f] !== state[f]) return false;
+  for (const f of KEYS) {
+    if (state[f] && !facetValues(e, f).includes(state[f])) return false;
+  }
   if (state.q) {
     // every word must match somewhere: "london grass" finds London grass
     const toks = state.q.toLowerCase().split(/\\s+/).filter(Boolean);
@@ -1445,6 +1981,9 @@ function matches(e) {
 function displayVal(facet, value) {
   if (facet === 'surface') return LC_LABEL[value] || value;
   if (facet === 'typology') return TYP_LABEL[value] || value;
+  if (facet === 'method') return METHOD_LABEL[value] || value;
+  if (facet === 'verification') return STATE_LABEL[value] || value;
+  if (facet === 'role') return ROLE_LABEL[value] || value;
   return value;
 }
 function itemHTML(facet, value, count, on, swatch) {
@@ -1470,7 +2009,9 @@ function render() {
     const sub = DATA.filter(matches);
     state[f] = saved;
     const counts = {};
-    for (const e of sub) if (e[f]) counts[e[f]] = (counts[e[f]] || 0) + 1;
+    for (const e of sub) for (const value of facetValues(e, f)) {
+      counts[value] = (counts[value] || 0) + 1;
+    }
     const el = document.getElementById('facet-' + f);
     if (f === 'surface') {
       // the 7 SUEWS land covers in canonical order, a divider, then
@@ -1539,10 +2080,11 @@ function render() {
         const src = e.source === 'unreferenced'
           ? '<span class="badge-unref">unreferenced</span>' : e.source;
         const meta = [e.family, TYP_LABEL[e.typology],
-                      e.city || e.country, e.rep, src]
+                      e.city || e.country, e.rep,
+                      STATE_LABEL[e.verification], METHOD_LABEL[e.method], src]
           .filter(Boolean).join(' · ');
         const kindTag = e.kind === 'typology'
-          ? ' <span class="chip">typology</span>' : '';
+          ? ' <span class="chip">composite</span>' : '';
         return `<div class="card2 ${acc}"><div class="t"><a href="${e.path}.html">` +
                `${e.name}</a>${kindTag}</div><div class="meta2">${meta}</div>` +
                `<div>${e.vals}</div></div>`;
@@ -1919,6 +2461,9 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
             + fgroup("rep", FACET_TITLE["rep"],
                      cap="what a value stands for: one site, a whole city, "
                          "a region, or generic")
+            + fgroup("verification", FACET_TITLE["verification"], is_open=True)
+            + fgroup("method", FACET_TITLE["method"])
+            + fgroup("role", FACET_TITLE["role"])
             + fgroup("source", FACET_TITLE["source"], scroll=True, find=True)
             + "</div>")
     body = (arrival
@@ -1941,13 +2486,17 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
         f"const LC_LABEL = {json.dumps(SURFACE_LABEL)};"
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
         f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
+        f"const METHOD_LABEL = {json.dumps(METHOD_LABEL)};"
+        f"const STATE_LABEL = {json.dumps(PROVENANCE_STATE_LABEL)};"
+        f"const ROLE_LABEL = {json.dumps(PROVENANCE_ROLE_LABEL)};"
         "</script>"
     )
     return page("Browse", body, 0, js_consts + BROWSER_JS)
 
 
-def build_search_index(records, sources, places):
+def build_search_index(records, sources, places, sidecars=None, policy=None):
     entries = []
+    sidecars = sidecars or {}
     for path, rec in sorted(records.items()):
         kind = "record" if path.startswith("records/") else "typology"
         fam = family_of(path)
@@ -1965,11 +2514,21 @@ def build_search_index(records, sources, places):
 
         vals = "".join(pv(k, v) for k, v in pairs[:5])
         src = sources.get(rec.get("source"), {})
+        sidecar = sidecars.get(path)
+        assessment = sidecar.get("assessment", {}) if sidecar else {}
+        method = assessment.get("method") or rec.get("method")
+        verification = provenance_state(sidecar, policy) if kind == "record" else None
+        roles = sorted({
+            item.get("role")
+            for item in assessment.get("evidence", [])
+            if item.get("role")
+        })
         text = " ".join(str(x).lower() for x in [
             path, rec.get("name"), rec.get("place"), rec.get("origin"),
             region, country, city,
             rec.get("source"), src.get("author"), src.get("title"),
             rec.get("target"), fam, surface or "",
+            method, verification, " ".join(roles),
             " ".join(k for k, _ in pairs),
             " ".join(str(v) for _, v in pairs),
         ] if x)
@@ -1982,7 +2541,9 @@ def build_search_index(records, sources, places):
             "place": rec.get("place"),
             "region": region, "country": country, "city": city,
             "rep": rec.get("representativeness"),
-            "source": rec.get("source"), "vals": vals, "text": text,
+            "source": rec.get("source"), "method": method,
+            "verification": verification, "role": roles,
+            "vals": vals, "text": text,
         })
     # evidence records with values lead; bare pointer typologies trail, so a
     # filtered screen shows data first; alphabetical within each group so
@@ -2002,6 +2563,9 @@ def main():
     out = ROOT / args.out
 
     records, sources, places = load_all()
+    sidecars = load_site_provenance()
+    policy = load_site_policy()
+    merge_github_signoffs(sidecars)
     used_by, cluster = build_graph(records)
 
     images, release = load_images()
@@ -2010,9 +2574,13 @@ def main():
     for path, rec in records.items():
         fp = out / (path + ".html")
         fp.parent.mkdir(parents=True, exist_ok=True)
-        fp.write_text(record_page(path, rec, records, sources, used_by, cluster,
-                                  image=images.get(path) if path in staged
-                                  else None))
+        fp.write_text(
+            record_page(
+                path, rec, records, sources, used_by, cluster,
+                image=images.get(path) if path in staged else None,
+                sidecars=sidecars, policy=policy,
+            )
+        )
 
     by_place = defaultdict(list)
     by_source = defaultdict(list)
@@ -2029,15 +2597,20 @@ def main():
             place_page(slug, info, paths, records))
 
     (out / "source").mkdir(parents=True, exist_ok=True)
-    for key, paths in by_source.items():
+    source_roles = provenance_source_roles(sidecars)
+    for key in sorted(set(by_source) | set(source_roles)):
+        paths = by_source.get(key, [])
         src = sources.get(key, {})
         (out / "source" / f"{key}.html").write_text(
-            source_page(key, src, paths, records))
+            source_page(key, src, paths, records, source_roles.get(key)))
 
     (out / "data").mkdir(parents=True, exist_ok=True)
     (out / "data" / "index.json").write_text(
-        json.dumps(build_search_index(records, sources, places),
+        json.dumps(build_search_index(records, sources, places, sidecars, policy),
                    ensure_ascii=False))
+    (out / "data" / "provenance.json").write_text(
+        json.dumps(build_provenance_index(sidecars, policy), ensure_ascii=False)
+    )
     (out / "index.html").write_text(
         build_index_page(records, sources, places, by_place))
     (out / "map.html").write_text(build_map_page(places, by_place))

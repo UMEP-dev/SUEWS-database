@@ -34,6 +34,10 @@ file says where things are.
   incrementally as records enter the audit workflow.
 - `.github/provenance-verifiers.yml` — reviewed GitHub handles, immutable user
   IDs, review scopes and the required sign-off threshold
+- `.github/ISSUE_TEMPLATE/provenance-signoff.yml` — record-bound human decision
+  form opened by the site sign-off control
+- `site/data/provenance.json` — generated record-to-issue index for audit and
+  sign-off history; the GitHub issues remain the durable review records
 - `db/sources.yml` — citation registry (keys like `ward2016`)
 - `db/places.yml` — place registry (slugs like `helsinki`, `se-england`)
 - `schema/table_mapping.yml` — the audited legacy-column -> supy-path map

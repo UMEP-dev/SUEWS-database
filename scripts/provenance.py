@@ -36,9 +36,8 @@ SIGNOFF_FINDINGS = {"supported", "not_applicable"}
 EXTERNAL_METHODS = {"measured", "fitted", "literature"}
 
 EVENT_URLS = {
-    "issue_comment": re.compile(
-        r"^https://github\.com/UMEP-dev/SUEWS-database/(?:issues|pull)/\d+"
-        r"#issuecomment-(\d+)$"
+    "issue": re.compile(
+        r"^https://github\.com/UMEP-dev/SUEWS-database/issues/(\d+)$"
     ),
 }
 
