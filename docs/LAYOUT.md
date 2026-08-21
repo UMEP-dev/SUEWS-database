@@ -51,10 +51,14 @@ file says where things are.
 - `schema/provenance-assessment.schema.yml` — the machine-readable format for
   provenance sidecars, assessment states, revision fingerprints and verifier
   attestations
+- `schema/provenance-audit-response.schema.yml` — the strict operational
+  envelope an audit agent returns to the reproducible runner
 - `schema/provenance-verifier-policy.schema.yml` — verifier registry and
   sign-off threshold policy
 - `schema/regional_axis.yml` — how the database slices by place and region
 - `scripts/` — the checking, export and migration tools
+  - `provenance_runner.py` — deterministic evidence/composition packet,
+    response, resume, candidate and issue-draft workflow
 - `scripts/legacy/` — the pre-migration spreadsheet toolchain, kept for
   reference
 
