@@ -7,7 +7,7 @@ place, with a citation on every value.
 
 ## Browse it
 
-**[umep-dev.github.io/SUEWS-database](https://umep-dev.github.io/SUEWS-database/)**
+**[database.suews.io](https://database.suews.io)**
 
 Every record and typology has a page. Arrive knowing a parameter and search the
 model's own parameter paths; arrive knowing a site and pick it off the map or
