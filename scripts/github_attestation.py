@@ -151,12 +151,21 @@ def fact_from_issue_comment(comment, policy):
     }
 
 
-def _attestation_matches_fact(attestation, fact, provenance_record):
+def _attestation_matches_fact(
+    attestation, fact, provenance_record, current_policy_revision
+):
     event = attestation.get("event", {})
-    return (
+    same_handle = (
         attestation.get("verifier", "").casefold()
         == fact.get("author", "").casefold()
-        and attestation.get("verifier_id") == fact.get("author_id")
+    )
+    current_policy = (
+        attestation.get("verifier_policy_revision")
+        == current_policy_revision
+    )
+    return (
+        attestation.get("verifier_id") == fact.get("author_id")
+        and (same_handle or not current_policy)
         and attestation.get("signed_at") == fact.get("signed_at")
         and event.get("kind") == "issue_comment"
         and event.get("url") == fact.get("url")
@@ -207,7 +216,9 @@ def check_github_attestations(sidecars, policy, fetch_comment):
                 if comment.get("id") != event_id:
                     raise AttestationError("GitHub returned a different event ID")
                 fact = fact_from_issue_comment(comment, policy)
-                if not _attestation_matches_fact(item, fact, record_path):
+                if not _attestation_matches_fact(
+                    item, fact, record_path, policy["revision"]
+                ):
                     raise AttestationError(
                         "sidecar attestation does not match authenticated event"
                     )

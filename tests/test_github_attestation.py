@@ -164,6 +164,20 @@ class EventTests(unittest.TestCase):
         )
         fact = fact_from_issue_comment(stale, policy())
         self.assertEqual(fact["verifier_policy_revision"], stale_revision)
+
+        historical = attestation()
+        historical["verifier_policy_revision"] = stale_revision
+        historical_sidecars = {
+            RECORD: {"verification": {"attestations": [historical]}}
+        }
+        renamed = deepcopy(stale)
+        renamed["user"]["login"] = "renamed-handle"
+        checked, errors = check_github_attestations(
+            historical_sidecars, policy(), lambda event_id: renamed
+        )
+        self.assertEqual(checked, 1)
+        self.assertEqual(errors, [])
+
         with self.assertRaisesRegex(AttestationError, "edited comments"):
             fact_from_issue_comment(
                 comment(updated_at="2026-08-21T15:01:00Z"), policy()
