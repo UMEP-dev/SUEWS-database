@@ -28,6 +28,13 @@ sources:
       \ dense urban site in Shanghai: Sensitivity to anthropogenic heat and irrigation"
     type: journalArticle
     year: 2018
+  asaeda1993:
+    author: Asaeda, T.; Ca, V. T.
+    doi: 10.1007/BF00708822
+    journal: Boundary-Layer Meteorology
+    title: 'The subsurface transport of heat and moisture and its effect on the environment: A numerical model'
+    type: journalArticle
+    year: 1993
   auer1974:
     author: Auer, August H.
     doi: 10.1080/00431672.1974.9931684

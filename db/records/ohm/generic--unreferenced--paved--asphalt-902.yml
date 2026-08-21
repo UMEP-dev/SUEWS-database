@@ -2,7 +2,8 @@ record: records/ohm/generic--unreferenced--paved--asphalt-902
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Asphalt [902]
-source: unreferenced
+source: asaeda1993
+method: fitted
 legacy_id: 50240004
 parameters:
   a1: 0.64
