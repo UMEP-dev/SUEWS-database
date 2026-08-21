@@ -12,11 +12,11 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from github_attestation import (  # noqa: E402
     AttestationError,
-    BODY_PREFIX,
-    BODY_SUFFIX,
-    check_github_attestations,
-    fact_from_issue_comment,
-    parse_signoff_body,
+    attestation_from_issue,
+    collect_issue_attestations,
+    fact_from_signoff_issue,
+    parse_signoff_issue_body,
+    validate_issue_event,
 )
 from verifier_policy import PolicyError, load_verifier_policy  # noqa: E402
 
@@ -42,63 +42,33 @@ def policy():
     }
 
 
-def payload(**changes):
-    value = {
-        "version": 1,
-        "provenance_record": RECORD,
-        "decision": "verified",
-        "evidence_revision": EVIDENCE_REVISION,
-        "verifier_policy_revision": POLICY_REVISION,
-        "scope": "record",
-        "supersedes_event": None,
+def issue_body(**changes):
+    fields = {
+        "Reviewed entry": RECORD,
+        "Review type": "Evidence",
+        "Evidence revision": EVIDENCE_REVISION,
+        "Verifier policy revision": POLICY_REVISION,
+        "Decision": "Verified",
+        "Supersedes issue": "_No response_",
+        "Review note": "Checked against the cited source.",
     }
-    value.update(changes)
-    return value
+    fields.update(changes)
+    return "\n\n".join(f"### {key}\n\n{value}" for key, value in fields.items())
 
 
-def body(value=None):
-    value = payload() if value is None else value
-    return (
-        BODY_PREFIX
-        + json.dumps(value, separators=(",", ":"))
-        + BODY_SUFFIX
-    )
-
-
-def comment(**changes):
+def issue(**changes):
     value = {
-        "id": 101,
-        "html_url": (
-            "https://github.com/UMEP-dev/SUEWS-database/issues/22"
-            "#issuecomment-101"
-        ),
-        "body": body(),
-        "created_at": "2026-08-21T15:00:00Z",
-        "updated_at": "2026-08-21T15:00:00Z",
+        "number": 201,
+        "title": "[provenance sign-off] example",
+        "html_url": "https://github.com/UMEP-dev/SUEWS-database/issues/201",
+        "body": issue_body(),
+        "created_at": "2026-08-21T16:00:00Z",
+        "updated_at": "2026-08-21T16:00:00Z",
+        "labels": [{"name": "provenance sign-off"}],
         "user": {"login": "sunt05", "id": 1802656, "type": "User"},
     }
     value.update(changes)
     return value
-
-
-def attestation():
-    return {
-        "verifier": "sunt05",
-        "verifier_id": 1802656,
-        "decision": "verified",
-        "signed_at": "2026-08-21T15:00:00Z",
-        "event": {
-            "kind": "issue_comment",
-            "id": 101,
-            "url": (
-                "https://github.com/UMEP-dev/SUEWS-database/issues/22"
-                "#issuecomment-101"
-            ),
-        },
-        "evidence_revision": EVIDENCE_REVISION,
-        "verifier_policy_revision": POLICY_REVISION,
-        "scope": "record",
-    }
 
 
 class PolicyTests(unittest.TestCase):
@@ -110,86 +80,105 @@ class PolicyTests(unittest.TestCase):
         )
         self.assertRegex(loaded["revision"], r"^sha256:[0-9a-f]{64}$")
 
-    def test_duplicate_identity_is_rejected(self):
+    def test_duplicate_or_impossible_policy_is_rejected(self):
         document = yaml.safe_load(
             (ROOT / ".github/provenance-verifiers.yml").read_text()
         )
-        document["verifiers"].append(deepcopy(document["verifiers"][0]))
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "policy.yml"
-            path.write_text(yaml.safe_dump(document, sort_keys=False))
+            duplicate = deepcopy(document)
+            duplicate["verifiers"].append(deepcopy(duplicate["verifiers"][0]))
+            path.write_text(yaml.safe_dump(duplicate, sort_keys=False))
             with self.assertRaises(PolicyError):
                 load_verifier_policy(path=path)
 
-    def test_impossible_threshold_is_rejected(self):
-        document = yaml.safe_load(
-            (ROOT / ".github/provenance-verifiers.yml").read_text()
-        )
-        document["required_signoffs"] = 3
-        with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / "policy.yml"
+            document["required_signoffs"] = 3
             path.write_text(yaml.safe_dump(document, sort_keys=False))
             with self.assertRaisesRegex(PolicyError, "below required_signoffs"):
                 load_verifier_policy(path=path)
 
 
-class EventTests(unittest.TestCase):
-    def test_exact_authenticated_comment_is_accepted(self):
-        fact = fact_from_issue_comment(comment(), policy())
-        self.assertEqual(fact["author_id"], 1802656)
-        self.assertEqual(fact["provenance_record"], RECORD)
+class IssueDecisionTests(unittest.TestCase):
+    def test_registered_verifier_issue_becomes_record_attestation(self):
+        parsed = parse_signoff_issue_body(issue()["body"])
+        self.assertEqual(parsed["provenance_record"], RECORD)
+        record_path, review_type, item = attestation_from_issue(issue(), policy())
+        self.assertEqual(record_path, RECORD)
+        self.assertEqual(review_type, "evidence")
+        self.assertEqual(item["verifier"], "sunt05")
+        self.assertEqual(item["verifier_id"], 1802656)
+        self.assertEqual(item["event"]["kind"], "issue")
+        self.assertEqual(item["note"], "Checked against the cited source.")
 
-        sidecars = {
-            RECORD: {"verification": {"attestations": [attestation()]}}
-        }
-        checked, errors = check_github_attestations(
-            sidecars, policy(), lambda event_id: comment()
-        )
-        self.assertEqual(checked, 1)
-        self.assertEqual(errors, [])
-
-    def test_unauthorized_or_renamed_identity_is_rejected(self):
+    def test_non_verifier_is_rejected(self):
         for user in (
-            {"login": "other", "id": 1802656, "type": "User"},
+            {"login": "outsider", "id": 999, "type": "User"},
             {"login": "sunt05", "id": 999, "type": "User"},
-            {"login": "sunt05", "id": 1802656, "type": "Bot"},
         ):
-            with self.subTest(user=user), self.assertRaises(AttestationError):
-                fact_from_issue_comment(comment(user=user), policy())
+            with self.subTest(user=user), self.assertRaisesRegex(
+                AttestationError, "not an eligible verifier"
+            ):
+                fact_from_signoff_issue(issue(user=user), policy())
 
-    def test_stale_event_is_authenticated_but_edited_event_is_rejected(self):
-        stale_revision = "sha256:" + "9" * 64
-        stale = comment(
-            body=body(payload(verifier_policy_revision=stale_revision))
+    def test_ci_rejects_stale_revision_and_sender_mismatch(self):
+        sidecars = {RECORD: {"assessment": {"evidence_revision": EVIDENCE_REVISION}}}
+        stale = issue(
+            body=issue_body(**{"Evidence revision": "sha256:" + "9" * 64})
         )
-        fact = fact_from_issue_comment(stale, policy())
-        self.assertEqual(fact["verifier_policy_revision"], stale_revision)
+        grouped, errors = collect_issue_attestations(
+            [stale], policy(), sidecars, require_current=True
+        )
+        self.assertEqual(grouped, {})
+        self.assertTrue(any("stale" in error for error in errors))
 
-        historical = attestation()
-        historical["verifier_policy_revision"] = stale_revision
-        historical_sidecars = {
-            RECORD: {"verification": {"attestations": [historical]}}
+        event = {
+            "repository": {"full_name": "UMEP-dev/SUEWS-database"},
+            "issue": issue(),
+            "sender": {"login": "outsider", "id": 999},
         }
-        renamed = deepcopy(stale)
-        renamed["user"]["login"] = "renamed-handle"
-        checked, errors = check_github_attestations(
-            historical_sidecars, policy(), lambda event_id: renamed
-        )
-        self.assertEqual(checked, 1)
-        self.assertEqual(errors, [])
+        with tempfile.TemporaryDirectory() as tmp:
+            event_path = Path(tmp) / "event.json"
+            event_path.write_text(json.dumps(event))
+            with self.assertRaisesRegex(AttestationError, "sender"):
+                validate_issue_event(event_path, policy(), sidecars)
 
-        with self.assertRaisesRegex(AttestationError, "edited comments"):
-            fact_from_issue_comment(
-                comment(updated_at="2026-08-21T15:01:00Z"), policy()
+    def test_composition_issue_is_distinct_from_evidence_review(self):
+        composite = "archetypes/surfaces/bldgs/example"
+        composition_issue = issue(
+            body=issue_body(
+                **{"Reviewed entry": composite, "Review type": "Composition"}
             )
+        )
+        sidecars = {
+            composite: {
+                "review_type": "composition",
+                "assessment": {"evidence_revision": EVIDENCE_REVISION},
+            }
+        }
+        grouped, errors = collect_issue_attestations(
+            [composition_issue], policy(), sidecars, require_current=True
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(grouped[composite][0]["event"]["id"], 201)
 
-    def test_payload_rejects_extra_and_duplicate_fields(self):
-        extra = payload(extra=True)
-        with self.assertRaises(AttestationError):
-            parse_signoff_body(body(extra))
-        duplicate = BODY_PREFIX + '{"version":1,"version":1}' + BODY_SUFFIX
-        with self.assertRaisesRegex(AttestationError, "duplicate JSON key"):
-            parse_signoff_body(duplicate)
+        wrong_layer = issue(
+            body=issue_body(
+                **{"Reviewed entry": composite, "Review type": "Evidence"}
+            )
+        )
+        grouped, errors = collect_issue_attestations(
+            [wrong_layer], policy(), sidecars, require_current=True
+        )
+        self.assertEqual(grouped, {})
+        self.assertTrue(any("review type" in error for error in errors))
+
+    def test_withdrawal_requires_superseded_issue(self):
+        with self.assertRaisesRegex(AttestationError, "must supersede"):
+            parse_signoff_issue_body(issue_body(Decision="Withdrawn"))
+        parsed = parse_signoff_issue_body(
+            issue_body(Decision="Withdrawn", **{"Supersedes issue": "123"})
+        )
+        self.assertEqual(parsed["supersedes_event"], {"kind": "issue", "id": 123})
 
 
 if __name__ == "__main__":

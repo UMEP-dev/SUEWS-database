@@ -6,11 +6,16 @@ on:
     paths:
       - 'db/**'
       - 'scripts/**'
+      - '.github/provenance-verifiers.yml'
+      - '.github/ISSUE_TEMPLATE/provenance-signoff.yml'
       - '.github/workflows/site.yml'
   workflow_dispatch:
+  issues:
+    types: [opened, edited, reopened, closed]
 
 permissions:
   contents: read
+  issues: read
   pages: write
   id-token: write
 
@@ -20,6 +25,9 @@ concurrency:
 
 jobs:
   build-deploy:
+    if: >-
+      github.event_name != 'issues' ||
+      contains(github.event.issue.labels.*.name, 'provenance sign-off')
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -28,7 +36,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - name: Build the database browser
-        run: uv run --with pyyaml --no-project python scripts/build_site.py
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: >-
+          uv run --with pyyaml --with jsonschema --with rfc8785 --no-project
+          python scripts/build_site.py
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site

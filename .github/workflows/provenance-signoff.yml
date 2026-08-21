@@ -1,0 +1,21 @@
+name: provenance sign-off
+
+on:
+  issues:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+  issues: read
+
+jobs:
+  validate:
+    if: contains(github.event.issue.labels.*.name, 'provenance sign-off')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Validate verifier identity and decision revisions
+        run: >-
+          uv run --with pyyaml --with jsonschema --with rfc8785 --no-project
+          python scripts/github_attestation.py validate-issue "$GITHUB_EVENT_PATH"

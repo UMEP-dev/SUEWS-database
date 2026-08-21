@@ -36,9 +36,8 @@ SIGNOFF_FINDINGS = {"supported", "not_applicable"}
 EXTERNAL_METHODS = {"measured", "fitted", "literature"}
 
 EVENT_URLS = {
-    "issue_comment": re.compile(
-        r"^https://github\.com/UMEP-dev/SUEWS-database/(?:issues|pull)/\d+"
-        r"#issuecomment-(\d+)$"
+    "issue": re.compile(
+        r"^https://github\.com/UMEP-dev/SUEWS-database/issues/(\d+)$"
     ),
 }
 
@@ -61,6 +60,8 @@ def evidence_revision(sidecar):
             if key in assessment
         },
     }
+    if "review_type" in sidecar:
+        projection["review_type"] = sidecar["review_type"]
     return canonical_revision(projection)
 
 
@@ -159,6 +160,11 @@ def _parameter_source_aligned(record, assessment):
     return False
 
 
+def _review_type(sidecar):
+    """Return the explicit review layer; old sidecars are evidence reviews."""
+    return sidecar.get("review_type", "evidence")
+
+
 def signoff_eligible(sidecar, record):
     """Whether human attestations are allowed to affect the record state."""
     if not isinstance(sidecar, dict) or not isinstance(record, dict):
@@ -178,6 +184,8 @@ def signoff_eligible(sidecar, record):
     ):
         return False
     if (
+        _review_type(sidecar) == "evidence"
+        and
         assessment.get("method") in EXTERNAL_METHODS
         and findings.get("source", {}).get("conclusion") != "supported"
     ):
@@ -191,6 +199,8 @@ def signoff_eligible(sidecar, record):
         return False
     if not revisions_are_current:
         return False
+    if _review_type(sidecar) == "composition":
+        return assessment.get("method") == "assembled"
     return _parameter_source_aligned(record, assessment)
 
 
@@ -358,7 +368,16 @@ def derive_verification_state(
     return "awaiting_signoff"
 
 
-def _dependency_keys(record, assessment):
+def _iter_entry_refs(value):
+    """Yield record/archetype references nested in a composition mapping."""
+    if isinstance(value, dict):
+        for child in value.values():
+            yield from _iter_entry_refs(child)
+    elif isinstance(value, str) and value.startswith(("records/", "archetypes/")):
+        yield value
+
+
+def _dependency_keys(record, assessment, review_type="evidence"):
     source_keys = set()
     if record.get("source") not in (None, "unreferenced"):
         source_keys.add(record["source"])
@@ -374,6 +393,8 @@ def _dependency_keys(record, assessment):
             source_keys.add(attempt["source"])
     for finding in assessment.get("findings", {}).values():
         record_paths.update(finding.get("related_records", []))
+    if review_type == "composition":
+        record_paths.update(_iter_entry_refs(record.get("uses", {})))
     return source_keys, place_keys, record_paths
 
 
@@ -384,7 +405,9 @@ def _dependencies_are_current(sidecar, record, records, sources, places):
     if records.get(sidecar.get("provenance_record")) != record:
         return False
     assessment = sidecar.get("assessment", {})
-    source_keys, place_keys, record_paths = _dependency_keys(record, assessment)
+    source_keys, place_keys, record_paths = _dependency_keys(
+        record, assessment, _review_type(sidecar)
+    )
     dependencies = sidecar.get("dependency_revisions", {})
     sections = (
         (dependencies.get("sources", {}), source_keys, sources),
@@ -553,8 +576,12 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                 f"{label}: provenance_record {declared!r} != file location"
             )
         record = records.get(declared)
-        if not isinstance(record, dict) or not str(declared).startswith("records/"):
-            errors.append(f"{label}: unresolved evidence record {declared!r}")
+        review_type = _review_type(sidecar)
+        expected_prefix = "archetypes/" if review_type == "composition" else "records/"
+        if not isinstance(record, dict) or not str(declared).startswith(expected_prefix):
+            errors.append(
+                f"{label}: unresolved {review_type} entry {declared!r}"
+            )
             continue
         assessment = sidecar.get("assessment")
         if not isinstance(assessment, dict):
@@ -570,6 +597,7 @@ def check_provenance(records, sources, places, sidecars, schema=None):
 
         evidence_by_id = {}
         input_records = set()
+        documented_components = set()
         for item in assessment.get("evidence", []):
             evidence_id = item.get("id")
             if evidence_id in evidence_by_id:
@@ -586,6 +614,21 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                     errors.append(f"{label}: evidence record self-reference")
                 if item.get("role") == "input":
                     input_records.add(record_ref)
+                if item.get("role") == "component":
+                    documented_components.add(record_ref)
+        if review_type == "composition":
+            component_refs = set(_iter_entry_refs(record.get("uses", {})))
+            if documented_components != component_refs:
+                missing = sorted(component_refs - documented_components)
+                extra = sorted(documented_components - component_refs)
+                if missing:
+                    errors.append(
+                        f"{label}: undocumented composition components {missing}"
+                    )
+                if extra:
+                    errors.append(
+                        f"{label}: component evidence not used by composite {extra}"
+                    )
         derivations[declared] = input_records
         derivation_kind = assessment.get("derivation", {}).get("kind")
         if derivation_kind in {"arithmetic_mean", "weighted_mean"}:
@@ -625,7 +668,7 @@ def check_provenance(records, sources, places, sidecars, schema=None):
             )
         if derivation_kind == "regression" and method != "fitted":
             errors.append(f"{label}: regression derivation requires method 'fitted'")
-        if method in EXTERNAL_METHODS:
+        if review_type == "evidence" and method in EXTERNAL_METHODS:
             for scope in ("source", "values", "method"):
                 finding = findings.get(scope, {})
                 if finding.get("conclusion") in {
@@ -644,7 +687,7 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                         f"{label}: parameter_source does not match record.source; "
                         "source finding must be correction_required"
                     )
-        elif method in {"calculated", "assumed"}:
+        elif review_type == "evidence" and method in {"calculated", "assumed"}:
             if record.get("source") != "unreferenced":
                 errors.append(
                     f"{label}: {method} record must use source 'unreferenced'"
@@ -656,7 +699,7 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                 errors.append(
                     f"{label}: {method} assessment cannot claim a parameter_source"
                 )
-        record_method = record.get("method")
+        record_method = record.get("method") if review_type == "evidence" else None
         if record_method and method and record_method != method:
             if findings.get("method", {}).get("conclusion") not in {
                 "contradicted",
@@ -668,7 +711,9 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                 )
 
         dependencies = sidecar.get("dependency_revisions", {})
-        source_keys, place_keys, record_paths = _dependency_keys(record, assessment)
+        source_keys, place_keys, record_paths = _dependency_keys(
+            record, assessment, review_type
+        )
         for key in sorted(source_keys - set(sources)):
             errors.append(f"{label}: dependency source {key!r} unresolved")
         for key in sorted(place_keys - set(places)):

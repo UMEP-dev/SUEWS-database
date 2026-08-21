@@ -78,12 +78,9 @@ def attestation(
         "decision": decision,
         "signed_at": signed_at,
         "event": {
-            "kind": "issue_comment",
+            "kind": "issue",
             "id": event_id,
-            "url": (
-                "https://github.com/UMEP-dev/SUEWS-database/issues/21"
-                f"#issuecomment-{event_id}"
-            ),
+            "url": f"https://github.com/UMEP-dev/SUEWS-database/issues/{event_id}",
         },
         "evidence_revision": evidence,
         "verifier_policy_revision": POLICY_REVISION,
@@ -91,7 +88,7 @@ def attestation(
     }
     if supersedes is not None:
         item["supersedes_event"] = {
-            "kind": "issue_comment",
+            "kind": "issue",
             "id": supersedes,
         }
     return item
@@ -187,6 +184,67 @@ def calculated_sidecar(record, input_keys, records, *, kind="scaled"):
     }
     sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
     return sidecar
+
+
+def composition_fixture():
+    component_key = "records/ohm/component"
+    composite_key = "archetypes/surfaces/bldgs/composite"
+    component = calculated_record(component_key)
+    composite = {
+        "archetype": composite_key,
+        "schema_version": "2026.5",
+        "target": "land_cover.bldgs",
+        "name": "Reviewed composite",
+        "uses": {"ohm": {"summer_wet": component_key}},
+    }
+    records = {component_key: component, composite_key: composite}
+    support = {
+        "conclusion": "supported",
+        "evidence_ids": ["selected-component"],
+    }
+    sidecar = {
+        "provenance_record": composite_key,
+        "review_type": "composition",
+        "provenance_format_version": "1.0",
+        "record_revision": canonical_revision(composite),
+        "dependency_revisions": {
+            "sources": {},
+            "places": {},
+            "records": {component_key: canonical_revision(component)},
+        },
+        "assessment": {
+            "status": "agent_assessed",
+            "assessed_at": "2026-08-21T12:00:00Z",
+            "assessor": {
+                "kind": "agent",
+                "name": "fixture-agent",
+                "version": "1.0",
+            },
+            "method": "assembled",
+            "evidence_revision": "sha256:" + "0" * 64,
+            "findings": {
+                "name": deepcopy(support),
+                "target": deepcopy(support),
+                "values": deepcopy(support),
+                "source": {"conclusion": "not_applicable"},
+                "place": {"conclusion": "not_applicable"},
+                "representativeness": {"conclusion": "not_applicable"},
+                "method": deepcopy(support),
+                "identity": deepcopy(support),
+            },
+            "evidence": [
+                {
+                    "id": "selected-component",
+                    "record": component_key,
+                    "role": "component",
+                    "note": "Selected for the composite's summer-wet OHM slot.",
+                }
+            ],
+        },
+        "verification": {"attestations": []},
+    }
+    sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+    return records, composite_key, sidecar
 
 
 class ProvenanceFixtureTests(unittest.TestCase):
@@ -355,6 +413,21 @@ class ProvenanceSemanticTests(unittest.TestCase):
             any("internal derivation" in error or "schema" in error for error in errors)
         )
 
+    def test_composition_review_tracks_selected_components(self):
+        records, composite_key, sidecar = composition_fixture()
+        self.assertEqual(
+            check_provenance(records, {}, {}, {composite_key: sidecar}), []
+        )
+        self.assertTrue(signoff_eligible(sidecar, records[composite_key]))
+
+        missing = deepcopy(sidecar)
+        missing["assessment"]["evidence"] = []
+        missing["assessment"]["evidence_revision"] = evidence_revision(missing)
+        errors = check_provenance(records, {}, {}, {composite_key: missing})
+        self.assertTrue(
+            any("undocumented composition components" in error for error in errors)
+        )
+
 
 class VerificationStateTests(unittest.TestCase):
     def exact_state_inputs(self, sidecar):
@@ -405,7 +478,7 @@ class VerificationStateTests(unittest.TestCase):
         records, sources, places, policy, facts = self.exact_state_inputs(sidecar)
 
         unrelated = deepcopy(facts)
-        unrelated[("issue_comment", 102)]["decision"] = "changes_requested"
+        unrelated[("issue", 102)]["decision"] = "changes_requested"
         self.assertEqual(
             self.derive(sidecar, facts=unrelated, policy=policy),
             "awaiting_signoff",
@@ -414,7 +487,7 @@ class VerificationStateTests(unittest.TestCase):
         stale = deepcopy(sidecar)
         stale_item = stale["verification"]["attestations"][0]
         stale_item["evidence_revision"] = "sha256:" + "9" * 64
-        stale_facts = {("issue_comment", 102): authenticated_fact(stale_item)}
+        stale_facts = {("issue", 102): authenticated_fact(stale_item)}
         self.assertEqual(
             self.derive(stale, facts=stale_facts, policy=policy),
             "awaiting_signoff",
@@ -424,7 +497,7 @@ class VerificationStateTests(unittest.TestCase):
         stale_policy_item = stale_policy["verification"]["attestations"][0]
         stale_policy_item["verifier_policy_revision"] = "sha256:" + "8" * 64
         stale_policy_facts = {
-            ("issue_comment", 102): authenticated_fact(stale_policy_item)
+            ("issue", 102): authenticated_fact(stale_policy_item)
         }
         self.assertEqual(
             self.derive(stale_policy, facts=stale_policy_facts, policy=policy),
@@ -461,7 +534,7 @@ class VerificationStateTests(unittest.TestCase):
             110, evidence=sidecar["assessment"]["evidence_revision"]
         )
         sidecar["verification"]["attestations"] = [item]
-        facts = {("issue_comment", 110): authenticated_fact(item)}
+        facts = {("issue", 110): authenticated_fact(item)}
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy()),
             "unresolved",
@@ -475,7 +548,7 @@ class VerificationStateTests(unittest.TestCase):
             111, evidence=sidecar["assessment"]["evidence_revision"]
         )
         sidecar["verification"]["attestations"] = [item]
-        facts = {("issue_comment", 111): authenticated_fact(item)}
+        facts = {("issue", 111): authenticated_fact(item)}
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy()),
             "unresolved",
@@ -488,8 +561,8 @@ class VerificationStateTests(unittest.TestCase):
         second = attestation(104, verifier="sUEvERIFIER", evidence=evidence)
         sidecar["verification"]["attestations"] = [first, second]
         facts = {
-            ("issue_comment", 103): authenticated_fact(first),
-            ("issue_comment", 104): authenticated_fact(second),
+            ("issue", 103): authenticated_fact(first),
+            ("issue", 104): authenticated_fact(second),
         }
         self.assertEqual(
             self.derive(sidecar, facts=facts, policy=verifier_policy(required=2)),
@@ -513,8 +586,8 @@ class VerificationStateTests(unittest.TestCase):
             supersedes=105,
         )
         facts = {
-            ("issue_comment", 105): authenticated_fact(blocked),
-            ("issue_comment", 106): authenticated_fact(approved),
+            ("issue", 105): authenticated_fact(blocked),
+            ("issue", 106): authenticated_fact(approved),
         }
         for ordered in ([approved, blocked], [blocked, approved]):
             candidate = deepcopy(sidecar)
@@ -540,8 +613,8 @@ class VerificationStateTests(unittest.TestCase):
         )
         backwards["verification"]["attestations"] = [old_approval, newer_block]
         backwards_facts = {
-            ("issue_comment", 107): authenticated_fact(old_approval),
-            ("issue_comment", 108): authenticated_fact(newer_block),
+            ("issue", 107): authenticated_fact(old_approval),
+            ("issue", 108): authenticated_fact(newer_block),
         }
         self.assertEqual(
             self.derive(

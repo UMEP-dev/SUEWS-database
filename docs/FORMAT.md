@@ -18,10 +18,10 @@ Three layers make up the database.
   `archetypes/countries/`). Archetypes carry `uses:` references to evidence
   records rather than copies of their values, so provenance survives
   assembly.
-- **Provenance review** (`db/provenance/`) — one sidecar per evidence record,
-  mirroring its stable path. A sidecar holds an agent or human assessment,
-  evidence locators and GitHub-backed verifier attestations without changing
-  the model-ready values while review is in progress.
+- **Provenance review** (`db/provenance/`) — sidecars mirror stable evidence or
+  composite paths. Evidence review checks values and sources; composition
+  review checks component selection and mapping. Both keep agent assessment
+  separate from GitHub-backed human verifier attestations.
 
 Two registries resolve the short names records use.
 
@@ -93,17 +93,19 @@ parameter publication and keep `source: unreferenced`. Its sidecar makes that
 absence precise by recording the method, input records or assumption, and the
 human decision that accepted it; it does not manufacture a publication.
 
-Full provenance and its review state live in one sidecar per evidence record,
-under `db/provenance/`, mirroring the record path. For example, the assessment
-for `db/records/ohm/example.yml` is
-`db/provenance/records/ohm/example.yml`. Keeping candidate assessments outside
-the evidence record lets an agent prepare a repository-wide review queue
-without presenting its findings as accepted data or changing model exports.
+Full provenance and its review state live in a sidecar under `db/provenance/`
+that mirrors the reviewed entry path. For example, the assessment for
+`db/records/ohm/example.yml` is `db/provenance/records/ohm/example.yml`, while
+an archetype review mirrors `db/provenance/archetypes/...`. Keeping candidate
+assessments outside the entry lets an agent prepare a repository-wide review
+queue without presenting its findings as accepted data or changing exports.
 
 `schema/provenance-assessment.schema.yml` is the machine-readable sidecar
 schema. A sidecar contains:
 
-- `provenance_record` — the stable record path it assesses;
+- `provenance_record` — the stable evidence-record or archetype path it assesses;
+- `review_type` — `evidence` or `composition` (omitted legacy sidecars mean
+  `evidence`);
 - `provenance_format_version` — the sidecar format version, independent of the
   record's supy `schema_version`;
 - `record_revision` — a SHA-256 fingerprint of the complete parsed record;
@@ -127,6 +129,7 @@ The method vocabulary extends the optional record field to:
 | `literature` | The stored value was adopted from a publication without a new fit. |
 | `calculated` | The stored value was calculated from other database records. |
 | `assumed` | The stored value is an explicit assumption or default. |
+| `assembled` | A composite selects and maps independently reviewed records. |
 
 The evidence list separates publication roles from relationships to other
 database records:
@@ -137,7 +140,9 @@ database records:
 | `input_data` | source | Supplies observations or data used in the derivation. |
 | `compilation` | source | Later republishes or collects the parameter values. |
 | `validation` | source | Later evaluates the parameter or method. |
+| `composition_source` | source | Explains or publishes the composite selection. |
 | `input` | record | Supplies a database value used in an internal calculation. |
+| `component` | record or archetype | Is selected into a reviewed composite slot. |
 | `possible_duplicate` | record | May represent the same scientific assertion. |
 | `related` | record | Helps adjudicate the finding without being a calculation input. |
 
@@ -217,31 +222,60 @@ is no longer current. A record with only stale attestations is
 An agent may create an assessment but may never create a verifier attestation
 or set a verified state.
 
+There are two distinct review layers. Atomic entries under `db/records/` use
+an **evidence review**: values, parameter source, production method and source
+locators are the central claims. Archetypes and typologies under
+`db/archetypes/` use a **composition review**: component selection, composition
+rationale, place applicability, completeness, compatible targets, and slot or
+season mapping are reviewed. The composite page also shows each component's
+independent evidence-review state. A composition sign-off does not re-verify
+the underlying values. If a composite introduces a new scientific value, that
+value must first be represented and evidence-reviewed as a record.
+
+The two layers retain the same eight machine-stable finding keys so tooling
+can derive one state model, but composition pages label their meaning
+differently:
+
+| Finding key | Evidence review | Composition review |
+|---|---|---|
+| `name` | record name | composite identity |
+| `target` | parameter target | composite target |
+| `values` | stored values | component selection |
+| `source` | parameter source | composition rationale/source |
+| `place` | observation place | place applicability |
+| `representativeness` | value representativeness | composite representativeness |
+| `method` | measurement/fit/calculation method | slot and season mapping |
+| `identity` | duplicate/record identity | completeness and uniqueness |
+
+A composition sidecar uses `method: assembled`, records each direct `uses:`
+reference as `role: component`, and fingerprints those components as
+dependencies. Changing a selected component, its content, or the mapping makes
+the composition review stale without changing any record-level decision.
+
 ### GitHub-backed verifier attestations
 
 Verifier eligibility, review scopes and thresholds are maintained in the
 reviewed `.github/provenance-verifiers.yml` policy. Its revision is derived
 from its complete canonical content rather than declared by an assessment.
 An attestation records the verifier's GitHub handle and immutable numeric user
-ID, decision, timestamp, a specific GitHub comment event, evidence revision,
-verifier-policy revision and record scope. The handle in YAML is not proof of
-identity: CI reloads the comment by its immutable numeric ID and verifies its
-actor, timestamp, repository, unedited state and anchored URL. For an event on
-the current policy revision, it also checks that the actor ID and handle are
-eligible. Events on older policy revisions remain authenticated history but
-are stale and do not contribute to `verified`.
+ID, decision, timestamp, a specific GitHub issue event, evidence
+revision, verifier-policy revision and record scope. A handle written in YAML
+or an issue body is not proof of identity: CI reloads the GitHub event and
+verifies its actor ID, repository and URL against the reviewed verifier policy.
+Events on older evidence or policy revisions are stale and do not contribute
+to `verified`.
 
-The authenticated event also carries the signed decision payload: the
-provenance-record path, decision, scope, evidence revision, verifier-policy
-revision and any superseded event. Every field must equal the sidecar
-attestation. An unrelated comment cannot therefore be reinterpreted as a
-sign-off, and one GitHub event cannot be reused across several records.
+The authenticated event carries the decision payload: provenance-entry path,
+review type, decision, scope, evidence revision, verifier-policy revision and any
+superseded event. Every field must match the record assessment being reviewed.
+An unrelated issue cannot therefore be reinterpreted as a sign-off.
 
-Version 1 uses an unedited `issue_comment` containing the exact JSON envelope
-defined by `scripts/github_attestation.py`. CI reloads the comment through the
-GitHub API and requires every signed field to equal the stored attestation.
-The site sign-off button will create this event in a verifier-authenticated
-human session; the audit agent must not receive or be able to invoke the
+The site sign-off button raises a prefilled GitHub issue. CI parses the issue
+form, requires its author handle and immutable user ID to match the reviewed
+verifier registry, and rejects stale record, evidence or policy revisions.
+Site builds sweep accepted sign-off issues and convert them to the same
+attestation shape used for state derivation. The durable event remains the
+linked GitHub issue. The audit agent must not receive or be able to invoke the
 verifier's credential or sign-off action.
 
 The offline checker validates sidecar shape, fingerprints, event anchors and
@@ -249,7 +283,8 @@ supersession graphs, but never authenticates GitHub identity itself. Without
 authenticated event facts and the current central verifier policy, its state
 derivation cannot return `verified`.
 
-Attestations are immutable events. A later event can supersede or withdraw an
+Stored attestations are immutable events; an edited issue-form decision is
+revalidated and re-swept by CI. A later issue can supersede or withdraw an
 earlier decision. Changing a parameter value, the source, place,
 representativeness, method, evidence relationship, derivation or locator
 changes the evidence revision, so earlier attestations no longer contribute to
@@ -418,9 +453,9 @@ verification:
       decision: verified
       signed_at: <github-event-timestamp>
       event:
-        kind: issue_comment
-        id: <github-comment-id>
-        url: "https://github.com/UMEP-dev/SUEWS-database/issues/<number>#issuecomment-<id>"
+        kind: issue
+        id: <github-issue-number>
+        url: "https://github.com/UMEP-dev/SUEWS-database/issues/<number>"
       evidence_revision: sha256:<64-lowercase-hex-digits>
       verifier_policy_revision: sha256:<64-lowercase-hex-digits>
       scope: record
@@ -463,9 +498,11 @@ records. An archetype may also carry its own `parameters:` (scalars asserted
 by the legacy composite row itself, e.g. the snow entries) — same rules as a
 record.
 
-Because an archetype references records, its provenance is inspectable: the
-Kumpula example shows at a glance that its albedo comes from a London
-study — visible now, silent under the old integer-ID scheme.
+Because an archetype references records, both provenance layers are
+inspectable. The Kumpula page shows that its albedo comes from a London study
+and the evidence-review state of that record. A separate composition sidecar
+can document and sign off why that London value was selected for Kumpula and
+how every component was mapped; it does not replace the record-level review.
 
 ### Typology photographs
 

@@ -1,0 +1,67 @@
+name: Sign off record provenance
+description: Record a human verifier decision for one evidence revision.
+title: "[provenance sign-off] "
+labels: ["provenance sign-off"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Submit this form only after reviewing the provenance evidence on the
+        record page. GitHub supplies your verifier identity; CI rejects the
+        decision if your account is not in the reviewed verifier registry or
+        if the record, evidence, or policy revision is no longer current.
+  - type: input
+    id: record
+    attributes:
+      label: Reviewed entry
+      description: Stable evidence-record or composite path. The site fills this in.
+      placeholder: records/ohm/example
+    validations:
+      required: true
+  - type: input
+    id: review_type
+    attributes:
+      label: Review type
+      description: Evidence or Composition. The database site fills this in.
+      placeholder: Evidence
+    validations:
+      required: true
+  - type: input
+    id: evidence_revision
+    attributes:
+      label: Evidence revision
+      description: Exact reviewed evidence fingerprint. Do not edit this value.
+      placeholder: sha256:...
+    validations:
+      required: true
+  - type: input
+    id: policy_revision
+    attributes:
+      label: Verifier policy revision
+      description: Verifier-policy fingerprint supplied by the database site.
+      placeholder: sha256:...
+    validations:
+      required: true
+  - type: dropdown
+    id: decision
+    attributes:
+      label: Decision
+      options:
+        - Verified
+        - Changes requested
+        - Unresolved
+        - Curation required
+        - Withdrawn
+    validations:
+      required: true
+  - type: input
+    id: supersedes
+    attributes:
+      label: Supersedes issue
+      description: For a replacement or withdrawal, enter the earlier issue number.
+      placeholder: "123"
+  - type: textarea
+    id: note
+    attributes:
+      label: Review note
+      description: Optional concise explanation for the decision.
