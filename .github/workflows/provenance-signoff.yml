@@ -6,7 +6,7 @@ on:
 
 permissions:
   contents: read
-  issues: read
+  issues: write
 
 jobs:
   validate:
@@ -16,6 +16,36 @@ jobs:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
       - name: Validate verifier identity and decision revisions
+        id: validate
+        continue-on-error: true
         run: >-
           uv run --with pyyaml --with jsonschema --with rfc8785 --no-project
           python scripts/github_attestation.py validate-issue "$GITHUB_EVENT_PATH"
+      - name: Explain rejected sign-off
+        if: ${{ steps.validate.outcome == 'failure' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REJECTION_CODE: ${{ steps.validate.outputs.rejection_code }}
+          REJECTION_REASON: ${{ steps.validate.outputs.rejection_reason || 'CI could not validate this sign-off; open the failed workflow run for details.' }}
+        run: |
+          printf '%s\n\nReason: `%s`\n' \
+            'This provenance sign-off was not incorporated.' \
+            "$REJECTION_REASON" > "$RUNNER_TEMP/signoff-rejection.md"
+          if [ "$REJECTION_CODE" = 'unregistered_verifier' ]; then
+            printf '\nTo become an eligible reviewer, [apply for verifier qualification](https://github.com/%s/issues/new?template=verifier-request.yml).\n' \
+              "$GH_REPO" >> "$RUNNER_TEMP/signoff-rejection.md"
+          fi
+          gh issue comment "$ISSUE_NUMBER" --repo "$GH_REPO" \
+            --body-file "$RUNNER_TEMP/signoff-rejection.md"
+      - name: Keep rejected sign-off open
+        if: ${{ steps.validate.outcome == 'failure' }}
+        run: exit 1
+      - name: Close accepted sign-off issue
+        if: ${{ github.event.issue.state == 'open' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue close "$ISSUE_NUMBER" --repo "$GH_REPO" --reason completed

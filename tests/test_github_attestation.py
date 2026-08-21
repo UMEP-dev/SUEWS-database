@@ -4,6 +4,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 import yaml
 
@@ -12,6 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from github_attestation import (  # noqa: E402
     AttestationError,
+    _record_rejection,
     attestation_from_issue,
     collect_issue_attestations,
     fact_from_signoff_issue,
@@ -117,8 +119,23 @@ class IssueDecisionTests(unittest.TestCase):
         ):
             with self.subTest(user=user), self.assertRaisesRegex(
                 AttestationError, "not an eligible verifier"
-            ):
+            ) as caught:
                 fact_from_signoff_issue(issue(user=user), policy())
+            self.assertEqual(caught.exception.code, "unregistered_verifier")
+
+        outsider = {"login": "outsider", "id": 999, "type": "User"}
+        event = {
+            "repository": {"full_name": "UMEP-dev/SUEWS-database"},
+            "issue": issue(user=outsider),
+            "sender": {"login": "outsider", "id": 999},
+        }
+        sidecars = {RECORD: {"assessment": {"evidence_revision": EVIDENCE_REVISION}}}
+        with tempfile.TemporaryDirectory() as tmp:
+            event_path = Path(tmp) / "event.json"
+            event_path.write_text(json.dumps(event))
+            with self.assertRaises(AttestationError) as caught:
+                validate_issue_event(event_path, policy(), sidecars)
+        self.assertEqual(caught.exception.code, "unregistered_verifier")
 
     def test_ci_rejects_stale_revision_and_sender_mismatch(self):
         sidecars = {RECORD: {"assessment": {"evidence_revision": EVIDENCE_REVISION}}}
@@ -179,6 +196,53 @@ class IssueDecisionTests(unittest.TestCase):
             issue_body(Decision="Withdrawn", **{"Supersedes issue": "123"})
         )
         self.assertEqual(parsed["supersedes_event"], {"kind": "issue", "id": 123})
+
+
+class SignoffWorkflowTests(unittest.TestCase):
+    def test_rejection_output_is_single_line_and_markdown_safe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output_path = Path(tmp) / "github-output"
+            with patch.dict("os.environ", {"GITHUB_OUTPUT": str(output_path)}):
+                _record_rejection("bad `field`\nsecond line", "invalid_signoff")
+            self.assertEqual(
+                output_path.read_text().splitlines(),
+                [
+                    "rejection_code=invalid_signoff",
+                    "rejection_reason=bad 'field' second line",
+                ],
+            )
+
+    def test_successful_validation_closes_open_issue(self):
+        workflow = yaml.load(
+            (ROOT / ".github" / "workflows" / "provenance-signoff.yml").read_text(),
+            Loader=yaml.BaseLoader,
+        )
+        self.assertEqual(workflow["permissions"]["issues"], "write")
+
+        steps = workflow["jobs"]["validate"]["steps"]
+        names = [step.get("name") for step in steps]
+        validation_index = names.index(
+            "Validate verifier identity and decision revisions"
+        )
+        explanation_index = names.index("Explain rejected sign-off")
+        rejection_index = names.index("Keep rejected sign-off open")
+        close_index = names.index("Close accepted sign-off issue")
+        self.assertEqual(steps[validation_index]["id"], "validate")
+        self.assertEqual(steps[validation_index]["continue-on-error"], "true")
+        self.assertGreater(explanation_index, validation_index)
+        self.assertGreater(rejection_index, explanation_index)
+        self.assertGreater(close_index, rejection_index)
+
+        explanation_step = steps[explanation_index]
+        self.assertIn("steps.validate.outcome == 'failure'", explanation_step["if"])
+        self.assertIn("rejection_reason", str(explanation_step["env"]))
+        self.assertIn("verifier-request.yml", explanation_step["run"])
+        self.assertIn("gh issue comment", explanation_step["run"])
+
+        close_step = steps[close_index]
+        self.assertIn("github.event.issue.state == 'open'", close_step["if"])
+        self.assertIn('gh issue close "$ISSUE_NUMBER"', close_step["run"])
+        self.assertEqual(close_step["env"]["GH_TOKEN"], "${{ github.token }}")
 
 
 if __name__ == "__main__":

@@ -273,6 +273,12 @@ An unrelated issue cannot therefore be reinterpreted as a sign-off.
 The site sign-off button raises a prefilled GitHub issue. CI parses the issue
 form, requires its author handle and immutable user ID to match the reviewed
 verifier registry, and rejects stale record, evidence or policy revisions.
+After successful validation, CI closes the issue as a completed review; a
+rejected issue stays open and receives a comment stating the failure reason so
+its author can correct or supersede it. When the author is not in the verifier
+registry, that comment also links to the verifier-qualification request form.
+Closed issues remain durable attestations and continue to be included in the
+sweep.
 Site builds sweep accepted sign-off issues and convert them to the same
 attestation shape used for state derivation. The durable event remains the
 linked GitHub issue. The audit agent must not receive or be able to invoke the

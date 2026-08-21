@@ -37,6 +37,21 @@ ISSUE_FIELDS = {
 class AttestationError(ValueError):
     """A GitHub issue cannot authenticate the claimed verifier decision."""
 
+    def __init__(self, message, *, code="invalid_signoff"):
+        super().__init__(message)
+        self.code = code
+
+
+def _record_rejection(reason, code="invalid_signoff"):
+    """Expose one safe, single-line rejection reason to GitHub Actions."""
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if not output_path:
+        return
+    safe_reason = " ".join(str(reason).splitlines()).replace("`", "'")[:500]
+    with Path(output_path).open("a", encoding="utf-8") as output:
+        output.write(f"rejection_code={code}\n")
+        output.write(f"rejection_reason={safe_reason}\n")
+
 
 def parse_signoff_issue_body(body):
     """Parse the exact fields emitted by the provenance sign-off issue form."""
@@ -127,7 +142,10 @@ def fact_from_signoff_issue(issue, policy):
         or verifier["github_user_id"] != user_id
         or verifier["github_handle"].casefold() != login.casefold()
     ):
-        raise AttestationError("GitHub author is not an eligible verifier")
+        raise AttestationError(
+            "GitHub author is not an eligible verifier",
+            code="unregistered_verifier",
+        )
 
     issue_id = issue.get("number")
     url = issue.get("html_url")
@@ -169,6 +187,23 @@ def attestation_from_issue(issue, policy):
     return fact["provenance_record"], fact["review_type"], item
 
 
+def validate_issue_attestation(issue, policy, sidecars, require_current=False):
+    """Validate one issue while preserving its structured rejection reason."""
+    record_path, review_type, item = attestation_from_issue(issue, policy)
+    sidecar = sidecars.get(record_path)
+    if not sidecar:
+        raise AttestationError("sign-off record has no provenance assessment")
+    if review_type != sidecar.get("review_type", "evidence"):
+        raise AttestationError("sign-off review type does not match assessment")
+    if require_current and (
+        item["evidence_revision"]
+        != sidecar["assessment"].get("evidence_revision")
+        or item["verifier_policy_revision"] != policy["revision"]
+    ):
+        raise AttestationError("sign-off revision is stale")
+    return record_path, item
+
+
 def collect_issue_attestations(issues, policy, sidecars, require_current=False):
     """Group valid decisions by record and return rejected issue reasons."""
     grouped = defaultdict(list)
@@ -176,18 +211,9 @@ def collect_issue_attestations(issues, policy, sidecars, require_current=False):
     for issue in issues:
         issue_id = issue.get("number") if isinstance(issue, dict) else None
         try:
-            record_path, review_type, item = attestation_from_issue(issue, policy)
-            sidecar = sidecars.get(record_path)
-            if not sidecar:
-                raise AttestationError("sign-off record has no provenance assessment")
-            if review_type != sidecar.get("review_type", "evidence"):
-                raise AttestationError("sign-off review type does not match assessment")
-            if require_current and (
-                item["evidence_revision"]
-                != sidecar["assessment"].get("evidence_revision")
-                or item["verifier_policy_revision"] != policy["revision"]
-            ):
-                raise AttestationError("sign-off revision is stale")
+            record_path, item = validate_issue_attestation(
+                issue, policy, sidecars, require_current=require_current
+            )
             grouped[record_path].append(item)
         except AttestationError as exc:
             errors.append(f"issue #{issue_id}: {exc}")
@@ -242,13 +268,7 @@ def validate_issue_event(event_path, policy, sidecars):
         != str(user.get("login", "")).casefold()
     ):
         raise AttestationError("event sender does not match issue author")
-    grouped, errors = collect_issue_attestations(
-        [issue], policy, sidecars, require_current=True
-    )
-    if errors:
-        raise AttestationError(errors[0])
-    if sum(len(items) for items in grouped.values()) != 1:
-        raise AttestationError("event did not produce one verifier decision")
+    validate_issue_attestation(issue, policy, sidecars, require_current=True)
 
 
 def main(argv=None):
@@ -261,10 +281,12 @@ def main(argv=None):
     try:
         policy = load_verifier_policy()
     except PolicyError as exc:
+        _record_rejection(f"verifier policy: {exc}", "policy_error")
         print(f"verifier policy: {exc}", file=sys.stderr)
         return 1
     sidecars, errors = load_provenance_sidecars()
     if errors:
+        _record_rejection(errors[0], "provenance_error")
         for error in errors:
             print(error, file=sys.stderr)
         return 1
@@ -279,6 +301,7 @@ def main(argv=None):
             raise AttestationError("validate-issue requires an event path")
         validate_issue_event(args.event_path, policy, sidecars)
     except AttestationError as exc:
+        _record_rejection(str(exc), exc.code)
         print(f"provenance sign-off rejected: {exc}", file=sys.stderr)
         return 1
     print("provenance sign-off accepted")
