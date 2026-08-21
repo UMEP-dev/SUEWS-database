@@ -129,6 +129,8 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Verified", page)
         self.assertIn("href=\"https://github.com/sunt05\">@sunt05", page)
         self.assertNotIn("class=\"signoff\"", page)
+        self.assertIn("class=\"reviewinfo\"", page)
+        self.assertNotIn("class=\"reviewguide\"", page)
 
         decision["evidence_revision"] = "sha256:" + "9" * 64
         self.assertEqual(

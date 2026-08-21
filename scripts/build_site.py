@@ -675,6 +675,12 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   color: var(--text-primary); text-align: center; font-weight: 600; }
 .reviewguide:hover { border-color: var(--gold-ink); color: var(--gold-ink);
   background: rgba(247,181,56,0.08); text-decoration: none; }
+.reviewinfo { display: inline-flex; width: 1.15rem; height: 1.15rem;
+  margin-left: 0.3rem; align-items: center; justify-content: center;
+  color: var(--text-muted); vertical-align: -0.2rem; }
+.reviewinfo:hover { color: var(--gold-ink); text-decoration: none; }
+.reviewinfo svg { width: 100%; height: 100%; fill: none; stroke: currentColor;
+  stroke-width: 1.4; stroke-linecap: round; }
 .signoff-help { color: var(--text-muted); font-size: 0.78rem;
   line-height: 1.45; margin: 0.55rem 0 0; }
 .reviewhero { max-width: 760px; margin: 2.6rem 0 2rem; }
@@ -1550,6 +1556,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
     if attestations:
         states = attestation_states(sidecar, policy)
         rail.append("<h4>Verifier decisions</h4>")
+        guide_shown = False
         for item in attestations:
             verifier = item.get("verifier", "unknown")
             event = item.get("event", {})
@@ -1560,11 +1567,21 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 if display_state != "current"
                 else ""
             )
+            info = ""
+            if state == "verified" and display_state == "current" and not guide_shown:
+                info = (
+                    f" <a class=\"reviewinfo\" href=\"{esc(guide_url)}\" "
+                    "aria-label=\"Review procedure\" title=\"Review procedure\">"
+                    "<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" "
+                    "focusable=\"false\"><circle cx=\"8\" cy=\"8\" r=\"6.5\"/>"
+                    "<path d=\"M8 7v4 M8 4.5h.01\"/></svg></a>"
+                )
+                guide_shown = True
             rail.append(
                 "<div class=\"attestation\">"
                 f"<a href=\"https://github.com/{esc(verifier)}\">@{esc(verifier)}</a> "
                 f"<span class=\"decision\">{esc(item.get('decision', '').replace('_', ' '))}</span>"
-                f"{state_note}<br><a href=\"{esc(event.get('url', '#'))}\">"
+                f"{state_note}{info}<br><a href=\"{esc(event.get('url', '#'))}\">"
                 f"{esc(str(item.get('signed_at', ''))[:10] or 'GitHub event')}</a>"
                 "</div>"
             )
@@ -1579,10 +1596,11 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             "CI accepts it only when the issue author is in the verifier registry "
             "and the evidence revision is still current.</p>"
         )
-    rail.append(
-        f"<a class=\"reviewguide\" href=\"{esc(guide_url)}\">"
-        "Review procedure</a>"
-    )
+    if state != "verified":
+        rail.append(
+            f"<a class=\"reviewguide\" href=\"{esc(guide_url)}\">"
+            "Review procedure</a>"
+        )
     rail.append("</div>")
     return "".join(main), "".join(rail)
 
