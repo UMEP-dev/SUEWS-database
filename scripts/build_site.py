@@ -664,8 +664,10 @@ FAB_CSS = """
 .fab:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
 .fab .dot { width: 7px; height: 7px; border-radius: 50%; flex: none;
   background: currentColor; }
-/* keep the footer clear of it once the reader reaches the bottom */
-body.hasfab .wrap { padding-bottom: 6rem; }
+/* keep the footer clear of it once the reader reaches the bottom; the
+   child combinator matters -- the header has a .wrap of its own, and
+   padding it out leaves a tall empty band under the banner */
+body.hasfab > .wrap { padding-bottom: 6rem; }
 @media (max-width: 560px) { .fab { right: 0.7rem; bottom: 0.7rem;
   padding: 0.5rem 0.85rem; font-size: 0.8rem; } }
 @media print { .fab { display: none; } }
