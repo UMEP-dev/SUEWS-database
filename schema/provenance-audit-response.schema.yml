@@ -1,0 +1,94 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: https://database.suews.io/schema/provenance-audit-response.schema.yml
+title: SUEWS provenance audit runner response
+description: >-
+  Operational envelope returned by an agent for one immutable audit packet.
+  The nested assessment is materialised into a provenance sidecar and checked
+  against provenance-assessment.schema.yml before it becomes a candidate.
+type: object
+additionalProperties: false
+required:
+  - response_format_version
+  - provenance_record
+  - review_type
+  - input_revision
+  - engine
+  - query
+  - source_access
+  - assessment
+properties:
+  response_format_version:
+    const: '1.0'
+  provenance_record:
+    $ref: '#/$defs/entry_path'
+  review_type:
+    enum:
+      - evidence
+      - composition
+  input_revision:
+    $ref: '#/$defs/revision'
+  engine:
+    type: object
+    additionalProperties: false
+    required:
+      - name
+      - version
+    properties:
+      name:
+        type: string
+        minLength: 1
+      version:
+        type: string
+        minLength: 1
+      model:
+        type: string
+        minLength: 1
+  query:
+    type: string
+    minLength: 1
+    description: Exact task or query given to the audit engine.
+  source_access:
+    type: array
+    uniqueItems: true
+    items:
+      type: object
+      additionalProperties: false
+      required:
+        - reference
+        - outcome
+        - note
+      properties:
+        reference:
+          type: string
+          minLength: 1
+        outcome:
+          enum:
+            - accessed
+            - inaccessible
+            - not_found
+            - incomplete
+        url:
+          type: string
+          format: uri
+        note:
+          type: string
+          minLength: 1
+  assessment:
+    type: object
+    description: >-
+      Assessment object only. The runner supplies all revision fingerprints
+      and the verification envelope, so an agent cannot submit attestations.
+$defs:
+  revision:
+    type: string
+    pattern: ^sha256:[0-9a-f]{64}$
+  record_path:
+    type: string
+    pattern: ^records/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$
+  archetype_path:
+    type: string
+    pattern: ^archetypes/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$
+  entry_path:
+    oneOf:
+      - $ref: '#/$defs/record_path'
+      - $ref: '#/$defs/archetype_path'

@@ -42,9 +42,40 @@ EVENT_URLS = {
 }
 
 
+def _json_compatible(value):
+    """Project parsed YAML into JSON without losing integer map keys.
+
+    Hour-indexed profiles use integer YAML keys. JSON object keys are strings,
+    so the canonical projection uses their exact decimal spelling and rejects
+    any collision with an already-string key.
+    """
+    if isinstance(value, dict):
+        projected = {}
+        for key, item in value.items():
+            if isinstance(key, str):
+                json_key = key
+            elif isinstance(key, int) and not isinstance(key, bool):
+                json_key = str(key)
+            else:
+                raise TypeError(
+                    f"object key {key!r} is neither a string nor an integer"
+                )
+            if json_key in projected:
+                raise TypeError(
+                    f"object keys collide after JSON projection: {json_key!r}"
+                )
+            projected[json_key] = _json_compatible(item)
+        return projected
+    if isinstance(value, list):
+        return [_json_compatible(item) for item in value]
+    if value is None or isinstance(value, (str, bool, int, float)):
+        return value
+    raise TypeError(f"value {value!r} is not JSON-compatible")
+
+
 def canonical_revision(value):
     """Return the RFC 8785 SHA-256 revision for a JSON-compatible value."""
-    return "sha256:" + sha256(rfc8785.dumps(value)).hexdigest()
+    return "sha256:" + sha256(rfc8785.dumps(_json_compatible(value))).hexdigest()
 
 
 def evidence_revision(sidecar):

@@ -314,7 +314,9 @@ database record and which evidence revision they reviewed.
 
 Fingerprints use the prefix `sha256:` followed by the lowercase hexadecimal
 SHA-256 digest of JSON canonicalized according to RFC 8785. The checker rejects
-non-JSON types and non-finite numbers before hashing.
+non-JSON types and non-finite numbers before hashing. Integer YAML mapping keys
+used by hour-indexed profiles are projected to their exact decimal strings,
+as required for JSON object keys; a string/integer key collision is rejected.
 
 `record_revision` covers the complete parsed evidence record, including
 display, attachment, seasonal and legacy fields. This deliberately favours a

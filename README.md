@@ -43,6 +43,7 @@ parameters:
 ```sh
 make check        # structure, references and coupling rules
 make validate     # + validate every fragment against the supy data model
+make audit-plan   # dry-run coverage for evidence and composition audits
 make export REC=archetypes/surfaces/bldgs/helsinki--kumpula
 ```
 
@@ -51,7 +52,8 @@ directly into a SUEWS YAML configuration, each value carrying its citation
 in supy's native `{value, ref: {ID, DOI}}` form.
 
 `docs/FORMAT.md` specifies the format and how to contribute a value;
-`docs/LAYOUT.md` maps the repository.
+`docs/LAYOUT.md` maps the repository; `docs/PROVENANCE_RUNNER.md` documents the
+deterministic agent-audit and resume workflow.
 
 ## What a record knows besides its values
 
