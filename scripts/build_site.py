@@ -165,28 +165,68 @@ def doc_url(target, dotted):
         return f"{DOCS_REF}/{page_slug}.html"
     return f"{DOCS_REF}/{page_slug}.html#input-option-{leaf}"
 
+LIGHT_TOKENS = """
+  color-scheme: light;
+  --bg-primary: #FAFBFC; --bg-secondary: #F1F5F9;
+  --bg-card: #FFFFFF; --bg-card-hover: #F1F5F9;
+  --border-light: #E2E8F0; --border-medium: #CBD5E1;
+  --text-primary: #1E293B; --text-secondary: #475569; --text-muted: #4B5563;
+  --hairline: #E9EEF4; --hatch: rgba(45,49,66,0.07);
+  --link: var(--wave-blue); --accent-label: var(--sun-gold-dark);
+  --focus-ring: var(--wave-blue);
+  --map-ground: #EDF2F7;
+  --land-fill: rgba(45,49,66,0.10); --land-stroke: rgba(45,49,66,0.24);
+  --dot-stroke: rgba(255,255,255,0.85);
+  --acc-neutral: rgba(45,49,66,0.30); --acc-snow: #7FB4D8;
+  --cell-ink-lo: #1E293B;
+  --gold-ink: #8A5D00; --mono-ink: var(--water-blue);
+  --fig-gold: #B37A0A; --fig-blue: var(--wave-blue); --fig-green: #07803F;
+"""
+
 CSS = """
 :root {
-  --sun-gold: #F7B538; --energy-orange: #E85D04; --water-blue: #0077B6;
+  color-scheme: dark;
+  /* brand palette, constant across themes */
+  --sun-gold: #F7B538; --sun-gold-dark: #D4940F;
+  --energy-orange: #E85D04; --water-blue: #0077B6;
   --water-blue-light: #48CAE4; --sky-blue: #5DADE2; --veg-green: #09a25c;
-  --urban-slate: #2D3142; --bg-primary: #0F1119; --bg-secondary: #1A1D2E;
+  --wave-blue: #0558a5; --urban-slate: #2D3142;
+  /* dark theme, the default */
+  --bg-primary: #0F1119; --bg-secondary: #1A1D2E;
   --bg-card: rgba(255,255,255,0.03); --bg-card-hover: rgba(255,255,255,0.06);
   --border-light: rgba(255,255,255,0.08); --border-medium: rgba(255,255,255,0.16);
   --text-primary: rgba(255,255,255,0.92); --text-secondary: rgba(255,255,255,0.7);
   --text-muted: rgba(255,255,255,0.55);
+  --hairline: rgba(255,255,255,0.045); --hatch: rgba(255,255,255,0.035);
+  --link: var(--sky-blue); --accent-label: var(--sun-gold);
+  --focus-ring: var(--sun-gold);
+  --map-ground: #0c0e16;
+  --land-fill: rgba(255,255,255,0.10); --land-stroke: rgba(255,255,255,0.16);
+  --dot-stroke: rgba(0,0,0,0.35);
+  --acc-neutral: rgba(255,255,255,0.25); --acc-snow: #cfe8ff;
+  --cell-ink-lo: rgba(255,255,255,0.86);
+  --gold-ink: var(--sun-gold); --mono-ink: var(--water-blue-light);
+  --cell-ink-hi: #14172a; --on-accent: #1A1D2E;
+  --fig-gold: var(--sun-gold); --fig-blue: var(--sky-blue);
+  --fig-green: var(--veg-green);
+}
+:root[data-theme="light"] {""" + LIGHT_TOKENS + """}
+/* no stored choice and no explicit attribute: follow the system */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {""" + LIGHT_TOKENS + """}
 }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg-primary); color: var(--text-primary);
   font: 15px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
 ::selection { background: rgba(247,181,56,0.85); color: #1A1D2E; }
-:focus-visible { outline: 2px solid var(--sun-gold); outline-offset: 2px;
+:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px;
   border-radius: 4px; }
 input, textarea { caret-color: var(--sun-gold); }
 * { scrollbar-width: thin; scrollbar-color: var(--border-medium) transparent; }
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-thumb { background: var(--border-medium); border-radius: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-a { color: var(--sky-blue); text-decoration: none; }
+a { color: var(--link); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 0.2em;
   text-decoration-color: rgba(93,173,226,0.6); }
 h2, h3 { text-wrap: balance; }
@@ -206,7 +246,8 @@ h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--text-secondary); }
   background: transparent; font-family: inherit; }
 a.chip { color: var(--sky-blue); }
 a.chip:hover { text-decoration: none; border-color: var(--sky-blue); }
-.chip.on { background: var(--sun-gold); color: #1A1D2E; border-color: var(--sun-gold);
+.chip.on { background: var(--sun-gold); color: var(--on-accent);
+  border-color: var(--sun-gold);
   font-weight: 600; }
 .chip .n { color: var(--text-muted); font-size: 0.72rem; margin-left: 0.25rem;
   font-variant-numeric: tabular-nums; }
@@ -218,7 +259,7 @@ input.search:focus { outline: 2px solid var(--sun-gold); border-color: transpare
   font-variant-numeric: tabular-nums; }
 .vals { color: var(--text-secondary); font-size: 0.8rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; line-height: 1.7; }
-.vals b { color: var(--water-blue-light); font-weight: 500; }
+.vals b { color: var(--mono-ink); font-weight: 500; }
 table.kv { border-collapse: collapse; width: 100%; margin: 0.6rem 0 1rem; }
 table.kv td, table.kv th { text-align: left; padding: 0.4rem 0.75rem;
   overflow-wrap: anywhere;
@@ -238,21 +279,21 @@ pre { background: var(--bg-secondary); border: 1px solid var(--border-light);
 ul.linked { list-style: none; padding: 0; margin: 0.4rem 0; }
 ul.linked li { margin: 0.22rem 0; font-size: 0.92rem; }
 .pill-row { margin: 0.6rem 0 1rem; }
-.actions a.report { border-color: var(--sun-gold); color: var(--sun-gold); }
+.actions a.report { border-color: var(--gold-ink); color: var(--gold-ink); }
 .actions a.report:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
-footer .report { color: var(--sun-gold); }
+footer .report { color: var(--gold-ink); }
 footer { margin-top: 3.5rem; padding-top: 1.2rem; border-top: 1px solid var(--border-light);
   color: var(--text-muted); font-size: 0.82rem; }
 .hidden { display: none; }
 .headline { margin: 0.2rem 0 0.6rem; font-size: 1.05rem; }
-.headline b { color: var(--water-blue-light); font-weight: 600;
+.headline b { color: var(--mono-ink); font-weight: 600;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
-.headline .v { color: var(--sun-gold); font-weight: 600;
+.headline .v { color: var(--gold-ink); font-weight: 600;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 .subtitle { color: var(--text-muted); font-size: 0.95rem; font-weight: 400; }
 table.params td:first-child { width: 320px; }
 table.params .val { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--sun-gold); }
+  color: var(--gold-ink); }
 table.params.muted .val { color: var(--text-secondary); }
 table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.8rem; color: var(--text-secondary); word-spacing: 0.3em; }
@@ -268,14 +309,14 @@ table.params .hrs { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 .acc-water { --acc: var(--water-blue-light); }
 .acc-built { --acc: var(--energy-orange); }
 .acc-soil { --acc: var(--sun-gold); }
-.acc-snow { --acc: #cfe8ff; }
-.acc-none { --acc: rgba(255,255,255,0.25); }
+.acc-snow { --acc: var(--acc-snow); }
+.acc-none { --acc: var(--acc-neutral); }
 .hero { padding: 1.6rem 0 0.2rem; }
 .hero h2 { margin: 0 0 0.3rem; font-size: 1.75rem; letter-spacing: -0.01em; }
 .hero p { margin: 0; color: var(--text-secondary); max-width: 680px; }
 .statline { display: flex; flex-wrap: wrap; gap: 1.8rem; margin: 1rem 0 1.4rem;
   color: var(--text-muted); font-size: 0.85rem; }
-.statline b { color: var(--sun-gold); font-weight: 600; margin-right: 0.3rem;
+.statline b { color: var(--gold-ink); font-weight: 600; margin-right: 0.3rem;
   font-variant-numeric: tabular-nums; }
 .layout { display: grid; grid-template-columns: 236px minmax(0, 1fr); gap: 1.8rem; }
 details.fgroup { margin-bottom: 0.9rem; }
@@ -293,8 +334,9 @@ details.fgroup summary:hover { color: var(--text-primary); }
   cursor: pointer; background: transparent; font-family: inherit;
   text-align: left; }
 .fitem:hover { background: var(--bg-card-hover); color: var(--text-primary); }
-.fitem.on { background: var(--sun-gold); color: #1A1D2E; font-weight: 600; }
-.fitem.warnv .fv { color: var(--sun-gold); font-style: italic; }
+.fitem.on { background: var(--sun-gold); color: var(--on-accent);
+  font-weight: 600; }
+.fitem.warnv .fv { color: var(--gold-ink); font-style: italic; }
 .fitem .fv { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis;
   white-space: nowrap; }
 .fitem .n { font-size: 0.75rem; color: var(--text-muted);
@@ -311,7 +353,7 @@ input.ffind { width: 100%; padding: 0.3rem 0.55rem; margin: 0 0 0.3rem;
 input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .badge-unref { display: inline-block; padding: 0.05rem 0.5rem;
   border-radius: 999px; border: 1px solid rgba(247,181,56,0.55);
-  color: var(--sun-gold); font-size: 0.72rem; font-style: italic;
+  color: var(--gold-ink); font-size: 0.72rem; font-style: italic;
   vertical-align: 0.1em; }
 .results2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem; }
@@ -322,10 +364,10 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .card2 .t { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.15rem; }
 .card2 .meta2 { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 0.5rem; }
 .pv { display: inline-block; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.76rem; background: rgba(255,255,255,0.04);
+  font-size: 0.76rem; background: var(--bg-card-hover);
   border: 1px solid var(--border-light); border-radius: 6px;
   padding: 0.08rem 0.45rem; margin: 0 0.25rem 0.25rem 0; color: var(--text-secondary); }
-.pv b { color: var(--sun-gold); font-weight: 600; }
+.pv b { color: var(--gold-ink); font-weight: 600; }
 .heroval { display: flex; gap: 0.8rem; flex-wrap: wrap; margin: 0.8rem 0 1.2rem; }
 .hv { border: 1px solid var(--border-light);
   border-radius: 10px; background: var(--bg-card); padding: 0.55rem 1rem 0.6rem; }
@@ -333,7 +375,7 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.1rem; }
 .hv .k .sw { margin-right: 0.45rem; vertical-align: 0.05em; }
 .hv .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 1.35rem; font-weight: 600; color: var(--sun-gold);
+  font-size: 1.35rem; font-weight: 600; color: var(--gold-ink);
   font-variant-numeric: tabular-nums; }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.8rem;
   align-items: start; }
@@ -352,15 +394,16 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   font-size: 0.83rem; margin: 0.3rem 0; }
 .side .allof { display: block; margin-top: 0.5rem; font-size: 0.83rem; }
 .stag { display: inline-block; padding: 0.14rem 0.7rem; border-radius: 999px;
-  font-size: 0.78rem; background: var(--acc); color: #10131c; font-weight: 600;
+  font-size: 0.78rem; background: var(--acc); color: var(--on-accent);
+  font-weight: 600;
   vertical-align: 0.18em; margin-left: 0.55rem; }
 .mapwrap { position: relative; border: 1px solid var(--border-light);
   border-radius: 14px; background: var(--bg-secondary); padding: 0.6rem;
   margin: 1rem 0 0.4rem; }
 .mapwrap svg { display: block; width: 100%; height: auto; }
-.land { fill: rgba(255,255,255,0.10); stroke: rgba(255,255,255,0.16);
+.land { fill: var(--land-fill); stroke: var(--land-stroke);
   stroke-width: 0.5; }
-.dot { fill: var(--sun-gold); fill-opacity: 0.75; stroke: rgba(0,0,0,0.35);
+.dot { fill: var(--sun-gold); fill-opacity: 0.75; stroke: var(--dot-stroke);
   stroke-width: 0.6; }
 a:hover .dot, .dot:hover { fill-opacity: 1; }
 .dot.dim { fill-opacity: 0.15; }
@@ -369,6 +412,26 @@ a:hover .dot, .dot:hover { fill-opacity: 1; }
 .placerows .fitem { break-inside: avoid; }
 header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .fscroll { max-height: 252px; overflow-y: auto; }
+.rf-panel { fill: var(--bg-card-hover); stroke: var(--border-medium); }
+.rf-title { fill: var(--text-primary); }
+.rf-sub { fill: var(--text-muted); }
+.rf-line { stroke: var(--border-medium); fill: none; }
+.rf-dash { stroke-dasharray: 4 4; }
+.rf-head { fill: var(--border-medium); }
+.rf-knock { fill: var(--bg-primary); }
+.rf-box { fill-opacity: 0.12; }
+.rf-rec { fill: var(--sun-gold); stroke: var(--fig-gold); }
+.rf-typ { fill: var(--sky-blue); stroke: var(--fig-blue); }
+.rf-cfg { fill: var(--veg-green); stroke: var(--fig-green); }
+.rf-rec-ink { fill: var(--fig-gold); }
+.rf-typ-ink { fill: var(--fig-blue); }
+.rf-cfg-ink { fill: var(--fig-green); }
+.tbtn { margin-left: 0.85rem; width: 30px; height: 30px; padding: 0;
+  border-radius: 8px; border: 1px solid var(--border-medium);
+  background: var(--bg-card); color: var(--text-secondary); cursor: pointer;
+  font-size: 0.95rem; line-height: 1; vertical-align: -0.35em; }
+.tbtn:hover { background: var(--bg-card-hover); color: var(--text-primary);
+  border-color: var(--focus-ring); }
 .relfig { display: block; width: 100%; max-width: 780px; height: auto;
   margin: 0.4rem auto 1rem; }
 .otiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -422,11 +485,11 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .famgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.3rem; }
 a.grow { display: flex; justify-content: space-between; gap: 0.8rem;
   padding: 0.24rem 0; font-size: 0.88rem; color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255,255,255,0.04); }
+  border-bottom: 1px solid var(--hairline); }
 a.grow:hover { color: var(--text-primary); text-decoration: none; }
 a.grow .n { flex: 0 0 auto; }
 .mapbox { border: 1px solid var(--border-light); border-radius: 10px;
-  background: #0c0e16; padding: 0.4rem; }
+  background: var(--map-ground); padding: 0.4rem; }
 .mapbox svg { width: 100%; height: auto; display: block; }
 .geocols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
   margin-top: 1rem; }
@@ -445,7 +508,7 @@ a.grow .n { flex: 0 0 auto; }
   border-right: 1px solid var(--border-light); }
 .icell:last-child { border-right: 0; }
 .icell:hover { background: var(--bg-card-hover); text-decoration: none; }
-.icell b { display: block; font-size: 1.65rem; color: var(--sun-gold);
+.icell b { display: block; font-size: 1.65rem; color: var(--gold-ink);
   font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .icell span { font-size: 0.82rem; }
 .icell.quiet b { color: var(--text-secondary); }
@@ -472,13 +535,15 @@ table.matrix tbody th a { color: inherit; display: inline-block;
 .rn { float: right; color: var(--text-muted); font-size: 0.74rem;
   font-variant-numeric: tabular-nums; }
 table.matrix td { padding: 0; text-align: center; height: 27px;
-  border-bottom: 1px solid rgba(255,255,255,0.045);
-  border-right: 1px solid rgba(255,255,255,0.045); }
+  border-bottom: 1px solid var(--hairline);
+  border-right: 1px solid var(--hairline); }
+table.matrix td a.lo { color: var(--cell-ink-lo); }
+table.matrix td a.hi { color: var(--cell-ink-hi); }
 table.matrix td a { display: block; padding: 0.42rem 0.3rem; font-weight: 600; }
 table.matrix td a:hover { text-decoration: none;
   outline: 1px solid var(--sun-gold); outline-offset: -1px; }
 table.matrix td.mt { background: repeating-linear-gradient(135deg,
-  transparent 0 5px, rgba(255,255,255,0.035) 5px 6px); }
+  transparent 0 5px, var(--hatch) 5px 6px); }
 .mcap { color: var(--text-muted); font-size: 0.82rem; margin: 0.6rem 0 1.8rem; }
 .lowcards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .lcard { border: 1px solid var(--border-light); border-radius: 12px;
@@ -489,7 +554,7 @@ table.matrix td.mt { background: repeating-linear-gradient(135deg,
 .lcard b { display: block; color: var(--text-primary); margin-bottom: 0.2rem;
   font-size: 0.95rem; }
 .lcard span b.report { display: inline; margin: 0; font-size: inherit;
-  color: var(--sun-gold); font-weight: 600; }
+  color: var(--gold-ink); font-weight: 600; }
 .lcard span { font-size: 0.85rem; }
 a.backdoors { display: inline-block; margin: 0.2rem 0 0.7rem;
   font-size: 0.85rem; }
@@ -535,6 +600,52 @@ def esc(s):
     return html.escape(str(s), quote=True)
 
 
+THEME_BOOT = """<script>
+(function () {
+  try {
+    var t = localStorage.getItem('theme');
+    if (t !== 'light' && t !== 'dark') {
+      t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+})();
+</script>"""
+
+THEME_JS = """<script>
+(function () {
+  var btn = document.getElementById('themetoggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  function sync() {
+    var light = root.getAttribute('data-theme') === 'light';
+    btn.textContent = light ? '\u263E' : '\u2600';
+    btn.setAttribute('aria-label',
+      'Switch to the ' + (light ? 'dark' : 'light') + ' theme');
+    btn.setAttribute('aria-pressed', light ? 'true' : 'false');
+  }
+  sync();
+  btn.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    sync();
+  });
+  try {
+    // follow the system only while the reader has expressed no preference
+    matchMedia('(prefers-color-scheme: light)').addEventListener(
+      'change', function (ev) {
+        var stored = null;
+        try { stored = localStorage.getItem('theme'); } catch (e) {}
+        if (stored === 'light' || stored === 'dark') return;
+        root.setAttribute('data-theme', ev.matches ? 'light' : 'dark');
+        sync();
+      });
+  } catch (e) {}
+})();
+</script>"""
+
+
 def page(title, body, depth=0, script=""):
     rel = "../" * depth
     return f"""<!DOCTYPE html>
@@ -542,13 +653,15 @@ def page(title, body, depth=0, script=""):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)} · SUEWS parameter database</title>
+{THEME_BOOT}
 <style>{CSS}</style>
 </head><body>
 <header class="site"><div class="wrap">
   <h1><a href="{rel}index.html">SUEWS parameter database</a></h1>
   <span class="sub">curated values, linked and searchable, a citation on every one</span>
   <span class="nav"><a href="{rel}index.html">Home</a> ·
-  <a href="{rel}map.html">Map</a></span>
+  <a href="{rel}map.html">Map</a><button id="themetoggle" class="tbtn"
+  type="button" title="Switch between the light and dark theme"></button></span>
 </div></header>
 <div class="wrap">
 {body}
@@ -562,6 +675,7 @@ cite via the <a href="{REPO_URL}/releases">archived releases</a>
 <a class="report" href="{SITE_ISSUE_URL}">report a problem with this site</a>
 </footer>
 </div>
+{THEME_JS}
 {script}
 </body></html>"""
 
@@ -1343,51 +1457,45 @@ RELATION_SVG = """<svg viewBox="0 0 780 208" role="img" class="relfig"
  aria-label="How the database fits together">
 <defs><marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7"
  markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z"
- fill="rgba(255,255,255,0.45)"/></marker></defs>
+ class="rf-head"/></marker></defs>
 <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-<rect x="10" y="14" width="130" height="44" rx="9"
- fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
-<text x="75" y="33" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+<rect x="10" y="14" width="130" height="44" rx="9" class="rf-panel"/>
+<text x="75" y="33" text-anchor="middle" class="rf-title"
  font-size="13">sources</text>
-<text x="75" y="49" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+<text x="75" y="49" text-anchor="middle" class="rf-sub"
  font-size="11">citation per value</text>
-<rect x="10" y="98" width="130" height="44" rx="9"
- fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"/>
-<text x="75" y="117" text-anchor="middle" fill="rgba(255,255,255,0.85)"
+<rect x="10" y="98" width="130" height="44" rx="9" class="rf-panel"/>
+<text x="75" y="117" text-anchor="middle" class="rf-title"
  font-size="13">places</text>
-<text x="75" y="133" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+<text x="75" y="133" text-anchor="middle" class="rf-sub"
  font-size="11">region · country · city</text>
-<rect x="210" y="50" width="170" height="54" rx="10"
- fill="rgba(247,181,56,0.12)" stroke="#F7B538"/>
-<text x="295" y="73" text-anchor="middle" fill="#F7B538" font-size="14"
- font-weight="600">evidence records</text>
-<text x="295" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+<rect x="210" y="50" width="170" height="54" rx="10" class="rf-box rf-rec"/>
+<text x="295" y="73" text-anchor="middle" class="rf-lead rf-rec-ink"
+ font-size="14" font-weight="600">evidence records</text>
+<text x="295" y="91" text-anchor="middle" class="rf-sub"
  font-size="11">one coherent set per source</text>
-<rect x="440" y="50" width="172" height="54" rx="10"
- fill="rgba(93,173,226,0.12)" stroke="#5DADE2"/>
-<text x="526" y="73" text-anchor="middle" fill="#5DADE2" font-size="14"
- font-weight="600">typologies</text>
-<text x="526" y="91" text-anchor="middle" fill="rgba(255,255,255,0.6)"
+<rect x="440" y="50" width="172" height="54" rx="10" class="rf-box rf-typ"/>
+<text x="526" y="73" text-anchor="middle" class="rf-lead rf-typ-ink"
+ font-size="14" font-weight="600">typologies</text>
+<text x="526" y="91" text-anchor="middle" class="rf-sub"
  font-size="11">curated bundles of records</text>
-<rect x="660" y="50" width="112" height="54" rx="10"
- fill="rgba(9,162,92,0.12)" stroke="#09a25c"/>
-<text x="716" y="73" text-anchor="middle" fill="#09a25c" font-size="13"
- font-weight="600">your SUEWS</text>
-<text x="716" y="90" text-anchor="middle" fill="#09a25c" font-size="13"
- font-weight="600">YAML config</text>
-<line x1="140" y1="42" x2="205" y2="66" stroke="rgba(255,255,255,0.35)"
+<rect x="660" y="50" width="112" height="54" rx="10" class="rf-box rf-cfg"/>
+<text x="716" y="73" text-anchor="middle" class="rf-lead rf-cfg-ink"
+ font-size="13" font-weight="600">your SUEWS</text>
+<text x="716" y="90" text-anchor="middle" class="rf-lead rf-cfg-ink"
+ font-size="13" font-weight="600">YAML config</text>
+<line x1="140" y1="42" x2="205" y2="66" class="rf-line"
  marker-end="url(#arr)"/>
-<line x1="140" y1="116" x2="205" y2="90" stroke="rgba(255,255,255,0.35)"
+<line x1="140" y1="116" x2="205" y2="90" class="rf-line"
  marker-end="url(#arr)"/>
-<line x1="380" y1="77" x2="434" y2="77" stroke="rgba(255,255,255,0.35)"
+<line x1="380" y1="77" x2="434" y2="77" class="rf-line"
  marker-end="url(#arr)"/>
-<line x1="612" y1="77" x2="654" y2="77" stroke="rgba(255,255,255,0.35)"
+<line x1="612" y1="77" x2="654" y2="77" class="rf-line"
  marker-end="url(#arr)"/>
-<path d="M295 104 L295 158 L716 158 L716 110" fill="none"
- stroke="rgba(255,255,255,0.3)" stroke-dasharray="4 4"
+<path d="M295 104 L295 158 L716 158 L716 110" class="rf-line rf-dash"
  marker-end="url(#arr)"/>
-<rect x="380" y="148" width="252" height="20" rx="5" fill="#0F1119"/>
-<text x="506" y="162" text-anchor="middle" fill="rgba(255,255,255,0.5)"
+<rect x="380" y="148" width="252" height="20" rx="5" class="rf-knock"/>
+<text x="506" y="162" text-anchor="middle" class="rf-sub"
  font-size="11">or paste a single record's fragment</text>
 </g></svg>"""
 
@@ -1545,10 +1653,10 @@ families</p>
                 continue
             filled += 1
             a = 0.10 + 0.62 * (n / mx) ** 0.45
-            ink = "#14172a" if a >= 0.42 else "rgba(255,255,255,0.86)"
+            ink = "hi" if a >= 0.42 else "lo"
             href = f"#family={fam}" + (f"&surface={c}" if c else "")
             tds.append(f"<td style=\"background:rgba(247,181,56,{a:.3f})\">"
-                       f"<a style=\"color:{ink}\" href=\"{esc(href)}\">{n}</a></td>")
+                       f"<a class=\"{ink}\" href=\"{esc(href)}\">{n}</a></td>")
         rows_html.append(
             f"<tr><th><a title=\"{esc(fam)}\" href=\"#family={esc(fam)}\">"
             f"{esc(fam)}</a><span class=\"rn\">{fam_counts[fam]}</span></th>"
