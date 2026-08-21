@@ -95,3 +95,6 @@ legacy free-text origins now quarantined in `schema/origins_map.yml`.
   this database follow its YAML input specification
 - [UMEP](https://umep-docs.readthedocs.io/en/latest/index.html) — the QGIS
   plugin suite SUEWS is used through
+- [SUEWS Database Manager](https://umep-docs.readthedocs.io/en/latest/pre-processor/Urban%20Energy%20Balance%20SUEWS%20Database%20Manager.html)
+  — the UMEP plugin for browsing and editing the database. It still reads the
+  legacy workbook rather than these records; see *Using the spreadsheet?* above
