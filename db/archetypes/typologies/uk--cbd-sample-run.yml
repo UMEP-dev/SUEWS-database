@@ -1,7 +1,7 @@
 archetype: archetypes/typologies/uk--cbd-sample-run
 schema_version: '2026.5'
 target: typology
-name: CBD [sample run]
+name: CBD
 place: uk
 origin: UK
 representativeness: regional
