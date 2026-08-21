@@ -1671,7 +1671,11 @@ def review_guide_page(policy):
       <li><div><h3>Submit from your own GitHub account</h3>
         <p>When the entry reaches <strong>Awaiting sign-off</strong>, use its GitHub
         sign-off button. CI authenticates your immutable GitHub user ID and checks
-        the entry, evidence and policy revisions before incorporating the decision.</p>
+        the entry, evidence and policy revisions before incorporating the decision.
+        An accepted issue closes automatically and remains linked as the durable
+        review record. A rejected issue stays open and receives a CI comment with
+        the failure reason; unregistered reviewers are also directed to the verifier
+        qualification request.</p>
       </div></li>
     </ol>
   </main>
