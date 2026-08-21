@@ -1,0 +1,108 @@
+provenance_record: records/ohm/london--xie2024--buildings--flats-with-gas-boilers-operated-in-whole-buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:55e16e09fc64a45198ce3d7fb92e6328ec398a885a5217fc5979a5ebcd265294
+dependency_revisions:
+  sources:
+    xie2024: sha256:7f8cce92cf2b85e545cbee66b3c57f747633ff992bfc82e689884737a4c23f4e
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:13:18Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Table S1 identifies the QF,B all-rooms, flat, gas-boiler scenario; Section 2.6 defines operation
+        throughout the entire building.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Equation (4) and Table S1 identify a1, a2, and a3 as SUEWS OHM coefficients.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Table S1 reports a1 = 0.344, a2 = 0.147, and a3 = -44.7 for this exact scenario.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Xie et al. 2024 directly publishes the stored triplet in Table S1.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: 'London is the model-scenario place: the coefficients are applied to the idealised London
+        neighbourhood under the 2050s climate scenario.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: The city tag denotes the London scenario context; the source models an idealised neighbourhood
+        and does not claim a city-wide observation.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: The paper states that the building coefficients are derived from EnergyPlus simulation results,
+        so these are fitted/model-derived OHM parameters rather than direct measurements.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: The triplet occupies the distinct flat, gas-boiler, all-rooms column in Table S1.
+  evidence:
+  - id: xie2024-ohm
+    source: xie2024
+    role: parameter_source
+    locators:
+    - kind: supplementary
+      label: Table S1, QF,B / All (Section 3.3) / Flat / GB column, rows a1, a2, and a3
+      page: 1
+      url: https://ars.els-cdn.com/content/image/1-s2.0-S2210670724006358-mmc1.docx
+      note: Reports the exact triplet 0.344, 0.147, -44.7.
+    - kind: equation
+      label: Equation (4), Objective Hysteresis Model
+      page: 3
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      note: Defines a1, a2, and a3 as the SUEWS OHM coefficients.
+    - kind: section
+      label: Section 2.1, Neighbourhood-scale climate modelling
+      page: 3-4
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      note: States that building coefficients are derived from EnergyPlus simulation results and points
+        to Table S1.
+    - kind: section
+      label: Section 2.4, Building energy simulation
+      page: 5
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      note: Defines the flat archetype and idealised neighbourhood.
+    - kind: section
+      label: Section 2.6, Comparison scenarios
+      page: 6
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      note: Defines operation throughout the entire building as the all-rooms, less-efficient comparison
+        case.
+    - kind: section
+      label: Section 3.1, London base case for 2050s climate projection
+      page: 6
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      note: Establishes London as the model-scenario place for Table S1 cases.
+  scientific_note: 'Xie et al. is the parameter publication: it derives the OHM coefficients from EnergyPlus
+    outputs and publishes the exact triplet in Supplement Table S1. The values are not direct observations,
+    a later compilation, external validation, or an internal database calculation. No separate input_data,
+    compilation, or validation relationship is asserted. London is a model-scenario application using
+    an idealised neighbourhood rather than an observational study site.'
+  evidence_revision: sha256:37386bdd04fa7e359d2ae7e7aa9e735aba6e6b4ebea391289fa4f7a4652f2242
+verification:
+  attestations: []
