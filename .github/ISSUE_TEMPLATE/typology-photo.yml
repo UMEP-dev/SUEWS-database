@@ -1,0 +1,101 @@
+name: Offer a photograph of a typology
+description: Suggest a photograph to illustrate an urban typology, with the licence it may be published under.
+title: "[photo] "
+labels: ["photo offer"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A typology is a visual idea. "Mixed-City Ideal" and "Residential
+        Functionalism" are far easier to recognise than to describe, so a
+        photograph does more for a reader than another paragraph would.
+
+        One condition, and it is not negotiable: **the photograph can only be
+        published if we can say who took it and under what licence.** A
+        photograph with no stated terms cannot be shown, however good it is
+        and however clearly it belongs here — see `db/images.yml` for the two
+        already recorded that cannot be published for exactly that reason.
+
+        Nothing here is auto-applied. Every photograph reaches the site
+        through a pull request that a human reviews.
+  - type: input
+    id: typology
+    attributes:
+      label: Typology
+      description: The record's path under `db/`, or its name.
+      placeholder: archetypes/typologies/sweden--industrial
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Seen at
+      description: >-
+        The page you came from. The site fills this in for you.
+  - type: input
+    id: photo_url
+    attributes:
+      label: Where the photograph is
+      description: >-
+        A link to the photograph, ideally to the page that describes it rather
+        than to the image file alone — a Wikimedia Commons file page, a Flickr
+        photo page, an institutional archive entry. That page is usually where
+        the licence is stated.
+    validations:
+      required: true
+  - type: input
+    id: photographer
+    attributes:
+      label: Who took it
+      description: >-
+        The name to credit. If the rights sit with an organisation rather than
+        an individual, name the organisation.
+    validations:
+      required: true
+  - type: dropdown
+    id: licence
+    attributes:
+      label: Licence
+      description: >-
+        The terms the photograph is published under. If you took it yourself,
+        this is the licence you are offering it under.
+      options:
+        - CC0 / public domain dedication
+        - Public domain, or no known copyright restrictions
+        - CC BY (attribution)
+        - CC BY-SA (attribution, share alike)
+        - Another Creative Commons licence
+        - Some other licence or written permission
+        - I do not know
+    validations:
+      required: true
+  - type: input
+    id: licence_evidence
+    attributes:
+      label: Where the licence is stated
+      description: >-
+        A link to the page that states those terms, or a note that you are the
+        photographer and are offering it under the licence above. This is what
+        lets us publish the credit alongside the image.
+    validations:
+      required: true
+  - type: textarea
+    id: shows
+    attributes:
+      label: What it shows
+      description: >-
+        Where and when, and why it is a fair example of this typology rather
+        than an unusual corner of it. A caption is written from this.
+  - type: checkboxes
+    id: rights
+    attributes:
+      label: Before you post
+      options:
+        - label: >-
+            I am the photographer, or the photograph is published under terms
+            that allow it to be republished with credit.
+          required: true
+        - label: >-
+            This is a photograph of a place as built, not an architect's
+            visualisation or a rendering of something proposed.
+          required: true

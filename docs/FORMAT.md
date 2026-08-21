@@ -545,7 +545,16 @@ record goes under `unresolved:` with a `reason` and a
 typology carrying a `url` to appear in one section or the other, so an
 omission is deliberate rather than silent, and requires a credit and a
 licence on everything in `images:`, because that is what publishing under
-these licences demands.
+these licences demands. An `unresolved:` entry may also carry `tracked_by`,
+the number of the issue where the question is being settled; the site links
+a reader to it rather than leaving the absence unexplained.
+
+A typology with no published photograph carries an invitation to offer one,
+backed by the `typology-photo.yml` issue form. The form makes the
+photographer and the licence required fields, and the page says so before
+anyone starts looking: a photograph offered without terms cannot be
+published, and finding that out afterwards wastes the contributor's effort
+rather than ours.
 
 ## Using the database with SUEWS
 
