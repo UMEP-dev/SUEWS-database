@@ -10,6 +10,11 @@ Structural pass (stdlib + PyYAML only):
   - every `uses:` reference resolves to an existing record file
   - material references inside construction records resolve
 
+Provenance pass (jsonschema + rfc8785, loaded only by main()):
+  - sidecars validate against the Draft 2020-12 schema
+  - evidence references, revision fingerprints and derivation graphs resolve
+  - attestation envelopes remain offline unless authenticated facts are injected
+
 Model pass (--supy, needs supy importable):
   - every evidence record's parameter fragment validates against the supy
     class its `target:` names (wrapped as RefValue with the record's citation,
@@ -301,6 +306,21 @@ def main():
     print(f"structural: {len(records)} files checked, {len(errors)} errors")
     for e in errors[:30]:
         print("  -", e)
+
+    # Keep the provenance dependencies out of this module's import path:
+    # build_site.py, export_record.py and migration checks reuse load_all()
+    # in PyYAML-only environments.
+    from provenance import check_provenance, load_provenance_sidecars
+
+    sidecars, provenance_errors = load_provenance_sidecars()
+    provenance_errors += check_provenance(records, sources, places, sidecars)
+    print(
+        f"provenance: {len(sidecars)} sidecars checked, "
+        f"{len(provenance_errors)} errors"
+    )
+    for e in provenance_errors[:30]:
+        print("  -", e)
+    errors += provenance_errors
 
     warnings = linkage_check(records)
     print(f"linkage: {len(warnings)} warnings")

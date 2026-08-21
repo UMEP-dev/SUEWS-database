@@ -228,6 +228,12 @@ loads the event by its immutable numeric ID and verifies its author, timestamp,
 repository and anchored URL. It then checks that the actor was eligible under
 the recorded policy revision.
 
+The authenticated event also carries the signed decision payload: the
+provenance-record path, decision, scope, evidence revision, verifier-policy
+revision and any superseded event. Every field must equal the sidecar
+attestation. An unrelated comment cannot therefore be reinterpreted as a
+sign-off, and one GitHub event cannot be reused across several records.
+
 The sign-off button creates that authenticated GitHub event. Trusted
 automation appends the resulting attestation; agents and ordinary data-change
 commits may not hand-write one. Schema validation checks the shape, while the
@@ -237,6 +243,11 @@ append rule. The button runs in a verifier-authenticated human session; the
 audit agent must not receive or be able to invoke the verifier's credential or
 sign-off action. A matching GitHub actor proves account identity only when this
 human-intent boundary is also enforced.
+
+The offline checker validates sidecar shape, fingerprints, event anchors and
+supersession graphs, but never authenticates GitHub identity itself. Without
+authenticated event facts and the current central verifier policy, its state
+derivation cannot return `verified`.
 
 Attestations are immutable events. A later event can supersede or withdraw an
 earlier decision. Changing a parameter value, the source, place,
