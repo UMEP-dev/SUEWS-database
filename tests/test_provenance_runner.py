@@ -266,6 +266,17 @@ class ProvenanceRunnerTests(unittest.TestCase):
             self.assertEqual(errors, [])
             self.assertEqual(candidate_bytes, evidence_file.read_bytes())
 
+            changed_records = deepcopy(records)
+            changed_records[EVIDENCE]["parameters"]["a1"] = 9.9
+            _, errors = collect_run(
+                out,
+                records=changed_records,
+                sources=sources,
+                places=places,
+                existing_sidecars={},
+            )
+            self.assertTrue(any("packet differs" in error for error in errors))
+
     def test_invalid_or_blocked_responses_never_silently_verify(self):
         records, sources, places = fixtures()
         with tempfile.TemporaryDirectory() as tmp:
@@ -339,6 +350,21 @@ class ProvenanceRunnerTests(unittest.TestCase):
             draft = (out / issue_index["issues"][0]["body_file"]).read_text()
             self.assertIn("### What kind of problem", draft)
             self.assertIn("The citation is wrong or missing", draft)
+
+            prepare_run(
+                out,
+                ["evidence"],
+                reassess_existing=True,
+                records={EVIDENCE: records[EVIDENCE]},
+                sources=sources,
+                places=places,
+                existing_sidecars={},
+                repository_revision="d" * 40,
+            )
+            issue_index = yaml.safe_load(
+                (out / "queues" / "issue-drafts.yml").read_text()
+            )
+            self.assertEqual(issue_index["count"], 1)
 
 
 def _yaml(value):

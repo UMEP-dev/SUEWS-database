@@ -398,7 +398,18 @@ def prepare_run(
         reassess_existing,
     )
     _write_if_changed(out / "manifest.yml", manifest)
-    _write_queues(out, manifest, {})
+    issue_drafts = {}
+    for item in manifest["entries"]:
+        if item["status"] != "candidate_problem":
+            continue
+        candidate = _load(out / item["candidate"])
+        issue_drafts[item["path"]] = _issue_draft(
+            item["path"],
+            records[item["path"]],
+            candidate,
+            repository_revision,
+        )
+    _write_queues(out, manifest, issue_drafts)
     return manifest
 
 
@@ -608,6 +619,20 @@ def collect_run(
     errors = []
     by_path = {item["path"]: item for item in manifest["entries"]}
     for path, item in by_path.items():
+        try:
+            current_packet = _packet_data(
+                path, records, sources, places, existing_sidecars
+            )
+            stored_packet = _load(run_dir / item["packet"])
+        except (KeyError, RunnerError) as exc:
+            errors.append(f"{path}: cannot validate packet: {exc}")
+            continue
+        if stored_packet != current_packet:
+            errors.append(f"{path}: packet differs from current deterministic input")
+            continue
+        if item["input_revision"] != current_packet["input_revision"]:
+            errors.append(f"{path}: manifest input_revision is stale")
+            continue
         response_path = run_dir / item["response"]
         if not response_path.exists():
             continue
@@ -642,16 +667,8 @@ def collect_run(
     )
     if errors:
         return manifest, sorted(set(errors))
-    issue_drafts = {}
     for path, candidate in sorted(built.items()):
         _write_if_changed(candidate_base / f"{path}.yml", candidate)
-        if _assessment_queue(candidate["assessment"]) == "problem":
-            issue_drafts[path] = _issue_draft(
-                path,
-                records[path],
-                candidate,
-                manifest["repository_revision"],
-            )
     refreshed = prepare_run(
         run_dir,
         manifest["modes"],
@@ -662,7 +679,6 @@ def collect_run(
         existing_sidecars=existing_sidecars,
         repository_revision=manifest["repository_revision"],
     )
-    _write_queues(run_dir, refreshed, issue_drafts)
     return refreshed, []
 
 
