@@ -1,0 +1,53 @@
+provenance_record: records/ohm/kyoto--paper1999--buildings
+provenance_format_version: '1.0'
+record_revision: sha256:33f9d0d140012e6e70db81c991e3fe38dfe0c4a720e9a8116936ce9c7b23bd5a
+dependency_revisions:
+  sources:
+    paper1999: sha256:218f5ab1bb9e4ad748333ce99bda8ff287a9c6a40a3a36d8fb9cfee69cbcc460
+  places:
+    kyoto: sha256:d7b2ead5418996082c09ee319e08ecf0ec74cae7f52f6be40eec81aab6186ccc
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T12:00:00Z'
+  assessor:
+    kind: agent
+    name: fixture-agent
+    version: '1.0'
+  method: fitted
+  evidence_revision: sha256:8ecfff731624e30f8ee43e69a643e193b00b8532528a68552214a2e6e6a58c8b
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    target:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    values:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    source:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    place:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    representativeness:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    method:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+    identity:
+      conclusion: supported
+      evidence_ids: [parameter-publication]
+  evidence:
+    - id: parameter-publication
+      source: paper1999
+      role: parameter_source
+      locators:
+        - kind: table
+          label: Table 1
+          page: 10
+verification:
+  attestations: []

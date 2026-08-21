@@ -13,5 +13,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - name: Structural and coupling checks
         run: make check
+      - name: Provenance and export regression tests
+        run: make test
       - name: Validate fragments against the supy data model
         run: make validate

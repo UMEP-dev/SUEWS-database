@@ -1,0 +1,20 @@
+provenance_record: records/ohm/kyoto--paper1999--buildings
+provenance_format_version: '1.0'
+record_revision: sha256:0000000000000000000000000000000000000000000000000000000000000000
+dependency_revisions:
+  sources: {}
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T12:00:00Z'
+  assessor:
+    kind: agent
+    name: fixture-agent
+    version: '1.0'
+  method: fitted
+  evidence_revision: sha256:0000000000000000000000000000000000000000000000000000000000000000
+  findings: {}
+  evidence: not-an-array
+verification:
+  attestations: []
