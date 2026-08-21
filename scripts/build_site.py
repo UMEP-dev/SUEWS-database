@@ -43,6 +43,7 @@ from export_record import PlainDumper, assemble  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 REPO_URL = "https://github.com/UMEP-dev/SUEWS-database"
+SUEWS_SITE = "https://suews.io"
 DOCS = "https://docs.suews.io/latest/inputs/yaml"
 DOCS_REF = f"{DOCS}/config-reference"
 
@@ -238,6 +239,13 @@ header.site .wrap { display: flex; align-items: baseline; gap: 0.35rem 1rem;
 header.site h1 { font-size: 1.1rem; margin: 0; white-space: nowrap; }
 header.site h1 a { color: var(--text-primary); }
 header.site .sub { color: var(--text-muted); font-size: 0.85rem; }
+header.site .up { color: var(--text-muted); font-size: 0.85rem;
+  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+header.site .up:hover { color: var(--text-primary);
+  text-decoration-color: currentColor; }
+header.site .up .arw { display: inline-block;
+  transition: transform 0.15s ease-out; }
+header.site .up:hover .arw { transform: translateX(-3px); }
 h2 { margin: 2rem 0 0.8rem; font-size: 1.2rem; }
 h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--text-secondary); }
 .chip { display: inline-block; padding: 0.12rem 0.65rem; border-radius: 999px;
@@ -463,6 +471,8 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
   #results.anim { animation: none; }
   .card2 { transition: none; }
   .card2:hover { transform: none; }
+  header.site .up .arw { transition: none; }
+  header.site .up:hover .arw { transform: none; }
 }
 
 /* --- arrival: two doors ------------------------------------------------ */
@@ -657,6 +667,8 @@ def page(title, body, depth=0, script=""):
 <style>{CSS}</style>
 </head><body>
 <header class="site"><div class="wrap">
+  <a class="up" href="{SUEWS_SITE}" aria-label="Back to suews.io"><span
+  class="arw" aria-hidden="true">&larr;</span>suews.io</a>
   <h1><a href="{rel}index.html">SUEWS parameter database</a></h1>
   <span class="sub">curated values, linked and searchable, a citation on every one</span>
   <span class="nav"><a href="{rel}index.html">Home</a> ·
