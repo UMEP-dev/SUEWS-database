@@ -9,11 +9,12 @@ UV := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --no-project python
 UVCHECK := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --no-project python
 UVSUPY := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --with "supy==$(SUPY_VERSION)" --no-project python
 
-.PHONY: help check check-strict test validate verify export
+.PHONY: help check check-strict check-signoffs test validate verify export
 
 help:
 	@echo "check        - structure, references, places/sources and coupling rules"
 	@echo "check-strict - as check, but coupling warnings fail the run"
+	@echo "check-signoffs - authenticate stored verifier events against GitHub"
 	@echo "test         - provenance and export regression tests"
 	@echo "validate     - check + validate every fragment against the supy data model"
 	@echo "verify       - reverse-verify the record tree against the pre-migration tables in git history"
@@ -28,6 +29,9 @@ check:
 
 check-strict:
 	$(UVCHECK) scripts/check_db.py --strict
+
+check-signoffs:
+	$(UVCHECK) scripts/github_attestation.py
 
 test:
 	$(UVCHECK) -m unittest discover -s tests -v

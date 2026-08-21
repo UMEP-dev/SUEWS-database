@@ -36,10 +36,6 @@ SIGNOFF_FINDINGS = {"supported", "not_applicable"}
 EXTERNAL_METHODS = {"measured", "fitted", "literature"}
 
 EVENT_URLS = {
-    "pull_request_review": re.compile(
-        r"^https://github\.com/UMEP-dev/SUEWS-database/pull/\d+"
-        r"#pullrequestreview-(\d+)$"
-    ),
     "issue_comment": re.compile(
         r"^https://github\.com/UMEP-dev/SUEWS-database/(?:issues|pull)/\d+"
         r"#issuecomment-(\d+)$"
@@ -133,6 +129,7 @@ def _event_fact_matches(attestation, fact, provenance_record):
     return (
         _normalise_handle(fact.get("author"))
         == _normalise_handle(attestation.get("verifier"))
+        and fact.get("author_id") == attestation.get("verifier_id")
         and fact.get("signed_at") == attestation.get("signed_at")
         and fact.get("url") == event.get("url")
         and fact.get("repository") == GITHUB_REPOSITORY
@@ -216,12 +213,13 @@ def derive_verification_state(
     URL and repository; every field must match the attestation. ``policy`` has
     a revision, a positive
     ``required_signoffs`` count, non-empty ``required_scopes``, and a
-    ``verifiers`` mapping from GitHub handles to allowed scopes.  Missing trust
-    inputs always yield ``awaiting_signoff`` for an otherwise eligible
-    assessment. Current record, source and place registries plus the complete
-    sidecar snapshot are also required. The snapshot must pass the same schema,
-    reference, revision and graph checks used by ``make check``; stale or
-    checker-invalid evidence can never produce ``verified``.
+    ``verifiers`` mapping from GitHub handles to immutable numeric user IDs and
+    allowed scopes. Missing trust inputs always yield ``awaiting_signoff`` for
+    an otherwise eligible assessment. Current record, source and place
+    registries plus the complete sidecar snapshot are also required. The
+    snapshot must pass the same schema, reference, revision and graph checks
+    used by ``make check``; stale or checker-invalid evidence can never produce
+    ``verified``.
     """
     if sidecar is None:
         return "unaudited"
@@ -268,12 +266,22 @@ def derive_verification_state(
         return "awaiting_signoff"
 
     required_scopes = set(required_scopes)
-    allowed_by_verifier = {
-        _normalise_handle(handle): set(scopes)
-        for handle, scopes in verifiers.items()
-        if isinstance(scopes, (list, tuple, set, frozenset))
-        and all(isinstance(scope, str) for scope in scopes)
-    }
+    allowed_by_verifier = {}
+    for handle, verifier in verifiers.items():
+        if not isinstance(verifier, dict):
+            continue
+        scopes = verifier.get("scopes")
+        user_id = verifier.get("github_user_id")
+        if (
+            isinstance(user_id, int)
+            and not isinstance(user_id, bool)
+            and isinstance(scopes, (list, tuple, set, frozenset))
+            and all(isinstance(scope, str) for scope in scopes)
+        ):
+            allowed_by_verifier[_normalise_handle(handle)] = {
+                "github_user_id": user_id,
+                "scopes": set(scopes),
+            }
     authenticated_events = authenticated_events or {}
     attestations = sidecar.get("verification", {}).get("attestations", [])
     event_keys = [_event_key(item) for item in attestations]
@@ -310,10 +318,13 @@ def derive_verification_state(
         if attestation.get("verifier_policy_revision") != policy_revision:
             continue
         verifier = _normalise_handle(attestation.get("verifier"))
+        verifier_policy = allowed_by_verifier.get(verifier, {})
         scope = attestation.get("scope")
         if (
             scope not in required_scopes
-            or scope not in allowed_by_verifier.get(verifier, set())
+            or attestation.get("verifier_id")
+            != verifier_policy.get("github_user_id")
+            or scope not in verifier_policy.get("scopes", set())
         ):
             continue
         current[key] = attestation
@@ -333,7 +344,7 @@ def derive_verification_state(
     if decisions & {"changes_requested", "unresolved", "curation_required"}:
         return "awaiting_signoff"
     signed = {
-        _normalise_handle(item.get("verifier"))
+        item.get("verifier_id")
         for item in effective.values()
         if item.get("decision") == "verified"
     }
@@ -464,8 +475,10 @@ def _attestation_supersession_errors(attestations):
         if target not in by_key:
             continue
         previous = by_key[target]
-        if _normalise_handle(previous.get("verifier")) != _normalise_handle(
-            item.get("verifier")
+        if (
+            _normalise_handle(previous.get("verifier"))
+            != _normalise_handle(item.get("verifier"))
+            or previous.get("verifier_id") != item.get("verifier_id")
         ):
             errors.append(
                 f"attestation {_event_label(key)} cannot supersede another verifier"
