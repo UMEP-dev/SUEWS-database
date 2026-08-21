@@ -1,0 +1,100 @@
+provenance_record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+provenance_format_version: '1.0'
+record_revision: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+dependency_revisions:
+  sources:
+    grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    mccaughey1985: sha256:ee76bcdaf69b13175bdcb7a437a8fff264acb8cbe23dc58a551ca57544f7e3ae
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T12:54:25Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/11
+  method: fitted
+  evidence_revision: sha256:aeff4033fce0eb454451af18efd26281f1264b5b05bd4386fcc871323fc9fb34
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+        - parameter-publication
+        - later-compilation
+    target:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+    values:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+        - later-compilation
+    source:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+        - later-compilation
+      issue_urls:
+        - https://github.com/UMEP-dev/SUEWS-database/issues/11
+        - https://github.com/UMEP-dev/SUEWS-database/issues/13
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+        - parameter-publication
+    identity:
+      conclusion: supported
+      evidence_ids:
+        - parameter-publication
+        - later-compilation
+  evidence:
+    - id: input-observations
+      source: mccaughey1985
+      role: input_data
+      locators:
+        - kind: section
+          label: Full article, Sections 2–5 and Tables II–IV
+          page: 89–101
+          url: https://link.springer.com/article/10.1007/BF00120036
+          note: >-
+            Reports the Petawawa mixed-forest storage observations and net radiation. The
+            full text contains no OHM a1–a3 coefficients, hysteresis regression or stored
+            coefficient triplet.
+    - id: parameter-publication
+      source: grimmond1991b
+      role: parameter_source
+      locators:
+        - kind: text
+          label: Section 3, objective model derivation
+          page: 313
+          note: >-
+            States the mixed-forest values a1 = 0.11, a2 = 0.11 h and a3 = -12.3 W m-2
+            while describing statistical analysis of independent observational datasets to
+            obtain the OHM coefficients.
+    - id: later-compilation
+      source: grimmond1999
+      role: compilation
+      locators:
+        - kind: table
+          label: Table 4
+          page: 932
+          note: >-
+            Repeats the mixed-forest triplet and attributes the observational source to
+            McCaughey (1985). Its post-1991 footnote does not change the fact that the exact
+            triplet already appears on p. 313 of Grimmond et al. (1991).
+  scientific_note: >-
+    McCaughey (1985) is the observation input, Grimmond et al. (1991) is the publication
+    that states the stored fitted coefficients, and Grimmond and Oke (1999) is a later
+    compilation. Of the three full publications checked, Grimmond et al. (1991) is the
+    earliest one containing the exact triplet; the remaining lineage is preserved here.
+verification:
+  attestations: []
