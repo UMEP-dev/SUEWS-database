@@ -467,6 +467,49 @@ Because an archetype references records, its provenance is inspectable: the
 Kumpula example shows at a glance that its albedo comes from a London
 study — visible now, silent under the old integer-ID scheme.
 
+### Typology photographs
+
+A typology is a visual idea, so the site shows a photograph of one where it
+can. `db/images.yml` decides which: a typology gets a photograph only if it
+is listed there, with the credit and licence the photograph may not be shown
+without.
+
+```yaml
+release: typology-images-20260821
+
+images:
+  archetypes/typologies/sweden--modernism:
+    file: sweden--modernism.jpg
+    origin_url: https://upload.wikimedia.org/.../1280px-Rinkeby_mot_nordost_1988.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:Rinkeby_mot_nordost_1988.jpg
+    credit: Holger Ellgaard
+    licence: CC BY-SA 3.0
+    licence_url: https://creativecommons.org/licenses/by-sa/3.0/
+    caption: Rinkeby, Stockholm, seen from the north-east in May 1988
+    sha256: 12a43617...
+    bytes: 279960
+    width: 1280
+    height: 849
+```
+
+The image files are not repository content. They are individual assets on
+the release named at the top of the manifest, and `scripts/build_site.py`
+fetches each one from there, checks it against its `sha256`, and publishes
+it under the site's own origin. A reader's browser therefore contacts nobody
+but the site, and an upstream link that rots cannot blank a page.
+`scripts/fetch_images.py` rebuilds that asset set from the recorded origins;
+it is the only thing here that contacts them.
+
+The typology records themselves are untouched: their legacy `url` and
+`image_source` strings stay verbatim as migrated, and the site reads
+neither. Where a licence could not be established from the source, the
+record goes under `unresolved:` with a `reason` and a
+`what_would_settle_it`, and no image is shown. `make check` requires every
+typology carrying a `url` to appear in one section or the other, so an
+omission is deliberate rather than silent, and requires a credit and a
+licence on everything in `images:`, because that is what publishing under
+these licences demands.
+
 ## Using the database with SUEWS
 
 ```sh

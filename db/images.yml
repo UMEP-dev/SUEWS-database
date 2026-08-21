@@ -1,0 +1,130 @@
+# Photographs illustrating the urban typologies.
+#
+# A typology is a visual idea: "Mixed-City Ideal" and "Traditional Stone House
+# Neighbourhood" are not self-explanatory from their names, and a reader
+# choosing between them is choosing between kinds of place they would
+# recognise on sight. This table is what lets the site show them.
+#
+# It is a reference table in the same sense as db/sources.yml and
+# db/places.yml: keyed by the record it illustrates, holding provenance
+# rather than parameters. The typology records themselves are untouched --
+# their legacy `url` and `image_source` strings stay verbatim as migrated.
+#
+# Every entry states where the copy came from, who took it and under what
+# licence, established by reading the source's own metadata. A photograph
+# whose licence cannot be established from its source does not get an entry:
+# it goes under `unresolved` below, naming what would settle it. The site
+# shows an image only if it appears here, so an image can never reach a
+# reader without its attribution.
+#
+# The image files are not in this repository. They are individual assets on
+# the release named by `release` below -- the same place the archived
+# workbook lives. scripts/build_site.py fetches them from there at build
+# time, verifies each against its sha256, and serves them from the site's own
+# origin, so a reader's browser never contacts a third-party host and no
+# upstream link rot can blank a page. scripts/fetch_images.py stages the
+# assets from their origins for that release.
+
+release: typology-images-20260821
+
+images:
+
+  archetypes/typologies/sweden--modernism:
+    file: sweden--modernism.jpg
+    origin_url: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Rinkeby_mot_nordost_1988.jpg/1280px-Rinkeby_mot_nordost_1988.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:Rinkeby_mot_nordost_1988.jpg
+    credit: Holger Ellgaard
+    licence: CC BY-SA 3.0
+    licence_url: https://creativecommons.org/licenses/by-sa/3.0/
+    caption: Rinkeby, Stockholm, seen from the north-east in May 1988
+    sha256: 12a43617f7b212d18d14b0ac73b14f024b8c83aedebe801c2f512accec4e5cfb
+    bytes: 279960
+    width: 1280
+    height: 849
+
+  archetypes/typologies/sweden--sub-urban:
+    file: sweden--sub-urban.jpg
+    origin_url: https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Smedslatten_2008c.jpg/1280px-Smedslatten_2008c.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:Smedslatten_2008c.jpg
+    credit: Holger Ellgaard
+    licence: CC BY-SA 3.0
+    licence_url: https://creativecommons.org/licenses/by-sa/3.0/
+    caption: Bergviksvägen, Smedslätten, Bromma, Stockholm, 2008
+    sha256: b42d1666cf94650567b17a54dcf8fe33ea75d5449cdab49b5c68a3087db53b88
+    bytes: 461344
+    width: 1280
+    height: 945
+
+  archetypes/typologies/sweden--residential-functionalism:
+    file: sweden--residential-functionalism.jpg
+    origin_url: https://upload.wikimedia.org/wikipedia/commons/7/7f/Allardsgata.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:Allardsgata.jpg
+    credit: Mangan2002
+    licence: CC BY 3.0
+    licence_url: https://creativecommons.org/licenses/by/3.0/
+    caption: Doktor Allards gata, Guldheden, Gothenburg, 2009
+    sha256: 19bbe7a34915b67c97cc00548f20ef63548a0e162f06e6911a8fca70225c8f50
+    bytes: 124566
+    width: 400
+    height: 268
+
+  archetypes/typologies/sweden--traditional-neighborhood:
+    file: sweden--traditional-neighborhood.jpg
+    origin_url: https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/%C3%85kermyntan.jpg/1280px-%C3%85kermyntan.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:%C3%85kermyntan.jpg
+    credit: Thomas Höjemo
+    licence: CC BY 2.5
+    licence_url: https://creativecommons.org/licenses/by/2.5/
+    caption: Kvarteret Åkermyntan, Lugnet 8, Gothenburg, built 1931-1934
+    sha256: 37f8b7b716d65274f567572ee2a7216c2ea04cc6b166866d5f82b098a3d552af
+    bytes: 456921
+    width: 1280
+    height: 1080
+
+  archetypes/typologies/sweden--traditional-stone-house-neighbourhood:
+    file: sweden--traditional-stone-house-neighbourhood.jpg
+    origin_url: https://upload.wikimedia.org/wikipedia/commons/a/ad/G%C3%B6teborg_%28Gothenburg%29%2C_V%C3%A4sterg%C3%B6tland%2C_Sweden_%286149988490%29.jpg
+    description_page: https://commons.wikimedia.org/wiki/File:G%C3%B6teborg_(Gothenburg),_V%C3%A4sterg%C3%B6tland,_Sweden_(6149988490).jpg
+    credit: Swedish National Heritage Board (Riksantikvarieämbetet), photograph by Fredrik Bruno
+    licence: No known copyright restrictions
+    licence_url: https://www.flickr.com/commons/usage/
+    caption: Geijersgatan, Gothenburg, with Vasa Church behind, May 1948
+    sha256: 899019770669ff0f80841b9967a1a3e0b14d9d39db2bdda569e33f7b48373d8d
+    bytes: 310181
+    width: 1024
+    height: 707
+
+# Records that carry a `url` but whose image cannot be shown yet. Listed here
+# so the omission is deliberate and auditable rather than silent;
+# scripts/check_db.py requires every typology with a `url` to appear in one
+# section or the other.
+
+unresolved:
+
+  archetypes/typologies/sweden--mixed-city-ideal:
+    reason: >-
+      The record's url points at an item in the City of Gothenburg's media
+      library. That library's own metadata for the item gives no author,
+      no title, no description and no licence; the stored filename is
+      "Framtidens Backaplan Dp1 Dp2 Dp3 Flygvy Norr_White-arkitekter
+      23012-36-10.jpg", which names White arkitekter and identifies the
+      image as an architectural visualisation of a planned development
+      rather than a photograph of an existing neighbourhood. Neither the
+      attribution nor the terms of reuse can be established from the source,
+      and the record carries no image_source of its own.
+    what_would_settle_it: >-
+      A statement from the City of Gothenburg or White arkitekter naming the
+      rights holder and the terms under which the image may be republished.
+      Failing that, a different photograph of a built example of this
+      typology, with its own provenance.
+
+  archetypes/typologies/uk--sub-urban:
+    reason: >-
+      The record credits "By Helen Ward" for an image hosted on a University
+      of Gothenburg file share. The host publishes no licence, metadata or
+      terms of any kind alongside the file, so no licence can be established
+      from the source. The url is also http-only, so the image would in any
+      case be blocked as mixed content on the https site.
+    what_would_settle_it: >-
+      Confirmation from the photographer of the terms under which the image
+      may be republished, together with an https-reachable original.

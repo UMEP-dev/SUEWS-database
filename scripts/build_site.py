@@ -14,7 +14,13 @@ deployed by CI). The site is a linked graph with a faceted search front end:
                                 place/source/facet chips, parameters,
                                 model-ready fragment, "used by" backlinks
                                 and "same study, same place" siblings
-  archetypes/<path>.html        per-archetype page with resolved uses
+  archetypes/<path>.html        per-archetype page with resolved uses; a
+                                typology also carries its photograph and the
+                                attribution that photograph may not be shown
+                                without
+  archetypes/typologies/images/ verified copies of those photographs, taken
+                                from the release named in db/images.yml so
+                                the site serves them from its own origin
   place/<slug>.html             every record at a place, grouped by family
   source/<key>.html             the citation and every record citing it
 
@@ -26,11 +32,14 @@ Usage: python scripts/build_site.py [--out site]
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
 import subprocess
 import sys
+import urllib.error
+import urllib.request
 from collections import defaultdict
 from pathlib import Path
 from urllib.parse import quote
@@ -71,6 +80,15 @@ SITE_ISSUE_URL = f"{REPO_URL}/issues/new?template=site-issue.yml"
 # button and the footer link stand on their own, and no issue template, label
 # or stored state outlives it.
 FLOATING_REPORT = True
+
+# Typology photographs. The files are release assets rather than repository
+# content (db/images.yml explains why); the site serves its own verified copy
+# of each, so a reader's browser never contacts the host the photograph came
+# from and no upstream link rot can blank a page.
+IMAGES_FILE = ROOT / "db" / "images.yml"
+IMAGE_CACHE = ROOT / ".image-cache"
+IMAGE_SUBDIR = "archetypes/typologies/images"
+IMAGE_AGENT = f"SUEWS-database-site-build/1.0 ({REPO_URL})"
 
 SURFACES = {"paved", "bldgs", "evetr", "dectr", "grass", "bsoil", "water",
             "snow", "common"}
@@ -386,8 +404,24 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
 .hv .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 1.35rem; font-weight: 600; color: var(--gold-ink);
   font-variant-numeric: tabular-nums; }
+/* the typology photograph; the attribution is part of the figure, never
+   optional furniture, because the licences it carries require it */
+.typoshot { margin: 0 0 1.6rem; }
+.typoshot img { display: block; width: 100%; height: auto; max-width: 100%;
+  border-radius: 12px; border: 1px solid var(--border-light);
+  background: var(--bg-card); }
+.typoshot figcaption { margin-top: 0.5rem; font-size: 0.84rem;
+  color: var(--text-secondary); line-height: 1.5; }
+.typoshot figcaption .credit { display: block; font-size: 0.78rem;
+  color: var(--text-muted); }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.8rem;
   align-items: start; }
+/* a grid item's automatic minimum is its min-content width, so on a phone --
+   where the two columns collapse to a bare 1fr -- a full-width photograph or
+   a wide table would push the whole column past the viewport and take the
+   page with it. The desktop track spells this out as minmax(0, 1fr); the
+   collapsed one needs it on the items. */
+.cols > div { min-width: 0; }
 .side { border: 1px solid var(--border-light); border-radius: 12px;
   background: var(--bg-card); padding: 0.95rem 1.1rem 1rem; margin-bottom: 1rem; }
 .side h4 { margin: 0 0 0.6rem; font-size: 0.72rem; text-transform: uppercase;
@@ -901,10 +935,96 @@ def vals_preview(rec, limit=4):
     return f"<div class=\"vals\">{bits}</div>"
 
 
+# ---------------- typology photographs ----------------
+
+
+def load_images():
+    """The image manifest: which typologies have a photograph we may show."""
+    if not IMAGES_FILE.exists():
+        return {}, None
+    doc = yaml.safe_load(IMAGES_FILE.read_text()) or {}
+    return doc.get("images") or {}, doc.get("release")
+
+
+def fetch(url):
+    req = urllib.request.Request(url, headers={"User-Agent": IMAGE_AGENT})
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return resp.read()
+
+
+def stage_images(out, images, release, offline=False):
+    """Publish a verified copy of every manifest image under the site root.
+
+    Copies come from the release named in the manifest, through a local cache,
+    and each is checked against its recorded sha256 before it is published. An
+    image that cannot be obtained, or that does not match its digest, is not
+    published and not rendered: a wrong file is worse than a missing one.
+
+    Returns the record paths whose image is on disk and verified.
+    """
+    if not images:
+        return set()
+    dest_dir = out / IMAGE_SUBDIR
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    IMAGE_CACHE.mkdir(exist_ok=True)
+    staged, missing = set(), []
+    for path, entry in images.items():
+        want = entry["sha256"]
+        cached = IMAGE_CACHE / entry["file"]
+        blob = None
+        if cached.exists():
+            got = cached.read_bytes()
+            if hashlib.sha256(got).hexdigest() == want:
+                blob = got
+        if blob is None and not offline:
+            url = f"{REPO_URL}/releases/download/{release}/{entry['file']}"
+            try:
+                got = fetch(url)
+            except (urllib.error.URLError, OSError) as exc:
+                missing.append(f"{entry['file']}: {exc}")
+                continue
+            if hashlib.sha256(got).hexdigest() != want:
+                missing.append(f"{entry['file']}: sha256 does not match the "
+                               "manifest; the release asset has been replaced")
+                continue
+            cached.write_bytes(got)
+            blob = got
+        if blob is None:
+            missing.append(f"{entry['file']}: not cached and --offline was given")
+            continue
+        (dest_dir / entry["file"]).write_bytes(blob)
+        staged.add(path)
+    if missing and not offline:
+        raise SystemExit("image staging failed:\n  " + "\n  ".join(missing)
+                         + f"\nexpected assets on release {release!r}; stage "
+                         "them with scripts/fetch_images.py and upload them")
+    for m in missing:
+        print(f"  ! image omitted -- {m}")
+    return staged
+
+
+def image_figure(path, entry, depth):
+    """The photograph and the attribution it may not be shown without."""
+    rel = "../" * depth
+    src = f"{rel}{IMAGE_SUBDIR}/{entry['file']}"
+    credit = (f"<a href=\"{esc(entry['description_page'])}\">"
+              f"{esc(entry['credit'])}</a>")
+    licence = (f"<a href=\"{esc(entry['licence_url'])}\">"
+               f"{esc(entry['licence'])}</a>")
+    caption = esc(entry.get("caption") or "")
+    return (f"<figure class=\"typoshot\">"
+            f"<img src=\"{esc(src)}\" alt=\"{caption}\" loading=\"lazy\" "
+            f"decoding=\"async\" width=\"{entry['width']}\" "
+            f"height=\"{entry['height']}\">"
+            f"<figcaption>{caption}"
+            f"<span class=\"credit\">{credit} · {licence}</span>"
+            f"</figcaption></figure>")
+
+
 # ---------------- per-entry pages ----------------
 
 
-def record_page(path, rec, records, sources, used_by, cluster):
+def record_page(path, rec, records, sources, used_by, cluster, image=None):
     depth = path.count("/")
     rel = "../" * depth
     kind = "record" if path.startswith("records/") else "typology"
@@ -1012,6 +1132,17 @@ def record_page(path, rec, records, sources, used_by, cluster):
             + f" <span class=\"chip\">{kind}</span>{unref_badge}</h2>",
             headline, chip_row]
     main = []
+
+    # a typology is a visual idea -- "Mixed-City Ideal" and "Residential
+    # Functionalism" are not self-explanatory from their names, and a reader
+    # choosing between them is choosing between kinds of place they would
+    # recognise on sight. The photograph leads, because it is the fastest
+    # thing on the page to read. Only the record page carries one: the browse
+    # index is a facet view over eleven hundred entries, and pulling
+    # photographs into it would cost every reader page weight for a handful
+    # of thumbnails they did not ask for.
+    if image:
+        main.append(image_figure(path, image, depth))
 
     uses = rec.get("uses")
     if uses:
@@ -1864,16 +1995,24 @@ def build_search_index(records, sources, places):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="site")
+    ap.add_argument("--offline", action="store_true",
+                    help="build without fetching typology photographs; pages "
+                         "whose image is not already cached omit it")
     args = ap.parse_args()
     out = ROOT / args.out
 
     records, sources, places = load_all()
     used_by, cluster = build_graph(records)
 
+    images, release = load_images()
+    staged = stage_images(out, images, release, offline=args.offline)
+
     for path, rec in records.items():
         fp = out / (path + ".html")
         fp.parent.mkdir(parents=True, exist_ok=True)
-        fp.write_text(record_page(path, rec, records, sources, used_by, cluster))
+        fp.write_text(record_page(path, rec, records, sources, used_by, cluster,
+                                  image=images.get(path) if path in staged
+                                  else None))
 
     by_place = defaultdict(list)
     by_source = defaultdict(list)
@@ -1904,7 +2043,8 @@ def main():
     (out / "map.html").write_text(build_map_page(places, by_place))
     (out / ".nojekyll").write_text("")
     print(f"site: {len(records)} entry pages, {len(by_place)} place pages, "
-          f"{len(by_source)} source pages -> {out}")
+          f"{len(by_source)} source pages, {len(staged)} typology photographs "
+          f"-> {out}")
     return 0
 
 

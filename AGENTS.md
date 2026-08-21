@@ -91,7 +91,18 @@ make check-strict   # as check, but coupling warnings fail
 make validate       # check + validate every fragment against the supy data model
 make export REC=<record path>    # the model-ready fragment for one record
 python3 scripts/build_site.py --out site    # rebuild the browse site
+python3 scripts/build_site.py --offline     # ...without fetching photographs
+python3 scripts/fetch_images.py  # restage the typology photographs from their
+                                 # origins, for upload to their release
 ```
+
+The site build fetches the typology photographs from the release named in
+`db/images.yml` and fails if one is missing or does not match its recorded
+`sha256` — a wrong image is worse than a missing one. `--offline` skips that
+and omits any photograph not already cached, which is what you want when
+iterating on the site without network. `docs/FORMAT.md` explains the
+manifest; the rule it enforces is that no photograph reaches a reader
+without its credit and licence.
 
 `make check` must exit 0 before anything is committed. It reports two kinds of
 finding beyond structural errors:
