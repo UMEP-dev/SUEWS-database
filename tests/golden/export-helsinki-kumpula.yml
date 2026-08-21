@@ -61,75 +61,75 @@ ohm_coef:
     a1:
       value: 0.19
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a2:
       value: 0.54
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a3:
       value: -15.125
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
   summer_dry:
     a1:
       value: 0.19
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a2:
       value: 0.54
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a3:
       value: -15.125
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
   winter_wet:
     a1:
       value: 0.19
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a2:
       value: 0.54
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a3:
       value: -15.125
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
   winter_dry:
     a1:
       value: 0.19
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a2:
       value: 0.54
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city
     a3:
       value: -15.125
       ref:
-        ID: jarvi2014
-        DOI: 10.5194/gmd-7-1691-2014
+        ID: jarvi2017
+        DOI: 10.1038/s41598-017-05733-y
         desc: helsinki, city

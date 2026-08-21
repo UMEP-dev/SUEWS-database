@@ -5,7 +5,7 @@ name: Roof (own for SMEAR III, Helsinki) [750]
 place: helsinki
 origin: Helsinki
 representativeness: city
-source: jarvi2014
+source: jarvi2017
 legacy_id: 50240002
 parameters:
   a1: 0.19

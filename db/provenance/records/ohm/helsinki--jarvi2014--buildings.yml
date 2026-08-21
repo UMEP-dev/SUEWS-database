@@ -1,16 +1,16 @@
 provenance_record: records/ohm/helsinki--jarvi2014--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0726996af8aba9afeeb968945271cb7c9e68f8adc06e16b84d881b385684d75b
+record_revision: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
 dependency_revisions:
   sources:
-    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    jarvi2017: sha256:0411608374cf880b5e590190bdb02f91d8e20ad9cdaacb845958e7d4b88ca1b3
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
   status: unresolved
-  assessed_at: '2026-08-21T21:12:29Z'
+  assessed_at: '2026-08-21T23:50:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -19,25 +19,35 @@ assessment:
   findings:
     name:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: Järvi et al. (2017), Supplementary Table S4, identifies the tuple as Helsinki buildings.
     target:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: The triplet is structurally an OHM coefficient set.
     values:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: Järvi et al. (2017), Supplementary Table S4, states a1 = 0.19, a2 = 0.54 and a3 = -15.125
         for Helsinki buildings.
     source:
-      conclusion: correction_required
-      note: Järvi et al. (2014) does not state the exact snow-free building tuple; the verified exact
-        locator is the 2017 supporting information, which is not yet in the source registry.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/68
+      conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
+      note: The corrected Järvi et al. (2017) source publishes the exact tuple in its supporting information;
+        Järvi et al. (2014) does not state it.
     place:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: The 2017 table explicitly labels the coefficient row Helsinki.
     representativeness:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: The value is presented as the Helsinki site input in the multi-city SUEWS analysis.
     method:
       conclusion: unresolved
@@ -47,11 +57,23 @@ assessment:
       - https://github.com/UMEP-dev/SUEWS-database/issues/69
     identity:
       conclusion: supported
+      evidence_ids:
+      - jarvi2017-table-s4
       note: The 2017 Helsinki building row uniquely matches the stored triplet.
-  evidence: []
-  scientific_note: The values and Helsinki application are explicit in the accessible 2017 supplement,
-    but the canonical source is wrong and the production method remains unresolved. No method is inferred
-    from the record name or from model performance.
-  evidence_revision: sha256:5bb24d99815998f88d77b9e9d4500af418d5097d86cb99abfe0d1bf82d856b8e
+  evidence:
+  - id: jarvi2017-table-s4
+    source: jarvi2017
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Supplementary Table S4, Helsinki buildings row
+      page: 6
+      url: https://pure.mpg.de/rest/items/item_2472559_3/component/file_2472557/content
+    note: The supporting information publishes the exact snow-free Helsinki building triplet used by the
+      database. It does not state how the triplet was produced.
+  scientific_note: The values and Helsinki application are explicit in the accessible 2017 supplement
+    and the canonical source is now aligned with it. The production method remains unresolved; no method
+    is inferred from the record name or from model performance.
+  evidence_revision: sha256:a54eb880abf1193fa308b2367974474f7fa8f680914f73cbdbadf7a17c6f9064
 verification:
   attestations: []
