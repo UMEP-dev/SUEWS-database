@@ -80,9 +80,12 @@ data it carries is exactly what the record migration preserved
 (`schema/migration_census.yml` is the proof) — and the original
 pre-migration workbook remains a release asset in its own right. The
 workbook is no longer generated from the database. Reconnecting the plugins to
-the records — by regenerating the workbook, by emitting the dictionary the
-plugin builds from it, or by reading the records directly — is open work, and
-`docs/UMEP-BRIDGE.md` sets out the three routes.
+the records is open work, and it does not happen here: this repository
+publishes the data, and the code that reads a release into the dictionary the
+plugins work from lives in supy
+([UMEP-dev/SUEWS#1715](https://github.com/UMEP-dev/SUEWS/issues/1715)). The
+release bundle it consumes is
+[#48](https://github.com/UMEP-dev/SUEWS-database/issues/48).
 
 ## Known issues
 
