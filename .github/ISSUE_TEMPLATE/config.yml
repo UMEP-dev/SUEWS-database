@@ -6,3 +6,8 @@ contact_links:
   - name: How to add or correct a record
     url: https://github.com/UMEP-dev/SUEWS-database/blob/main/docs/FORMAT.md
     about: The record format, and how a change reaches the database.
+  - name: What a photograph needs before it can be published
+    url: https://github.com/UMEP-dev/SUEWS-database/blob/main/docs/FORMAT.md#typology-photographs
+    about: >-
+      Photographs of urban typologies are wanted, but only with a named
+      photographer and a stated licence. Read this before going looking.
