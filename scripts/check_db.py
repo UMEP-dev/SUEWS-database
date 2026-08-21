@@ -103,6 +103,74 @@ def structural_check(records, sources, places):
         if isinstance(region_ref, str) and region_ref.startswith("archetypes/"):
             if region_ref not in records:
                 errors.append(f"{path}: region_ref {region_ref!r} unresolved")
+    errors += image_check(records)
+    return errors
+
+
+IMAGE_FIELDS = ("file", "origin_url", "description_page", "credit",
+                "licence", "licence_url", "sha256", "bytes", "width", "height")
+
+
+def image_check(records):
+    """db/images.yml: every shown photograph carries its attribution.
+
+    The photographs the site publishes are released under licences that
+    require attribution wherever the image appears, so an entry without a
+    credit and a licence is an error rather than a warning: the site renders
+    an image only if it is listed here, and a listing without attribution
+    would be exactly the thing the licence forbids.
+
+    A typology that carries a `url` but whose licence could not be
+    established from its source belongs under `unresolved`, saying why and
+    what would settle it. Requiring every such record to appear in one
+    section or the other keeps an omission deliberate rather than silent.
+
+    Offline by design: this checks the manifest against the records, never
+    the network. Whether the release actually holds the assets is settled at
+    build time, where a mismatch stops the site being published.
+    """
+    errors = []
+    manifest_file = DB / "images.yml"
+    if not manifest_file.exists():
+        return errors
+    doc = yaml.safe_load(manifest_file.read_text()) or {}
+    images = doc.get("images") or {}
+    unresolved = doc.get("unresolved") or {}
+    if not doc.get("release"):
+        errors.append("images.yml: no release named for the image assets")
+
+    seen_files = {}
+    for path, entry in images.items():
+        if path not in records:
+            errors.append(f"images.yml: {path!r} is not a record")
+            continue
+        if not path.startswith("archetypes/typologies/"):
+            errors.append(f"images.yml: {path!r} is not a typology")
+        missing = [f for f in IMAGE_FIELDS if not entry.get(f)]
+        if missing:
+            errors.append(f"images.yml: {path}: missing {', '.join(missing)}")
+        name = entry.get("file")
+        if name in seen_files:
+            errors.append(f"images.yml: {path}: file {name!r} already used by "
+                          f"{seen_files[name]}")
+        elif name:
+            seen_files[name] = path
+
+    for path, entry in unresolved.items():
+        if path not in records:
+            errors.append(f"images.yml: unresolved {path!r} is not a record")
+        if path in images:
+            errors.append(f"images.yml: {path} is both shown and unresolved")
+        for field in ("reason", "what_would_settle_it"):
+            if not entry.get(field):
+                errors.append(f"images.yml: unresolved {path}: missing {field}")
+
+    for path, rec in records.items():
+        if not path.startswith("archetypes/typologies/"):
+            continue
+        if rec.get("url") and path not in images and path not in unresolved:
+            errors.append(f"{path}: carries a url but images.yml neither "
+                          "publishes it nor records why it cannot be")
     return errors
 
 
