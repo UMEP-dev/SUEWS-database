@@ -1,0 +1,85 @@
+provenance_record: records/ohm/helsinki--jarvi2014--snow
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:df8317f37ffc9c6bc3d015fb6b91f5f8da5e1486f657fdd592efed276b82114b
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+    target:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+    values:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+    source:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - snow-parameter-publication
+      note: a2 and a3 were optimized at the Pr suburban site in Montreal, while the completed set was
+        applied across sites; the paper does not support a uniquely Helsinki observation place.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/70
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - snow-parameter-publication
+      note: Maintainers must choose between the Montreal fitting-site meaning and the authors' overall
+        multi-site intended application.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/70
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - snow-parameter-publication
+      note: a1 is an assumption calculated from shallow-water a1 and a heat-capacity ratio, whereas a2
+        and a3 were optimized against sensible heat. One record-level method cannot express both.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/71
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+  evidence:
+  - id: snow-parameter-publication
+    source: jarvi2014
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 3.1.2, Snow storage heat
+      page: 1699-1700
+      url: https://gmd.copernicus.org/articles/7/1691/2014/gmd-7-1691-2014.pdf
+      note: Sets a1 to 0.25 from the water/heat-capacity assumption and reports optimized a2 = 0.60 and
+        a3 = -30 using the Montreal Pr site.
+    - kind: table
+      label: Tables 3 and 4(b)
+      page: 1700-1701
+      url: https://gmd.copernicus.org/articles/7/1691/2014/gmd-7-1691-2014.pdf
+      note: Lists the final snow OHM triplet and optimization context.
+  scientific_note: The publication and exact values are supported. Human curation is required because
+    the tuple combines coefficient-specific methods and its stored Helsinki/city envelope collapses a
+    Montreal fit with an overall multi-site application.
+  evidence_revision: sha256:5d90400e39e4171264685fc55e64fa28654d57f80667c066f6157eb44f1e85fc
+verification:
+  attestations: []
