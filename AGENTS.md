@@ -15,6 +15,22 @@ the site deploys to GitHub Pages on every push to `main`.
 Every value is supposed to carry its provenance. Some do not, and that is the
 work.
 
+## Scope: data, not integrations
+
+This repository holds the data, checks it, and publishes it. It does not hold
+code that consumes the data on another tool's behalf.
+
+Concretely: reading a released bundle into the dictionary the UMEP plugins work
+from belongs in **supy**, in `UMEP-dev/SUEWS` — supy is already a UMEP
+dependency, so a reader shipped there reaches UMEP without a new dependency and
+without tying plugin releases to this repository's format. That work is tracked
+as `UMEP-dev/SUEWS#1715`.
+
+What stays here is publication: the records, `make check`, the browse site, the
+model-ready fragment export, and the release bundle downstream tools read
+(#48). An integration layer for a particular consumer belongs in that
+consumer's package, not in this one.
+
 ## The rule that matters most
 
 **Never invent a citation, DOI, author, year, or source key.**
