@@ -60,6 +60,9 @@ class SiteProvenanceTests(unittest.TestCase):
         mixed = self.render(MIXED)
         self.assertIn("Awaiting sign-off", mixed)
         self.assertIn("Sign off evidence on GitHub", mixed)
+        self.assertNotIn("<span class=\"pk\">Evidence</span>", mixed)
+        self.assertNotIn("<span class=\"pk\">Method</span>", mixed)
+        self.assertNotIn("<code class=\"revision\"", mixed)
         self.assertIn("Parameter source", mixed)
         self.assertIn("Input observations", mixed)
         self.assertIn("template=provenance-signoff.yml", mixed)
@@ -127,6 +130,8 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Verified", page)
         self.assertIn("href=\"https://github.com/sunt05\">@sunt05", page)
         self.assertNotIn("class=\"signoff\"", page)
+        self.assertIn("class=\"reviewinfo\"", page)
+        self.assertNotIn("class=\"reviewguide\"", page)
 
         decision["evidence_revision"] = "sha256:" + "9" * 64
         self.assertEqual(
