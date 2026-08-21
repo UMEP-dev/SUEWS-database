@@ -247,13 +247,6 @@ header.site .wrap { display: flex; align-items: baseline; gap: 0.35rem 1rem;
 header.site h1 { font-size: 1.1rem; margin: 0; white-space: nowrap; }
 header.site h1 a { color: var(--text-primary); }
 header.site .sub { color: var(--text-muted); font-size: 0.85rem; }
-header.site .up { color: var(--text-muted); font-size: 0.85rem;
-  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
-header.site .up:hover { color: var(--text-primary);
-  text-decoration-color: currentColor; }
-header.site .up .arw { display: inline-block;
-  transition: transform 0.15s ease-out; }
-header.site .up:hover .arw { transform: translateX(-3px); }
 h2 { margin: 2rem 0 0.8rem; font-size: 1.2rem; }
 h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; color: var(--text-secondary); }
 .chip { display: inline-block; padding: 0.12rem 0.65rem; border-radius: 999px;
@@ -479,8 +472,6 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
   #results.anim { animation: none; }
   .card2 { transition: none; }
   .card2:hover { transform: none; }
-  header.site .up .arw { transition: none; }
-  header.site .up:hover .arw { transform: none; }
 }
 
 /* --- arrival: two doors ------------------------------------------------ */
@@ -574,8 +565,6 @@ table.matrix td.mt { background: repeating-linear-gradient(135deg,
 .lcard span b.report { display: inline; margin: 0; font-size: inherit;
   color: var(--gold-ink); font-weight: 600; }
 .lcard span { font-size: 0.85rem; }
-a.backdoors { display: inline-block; margin: 0.2rem 0 0.7rem;
-  font-size: 0.85rem; }
 @media (max-width: 900px) {
   .doors, .lowcards { grid-template-columns: 1fr; }
   .geocols, .famgrid { grid-template-columns: 1fr; }
@@ -675,8 +664,10 @@ FAB_CSS = """
 .fab:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
 .fab .dot { width: 7px; height: 7px; border-radius: 50%; flex: none;
   background: currentColor; }
-/* keep the footer clear of it once the reader reaches the bottom */
-body.hasfab .wrap { padding-bottom: 6rem; }
+/* keep the footer clear of it once the reader reaches the bottom; the
+   child combinator matters -- the header has a .wrap of its own, and
+   padding it out leaves a tall empty band under the banner */
+body.hasfab > .wrap { padding-bottom: 6rem; }
 @media (max-width: 560px) { .fab { right: 0.7rem; bottom: 0.7rem;
   padding: 0.5rem 0.85rem; font-size: 0.8rem; } }
 @media print { .fab { display: none; } }
@@ -739,12 +730,11 @@ def page(title, body, depth=0, script="", report_url=None):
 <style>{CSS}</style>
 </head><body{body_cls}>
 <header class="site"><div class="wrap">
-  <a class="up" href="{SUEWS_SITE}" aria-label="Back to suews.io"><span
-  class="arw" aria-hidden="true">&larr;</span>suews.io</a>
   <h1><a href="{rel}index.html">SUEWS parameter database</a></h1>
   <span class="sub">curated values, linked and searchable, a citation on every one</span>
   <span class="nav"><a href="{rel}index.html">Home</a> ·
-  <a href="{rel}map.html">Map</a><button id="themetoggle" class="tbtn"
+  <a href="{rel}map.html">Map</a> ·
+  <a href="{SUEWS_SITE}">suews.io</a><button id="themetoggle" class="tbtn"
   type="button" title="Switch between the light and dark theme"></button></span>
 </div></header>
 <div class="wrap">
@@ -1802,8 +1792,6 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
             + "</div>")
     body = (arrival
             + "<div id=\"browse\" class=\"hidden\">"
-            + "<a href=\"#\" class=\"doclear backdoors\">← back to the two "
-              "doors</a>"
             + "<input id=\"q\" class=\"search\" type=\"search\" "
               "placeholder=\"Search: parameter name, place, source, value...\">"
             + stats
