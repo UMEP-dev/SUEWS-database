@@ -58,7 +58,7 @@ class SiteProvenanceTests(unittest.TestCase):
     def test_awaiting_and_curation_pages_render_lineage(self):
         mixed = self.render(MIXED)
         self.assertIn("Awaiting sign-off", mixed)
-        self.assertIn("Sign off on GitHub", mixed)
+        self.assertIn("Sign off evidence on GitHub", mixed)
         self.assertIn("Parameter source", mixed)
         self.assertIn("Input observations", mixed)
         self.assertIn("template=provenance-signoff.yml", mixed)
@@ -66,7 +66,7 @@ class SiteProvenanceTests(unittest.TestCase):
         kyoto = self.render(KYOTO)
         self.assertIn("Curation required", kyoto)
         self.assertIn("Possible duplicate", kyoto)
-        self.assertNotIn("Sign off on GitHub", kyoto)
+        self.assertNotIn("class=\"signoff\"", kyoto)
 
     def test_remaining_review_states_are_explicit(self):
         self.assertEqual(provenance_state(None, self.policy), "unaudited")
@@ -110,7 +110,7 @@ class SiteProvenanceTests(unittest.TestCase):
         page = self.render(MIXED, candidate)
         self.assertIn("Verified", page)
         self.assertIn("href=\"https://github.com/sunt05\">@sunt05", page)
-        self.assertNotIn("Sign off on GitHub", page)
+        self.assertNotIn("class=\"signoff\"", page)
 
         decision["evidence_revision"] = "sha256:" + "9" * 64
         self.assertEqual(
@@ -173,16 +173,29 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("record=records%2Fohm%2Fgeneric--", url)
         self.assertIn("evidence_revision=sha256%3A", url)
         self.assertIn("policy_revision=sha256%3A", url)
+        self.assertIn("review_type=Evidence", url)
 
-    def test_composite_uses_component_review_states_without_own_signoff(self):
+    def test_composite_has_distinct_composition_review_layer(self):
         page = self.render(COMPOSITE)
         self.assertIn("<span class=\"chip\">composite</span>", page)
         self.assertIn("<h3>Composition</h3>", page)
-        self.assertIn("human sign-off apply to each evidence record", page)
+        self.assertIn("a separate composition review assesses why", page)
         self.assertIn("Awaiting sign-off", page)
-        self.assertNotIn("Sign off on GitHub", page)
-        self.assertNotIn("Provenance review", page)
+        self.assertIn("Composition review", page)
         self.assertIn("Composite metadata", page)
+
+        sidecar = deepcopy(self.sidecars[MIXED])
+        sidecar["provenance_record"] = COMPOSITE
+        sidecar["review_type"] = "composition"
+        sidecar["assessment"]["method"] = "assembled"
+        candidate = dict(self.sidecars)
+        candidate[COMPOSITE] = sidecar
+        reviewed = self.render(COMPOSITE, candidate)
+        self.assertIn("Composition provenance", reviewed)
+        self.assertIn("Component selection", reviewed)
+        self.assertIn("Slot and season mapping", reviewed)
+        self.assertIn("Sign off composition on GitHub", reviewed)
+        self.assertIn("review_type=Composition", reviewed)
 
 
 if __name__ == "__main__":

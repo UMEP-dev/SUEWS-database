@@ -90,8 +90,10 @@ PROVENANCE_ROLE_LABEL = {
     "input": "Input record",
     "compilation": "Later compilation",
     "validation": "Validation",
+    "composition_source": "Composition rationale",
     "possible_duplicate": "Possible duplicate",
     "related": "Related record",
+    "component": "Selected component",
 }
 METHOD_LABEL = {
     "measured": "Measured",
@@ -99,6 +101,17 @@ METHOD_LABEL = {
     "literature": "Published value",
     "calculated": "Calculated",
     "assumed": "Assumed",
+    "assembled": "Assembled",
+}
+COMPOSITION_FINDING_LABEL = {
+    "name": "Composite identity",
+    "target": "Composite target",
+    "values": "Component selection",
+    "source": "Composition rationale",
+    "place": "Place applicability",
+    "representativeness": "Representativeness",
+    "method": "Slot and season mapping",
+    "identity": "Completeness and uniqueness",
 }
 
 # A report control that follows the reader down every page. Scaffolding for
@@ -1250,6 +1263,11 @@ def signoff_issue_url(path, sidecar, policy):
     fields = {
         "title": title,
         "record": path,
+        "review_type": (
+            "Composition"
+            if sidecar.get("review_type") == "composition"
+            else "Evidence"
+        ),
         "evidence_revision": sidecar["assessment"]["evidence_revision"],
         "policy_revision": policy["revision"],
         "decision": "Verified",
@@ -1262,18 +1280,30 @@ def signoff_issue_url(path, sidecar, policy):
 def provenance_blocks(path, sidecar, policy, rel, sources, records):
     """Return the main evidence section and compact review rail card."""
     state = provenance_state(sidecar, policy)
+    review_type = (
+        sidecar.get("review_type", "evidence")
+        if sidecar
+        else "composition" if path.startswith("archetypes/") else "evidence"
+    )
+    is_composition = review_type == "composition"
+    review_label = "Composition review" if is_composition else "Evidence review"
+    evidence_heading = (
+        "Composition provenance" if is_composition else "Provenance evidence"
+    )
     if not sidecar:
         main = (
-            "<div class=\"provhead\"><h3>Provenance review</h3>"
+            f"<div class=\"provhead\"><h3>{review_label}</h3>"
             + _state_badge(state)
             + "</div><p class=\"provmeta\">No structured assessment has been "
-            "prepared for this record yet. Its model-ready source field remains "
-            "visible above.</p>"
+            + ("prepared for this composition yet. Component links remain "
+               "visible above.</p>" if is_composition else
+               "prepared for this record yet. Its model-ready source field "
+               "remains visible above.</p>")
         )
         rail = (
-            "<div class=\"side\"><h4>Review status</h4>"
+            f"<div class=\"side\"><h4>{review_label}</h4>"
             + _state_badge(state)
-            + "<p class=\"signoff-help\">This record has not entered the "
+            + f"<p class=\"signoff-help\">This {'composite' if is_composition else 'record'} has not entered the "
             "provenance review queue.</p></div>"
         )
         return main, rail
@@ -1291,11 +1321,12 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
     if assessment.get("assessed_at"):
         meta.append(str(assessment["assessed_at"])[:10])
     main = [
-        "<div class=\"provhead\"><h3>Provenance evidence</h3>"
+        f"<div class=\"provhead\"><h3>{evidence_heading}</h3>"
         + _state_badge(state)
         + "</div>",
         f"<p class=\"provmeta\">{esc(' · '.join(meta))}. Agent assessment is "
-        "evidence preparation, not human verification.</p>",
+        f"{'composition review preparation' if is_composition else 'evidence preparation'}, "
+        "not human verification.</p>",
     ]
 
     evidence = assessment.get("evidence", [])
@@ -1361,8 +1392,13 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 links.append(f"<a href=\"{esc(url)}\">issue #{esc(issue)}</a>")
             if links:
                 detail += "<br>" + " · ".join(links)
+            scope_label = (
+                COMPOSITION_FINDING_LABEL.get(scope, scope.replace("_", " ").title())
+                if is_composition
+                else scope.replace("_", " ").title()
+            )
             rows.append(
-                f"<tr><th>{esc(scope.replace('_', ' ').title())}</th>"
+                f"<tr><th>{esc(scope_label)}</th>"
                 f"<td class=\"{klass}\">{detail}</td></tr>"
             )
         main.append("<h3>Assessment findings</h3><table class=\"kv\">"
@@ -1386,7 +1422,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
 
     revision = assessment.get("evidence_revision", "")
     rail = [
-        "<div class=\"side\"><h4>Review status</h4>",
+        f"<div class=\"side\"><h4>{review_label}</h4>",
         _state_badge(state),
     ]
     if method:
@@ -1428,7 +1464,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
         rail.append(
             f"<a class=\"signoff\" href=\"{esc(issue_url)}\" target=\"_blank\" "
             "rel=\"noopener\">"
-            "Sign off on GitHub</a>"
+            f"Sign off {'composition' if is_composition else 'evidence'} on GitHub</a>"
             "<p class=\"signoff-help\">Raises a prefilled sign-off issue. "
             "CI accepts it only when the issue author is in the verifier registry "
             "and the evidence revision is still current.</p>"
@@ -1546,11 +1582,10 @@ def record_page(
     row("Schema", schema_bits)
     rail = []
     provenance_main = ""
-    if kind == "record":
-        provenance_main, review_rail = provenance_blocks(
-            path, (sidecars or {}).get(path), policy, rel, sources, records
-        )
-        rail.append(review_rail)
+    provenance_main, review_rail = provenance_blocks(
+        path, (sidecars or {}).get(path), policy, rel, sources, records
+    )
+    rail.append(review_rail)
     metadata_label = "Record metadata" if kind == "record" else "Composite metadata"
     rail.append(f"<div class=\"side\"><h4>{metadata_label}</h4>"
                 + "".join(prov_rows) + "</div>")
@@ -1581,9 +1616,9 @@ def record_page(
             main.append(
                 "<h3>Composition</h3>"
                 "<p class=\"provmeta\">This composite is assembled from the "
-                "entries below. Scientific provenance and human sign-off apply "
-                "to each evidence record independently; database checks validate "
-                "the composition links and compatible targets.</p>"
+                "entries below. Each evidence record keeps its own scientific "
+                "review; a separate composition review assesses why these "
+                "components were selected and how they are mapped.</p>"
             )
         else:
             main.append("<h3>Uses</h3>")
@@ -1776,6 +1811,7 @@ def build_provenance_index(sidecars, policy):
                 "policy_revision": item.get("verifier_policy_revision"),
             })
         index[record_path] = {
+            "review_type": sidecar.get("review_type", "evidence"),
             "state": provenance_state(sidecar, policy),
             "audit_issues": audit_issues,
             "signoff_issues": signoffs,
@@ -2516,8 +2552,13 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
         src = sources.get(rec.get("source"), {})
         sidecar = sidecars.get(path)
         assessment = sidecar.get("assessment", {}) if sidecar else {}
+        review_type = (
+            sidecar.get("review_type", "evidence")
+            if sidecar
+            else "composition" if kind == "typology" else "evidence"
+        )
         method = assessment.get("method") or rec.get("method")
-        verification = provenance_state(sidecar, policy) if kind == "record" else None
+        verification = provenance_state(sidecar, policy)
         roles = sorted({
             item.get("role")
             for item in assessment.get("evidence", [])
@@ -2528,7 +2569,7 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             region, country, city,
             rec.get("source"), src.get("author"), src.get("title"),
             rec.get("target"), fam, surface or "",
-            method, verification, " ".join(roles),
+            review_type, method, verification, " ".join(roles),
             " ".join(k for k, _ in pairs),
             " ".join(str(v) for _, v in pairs),
         ] if x)
@@ -2542,6 +2583,7 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             "region": region, "country": country, "city": city,
             "rep": rec.get("representativeness"),
             "source": rec.get("source"), "method": method,
+            "review_type": review_type,
             "verification": verification, "role": roles,
             "vals": vals, "text": text,
         })

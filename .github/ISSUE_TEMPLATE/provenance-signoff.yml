@@ -13,9 +13,17 @@ body:
   - type: input
     id: record
     attributes:
-      label: Record
-      description: Stable record path. The database site fills this in.
+      label: Reviewed entry
+      description: Stable evidence-record or composite path. The site fills this in.
       placeholder: records/ohm/example
+    validations:
+      required: true
+  - type: input
+    id: review_type
+    attributes:
+      label: Review type
+      description: Evidence or Composition. The database site fills this in.
+      placeholder: Evidence
     validations:
       required: true
   - type: input

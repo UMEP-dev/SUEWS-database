@@ -186,6 +186,67 @@ def calculated_sidecar(record, input_keys, records, *, kind="scaled"):
     return sidecar
 
 
+def composition_fixture():
+    component_key = "records/ohm/component"
+    composite_key = "archetypes/surfaces/bldgs/composite"
+    component = calculated_record(component_key)
+    composite = {
+        "archetype": composite_key,
+        "schema_version": "2026.5",
+        "target": "land_cover.bldgs",
+        "name": "Reviewed composite",
+        "uses": {"ohm": {"summer_wet": component_key}},
+    }
+    records = {component_key: component, composite_key: composite}
+    support = {
+        "conclusion": "supported",
+        "evidence_ids": ["selected-component"],
+    }
+    sidecar = {
+        "provenance_record": composite_key,
+        "review_type": "composition",
+        "provenance_format_version": "1.0",
+        "record_revision": canonical_revision(composite),
+        "dependency_revisions": {
+            "sources": {},
+            "places": {},
+            "records": {component_key: canonical_revision(component)},
+        },
+        "assessment": {
+            "status": "agent_assessed",
+            "assessed_at": "2026-08-21T12:00:00Z",
+            "assessor": {
+                "kind": "agent",
+                "name": "fixture-agent",
+                "version": "1.0",
+            },
+            "method": "assembled",
+            "evidence_revision": "sha256:" + "0" * 64,
+            "findings": {
+                "name": deepcopy(support),
+                "target": deepcopy(support),
+                "values": deepcopy(support),
+                "source": {"conclusion": "not_applicable"},
+                "place": {"conclusion": "not_applicable"},
+                "representativeness": {"conclusion": "not_applicable"},
+                "method": deepcopy(support),
+                "identity": deepcopy(support),
+            },
+            "evidence": [
+                {
+                    "id": "selected-component",
+                    "record": component_key,
+                    "role": "component",
+                    "note": "Selected for the composite's summer-wet OHM slot.",
+                }
+            ],
+        },
+        "verification": {"attestations": []},
+    }
+    sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+    return records, composite_key, sidecar
+
+
 class ProvenanceFixtureTests(unittest.TestCase):
     def test_valid_fixture(self):
         base = ROOT / "tests/fixtures/provenance/valid"
@@ -350,6 +411,21 @@ class ProvenanceSemanticTests(unittest.TestCase):
         )
         self.assertTrue(
             any("internal derivation" in error or "schema" in error for error in errors)
+        )
+
+    def test_composition_review_tracks_selected_components(self):
+        records, composite_key, sidecar = composition_fixture()
+        self.assertEqual(
+            check_provenance(records, {}, {}, {composite_key: sidecar}), []
+        )
+        self.assertTrue(signoff_eligible(sidecar, records[composite_key]))
+
+        missing = deepcopy(sidecar)
+        missing["assessment"]["evidence"] = []
+        missing["assessment"]["evidence_revision"] = evidence_revision(missing)
+        errors = check_provenance(records, {}, {}, {composite_key: missing})
+        self.assertTrue(
+            any("undocumented composition components" in error for error in errors)
         )
 
 

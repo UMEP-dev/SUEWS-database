@@ -3,8 +3,8 @@ $id: https://database.suews.io/schema/provenance-assessment.schema.yml
 title: SUEWS parameter provenance assessment
 description: >-
   A provisional or human-reviewed provenance assessment for one evidence
-  record. Assessments are sidecars keyed to stable record paths; they do not
-  replace the record's model-ready source field or parameter values.
+  record or composite. Assessments are sidecars keyed to stable entry paths;
+  they do not replace model-ready source fields, values or composition links.
 type: object
 additionalProperties: false
 required:
@@ -16,19 +16,28 @@ required:
   - verification
 properties:
   provenance_record:
-    $ref: '#/$defs/record_path'
-    description: Stable record path under db, without the .yml suffix.
+    $ref: '#/$defs/entry_path'
+    description: Stable record or archetype path under db, without .yml.
+  review_type:
+    enum:
+      - evidence
+      - composition
+    default: evidence
+    description: >-
+      Evidence reviews validate atomic values; composition reviews validate
+      the selection and mapping of records in an archetype. Omitted legacy
+      sidecars are evidence reviews.
   provenance_format_version:
     const: '1.0'
     description: Version of this provenance sidecar format.
   record_revision:
     $ref: '#/$defs/revision'
-    description: SHA-256 fingerprint of the complete parsed evidence record.
+    description: SHA-256 fingerprint of the complete parsed reviewed entry.
   dependency_revisions:
     $ref: '#/$defs/dependency_revisions'
     description: >-
       Fingerprints of every source, place and input or related record whose
-      content the assessment relies on.
+      content the assessment relies on, including selected composite entries.
   assessment:
     type: object
     additionalProperties: false
@@ -58,6 +67,7 @@ properties:
           - literature
           - calculated
           - assumed
+          - assembled
       evidence_revision:
         $ref: '#/$defs/revision'
         description: >-
@@ -231,6 +241,34 @@ properties:
         uniqueItems: true
         items:
           $ref: '#/$defs/attestation'
+allOf:
+  - if:
+      required:
+        - review_type
+      properties:
+        review_type:
+          const: composition
+    then:
+      properties:
+        provenance_record:
+          $ref: '#/$defs/archetype_path'
+        assessment:
+          properties:
+            method:
+              const: assembled
+    else:
+      properties:
+        provenance_record:
+          $ref: '#/$defs/record_path'
+        assessment:
+          properties:
+            method:
+              enum:
+                - measured
+                - fitted
+                - literature
+                - calculated
+                - assumed
 $defs:
   revision:
     type: string
@@ -238,6 +276,13 @@ $defs:
   record_path:
     type: string
     pattern: ^records/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$
+  archetype_path:
+    type: string
+    pattern: ^archetypes/[a-z0-9][a-z0-9-]*(/[a-z0-9][a-z0-9-]*)*$
+  entry_path:
+    oneOf:
+      - $ref: '#/$defs/record_path'
+      - $ref: '#/$defs/archetype_path'
   dependency_revisions:
     type: object
     additionalProperties: false
@@ -263,7 +308,7 @@ $defs:
       records:
         type: object
         propertyNames:
-          $ref: '#/$defs/record_path'
+          $ref: '#/$defs/entry_path'
         additionalProperties:
           $ref: '#/$defs/revision'
   assessor:
@@ -517,7 +562,7 @@ $defs:
         minItems: 1
         uniqueItems: true
         items:
-          $ref: '#/$defs/record_path'
+          $ref: '#/$defs/entry_path'
       issue_urls:
         type: array
         minItems: 1
@@ -597,6 +642,7 @@ $defs:
           - input_data
           - compilation
           - validation
+          - composition_source
       locators:
         type: array
         minItems: 1
@@ -618,12 +664,13 @@ $defs:
         type: string
         pattern: ^[a-z0-9][a-z0-9-]*$
       record:
-        $ref: '#/$defs/record_path'
+        $ref: '#/$defs/entry_path'
       role:
         enum:
           - input
           - possible_duplicate
           - related
+          - component
       note:
         type: string
         minLength: 1

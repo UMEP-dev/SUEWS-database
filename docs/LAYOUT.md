@@ -28,15 +28,15 @@ file says where things are.
   - `snow/` — snow parameter sets
   - `regions/`, `countries/` — the 22-region / 229-country default sets
   - `typologies/` — building typology metadata
-- `db/provenance/` — record-path-mirrored provenance assessment sidecars:
-  evidence roles and locators prepared by an agent or human assessor, plus
-  GitHub-backed verifier attestations. The directory is populated
-  incrementally as records enter the audit workflow.
+- `db/provenance/` — entry-path-mirrored provenance assessment sidecars:
+  evidence reviews for atomic records and distinct composition reviews for
+  archetypes, plus GitHub-backed verifier attestations. The directory is
+  populated incrementally as entries enter the audit workflow.
 - `.github/provenance-verifiers.yml` — reviewed GitHub handles, immutable user
   IDs, review scopes and the required sign-off threshold
-- `.github/ISSUE_TEMPLATE/provenance-signoff.yml` — record-bound human decision
+- `.github/ISSUE_TEMPLATE/provenance-signoff.yml` — entry-bound human decision
   form opened by the site sign-off control
-- `site/data/provenance.json` — generated record-to-issue index for audit and
+- `site/data/provenance.json` — generated entry-to-issue index for audit and
   sign-off history; the GitHub issues remain the durable review records
 - `db/sources.yml` — citation registry (keys like `ward2016`)
 - `db/places.yml` — place registry (slugs like `helsinki`, `se-england`)

@@ -19,11 +19,13 @@ API_ROOT = "https://api.github.com"
 SIGNOFF_LABEL = "provenance sign-off"
 SIGNOFF_TITLE = "[provenance sign-off]"
 REVISION = re.compile(r"^sha256:[0-9a-f]{64}$")
-RECORD_PATH = re.compile(
-    r"^records/[a-z0-9][a-z0-9-]*(?:/[a-z0-9][a-z0-9-]*)*$"
+ENTRY_PATH = re.compile(
+    r"^(?:records|archetypes)/[a-z0-9][a-z0-9-]*"
+    r"(?:/[a-z0-9][a-z0-9-]*)*$"
 )
 ISSUE_FIELDS = {
-    "Record",
+    "Reviewed entry",
+    "Review type",
     "Evidence revision",
     "Verifier policy revision",
     "Decision",
@@ -60,12 +62,15 @@ def parse_signoff_issue_body(body):
         "Curation required": "curation_required",
         "Withdrawn": "withdrawn",
     }
-    record = fields["Record"]
+    record = fields["Reviewed entry"]
+    review_type = fields["Review type"].casefold()
     evidence = fields["Evidence revision"]
     policy_revision = fields["Verifier policy revision"]
     decision = decisions.get(fields["Decision"])
-    if not RECORD_PATH.fullmatch(record):
+    if not ENTRY_PATH.fullmatch(record):
         raise AttestationError("invalid provenance record path")
+    if review_type not in {"evidence", "composition"}:
+        raise AttestationError("invalid provenance review type")
     if not REVISION.fullmatch(evidence):
         raise AttestationError("invalid evidence revision")
     if not REVISION.fullmatch(policy_revision):
@@ -87,6 +92,7 @@ def parse_signoff_issue_body(body):
         raise AttestationError("withdrawal must supersede an earlier issue")
     return {
         "provenance_record": record,
+        "review_type": review_type,
         "decision": decision,
         "evidence_revision": evidence,
         "verifier_policy_revision": policy_revision,
@@ -160,7 +166,7 @@ def attestation_from_issue(issue, policy):
         item["supersedes_event"] = fact["supersedes_event"]
     if fact["note"] not in {"", "_No response_"}:
         item["note"] = fact["note"]
-    return fact["provenance_record"], item
+    return fact["provenance_record"], fact["review_type"], item
 
 
 def collect_issue_attestations(issues, policy, sidecars, require_current=False):
@@ -170,10 +176,12 @@ def collect_issue_attestations(issues, policy, sidecars, require_current=False):
     for issue in issues:
         issue_id = issue.get("number") if isinstance(issue, dict) else None
         try:
-            record_path, item = attestation_from_issue(issue, policy)
+            record_path, review_type, item = attestation_from_issue(issue, policy)
             sidecar = sidecars.get(record_path)
             if not sidecar:
                 raise AttestationError("sign-off record has no provenance assessment")
+            if review_type != sidecar.get("review_type", "evidence"):
+                raise AttestationError("sign-off review type does not match assessment")
             if require_current and (
                 item["evidence_revision"]
                 != sidecar["assessment"].get("evidence_revision")
@@ -263,7 +271,7 @@ def main(argv=None):
     if args.command == "check":
         print(
             f"github sign-off: {len(policy['verifiers'])} eligible verifier(s), "
-            f"{len(sidecars)} assessed record(s)"
+            f"{len(sidecars)} assessed entry(s)"
         )
         return 0
     try:

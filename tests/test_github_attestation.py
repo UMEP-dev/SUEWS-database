@@ -44,7 +44,8 @@ def policy():
 
 def issue_body(**changes):
     fields = {
-        "Record": RECORD,
+        "Reviewed entry": RECORD,
+        "Review type": "Evidence",
         "Evidence revision": EVIDENCE_REVISION,
         "Verifier policy revision": POLICY_REVISION,
         "Decision": "Verified",
@@ -101,8 +102,9 @@ class IssueDecisionTests(unittest.TestCase):
     def test_registered_verifier_issue_becomes_record_attestation(self):
         parsed = parse_signoff_issue_body(issue()["body"])
         self.assertEqual(parsed["provenance_record"], RECORD)
-        record_path, item = attestation_from_issue(issue(), policy())
+        record_path, review_type, item = attestation_from_issue(issue(), policy())
         self.assertEqual(record_path, RECORD)
+        self.assertEqual(review_type, "evidence")
         self.assertEqual(item["verifier"], "sunt05")
         self.assertEqual(item["verifier_id"], 1802656)
         self.assertEqual(item["event"]["kind"], "issue")
@@ -139,6 +141,36 @@ class IssueDecisionTests(unittest.TestCase):
             event_path.write_text(json.dumps(event))
             with self.assertRaisesRegex(AttestationError, "sender"):
                 validate_issue_event(event_path, policy(), sidecars)
+
+    def test_composition_issue_is_distinct_from_evidence_review(self):
+        composite = "archetypes/surfaces/bldgs/example"
+        composition_issue = issue(
+            body=issue_body(
+                **{"Reviewed entry": composite, "Review type": "Composition"}
+            )
+        )
+        sidecars = {
+            composite: {
+                "review_type": "composition",
+                "assessment": {"evidence_revision": EVIDENCE_REVISION},
+            }
+        }
+        grouped, errors = collect_issue_attestations(
+            [composition_issue], policy(), sidecars, require_current=True
+        )
+        self.assertEqual(errors, [])
+        self.assertEqual(grouped[composite][0]["event"]["id"], 201)
+
+        wrong_layer = issue(
+            body=issue_body(
+                **{"Reviewed entry": composite, "Review type": "Evidence"}
+            )
+        )
+        grouped, errors = collect_issue_attestations(
+            [wrong_layer], policy(), sidecars, require_current=True
+        )
+        self.assertEqual(grouped, {})
+        self.assertTrue(any("review type" in error for error in errors))
 
     def test_withdrawal_requires_superseded_issue(self):
         with self.assertRaisesRegex(AttestationError, "must supersede"):
