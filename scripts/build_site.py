@@ -607,6 +607,19 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   color: var(--text-secondary); line-height: 1.5; }
 .typoshot figcaption .credit { display: block; font-size: 0.78rem;
   color: var(--text-muted); }
+/* the invitation where a typology has no photograph: a quiet panel rather
+   than an empty frame, because a placeholder that looks like a broken image
+   is worse than saying plainly what is missing */
+.nophoto { border: 1px dashed var(--border-light); border-radius: 12px;
+  background: var(--bg-card); padding: 1.1rem 1.2rem 1rem;
+  margin: 0 0 1.6rem; }
+.nophoto p { margin: 0 0 0.6rem; font-size: 0.9rem;
+  color: var(--text-secondary); }
+.nophoto .crumbs { margin: 0.7rem 0 0; font-size: 0.8rem; }
+.photobtn { display: inline-block; padding: 0.45rem 0.95rem;
+  border-radius: 999px; font-size: 0.85rem; border: 1px solid var(--gold-ink);
+  color: var(--gold-ink); }
+.photobtn:hover { background: rgba(247,181,56,0.12); text-decoration: none; }
 .cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.8rem;
   align-items: start; }
 /* a grid item's automatic minimum is its min-content width, so on a phone --
@@ -1171,9 +1184,10 @@ def vals_preview(rec, limit=4):
 def load_images():
     """The image manifest: which typologies have a photograph we may show."""
     if not IMAGES_FILE.exists():
-        return {}, None
+        return {}, {}, None
     doc = yaml.safe_load(IMAGES_FILE.read_text()) or {}
-    return doc.get("images") or {}, doc.get("release")
+    return (doc.get("images") or {}, doc.get("unresolved") or {},
+            doc.get("release"))
 
 
 def fetch(url):
@@ -1249,6 +1263,50 @@ def image_figure(path, entry, depth):
             f"<figcaption>{caption}"
             f"<span class=\"credit\">{credit} · {licence}</span>"
             f"</figcaption></figure>")
+
+
+def photo_invite(path, rec, blocked):
+    """Ask for a photograph where a typology has none.
+
+    A typology with no picture is the weakest page on the site, and the fix
+    is not one a maintainer can do alone -- it needs someone who has stood in
+    the place. So say what is missing and what would let us publish it. The
+    licence condition leads rather than hides in the form, because a
+    photograph offered without one cannot be used, and finding that out after
+    someone has gone to the trouble is the worse outcome.
+    """
+    name = rec.get("name") or path.rsplit("/", 1)[-1]
+    url = (f"{REPO_URL}/issues/new?template=typology-photo.yml"
+           f"&title={quote('[photo] ' + str(name), safe='')}"
+           f"&typology={quote(path, safe='')}")
+    blocked_note = ""
+    if blocked:
+        # a manifest-authored number; anything else points at the manifest
+        # rather than fabricating an issue link or failing the whole build
+        issue = blocked.get("tracked_by")
+        where = "db/images.yml"
+        if isinstance(issue, int):
+            where = (f"<a href=\"{REPO_URL}/issues/{issue}\">"
+                     f"issue #{issue}</a>")
+        blocked_note = (
+            f"<p class=\"crumbs\">A photograph is recorded for this typology "
+            f"but cannot be published: nobody has been able to establish who "
+            f"holds it or on what terms. That question is open in "
+            f"{where}.</p>")
+    return (
+        "<div class=\"nophoto\">"
+        f"<p><b>No photograph yet.</b> This kind of neighbourhood is easier "
+        f"to recognise than to describe, and a picture would tell a reader "
+        f"more about “{esc(name)}” than the parameters below can.</p>"
+        f"{blocked_note}"
+        f"<a class=\"photobtn\" href=\"{esc(url)}\">Offer a photograph</a>"
+        "<p class=\"crumbs\">We can only publish one if it names its "
+        "photographer and its licence — public domain, CC0, or a Creative "
+        "Commons licence. A photograph with no stated terms cannot be shown, "
+        "however well it fits.</p>"
+        "</div>")
+
+
 def _state_badge(state):
     label = PROVENANCE_STATE_LABEL.get(state, state.replace("_", " ").title())
     return (
@@ -1478,7 +1536,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
 
 def record_page(
     path, rec, records, sources, used_by, cluster, image=None,
-    sidecars=None, policy=None
+    sidecars=None, policy=None, blocked=None, invite=False
 ):
     depth = path.count("/")
     rel = "../" * depth
@@ -1609,6 +1667,8 @@ def record_page(
     # of thumbnails they did not ask for.
     if image:
         main.append(image_figure(path, image, depth))
+    elif invite:
+        main.append(photo_invite(path, rec, blocked))
 
     uses = rec.get("uses")
     if uses:
@@ -2610,7 +2670,7 @@ def main():
     merge_github_signoffs(sidecars)
     used_by, cluster = build_graph(records)
 
-    images, release = load_images()
+    images, unresolved, release = load_images()
     staged = stage_images(out, images, release, offline=args.offline)
 
     for path, rec in records.items():
@@ -2621,6 +2681,12 @@ def main():
                 path, rec, records, sources, used_by, cluster,
                 image=images.get(path) if path in staged else None,
                 sidecars=sidecars, policy=policy,
+                blocked=unresolved.get(path),
+                # a typology the manifest publishes but this build could not
+                # stage (an --offline run) shows nothing rather than claiming
+                # it has no photograph
+                invite=(path.startswith("archetypes/typologies/")
+                        and path not in images),
             )
         )
 

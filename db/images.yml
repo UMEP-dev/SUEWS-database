@@ -97,11 +97,14 @@ images:
 # Records that carry a `url` but whose image cannot be shown yet. Listed here
 # so the omission is deliberate and auditable rather than silent;
 # scripts/check_db.py requires every typology with a `url` to appear in one
-# section or the other.
+# section or the other. `tracked_by` is the issue where the question is being
+# settled; the site links a reader to it rather than leaving the absence
+# unexplained.
 
 unresolved:
 
   archetypes/typologies/sweden--mixed-city-ideal:
+    tracked_by: 56
     reason: >-
       The record's url points at an item in the City of Gothenburg's media
       library. That library's own metadata for the item gives no author,
@@ -119,6 +122,7 @@ unresolved:
       typology, with its own provenance.
 
   archetypes/typologies/uk--sub-urban:
+    tracked_by: 55
     reason: >-
       The record credits "By Helen Ward" for an image hosted on a University
       of Gothenburg file share. The host publishes no licence, metadata or

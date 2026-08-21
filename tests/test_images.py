@@ -55,6 +55,52 @@ class ImageManifestTests(unittest.TestCase):
                 self.assertTrue(entry["what_would_settle_it"].strip())
 
 
+class PhotoInviteTests(unittest.TestCase):
+    """Where a typology has no photograph, the page asks for one -- and says
+    on what terms, so nobody goes to the trouble of finding a picture we
+    cannot use."""
+
+    def setUp(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import build_site
+
+        self.build_site = build_site
+        self.doc = manifest()
+
+    def test_invite_states_the_licence_condition(self):
+        html = self.build_site.photo_invite(
+            "archetypes/typologies/china--cbd", {"name": "CBD"}, None)
+        self.assertIn("Offer a photograph", html)
+        self.assertIn("licence", html)
+        self.assertIn("typology-photo.yml", html)
+
+    def test_invite_links_the_issue_tracking_a_blocked_image(self):
+        blocked = self.doc["unresolved"]["archetypes/typologies/uk--sub-urban"]
+        html = self.build_site.photo_invite(
+            "archetypes/typologies/uk--sub-urban", {"name": "Sub-urban"},
+            blocked)
+        self.assertIn(f"/issues/{blocked['tracked_by']}", html)
+
+    def test_invite_without_a_tracking_issue_still_renders(self):
+        html = self.build_site.photo_invite(
+            "archetypes/typologies/china--cbd", {"name": "CBD"},
+            {"reason": "x", "what_would_settle_it": "y"})
+        self.assertIn("db/images.yml", html)
+
+    def test_every_unresolved_entry_names_its_tracking_issue(self):
+        for path, entry in self.doc["unresolved"].items():
+            with self.subTest(path=path):
+                self.assertIsInstance(entry.get("tracked_by"), int)
+
+    def test_a_non_numeric_tracking_value_does_not_break_the_build(self):
+        """The manifest is hand-written; a typo must not fail the deploy."""
+        html = self.build_site.photo_invite(
+            "archetypes/typologies/china--cbd", {"name": "CBD"},
+            {"tracked_by": "see the tracker"})
+        self.assertIn("db/images.yml", html)
+        self.assertNotIn("/issues/see", html)
+
+
 class ImageCheckerTests(unittest.TestCase):
     """The checker has to fail on the manifests that matter, not just pass."""
 
