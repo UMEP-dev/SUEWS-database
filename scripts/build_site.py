@@ -686,11 +686,25 @@ if FLOATING_REPORT:
     CSS += FAB_CSS
 
 FAB_JS = """<script>
-(function(){
+(function () {
   var a = document.getElementById("fabreport");
-  if (!a || a.dataset.page !== "1") return;
-  a.href += "&page=" + encodeURIComponent(location.href);
-  a.dataset.page = "0";   // never append twice
+  // record pages report the record, and their address does not move
+  if (!a || !a.dataset.base) return;
+  function sync() {
+    // the browser keeps its filter state in the hash; a report from a
+    // filtered view is worth nothing without it
+    var h = location.hash.slice(1);
+    var where = h ? " " + decodeURIComponent(h).replace(/&/g, ", ") : "";
+    a.href = a.dataset.base
+      + "&title=" + encodeURIComponent(a.dataset.title + where)
+      + "&page=" + encodeURIComponent(location.href);
+  }
+  // composing from the stored base is idempotent, so this can run as
+  // often as it likes: on arrival, whenever the view changes, and once
+  // more on the way out in case anything moved it without a hashchange
+  sync();
+  addEventListener("hashchange", sync);
+  a.addEventListener("click", sync);
 })();
 </script>"""
 
@@ -703,11 +717,16 @@ def page(title, body, depth=0, script="", report_url=None):
     if FLOATING_REPORT:
         body_cls = ' class="hasfab"'
         # a page-scoped report needs the page address, which only the browser
-        # knows: the site has no base URL compiled into it
-        href = report_url or (
-            f"{SITE_ISSUE_URL}&title={quote('[site] ' + title, safe='')}")
-        fab = (f'\n<a class="fab" id="fabreport" href="{esc(href)}"'
-               f' data-page="{"0" if report_url else "1"}">'
+        # knows: the site has no base URL compiled into it, and on the
+        # browse index the address keeps moving as facets are chosen
+        if report_url:
+            href, data = report_url, ""
+        else:
+            base_title = '[site] ' + title
+            href = f"{SITE_ISSUE_URL}&title={quote(base_title, safe='')}"
+            data = (f' data-base="{esc(SITE_ISSUE_URL)}"'
+                    f' data-title="{esc(base_title)}"')
+        fab = (f'\n<a class="fab" id="fabreport" href="{esc(href)}"{data}>'
                '<span class="dot" aria-hidden="true"></span>'
                'Report an issue</a>')
         fab_js = "\n" + FAB_JS
