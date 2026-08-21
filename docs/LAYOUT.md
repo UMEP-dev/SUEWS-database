@@ -32,6 +32,8 @@ file says where things are.
   evidence roles and locators prepared by an agent or human assessor, plus
   GitHub-backed verifier attestations. The directory is populated
   incrementally as records enter the audit workflow.
+- `.github/provenance-verifiers.yml` — reviewed GitHub handles, immutable user
+  IDs, review scopes and the required sign-off threshold
 - `db/sources.yml` — citation registry (keys like `ward2016`)
 - `db/places.yml` — place registry (slugs like `helsinki`, `se-england`)
 - `schema/table_mapping.yml` — the audited legacy-column -> supy-path map
@@ -45,6 +47,8 @@ file says where things are.
 - `schema/provenance-assessment.schema.yml` — the machine-readable format for
   provenance sidecars, assessment states, revision fingerprints and verifier
   attestations
+- `schema/provenance-verifier-policy.schema.yml` — verifier registry and
+  sign-off threshold policy
 - `schema/regional_axis.yml` — how the database slices by place and region
 - `scripts/` — the checking, export and migration tools
 - `scripts/legacy/` — the pre-migration spreadsheet toolchain, kept for

@@ -1,0 +1,14 @@
+version: 1
+repository: UMEP-dev/SUEWS-database
+required_signoffs: 1
+required_scopes:
+  - record
+verifiers:
+  - github_handle: sunt05
+    github_user_id: 1802656
+    scopes:
+      - record
+  - github_handle: suegrimmond
+    github_user_id: 20229342
+    scopes:
+      - record

@@ -1,5 +1,10 @@
 name: check
 
+permissions:
+  contents: read
+  issues: read
+  pull-requests: read
+
 on:
   push:
     branches: [main]
@@ -15,5 +20,9 @@ jobs:
         run: make check
       - name: Provenance and export regression tests
         run: make test
+      - name: Authenticate provenance sign-offs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: make check-signoffs
       - name: Validate fragments against the supy data model
         run: make validate

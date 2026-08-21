@@ -66,6 +66,7 @@ def attestation(
     event_id,
     *,
     verifier="SueVerifier",
+    verifier_id=12345,
     decision="verified",
     signed_at="2026-08-21T13:00:00Z",
     evidence=None,
@@ -73,6 +74,7 @@ def attestation(
 ):
     item = {
         "verifier": verifier,
+        "verifier_id": verifier_id,
         "decision": decision,
         "signed_at": signed_at,
         "event": {
@@ -98,6 +100,7 @@ def attestation(
 def authenticated_fact(item, provenance_record=RECORD_KEY):
     return {
         "author": item["verifier"],
+        "author_id": item["verifier_id"],
         "signed_at": item["signed_at"],
         "url": item["event"]["url"],
         "repository": "UMEP-dev/SUEWS-database",
@@ -116,8 +119,14 @@ def verifier_policy(required=1):
         "required_signoffs": required,
         "required_scopes": ["record"],
         "verifiers": {
-            "SueVerifier": ["record"],
-            "OtherVerifier": ["record"],
+            "SueVerifier": {
+                "github_user_id": 12345,
+                "scopes": ["record"],
+            },
+            "OtherVerifier": {
+                "github_user_id": 54321,
+                "scopes": ["record"],
+            },
         },
     }
 
@@ -408,6 +417,17 @@ class VerificationStateTests(unittest.TestCase):
         stale_facts = {("issue_comment", 102): authenticated_fact(stale_item)}
         self.assertEqual(
             self.derive(stale, facts=stale_facts, policy=policy),
+            "awaiting_signoff",
+        )
+
+        stale_policy = deepcopy(sidecar)
+        stale_policy_item = stale_policy["verification"]["attestations"][0]
+        stale_policy_item["verifier_policy_revision"] = "sha256:" + "8" * 64
+        stale_policy_facts = {
+            ("issue_comment", 102): authenticated_fact(stale_policy_item)
+        }
+        self.assertEqual(
+            self.derive(stale_policy, facts=stale_policy_facts, policy=policy),
             "awaiting_signoff",
         )
 

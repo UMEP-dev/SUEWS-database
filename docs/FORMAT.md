@@ -219,14 +219,17 @@ or set a verified state.
 
 ### GitHub-backed verifier attestations
 
-Verifier eligibility, review scopes and thresholds are maintained separately
-by the GitHub sign-off infrastructure in a central verifier policy. An
-attestation records the verifier's GitHub handle, decision, timestamp, a
-specific GitHub review or comment event, evidence revision, verifier-policy
-revision and record scope. The handle in YAML is not proof of identity: CI
-loads the event by its immutable numeric ID and verifies its author, timestamp,
-repository and anchored URL. It then checks that the actor was eligible under
-the recorded policy revision.
+Verifier eligibility, review scopes and thresholds are maintained in the
+reviewed `.github/provenance-verifiers.yml` policy. Its revision is derived
+from its complete canonical content rather than declared by an assessment.
+An attestation records the verifier's GitHub handle and immutable numeric user
+ID, decision, timestamp, a specific GitHub comment event, evidence revision,
+verifier-policy revision and record scope. The handle in YAML is not proof of
+identity: CI reloads the comment by its immutable numeric ID and verifies its
+actor, timestamp, repository, unedited state and anchored URL. For an event on
+the current policy revision, it also checks that the actor ID and handle are
+eligible. Events on older policy revisions remain authenticated history but
+are stale and do not contribute to `verified`.
 
 The authenticated event also carries the signed decision payload: the
 provenance-record path, decision, scope, evidence revision, verifier-policy
@@ -234,15 +237,12 @@ revision and any superseded event. Every field must equal the sidecar
 attestation. An unrelated comment cannot therefore be reinterpreted as a
 sign-off, and one GitHub event cannot be reused across several records.
 
-The sign-off button creates that authenticated GitHub event. Trusted
-automation appends the resulting attestation; agents and ordinary data-change
-commits may not hand-write one. Schema validation checks the shape, while the
-GitHub-aware checks planned with the sign-off infrastructure enforce event
-authenticity, equality between the event ID and URL anchor, and the bot-only
-append rule. The button runs in a verifier-authenticated human session; the
-audit agent must not receive or be able to invoke the verifier's credential or
-sign-off action. A matching GitHub actor proves account identity only when this
-human-intent boundary is also enforced.
+Version 1 uses an unedited `issue_comment` containing the exact JSON envelope
+defined by `scripts/github_attestation.py`. CI reloads the comment through the
+GitHub API and requires every signed field to equal the stored attestation.
+The site sign-off button will create this event in a verifier-authenticated
+human session; the audit agent must not receive or be able to invoke the
+verifier's credential or sign-off action.
 
 The offline checker validates sidecar shape, fingerprints, event anchors and
 supersession graphs, but never authenticates GitHub identity itself. Without
@@ -414,12 +414,13 @@ Human verification is an authenticated event bound to the evidence revision:
 verification:
   attestations:
     - verifier: <verified-github-handle>
+      verifier_id: <immutable-github-user-id>
       decision: verified
       signed_at: <github-event-timestamp>
       event:
-        kind: pull_request_review
-        id: <github-review-id>
-        url: "https://github.com/UMEP-dev/SUEWS-database/pull/<number>#pullrequestreview-<id>"
+        kind: issue_comment
+        id: <github-comment-id>
+        url: "https://github.com/UMEP-dev/SUEWS-database/issues/<number>#issuecomment-<id>"
       evidence_revision: sha256:<64-lowercase-hex-digits>
       verifier_policy_revision: sha256:<64-lowercase-hex-digits>
       scope: record
