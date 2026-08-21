@@ -1,0 +1,28 @@
+# records/surfaces/grass/helsinki--jarvi2014--phenology
+# target: land_cover.grass  (paste under this path in a SUEWS YAML config)
+# schema_version: 2026.5
+lai:
+  base_temperature:
+    value: 5
+    ref:
+      ID: jarvi2014
+      DOI: 10.5194/gmd-7-1691-2014
+      desc: helsinki, city
+  base_temperature_senescence:
+    value: 10
+    ref:
+      ID: jarvi2014
+      DOI: 10.5194/gmd-7-1691-2014
+      desc: helsinki, city
+  gdd_full:
+    value: 300
+    ref:
+      ID: jarvi2014
+      DOI: 10.5194/gmd-7-1691-2014
+      desc: helsinki, city
+  sdd_full:
+    value: -450
+    ref:
+      ID: jarvi2014
+      DOI: 10.5194/gmd-7-1691-2014
+      desc: helsinki, city

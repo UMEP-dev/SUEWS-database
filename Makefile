@@ -2,14 +2,19 @@ PY := python3
 # VIRTUAL_ENV= keeps an active venv from leaking into uv's resolution; the
 # supy pin is the version the records' schema_version was verified against.
 SUPY_VERSION := 2026.6.5
-UV := VIRTUAL_ENV= uv run --with pyyaml --no-project python
-UVSUPY := VIRTUAL_ENV= uv run --with pyyaml --with "supy==$(SUPY_VERSION)" --no-project python
+PYYAML_VERSION := 6.0.3
+JSONSCHEMA_VERSION := 4.26.0
+RFC8785_VERSION := 0.1.4
+UV := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --no-project python
+UVCHECK := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --no-project python
+UVSUPY := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --with "supy==$(SUPY_VERSION)" --no-project python
 
-.PHONY: help check check-strict validate verify export
+.PHONY: help check check-strict test validate verify export
 
 help:
 	@echo "check        - structure, references, places/sources and coupling rules"
 	@echo "check-strict - as check, but coupling warnings fail the run"
+	@echo "test         - provenance and export regression tests"
 	@echo "validate     - check + validate every fragment against the supy data model"
 	@echo "verify       - reverse-verify the record tree against the pre-migration tables in git history"
 	@echo "export       - usage: make export REC=records/surfaces/grass/helsinki--jarvi2014--phenology"
@@ -19,10 +24,13 @@ help:
 	@echo "asset, and the pre-migration tooling lives in scripts/legacy/."
 
 check:
-	$(UV) scripts/check_db.py
+	$(UVCHECK) scripts/check_db.py
 
 check-strict:
-	$(UV) scripts/check_db.py --strict
+	$(UVCHECK) scripts/check_db.py --strict
+
+test:
+	$(UVCHECK) -m unittest discover -s tests -v
 
 validate:
 	$(UVSUPY) scripts/check_db.py --supy
