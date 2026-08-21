@@ -1,0 +1,736 @@
+"""Offline validation and state derivation for provenance sidecars.
+
+GitHub event authentication is deliberately outside this module.  Callers may
+pass event identities that a trusted GitHub-aware service has authenticated;
+without that input, an offline check can never derive ``verified``.
+"""
+
+from __future__ import annotations
+
+from datetime import datetime
+from hashlib import sha256
+from pathlib import Path
+import re
+
+import rfc8785
+import yaml
+from jsonschema import Draft202012Validator, FormatChecker
+
+
+ROOT = Path(__file__).resolve().parent.parent
+DB = ROOT / "db"
+SCHEMA_PATH = ROOT / "schema" / "provenance-assessment.schema.yml"
+PROVENANCE_FORMAT_VERSION = "1.0"
+GITHUB_REPOSITORY = "UMEP-dev/SUEWS-database"
+
+REVIEWED_ASSESSMENT_FIELDS = (
+    "status",
+    "method",
+    "findings",
+    "evidence",
+    "derivation",
+    "attempted_sources",
+    "scientific_note",
+)
+SIGNOFF_FINDINGS = {"supported", "not_applicable"}
+EXTERNAL_METHODS = {"measured", "fitted", "literature"}
+
+EVENT_URLS = {
+    "pull_request_review": re.compile(
+        r"^https://github\.com/UMEP-dev/SUEWS-database/pull/\d+"
+        r"#pullrequestreview-(\d+)$"
+    ),
+    "issue_comment": re.compile(
+        r"^https://github\.com/UMEP-dev/SUEWS-database/(?:issues|pull)/\d+"
+        r"#issuecomment-(\d+)$"
+    ),
+}
+
+
+def canonical_revision(value):
+    """Return the RFC 8785 SHA-256 revision for a JSON-compatible value."""
+    return "sha256:" + sha256(rfc8785.dumps(value)).hexdigest()
+
+
+def evidence_revision(sidecar):
+    """Recompute the reviewed evidence projection documented in FORMAT.md."""
+    assessment = sidecar["assessment"]
+    projection = {
+        "provenance_format_version": sidecar["provenance_format_version"],
+        "record_revision": sidecar["record_revision"],
+        "dependency_revisions": sidecar["dependency_revisions"],
+        "assessment": {
+            key: assessment[key]
+            for key in REVIEWED_ASSESSMENT_FIELDS
+            if key in assessment
+        },
+    }
+    return canonical_revision(projection)
+
+
+def load_provenance_sidecars(base=DB / "provenance"):
+    """Load sidecars keyed by their path below ``db/provenance`` sans suffix."""
+    sidecars = {}
+    errors = []
+    if not base.exists():
+        return sidecars, errors
+    files = sorted(set(base.rglob("*.yml")) | set(base.rglob("*.yaml")))
+    for fp in files:
+        rel = fp.relative_to(base)
+        key = str(rel.with_suffix(""))
+        if fp.suffix != ".yml":
+            errors.append(f"provenance/{rel}: sidecars must use the .yml suffix")
+        try:
+            parsed = yaml.safe_load(fp.read_text())
+        except (OSError, yaml.YAMLError) as exc:
+            errors.append(f"provenance/{rel}: cannot parse YAML: {exc}")
+            continue
+        if key in sidecars:
+            errors.append(f"provenance/{rel}: duplicate sidecar path {key!r}")
+            continue
+        sidecars[key] = parsed
+    return sidecars, errors
+
+
+def _schema_errors(sidecar, schema):
+    validator = Draft202012Validator(schema, format_checker=FormatChecker())
+    for error in sorted(
+        validator.iter_errors(sidecar),
+        key=lambda item: tuple(str(part) for part in item.absolute_path),
+    ):
+        path = ".".join(str(part) for part in error.absolute_path) or "<root>"
+        yield f"schema {path}: {error.message}"
+
+
+def _event_key(attestation):
+    event = attestation.get("event", {})
+    kind = event.get("kind")
+    event_id = event.get("id")
+    if kind not in EVENT_URLS or not isinstance(event_id, int):
+        return None
+    return kind, event_id
+
+
+def _event_url_matches(attestation):
+    event = attestation.get("event", {})
+    pattern = EVENT_URLS.get(event.get("kind"))
+    if pattern is None:
+        return False
+    match = pattern.fullmatch(str(event.get("url", "")))
+    return bool(match and int(match.group(1)) == event.get("id"))
+
+
+def _normalise_handle(handle):
+    """Return a GitHub handle in the case-insensitive comparison form."""
+    return handle.casefold() if isinstance(handle, str) else None
+
+
+def _event_fact_matches(attestation, fact, provenance_record):
+    """Match an attestation to facts authenticated by a GitHub-aware caller."""
+    if not isinstance(fact, dict):
+        return False
+    event = attestation.get("event", {})
+    return (
+        _normalise_handle(fact.get("author"))
+        == _normalise_handle(attestation.get("verifier"))
+        and fact.get("signed_at") == attestation.get("signed_at")
+        and fact.get("url") == event.get("url")
+        and fact.get("repository") == GITHUB_REPOSITORY
+        and fact.get("decision") == attestation.get("decision")
+        and fact.get("provenance_record") == provenance_record
+        and fact.get("evidence_revision")
+        == attestation.get("evidence_revision")
+        and fact.get("verifier_policy_revision")
+        == attestation.get("verifier_policy_revision")
+        and fact.get("scope") == attestation.get("scope")
+        and fact.get("supersedes_event") == attestation.get("supersedes_event")
+    )
+
+
+def _parameter_source_aligned(record, assessment):
+    method = assessment.get("method")
+    parameter_sources = {
+        item.get("source")
+        for item in assessment.get("evidence", [])
+        if item.get("role") == "parameter_source"
+    }
+    source = record.get("source")
+    if method in EXTERNAL_METHODS:
+        return source != "unreferenced" and source in parameter_sources
+    if method in {"calculated", "assumed"}:
+        return source == "unreferenced" and not parameter_sources
+    return False
+
+
+def signoff_eligible(sidecar, record):
+    """Whether human attestations are allowed to affect the record state."""
+    if not isinstance(sidecar, dict) or not isinstance(record, dict):
+        return False
+    assessment = sidecar.get("assessment", {})
+    if assessment.get("status") != "agent_assessed":
+        return False
+    findings = assessment.get("findings", {})
+    if not findings or any(
+        finding.get("conclusion") not in SIGNOFF_FINDINGS
+        for finding in findings.values()
+    ):
+        return False
+    if any(
+        findings.get(scope, {}).get("conclusion") != "supported"
+        for scope in ("values", "method")
+    ):
+        return False
+    if (
+        assessment.get("method") in EXTERNAL_METHODS
+        and findings.get("source", {}).get("conclusion") != "supported"
+    ):
+        return False
+    try:
+        revisions_are_current = (
+            sidecar.get("record_revision") == canonical_revision(record)
+            and assessment.get("evidence_revision") == evidence_revision(sidecar)
+        )
+    except (KeyError, TypeError, ValueError, rfc8785.FloatDomainError):
+        return False
+    if not revisions_are_current:
+        return False
+    return _parameter_source_aligned(record, assessment)
+
+
+def derive_verification_state(
+    sidecar,
+    record,
+    *,
+    policy=None,
+    authenticated_events=None,
+    records=None,
+    sources=None,
+    places=None,
+    sidecars=None,
+):
+    """Derive the record state from trusted inputs.
+
+    ``authenticated_events`` maps ``(kind, id)`` pairs to event facts verified
+    through GitHub by infrastructure outside the offline checker.  Each fact
+    supplies the event identity, signed decision payload, author, timestamp,
+    URL and repository; every field must match the attestation. ``policy`` has
+    a revision, a positive
+    ``required_signoffs`` count, non-empty ``required_scopes``, and a
+    ``verifiers`` mapping from GitHub handles to allowed scopes.  Missing trust
+    inputs always yield ``awaiting_signoff`` for an otherwise eligible
+    assessment. Current record, source and place registries plus the complete
+    sidecar snapshot are also required. The snapshot must pass the same schema,
+    reference, revision and graph checks used by ``make check``; stale or
+    checker-invalid evidence can never produce ``verified``.
+    """
+    if sidecar is None:
+        return "unaudited"
+    if not isinstance(sidecar, dict):
+        return "unresolved"
+    assessment = sidecar.get("assessment", {})
+    provenance_record = sidecar.get("provenance_record")
+    if (
+        not isinstance(sidecars, dict)
+        or sidecars.get(provenance_record) != sidecar
+        or not all(
+            isinstance(value, dict) for value in (records, sources, places)
+        )
+        or check_provenance(records, sources, places, sidecars)
+    ):
+        return "unresolved"
+    status = assessment.get("status")
+    if status in {"unresolved", "source_inaccessible", "curation_required"}:
+        return status
+    if status != "agent_assessed":
+        return "unresolved"
+    if not signoff_eligible(sidecar, record):
+        return "agent_assessed"
+    if not _dependencies_are_current(
+        sidecar, record, records, sources, places
+    ):
+        return "agent_assessed"
+    if not policy:
+        return "awaiting_signoff"
+    policy_revision = policy.get("revision")
+    required = policy.get("required_signoffs")
+    required_scopes = policy.get("required_scopes")
+    verifiers = policy.get("verifiers", {})
+    if (
+        not policy_revision
+        or not isinstance(required, int)
+        or isinstance(required, bool)
+        or required < 1
+        or not isinstance(required_scopes, (list, tuple, set, frozenset))
+        or not required_scopes
+        or not all(isinstance(scope, str) for scope in required_scopes)
+        or not isinstance(verifiers, dict)
+    ):
+        return "awaiting_signoff"
+
+    required_scopes = set(required_scopes)
+    allowed_by_verifier = {
+        _normalise_handle(handle): set(scopes)
+        for handle, scopes in verifiers.items()
+        if isinstance(scopes, (list, tuple, set, frozenset))
+        and all(isinstance(scope, str) for scope in scopes)
+    }
+    authenticated_events = authenticated_events or {}
+    attestations = sidecar.get("verification", {}).get("attestations", [])
+    event_keys = [_event_key(item) for item in attestations]
+    if (
+        any(key is None for key in event_keys)
+        or len(set(event_keys)) != len(event_keys)
+        or _attestation_supersession_errors(attestations)
+    ):
+        return "awaiting_signoff"
+    event_key_set = set(event_keys)
+    for attestation, key in zip(attestations, event_keys):
+        target = attestation.get("supersedes_event")
+        if target:
+            target_key = (target.get("kind"), target.get("id"))
+            if target_key == key or target_key not in event_key_set:
+                return "awaiting_signoff"
+
+    current = {}
+    for attestation in attestations:
+        key = _event_key(attestation)
+        if key is None:
+            continue
+        if not _event_url_matches(attestation):
+            continue
+        fact = authenticated_events.get(key)
+        if not _event_fact_matches(
+            attestation, fact, sidecar.get("provenance_record")
+        ):
+            continue
+        if attestation.get("evidence_revision") != assessment.get(
+            "evidence_revision"
+        ):
+            continue
+        if attestation.get("verifier_policy_revision") != policy_revision:
+            continue
+        verifier = _normalise_handle(attestation.get("verifier"))
+        scope = attestation.get("scope")
+        if (
+            scope not in required_scopes
+            or scope not in allowed_by_verifier.get(verifier, set())
+        ):
+            continue
+        current[key] = attestation
+
+    superseded = {
+        (target.get("kind"), target.get("id"))
+        for attestation in current.values()
+        if (target := attestation.get("supersedes_event"))
+    }
+    effective = {
+        key: attestation
+        for key, attestation in current.items()
+        if key not in superseded and attestation.get("decision") != "withdrawn"
+    }
+
+    decisions = {item.get("decision") for item in effective.values()}
+    if decisions & {"changes_requested", "unresolved", "curation_required"}:
+        return "awaiting_signoff"
+    signed = {
+        _normalise_handle(item.get("verifier"))
+        for item in effective.values()
+        if item.get("decision") == "verified"
+    }
+    covered_scopes = {
+        item.get("scope")
+        for item in effective.values()
+        if item.get("decision") == "verified"
+    }
+    if len(signed) >= required and required_scopes <= covered_scopes:
+        return "verified"
+    return "awaiting_signoff"
+
+
+def _dependency_keys(record, assessment):
+    source_keys = set()
+    if record.get("source") not in (None, "unreferenced"):
+        source_keys.add(record["source"])
+    place_keys = {record["place"]} if record.get("place") else set()
+    record_paths = set()
+    for item in assessment.get("evidence", []):
+        if "source" in item:
+            source_keys.add(item["source"])
+        if "record" in item:
+            record_paths.add(item["record"])
+    for attempt in assessment.get("attempted_sources", []):
+        if "source" in attempt:
+            source_keys.add(attempt["source"])
+    for finding in assessment.get("findings", {}).values():
+        record_paths.update(finding.get("related_records", []))
+    return source_keys, place_keys, record_paths
+
+
+def _dependencies_are_current(sidecar, record, records, sources, places):
+    """Whether every declared scientific dependency matches current content."""
+    if not all(isinstance(value, dict) for value in (records, sources, places)):
+        return False
+    if records.get(sidecar.get("provenance_record")) != record:
+        return False
+    assessment = sidecar.get("assessment", {})
+    source_keys, place_keys, record_paths = _dependency_keys(record, assessment)
+    dependencies = sidecar.get("dependency_revisions", {})
+    sections = (
+        (dependencies.get("sources", {}), source_keys, sources),
+        (dependencies.get("places", {}), place_keys, places),
+        (dependencies.get("records", {}), record_paths, records),
+    )
+    for actual, expected, registry in sections:
+        if set(actual) != expected or not expected <= set(registry):
+            return False
+        try:
+            if any(actual[key] != canonical_revision(registry[key]) for key in expected):
+                return False
+        except (TypeError, ValueError, rfc8785.FloatDomainError):
+            return False
+    return True
+
+
+def _check_dependency_section(label, actual, expected, registry):
+    errors = []
+    actual_keys = set(actual)
+    if actual_keys != expected:
+        missing = sorted(expected - actual_keys)
+        extra = sorted(actual_keys - expected)
+        if missing:
+            errors.append(f"{label}: missing dependency revisions {missing}")
+        if extra:
+            errors.append(f"{label}: unexplained dependency revisions {extra}")
+    for key in sorted(actual_keys & set(registry)):
+        try:
+            wanted = canonical_revision(registry[key])
+        except (TypeError, ValueError, rfc8785.FloatDomainError) as exc:
+            errors.append(f"{label}.{key}: cannot fingerprint dependency: {exc}")
+            continue
+        if actual[key] != wanted:
+            errors.append(f"{label}.{key}: dependency revision is stale")
+    return errors
+
+
+def _find_cycles(graph):
+    errors = []
+    state = {}
+    stack = []
+
+    def visit(node):
+        state[node] = 1
+        stack.append(node)
+        for target in sorted(graph.get(node, ())):
+            if target not in graph:
+                continue
+            if state.get(target) == 1:
+                start = stack.index(target)
+                cycle = stack[start:] + [target]
+                errors.append("derivation cycle: " + " -> ".join(cycle))
+            elif state.get(target) is None:
+                visit(target)
+        stack.pop()
+        state[node] = 2
+
+    for node in sorted(graph):
+        if state.get(node) is None:
+            visit(node)
+    return errors
+
+
+def _event_label(key):
+    return f"{key[0]}:{key[1]}"
+
+
+def _parse_rfc3339(value):
+    return datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def _attestation_supersession_errors(attestations):
+    """Validate immutable attestation replacement links."""
+    errors = []
+    by_key = {
+        key: item
+        for item in attestations
+        if (key := _event_key(item)) is not None
+    }
+    graph = {}
+    for key, item in by_key.items():
+        supersedes = item.get("supersedes_event")
+        if not supersedes:
+            continue
+        target = (supersedes.get("kind"), supersedes.get("id"))
+        graph[key] = target
+        if target not in by_key:
+            continue
+        previous = by_key[target]
+        if _normalise_handle(previous.get("verifier")) != _normalise_handle(
+            item.get("verifier")
+        ):
+            errors.append(
+                f"attestation {_event_label(key)} cannot supersede another verifier"
+            )
+        if previous.get("scope") != item.get("scope"):
+            errors.append(
+                f"attestation {_event_label(key)} cannot change review scope"
+            )
+        try:
+            is_later = _parse_rfc3339(item["signed_at"]) > _parse_rfc3339(
+                previous["signed_at"]
+            )
+        except (KeyError, TypeError, ValueError):
+            # Date-time shape is reported by the JSON Schema validator.
+            is_later = True
+        if not is_later:
+            errors.append(
+                f"attestation {_event_label(key)} must be later than the event "
+                "it supersedes"
+            )
+
+    state = {}
+    stack = []
+
+    def visit(node):
+        state[node] = 1
+        stack.append(node)
+        target = graph.get(node)
+        if target in graph:
+            if state.get(target) == 1:
+                start = stack.index(target)
+                cycle = stack[start:] + [target]
+                errors.append(
+                    "attestation supersession cycle: "
+                    + " -> ".join(_event_label(key) for key in cycle)
+                )
+            elif state.get(target) is None:
+                visit(target)
+        stack.pop()
+        state[node] = 2
+
+    for node in graph:
+        if state.get(node) is None:
+            visit(node)
+    return errors
+
+
+def check_provenance(records, sources, places, sidecars, schema=None):
+    """Return offline structural and semantic errors for provenance sidecars."""
+    if schema is None:
+        schema = yaml.safe_load(SCHEMA_PATH.read_text())
+    Draft202012Validator.check_schema(schema)
+    errors = []
+    derivations = {}
+    attestation_events = {}
+
+    for sidecar_path, sidecar in sorted(sidecars.items()):
+        label = f"provenance/{sidecar_path}"
+        if not isinstance(sidecar, dict):
+            errors.append(f"{label}: sidecar must be a mapping")
+            continue
+        schema_errors = list(_schema_errors(sidecar, schema))
+        errors.extend(f"{label}: {message}" for message in schema_errors)
+        if schema_errors:
+            # Semantic checks assume the schema-established container types.
+            # A malformed fixture must be reported, never crash the checker.
+            continue
+
+        declared = sidecar.get("provenance_record")
+        if declared != sidecar_path:
+            errors.append(
+                f"{label}: provenance_record {declared!r} != file location"
+            )
+        record = records.get(declared)
+        if not isinstance(record, dict) or not str(declared).startswith("records/"):
+            errors.append(f"{label}: unresolved evidence record {declared!r}")
+            continue
+        assessment = sidecar.get("assessment")
+        if not isinstance(assessment, dict):
+            continue
+
+        try:
+            wanted_record_revision = canonical_revision(record)
+        except (TypeError, ValueError, rfc8785.FloatDomainError) as exc:
+            errors.append(f"{label}: cannot fingerprint evidence record: {exc}")
+            continue
+        if sidecar.get("record_revision") != wanted_record_revision:
+            errors.append(f"{label}: record_revision is stale")
+
+        evidence_by_id = {}
+        input_records = set()
+        for item in assessment.get("evidence", []):
+            evidence_id = item.get("id")
+            if evidence_id in evidence_by_id:
+                errors.append(f"{label}: duplicate evidence id {evidence_id!r}")
+            evidence_by_id[evidence_id] = item
+            source_key = item.get("source")
+            if source_key is not None and source_key not in sources:
+                errors.append(f"{label}: evidence source {source_key!r} unresolved")
+            record_ref = item.get("record")
+            if record_ref is not None:
+                if record_ref not in records:
+                    errors.append(f"{label}: evidence record {record_ref!r} unresolved")
+                if record_ref == declared:
+                    errors.append(f"{label}: evidence record self-reference")
+                if item.get("role") == "input":
+                    input_records.add(record_ref)
+        derivations[declared] = input_records
+        derivation_kind = assessment.get("derivation", {}).get("kind")
+        if derivation_kind in {"arithmetic_mean", "weighted_mean"}:
+            if len(input_records) < 2:
+                errors.append(
+                    f"{label}: {derivation_kind} requires two distinct input records"
+                )
+
+        findings = assessment.get("findings", {})
+        for scope, finding in findings.items():
+            for evidence_id in finding.get("evidence_ids", []):
+                if evidence_id not in evidence_by_id:
+                    errors.append(
+                        f"{label}: finding {scope!r} references unknown "
+                        f"evidence id {evidence_id!r}"
+                    )
+            for record_ref in finding.get("related_records", []):
+                if record_ref not in records:
+                    errors.append(
+                        f"{label}: finding {scope!r} related record "
+                        f"{record_ref!r} unresolved"
+                    )
+                if record_ref == declared:
+                    errors.append(
+                        f"{label}: finding {scope!r} related record self-reference"
+                    )
+
+        method = assessment.get("method")
+        if (
+            derivation_kind
+            in {"arithmetic_mean", "weighted_mean", "scaled", "other"}
+            and method != "calculated"
+        ):
+            errors.append(
+                f"{label}: internal derivation {derivation_kind!r} requires "
+                "method 'calculated'"
+            )
+        if derivation_kind == "regression" and method != "fitted":
+            errors.append(f"{label}: regression derivation requires method 'fitted'")
+        if method in EXTERNAL_METHODS:
+            for scope in ("source", "values", "method"):
+                finding = findings.get(scope, {})
+                if finding.get("conclusion") in {
+                    "supported",
+                    "contradicted",
+                    "correction_required",
+                } and not finding.get("evidence_ids"):
+                    errors.append(
+                        f"{label}: definitive {scope} finding requires evidence_ids"
+                    )
+            if not _parameter_source_aligned(record, assessment):
+                if findings.get("source", {}).get("conclusion") != (
+                    "correction_required"
+                ):
+                    errors.append(
+                        f"{label}: parameter_source does not match record.source; "
+                        "source finding must be correction_required"
+                    )
+        elif method in {"calculated", "assumed"}:
+            if record.get("source") != "unreferenced":
+                errors.append(
+                    f"{label}: {method} record must use source 'unreferenced'"
+                )
+            if any(
+                item.get("role") == "parameter_source"
+                for item in assessment.get("evidence", [])
+            ):
+                errors.append(
+                    f"{label}: {method} assessment cannot claim a parameter_source"
+                )
+        record_method = record.get("method")
+        if record_method and method and record_method != method:
+            if findings.get("method", {}).get("conclusion") not in {
+                "contradicted",
+                "correction_required",
+            }:
+                errors.append(
+                    f"{label}: assessment method {method!r} differs from record.method "
+                    f"{record_method!r} without a blocking method finding"
+                )
+
+        dependencies = sidecar.get("dependency_revisions", {})
+        source_keys, place_keys, record_paths = _dependency_keys(record, assessment)
+        for key in sorted(source_keys - set(sources)):
+            errors.append(f"{label}: dependency source {key!r} unresolved")
+        for key in sorted(place_keys - set(places)):
+            errors.append(f"{label}: dependency place {key!r} unresolved")
+        for key in sorted(record_paths - set(records)):
+            errors.append(f"{label}: dependency record {key!r} unresolved")
+        errors.extend(
+            f"{label}: {message}"
+            for message in _check_dependency_section(
+                "sources",
+                dependencies.get("sources", {}),
+                source_keys,
+                sources,
+            )
+        )
+        errors.extend(
+            f"{label}: {message}"
+            for message in _check_dependency_section(
+                "places",
+                dependencies.get("places", {}),
+                place_keys,
+                places,
+            )
+        )
+        errors.extend(
+            f"{label}: {message}"
+            for message in _check_dependency_section(
+                "records",
+                dependencies.get("records", {}),
+                record_paths,
+                records,
+            )
+        )
+
+        try:
+            wanted_evidence_revision = evidence_revision(sidecar)
+        except (KeyError, TypeError, ValueError, rfc8785.FloatDomainError) as exc:
+            errors.append(f"{label}: cannot fingerprint assessment: {exc}")
+        else:
+            if assessment.get("evidence_revision") != wanted_evidence_revision:
+                errors.append(f"{label}: evidence_revision is stale")
+
+        attestations = sidecar.get("verification", {}).get("attestations", [])
+        event_keys = {_event_key(item) for item in attestations}
+        event_keys.discard(None)
+        seen = set()
+        for attestation in attestations:
+            key = _event_key(attestation)
+            if key in seen:
+                errors.append(f"{label}: duplicate attestation event {key!r}")
+            if key is not None:
+                seen.add(key)
+                previous_sidecar = attestation_events.get(key)
+                if previous_sidecar is not None and previous_sidecar != declared:
+                    errors.append(
+                        f"{label}: attestation event {key!r} is already used by "
+                        f"provenance/{previous_sidecar}"
+                    )
+                else:
+                    attestation_events[key] = declared
+            if not _event_url_matches(attestation):
+                errors.append(f"{label}: attestation event ID does not match URL")
+            supersedes = attestation.get("supersedes_event")
+            if supersedes:
+                target = (supersedes.get("kind"), supersedes.get("id"))
+                if target == key:
+                    errors.append(f"{label}: attestation cannot supersede itself")
+                elif target not in event_keys:
+                    errors.append(
+                        f"{label}: superseded attestation event {target!r} not found"
+                    )
+        errors.extend(
+            f"{label}: {message}"
+            for message in _attestation_supersession_errors(attestations)
+        )
+
+    errors.extend(_find_cycles(derivations))
+    return errors
