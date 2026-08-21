@@ -21,7 +21,11 @@ from pathlib import Path
 
 import yaml
 
-from check_db import load_all, supy_fragment, wrap_ref  # noqa: F401
+from check_db import (  # noqa: F401
+    load_all,
+    suews_configuration_fragment,
+    wrap_ref,
+)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db"
@@ -45,7 +49,7 @@ def deep_merge(base, extra):
 
 
 def assemble(path, records, sources, depth=0):
-    """Build the supy fragment for a record or archetype path."""
+    """Build the SUEWS configuration fragment for a record or archetype path."""
     rec = records[path]
     if depth > 4:
         raise RuntimeError(f"reference chain too deep at {path}")
@@ -55,14 +59,16 @@ def assemble(path, records, sources, depth=0):
         if slot == "ohm":
             coef = {}
             for season, season_ref in ref.items():
-                sub = supy_fragment(records[season_ref], sources)
+                sub = suews_configuration_fragment(records[season_ref], sources)
                 coef[season] = sub
             deep_merge(fragment, {"ohm_coef": coef})
         elif slot in ("albedo", "emissivity", "water_storage", "drainage",
                       "water_state", "leaf_area_index", "leaf_growth_power",
                       "max_vegetation_conductance", "porosity", "biogen_co2",
                       "snow_lim_patch", "vegetation_growth"):
-            deep_merge(fragment, supy_fragment(records[ref], sources))
+            deep_merge(
+                fragment, suews_configuration_fragment(records[ref], sources)
+            )
         elif slot == "construction":
             # layered fabric feeds vertical_layers, not a flat surface
             # parameter; it stays a reference (visible under uses:) rather
@@ -74,7 +80,7 @@ def assemble(path, records, sources, depth=0):
             )
         # unresolved references are a data error make check reports; they
         # never enter a fragment
-    own = supy_fragment(rec, sources)
+    own = suews_configuration_fragment(rec, sources)
     deep_merge(fragment, own)
     return fragment
 

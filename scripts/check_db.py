@@ -25,7 +25,7 @@ Exit code 0 = all checks pass.
 
 Usage:
   python scripts/check_db.py            # structural only
-  python scripts/check_db.py --supy     # structural + supy validation
+  python scripts/check_db.py --supy     # structural + SUEWS configuration validation
 """
 
 from __future__ import annotations
@@ -174,7 +174,7 @@ def image_check(records):
     return errors
 
 
-# ---------------- supy validation ----------------
+# ---------------- SUEWS configuration validation via SuPy ----------------
 
 
 def wrap_ref(params, ref_info):
@@ -203,8 +203,8 @@ def wrap_ref(params, ref_info):
     return wrap(params)
 
 
-def supy_fragment(rec, sources):
-    """Build the supy-ready fragment for a record, as the exporter emits it."""
+def suews_configuration_fragment(rec, sources):
+    """Build the SUEWS configuration fragment emitted for a record."""
     src_key = rec.get("source")
     src = sources.get(src_key, {}) if src_key else {}
     desc_bits = []
@@ -262,10 +262,10 @@ def supy_check(records, sources):
                 frag = {"working_day": only, "holiday": only}
         elif target == "ohm_coefficients":
             cls = class_for[target]
-            frag = supy_fragment(rec, sources)
+            frag = suews_configuration_fragment(rec, sources)
         elif target in class_for:
             cls = class_for[target]
-            frag = supy_fragment(rec, sources)
+            frag = suews_configuration_fragment(rec, sources)
             # site-level observation config is exported separately
             frag.pop("soil_observation", None)
         else:
@@ -406,7 +406,10 @@ def main():
 
     if args.supy:
         supy_errors, n = supy_check(records, sources)
-        print(f"supy validation: {n} fragments validated, {len(supy_errors)} errors")
+        print(
+            "SUEWS configuration validation: "
+            f"{n} configuration fragments validated, {len(supy_errors)} errors"
+        )
         for e in supy_errors[:30]:
             print("  -", e)
         errors += supy_errors
