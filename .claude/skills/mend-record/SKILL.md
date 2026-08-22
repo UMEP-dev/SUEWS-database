@@ -43,7 +43,8 @@ running it at all, because a wrong citation is invisible once merged.
   observations.** See "What the schema cannot express" below; this case is
   escalated, not bodged.
 - **One issue, one PR.** No sweeping several records into one change, however
-  similar they look — each carries its own evidence.
+  similar they look — each carries its own evidence. The one exception, for
+  source-registry metadata only, is in AGENTS.md § Contributing changes.
 - **Never close the issue by hand.** The PR closes it, via `Fixes #N`, when a
   human merges.
 - **`make check` must exit 0, and the warning count must not rise.** Record the
