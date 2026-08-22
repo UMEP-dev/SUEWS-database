@@ -4,7 +4,7 @@ record_revision: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
     mccaughey1985: sha256:ee76bcdaf69b13175bdcb7a437a8fff264acb8cbe23dc58a551ca57544f7e3ae
   places: {}
   records: {}
@@ -17,7 +17,7 @@ assessment:
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/11
   method: fitted
-  evidence_revision: sha256:aeff4033fce0eb454451af18efd26281f1264b5b05bd4386fcc871323fc9fb34
+  evidence_revision: sha256:77162aab5ca6fe52bcf7c21bfd29fe50d4df25a9fc3685f9d12313d817883846
   findings:
     name:
       conclusion: supported

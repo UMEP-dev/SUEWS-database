@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records:
     records/ohm/generic--unreferenced--paved--asphalt-902: sha256:b5478d15edca4d1165d4fe29606f5e869694284659e8fe44145530f95d2abc20
@@ -64,6 +64,6 @@ assessment:
     note: The only named code currently represented as an atomic record.
   scientific_note: The historical release arithmetic is not a safe basis for a canonical value change
     while six atomic inputs are missing and one component value is disputed. Maintainer curation is required.
-  evidence_revision: sha256:59345f0b4a5becd3838ddcf0f8949cbedf5f98f2c01f9cc6aa0a5bc630585ac2
+  evidence_revision: sha256:e013baa84ed68a3d374fa458ad14f7abaf38de79da0c352e97b4d323751a293f
 verification:
   attestations: []

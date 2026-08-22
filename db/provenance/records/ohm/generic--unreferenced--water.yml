@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:03cf0637f002f63c1944c0e737ed79514e28c0471f2bfe42cbc6ae6aa8b83af3
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records: {}
 assessment:
@@ -65,6 +65,6 @@ assessment:
       note: States that the surface coefficients were derived from published data.
   scientific_note: Grimmond and Oke (1999) is the parameter publication; Souch et al. supplied the observation
     input. Correcting the canonical source must not attribute the fitted coefficients to Souch.
-  evidence_revision: sha256:657381c72ec6e575276e68981a2321dcf3ea1096e42a83258587c075f2d1f731
+  evidence_revision: sha256:8a1cdf787fe4d45616e781d52158f4fe36d7990ac44389e8c6df2a2673f190fe
 verification:
   attestations: []

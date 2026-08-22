@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:b37026a5c1a00f7d215bad003c5df5cab863a446a8e21a04015dee9c7ccd4265
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records:
     records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:3e959491006a1134705c585b09797346054dcd240be055be7362ca202d5b370d
@@ -65,6 +65,6 @@ assessment:
     note: Only code 50 currently exists as an atomic input.
   scientific_note: The calculation is not fully reproducible within the current database, one displayed-source
     rounding does not settle a2, and the sample-run identity needs a maintainer decision.
-  evidence_revision: sha256:af9bd81b5a11afa1daa256c973511cd91678fa9a3b5cad73f21e005cb39a4185
+  evidence_revision: sha256:35a6f03b489bd34301ab63daccfc57b67d89847aeec58d7cb51ba19b4a5821d0
 verification:
   attestations: []

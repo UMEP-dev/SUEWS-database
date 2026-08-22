@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
     yoshida1991: sha256:fcc27d46008f732a089f68bb8ebce7e2b52fdf2e13611266a26002313a7b479e
   places:
     tokyo: sha256:3d523cca260989e582e52ba0a6a870d7fb57da2dc517dd16fc5fda94d5e9fde5
@@ -97,6 +97,6 @@ assessment:
     note: Carries the identical target and triplet under the corrected Kyoto/source envelope.
   scientific_note: The observation and parameter roles are settled, but this second stable record still
     collapses Tokyo/Kyoto identity, duplicates the corrected row and lacks an assembly attachment.
-  evidence_revision: sha256:1f06cbda546c2d9a73fefa28f66f6ec74cf0aef9f20ac1025c24b129729fa4df
+  evidence_revision: sha256:be5e51749747c22a62a486bccaaeb8c65c6d5ce5805ec20128eeb52718b9f9f8
 verification:
   attestations: []

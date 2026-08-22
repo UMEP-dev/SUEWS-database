@@ -5,7 +5,7 @@ record_revision: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1e
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records: {}
 assessment:
@@ -73,6 +73,6 @@ assessment:
   scientific_note: Grimmond et al. (1991) is the parameter publication; Doll et al. supplies the input
     observations. The record source needs correction without attributing the fitted coefficients to the
     observation paper.
-  evidence_revision: sha256:978acd42b8269b2bb977fd3484500c13521cddfdc037ab87be4e970d851dacbe
+  evidence_revision: sha256:2ee450b063a79b9cdd488cd098ca710ee659f73f84fa599f7d1f9909d596061d
 verification:
   attestations: []

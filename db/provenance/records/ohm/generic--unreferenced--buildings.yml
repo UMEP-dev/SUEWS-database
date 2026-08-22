@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:834a83a5520402fd7d33d10832209d9238ab89e0d40471eeeb3ae0ae926139c2
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records: {}
 assessment:
@@ -63,6 +63,6 @@ assessment:
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
   scientific_note: The arithmetic is recoverable from the later compilation, but the exact production
     artifact, input-record lineage and asserted Grimmond 1992 identity require curation.
-  evidence_revision: sha256:d6be9abf8045bcb210d0a7fe826281329a3283019a2baccead01d8f7b57cbb93
+  evidence_revision: sha256:b8322be6ae57258da62037062e03c924a111dc74af1b24c027dd17a0818f515a
 verification:
   attestations: []
