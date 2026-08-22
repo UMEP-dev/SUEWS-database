@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:cb5fd2090c28c17b90ad23574e3245f236607a739eec32602cb1c74bcbe272b4
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
@@ -82,6 +82,6 @@ assessment:
     note: Current atomic record for code 60.
   scientific_note: The value arithmetic is supported, but three named inputs are missing as atomic records.
     Maintainers must decide whether to restore those inputs or retain a legacy-only derivation.
-  evidence_revision: sha256:5fd5b0174a02106a6b7ca689e03f4598144047b0d603c60aea74aa604f033f93
+  evidence_revision: sha256:2c147f90d4f7b97705abdbd2630c9a5596fb7dde2a6426adb85f42298c28d667
 verification:
   attestations: []

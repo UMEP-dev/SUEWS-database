@@ -5,7 +5,7 @@ record_revision: sha256:3e959491006a1134705c585b09797346054dcd240be055be7362ca20
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records: {}
 assessment:
@@ -73,6 +73,6 @@ assessment:
   scientific_note: Grimmond et al. (1991) is the parameter publication; Novak is the underlying observation
     source, not the author of the stored fitted coefficients. The current source field needs a record-specific
     correction while the sidecar preserves the role distinction.
-  evidence_revision: sha256:4c0411dd7f50b2ab57089eb8710923dbe03a1a1e5f94fba84a38954b3b2bbe7d
+  evidence_revision: sha256:97cceb0fab4ce7c6c9705b654ae50e76dba1c09a5c1acf1c8f3584163b301283
 verification:
   attestations: []

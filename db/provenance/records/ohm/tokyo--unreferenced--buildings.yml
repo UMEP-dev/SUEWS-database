@@ -3,7 +3,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:742b1a638e538c2f05bbfa836d872a2f086d55323d8894bc3df747c55fd7b136
 dependency_revisions:
   sources:
-    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
     yoshida1991: sha256:fcc27d46008f732a089f68bb8ebce7e2b52fdf2e13611266a26002313a7b479e
   places:
     kyoto: sha256:7b0f034fb43f3eadc4e833fd7b3d25adc9252eb1c910e7d4a9e96155502ffc96
@@ -18,7 +18,7 @@ assessment:
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/37
   method: fitted
-  evidence_revision: sha256:6207f2cbbe69749b7c7ee82e9621cc58ff62abaa8840df39fada0058c5b48fe2
+  evidence_revision: sha256:df471ac24a69cb78cca9d6c32f5230b27319d72ec7bb74e1e145baef7bdf98d2
   findings:
     name:
       conclusion: supported
