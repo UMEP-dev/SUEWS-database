@@ -5,7 +5,7 @@ name: GLA Urban fabric 50-80 (centre)
 place: london
 origin: London
 representativeness: city
-source: jarvi2014
+source: unreferenced
 legacy_id: 52240009
 parameters:
   thermal_layers:

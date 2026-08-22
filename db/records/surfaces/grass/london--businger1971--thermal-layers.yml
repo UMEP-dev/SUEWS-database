@@ -5,7 +5,7 @@ name: Grass
 place: london
 origin: London
 representativeness: city
-source: businger1971
+source: unreferenced
 legacy_id: 52240017
 parameters:
   thermal_layers:

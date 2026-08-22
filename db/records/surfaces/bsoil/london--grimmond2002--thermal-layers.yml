@@ -5,7 +5,7 @@ name: Bare Soil
 place: london
 origin: Barbican, London
 representativeness: site
-source: grimmond2002
+source: unreferenced
 legacy_id: 52240005
 parameters:
   thermal_layers:
