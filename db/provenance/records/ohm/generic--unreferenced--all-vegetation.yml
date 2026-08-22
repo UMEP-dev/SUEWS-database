@@ -1,0 +1,69 @@
+provenance_record: records/ohm/generic--unreferenced--all-vegetation
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2aad1cdd58668c8f0d56cf1b1da05a7e8f7f4e18e3cf486e4a1bc1b16b193c52
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+    target:
+      conclusion: supported
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+    values:
+      conclusion: supported
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+    source:
+      conclusion: not_applicable
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+  evidence:
+  - id: mixed-forest-input
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: input
+    note: Supplies code 20 values 0.11, 0.11 and -12.3.
+  - id: short-grass-input
+    record: records/ohm/generic--unreferenced--grass
+    role: input
+    note: Supplies code 30 values 0.32, 0.54 and -27.4.
+  derivation:
+    kind: arithmetic_mean
+    expression: 'For each of a1, a2 and a3: (code 20 input + code 30 input) / 2.'
+    description: The component-wise means are 0.215, 0.325 and -19.85, exactly matching the stored triplet.
+  scientific_note: This is an internally calculated record. It correctly remains unreferenced and identifies
+    both current database inputs instead of manufacturing an external parameter publication.
+  evidence_revision: sha256:36d1e8cc996bcb176cb944c8f558947732eaae1a2d2113058dffc4aac22db947
+verification:
+  attestations: []

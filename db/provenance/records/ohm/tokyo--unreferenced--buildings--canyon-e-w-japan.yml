@@ -1,0 +1,102 @@
+provenance_record: records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+    yoshida1991: sha256:fcc27d46008f732a089f68bb8ebce7e2b52fdf2e13611266a26002313a7b479e
+  places:
+    tokyo: sha256:3d523cca260989e582e52ba0a6a870d7fb57da2dc517dd16fc5fda94d5e9fde5
+  records:
+    records/ohm/tokyo--unreferenced--buildings: sha256:742b1a638e538c2f05bbfa836d872a2f086d55323d8894bc3df747c55fd7b136
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - input-observations
+      - parameter-publication
+    target:
+      conclusion: curation_required
+      evidence_ids:
+      - parameter-publication
+      note: ohm_coefficients is structurally valid, but the intended building-archetype attachment is
+        a separate assembly choice and neither duplicate has a backlink.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/19
+    values:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - parameter-publication
+      note: Grimmond and Oke (1999), not the observation paper, publishes the fitted tuple.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/37
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - input-observations
+      note: The observations were made on Kyoto University main campus, not Tokyo.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - input-observations
+      note: One instrumented canyon supports site, not city, representativeness.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+    method:
+      conclusion: supported
+      evidence_ids:
+      - input-observations
+      - parameter-publication
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - possible-duplicate
+      note: The two legacy rows carry the same scientific assertion, but sources do not determine which
+        stable record survives or whether one becomes an alias.
+      related_records:
+      - records/ohm/tokyo--unreferenced--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+  evidence:
+  - id: input-observations
+    source: yoshida1991
+    role: input_data
+    locators:
+    - kind: section
+      label: Sections 2-5 and Figures 3-12
+      page: 418-423
+      url: https://doi.org/10.1016/0378-7788(90)90016-C
+      note: Reports the Kyoto east-west canyon energy-balance observations but no OHM tuple.
+  - id: parameter-publication
+    source: grimmond1999
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 4, E-W canyon
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      note: Publishes 0.71, 0.04 h and -39.7 W m-2 as new coefficients.
+  - id: possible-duplicate
+    record: records/ohm/tokyo--unreferenced--buildings
+    role: possible_duplicate
+    note: Carries the identical target and triplet under the corrected Kyoto/source envelope.
+  scientific_note: The observation and parameter roles are settled, but this second stable record still
+    collapses Tokyo/Kyoto identity, duplicates the corrected row and lacks an assembly attachment.
+  evidence_revision: sha256:1f06cbda546c2d9a73fefa28f66f6ec74cf0aef9f20ac1025c24b129729fa4df
+verification:
+  attestations: []

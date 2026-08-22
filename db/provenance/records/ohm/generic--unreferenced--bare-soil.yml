@@ -1,0 +1,70 @@
+provenance_record: records/ohm/generic--unreferenced--bare-soil
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b37026a5c1a00f7d215bad003c5df5cab863a446a8e21a04015dee9c7ccd4265
+dependency_revisions:
+  sources:
+    grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
+  places: {}
+  records:
+    records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:3e959491006a1134705c585b09797346054dcd240be055be7362ca202d5b370d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: curation_required
+      note: The sample-run label requires a retention or renaming decision.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+    target:
+      conclusion: supported
+      note: The result is structurally an OHM coefficient set.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - bare-soil-compilation
+      note: The a1 and a3 means are reproducible from the published table, but the stored a2 = 0.335 is
+        not the direct mean of the table's displayed rounded values (0.3325). The absent legacy atomic
+        rows may explain the difference and must not be guessed.
+    source:
+      conclusion: not_applicable
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - bare-soil-50-related
+      note: Codes 51, 52 and 53 are absent as current atomic inputs.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+    identity:
+      conclusion: curation_required
+      note: The sample-run record is a recoverable calculation but its retention is a curation choice.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+  evidence:
+  - id: bare-soil-compilation
+    source: grimmond1999
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, four bare-soil rows
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+  - id: bare-soil-50-related
+    record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
+    role: related
+    note: Only code 50 currently exists as an atomic input.
+  scientific_note: The calculation is not fully reproducible within the current database, one displayed-source
+    rounding does not settle a2, and the sample-run identity needs a maintainer decision.
+  evidence_revision: sha256:af9bd81b5a11afa1daa256c973511cd91678fa9a3b5cad73f21e005cb39a4185
+verification:
+  attestations: []
