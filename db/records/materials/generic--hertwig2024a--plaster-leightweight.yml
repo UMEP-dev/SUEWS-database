@@ -1,7 +1,7 @@
 record: records/materials/generic--hertwig2024a--plaster-leightweight
 schema_version: '2026.5'
 target: material
-name: Plaster, leightweight
+name: Plaster, lightweight
 source: hertwig2024a
 legacy_id: 36243794
 category: Surface
