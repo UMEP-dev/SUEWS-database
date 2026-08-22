@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5ec5594fe1f7b1f9c202d4aceb6e94dbde2b87d3f4b3267bf8af1f4175409153
+record_revision: sha256:fccfab58530d5cf876446bd4e7687587a95ecedabf1361fc661e37fed1a4e77c
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/london--ward2016--all-nonveg: sha256:fbe3e67ce075182e9c7a658432a274bc376f037b3704c658c9e245378fc067b5
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-21T21:13:31Z'
+  assessed_at: '2026-08-21T23:30:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -19,13 +19,10 @@ assessment:
   method: literature
   findings:
     name:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - ward-seasonal-parameterisation
-      note: The values and Summer label are code 8511, but the stored name ends [8512], which is the winter
-        code. Only the name requires correction; the stable path should remain unchanged.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/62
+      note: The values, Summer label and corrected final code token consistently identify code 8511.
     target:
       conclusion: supported
       evidence_ids:
@@ -92,10 +89,10 @@ assessment:
     role: related
     note: Preserves the pre-adjustment code 851 triplet used by Ward's seasonal calculation; its London/all-nonvegetated
       identity is separately tracked by issue 63.
-  scientific_note: 'Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
+  scientific_note: Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
     seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
-    the coefficients but are not their observation input. Issue 62 already covers the sole defect in this
-    record: its final code token should be 8511 rather than 8512.'
-  evidence_revision: sha256:13e25e8a4d8ecb0655833a76825e8ddd7890b256cf7d35cab40cab4b41a653b6
+    the coefficients but are not their observation input. The final name token is now corrected to 8511
+    while the stable record path remains unchanged.
+  evidence_revision: sha256:b2fd8403783ff3abef3c04f6b1bd70976358620b5f057757e0143fef5e93a506
 verification:
   attestations: []
