@@ -2,10 +2,10 @@ record: records/surfaces/dectr/vancouver--jarvi2011--max-conductance
 schema_version: '2026.5'
 target: land_cover.dectr
 name: Deciduous Tree
-place: vancouver
+place: generic
 origin: Vancouver
-representativeness: city
-source: jarvi2011
+representativeness: generic
+source: breuer2003
 legacy_id: 33240004
 parameters:
   max_conductance: 11.7
