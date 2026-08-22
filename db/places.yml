@@ -856,6 +856,11 @@ places:
     kind: country
     name: Saudi Arabia
     region: Asia
+  saitama-university:
+    name: Saitama University campus
+    lat: 35.8667
+    lon: 139.6
+    country: japan
   se-england:
     name: SE England
     lat: 51.2

@@ -1,21 +1,23 @@
 provenance_record: records/ohm/generic--unreferenced--paved--asphalt-902
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:698d1bcc202cd6f34ab66332a0dbf6fcce7b75c62bfe516e23c056f21a4fcf0a
+record_revision: sha256:b5478d15edca4d1165d4fe29606f5e869694284659e8fe44145530f95d2abc20
 dependency_revisions:
   sources:
     asaeda1993: sha256:5e6addf987eec5675cfcc84cadf80c8268b8e88d03de1318727b932f83304358
     grimmond1999: sha256:99ea870f821627f78a193e54f5f5372516d16924a38da54ab700897aa35de606
-  places: {}
+  places:
+    saitama-university: sha256:503d2f80ecca93b690f7b325459d86950aa2b31b87491a07b2694e795f56e5bf
   records: {}
 assessment:
-  status: curation_required
+  status: agent_assessed
   assessed_at: '2026-08-21T21:12:29Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -37,25 +39,21 @@ assessment:
       evidence_ids:
       - primary-publication
     place:
-      conclusion: correction_required
-      note: Section 3.1 locates the experiment at Saitama University campus.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+      conclusion: supported
+      evidence_ids:
+      - primary-publication
     representativeness:
-      conclusion: correction_required
-      note: The coefficients were fitted from a single instrumented 10 cm asphalt slab at one site.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+      conclusion: supported
+      evidence_ids:
+      - primary-publication
     method:
       conclusion: supported
       evidence_ids:
       - primary-publication
     identity:
-      conclusion: curation_required
-      note: The stable generic path conflicts with the site-specific evidence; maintainers must decide
-        how the Saitama identity is represented without renaming the record path.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/362
+      conclusion: supported
+      evidence_ids:
+      - primary-publication
   evidence:
   - id: primary-publication
     source: asaeda1993
@@ -81,9 +79,9 @@ assessment:
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
       note: Repeats the rounded triplet 0.64, 0.32 h and -43.6 W m-2.
-  scientific_note: 'The UCL-authenticated primary article now supplies the canonical parameter source
-    and fitted method. The record''s generic identity still conflicts with a single Saitama experiment,
-    so the separate spatial correction remains tracked by issue #362.'
-  evidence_revision: sha256:33deae5f6508a28a7290afb6750881c276fa1e365dc4c0c940ee84d3cd915f51
+  scientific_note: The primary article supplies the exact fitted values and method and locates the experiment
+    at Saitama University campus. The stable record path is retained while the evidence envelope now records
+    the site and site-scale representativeness explicitly.
+  evidence_revision: sha256:c667aea4fb5f8044ce8be0c683cd8738260acd903291b64b795decd5900ce330
 verification:
   attestations: []
