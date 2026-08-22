@@ -1,0 +1,87 @@
+provenance_record: records/ohm/nanjing--dou2023--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2e74f6b88bb73fbda76af427ab21c6b3a6adeb44e72e493bdc248ae23b161afd
+dependency_revisions:
+  sources:
+    dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
+  places:
+    nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
+  records:
+    records/ohm/nanjing--wang2008--buildings: sha256:b72e86980e892ffb71858e66a5a8df53a978e53c6155a4eb57f9f9c84224e815
+    records/ohm/nanjing--wang2008--buildings--concrete-roof: sha256:209276bde9cf9c01cd74a271739e3fca77a8493b1088f840681e726dbf577bed
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:21:09Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+    target:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+    values:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+    source:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+    place:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - dou-derived-mean
+      note: The summer and winter inputs come from one concrete roof measurement site in Nanjing, so the
+        arithmetic mean remains site-specific rather than city-representative.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/72
+    method:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+      - wang-summer-related
+      - wang-winter-related
+    identity:
+      conclusion: supported
+      note: This spring/autumn arithmetic mean is a distinct derived assertion, not an exact duplicate
+        of either seasonal input record.
+  evidence:
+  - id: dou-derived-mean
+    source: dou2023
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Appendix B, building coefficient averaging text
+      page: 13161
+    - kind: table
+      label: Table B1, Building spring/autumn row
+      page: 13162
+    note: Dou et al. state that the average of the summer and winter Nanjing values is used in spring
+      and autumn and publish the resulting coefficient triplet.
+  - id: wang-summer-related
+    record: records/ohm/nanjing--wang2008--buildings
+    role: related
+    note: Represents the summer coefficient triplet that Dou et al. averaged.
+  - id: wang-winter-related
+    record: records/ohm/nanjing--wang2008--buildings--concrete-roof
+    role: related
+    note: Represents the winter coefficient triplet that Dou et al. averaged.
+  scientific_note: 'The database record adopts the exact spring/autumn tuple published by Dou et al.,
+    so its record-level method is literature. Within that publication, the tuple is explicitly the component-wise
+    arithmetic mean of the Wang et al. summer and winter rows: (0.83 + 0.86) / 2 = 0.845; (0.52 + 0.27)
+    / 2 = 0.395; and (-16.95 + -9.64) / 2 = -13.295.'
+  evidence_revision: sha256:f0b41cd33388cb3c3da18fb7da7fb47164aed117e82b5fec29124ffeadf6e184
+verification:
+  attestations: []

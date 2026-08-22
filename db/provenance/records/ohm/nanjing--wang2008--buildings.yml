@@ -1,0 +1,94 @@
+provenance_record: records/ohm/nanjing--wang2008--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b72e86980e892ffb71858e66a5a8df53a978e53c6155a4eb57f9f9c84224e815
+dependency_revisions:
+  sources:
+    dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
+    wang2008: sha256:d4f910f5ee0cc8977916481ec3fa1ee48b52cbfacc7c2b956b7f0197302f485a
+  places:
+    nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
+  records: {}
+assessment:
+  status: source_inaccessible
+  assessed_at: '2026-08-21T21:21:09Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - wang-abstract
+      - dou-wang-compilation
+    target:
+      conclusion: supported
+      evidence_ids:
+      - wang-abstract
+      - dou-wang-compilation
+    values:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - dou-wang-compilation
+      note: Dou et al. reproduce 0.83, 0.52, -16.95 as Wang et al.'s summer concrete-roof coefficients,
+        but the exact row could not be checked in the original Wang full text.
+    source:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - wang-abstract
+      - dou-wang-compilation
+      note: The abstract confirms Wang et al. fitted summer and winter roof OHM coefficients and Dou et
+        al. attribute this tuple to Wang, but exact-value source alignment requires the full text.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - wang-abstract
+    representativeness:
+      conclusion: source_inaccessible
+      note: Existing issue 334 reports that the coefficients come from one instrumented teaching-building
+        roof and therefore require site representativeness, but the cited original sections could not
+        be independently checked without the full text.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/334
+    method:
+      conclusion: supported
+      evidence_ids:
+      - wang-abstract
+    identity:
+      conclusion: supported
+      note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
+  evidence:
+  - id: wang-abstract
+    source: wang2008
+    role: parameter_source
+    locators:
+    - kind: text
+      label: Wanfang bibliographic record and Chinese abstract
+      url: https://d.wanfangdata.com.cn/periodical/tynxb200806011
+    note: The abstract states that 2005-2006 summer and winter Nanjing urban-boundary-layer observations
+      were used to fit seasonal roof-storage OHM coefficients.
+  - id: dou-wang-compilation
+    source: dou2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Appendix B, building coefficient source text
+      page: 13161
+    - kind: table
+      label: Table B1, Building summer row
+      page: 13162
+    note: Dou et al. reproduce the summer tuple and attribute it to Wang et al. (2008), concrete roof.
+  attempted_sources:
+  - source: wang2008
+    url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
+    attempted_at: '2026-08-21T21:21:09Z'
+    outcome: incomplete
+    note: The DOI resolves to Wanfang record tynxb200806011. Metadata and abstract are public, but full-text
+      download redirects to authenticated login; the journal archive begins in 2010.
+  scientific_note: The abstract establishes a fitted Wang parameter study and the later Dou compilation
+    matches the stored summer tuple. The original full text is still required to verify the exact coefficient
+    row, its locator, and the single-roof representativeness finding already tracked by issue 334.
+  evidence_revision: sha256:ad71336eb8b64ba9bba043b69bda8fb15364ecbaefedace9e7597b1974e6517c
+verification:
+  attestations: []
