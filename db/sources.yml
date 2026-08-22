@@ -357,7 +357,7 @@ sources:
     doi: http://dx.doi.org/10.1016/j.isprsjprs.2014.05.005
     journal: ISPRS Journal of Photogrammetry and Remote Sensing,
     legacy_id: 90240055
-    title: Derivation of an urban materials spectral library through adittance and reflectance
+    title: Derivation of an urban materials spectral library through emittance and reflectance
       spectroscopy
     type: journalArticle
     year: 2014
