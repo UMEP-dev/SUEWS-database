@@ -135,6 +135,25 @@ CC BY 4.0 repository.
   runs on every one.
 - One problem, one pull request. Do not sweep several records into one change,
   however similar they look — each carries its own evidence.
+- **One exception, deliberately narrow: source-registry metadata.** A
+  correction confined to bibliographic fields in `db/sources.yml` (a title
+  typo, a DOI stored as a resolver URL, a misspelled author, a wrong item
+  type) may be batched with others of its kind into a single pull request,
+  because it changes no parameter value, place, method or representativeness.
+  A batch is admissible only when all of these hold:
+  - every correction was verified independently against its own authoritative
+    locator, and that locator appears in the pull request body;
+  - the body carries one `Fixes #N` line per issue, so each closes on its own
+    evidence;
+  - the diff touches `db/sources.yml` and nothing else;
+  - no correction in it required choosing between two defensible readings.
+    Anything that did leaves the batch and gets its own pull request.
+
+  Correct metadata is still never evidence that a publication supports a
+  record's value. The cost of batching is real: a reviewer checking fifteen
+  locators in one diff is likelier to wave it through than one checking a
+  single locator, and a bad correction can no longer be reverted alone. Batch
+  only where the corrections are genuinely mechanical.
 - Never merge your own work unless the person you are working with says so in
   that session.
 - Never close a record-specific problem issue by hand; let its correction pull
