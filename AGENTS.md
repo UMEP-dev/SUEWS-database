@@ -137,7 +137,13 @@ CC BY 4.0 repository.
   however similar they look — each carries its own evidence.
 - Never merge your own work unless the person you are working with says so in
   that session.
-- Never close an issue by hand; let the pull request close it with `Fixes #N`.
+- Never close a record-specific problem issue by hand; let its correction pull
+  request close it with `Closes #N`.
+- An umbrella or tracking issue may be closed manually as completed after all
+  delivery pull requests have merged and its acceptance criteria are satisfied.
+  Add a final comment linking the merged pull requests and identifying any
+  intentionally unresolved follow-up work. Manual closure requires Ting's
+  explicit approval in that session.
 - Commit messages and pull request bodies say **what changed and why it is
   correct**. They never record how the problem reached you, which conversation
   it came from, or who said what in private.
