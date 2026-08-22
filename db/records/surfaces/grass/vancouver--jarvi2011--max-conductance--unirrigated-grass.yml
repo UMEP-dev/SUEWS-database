@@ -2,10 +2,10 @@ record: records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigate
 schema_version: '2026.5'
 target: land_cover.grass
 name: Unirrigated Grass
-place: vancouver
+place: generic
 origin: Vancouver
-representativeness: city
-source: jarvi2011
+representativeness: generic
+source: breuer2003
 legacy_id: 33240002
 parameters:
   max_conductance: 33.1
