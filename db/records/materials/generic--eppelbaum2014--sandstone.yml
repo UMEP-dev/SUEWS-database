@@ -2,7 +2,7 @@ record: records/materials/generic--eppelbaum2014--sandstone
 schema_version: '2026.5'
 target: material
 name: Sandstone
-source: eppelbaum2014
+source: unreferenced
 legacy_id: 36248175
 category: Masonry
 display_colour: Generic
