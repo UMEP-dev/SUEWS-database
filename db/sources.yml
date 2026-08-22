@@ -135,9 +135,10 @@ sources:
     year: 1974
   eppelbaum2014:
     author: Eppelbaum, Kutasov and Pilchin
+    doi: 10.1007/978-3-642-34023-9
     legacy_id: 90240059
     title: Applied Geothermics
-    type: journalArticle
+    type: book
     year: 2014
   flanagan2002:
     author: Flanagan, Lb; Weaver, La; Carlson, Pj
