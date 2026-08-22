@@ -439,13 +439,6 @@ sources:
       convective boundary layer and surface energy balance Scheme
     type: journalArticle
     year: 2015
-  oskar-checks-this1010:
-    author: OSKAR CHECKS THIS
-    journal: OSKAR CHECK
-    legacy_id: 90240991
-    title: OSKAR CHEKS
-    type: Guideline
-    year: 1010
   ruimy1995:
     author: Ruimy, A.; Jarvis, P.G.; Baldocchi, D.D.; Saugier, Bernard
     doi: 10.1016/S0065-2504(08)60063-X
