@@ -141,7 +141,7 @@ sources:
     type: book
     year: 2014
   flanagan2002:
-    author: Flanagan, Lb; Weaver, La; Carlson, Pj
+    author: Flanagan, Lb; Wever, La; Carlson, Pj
     doi: 10.1046/j.1365-2486.2002.00491.x
     journal: Global Change biology.
     legacy_id: 90240046
@@ -228,12 +228,13 @@ sources:
   hertwig2024b:
     author: Hertwig, D., McGrory, M., Paskin, M., Liu, Y., Lo Piano, S., Llanwarne, H., Smith,
       S. T., & Grimmond, S.
-    journal: Geoscience Data Journal, in review
+    doi: 10.1002/gdj3.289
+    journal: Geoscience Data Journal
     legacy_id: 90240070
     title: 'Connecting physical and socio-economic spaces for multi-scale urban modelling:
       a dataset for London'
     type: journalArticle
-    year: 2024b
+    year: 2025
   hogstrom1988:
     author: Högström, Ulf
     doi: 10.1007/BF00119875
@@ -300,7 +301,7 @@ sources:
     type: journalArticle
     year: 2019
   jarvis1976:
-    author: Jarvis, P. G.; Monteith, John Lennox; Weatherley, Paul Egerton
+    author: Jarvis, P. G.
     doi: 10.1098/rstb.1976.0035
     journal: Philosophical Transactions of the Royal Society of London. B, Biological Sciences
     legacy_id: 90240033
@@ -355,7 +356,7 @@ sources:
     year: 2018
   kotthaus2014:
     author: Kotthaus, S., Smith, T. E. L., Wooster, M. J., & Grimmond, C. S. B.
-    doi: http://dx.doi.org/10.1016/j.isprsjprs.2014.05.005
+    doi: 10.1016/j.isprsjprs.2014.05.005
     journal: ISPRS Journal of Photogrammetry and Remote Sensing,
     legacy_id: 90240055
     title: Derivation of an urban materials spectral library through emittance and reflectance
@@ -365,7 +366,7 @@ sources:
   lindberg-f2020:
     author: Lindberg F, K. F. G. Olofson, T. Sun, C. S. B. Grimmond, and C. Feigenwinter
     doi: 10.1007/s00704-020-03189-1
-    journal: TAAC
+    journal: Theoretical and Applied Climatology
     legacy_id: 90240057
     title: Urban Storage Heat Flux Variability Explored Using Satellite, Meteorological and
       Geodata.
@@ -380,7 +381,7 @@ sources:
     type: journalArticle
     year: 2013
   loridan2011:
-    author: Loridan, Thomas; Grimmond, Christine; Offerle, B.; Young, Duick; Smith, Thomas;
+    author: Loridan, Thomas; Grimmond, C. S. B.; Offerle, B.; Young, Duick; Smith, Thomas;
       Järvi, Leena; Lindberg, Fredrik
     doi: 10.1175/2010JAMC2474.1
     journal: Journal of Applied Meteorology and Climatology
@@ -409,7 +410,7 @@ sources:
   offerle2003:
     author: Offerle, B.; Grimmond, C. S. B.; Oke, T. R.
     doi: 10.1175/1520-0450(2003)042<1157:PONARF>2.0.CO;2
-    journal: Journal of Applied Meteorology and Climatology
+    journal: Journal of Applied Meteorology
     legacy_id: 90240004
     title: Parameterization of Net All-Wave Radiation for Urban Areas
     type: journalArticle
@@ -447,17 +448,18 @@ sources:
     year: 1010
   ruimy1995:
     author: Ruimy, A.; Jarvis, P.G.; Baldocchi, D.D.; Saugier, Bernard
+    doi: 10.1016/S0065-2504(08)60063-X
+    journal: Advances in Ecological Research
     legacy_id: 90240043
-    title: 'CO2 Fluxes over Plant Canopies and Solar Radiation: A Review Advances in Ecological
-      Research'
-    type: book
+    title: 'CO2 Fluxes over Plant Canopies and Solar Radiation: A Review'
+    type: bookSection
     year: 1995
   sailor2004:
     author: Sailor, David J.; Lu, Lu
     doi: 10.1016/j.atmosenv.2004.01.034
     journal: Atmospheric Environment
     legacy_id: 90240044
-    title: A top-down methodology for developing diurnal and seasonal anthropogenic heating
+    title: A top–down methodology for developing diurnal and seasonal anthropogenic heating
       profiles for urban areas
     type: journalArticle
     year: 2004
@@ -519,7 +521,7 @@ sources:
   ulden1985:
     author: Ulden, A. P. Van; Holtslag, A. a. M.
     doi: 10.1175/1520-0450(1985)024<1196:EOABLP>2.0.CO;2
-    journal: Journal of Applied Meteorology and Climatology
+    journal: Journal of Climate and Applied Meteorology
     legacy_id: 90240021
     title: Estimation of Atmospheric Boundary Layer Parameters for Diffusion Applications
     type: journalArticle
@@ -538,7 +540,7 @@ sources:
     type: journalArticle
     year: 2013
   voogt2000:
-    author: Voogt, James; Grimmond, Christine
+    author: Voogt, James; Grimmond, C. S. B.
     doi: 10.1175/1520-0450-39.10.1679
     journal: Journal of Applied Meteorology
     legacy_id: 90240024
