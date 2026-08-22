@@ -1,0 +1,114 @@
+provenance_record: records/ohm/london--ward2016--all-nonveg
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:fbe3e67ce075182e9c7a658432a274bc376f037b3704c658c9e245378fc067b5
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:13:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-code-851
+      note: The exact code 851 description is a paved/impervious composite, not all non-vegetated surfaces.
+        Correcting the embedded identity without moving or merging the record is a maintainer decision.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-code-851
+      note: Ward et al. define the triplet as coefficients in the OHM storage-heat equation.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-code-851
+      note: Table 4 prints the rounded paved tuple 0.676, 0.300, -42.4; the companion code 851 row gives
+        the exact stored tuple 0.676, 0.300, -42.42.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-code-851
+      note: Ward et al. publish this paved composite and the versioned companion table gives its exact
+        values.
+    place:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-code-851
+      - ward-two-site-application
+      note: The coefficient set is compiled from surface-material studies and applied at both London and
+        Swindon; it is not a London observation or London-specific fit.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+    representativeness:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-code-851
+      - ward-two-site-application
+      note: 'City representativeness is not supported: Ward presents code 851 as a generic paved-surface
+        literature composite used at two distinct sites.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-code-851
+      note: The database adopts Ward's published output. Ward's authors calculate code 851 as the arithmetic
+        mean of concrete/asphalt codes 801, 802, 901, 902 and 910; it is not a London fit.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-code-851
+      note: The evidence supports a generic paved identity, while the stable path embeds London and all-nonveg.
+        Renaming, moving, aliasing or retaining the migrated identity requires curation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+  evidence:
+  - id: ward-code-851
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Equation 6, Objective Hysteresis Model surface-weighted calculation
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: table
+      label: Table 4, paved coefficient set before seasonal adjustment
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, component codes and exact code 851 row
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L54-L69
+    note: The article publishes the paved composite; the companion table states that code 851 is the average
+      of codes 801, 802, 901, 902 and 910 and supplies the exact tuple.
+  - id: ward-two-site-application
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Section 3, London and Swindon evaluation setup
+      page: 4
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: figure
+      label: Figure 8, OHM evaluation at Kc and Sw
+      page: 14
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    note: The same surface coefficient scheme is applied at both sites; this is application and validation
+      evidence.
+  scientific_note: The values and Ward citation are supported. The record nevertheless conflates a generic
+    paved literature composite with a London city/all-nonvegetated identity. Existing issue 63 already
+    captures the required curation decision, so no new issue is needed.
+  evidence_revision: sha256:a9e2ac0dc8a095cfd0cc1e205b491677626a8ba52983bb40b11062539d0a0224
+verification:
+  attestations: []

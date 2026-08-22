@@ -1,0 +1,97 @@
+provenance_record: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:63daa10ccdd4d9e4a7cade85b2aa3e00d9714e0d7a2ec32e94c7a6f6c5e464fd
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places: {}
+  records:
+    records/ohm/london--ward2016--all-nonveg: sha256:fbe3e67ce075182e9c7a658432a274bc376f037b3704c658c9e245378fc067b5
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:13:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The companion table identifies code 8512 as code 851 multiplied for winter, with a2 unchanged.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. define these three values as coefficients in the OHM storage-heat equation.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-851
+      note: The exact code 8512 triplet 0.848, 0.300, 14.16 matches the stored values.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. state the seasonal scaling and the companion v2016a table publishes the exact
+        result.
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-851
+      note: The database adopts Ward's published output; Ward's authors produced it by scaling the compiled
+        paved code rather than by a new observation or regression.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The code, surface grouping and Winter season label agree with the v2016a table.
+  evidence:
+  - id: ward-seasonal-parameterisation
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 4.4, seasonal adjustment of OHM coefficients
+      page: 15
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: table
+      label: Table 4, pre-adjustment paved coefficients
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, codes 851 and 8511-8512
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L67-L71
+    note: The article supplies the calculation rationale; the versioned companion table supplies the exact
+      result.
+  - id: ward-uk-validation
+    source: ward2016
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 8, seasonal-coefficient and constant-coefficient model results
+      page: 14
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    note: This is application and validation at London and Swindon, not the observation source for the
+      triplet.
+  - id: base-code-851
+    record: records/ohm/london--ward2016--all-nonveg
+    role: related
+    note: Preserves the pre-adjustment code 851 triplet used by Ward's seasonal calculation; its London/all-nonvegetated
+      identity is separately tracked by issue 63.
+  scientific_note: Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
+    seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
+    the coefficients but are not their observation input.
+  evidence_revision: sha256:ae6da2074a5b105ad8176321b68899843e432f81bb772c37c5df27c44f63a361
+verification:
+  attestations: []

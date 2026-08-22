@@ -1,0 +1,96 @@
+provenance_record: records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:3e0ed22815f2df9ba07ef0b78a5176140ea52e750644a4ed55322f92c6296393
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places: {}
+  records:
+    records/ohm/generic--unreferenced--bare-soil: sha256:b37026a5c1a00f7d215bad003c5df5cab863a446a8e21a04015dee9c7ccd4265
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-21T21:13:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The companion table identifies code 552 as code 55 multiplied for winter, with a2 unchanged.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. define these three values as coefficients in the OHM storage-heat equation.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-55
+      note: The exact code 552 triplet 0.445, 0.335, 11.77 matches the stored values.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Ward et al. state the seasonal scaling and the companion v2016a table publishes the exact
+        result.
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      - base-code-55
+      note: The database adopts Ward's published output; Ward's authors produced it by scaling the compiled
+        bare-soil code rather than by a new observation or regression.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: The code, surface grouping and Winter season label agree with the v2016a table.
+  evidence:
+  - id: ward-seasonal-parameterisation
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 4.4, seasonal adjustment of OHM coefficients
+      page: 15
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: table
+      label: Table 4, pre-adjustment bare-soil coefficients
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, codes 55 and 552 and multiplier notes
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L18-L22
+    note: The article supplies the calculation rationale; the versioned companion table supplies the exact
+      result.
+  - id: ward-uk-validation
+    source: ward2016
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 8, seasonal-coefficient and constant-coefficient model results
+      page: 14
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    note: This is application and validation at London and Swindon, not the observation source for the
+      triplet.
+  - id: base-code-55
+    record: records/ohm/generic--unreferenced--bare-soil
+    role: related
+    note: The matching database record preserves Ward's pre-adjustment code 55 input set.
+  scientific_note: Ward et al. compile the pre-adjustment bare-soil coefficients from four earlier literature
+    rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
+    and Swindon runs validate/apply the coefficients but are not their observation input.
+  evidence_revision: sha256:5f40538f389bd099c14f2f96eced236ef438ffba43348dfc64369ad6e9524de3
+verification:
+  attestations: []
