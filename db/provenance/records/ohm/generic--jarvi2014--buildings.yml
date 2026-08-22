@@ -1,0 +1,69 @@
+provenance_record: records/ohm/generic--jarvi2014--buildings
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places: {}
+  records:
+    records/ohm/beijing--zheng-y2023--buildings: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-21T21:12:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  findings:
+    name:
+      conclusion: curation_required
+      note: The name describes a compiled roof average and marks it as a sample run. Retention, renaming
+        or replacement is a maintainer decision because the record is in active use.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/67
+    target:
+      conclusion: supported
+      note: The triplet is structurally an OHM coefficient set.
+    values:
+      conclusion: supported
+      note: Järvi et al. (2017), Supplementary Table S4, lists 0.238, 0.427 and -16.7 for the Minneapolis
+        building input, matching the stored triplet exactly.
+    source:
+      conclusion: correction_required
+      note: Järvi et al. (2014) does not state or derive the exact tuple. The later 2017 table is a model-input
+        compilation and does not settle the original roof-average provenance.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/65
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: curation_required
+      note: The name and historical values indicate a compiled arithmetic mean, but the selected atomic
+        roof inputs and an auditable historical formula are absent from the database.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/65
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - possible-beijing-duplicate
+      note: The exact tuple is repeated by a Beijing-labelled record and the sample-run record is in use.
+      related_records:
+      - records/ohm/beijing--zheng-y2023--buildings
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/66
+      - https://github.com/UMEP-dev/SUEWS-database/issues/67
+  evidence:
+  - id: possible-beijing-duplicate
+    record: records/ohm/beijing--zheng-y2023--buildings
+    role: possible_duplicate
+    note: Carries the same target and coefficient triplet under a place-specific identity.
+  scientific_note: The exact values can be located in a later model-input table, but the stored Järvi
+    2014 citation, compiled-average production lineage, duplicate identity and sample-run retention cannot
+    all be settled without maintainer curation.
+  evidence_revision: sha256:f44e30a1aab4cedf84f68b241cad7f140e6ef2c2cb2d3bb741d80120dc22065f
+verification:
+  attestations: []
