@@ -6,11 +6,11 @@ dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
   places:
-    weishan: sha256:16bd9bd3b74185c1999fd6ecff1d2e084103fcdebd72253b7c3915608f71597b
+    weishan: sha256:4a8db83416db275c7d9b902b599388a14a9a0a108ca0efd63861eb472922aa3a
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-21T21:21:09Z'
+  assessed_at: '2026-08-21T23:40:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -34,13 +34,11 @@ assessment:
       evidence_ids:
       - dou-weishan-evidence
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - dou-weishan-evidence
-      note: The Weishan station is 36 degrees 39 minutes N, 116 degrees 09 minutes E; the place registry
-        longitude is 116.05 rather than 116.15.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/64
+      note: The corrected registry coordinates 36.65 N, 116.15 E match 36 degrees 39 minutes N, 116 degrees
+        09 minutes E in Appendix B.
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -68,6 +66,6 @@ assessment:
       page: 13162
     note: Dou et al. fit season-specific coefficients to measured net radiation and soil heat flux, using
       70 percent of each season for fitting and 30 percent for evaluation.
-  evidence_revision: sha256:90f14a4f9af3f74c8af70d722d1a49d6d64935ed0d3906fc298523e18f806531
+  evidence_revision: sha256:b3643e0f67d8579eef01404dd78d21bd665b95a2cd3f08b3eea340484586f61c
 verification:
   attestations: []
