@@ -5,7 +5,7 @@ name: Basel Urban fabric 50 - >80
 place: basel
 origin: Basel
 representativeness: city
-source: grimmond1986
+source: unreferenced
 legacy_id: 52240008
 parameters:
   thermal_layers:

@@ -2,7 +2,7 @@ record: records/surfaces/evetr/generic--ulden1985--thermal-layers
 schema_version: '2026.5'
 target: land_cover.evetr
 name: Evergreen Tree
-source: ulden1985
+source: unreferenced
 legacy_id: 52240015
 parameters:
   thermal_layers:

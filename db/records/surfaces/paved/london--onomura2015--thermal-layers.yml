@@ -5,7 +5,7 @@ name: Fast transit roads
 place: london
 origin: London
 representativeness: city
-source: onomura2015
+source: unreferenced
 legacy_id: 52240011
 parameters:
   thermal_layers:

@@ -2,7 +2,7 @@ record: records/surfaces/dectr/generic--campbell2012--thermal-layers
 schema_version: '2026.5'
 target: land_cover.dectr
 name: Deciduous Tree
-source: campbell2012
+source: unreferenced
 legacy_id: 52240016
 parameters:
   thermal_layers:

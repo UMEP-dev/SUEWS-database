@@ -2,7 +2,7 @@ record: records/snow/generic--kawai2009--thermal-layers
 schema_version: '2026.5'
 target: snow
 name: Snow
-source: kawai2009
+source: unreferenced
 legacy_id: 52240019
 parameters: {}
 legacy:

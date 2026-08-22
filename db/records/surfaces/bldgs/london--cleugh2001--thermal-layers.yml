@@ -5,7 +5,7 @@ name: GLA Urban fabric 50-80 (suburb)
 place: london
 origin: London
 representativeness: city
-source: cleugh2001
+source: unreferenced
 legacy_id: 52240010
 parameters:
   thermal_layers:
