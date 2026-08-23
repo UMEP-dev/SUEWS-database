@@ -1,0 +1,143 @@
+provenance_record: records/surfaces/evetr/beijing--zheng-y2023--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6c9acaecdd482bfe013e3267ce25956987eee2ab96ce8298fb0e045d29ea9944
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:74e7af5c49ae87f389683f298e37b7c08cc93ab7cd21217c9db1e43079e869a8
+    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:a397fe05d296e50fa8192fe43e9a6f9f068eea35f11bb00b27c8f959b2287628
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      - zheng-model-archive
+      note: Table 3 states that every vegetation type uses the same LAI parameters within one case, and
+        the archived Veg code 991 carries LAIEq 0, which is what the LaiEq = 0 part of the name records.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: Veg code 991 is the evergreen row of the modelled Beijing grid.
+    values:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-parameter-publication
+      - zheng-model-archive
+      note: 'Three of the four coefficients match the source exactly: Table 3 gives w1,GDD = -1.42, w2,GDD
+        = 0.00258 and w1,SDD = 2.0 for the LAI and gs_LAI cases, and the record stores those. The fourth
+        does not. The record stores senescence_sdd = 0.001, while Table 3 gives w2,SDD = 0.0001 for those
+        cases and 0.0015 for the base case, and the archived Veg code 991 gives LeafOffPower2 = 0.0001.
+        The stored value matches neither case and is an order of magnitude above the optimised one.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/321
+    source:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: 'Zheng et al. is the parameter publication for the optimised coefficients: Appendix A sets
+        out the CMA-ES workflow and Table 3 publishes the result.'
+    place:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: The LAI series and the modelling domain are both in Beijing.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-parameter-publication
+      - zheng-domain
+      note: The record claims city representativeness. Appendix A fits the coefficients to a six-year
+        (2011-2016) Landsat 7 ETM+ LAI series for one park near the IAP tower, and Sect. 3 states that
+        the modelled domain is a 1 km circle around that tower. The paper establishes neither city-wide
+        sampling nor a city-wide domain.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/324
+    method:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: Appendix A describes a covariance matrix adaptation evolution strategy fit of the LAI sub-model
+        to the interpolated satellite LAI series.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: 'This record holds the same four coefficients as its two sibling records, which is what the
+        source prescribes rather than an accidental duplication: Table 3 states that all vegetation types
+        use the same LAI parameters within one case, and the archived Veg rows 991, 992 and 993 repeat
+        them.'
+      related_records:
+      - records/surfaces/dectr/beijing--zheng-y2023--lai-power
+      - records/surfaces/grass/beijing--zheng-y2023--lai-power
+  evidence:
+  - id: zheng-parameter-publication
+    source: zheng-y2023
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3, LAI parameters for the base case and the LAI and gs_LAI cases
+      page: 4559
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Gives w1,GDD = -1.42, w2,GDD = 0.00258, w1,SDD = 2.0 and w2,SDD = 0.0001 for the LAI and gs_LAI
+        cases, against 0.04, 0.001, -1.5 and 0.0015 for the base case, and states that all vegetation
+        types share one set within a case.
+    - kind: section
+      label: Appendix A, Workflow of LAI parameters optimization
+      page: 4566
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Derives the coefficients by CMA-ES from a 2011-2016 Landsat 7 ETM+ LAI series for a park near
+        the IAP tower.
+    - kind: section
+      label: Sect. 4.5.1, model cases
+      page: 4558
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Defines the LAI and gs_LAI cases in which the optimised parameters are used.
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Veg.txt, code 991, columns LAIEq, LeafGrowthPower1, LeafGrowthPower2,
+        LeafOffPower1, LeafOffPower2
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries 0, -1.42, 0.00258, 2 and 0.0001 for this surface.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+    note: The released input independently contradicts the stored senescence_sdd, so the discrepancy is
+      not a typesetting artefact in the article.
+  - id: zheng-domain
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3, Study site and measurements
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
+        flux footprint; no city-wide domain is modelled.
+  scientific_note: 'The optimised LAI coefficients are genuinely Zheng et al.''s own: Appendix A sets
+    out the CMA-ES fit and Table 3 publishes the result, so the source attribution and the method are
+    sound. Two things are not. The stored senescence_sdd is 0.001 where both the article and the released
+    model input give 0.0001, an order of magnitude, and the value matches neither the optimised case nor
+    the base case. And the record claims city representativeness for coefficients fitted to one park''s
+    satellite LAI series and applied to a 1 km circle. The three identical sibling records are intentional,
+    not duplicates, and any correction has to move all three together.'
+  evidence_revision: sha256:33cee4e3bb4583b1b25a715eb8fd6f1edb4a26c161f75bc7d21739c8a7f2f118
+verification:
+  attestations: []

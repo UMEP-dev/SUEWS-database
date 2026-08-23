@@ -1,0 +1,130 @@
+provenance_record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The archived run assigns biogenic code 26 to both the evergreen and the deciduous surface,
+        so a mixed-tree label describes how the row is used.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: Veg code 991 and 992 of the modelled Beijing grid points at biogenic code 26.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      - zheng-article
+      note: 'Code 26 of SUEWS_BiogenCO2.txt carries alpha 0.031, beta 8.3463, theta 0.723, resp_a 0.78,
+        resp_b 0.08 and min_respi 0.6, which is the record exactly, and Veg codes 991 and 992 point at
+        it. The article corroborates part of that: Table 2 gives Fpho,max = 8.4 for trees and ai = 0.78,
+        bi = 0.08, and Eq. (15) states that 0.6 umol m-2 s-1 is the minimum winter respiration. The stored
+        beta carries four decimals where the table rounds to 8.4, and alpha and theta appear only in the
+        archive.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: Table 2 credits Fpho,max, ai and bi to Havu et al. (2022a) and Jarvi et al. (2019), and the
+        archive comments the row Helsinki - decid Viikki Tilia. Zheng et al. apply the row rather than
+        deriving it.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/330
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: The archive names the row's origin as Viikki Tilia, a Helsinki deciduous site. Beijing is
+        the application location.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/330
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-domain
+      note: 'City representativeness for Beijing is unsupported: the parameters are Finnish in origin
+        and the Beijing run covers a 1 km circle around the IAP tower rather than the city.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/330
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: An inherited fit applied unchanged, so the production method belongs to the study that made
+        it.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: Biogenic code 26 is a distinct row in the archive and the stored tuple is distinct from the
+        other Beijing biogenic record in the database.
+  evidence:
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_BiogenCO2.txt, code 26
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries the stored tuple and is commented Helsinki - decid Viikki Tilia.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Veg.txt, code 991 and 992, columns BiogenCO2Code
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Points the Beijing surfaces at biogenic code 26.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+  - id: zheng-article
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, SUEWS biogenic model parameters used for all case runs
+      page: 4559
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Publishes Fpho,max, ai and bi with their credits; alpha and theta are absent from the article.
+    - kind: equation
+      label: Eq. (15), soil and vegetation respiration
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: States that 0.6 umol m-2 s-1 is the minimum respiration in winter time.
+  - id: zheng-domain
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3, Study site and measurements
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
+        flux footprint; no city-wide domain is modelled.
+  scientific_note: Every stored number is confirmed, and the article independently corroborates the respiration
+    parameters and the minimum respiration. The problem is the label. The released archive names this
+    row Helsinki - decid Viikki Tilia, Table 2 credits its published components to Havu et al. and Jarvi
+    et al., and alpha and theta are not in the article at all. The record presents a Helsinki lime-tree
+    fit, reused for both Beijing tree surfaces, as Beijing city evidence.
+  evidence_revision: sha256:aaaae0bce0c432aa15771dc81869e810dd803be0722625ccb2f98ba5af4ce537
+verification:
+  attestations: []

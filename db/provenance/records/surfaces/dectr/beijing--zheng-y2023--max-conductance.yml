@@ -1,0 +1,115 @@
+provenance_record: records/surfaces/dectr/beijing--zheng-y2023--max-conductance
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: Table E1 tabulates the deciduous surface under its own heading.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      - zheng-model-archive
+      note: Table 4 and the archived MaxConductance column both attach the value to the deciduous surface.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      - zheng-model-archive
+      note: Table 4 gives 7.0; Appendix E derives it from Table E1; the archived Veg code 992 carries
+        the same number.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: Zheng et al. is the publication in which the stored value first appears.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: Table E1 draws the species composition from a field survey over Beijing and the conductances
+        from studies of Beijing species.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: Appendix E states that the species average is taken in order to represent the overall vegetation
+        over the urban area in Beijing.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: A species average of published conductances, not a measurement or a fit by Zheng et al. and
+        not an in-database calculation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - zheng-parameter-publication
+      note: The value occupies its own row in Table 4 and its own Veg code in the archive, distinct from
+        the other two vegetated surfaces.
+  evidence:
+  - id: zheng-parameter-publication
+    source: zheng-y2023
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 4, gmax for the gs and gs_LAI cases
+      page: 4559
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Publishes gmax = 7.0 mm s-1 for the deciduous surface.
+    - kind: section
+      label: Appendix E, Maximum conductance of urban green space in Beijing
+      page: 4573
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The weighted average of gmax is 7.0 mm s-1 for the deciduous tree, weighted by the population
+        ratio of each species.
+    - kind: table
+      label: Table E1, Maximum conductance (gmax) for each vegetated surface
+      page: 4573
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Sophora japonica 9.0 (26.26 %), Populus tomentosa 5.2 (12.39 %), Fraxinus chinensis 6.1 (9.44
+        %) and Ginkgo biloba 4.1 (8.12 %); the ratio-weighted mean of those four is 6.97, which the text
+        reports as 7.0.
+    note: Zheng et al. publish the averaged value that the record stores; the species-level inputs are
+      credited to other authors in Table E1.
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Veg.txt, code 992, columns MaxConductance
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries 7 (printed as 7.0 in Table 4) for the deciduous surface used in the published runs.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+    note: Confirms that the published value is the one the released runs used.
+  scientific_note: 'Appendix E states the purpose of these values plainly: "Here, we seek values that
+    can represent the overall vegetation over the urban area in Beijing, and therefore the average is
+    taken from different species." The species population ratios come from a field survey over Beijing
+    (Ma et al., 2019), so the city label is the paper''s own claim rather than an inference. Zheng et
+    al. compile published species-level conductances and average them; the underlying measurements are
+    other authors'' and are not registry sources here, so the assessment records the method as literature
+    rather than asserting an in-database derivation.'
+  evidence_revision: sha256:d668691ce4c54c367b7cc57106a352192403ae17c24e2009e4ff64f903d26bf2
+verification:
+  attestations: []

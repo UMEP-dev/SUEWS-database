@@ -1,0 +1,140 @@
+provenance_record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The row is the grass entry of the archived Beijing run.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: Veg code 993 of the modelled Beijing grid points at biogenic code 33.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      - zheng-article
+      note: Code 33 of SUEWS_BiogenCO2.txt carries alpha 0.031, beta 5.4973, resp_a 2.1, resp_b 0.06 and
+        min_respi 0.6, which is the record exactly, and Veg code 993 points at it. Appendix D reports
+        the fitted median Fpho,max = 5.497 +/- 0.110, so the archive carries one digit more than the article
+        publishes; Table 2 gives ai = 2.1 and bi = 0.06 and rounds Fpho,max to 5.5; Eq. (15) states the
+        0.6 minimum. The stored alpha appears only in the archive, and the quarantined theta of -999 matches
+        the archive's empty column.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: The roles are mixed. Zheng et al. fitted beta themselves, which Appendix D sets out in full,
+        so for that parameter they are the parameter publication. Table 2 credits ai and bi to Havu et
+        al. (2022a) and Jarvi et al. (2019), and the archive comments the row as modified from Ossinlampi,
+        Kumpula grassland. One source key currently carries both roles.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/331
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: Appendix D locates the eddy covariance lawn at 60 deg 11' 16.02" N, 24 deg 49' 56.85" E, in
+        Espoo, Finland, and states that the fitted Fpho,max is the value used for grass and lawn in the
+        Beijing simulation. Sect. 4.5.1 calls the same site Helsinki, which is an inconsistency inside
+        the article; either way it is not Beijing. Beijing is the application location.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/331
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-domain
+      note: 'City representativeness for Beijing is unsupported: the parameters are Finnish in origin
+        and the Beijing run covers a 1 km circle around the IAP tower rather than the city.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/331
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: beta is a nonlinear least-squares fit with bootstrapping described in Appendix D, while ai
+        and bi are inherited literature values, so no single method describes the row.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: Biogenic code 33 is a distinct row in the archive and the stored tuple is distinct from the
+        other Beijing biogenic record in the database.
+  evidence:
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_BiogenCO2.txt, code 33
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries the stored tuple and is commented Modified from Ossinlampi, Kumpula grassland.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Veg.txt, code 993, columns BiogenCO2Code
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Points the Beijing surfaces at biogenic code 33.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+  - id: zheng-article
+    source: zheng-y2023
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, SUEWS biogenic model parameters used for all case runs
+      page: 4559
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Publishes Fpho,max, ai and bi with their credits; alpha and theta are absent from the article.
+    - kind: equation
+      label: Eq. (15), soil and vegetation respiration
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: States that 0.6 umol m-2 s-1 is the minimum respiration in winter time.
+    - kind: section
+      label: Appendix D, Fitting the maximum photosynthetic rate for the grass and lawn vegetation type
+      page: 4572
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Locates the eddy covariance lawn in Espoo, Finland, describes the nonlinear least-squares
+        and bootstrap fit, reports Fpho,max = 5.497 +/- 0.110 umol m-2 s-1, and states that this value
+        is used for grass and lawn in the Beijing simulation.
+  - id: zheng-domain
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3, Study site and measurements
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
+        flux footprint; no city-wide domain is modelled.
+  scientific_note: The values are confirmed twice, in the released input and in Appendix D. What the record
+    misstates is where they come from. Appendix D is unambiguous that the photosynthesis parameter was
+    fitted to an urban lawn in Espoo, Finland, and says in as many words that this value is then used
+    for grass and lawn in the Beijing simulation; the respiration parameters are inherited Helsinki values.
+    Presenting the row as Beijing city evidence is not supportable, and the row also mixes a fit that
+    is genuinely Zheng et al.'s with parameters that are not.
+  evidence_revision: sha256:39154a243f64a1eee6d2adf82cf8f380c6566b5e375147166e66ed19a64d9009
+verification:
+  attestations: []
