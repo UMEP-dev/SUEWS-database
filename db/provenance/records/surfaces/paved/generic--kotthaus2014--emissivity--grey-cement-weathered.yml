@@ -65,7 +65,10 @@ assessment:
       conclusion: supported
       evidence_ids:
       - kotthaus-c003
-      note: The description and value identify source specimen C003 unambiguously within Table C.1.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/244
+      note: The description and emissivity 0.91 identify source specimen C003 unambiguously within Table
+        C.1 and distinguish it from the separate C005 specimen, whose emissivity is 0.95.
   evidence:
   - id: kotthaus-c003
     source: kotthaus2014
@@ -80,6 +83,6 @@ assessment:
   scientific_note: The stored emissivity is unchanged because it exactly matches specimen C003. The correction
     is scope; a measurement of one London specimen is London/site evidence, not a place-independent generic
     constant.
-  evidence_revision: sha256:decd1dc618ab2947dd234599fc85fe90f1bdb34ddec6a12ed47beae48d6d3520
+  evidence_revision: sha256:64d66a07d684dcdc10509b31532a8e0434b52b143eaf345298c20f3f1991cd4d
 verification:
   attestations: []
