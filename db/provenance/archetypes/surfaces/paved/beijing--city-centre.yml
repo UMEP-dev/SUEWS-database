@@ -13,11 +13,11 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
-    records/surfaces/paved/shanghai--ao2016--albedo: sha256:a822dc21a7c356be87afb9eb50ce48c61ceb8fc1803c6adb8f5f56d1cffee67c
+    records/surfaces/paved/shanghai--ao2016--albedo: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
     records/surfaces/paved/shanghai--ao2016--emissivity: sha256:b245af73d687ed5a54efc1e1fe35ba0dd522efbcdee8608ebef1096332c8038e
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:43:17Z'
+  assessed_at: '2026-08-23T14:06:13Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -92,7 +92,7 @@ assessment:
         reaches instead to Helsinki. A maintainer has to decide whether taking half of the Shanghai pair
         is deliberate or a mis-selection.'
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-paved-shanghai--ao2016--albedo
       - component-surfaces-paved-helsinki--jarvi2014--emissivity
@@ -101,10 +101,10 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-beijing--zheng-y2023--paved
-      note: The composite declares representativeness city. The Shanghai, Helsinki, London and Beijing
-        components all declare city, and records/constructions/generic--lindberg-f2020--placeholder declares
-        generic, which is broader rather than narrower. No component is classed below the composite's
-        scale, so nothing narrower stands in for a city typology.
+      note: The composite declares representativeness city. Five components declare city and records/constructions/generic--lindberg-f2020--placeholder
+        declares generic, but records/surfaces/paved/shanghai--ao2016--albedo is site evidence from a Shanghai
+        central business district. Extending that site value to a Beijing city composite is an unsupported
+        extrapolation that needs curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -139,7 +139,7 @@ assessment:
     record: records/surfaces/paved/shanghai--ao2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place shanghai,
-      representativeness city and source ao2016, and carries alb.
+      representativeness site, urban_setting central_business_district and source ao2016, and carries alb.
   - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
     record: records/surfaces/paved/helsinki--jarvi2014--emissivity
     role: component
@@ -180,7 +180,8 @@ assessment:
     content is its storage heat coefficients. records/ohm/beijing--zheng-y2023--paved fills all four season
     and wetness positions, and since it declares no season_label and is named ''An99 weighted average
     (all year)'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
-    albedo from Shanghai, emissivity, water storage and snowpack limit from Helsinki, drainage from London,
+    albedo from a site in a Shanghai central business district, emissivity, water storage and snowpack
+    limit from Helsinki, drainage from London,
     and the construction reference from a record named Placeholder. The database holds no paved surface
     record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
     One selection does not follow from scarcity. The composite took records/surfaces/paved/shanghai--ao2016--albedo,
@@ -192,7 +193,8 @@ assessment:
     is named ''Paved [sample run]'' and the construction component is named Placeholder, both questions
     for those records'' own evidence reviews. The construction reference changes no exported number in
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
-    fragment.'
-  evidence_revision: sha256:2515e8625f955d696f15cc613089fe4afeb232bd2b47f0601e4adfce0feaa43a
+    fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
+    Beijing.'
+  evidence_revision: sha256:a21fc7f7db4aa40ea7d0c35e9cb773305f4e6888a375c11848fd233109884d23
 verification:
   attestations: []
