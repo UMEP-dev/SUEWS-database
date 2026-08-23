@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:63daa10ccdd4d9e4a7cade85b2aa3e00d9714e0d7a2ec32e94c7a6f6c5e464fd
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
-    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2563e8b2a6c23aafcdff61098a524550e641ff035e9a63700d8990b91096be8
+    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2f4f8fcc956087c93b6b6838c874faf3c04200b083d449d8fc4711f57d85ce1
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:e772c7df24dcf40490aa7f9437326307c5cd01699b2ec780a69851845a56edf6
     records/surfaces/paved/swindon--ward2013--drainage: sha256:8a4650f59817b6a758211381f77098e5d601d111a1c705fb099437336dde3fd1
     records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
@@ -39,7 +39,7 @@ assessment:
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite's name reads 'Suburban residential, Ward et al. (2016)', its place reads swindon
         and its origin reads 'Swindon, UK'. The label names both the typology and the study the selection
-        follows, and six of the eight components declare source ward2016, so the label identifies what
+        follows, and five of the eight components declare source ward2016, so the label identifies what
         the entry actually assembles.
     target:
       conclusion: supported
@@ -97,9 +97,10 @@ assessment:
         snow_lim record in the database. The construction record declares place generic and the two OHM
         records declare no place. The database also holds records/surfaces/paved/swindon--ward2013--drainage,
         place swindon, representativeness site, source ward2018, referenced by no archetype, and the drainage
-        slot takes the se-england ward2016 record instead. For an entry whose name and six of whose eight
-        components declare ward2016 that is the source-consistent choice rather than a mis-selection,
-        but a maintainer should know the Swindon-specific alternative exists.'
+        slot takes the se-england record instead. Both drainage records now declare source ward2018 and
+        carry the same parameter values; they differ only in place and representativeness. This sidecar
+        records the existing regional assembly, while deciding whether to consolidate the duplicate records
+        remains separate human curation.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -171,7 +172,7 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.paved, name Paved, place se-england,
-      representativeness regional and source ward2016, and carries drain_eq, drain_coef_1, drain_coef_2
+      representativeness regional and source ward2018, and carries drain_eq, drain_coef_1, drain_coef_2
       and wet_threshold.
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
@@ -199,22 +200,23 @@ assessment:
       name 'Code 851 x Multiplier for winter [8512]', season_label Winter and source ward2016, carries
       a1, a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The selection follows the study the entry is named for. archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
-    declares place swindon and representativeness city, and six of its eight components declare source
-    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; the albedo,
-    water storage and drainage slots take the se-england rows from the same study, classed regional and
+    declares place swindon and representativeness city, and five of its eight components declare source
+    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; the albedo and
+    water-storage slots take the se-england rows from that study, while drainage takes the Ward et al.
+    (2018) SE England row, all classed regional and
     applied down to the town, which is the sound direction for a class difference. The season mapping
     is right, the Summer-labelled OHM record filling the two summer positions and the Winter-labelled
     one the two winter positions, and neither record carries a wetness label, so nothing is asserted by
     the wet and dry positions sharing coefficients. One alternative is worth naming so nobody has to rediscover
     it: records/surfaces/paved/swindon--ward2013--drainage is a Swindon record, classed site, referenced
-    by no archetype, and the drainage slot passes over it for the regional ward2016 row. Taking the ward2016
-    row keeps the entry internally consistent with the configuration it claims to reproduce, so this is
-    a defensible selection rather than a defect, but the choice between a place-matched record from another
-    study and a study-matched record from the wider region is a real one and it has been made silently.
+    by no archetype, and the drainage slot passes over it for the regional row. Both drainage records
+    declare source ward2018 and carry identical parameter values; only their place and representativeness
+    differ. Preserving the regional reference keeps the established assembly stable, while deciding whether
+    the duplicate records should be consolidated is separate curation.
     The remaining two slots leave the ward2016 set for want of alternatives: snow_lim_patch takes the
     only paved snowpack-limit record there is, and construction takes a record named Placeholder that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:57d7a3112507264fc8318da93a2b1d601d416f27b8cdccd2c11d185f3ad7c648
+  evidence_revision: sha256:06124b97b6ea7eab4cc8d5d7cd98233d8ff7cb4ef67d3037ada0b2f2343e8983
 verification:
   attestations: []
