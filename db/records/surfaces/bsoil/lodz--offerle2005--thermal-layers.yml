@@ -4,7 +4,9 @@ target: land_cover.bsoil
 name: Bare Soil
 place: lodz
 origin: Lodz, Poland
-representativeness: city
+representativeness: site
+urban_setting: city_centre
+method: literature
 source: offerle2005
 legacy_id: 52240004
 parameters:
