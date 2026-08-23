@@ -4,7 +4,7 @@ target: land_cover.paved
 name: Paved
 place: swindon
 origin: Swindon
-representativeness: city
+representativeness: site
 source: ward2013
 legacy_id: 45240004
 parameters:

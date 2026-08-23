@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/swindon--ward2013--drainage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d2fae72d5cf8c38209d9d9b1cc8829cc336bf3d69176d757d848494cfc72abf7
+record_revision: sha256:ea5de116d94f446b7de31694e16cf7fd783ec6deb792e0609c3306e436a06732
 dependency_revisions:
   sources:
     ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
@@ -10,7 +10,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: unresolved
-  assessed_at: '2026-08-23T01:35:00Z'
+  assessed_at: '2026-08-23T08:42:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -51,13 +51,11 @@ assessment:
       note: Swindon is where the study sits, which is at least consistent with the record's place, though
         the article supports no drainage value for it.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - ward-scope
-      note: The record claims city representativeness for Swindon, while the article characterises a suburban
-        site over a 500 m radius.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/383
+      note: Site representativeness matches the suburban study area characterised within 500 m of the
+        flux mast.
     method:
       conclusion: unresolved
       evidence_ids:
@@ -89,8 +87,8 @@ assessment:
     drain_coef_1 0.013, drain_coef_2 1.71 or a wet threshold of 0.6. The separate question raised against
     this record, whether those coefficients belong to the vegetation drainage formulation rather than
     a paved one, is not settled here either: it needs the source that actually published them, and this
-    audit has not found it. The scale claim is independently wrong, since the study is suburban and characterised
+    audit has not found it. The site-scale classification now matches the suburban study area characterised
     over 500 m.'
-  evidence_revision: sha256:4dfe5955c982122db25d7edf895b2459b665a60793747073b74b89d720597ac2
+  evidence_revision: sha256:84befe74c81160eb0a2e73472b5f32f3cf2550ed49450733a3a3466dff5c7eec
 verification:
   attestations: []

@@ -15,11 +15,11 @@ dependency_revisions:
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
     records/surfaces/paved/se-england--ward2016--drainage: sha256:a2563e8b2a6c23aafcdff61098a524550e641ff035e9a63700d8990b91096be8
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:e772c7df24dcf40490aa7f9437326307c5cd01699b2ec780a69851845a56edf6
-    records/surfaces/paved/swindon--ward2013--drainage: sha256:d2fae72d5cf8c38209d9d9b1cc8829cc336bf3d69176d757d848494cfc72abf7
+    records/surfaces/paved/swindon--ward2013--drainage: sha256:ea5de116d94f446b7de31694e16cf7fd783ec6deb792e0609c3306e436a06732
     records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T00:43:17Z'
+  assessed_at: '2026-08-23T08:42:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -96,7 +96,7 @@ assessment:
         The snow_lim_patch slot takes records/surfaces/paved/helsinki--jarvi2014--snow-lim, the only paved
         snow_lim record in the database. The construction record declares place generic and the two OHM
         records declare no place. The database also holds records/surfaces/paved/swindon--ward2013--drainage,
-        place swindon, representativeness city, source ward2013, referenced by no archetype, and the drainage
+        place swindon, representativeness site, source ward2013, referenced by no archetype, and the drainage
         slot takes the se-england ward2016 record instead. For an entry whose name and six of whose eight
         components declare ward2016 that is the source-consistent choice rather than a mis-selection,
         but a maintainer should know the Swindon-specific alternative exists.'
@@ -206,7 +206,7 @@ assessment:
     is right, the Summer-labelled OHM record filling the two summer positions and the Winter-labelled
     one the two winter positions, and neither record carries a wetness label, so nothing is asserted by
     the wet and dry positions sharing coefficients. One alternative is worth naming so nobody has to rediscover
-    it: records/surfaces/paved/swindon--ward2013--drainage is a Swindon record, classed city, referenced
+    it: records/surfaces/paved/swindon--ward2013--drainage is a Swindon record, classed site, referenced
     by no archetype, and the drainage slot passes over it for the regional ward2016 row. Taking the ward2016
     row keeps the entry internally consistent with the configuration it claims to reproduce, so this is
     a defensible selection rather than a defect, but the choice between a place-matched record from another
@@ -215,6 +215,6 @@ assessment:
     only paved snowpack-limit record there is, and construction takes a record named Placeholder that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:79530e225cb3eb943b1c80f56e4189b250346d82ab811e45a03d1a5478324e2d
+  evidence_revision: sha256:49ac484cb94864dd9c3b31df934ec8227a5081da9a461ea436af5ab0f5e10dc3
 verification:
   attestations: []
