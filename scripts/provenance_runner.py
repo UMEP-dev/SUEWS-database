@@ -50,13 +50,15 @@ REVIEW_CONTRACTS = {
     "evidence": [
         "Read the original parameter publication; a registry key alone is not evidence.",
         "Separate parameter_source, input_data, compilation and validation roles.",
-        "Check exact values, method, place, representativeness and identity.",
+        "Check exact values, method, place, representativeness, any declared "
+        "urban_setting, and identity.",
         "Give a precise table, figure, equation, section, page or text locator.",
         "Never infer a citation or change a value because it appears implausible.",
     ],
     "composition": [
         "Review why every direct component was selected and where it is mapped.",
-        "Check place applicability, representativeness, completeness and compatible targets.",
+        "Check place applicability, representativeness, any declared urban_setting, "
+        "completeness and compatible targets.",
         "Check slot, season and wet/dry mappings without re-verifying component values.",
         "Record every direct uses reference as role: component.",
         "Never infer a composition rationale from similarity to another archetype.",
@@ -460,7 +462,9 @@ def _problem_kind(findings):
         for scope, item in findings.items()
         if item.get("conclusion") in BLOCKING_CONCLUSIONS
     }
-    if "place" in blocked or "representativeness" in blocked:
+    if any(scope in blocked for scope in (
+        "place", "representativeness", "urban_setting"
+    )):
         return "The place or representativeness is wrong"
     if "source" in blocked:
         return "The citation is wrong or missing"

@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from build_site import (  # noqa: E402
     build_graph,
+    build_index_page,
     build_provenance_index,
     build_search_index,
     load_site_policy,
@@ -89,6 +90,20 @@ class SiteProvenanceTests(unittest.TestCase):
                 self.assertEqual(
                     provenance_state(candidate, self.policy), "awaiting_signoff"
                 )
+
+        candidate = deepcopy(self.sidecars[MIXED])
+        candidate["assessment"]["findings"]["urban_setting"] = {
+            "conclusion": "not_applicable"
+        }
+        self.assertEqual(
+            provenance_state(candidate, self.policy), "agent_assessed"
+        )
+        candidate["assessment"]["findings"]["urban_setting"] = {
+            "conclusion": "supported"
+        }
+        self.assertEqual(
+            provenance_state(candidate, self.policy), "awaiting_signoff"
+        )
 
     def test_clean_composition_without_own_values_awaits_signoff(self):
         sidecar = next(
@@ -219,6 +234,35 @@ class SiteProvenanceTests(unittest.TestCase):
         )
         self.assertIn("Input observations", source)
         self.assertIn("Canyon (E-W), Japan [10]", source)
+
+    def test_urban_setting_renders_and_filters(self):
+        records = deepcopy(self.records)
+        records[MIXED]["urban_setting"] = "city_centre"
+        page = record_page(
+            MIXED,
+            records[MIXED],
+            records,
+            self.sources,
+            self.used_by,
+            self.cluster,
+            sidecars={},
+            policy=self.policy,
+        )
+        self.assertIn("Urban setting", page)
+        self.assertIn("City centre", page)
+        self.assertIn("#setting=city_centre", page)
+
+        index = build_search_index(
+            records, self.sources, self.places, self.sidecars, self.policy
+        )
+        mixed = next(item for item in index if item["path"] == MIXED)
+        self.assertEqual(mixed["setting"], "city_centre")
+        self.assertIn("city_centre", mixed["text"])
+
+        browser = build_index_page(records, self.sources, self.places, {})
+        self.assertIn('id="facet-setting"', browser)
+        self.assertIn("Urban setting", browser)
+        self.assertIn("Central business district", browser)
 
     def test_signoff_issue_url_binds_current_revisions(self):
         url = signoff_issue_url(MIXED, self.sidecars[MIXED], self.policy)

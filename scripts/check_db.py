@@ -38,9 +38,16 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db"
+URBAN_SETTINGS_FILE = ROOT / "schema" / "urban_settings.yml"
 
 # Repo-local record targets that have no supy class
 LOCAL_TARGETS = {"material", "construction", "typology", "ohm_coefficients"}
+
+
+def load_urban_settings():
+    """Return the controlled intra-urban setting registry."""
+    doc = yaml.safe_load(URBAN_SETTINGS_FILE.read_text()) or {}
+    return doc.get("urban_settings") or {}
 
 
 def load_all():
@@ -68,6 +75,7 @@ def iter_uses(uses):
 
 def structural_check(records, sources, places):
     errors = []
+    urban_settings = load_urban_settings()
     for path, rec in records.items():
         kind = "record" if path.startswith("records/") else "archetype"
         declared = rec.get("record") or rec.get("archetype")
@@ -90,6 +98,12 @@ def structural_check(records, sources, places):
         place = rec.get("place")
         if place is not None and place not in places:
             errors.append(f"{path}: place {place!r} not in places.yml")
+        urban_setting = rec.get("urban_setting")
+        if urban_setting is not None and urban_setting not in urban_settings:
+            errors.append(
+                f"{path}: urban_setting {urban_setting!r} not in "
+                "schema/urban_settings.yml"
+            )
         for ref in iter_uses(rec.get("uses", {})):
             if ref not in records:
                 errors.append(f"{path}: uses unresolved reference {ref!r}")
@@ -212,6 +226,8 @@ def suews_configuration_fragment(rec, sources):
         desc_bits.append(rec["place"])
     if rec.get("representativeness"):
         desc_bits.append(rec["representativeness"])
+    if rec.get("urban_setting"):
+        desc_bits.insert(1 if rec.get("place") else 0, rec["urban_setting"])
     ref_info = {
         "ID": src_key,
         "DOI": src.get("doi"),
