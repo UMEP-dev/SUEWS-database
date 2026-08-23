@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
     records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/zurich--ao2018--lai: sha256:735a419cb34ba6a3f3a68167fe4f5565a75df55b5312359477334550a0f20d1d
     records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:50a3cb169e10414d6374495276d3a80c4ba934b7e38d1376a32d28649afb38e2
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
@@ -173,7 +173,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   - id: component-surfaces-grass-zurich-ao2018-lai
     record: records/surfaces/grass/zurich--ao2018--lai
     role: component
@@ -207,6 +207,6 @@ assessment:
     which that record''s own evidence review must settle. And records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing"; the drainage selection
     is defensible under either reading, so this review is not blocked by it.'
-  evidence_revision: sha256:071dbed2be4887b95c7ef5b40ba3bc65f3aa08a230ea2206b127cda9df2df039
+  evidence_revision: sha256:8b67d4557b71ab04fbea0268e447c1c2f946363f5e52ac4fe5518b0b19603438
 verification:
   attestations: []

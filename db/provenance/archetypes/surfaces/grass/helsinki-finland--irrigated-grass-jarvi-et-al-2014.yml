@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:3863938b8d60625a4771afe401617b6de9631f1785ef90283141b1a91c2689a5
 assessment:
   status: curation_required
@@ -203,7 +203,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   - id: component-surfaces-grass-vancouver-jarvi2011-max-conductance
     record: records/surfaces/grass/vancouver--jarvi2011--max-conductance
     role: component
@@ -222,6 +222,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:604e067c552d8f5db4d5391bc659ad76368364b3fb9a2e2bad1d04de30fc459f
+  evidence_revision: sha256:0acdad487512a4d051c9f17e8d0351ce629f1afd798585314516270fdde2f9e9
 verification:
   attestations: []

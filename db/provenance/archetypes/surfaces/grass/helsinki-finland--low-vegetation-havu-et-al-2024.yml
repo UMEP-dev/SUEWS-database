@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:36:42Z'
@@ -197,7 +197,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   scientific_note: 'The entry is the mixed-low-vegetation sibling of archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024
     and differs from it in one slot only, biogen_co2, where it takes records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation
     rather than the lawn record. That is a deliberate split rather than a duplication, and the names carry
@@ -208,6 +208,6 @@ assessment:
     forward without acting on it here is records/surfaces/grass/london--havu-m2024--drainage, which declares
     place london while its name reads "Grass - Helsinki, Zurich, Beijing"; that belongs to the record''s
     own evidence review.'
-  evidence_revision: sha256:a45b5a0d5ed821b1184804db3277afaa8f3464bcc431310126eb803cc69344f0
+  evidence_revision: sha256:de163c01da88ec15fae94cc691cbea27c48f2160103e0054cc95f7d206c02bc4
 verification:
   attestations: []

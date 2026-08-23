@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T09:50:05Z'
@@ -189,7 +189,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   scientific_note: 'The mapping is sound and the selection is defensible, but the entry is only in part
     a Beijing set. Three of its twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
     and biogen_co2 from zheng-y2023, and those three are every Beijing grass record the database holds,
@@ -203,6 +203,6 @@ assessment:
     is also worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
     field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:5a923c11ffd192cddc13d824e51d889c00467dfbf74fda92790c454e17aaf91f
+  evidence_revision: sha256:4e69ef048e810c20cc277802931afb3fb975d015aa61a7c747dfafde86a91720
 verification:
   attestations: []
