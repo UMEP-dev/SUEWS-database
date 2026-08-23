@@ -235,6 +235,20 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Input observations", source)
         self.assertIn("Canyon (E-W), Japan [10]", source)
 
+    def test_non_doi_source_url_renders_directly(self):
+        source = source_page(
+            "cibse2015",
+            self.sources["cibse2015"],
+            [],
+            self.records,
+        )
+        expected = (
+            "https://www.cibse.org/knowledge-research/knowledge-portal/"
+            "guide-a-environmental-design-2015"
+        )
+        self.assertIn(f'href="{expected}">source page</a>', source)
+        self.assertNotIn("https://doi.org/https://", source)
+
     def test_urban_setting_renders_and_filters(self):
         records = deepcopy(self.records)
         records[MIXED]["urban_setting"] = "city_centre"

@@ -2085,10 +2085,13 @@ def place_page(slug, info, paths, records):
 def source_page(key, src, paths, records, role_paths=None):
     title = src.get("title") or src.get("note") or key
     doi = src.get("doi")
+    source_url = src.get("url")
     cite = (f"{esc(src.get('author', ''))} ({esc(src.get('year', '?'))}). "
             f"{esc(title)}. <i>{esc(src.get('journal') or '')}</i>")
     if doi:
         cite += f" · <a href=\"https://doi.org/{esc(doi)}\">doi:{esc(doi)}</a>"
+    if source_url:
+        cite += f" · <a href=\"{esc(source_url)}\">source page</a>"
     body = [f"<div class=\"crumbs\"><a href=\"../index.html\">browse</a> · source</div>",
             f"<h2><code>{esc(key)}</code></h2>",
             f"<p>{cite}</p>",
