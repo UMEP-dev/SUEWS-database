@@ -5,7 +5,7 @@ record_revision: sha256:b72e86980e892ffb71858e66a5a8df53a978e53c6155a4eb57f9f9c8
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
-    wang2008: sha256:6f050c3ad1c06931c9796cee3ece4be6b608ccdddd4250166c3e28550ff799f5
+    wang2008: sha256:97b1552f290093b5b4e41559f4bf0712002b7546b36320f8255443bbf83eebdc
   places:
     nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
   records: {}
@@ -89,6 +89,6 @@ assessment:
   scientific_note: The abstract establishes a fitted Wang parameter study and the later Dou compilation
     matches the stored summer tuple. The original full text is still required to verify the exact coefficient
     row, its locator, and the single-roof representativeness finding already tracked by issue 334.
-  evidence_revision: sha256:503f48a0e83f2898f916055a720fe2e7c3860aff2a3f23ba307e5f16292cf1ec
+  evidence_revision: sha256:360d3d9de19c5771e1388d4449741447c7090fafad2f8159e48c1674ed67cd9b
 verification:
   attestations: []
