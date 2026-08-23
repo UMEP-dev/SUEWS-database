@@ -41,6 +41,8 @@ assessment:
       evidence_ids:
       - jarvi-water-albedo
       - vargo-water-albedo
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/187
       note: Vargo et al. is the publication that states the stored 0.08 value and identifies it as a WRF land-cover constant.
     place:
       conclusion: supported
@@ -86,6 +88,6 @@ assessment:
       url: https://github.com/wrf-model/WRF/blob/6ee9331f4ca32a77814483be1962526e26ebbb55/run/VEGPARM.TBL#L3-L19
       note: Water Bodies has ALBEDOMIN=.08 and ALBEDOMAX=.08, confirming the technical origin of Vargo et al.'s model constant.
   scientific_note: The legacy row associated this value with Helsinki and Järvi et al. (2014), whose Table 4a gives 0.08 but explicitly credits Vargo et al. (2013). Reading Vargo et al. shows that 0.08 is an equivalent WRF land-cover constant for open water, rather than a Helsinki observation. The verbatim legacy Alb_max value of 0.1 remains under legacy so the migrated database assertion is not erased, while the active parameter, source, place and representativeness now follow the published evidence.
-  evidence_revision: sha256:389063009cdf867c770f66668d5cc9cf64f193dac66f8526608c9ecc50a6ddc1
+  evidence_revision: sha256:865f0edc38bb08cb5375f58ad6e187257d94f9f28a0e5aecd75bfcc0432c6af8
 verification:
   attestations: []
