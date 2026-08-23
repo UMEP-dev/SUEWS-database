@@ -26,8 +26,10 @@ Three layers make up the database.
 Two registries resolve the short names records use.
 
 - `db/sources.yml` — citation keys (`ward2016`, `jarvi2014`) with author,
-  year, title, journal and DOI. `unreferenced` marks legacy values that
-  carried no citation.
+  year, title, journal and DOI. An optional `url` preserves an authoritative
+  publisher or repository landing page when a source has no DOI; a normal URL
+  must never be stored in `doi`. `unreferenced` marks legacy values that carried
+  no citation.
 - `db/places.yml` — place slugs (`helsinki`, `se-england`) for every
   location a record claims. `schema/origins_map.yml` records how each raw
   legacy `Origin` string was resolved, with a confidence flag.
