@@ -1,101 +1,91 @@
 provenance_record: records/surfaces/water/helsinki--jarvi2014--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:fc0844f2608a061e0270fa049adf01ef82f870387e1b4582933d02d51f67f7da
+record_revision: sha256:44577e578e8f9556fda809143ba3b7f70679d20db804ca8687b14b0a63ca4d92
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    vargo2013: sha256:4655286815df54d2d66660ace8773d6a101e378d0978611a3e9bfb7b7904b2e6
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-23T08:46:34Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Water matches Table 4a's Water column.
+      - jarvi-water-albedo
+      - vargo-water-albedo
+      note: Water matches the Open water land-cover class in Vargo et al. Table 1.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: An albedo is a land_cover.water property.
+      - jarvi-water-albedo
+      - vargo-water-albedo
+      note: The cited value is the albedo assigned to the Open water class.
     values:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: The record stores alb 0.1. Table 4a gives alpha_i 0.08 in the Water column, carrying footnote
-        b, which credits Vargo et al. (2013). The stored value is not the published one and does not appear
-        in the Water column at all.
+      - jarvi-water-albedo
+      - vargo-water-albedo
+      note: Vargo et al. Table 1 gives Open water an albedo of 0.08; the WRF 3.4.1 lookup table likewise gives Water Bodies minimum and maximum albedo as 0.08.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: 'Even for the published 0.08 this article is not the source: the footnote credits Vargo et
-        al. (2013). For the stored 0.1 it is not a source in any sense.'
+      - jarvi-water-albedo
+      - vargo-water-albedo
+      note: Vargo et al. is the publication that states the stored 0.08 value and identifies it as a WRF land-cover constant.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is the study location, but a value credited to another publication is not a Helsinki
-        determination.
+      - vargo-water-albedo
+      note: Generic is appropriate because this is a WRF lookup-table constant, not a Helsinki determination.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - vargo-water-albedo
+      note: Generic accurately describes a model land-cover constant that is not tied to a study site or city.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: A literature albedo compiled into a model parameter table and credited to another publication;
-        no measurement is reported here, so the production method is not this study's.
+      - vargo-water-albedo
+      note: The parameter is taken from a published model-parameter table, so literature is the supported method.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: A single water albedo record, matching one table column.
+      - vargo-water-albedo
+      note: The record contains one water-surface albedo value corresponding to one table entry.
   evidence:
-  - id: jarvi-table-4a
+  - id: jarvi-water-albedo
     source: jarvi2014
     role: compilation
     locators:
     - kind: table
-      label: Table 4a, parameters used in SUEWS by surface
+      label: Table 4a, water-surface albedo and source footnote
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
-        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
-        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
-        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
-        marks Vargo et al. (2013).'
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
+      note: The Water column gives alpha_i 0.08 with footnote b, which credits Vargo et al. (2013).
+  - id: vargo-water-albedo
+    source: vargo2013
+    role: parameter_source
     locators:
     - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'Table 4a puts water albedo at 0.08 and the record stores 0.1. The gap is small in
-    absolute terms and both numbers are unremarkable for open water, which is what makes it worth stating
-    precisely rather than waving through: the cited table does not contain 0.1 in the Water column. The
-    footnote on that cell also credits Vargo et al. (2013), so even the correct figure would not belong
-    to this citation. Whoever repairs this should decide between adopting 0.08 with the right credit and
-    finding where 0.1 actually came from.'
-  evidence_revision: sha256:530b992649f1324a5d359efeca068e96112a6afdd7688dc3b00d4d08392313f0
+      label: Table 1, equivalent land-cover constants used in WRF
+      page: 247
+      url: https://doi.org/10.1016/j.jenvman.2012.10.007
+      note: The Water / Open water row gives albedo 0.08 and emissivity 0.98.
+    - kind: text
+      label: WRF 3.4.1 VEGPARM.TBL, Water Bodies row
+      url: https://github.com/wrf-model/WRF/blob/6ee9331f4ca32a77814483be1962526e26ebbb55/run/VEGPARM.TBL#L3-L19
+      note: Water Bodies has ALBEDOMIN=.08 and ALBEDOMAX=.08, confirming the technical origin of Vargo et al.'s model constant.
+  scientific_note: The legacy row associated this value with Helsinki and Järvi et al. (2014), whose Table 4a gives 0.08 but explicitly credits Vargo et al. (2013). Reading Vargo et al. shows that 0.08 is an equivalent WRF land-cover constant for open water, rather than a Helsinki observation. The verbatim legacy Alb_max value of 0.1 remains under legacy so the migrated database assertion is not erased, while the active parameter, source, place and representativeness now follow the published evidence.
+  evidence_revision: sha256:389063009cdf867c770f66668d5cc9cf64f193dac66f8526608c9ecc50a6ddc1
 verification:
   attestations: []
