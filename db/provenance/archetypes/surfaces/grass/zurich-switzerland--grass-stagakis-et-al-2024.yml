@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/zurich--ao2018--lai: sha256:735a419cb34ba6a3f3a68167fe4f5565a75df55b5312359477334550a0f20d1d
     records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:50a3cb169e10414d6374495276d3a80c4ba934b7e38d1376a32d28649afb38e2
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
-    records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:501f95f2bdef34d4845ee66f18ea1bd8448071198e2ff567708d462ae7b70124
+    records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:dc1654866786d1b26bf067964998dc5e0894bf0e7fb668b7dc0fad485c8400d2
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:41:54Z'
@@ -36,10 +36,11 @@ assessment:
       - component-surfaces-grass-zurich-stagakis-s2024-biogen-co2
       - component-surfaces-grass-zurich-ao2018-lai
       note: 'The composite''s name reads "Grass Stagakis et al. 2024", its place reads zurich and its
-        origin reads Zurich, Switzerland. Three of the twelve components declare source stagakis-s2024,
-        filling leaf_growth_power, max_vegetation_conductance and biogen_co2, and a fourth Zurich record
-        fills leaf_area_index, so the four slots that distinguish this entry from its neighbours are the
-        locally sourced ones. One discrepancy is worth recording without treating it as a composition
+        origin reads Zurich, Switzerland. Two of the twelve components declare source stagakis-s2024,
+        filling leaf_growth_power and biogen_co2; two further Zurich-placed records fill leaf_area_index
+        and max_vegetation_conductance, the latter now recording its earlier havu-m2024 parameter source.
+        These four locally placed slots distinguish this entry from its neighbours. One discrepancy is
+        worth recording without treating it as a composition
         defect: db/sources.yml gives stagakis-s2024 the year 2025 and the doi 10.5194/bg-22-2133-2025,
         while the composite''s label and the source key itself read 2024. Which year is right is a question
         about the source registry, and AGENTS.md routes bibliographic corrections to db/sources.yml separately
@@ -194,10 +195,11 @@ assessment:
     record: records/surfaces/grass/zurich--stagakis-s2024--max-conductance
     role: component
     note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
-      "Grass", place zurich, representativeness city and source stagakis-s2024.
+      "Grass", place zurich, representativeness city, source havu-m2024 and method literature.
   scientific_note: 'This is the best-localised of the nine grass composites. Four of its twelve components
-    declare place zurich and they are every Zurich grass record the database holds, three of them from
-    stagakis-s2024, the study the label names, and they fill the four slots that distinguish the entry
+    declare place zurich and they are every Zurich grass record the database holds. Two are from stagakis-s2024,
+    the study the label names; maximum conductance is the Havu et al. literature value and leaf area index
+    retains its Ao et al. source. Together they fill the four slots that distinguish the entry
     from its neighbours. The rest are transparent transfers: albedo, the snowpack limit and phenology
     from Helsinki, emissivity and water storage from SE England, porosity from an unreferenced dummy record
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Three observations belong to
@@ -207,6 +209,6 @@ assessment:
     which that record''s own evidence review must settle. And records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing"; the drainage selection
     is defensible under either reading, so this review is not blocked by it.'
-  evidence_revision: sha256:8b67d4557b71ab04fbea0268e447c1c2f946363f5e52ac4fe5518b0b19603438
+  evidence_revision: sha256:65044e249767dac53ed337d7b2967de015030e0187f4e77ae4874b8e03e16285
 verification:
   attestations: []
