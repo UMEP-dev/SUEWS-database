@@ -1,0 +1,113 @@
+provenance_record: archetypes/typologies/sweden--modernism
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:3ffd638d84385b7743071a19e9f6e4c3a3a8ecc938597587b492846103b17f8c
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--concrete-million-program: sha256:68d7b5429fd8741c01b624bba6fd8e12d4c0dc061ec96d7cccee397dfb4cb7d6
+    archetypes/surfaces/paved/sweden--asphalt-mixed-city: sha256:be941d8ae1ea8514ce7629ac3e0c3daa062e394256ab58ecd33bc7ff7f9ed9f5
+    archetypes/typologies/sweden--mixed-city-ideal: sha256:dfcf9ce4e54e0c0c1e267c9517bba36231a1f15fa0327e62de031f39d671a234
+    archetypes/typologies/sweden--residential-functionalism: sha256:44a3b0d2d178bddb74f805ab9e50f846d466e6cfa3a092c4963c11aa439a410e
+    archetypes/typologies/sweden--traditional-neighborhood: sha256:4f3fed8fba678cd69748e91d13c635c2839b9c4357e1fa5f03cee4e734a7548c
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-surfaces-bldgs-sweden-concrete-million-program
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: The composite's name field reads 'Modernism ' with a trailing space. Its description, 'Million
+        programme. Mid 20th century modernistic suburban neighbourhood development', and its period 'Pre80'
+        agree with the building component, which is named 'Concrete (Million Program)', and with the paved
+        component named 'Asphalt, mixed city'. The label identifies what is assembled; the trailing space
+        is a migration artefact of the kind several archetype names in this database carry.
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s own target is typology, and each slot takes a component declared for it:
+        the bldgs slot takes an archetype declaring target land_cover.bldgs and the paved slot an archetype
+        declaring target land_cover.paved. No archetype in this database declares attaches_to, which is
+        carried only by the 477 records under records/profiles, so slot fit here is judged on the components''
+        declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        archetypes it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing these two archetypes. Its url and image_source fields are photograph locators, published
+        in db/images.yml with the credit 'Holger Ellgaard' and the licence 'CC BY-SA 3.0'; a photograph
+        of Rinkeby is not a rationale for a component selection. The components' own selections belong
+        to their composition assessments, not to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite claims place sweden, and both components declare place sweden. The assembly
+        stays inside the country it claims and imports nothing.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite declares representativeness regional and both components declare regional, so
+        no component is stretched past its stated reach and no city row stands in for a national default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of two existing archetypes into two slots; the composite produces no value of
+        its own. A typology carries no seasonal or wet/dry axis, because the four OHM positions live inside
+        the surface archetypes, so the only mapping made here is one archetype per slot and each slot
+        receives exactly one.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'A typology has two component slots and no others: the migration maps the legacy Types table''s
+        Buildings and Paved columns into bldgs and paved and nothing else (scripts/migrate_to_records.py),
+        and all fourteen entries under archetypes/typologies fill exactly those two. This composite fills
+        both, so the assembly is complete. Its pair of components is unique: archetypes/surfaces/bldgs/sweden--concrete-million-program
+        is selected by no other typology, while archetypes/surfaces/paved/sweden--asphalt-mixed-city is
+        shared with archetypes/typologies/sweden--mixed-city-ideal, archetypes/typologies/sweden--residential-functionalism
+        and archetypes/typologies/sweden--traditional-neighborhood. The building archetype is therefore
+        what separates the four, and here the separation is substantive: archetypes/surfaces/bldgs/sweden--concrete-million-program
+        differs from archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood in two slots, taking
+        records/surfaces/bldgs/london--ward2016--albedo rather than records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+        and records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s rather than records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s,
+        which is what a concrete high-rise stock should differ in from a wooden low-rise one.'
+      related_records:
+      - archetypes/typologies/sweden--mixed-city-ideal
+      - archetypes/typologies/sweden--residential-functionalism
+      - archetypes/typologies/sweden--traditional-neighborhood
+  evidence:
+  - id: component-surfaces-bldgs-sweden-concrete-million-program
+    record: archetypes/surfaces/bldgs/sweden--concrete-million-program
+    role: component
+    note: Fills bldgs. The archetype is named 'Concrete (Million Program)', declares target land_cover.bldgs,
+      place sweden and representativeness regional.
+  - id: component-surfaces-paved-sweden-asphalt-mixed-city
+    record: archetypes/surfaces/paved/sweden--asphalt-mixed-city
+    role: component
+    note: Fills paved. The archetype is named 'Asphalt, mixed city', declares target land_cover.paved,
+      place sweden and representativeness regional.
+  scientific_note: 'The Million Programme typology selects a Swedish concrete building archetype and a
+    Swedish asphalt paved archetype, both classed regional, which is the class the composite itself claims,
+    and both declaring the target their slot needs. Both of the two slots a typology has are filled, nothing
+    is imported from another country, and nothing narrower stands in for the national claim. Its identity
+    holds up better than the shared paved archetype suggests: four Swedish typologies take the same paved
+    row, but the building archetype selected here differs from its nearest neighbour in both albedo and
+    construction, which is the difference between concrete high-rise and wooden low-rise stock. The composite
+    name carries a trailing space and the url and image_source fields carry a Wikimedia photograph of
+    Rinkeby, credited and licensed in db/images.yml; neither bears on component selection. The components''
+    own compositions and values remain subject to their own assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:57a7fc19ef09d971c0246023b12052955a06460702832bed8128218dc73849bc
+verification:
+  attestations: []

@@ -1,0 +1,168 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--mixed-city
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--detached-houses-wood: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
+    archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
+    records/constructions/stockholm--bjork2002--mixed-city-2000s: sha256:c9587bccffc90a991af2d48a76cea297a3ebb37dc0e360f6aba566c5c1748978
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-constructions-stockholm-bjork2002-mixed-city-2000s
+      note: The composite is named Mixed-City and the construction it selects, records/constructions/stockholm--bjork2002--mixed-city-2000s,
+        is named 'Mixed-City, 2000s', so the label matches on that slot. The albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
+        a record named 'Wood ', while the construction this same composite selects describes a fabric
+        of roofing shingle, gypsum, mineral fibre slab and wood in which wood is one material among several
+        rather than the defining one. The composite therefore asserts a wood surface in one slot and a
+        mixed fabric in another, and nothing in it reconciles the two. Whether the wood albedo is the
+        intended selection for a mixed-city typology is a maintainer's decision, not one this review can
+        make.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-stockholm-bjork2002-mixed-city-2000s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-stockholm-bjork2002-mixed-city-2000s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite claims place sweden. The construction declares place stockholm and the albedo
+        declares place gothenburg, both Swedish. Emissivity, water storage, drainage, the snow limit and
+        all four ohm positions take records declaring place helsinki, which db/places.yml resolves to
+        country finland. The database holds no Swedish record for any of those quantities, so the substitution
+        is forced by the record set, but it is stated nowhere and only a maintainer can decide whether
+        it is the intended policy for these typologies.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-stockholm-bjork2002-mixed-city-2000s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite declares representativeness regional and not one of its seven components carries
+        that class. The construction declares representativeness city for place stockholm, and the albedo,
+        emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
+        city as well. A country-scale Swedish default therefore rests entirely on city rows, including
+        in the construction slot that carries its identity.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: An assembly of existing records into slots; the composite produces no value of its own. records/ohm/helsinki--jarvi2014--buildings
+        fills all four ohm positions, so the composite draws no summer/winter and no wet/dry distinction,
+        and that record declares no season_label of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-stockholm-bjork2002-mixed-city-2000s
+      note: 'All seven slots are filled and the composite remains distinguishable: it differs from archetypes/surfaces/bldgs/sweden--detached-houses-wood
+        and from archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood only in the construction
+        slot, and that is the slot carrying the typology''s identity. No second mixed-city composite exists.'
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--detached-houses-wood
+      - archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+  evidence:
+  - id: component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+    record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+    role: component
+    note: Fills albedo. The record is named 'Wood ', declares target land_cover.bldgs, place gothenburg
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-constructions-stockholm-bjork2002-mixed-city-2000s
+    record: records/constructions/stockholm--bjork2002--mixed-city-2000s
+    role: component
+    note: Fills construction. The record is named 'Mixed-City, 2000s', declares target construction, place
+      stockholm and representativeness city, and layers roofing shingle, wood, gypsum and mineral fibre
+      slab in its roof and gypsum, mineral fibre slab and wood in its wall.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-helsinki-jarvi2014-buildings
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
+      'Roof (own for SMEAR III, Helsinki) [750]', declares target ohm_coefficients, place helsinki and
+      representativeness city, and declares no season_label.
+  scientific_note: 'The construction slot is the one that does its job here: records/constructions/stockholm--bjork2002--mixed-city-2000s
+    is named ''Mixed-City, 2000s'' and is Swedish. Two things about the rest need a maintainer. The first
+    is the albedo. The composite takes records/surfaces/bldgs/gothenburg--oke1987--albedo--wood, a row
+    named ''Wood '', which is also what the two wood typologies in this family take, while the construction
+    it selects describes shingle, gypsum, mineral fibre slab and wood together. Nothing in the composite
+    says why a wood albedo represents a mixed-city surface, and this review will not infer a reason from
+    the fact that sibling composites make the same choice. The second is scale: the composite declares
+    representativeness regional, yet every component it selects, the Stockholm construction included,
+    declares representativeness city, so a national default is carried entirely by city rows. The Helsinki
+    records filling emissivity, water storage, drainage, the snow limit and the OHM positions are forced,
+    since no Swedish record exists for any of those quantities, but that too is unstated. All of this
+    lives in the composite and none of it requires a component value to change.'
+  evidence_revision: sha256:5f6349cfe34f0dd821db10fdb7e1769a9d0a5845f08deeffd8b4576b9a93bde8
+verification:
+  attestations: []

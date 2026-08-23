@@ -1,0 +1,91 @@
+provenance_record: archetypes/countries/federated-state-of-micronesia
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:0fc780cf6b8004a50c78c0c3b0126f2412da8ecf772d3c23127b38b01ee2e802
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/federated-state-of-micronesia: sha256:4f4e4f055374c801da9a07776e6f1152f1e0af08f7ac9f9c29e55a55ad173f51
+    records/profiles/traffic/lucy/federated-state-of-micronesia: sha256:8375253b2621c9f9305e348c88390076e90f54dede39e8b6adac50b9716aa318
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-federated-state-of-micronesia
+      - component-traffic-lucy-federated-state-of-micronesia
+      note: The composite is named Federated State of Micronesia, its country field reads Federated State
+        of Micronesia, and both agree with the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-federated-state-of-micronesia
+      - component-traffic-lucy-federated-state-of-micronesia
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/federated-state-of-micronesia,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/federated-state-of-micronesia,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place federated-state-of-micronesia, so the default is assembled from
+        that country's own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Federated State of Micronesia.
+  evidence:
+  - id: component-traffic-lucy-federated-state-of-micronesia
+    record: records/profiles/traffic/lucy/federated-state-of-micronesia
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place federated-state-of-micronesia and representativeness regional.
+  - id: component-human-activity-lucy-federated-state-of-micronesia
+    record: records/profiles/human-activity/lucy/federated-state-of-micronesia
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place federated-state-of-micronesia and representativeness regional.
+  scientific_note: Federated State of Micronesia's default takes Federated State of Micronesia's own rows,
+    every one of them classed regional, which is what a country default should do. The slot mapping, however,
+    is not. Reading the composite against the components' own declarations, the energy_use slot takes
+    records/profiles/traffic/lucy/federated-state-of-micronesia, which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr
+    rather than the anthropogenic_emissions.heat.ahprof_24hr field that slot fills, and the population
+    slot takes records/profiles/human-activity/lucy/federated-state-of-micronesia, which declares attaches_to
+    anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:a229c5a109ded2ea46f3902fa298beb001e3eb4e2ed877f7c0802c63801cfd8f
+verification:
+  attestations: []

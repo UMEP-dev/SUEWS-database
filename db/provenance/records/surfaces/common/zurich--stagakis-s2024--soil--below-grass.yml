@@ -1,0 +1,100 @@
+provenance_record: records/surfaces/common/zurich--stagakis-s2024--soil--below-grass
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:db644d552c48ddb1055247022043e1f28878e85522a9497104050ba118c5ace6
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records:
+    records/surfaces/common/zurich--stagakis-s2024--soil: sha256:450fb0a3c99a42c19ae4a365dd91d8a23f51c239b98c0cab0e9036e8c9a7b737
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Below Grass corresponds to the Lawn column that Table S3 uses for the vegetated surfaces.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Soil properties beneath a vegetated surface are a land_cover.common property.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: None of the four stored values appears in the article or the supplement. Table S3 publishes
+        a wilting-point deficit of 143 mm for the Lawn column, which is a different quantity from the
+        stored soil_store_capacity of 150 mm and, in any case, a different number; it should not be read
+        as the same figure. There is no soil depth, saturated hydraulic conductivity or soil density anywhere
+        in the publication.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: The cited study cannot be shown to publish these values, and no replacement is named here.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-scope
+      note: Nothing published ties these soil properties to Zurich.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-scope
+      note: City representativeness overstates a four-park study.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: With no source established, the production method is open.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: The two Zurich soil records differ only in storage capacity, which matches Table S3 distinguishing
+        the Trees and Lawn columns, so keeping them separate is coherent even though the values themselves
+        are unsourced.
+      related_records:
+      - records/surfaces/common/zurich--stagakis-s2024--soil
+  evidence:
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title and abstract
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  scientific_note: The publication carries no soil hydraulic properties. The only soil quantity in Table
+    S3 is a wilting-point deficit, 143 mm for the Lawn column, and it is neither the same quantity as
+    the stored storage capacity of 150 mm nor the same number, so the near-miss should not tempt anyone
+    into treating one as the other. The stored depth, conductivity and density have no locator in this
+    source at all. What keeps this from being a contradiction is that Table S3 covers the photosynthesis
+    and conductance equations rather than the water balance, so its silence on soil is not a denial.
+  evidence_revision: sha256:6c0a504c5320193b201184ff38f9ed2462fc1e8e0eeac3d43495ac690b4207c1
+verification:
+  attestations: []

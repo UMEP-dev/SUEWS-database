@@ -1,0 +1,122 @@
+provenance_record: archetypes/snow/helsinki--snow
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
+    archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
+    records/snow/helsinki--jarvi2014--albedo: sha256:97a3dcd81fb00bb7ccb0f5967af2f61273cdf678fdd887df93881e7648bd7a8e
+    records/snow/helsinki--jarvi2014--emissivity: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:26:59Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite's name reads Snow, its place reads helsinki and its origin reads Helsinki, and
+        both components are Helsinki snow records, so the entry identifies what it assembles. The label
+        on its own does not distinguish it from the two other snow composites, whose names read Not used
+        and No Snow; the place field and the entry path carry that distinction.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares target snow and both components declare target snow. Snow records carry
+        no attaches_to field; in this database attaches_to appears only on the profile records under records/profiles/,
+        so the slot check rests on the parameter names each component carries. The albedo slot takes the
+        record holding snow_albedo_min and snow_albedo_max and the emissivity slot takes the record holding
+        narp_emissivity_snow, so each slot receives a component declared for it.
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: 'The composite asserts eleven parameters of its own, from radiation_melt_factor 0.0016 to
+        temperature_rain_snow_threshold 2.2. None is a field either component supplies, so the assembly
+        overrides no component value. Whether jarvi2014 supports the eleven is not settled here and cannot
+        be settled by any assessment that currently exists: docs/FORMAT.md requires a value a composite
+        introduces to be represented and evidence-reviewed as a record first, and these eleven appear
+        nowhere under db/records/. Until they do, a composition review cannot call them supported, and
+        this review does not.'
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition rationale. Its source field, jarvi2014, attributes the
+        parameter block the composite asserts itself, which belongs to its evidence assessment. Both components
+        independently declare source jarvi2014, so the assembly draws on a single publication throughout.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares place helsinki and both components declare place helsinki, so a Helsinki
+        snow set is assembled from that city's own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares representativeness city and both components declare representativeness
+        city, so no component stands in above or below the composite's scale.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: An assembly of two existing records into the albedo and emissivity slots, and assembled is
+        the method a composition sidecar takes. The composite is not purely an assembly, since it also
+        asserts eleven scalars directly, which docs/FORMAT.md sanctions for the snow entries; those values
+        are reviewed as the composite's own evidence, not here.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      related_records:
+      - archetypes/snow/se-england--not-used
+      - archetypes/snow/suews--no-snow
+      note: The composite fills both slots the snow archetypes use, albedo and emissivity, and it is the
+        only Helsinki snow set in the database. Its uses block is identical to those of archetypes/snow/se-england--not-used
+        and archetypes/snow/suews--no-snow, which take the same two records in the same two slots; records/snow/helsinki--jarvi2014--emissivity
+        is the only snow emissivity record there is, so that part of the sharing is forced. The one remaining
+        snow record, records/snow/generic--kawai2009--thermal-layers, carries an empty parameters block
+        with everything in legacy, so no slot is missing on its account.
+  evidence:
+  - id: component-snow-helsinki-jarvi2014-albedo
+    record: records/snow/helsinki--jarvi2014--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target snow, name Snow, place helsinki, representativeness
+      city and source jarvi2014, and carries snow_albedo_min and snow_albedo_max.
+  - id: component-snow-helsinki-jarvi2014-emissivity
+    record: records/snow/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", place
+      helsinki, representativeness city and source jarvi2014, and carries narp_emissivity_snow.
+  scientific_note: 'The selection holds up. archetypes/snow/helsinki--snow declares place helsinki, representativeness
+    city and source jarvi2014, and both components declare exactly those three, so a city-scale Helsinki
+    snow set is assembled from that city''s own rows in the study it cites. The mapping holds too: the
+    albedo slot takes the record carrying snow_albedo_min and snow_albedo_max, the emissivity slot the
+    record carrying narp_emissivity_snow, and the assembled fragment shows snow_albedo_min 0.18, snow_albedo_max
+    0.85 and narp_emissivity_snow 0.99 arriving from the components with the composite''s own eleven scalars
+    merged over them. Two things a reader should carry forward without acting on them here. The first
+    is that the eleven scalars the composite asserts have no record behind them, so nothing in the database
+    can yet review them. The second: records/snow/helsinki--jarvi2014--emissivity is named "Snow (sample
+    data)", and whether a value migrated from a sample run belongs in the database is a question for that
+    record''s own evidence review. It is the only snow emissivity record in the database, so every snow
+    composite rests on it.'
+  evidence_revision: sha256:0f0ea3ffeab185e88bfad36a65126828fe46e1aa4cde31422e987a0e12454948
+verification:
+  attestations: []

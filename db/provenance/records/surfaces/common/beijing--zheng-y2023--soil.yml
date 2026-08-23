@@ -1,0 +1,132 @@
+provenance_record: records/surfaces/common/beijing--zheng-y2023--soil
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ef9620d0faade1fee220ea3616712dd51f0de6d1bf66b9dbdaf87320e7f4a7a6
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The archived run assigns soil code 72 to all three vegetated Veg rows, which is what a below-mixed-vegetation
+        label describes.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: A SUEWS_Soil row shared by the vegetated surfaces, which is the common target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      - zheng-article
+      note: 'Code 72 of SUEWS_Soil.txt carries SoilDepth 1000, SoilStoreCap 141, SatHydraulicCond 5.00E-04,
+        SoilDensity 1.16 and InfiltrationRate 10, which is the record exactly, and the Beijing Veg rows
+        991, 992 and 993 all point at it. Table 2 publishes the 1000 mm tree soil depth. Worth flagging
+        for the maintainer: Table 2 lists 349 mm for grass and lawn, while the released run applies the
+        1000 mm row to the grass surface as well, so the record follows the archive rather than the table.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-article
+      - zheng-model-archive
+      note: Table 2 credits the tree soil depth to Havu et al. (2022a) and Kokkonen et al. (2019), and
+        the archive comments code 72 as Viikki, Street trees. Zheng et al. reuse the row; the remaining
+        three properties are carried SUEWS values that the article does not publish at all.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-model-archive
+      note: The archive labels the row Viikki, Street trees. Viikki is in Helsinki. Beijing is where the
+        row was applied, not where the soil was characterised.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-model-archive
+      - zheng-domain
+      note: 'City representativeness for Beijing is unsupported twice over: the parameters describe a
+        Helsinki street-tree soil, and the Beijing run covers a 1 km circle.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-model-archive
+      note: A reused parameter row rather than an independent determination; the production method belongs
+        to the study that characterised the Viikki soil.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-model-archive
+      note: The four stored parameters and the whole legacy block are identical to records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees.
+        Whether the database keeps a separate application record, aliases it, or merges the two is a maintainer
+        decision.
+      related_records:
+      - records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/333
+  evidence:
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Soil.txt, code 72
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries 1000, 141, 5.00E-04, 1.16 and 10, and is commented Viikki, Street trees.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Veg.txt, code 991, 992 and 993, columns SoilTypeCode
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: All three Beijing vegetated rows point at soil code 72.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+  - id: zheng-article
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, SUEWS biogenic model parameters, soil depth row
+      page: 4559
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Gives 1000 mm for trees and 349 mm for grass and lawn, credited to Havu et al. (2022a) and
+        Kokkonen et al. (2019). The storage capacity, hydraulic conductivity and density are not published
+        anywhere in the article or its supplement.
+  - id: zheng-domain
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3, Study site and measurements
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
+        flux footprint; no city-wide domain is modelled.
+  scientific_note: 'The numbers are exactly what the released Beijing run used, and one of them is published
+    in the article, so the values are settled. Their provenance is not. The archive labels the row Viikki,
+    Street trees, which is a Helsinki site, and Table 2 credits the soil depth to Havu et al. and Kokkonen
+    et al. The record presents a reused Helsinki street-tree soil as Beijing city evidence, and it is
+    byte-identical to the Helsinki record already in the database. Two decisions follow, and both are
+    the maintainer''s: how to express the reuse, and whether two records should exist at all.'
+  evidence_revision: sha256:cd753d8d2a4b1714653ec5e07bc93de3e5fb4756a9ca52feea019743cf889ea3
+verification:
+  attestations: []

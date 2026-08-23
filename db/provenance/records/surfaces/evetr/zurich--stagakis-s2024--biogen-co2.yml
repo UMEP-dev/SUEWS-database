@@ -1,0 +1,117 @@
+provenance_record: records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:401ea9e3db67da8d86c7e41c91005fdec27653f0e3660e109ae1e8267cfd72bb
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records:
+    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-tree-classes
+      note: The record is named Evergreen trees, but this study parameterises trees as a single class;
+        the name draws a distinction the source does not make.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Photosynthesis and respiration parameters are land_cover.evetr properties.
+    values:
+      conclusion: contradicted
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Three of the six stored values disagree with the cited study's own parameter table. The record
+        stores beta_bio_co2 29.2138, resp_a 2.88 and resp_b 0.06; Table S3's Trees column gives Fpho,max
+        8.3, ai 0.78 and bi 0.08. The remaining three, alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2
+        0.6, are not published in the article or supplement at all. Not one of the six is supported by
+        this citation.
+    source:
+      conclusion: contradicted
+      evidence_ids:
+      - stagakis-parameter-table
+      note: A source that publishes different numbers for the same quantities cannot be the source of
+        the stored ones.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-scope
+      note: With the citation contradicted, nothing establishes the values as Zurich evidence.
+    representativeness:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-scope
+      note: City representativeness cannot be assessed while the provenance is unknown; it would overstate
+        this study in any case.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: With no source established, the production method is open.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-parameter-table
+      - stagakis-tree-classes
+      note: Two Zurich tree records exist under a citation that has one Trees column. Whether the split
+        should survive, and what each half should cite, is a maintainer decision.
+      related_records:
+      - records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
+  evidence:
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title and abstract
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  - id: stagakis-tree-classes
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 2.4.1, land cover map, and Supplement Table S3
+      page: 2140
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The land cover map separates deciduous, mixed and evergreen trees and notes that a large majority
+        of Zurich's trees are deciduous, but the SUEWS parameter table carries a single Trees column.
+        The study does not parameterise evergreen and deciduous trees separately.
+  scientific_note: 'This is the clearest failure in the group. The cited study publishes a complete SUEWS
+    parameter set for trees, and every one of its numbers differs from what the record stores: 8.3 against
+    29.2138 for the photosynthesis maximum, 0.78 against 2.88 and 0.08 against 0.06 for the respiration
+    coefficients. The remaining three stored values are not in the publication at all. The citation is
+    not merely thin here, it points the wrong way. One observation is worth passing on as a lead rather
+    than a finding, because this audit has not verified it at its own source: the stored beta values,
+    together with alpha 0.031 and theta 0.723, are the shape of a Helsinki parameter set rather than anything
+    in this Zurich study, and the resemblance is close enough to be worth checking against the Helsinki
+    records already in this database. Where 2.88 comes from is not apparent from any source read here.'
+  evidence_revision: sha256:a25e32484e255172ce2ee4d00d62acd90b30d4eaac29a02958546b0e4ca1c8e2
+verification:
+  attestations: []

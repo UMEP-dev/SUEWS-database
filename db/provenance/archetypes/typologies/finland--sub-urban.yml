@@ -1,0 +1,116 @@
+provenance_record: archetypes/typologies/finland--sub-urban
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:4fbb216deed54b6f4d6e08104a4ac216b1777af4f0c2d2e99d35f630bca05839
+dependency_revisions:
+  sources: {}
+  places:
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
+  records:
+    archetypes/surfaces/bldgs/helsinki--kumpula: sha256:840ed0940807f2a6dcd4916c72f1f56e65337fc9d0fd1fadeb1f021b52ac852c
+    archetypes/surfaces/paved/helsinki--kumpula: sha256:9da1346d28ae822bf40091a56cb17317f84d050b281d4d5937600adecfca454f
+    archetypes/typologies/sweden--industrial: sha256:9a631ecc5a5e7467d7ac4e90e982208b7c493b7a1f2bd91469bbf6ce468bc64c
+    archetypes/typologies/sweden--sub-urban: sha256:daee55cad6edbcd1155001fb115f37cdf34c3795d4496d38dcd9251826885ac0
+    archetypes/typologies/uk--sub-urban: sha256:e70cfe9e73010624214d00bada6aeed60efbec6f80a5f3355b4670e05e3c192d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-surfaces-bldgs-helsinki-kumpula
+      - component-surfaces-paved-helsinki-kumpula
+      note: 'The composite is named Sub-urban and described ''Helsinki (sub-urban, mixed)'', and both
+        components are the archetypes named Kumpula carrying place helsinki, so the label identifies what
+        is assembled. One envelope field does not fit that reading: profile_type reads ''Industrial''
+        on an entry named ''Sub-urban'' and described as mixed suburban. profile_type is descriptive metadata
+        migrated verbatim from the legacy Types table, it selects no component and sits outside the uses
+        block, so it changes nothing this review covers, but it contradicts both the name and the description
+        and is worth settling when the typology metadata is next revisited.'
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s own target is typology, and each slot takes a component declared for it:
+        the bldgs slot takes an archetype declaring target land_cover.bldgs and the paved slot an archetype
+        declaring target land_cover.paved. No archetype in this database declares attaches_to, which is
+        carried only by the 477 records under records/profiles, so slot fit here is judged on the components''
+        declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        archetypes it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing these two archetypes. The components' own selections belong to their composition assessments,
+        not to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite claims place finland, and both components declare place helsinki, which db/places.yml
+        resolves to country finland. Nothing is imported from outside the country the composite claims,
+        and Kumpula is the Helsinki neighbourhood the description names.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: The composite declares representativeness regional while both components declare city, so
+        one neighbourhood of one city stands for a national suburban typology. The database holds no Finnish
+        building or paved archetype classed regional, so the substitution was not avoidable, but the national
+        reach is the composite's own claim and nothing records the decision to make it. The same city-under-regional
+        pattern holds for every typology whose components come from a named city, so a maintainer should
+        settle it once across the typology set rather than entry by entry.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of two existing archetypes into two slots; the composite produces no value of
+        its own. A typology carries no seasonal or wet/dry axis, because the four OHM positions live inside
+        the surface archetypes, so the only mapping made here is one archetype per slot and each slot
+        receives exactly one.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'A typology has two component slots and no others: the migration maps the legacy Types table''s
+        Buildings and Paved columns into bldgs and paved and nothing else (scripts/migrate_to_records.py),
+        and all fourteen entries under archetypes/typologies fill exactly those two. This composite fills
+        both, so the assembly is complete. Its pair of components is unique: archetypes/surfaces/bldgs/helsinki--kumpula
+        is selected by no other typology, and archetypes/surfaces/paved/helsinki--kumpula, though it is
+        also taken by archetypes/typologies/sweden--industrial and archetypes/typologies/sweden--sub-urban,
+        is paired with a different building archetype in both. The name Sub-urban is shared with archetypes/typologies/sweden--sub-urban
+        and archetypes/typologies/uk--sub-urban, so the path, the place and the components separate the
+        three.'
+      related_records:
+      - archetypes/typologies/sweden--industrial
+      - archetypes/typologies/sweden--sub-urban
+      - archetypes/typologies/uk--sub-urban
+  evidence:
+  - id: component-surfaces-bldgs-helsinki-kumpula
+    record: archetypes/surfaces/bldgs/helsinki--kumpula
+    role: component
+    note: Fills bldgs. The archetype is named Kumpula, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-paved-helsinki-kumpula
+    record: archetypes/surfaces/paved/helsinki--kumpula
+    role: component
+    note: Fills paved. The archetype is named Kumpula, declares target land_cover.paved, place helsinki
+      and representativeness city.
+  scientific_note: Finland's sub-urban typology takes the building and paved archetypes of a single Helsinki
+    neighbourhood, Kumpula, which is exactly what its description names, and pairs them without reaching
+    outside Finland or outside the targets the two slots need. Both of the two slots a typology has are
+    filled and the pair appears in no other entry. Two things sit above the components. The composite
+    declares representativeness regional against city components, so one neighbourhood stands for a national
+    suburban typology; nothing better was available, since the database holds no Finnish building or paved
+    archetype classed regional, so this is an unrecorded decision rather than a wrong selection, and it
+    is the same decision every city-based typology embeds. And the legacy profile_type field reads 'Industrial'
+    on an entry named 'Sub-urban' and described as mixed suburban; it selects nothing, but the contradiction
+    is in the stored data and a maintainer should decide which of the two readings the entry means. The
+    components' own compositions and values remain subject to their own assessments; this review does
+    not revisit them.
+  evidence_revision: sha256:21fc60f34dc8712ff56ce4bf1b29e9c8446fddb751ab14a06bf6511f7a60326c
+verification:
+  attestations: []

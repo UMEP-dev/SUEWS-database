@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/kiribati
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:0b245bec53088fceeaeea896a15e5e552d6b52ede022c5914fe339a49dafbe1a
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/kiribati: sha256:ba579b2a5d970a63038cdf2c35138bd91723efee165ef27c1db51969dd9163c9
+    records/profiles/traffic/lucy/kiribati: sha256:d685c7a5c515304131fcde45e00a989128b2cf9887e98960645f9a42a932ad77
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-kiribati
+      - component-traffic-lucy-kiribati
+      note: The composite is named Kiribati, its country field reads Kiribati, and both agree with the
+        entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-kiribati
+      - component-traffic-lucy-kiribati
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/kiribati,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/kiribati,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place kiribati, so the default is assembled from that country's own
+        rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Kiribati.
+  evidence:
+  - id: component-traffic-lucy-kiribati
+    record: records/profiles/traffic/lucy/kiribati
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place kiribati and representativeness regional.
+  - id: component-human-activity-lucy-kiribati
+    record: records/profiles/human-activity/lucy/kiribati
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place kiribati and representativeness regional.
+  scientific_note: Kiribati's default takes Kiribati's own rows, every one of them classed regional, which
+    is what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/kiribati,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/kiribati,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:e9ff63070f52a301dcfa416f9a8982ad44e51cfe572353b237985b9fdc86d525
+verification:
+  attestations: []

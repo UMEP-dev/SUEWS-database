@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/saint-kitts-and-nevis
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:09c5ead6e1ca8d0cf4798ea08f6ca948d1b70d0ee36e55d40e2d5c48e3453217
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/saint-kitts-and-nevis: sha256:34946d70af8f8821811723dfdc196272588be334553d23d2fc6e1e2a97308d17
+    records/profiles/traffic/lucy/saint-kitts-and-nevis: sha256:d30542c432dff027d5744ee7decb57e5379e1e74c611a41a48de4e1f25ea8235
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-saint-kitts-and-nevis
+      - component-traffic-lucy-saint-kitts-and-nevis
+      note: The composite is named Saint Kitts and Nevis, its country field reads Saint Kitts and Nevis,
+        and both agree with the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-saint-kitts-and-nevis
+      - component-traffic-lucy-saint-kitts-and-nevis
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/saint-kitts-and-nevis,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/saint-kitts-and-nevis,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place saint-kitts-and-nevis, so the default is assembled from that
+        country's own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/caribbean,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Saint Kitts and Nevis.
+  evidence:
+  - id: component-traffic-lucy-saint-kitts-and-nevis
+    record: records/profiles/traffic/lucy/saint-kitts-and-nevis
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place saint-kitts-and-nevis and representativeness regional.
+  - id: component-human-activity-lucy-saint-kitts-and-nevis
+    record: records/profiles/human-activity/lucy/saint-kitts-and-nevis
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place saint-kitts-and-nevis and representativeness regional.
+  scientific_note: Saint Kitts and Nevis's default takes Saint Kitts and Nevis's own rows, every one of
+    them classed regional, which is what a country default should do. The slot mapping, however, is not.
+    Reading the composite against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/saint-kitts-and-nevis,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/saint-kitts-and-nevis,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:8c3431d6352578f90ee44d2fa25bc67875158d75c7f15f2ca22ecd6c53cf6bef
+verification:
+  attestations: []

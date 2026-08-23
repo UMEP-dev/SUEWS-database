@@ -1,0 +1,136 @@
+provenance_record: archetypes/typologies/uk--cbd-sample-run
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:def583aae58bc8fd41282a592f31587f93c4bd74578757b68af72f5f75c77594
+dependency_revisions:
+  sources: {}
+  places:
+    uk: sha256:cf1d940381097ce83ea1b68dba9e06d6fa92a1f97c778bf52f62fda3acb81681
+  records:
+    archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016: sha256:64b267270f8833ad255e7f62f7931a80042575d1d8d8abae58660a9297b691ef
+    archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
+    archetypes/typologies/uk--obtestcase: sha256:faa6384e62528c0e5d612eb7855971b568ada2a1689cf48cfa7876d5aaa2f7cd
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: 'The composite is named ''CBD'' and described as ''Central London (sample data)''. Both slots
+        take archetypes named ''Central London, Ward et al. (2016)'', so the central-London half of the
+        description matches what is assembled. The sample-data half appears nowhere in the name, and it
+        is not incidental: the entry path is archetypes/typologies/uk--cbd-sample-run, and the construction
+        under the bldgs component is records/constructions/uk--lindberg-f2020--central-london-sample-run,
+        named ''Central London [sample run]''. SUSPECT_MARKERS in scripts/check_db.py lists ''sample run''
+        and ''sample data'' as names that read as test fixtures rather than data, and make check does
+        report that construction record; the check inspects only the name field, which here reads ''CBD'',
+        so the composite itself passes silently. A reader choosing this entry from the site sees ''CBD''
+        and a UK regional class, not a demonstration dataset. A maintainer should decide whether the entry
+        is a publishable urban type and, if it is, whether its name should say what its description already
+        says.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: 'The composite''s own target is ''typology'', which is what every entry under archetypes/typologies
+        declares, and each slot takes a component declared for it: the bldgs slot takes an archetype declaring
+        target land_cover.bldgs and the paved slot an archetype declaring target land_cover.paved. The
+        two share the slug ''london-uk--central-london-ward-et-al-2016'' under different surface families,
+        so the shared name does not put either in the wrong slot. Neither component declares attaches_to;
+        in this database that field is carried only by the profile records under db/records/profiles,
+        so slot fit here is judged on the components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        components it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for taking central London as the UK's CBD type. The components' own sources belong to their assessments,
+        not to this review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: The composite claims place 'uk', which db/places.yml gives as name 'UK', country 'united-kingdom'
+        and subnational true. Both components declare place 'london', which db/places.yml resolves to
+        country 'united-kingdom'. Every part of the typology comes from inside the country it claims.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: 'The composite declares representativeness ''regional'' while both components declare ''city''.
+        Nothing in this assembly carries the class the composite claims: a single central-London pair
+        of surfaces is offered as a UK-wide urban type. A maintainer should decide whether to reclassify
+        the composite or to record that central London is the intended stand-in for UK city centres.'
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: An assembly of two existing surface archetypes into the two slots the typology format defines;
+        the composite produces no value of its own. A typology carries no season and no wet/dry mapping
+        of its own, because those live inside the surface components' ohm blocks, so there is no seasonal
+        mapping to check at this level.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+      - component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+      note: 'The assembly is complete: scripts/migrate_to_records.py maps only the legacy Types table''s
+        ''Buildings'' and ''Paved'' columns into a typology''s uses block, and both slots are filled.
+        Uniqueness is the problem. archetypes/typologies/uk--cbd-sample-run and archetypes/typologies/uk--obtestcase
+        declare the same place ''uk'', the same representativeness ''regional'', the same profile_type
+        ''Commercial'', the same period ''Pre80'' and the identical description ''Central London (sample
+        data)'', and take the same paved component, archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016.
+        They differ only in the bldgs slot, and the two building archetypes differ from each other only
+        in their construction: archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016 takes
+        records/constructions/uk--lindberg-f2020--central-london-sample-run and archetypes/surfaces/bldgs/london-uk--obtestcase
+        takes records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks,
+        while their albedo, emissivity, water_storage, drainage, snow_lim_patch and all four ohm positions
+        are the same records. The legacy_ids differ (12240006 and 13240004), so this is not a migration
+        duplicate, but the database publishes two central-London typologies a reader cannot tell apart
+        from their descriptions. A maintainer should decide whether both belong.'
+      related_records:
+      - archetypes/typologies/uk--obtestcase
+  evidence:
+  - id: component-surfaces-bldgs-london-uk-central-london-ward-et-al-2016
+    record: archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+    role: component
+    note: Fills bldgs. The archetype is named 'Central London, Ward et al. (2016)' and declares target
+      land_cover.bldgs, place 'london' and representativeness 'city'. It declares no attaches_to, and
+      its construction slot takes records/constructions/uk--lindberg-f2020--central-london-sample-run.
+  - id: component-surfaces-paved-london-uk-central-london-ward-et-al-2016
+    record: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+    role: component
+    note: Fills paved. The archetype is named 'Central London, Ward et al. (2016)' and declares target
+      land_cover.paved, place 'london' and representativeness 'city'. It declares no attaches_to. The
+      same archetype also fills the paved slot of archetypes/typologies/uk--obtestcase.
+  scientific_note: 'The slot mechanics are sound. Both components are a matched central-London pair from
+    the same curated bundle, both declare place ''london'' inside the country the composite claims, and
+    each is declared for the slot it fills. What the entry claims around that assembly is where it fails.
+    It declares representativeness ''regional'' while both components declare ''city'', so one city centre
+    stands for the whole UK. It describes itself as ''Central London (sample data)'' while presenting
+    under the name ''CBD'', and the sample-run character runs down into the building archetype''s construction,
+    records/constructions/uk--lindberg-f2020--central-london-sample-run, which make check already reports
+    as a suspect name; the composite escapes the same warning only because the check reads the name field
+    and the name field says ''CBD''. And it is not distinguishable from archetypes/typologies/uk--obtestcase,
+    which repeats its place, representativeness, profile_type, period and description word for word, shares
+    its paved component, and differs only in one construction record two levels down. These are curation
+    decisions rather than data errors: whether demonstration data should be published as a UK urban type
+    at all, and if so which of the two central-London entries survives and what it should be called. None
+    of it depends on a component''s values, which remain subject to their own assessments.'
+  evidence_revision: sha256:27d68ff39ce16b13c79e725a655bdad55836839cb09a42c2ea538210f406039a
+verification:
+  attestations: []

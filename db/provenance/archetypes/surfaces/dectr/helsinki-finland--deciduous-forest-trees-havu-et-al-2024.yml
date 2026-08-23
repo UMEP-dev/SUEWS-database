@@ -1,0 +1,200 @@
+provenance_record: archetypes/surfaces/dectr/helsinki-finland--deciduous-forest-trees-havu-et-al-2024
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:f89b056866fd9871b9466f5c5303b92d40becea175df48ae0c0977bf97ec2dc3
+dependency_revisions:
+  sources: {}
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
+    archetypes/surfaces/dectr/helsinki-finland--deciduous-street-trees-havu-et-al-2022: sha256:a4c4bccd6e7b906ee40bde8c64cf5f300f337e146d7ee2ad4d0458c30a590c0d
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/surfaces/dectr/helsinki--havu-m2024--biogen-co2: sha256:4f6ae96c3af89b1c026297af9c0930c54570eb3c812357887c66e407fe42d1f4
+    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:cb9bb406764dc1c0998213cca03fc95f7aa99b597c85d1dc940f785a625d8e1f
+    records/surfaces/dectr/helsinki--havu-m2024--max-conductance: sha256:f2a8cb35a22ceb08c1a5b909406383d8f3f2d4ec1370d734fcc1bceccf66e65e
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:886a194cf2b63a37dd1136a29556831187323d81e836c10076a3a3f5da76ff65
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-helsinki-havu-m2024-max-conductance
+      - component-surfaces-dectr-helsinki-havu-m2024-biogen-co2
+      - component-surfaces-dectr-helsinki-havu-m2024-lai-power
+      note: 'The composite is named "Deciduous Forest trees, Havu et al. 2024" and three of its components
+        declare source havu-m2024: the leaf growth power, the maximum conductance and the biogenic CO2
+        set. Two of those three are themselves named "Dec Tree - forest" and "Deciduous trees- forest",
+        so the forest qualifier in the label is carried by the components rather than asserted over them.
+        db/sources.yml registers havu-m2024 as Havu M., Kulmala L., Lee H.S., Saranko O., Soininen J.,
+        Ahongshangbam J. and Järvi L, 2024, "CO2 uptake of urban vegetation in a warming Nordic city",
+        Urban Forestry and Urban Greening. The label names the study that defines the typology, not every
+        component, and the radiative, hydrological and storage-heat slots come from other studies without
+        the label claiming otherwise.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      - component-surfaces-dectr-se-england-ward2016-lai
+      - component-surfaces-dectr-helsinki-havu-m2024-lai-power
+      note: The composite's own target is land_cover.dectr. Eleven of its twelve components declare target
+        land_cover.dectr, and the four OHM positions take a record declaring ohm_coefficients, the type
+        that slot carries. The leaf_area_index and leaf_growth_power components both declare lai.lai_type
+        1, so the pair belongs to one LAI equation, which is the coupling schema/parameter_groups.yml
+        makes a rule for that slot pair.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this typology. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-dectr-helsinki-jarvi2014-phenology
+      - component-surfaces-dectr-se-england-ward2016-lai
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-surfaces-dectr-london-ward2016-emissivity
+      - component-surfaces-dectr-london-havu-m2024-drainage
+      - component-surfaces-dectr-london-jarvi2011-porosity
+      note: 'The composite claims place helsinki, and six of its twelve components carry that place, including
+        both of the climate-conditioned ones: the snowpack limit and the four degree-day thresholds are
+        Helsinki records, so nothing about the Nordic winter or the Nordic growing season has been imported.
+        Three components carry place london (emissivity, drainage, porosity), two carry place se-england
+        (water storage and leaf area index) and the OHM record carries no place. The leaf_area_index import
+        is forced: db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
+        shanghai and zurich and none placed at helsinki, so that slot cannot be filled from the composite''s
+        own city.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-surfaces-dectr-se-england-ward2016-lai
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite claims representativeness city. Nine components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        and records/surfaces/dectr/se-england--ward2016--lai are classed regional and the OHM record declares
+        no class. A regional value is offered as typical of a wider area and so covers a city; no component
+        claims a narrower scale than the composite does.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite assembles existing records into slots and produces no value of its own. All
+        four OHM positions take records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985,
+        which declares no season_label, and no OHM record in the database declares a wet or dry label,
+        so one season-agnostic coefficient set in all four positions is the only mapping the entries support.
+    identity:
+      conclusion: supported
+      note: Twelve distinct records fill the fifteen slot positions the deciduous-tree composites use,
+        and every one of those slots is filled. Three sibling composites are placed at helsinki. This
+        one differs from the street-trees composite in exactly two components, the maximum conductance
+        and the biogenic CO2 set, and from the park-trees composite in those two and the leaf area index,
+        so the forest typology is distinguishable from both by the components its label names. scripts/export_record.py
+        also recognises a water_state slot and db/records/surfaces/dectr holds records/surfaces/dectr/se-england--ward2016--water-state,
+        which no deciduous-tree composite references.
+      related_records:
+      - archetypes/surfaces/dectr/helsinki-finland--deciduous-street-trees-havu-et-al-2022
+      - archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024
+  evidence:
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills the four OHM positions summer_wet, summer_dry, winter_wet and winter_dry. The record declares
+      target ohm_coefficients, source grimmond1991b, no place and no representativeness, and is named
+      "Mixed Forest [20]  McCaughey (1985)". It declares no season_label, so nothing in it distinguishes
+      the four positions it fills.
+  - id: component-surfaces-dectr-helsinki-havu-m2024-biogen-co2
+    record: records/surfaces/dectr/helsinki--havu-m2024--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It is named "Deciduous trees- forest" and carries source havu-m2024, so its own name matches
+      the forest qualifier in the composite's label.
+  - id: component-surfaces-dectr-helsinki-havu-m2024-lai-power
+    record: records/surfaces/dectr/helsinki--havu-m2024--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It is named "Deciduous Tree, LaiEq = 1", carries source havu-m2024 and declares lai.lai_type
+      1, matching the leaf_area_index component.
+  - id: component-surfaces-dectr-helsinki-havu-m2024-max-conductance
+    record: records/surfaces/dectr/helsinki--havu-m2024--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place helsinki
+      and representativeness city. It is named "Dec Tree - forest" and carries source havu-m2024, so its
+      own name matches the forest qualifier in the composite's label.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
+    record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
+      and sdd_full as one set; its place is the composite's own.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies snowpack_limit; its place is the composite's own,
+      so the snow climate it was set for is the right one.
+  - id: component-surfaces-dectr-helsinki-vargo2013-albedo
+    record: records/surfaces/dectr/helsinki--vargo2013--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It is named "Mixed Deciduous Tree" and carries source vargo2013.
+  - id: component-surfaces-dectr-london-havu-m2024-drainage
+    record: records/surfaces/dectr/london--havu-m2024--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
+      city. Its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", which names three cities
+      its place field does not.
+  - id: component-surfaces-dectr-london-jarvi2011-porosity
+    record: records/surfaces/dectr/london--jarvi2011--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
+      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
+      to all eight deciduous-tree composites.
+  - id: component-surfaces-dectr-london-ward2016-emissivity
+    record: records/surfaces/dectr/london--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.dectr, place london and representativeness
+      city. It is named "Deciduous trees" and carries source ward2016.
+  - id: component-surfaces-dectr-se-england-ward2016-lai
+    record: records/surfaces/dectr/se-england--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It is named "Deciduous Tree (SE England)", carries source ward2016 and declares lai.lai_type
+      1.
+  - id: component-surfaces-dectr-se-england-ward2016-water-storage
+    record: records/surfaces/dectr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      composite.
+  scientific_note: This is the cleanest of the eight deciduous-tree composites. Its label names Havu et
+    al. 2024, and the three slots that carry the vegetation behaviour of a forest canopy take havu-m2024
+    records placed at Helsinki, two of them named for a forest in their own right. The two climate-conditioned
+    slots, the snowpack limit and the degree-day thresholds, are Helsinki records as well, so the composite
+    does not move a Nordic winter or a Nordic growing season anywhere. The four imports are the radiative,
+    hydrological and canopy-structure slots from London and SE England and one generic storage-heat set,
+    and the leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
+    leaf-area-index record at all. The two LAI records agree on lai.lai_type 1, so the slot pair does
+    not mix equations. What is missing is only the written rationale for the imports, which no composite
+    in this family carries and which the format expects a composition sidecar to supply. The components'
+    values remain subject to their own evidence assessments; this review does not revisit them.
+  evidence_revision: sha256:73a8a728e131d91dee4dc95e4e5554af04c79e9c8fa62fee50d1456fc1592c9f
+verification:
+  attestations: []

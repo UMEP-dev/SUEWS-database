@@ -1,0 +1,134 @@
+provenance_record: archetypes/typologies/switzerland--cbd
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:ea5dabe495b74f1dd2a89c1cbd5c4041b7bb4beb481a579bbb85a6baa35027ad
+dependency_revisions:
+  sources: {}
+  places:
+    switzerland: sha256:5ae4c20e7fe33e178272ca93625f64d4bc0ae19e4d87618c6d612e3ac60a7ac5
+  records:
+    archetypes/surfaces/bldgs/zurich--city-centre: sha256:2e1cb90bf7c81027e7134840e09273aba381785ed9c14ddce4c55495d91dcd06
+    archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
+    archetypes/typologies/china--cbd: sha256:c532dac2a6e13cabd974294145a91edbe66be82019a1295155da8aaee752fed9
+    archetypes/typologies/finland--cbd: sha256:d24d3aeb8ad889d4a3f5a8d063bda9cab7a50ac4d1033b0f8109228f3b6c384d
+    archetypes/typologies/uk--cbd-sample-run: sha256:def583aae58bc8fd41282a592f31587f93c4bd74578757b68af72f5f75c77594
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: The composite is named 'CBD' and described as 'Central Zurich'. Both slots take Zurich city-centre
+        archetypes, archetypes/surfaces/bldgs/zurich--city-centre and archetypes/surfaces/paved/zurich--city-centre,
+        each named 'City centre', so the name and the description agree with what is assembled. The composite
+        also declares profile_type 'Residential'. That field is descriptive metadata migrated from the
+        legacy Types table's ProfileType column by scripts/migrate_to_records.py and is read by nothing
+        else under scripts/, so it selects no record; it is nevertheless what the entry says about the
+        activity its urban type represents, and the four entries named 'CBD' disagree. archetypes/typologies/finland--cbd
+        and archetypes/typologies/uk--cbd-sample-run declare 'Commercial'; this composite and archetypes/typologies/china--cbd
+        declare 'Residential'. A maintainer should decide what a central-business-district typology means
+        here and make the four consistent.
+      related_records:
+      - archetypes/typologies/china--cbd
+      - archetypes/typologies/finland--cbd
+      - archetypes/typologies/uk--cbd-sample-run
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: 'The composite''s own target is ''typology'', which is what every entry under archetypes/typologies
+        declares, and each slot takes a component declared for it: the bldgs slot takes an archetype declaring
+        target land_cover.bldgs and the paved slot an archetype declaring target land_cover.paved. The
+        two components share the slug ''zurich--city-centre'' under different surface families, so the
+        shared name does not put either in the wrong slot. Neither component declares attaches_to; in
+        this database that field is carried only by the profile records under db/records/profiles, so
+        slot fit here is judged on the components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        components it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for taking central Zurich as Switzerland's urban type. The components' own sources belong to their
+        assessments, not to this review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: The composite claims place 'switzerland'. Both components declare place 'zurich', which db/places.yml
+        resolves to country 'switzerland', so every part of this typology comes from inside the country
+        it claims, and the description 'Central Zurich' states the origin openly. That the whole of Switzerland's
+        only typology rests on one city is a question of reach rather than of place, and it is taken up
+        under representativeness.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: The composite declares representativeness 'regional' while both components declare 'city'.
+        Nothing in this assembly carries the class the composite claims, which distinguishes it from the
+        Swedish typologies, where at least the building archetype is regional. One city's central district
+        is therefore offered as a country-scale urban type. Whether to reclassify the composite or to
+        let the claim stand because central Zurich is the intended stand-in for Swiss city centres is
+        a maintainer's decision.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: An assembly of two existing surface archetypes into the two slots the typology format defines;
+        the composite produces no value of its own. A typology carries no season and no wet/dry mapping
+        of its own, because those live inside the surface components' ohm blocks, so there is no seasonal
+        mapping to check at this level.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-zurich-city-centre
+      - component-surfaces-paved-zurich-city-centre
+      note: 'The assembly is complete: scripts/migrate_to_records.py maps only the legacy Types table''s
+        ''Buildings'' and ''Paved'' columns into a typology''s uses block, and both slots are filled.
+        Both components come from the same curated Zurich city-centre pair, so the building and paved
+        descriptions are drawn from one place and one bundle rather than assembled across sources. This
+        is the only typology declaring place ''switzerland'' and the only one taking either Zurich component,
+        so nothing duplicates it. The name ''CBD'' is shared with archetypes/typologies/china--cbd, archetypes/typologies/finland--cbd
+        and archetypes/typologies/uk--cbd-sample-run, which declare different places and different components
+        in both slots.'
+  evidence:
+  - id: component-surfaces-bldgs-zurich-city-centre
+    record: archetypes/surfaces/bldgs/zurich--city-centre
+    role: component
+    note: Fills bldgs. The archetype is named 'City centre' and declares target land_cover.bldgs, place
+      'zurich' and representativeness 'city'. It declares no attaches_to.
+  - id: component-surfaces-paved-zurich-city-centre
+    record: archetypes/surfaces/paved/zurich--city-centre
+    role: component
+    note: Fills paved. The archetype is named 'City centre' and declares target land_cover.paved, place
+      'zurich' and representativeness 'city'. It declares no attaches_to.
+  scientific_note: 'This is the most internally consistent selection in the typology set on the question
+    the slots ask. Both components come from one curated Zurich city-centre pair, both declare place ''zurich'',
+    which resolves to country ''switzerland'', and both fit the slot they fill, so the composite''s description
+    ''Central Zurich'' is exactly what it assembles. Two things about the entry''s own claims do not follow.
+    Both components declare representativeness ''city'' while the composite declares ''regional'', so
+    unlike the Swedish typologies, where the building archetype at least carries the composite''s own
+    class, nothing here supports a country-scale claim: Switzerland''s single urban type is one city''s
+    central district. And the composite declares profile_type ''Residential'' while calling itself a CBD,
+    a field the four ''CBD'' entries fill two ways, with archetypes/typologies/finland--cbd and archetypes/typologies/uk--cbd-sample-run
+    declaring ''Commercial''. Neither question can be settled from the repository: reclassifying the composite
+    and letting one city stand deliberately for Swiss city centres are both defensible, and profile_type
+    is inherited descriptive metadata that resolves to no record here. A maintainer should decide both,
+    ideally once for the whole CBD family. No component value is at issue; those remain subject to their
+    own assessments.'
+  evidence_revision: sha256:24e33fe4dfe5418f3bd6f4740c0973d0bd9aa758534b5e2e3e890c2d2de05ef6
+verification:
+  attestations: []

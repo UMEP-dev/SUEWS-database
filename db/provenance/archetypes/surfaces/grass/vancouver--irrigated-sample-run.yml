@@ -1,0 +1,221 @@
+provenance_record: archetypes/surfaces/grass/vancouver--irrigated-sample-run
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:8d036dcb5c04bde007e35fc9838e7eaa4402c87b97868efd64c01b4a9621d424
+dependency_revisions:
+  sources: {}
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records:
+    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:7680a5acbbbed647249e2446c6b8d79c4c1f905657620f1d21b61e9b6b2d447a
+    records/surfaces/grass/london--jarvi2011--drainage: sha256:f281f652a72fed80dff66e02b894cedfa4cb49777dad79dd2290a8e4bf41b940
+    records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
+    records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
+    records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/vancouver--jarvi2011--lai-power: sha256:2a1846d268a74f46b702f40e8f445e613d9297702519758c48c946b6d80725da
+    records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:3863938b8d60625a4771afe401617b6de9631f1785ef90283141b1a91c2689a5
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:41:54Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-grass-vancouver-jarvi2011-max-conductance
+      - component-surfaces-grass-london-jarvi2011-drainage
+      - component-surfaces-grass-vancouver-jarvi2011-lai-power
+      note: The composite's name reads "Irrigated [sample run]", its place reads vancouver and its origin
+        reads Vancouver. The irrigated qualifier is carried by records/surfaces/grass/vancouver--jarvi2011--max-conductance,
+        named "Irrigated Grass", so the label matches the assembly. The bracketed marker says the configuration
+        comes from a demonstration run rather than from a description of a site, and the drainage component,
+        records/surfaces/grass/london--jarvi2011--drainage, is named "Grass [sample run]" in the same
+        spirit. scripts/check_db.py lists "sample run" among its SUSPECT_MARKERS, so make check already
+        reports both names as entries that read as test fixtures rather than data. The label is honest
+        about what the entry is; whether an entry of that kind belongs in the published archetype set
+        is taken under identity.
+    target:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-ohm-generic-unreferenced-grass
+      - component-surfaces-grass-generic-unreferenced-porosity
+      - component-surfaces-grass-helsinki-jarvi2014-phenology
+      - component-surfaces-grass-helsinki-jarvi2014-snow-lim
+      - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
+      - component-surfaces-grass-london-jarvi2011-drainage
+      - component-surfaces-grass-se-england-havu-m2024-lai
+      - component-surfaces-grass-se-england-ward2016-albedo
+      - component-surfaces-grass-se-england-ward2016-emissivity
+      - component-surfaces-grass-se-england-ward2016-water-storage
+      - component-surfaces-grass-vancouver-jarvi2011-lai-power
+      - component-surfaces-grass-vancouver-jarvi2011-max-conductance
+      note: 'The composite declares target land_cover.grass. Eleven of the twelve components declare target
+        land_cover.grass and the twelfth, records/ohm/generic--unreferenced--grass, declares target ohm_coefficients,
+        which is what the ohm slot takes: docs/FORMAT.md puts the four season and wetness positions of
+        supy''s ohm_coef on the archetype rather than on the coefficient records. Surface records carry
+        no attaches_to field, which in this database appears only on the profile records under records/profiles/,
+        so the slot check rests on the parameter names each component carries, and every slot receives
+        a component holding the fields that slot names. The ohm component is named "Short grass [30]",
+        the grass-specific coefficient set rather than a vegetation average, and it fills all four positions
+        because it declares no season_label and no wet or dry distinction.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so it overrides no component value; the exported
+        fragment is its components merged into their slots.
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and asserts no parameters of its own, so there is no
+        published composition rationale to review. The archetype format does allow a composite to carry
+        a source, as the snow archetypes do for the scalars they assert themselves, and this entry carries
+        none. Each component's own source belongs to that component's evidence assessment.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
+      - component-surfaces-grass-vancouver-jarvi2011-lai-power
+      - component-surfaces-grass-vancouver-jarvi2011-max-conductance
+      - component-surfaces-grass-london-jarvi2011-drainage
+      related_records:
+      - records/surfaces/common/se-england--ruimy1995--biogen-co2
+      note: 'The composite declares place vancouver, which db/places.yml gives as lat 49.28, lon -123.12,
+        koppen Cfb. Two components declare place vancouver, filling leaf_growth_power and max_vegetation_conductance,
+        and they are the only grass records in the database declaring that place; a third file whose path
+        begins vancouver--jarvi2011, records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass,
+        declares place generic and is not used here. Four declare place se-england, filling albedo, emissivity,
+        water_storage and leaf_area_index, two declare place helsinki, filling snow_lim_patch and vegetation_growth,
+        one declares place london, filling drainage, porosity declares place generic and the ohm component
+        carries no place field. The slot that needs settling is biogen_co2. It takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+        which declares place lethbridge, given in db/places.yml as lat 49.69, lon -112.83, koppen BSk,
+        origin "Lethbridge, Alberta, Canada", name "Temperate grassland" and representativeness site:
+        a semi-arid prairie grassland standing in for irrigated urban grass in a marine west-coast city,
+        where the country is the only thing the two places share. The database holds a surface-agnostic
+        alternative, records/surfaces/common/se-england--ruimy1995--biogen-co2, named "Plant canopies",
+        which the London and Swindon grass composites take; it is no more Vancouver-local than the Lethbridge
+        record, so this is a choice between two transplants rather than a correction, and exchanging them
+        would change a model input. A maintainer should decide which transplant this entry should carry.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
+      - component-surfaces-grass-se-england-ward2016-albedo
+      - component-surfaces-grass-generic-unreferenced-porosity
+      note: 'The composite declares representativeness city. Five components declare city, four declare
+        regional, records/surfaces/grass/generic--unreferenced--porosity declares generic, and one declares
+        site; the ohm component carries no representativeness field. The site-classed component is records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+        and it is the only component in any of the nine grass composites classed narrower than the composite
+        carrying it. A single-site flux measurement inside a city typology is exactly what the representativeness
+        field exists to make visible, and the composition layer cannot reconcile it: either the slot should
+        take a component classed at or above the composite''s scale, or a maintainer should accept the
+        site value knowingly and say so.'
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of twelve existing records into the twelve slots the vegetation archetypes use,
+        and assembled is the method a composition sidecar takes. The composite produces no value of its
+        own.
+    identity:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: The uses block fills all twelve slots the vegetation archetypes use, namely albedo, emissivity,
+        water_storage, leaf_area_index, leaf_growth_power, drainage, max_vegetation_conductance, porosity,
+        biogen_co2, snow_lim_patch, vegetation_growth and ohm, which is the slot vocabulary every land_cover.grass,
+        land_cover.dectr and land_cover.evetr archetype in the database uses, so no slot is missing. The
+        ohm slot names one record in all four positions, and no other archetype in the database repeats
+        this uses block, so the entry is complete and unique. What is unsettled is whether it should be
+        in the set at all. Its own name reads "Irrigated [sample run]" and its drainage component is named
+        "Grass [sample run]", both of which scripts/check_db.py reports as suspect names, and it is published
+        beside entries that describe real sites with nothing but those names to distinguish it. Whether
+        a demonstration configuration should stand in the published archetype set, and if it should whether
+        it needs marking beyond its name, is a curation decision this review cannot take.
+  evidence:
+  - id: component-ohm-generic-unreferenced-grass
+    record: records/ohm/generic--unreferenced--grass
+    role: component
+    note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
+      declares target ohm_coefficients, name "Short grass [30]" and source unreferenced; it carries no
+      place or representativeness field. It declares no season_label, so one set fills all four positions.
+  - id: component-surfaces-grass-generic-unreferenced-porosity
+    record: records/surfaces/grass/generic--unreferenced--porosity
+    role: component
+    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
+      generic, representativeness generic and source unreferenced.
+  - id: component-surfaces-grass-helsinki-jarvi2014-phenology
+    record: records/surfaces/grass/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
+      place helsinki, representativeness city and source jarvi2014.
+  - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
+      helsinki, representativeness city and source jarvi2014.
+  - id: component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
+    record: records/surfaces/grass/lethbridge--flanagan2002--biogen-co2
+    role: component
+    note: Fills the biogen_co2 slot. The record declares target land_cover.grass, name "Temperate grassland",
+      place lethbridge, representativeness site and source flanagan2002. It is the only site-classed component
+      in these nine grass composites, which is recorded under the place and representativeness findings.
+  - id: component-surfaces-grass-london-jarvi2011-drainage
+    record: records/surfaces/grass/london--jarvi2011--drainage
+    role: component
+    note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass [sample run]",
+      place london, representativeness city and source jarvi2011. Its name marks it as sample-run material,
+      which is recorded under the name and identity findings.
+  - id: component-surfaces-grass-se-england-havu-m2024-lai
+    record: records/surfaces/grass/se-england--havu-m2024--lai
+    role: component
+    note: Fills the leaf_area_index slot. The record declares target land_cover.grass, name "Grass (SE
+      England)", place se-england, representativeness regional and source havu-m2024.
+  - id: component-surfaces-grass-se-england-ward2016-albedo
+    record: records/surfaces/grass/se-england--ward2016--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target land_cover.grass, name "Grass", place se-england,
+      representativeness regional and source ward2016.
+  - id: component-surfaces-grass-se-england-ward2016-emissivity
+    record: records/surfaces/grass/se-england--ward2016--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target land_cover.grass, name "Grass", place
+      se-england, representativeness regional and source ward2016.
+  - id: component-surfaces-grass-se-england-ward2016-water-storage
+    record: records/surfaces/grass/se-england--ward2016--water-storage
+    role: component
+    note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
+      se-england, representativeness regional and source ward2016.
+  - id: component-surfaces-grass-vancouver-jarvi2011-lai-power
+    record: records/surfaces/grass/vancouver--jarvi2011--lai-power
+    role: component
+    note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass,
+      LaiEq = 0", place vancouver, representativeness city and source jarvi2011.
+  - id: component-surfaces-grass-vancouver-jarvi2011-max-conductance
+    record: records/surfaces/grass/vancouver--jarvi2011--max-conductance
+    role: component
+    note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
+      "Irrigated Grass", place vancouver, representativeness city and source jarvi2011.
+  scientific_note: 'The entry is a demonstration configuration and says so: its name reads "Irrigated
+    [sample run]" and the drainage slot takes records/surfaces/grass/london--jarvi2011--drainage, named
+    "Grass [sample run]". The mapping itself is sound, every slot receiving a component declared for it
+    and the ohm slot taking the grass-specific "Short grass [30]" set. Two of the twelve components declare
+    place vancouver, the jarvi2011 leaf_growth_power and max_vegetation_conductance records, and they
+    are the only grass records in the database declaring that place; four come from SE England, two from
+    Helsinki, one from London and one from Lethbridge, and the last two are a generic dummy and an unreferenced
+    coefficient set. Two things need a maintainer. The biogen_co2 slot takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+    a site-classed temperate grassland record from a semi-arid prairie location (koppen BSk) filling a
+    slot in a marine west-coast city composite (koppen Cfb), and it is the only component across these
+    nine grass composites classed narrower than the composite that carries it; the alternative the London
+    and Swindon composites take, records/surfaces/common/se-england--ruimy1995--biogen-co2, is no more
+    local, so the choice between two transplants is a maintainer''s and not a correction. And whether
+    a sample-run configuration belongs in the published archetype set beside descriptions of real sites
+    is a curation decision of the same kind.'
+  evidence_revision: sha256:de70f7933bdf248925086b9411637b6e60c68b0a9cb743c600e3bba4acb44c24
+verification:
+  attestations: []

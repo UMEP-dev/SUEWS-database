@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/honduras
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:50240fd4595f6c0bf309768e97be0bd292ebaa2695575f228bb7b083067df683
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/honduras: sha256:b68d9219aa330c4af98f864304d3b90603d7203ce259aa746b75a306bb65cc9a
+    records/profiles/traffic/lucy/honduras: sha256:6f7ee0d21d07d0ceeff5787ebc6a8a90ad35d211665561d72342901e2035445f
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-honduras
+      - component-traffic-lucy-honduras
+      note: The composite is named Honduras, its country field reads Honduras, and both agree with the
+        entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-honduras
+      - component-traffic-lucy-honduras
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/honduras,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/honduras,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place honduras, so the default is assembled from that country's own
+        rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/central-america,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Honduras.
+  evidence:
+  - id: component-traffic-lucy-honduras
+    record: records/profiles/traffic/lucy/honduras
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place honduras and representativeness regional.
+  - id: component-human-activity-lucy-honduras
+    record: records/profiles/human-activity/lucy/honduras
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place honduras and representativeness regional.
+  scientific_note: Honduras's default takes Honduras's own rows, every one of them classed regional, which
+    is what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/honduras,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/honduras,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:e1c41fd7ecd6e8e21fa9975cf615adb3a9e50c663101aa5e7919ffebd0c35d4f
+verification:
+  attestations: []

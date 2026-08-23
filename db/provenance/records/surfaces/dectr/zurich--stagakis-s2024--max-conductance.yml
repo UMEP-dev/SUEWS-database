@@ -1,0 +1,112 @@
+provenance_record: records/surfaces/dectr/zurich--stagakis-s2024--max-conductance
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a42f6262981d4f8ec3b67ad1e108a9bd6af8c565d0bf37c7c4ba5032ece343c6
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Deciduous Tree matches the record's land_cover.dectr target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: A maximum conductance is a land_cover.dectr property.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: The stored 3.1 mm s-1 is not in the article or the supplement. Table S3 is the study's SUEWS
+        parameter set and it lists G2 to G6, the temperature limits, the wilting-point deficit and the
+        maximum incoming shortwave radiation, but neither a maximum conductance nor G1. Whether the value
+        entered the runs undocumented cannot be settled from what is published, and the Zenodo archive
+        named under Data availability contains only land cover, in situ, meteorological and flux files.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: With the value absent from the study's own parameter table, this article cannot be shown to
+        be its source, and no replacement is named here on resemblance.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-scope
+      note: Zurich is the study location, but nothing published ties this value to it.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-scope
+      note: Independently of the value question, city representativeness overstates a four-park study.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-parameter-table
+      note: With no source established, the production method is open.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-parameter-table
+      - stagakis-tree-classes
+      note: 'The database keeps separate deciduous and evergreen conductances for Zurich, but this study
+        parameterises trees as a single class: Table S3 has one Trees column. Whether two records should
+        exist under this citation is a maintainer decision.'
+  evidence:
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title and abstract
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  - id: stagakis-tree-classes
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 2.4.1, land cover map, and Supplement Table S3
+      page: 2140
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The land cover map separates deciduous, mixed and evergreen trees and notes that a large majority
+        of Zurich's trees are deciduous, but the SUEWS parameter table carries a single Trees column.
+        The study does not parameterise evergreen and deciduous trees separately.
+  scientific_note: 'Table S3 is a full parameter listing for the SUEWS equations the paper sets out, and
+    it has no maximum conductance row. The stored value 3.1 mm s-1 therefore has no locator in this source,
+    and the Zenodo archive the article points to holds data rather than model inputs, so there is nowhere
+    else in the publication to look. This is an honest dead end rather than a contradiction: the value
+    may well have been used, but nothing published shows it. Two things would settle it, and both are
+    outside this audit: the authors'' own SUEWS input files, or an earlier publication that carries the
+    number and that this record should cite instead. Separately, the study treats trees as one class,
+    so the split between a deciduous and an evergreen Zurich record does not come from here.'
+  evidence_revision: sha256:a58ea3b995c6304b8a669e67ab19747d4a06fa1c2bdd3bdf35b7ce409346ba00
+verification:
+  attestations: []

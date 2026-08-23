@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/estonia
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:6f74f6dfc7ccef41a1036021b244365f7be98bdc7d8bb3da27e921d2936f97b9
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/estonia: sha256:9004bc7b149cd2637e89e70dcbbbbea3fa8d3ef898899fb403ae81cc8b0bc063
+    records/profiles/traffic/lucy/estonia: sha256:08c17cd25baf68581a0cc626bc9f17342900525f5a878aac9b13edc1f06d95c4
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-estonia
+      - component-traffic-lucy-estonia
+      note: The composite is named Estonia, its country field reads Estonia, and both agree with the entry
+        path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-estonia
+      - component-traffic-lucy-estonia
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/estonia, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/estonia,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place estonia, so the default is assembled from that country's own
+        rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/northern-europe,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Estonia.
+  evidence:
+  - id: component-traffic-lucy-estonia
+    record: records/profiles/traffic/lucy/estonia
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place estonia and representativeness regional.
+  - id: component-human-activity-lucy-estonia
+    record: records/profiles/human-activity/lucy/estonia
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place estonia and representativeness regional.
+  scientific_note: Estonia's default takes Estonia's own rows, every one of them classed regional, which
+    is what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/estonia,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/estonia,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:302c94631bf58e53d5b4dc8b4910533439df6b241a3fbabf65ba882a4991284f
+verification:
+  attestations: []

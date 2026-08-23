@@ -1,0 +1,89 @@
+provenance_record: archetypes/countries/congo
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:15d161acfaef54ba4fee326cc12e24b76f5ebd50f47c8a32d2670f8d5748d9da
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/congo: sha256:14d3751dc74c721d9285a81fe079711998d775886c20142b8c73f16eb072d74b
+    records/profiles/traffic/lucy/congo: sha256:c037105232fb4f5278d0f1f10a335083d2eef731c63f41d8a580ff06981763a6
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-congo
+      - component-traffic-lucy-congo
+      note: The composite is named Congo, its country field reads Congo, and both agree with the entry
+        path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-congo
+      - component-traffic-lucy-congo
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/congo, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/congo, which
+        declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place congo, so the default is assembled from that country's own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/central-africa,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Congo.
+  evidence:
+  - id: component-traffic-lucy-congo
+    record: records/profiles/traffic/lucy/congo
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place congo and representativeness regional.
+  - id: component-human-activity-lucy-congo
+    record: records/profiles/human-activity/lucy/congo
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place congo and representativeness regional.
+  scientific_note: Congo's default takes Congo's own rows, every one of them classed regional, which is
+    what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/congo, which
+    declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/congo, which
+    declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:371fd6e296e19cd2595c45c629b15b6cb6adcec09e355c3aa90855d539d3f2f9
+verification:
+  attestations: []

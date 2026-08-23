@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/thailand
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:9a1c211c8aac9c2c56ce4c6f0b80886f22426aedf6fa0a3bdd23447d308c6186
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/thailand: sha256:b78dade96c8253555450c93adab8294b8ef06f065db27816c06d351eb491fe9f
+    records/profiles/traffic/lucy/thailand: sha256:54df690941fca40959056b92e1a4417173115b86524209a11a0acaf47c4fb76c
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-thailand
+      - component-traffic-lucy-thailand
+      note: The composite is named Thailand, its country field reads Thailand, and both agree with the
+        entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-thailand
+      - component-traffic-lucy-thailand
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/thailand,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/thailand,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place thailand, so the default is assembled from that country's own
+        rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/southeast-asia,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Thailand.
+  evidence:
+  - id: component-traffic-lucy-thailand
+    record: records/profiles/traffic/lucy/thailand
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place thailand and representativeness regional.
+  - id: component-human-activity-lucy-thailand
+    record: records/profiles/human-activity/lucy/thailand
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place thailand and representativeness regional.
+  scientific_note: Thailand's default takes Thailand's own rows, every one of them classed regional, which
+    is what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/thailand,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/thailand,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:427e6603f21dbf2ab8229654d1fa3832664a8c91a05c9161725782b0850d0795
+verification:
+  attestations: []

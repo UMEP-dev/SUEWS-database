@@ -1,0 +1,175 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/helsinki--city-centre: sha256:1be8e36d5862b1bdf5930efa257243fe94077d4abcc5f62e942c65662f779d04
+    records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s: sha256:0eb3f4dbad5a047d1ab98fd807df52d1c83cd0a56cac64e80e292ece2558e849
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+      note: The composite is named 'Stone Houses, Traditional Neighbourhood' and the construction it selects,
+        records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+        is named 'Traditional Stone Neighbourhood City, late 1800s-early 1900s' and layers a lime-sand
+        render, protected brick at 0.29 m, wood and dense plaster in its wall. The label identifies what
+        the composite assembles.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite claims place sweden and only the construction is Swedish, declaring place gothenburg.
+        The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, named ''Central London''
+        and declaring place london, and emissivity, water storage, drainage, the snow limit and all four
+        ohm positions take records declaring place helsinki, which db/places.yml resolves to country finland.
+        For the Helsinki slots the database offers no Swedish alternative. For the albedo it does: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+        and records/surfaces/bldgs/gothenburg--oke1987--albedo are the two Gothenburg albedo rows, named
+        ''Wood '' and ''Industry, dark roofs'', and neither describes a rendered or stone facade. The
+        composite takes the London row instead and records no reason, which only a maintainer can settle.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite declares representativeness regional and not one of its seven components carries
+        that class. The construction declares representativeness city for place gothenburg, and the albedo,
+        emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
+        city as well. A country-scale Swedish default therefore rests entirely on city rows.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: An assembly of existing records into slots; the composite produces no value of its own. records/ohm/helsinki--jarvi2014--buildings
+        fills all four ohm positions, so the composite draws no summer/winter and no wet/dry distinction,
+        and that record declares no season_label of its own.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'All seven slots are filled, but the assembly is not unique. archetypes/surfaces/bldgs/helsinki--city-centre
+        selects exactly the same record in every slot: the same albedo, emissivity, water_storage, drainage,
+        construction and snow_lim_patch, and records/ohm/helsinki--jarvi2014--buildings in all four ohm
+        positions. The two composites differ only in their envelopes, this one declaring name ''Stone
+        Houses, Traditional Neighbourhood'', place sweden and representativeness regional and the other
+        declaring name ''City centre '', place helsinki and representativeness city. They therefore deliver
+        the same parameter set under two identities. This composite''s legacy_id, 20258001, also departs
+        from the 202400xx form every other building composite carries. A maintainer must decide whether
+        one of the two should select different components or whether one should go.'
+      related_records:
+      - archetypes/surfaces/bldgs/helsinki--city-centre
+  evidence:
+  - id: component-surfaces-bldgs-london-ward2016-albedo
+    record: records/surfaces/bldgs/london--ward2016--albedo
+    role: component
+    note: Fills albedo. The record is named 'Central London', declares target land_cover.bldgs, place
+      london and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
+    record: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s
+    role: component
+    note: Fills construction. The record is named 'Traditional Stone Neighbourhood City, late 1800s-early
+      1900s', declares target construction, place gothenburg and representativeness city, and layers records/materials/generic--hertwig2024a--external-render-lime-sand,
+      records/materials/generic--hertwig2024a--brick-protected at 0.29 m, wood and dense plaster in its
+      wall.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-helsinki-jarvi2014-buildings
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
+      'Roof (own for SMEAR III, Helsinki) [750]', declares target ohm_coefficients, place helsinki and
+      representativeness city, and declares no season_label.
+  scientific_note: 'The construction is the right record and it is Swedish: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+    a rendered brick fabric from Gothenburg, matches the composite''s name exactly. Around it the assembly
+    is entirely borrowed. The albedo is a London row named ''Central London'', chosen over the two Gothenburg
+    albedo rows the database holds, neither of which describes a rendered facade, and the remaining five
+    slots are Helsinki records for which no Swedish alternative exists. The sharper problem is uniqueness.
+    Slot for slot this composite selects the identical set to archetypes/surfaces/bldgs/helsinki--city-centre,
+    so a Swedish regional stone typology and a Finnish city centre resolve to the same parameters and
+    differ only in the labels on their envelopes. Its legacy_id, 20258001, does not share the form of
+    its siblings either, which is consistent with a later addition. Whether the duplication is intended,
+    and which of the two should change, is a curation decision; nothing here calls for a component value
+    to change, and the components'' own values remain subject to their evidence assessments.'
+  evidence_revision: sha256:9c23c7422f699866d220659d8b93140b76bb494dbc931732924d916482219e40
+verification:
+  attestations: []

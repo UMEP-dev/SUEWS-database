@@ -1,0 +1,304 @@
+provenance_record: archetypes/regions/eastern-europe
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:cb95afd6eb0c796c4d7389a99932d999925a8513adc639569beb87d82400fe11
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
+    archetypes/surfaces/bldgs/zurich--city-centre: sha256:2e1cb90bf7c81027e7134840e09273aba381785ed9c14ddce4c55495d91dcd06
+    archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016: sha256:87c22ea834c9dbf28895706d6c362823f8ea7d47bda01b0dd320d0ddfae6ff5d
+    archetypes/surfaces/dectr/zurich-switzerland--deciduous-tree-stagakis-et-al-2024: sha256:ff8ca653954309f8d20bfb653a8afb48a8b8220d653acbe15c94675dbbc1eb20
+    archetypes/surfaces/evetr/zurich-switzerland--evergreen-tree-stagakis-et-al-2024: sha256:c791197c3c5142a3fcde14a25ddcfd7d7648ca1c4cf94b92add170e6ef6f4b2f
+    archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024: sha256:6350c64d5f520c5a8462a621f8a7480c9c40ba82c8a8a5b32896ede4942ec2f4
+    archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
+    archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
+    records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
+    records/conductance/generic--ward2016: sha256:31163ce562160b68588a87fb4fbc940bc8abbb370c75318c35ba8b1f4cc5a913
+    records/irrigation/vancouver--unreferenced: sha256:35694223ee516c2c565a807c26353f8fefcee006e64f10797166b392286cf173
+    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+    records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
+    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
+    records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-archetypes-snow-helsinki--snow
+      - component-archetypes-surfaces-bldgs-zurich--city-centre
+      - component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+      - component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-water-swindon-uk--water
+      - component-records-anthropogenic-london--ward2016
+      - component-records-conductance-generic--ward2016
+      - component-records-irrigation-vancouver--unreferenced
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-surfaces-common-se-england--ward2016--soil
+      note: The composite's name field reads Eastern Europe, its region field reads Eastern Europe, and
+        both agree with the entry path archetypes/regions/eastern-europe. The label names the region the
+        default is offered for rather than the provenance of the rows it assembles; where those rows come
+        from is assessed under place.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-surfaces-common-se-england--ward2016--soil
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      note: 'The composite''s own target, site, is correct for a default that a country archetype inherits
+        through region_ref, and fifteen of the seventeen slot positions take a component declared for
+        them. That includes the two least obvious: the soil slot takes records/surfaces/common/se-england--ward2016--soil,
+        whose target land_cover.common is the surface-agnostic target docs/FORMAT.md names for soils,
+        and the profiles.snow_clearing slot takes records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime,
+        which declares attaches_to snow.snow_profile_24hr. The remaining two do not. The profiles.water_use_manual
+        slot fills irrigation.wuprofm_24hr, but its holiday position takes records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12,
+        which declares attaches_to irrigation.wuprofa_24hr; the profiles.water_use_automatic slot fills
+        irrigation.wuprofa_24hr, but its working_day position takes records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11,
+        which declares attaches_to irrigation.wuprofm_24hr. Each of the two irrigation profiles is therefore
+        half composed of the other kind. No correctly declared record can close either gap: every record
+        under records/profiles/water-use-manual carries a working_day block only, and the single record
+        under records/profiles/water-use-automatic carries a holiday block only, which is why the same
+        crossing appears in all twenty-two region defaults and should be settled once rather than region
+        by region.'
+    values:
+      conclusion: curation_required
+      note: 'The composite declares parameters of its own: anthropogenic_emissions.heat.baset_heating
+        and anthropogenic_emissions.heat.baset_cooling, each 7 for working_day and for holiday. schema/table_mapping.yml
+        maps those from the legacy Region table''s TCritic_Heating_WD and WE and TCritic_Cooling_WD and
+        WE columns, so they are migrated rather than invented, but three things about them are unsettled.
+        They carry no source of their own. They are identical in all twenty-two region defaults, so a
+        value living in a region default conveys nothing region-specific. And docs/FORMAT.md requires
+        a value a composite introduces to be represented and evidence-reviewed as a record first, which
+        these are not, even though the same document allows a migrated composite row to carry its own
+        scalars under the same rules as a record. The file''s legacy block also retains BaseT_HC: 18.2,
+        which schema/table_mapping.yml flags needs-review because BaseT_HC and TCritic_* serve different
+        QF formulations. A maintainer has to decide whether the region layer should assert a heating and
+        a cooling base temperature at all, and on what basis.'
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and the repository records no published rationale for
+        this regional default. schema/regional_axis.yml describes the region axis as a way of viewing
+        the database and leaves open whether the grouping is climatic, cultural or merely geographic;
+        that is a design note about the axis, not a rationale for this selection, and nothing in the repository
+        explains why these particular rows were chosen. The components' own sources belong to their evidence
+        assessments, not to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-archetypes-snow-helsinki--snow
+      - component-archetypes-surfaces-bldgs-zurich--city-centre
+      - component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+      - component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-water-swindon-uk--water
+      - component-records-anthropogenic-london--ward2016
+      - component-records-conductance-generic--ward2016
+      - component-records-irrigation-vancouver--unreferenced
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-surfaces-common-se-england--ward2016--soil
+      note: db/places.yml resolves each component's place, and a place chains to a region through its
+        country's region_ref in db/archetypes/countries. On that chain none of the fifteen components
+        belongs to Eastern Europe. The four Zurich surface archetypes that distinguish this composite
+        carry place zurich, whose country switzerland carries region_ref archetypes/regions/western-europe;
+        london, swindon, se-england and helsinki chain to archetypes/regions/northern-europe; vancouver
+        and los-angeles chain to archetypes/regions/north-america; and generic carries no country field
+        at all. The koppen classes db/places.yml records are Cfb for zurich, london, swindon, se-england
+        and vancouver, Dfb for helsinki and Csa for los-angeles. Only two entries in the database chain
+        to Eastern Europe at all, records/surfaces/bldgs/lodz--offerle2005--thermal-layers and records/surfaces/bsoil/lodz--offerle2005--thermal-layers,
+        and each carries a thermal_layers block alone rather than the complete surface description a land_cover
+        slot is given, so neither could replace a component here without an archetype being built around
+        it. A maintainer has to decide whether the Zurich reach is the intended one and whether the Lodz
+        records should be assembled into surface archetypes for this region.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-archetypes-snow-helsinki--snow
+      - component-archetypes-surfaces-bldgs-zurich--city-centre
+      - component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+      - component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-water-swindon-uk--water
+      - component-records-anthropogenic-london--ward2016
+      - component-records-conductance-generic--ward2016
+      - component-records-irrigation-vancouver--unreferenced
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-surfaces-common-se-england--ward2016--soil
+      note: The composite is the default for a whole region, but thirteen of its fifteen components are
+        classed city and none is classed regional except records/surfaces/common/se-england--ward2016--soil,
+        which reads regional. The remaining one, records/conductance/generic--ward2016, reads generic
+        with place generic and the name Updated Ward  et al. (2016) gsModel=2 [sample run]. docs/FORMAT.md
+        defines representativeness as how far a value travels, site through city, regional and generic,
+        precisely so that a rooftop measurement and a value offered as typical of a region are no longer
+        indistinguishable. A city row placed in a region default travels further than its own declaration
+        allows, and it does so here for every land-cover surface, for the anthropogenic, irrigation and
+        snow slots and for all three profile positions. Whether that is acceptable as a stated fallback,
+        or whether these entries should be reclassified or replaced, is a maintainer decision.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-archetypes-snow-helsinki--snow
+      - component-archetypes-surfaces-bldgs-zurich--city-centre
+      - component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+      - component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-water-swindon-uk--water
+      - component-records-anthropogenic-london--ward2016
+      - component-records-conductance-generic--ward2016
+      - component-records-irrigation-vancouver--unreferenced
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-surfaces-common-se-england--ward2016--soil
+      note: The composite selects existing entries and maps them into slots; it computes nothing and derives
+        no value from its components. The scalars it asserts in its own parameters block are assessed
+        under values rather than treated as a production method, because docs/FORMAT.md allows a migrated
+        composite row to carry its own scalars.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-archetypes-snow-helsinki--snow
+      - component-archetypes-surfaces-bldgs-zurich--city-centre
+      - component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+      - component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+      - component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+      - component-archetypes-surfaces-water-swindon-uk--water
+      - component-records-anthropogenic-london--ward2016
+      - component-records-conductance-generic--ward2016
+      - component-records-irrigation-vancouver--unreferenced
+      - component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+      - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+      - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+      - component-records-surfaces-common-se-england--ward2016--soil
+      note: 'The composite fills all seven land_cover surfaces together with the anthropogenic_emissions,
+        irrigation, soil, snow and conductance slots and three profile positions. The traffic, energy_use,
+        human_activity and population profile slots are filled at the country layer, where nine country
+        archetypes carry region_ref: archetypes/regions/eastern-europe; nothing outside db/archetypes/countries
+        references this entry. On that split the assembly is complete. It is also unique: no other region
+        default shares its uses, parameters and legacy blocks, which sets it apart from the twelve mutually
+        identical entries elsewhere in the region vocabulary.'
+  evidence:
+  - id: component-archetypes-snow-helsinki--snow
+    record: archetypes/snow/helsinki--snow
+    role: component
+    note: Fills snow. The entry declares target snow, place helsinki and representativeness city.
+  - id: component-archetypes-surfaces-bldgs-zurich--city-centre
+    record: archetypes/surfaces/bldgs/zurich--city-centre
+    role: component
+    note: Fills land_cover.bldgs. The entry declares target land_cover.bldgs, place zurich and representativeness
+      city.
+  - id: component-archetypes-surfaces-bsoil-london-uk--central-london-ward-et-al-2016
+    record: archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
+    role: component
+    note: Fills land_cover.bsoil. The entry declares target land_cover.bsoil, place london and representativeness
+      city.
+  - id: component-archetypes-surfaces-dectr-zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+    record: archetypes/surfaces/dectr/zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+    role: component
+    note: Fills land_cover.dectr. The entry declares target land_cover.dectr, place zurich and representativeness
+      city.
+  - id: component-archetypes-surfaces-evetr-zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+    record: archetypes/surfaces/evetr/zurich-switzerland--evergreen-tree-stagakis-et-al-2024
+    role: component
+    note: Fills land_cover.evetr. The entry declares target land_cover.evetr, place zurich and representativeness
+      city.
+  - id: component-archetypes-surfaces-grass-zurich-switzerland--grass-stagakis-et-al-2024
+    record: archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024
+    role: component
+    note: Fills land_cover.grass. The entry declares target land_cover.grass, place zurich and representativeness
+      city.
+  - id: component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
+    record: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+    role: component
+    note: Fills land_cover.paved. The entry declares target land_cover.paved, place london and representativeness
+      city.
+  - id: component-archetypes-surfaces-water-swindon-uk--water
+    record: archetypes/surfaces/water/swindon-uk--water
+    role: component
+    note: Fills land_cover.water. The entry declares target land_cover.water, place swindon and representativeness
+      city.
+  - id: component-records-anthropogenic-london--ward2016
+    record: records/anthropogenic/london--ward2016
+    role: component
+    note: Fills anthropogenic_emissions. The entry declares target anthropogenic_emissions, place london
+      and representativeness city.
+  - id: component-records-conductance-generic--ward2016
+    record: records/conductance/generic--ward2016
+    role: component
+    note: Fills conductance. The entry declares target conductance, place generic and representativeness
+      generic.
+  - id: component-records-irrigation-vancouver--unreferenced
+    record: records/irrigation/vancouver--unreferenced
+    role: component
+    note: Fills irrigation. The entry declares target irrigation, place vancouver and representativeness
+      city.
+  - id: component-records-profiles-snow-removal-helsinki--jarvi2014--snow-removed-daytime
+    record: records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
+    role: component
+    note: Fills profiles.snow_clearing. The entry declares target profile.snow-removal, attaches_to snow.snow_profile_24hr,
+      place helsinki and representativeness city.
+  - id: component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
+    record: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
+    role: component
+    note: Fills profiles.water_use_manual.holiday and profiles.water_use_automatic.holiday. The entry
+      declares target profile.water-use-automatic, attaches_to irrigation.wuprofa_24hr, place los-angeles
+      and representativeness city.
+  - id: component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
+    record: records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11
+    role: component
+    note: Fills profiles.water_use_manual.working_day and profiles.water_use_automatic.working_day. The
+      entry declares target profile.water-use-manual, attaches_to irrigation.wuprofm_24hr, place los-angeles
+      and representativeness city.
+  - id: component-records-surfaces-common-se-england--ward2016--soil
+    record: records/surfaces/common/se-england--ward2016--soil
+    role: component
+    note: Fills soil. The entry declares target land_cover.common, place se-england and representativeness
+      regional.
+  scientific_note: 'The Eastern Europe default is the only entry in this batch with a composition of its
+    own. Four land-cover slots, bldgs, grass, evetr and dectr, take Zurich archetypes, three of them from
+    Stagakis et al. 2024, and no other region default shares its uses, parameters and legacy blocks. That
+    distinctiveness is not the same as regional fit. Zurich chains through switzerland to archetypes/regions/western-europe,
+    so the four rows that give the entry its character come from a neighbouring region; paved, bsoil,
+    the anthropogenic set and the soil come from London and SE England, water from Swindon, the snow set
+    and its clearing profile from Helsinki, irrigation from Vancouver and both water-use profiles from
+    Los Angeles, none of which chains to Eastern Europe either. Only two entries in the database chain
+    to the region at all, records/surfaces/bldgs/lodz--offerle2005--thermal-layers and records/surfaces/bsoil/lodz--offerle2005--thermal-layers,
+    and each carries a thermal_layers block alone rather than the complete surface description a land_cover
+    slot receives, so using them would mean building archetypes around them first. Thirteen of the fifteen
+    components declare representativeness city. Two defects need no judgement about the region: the profiles.water_use_manual
+    slot takes its holiday half from a record declared attaches_to irrigation.wuprofa_24hr and the profiles.water_use_automatic
+    slot takes its working_day half from a record declared attaches_to irrigation.wuprofm_24hr, and no
+    record in the database can close either gap. The composite also asserts baset_heating and baset_cooling
+    of 7 with no source, identical in all twenty-two region defaults. Beyond this entry, all twenty-two
+    take archetypes/snow/helsinki--snow while archetypes/snow/suews--no-snow exists with target snow and
+    is referenced by none of them, though it carries no melt parameters and its legacy block holds -999
+    throughout. The components'' own values remain subject to their evidence assessments; this review
+    does not revisit them.'
+  evidence_revision: sha256:2da2df40436c76f25f2e41dee97e11b7c3fc61ad6228942fa1269efc3b80db90
+verification:
+  attestations: []

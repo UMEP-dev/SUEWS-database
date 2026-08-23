@@ -1,0 +1,252 @@
+provenance_record: archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:f04b5425805171a69da995d2bc92b0ed04eaf7d91fed6abb980bb86f144fde7f
+dependency_revisions:
+  sources: {}
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records:
+    archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016: sha256:46595186be7c871dc2a9c2e67cccf006e6d38ccf218c755f32584834118dcbb8
+    records/ohm/generic--ward2016--all-vegetation: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
+    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--drainage: sha256:960f0096f02dc5c845859db5cdee3cb8ce2a79abee8e9ff6c37eb81498f32bd8
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--lai-power: sha256:2052143c32703f4ac9298fe67e96166052ef9f1697c8e6811fefbdfe1f21146d
+    records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:22be802025570597b0bf08133ce21f305566ec717cb06d28a1736fbecf800b49
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-ohm-generic-ward2016-all-vegetation
+      note: 'The composite is named "Evergreen Tree Ward et al. (2016)" and declares place london with
+        origin "London, UK". Nine of its thirteen components declare source ward2016: albedo, emissivity,
+        water_storage, leaf_area_index, leaf_growth_power, drainage and max_vegetation_conductance, plus
+        both OHM records. The label identifies what the composite assembles, but it is not unique to it:
+        archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016 carries the same name, and
+        the place field is the only thing telling the two apart. That is treated under identity.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-se-england-ward2016-lai-power
+      - component-surfaces-evetr-se-england-ward2016-drainage
+      - component-surfaces-evetr-se-england-ward2016-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
+      note: 'The composite declares target land_cover.evetr. Every component declares that same target
+        except two: biogen_co2 takes records/surfaces/common/se-england--ruimy1995--biogen-co2, declaring
+        target land_cover.common, which docs/FORMAT.md defines as the surface-agnostic class, and the
+        OHM positions take records declaring target ohm_coefficients. leaf_area_index and leaf_growth_power
+        both declare lai.lai_type 1, which satisfies the leaf_area_index coupling rule in schema/parameter_groups.yml,
+        which makes an archetype whose two LAI components carry different lai_type values internally contradictory.
+        The season mapping is the one in this class that its components confirm: records/ohm/generic--ward2016--all-vegetation
+        declares season_label Summer and fills summer_wet and summer_dry, and records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+        declares season_label Winter and fills winter_wet and winter_dry. Neither record declares a wetness
+        state, so leaving the wet and dry positions identical follows what they say.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so every value it delivers is the component's.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this assembly. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      note: The composite claims london, and eight components carry place se-england; db/places.yml records
+        se-england as a subnational place in united-kingdom and london as a united-kingdom place, and
+        schema/origins_map.yml resolves the legacy origin strings "SE England" and "UK, SE England" to
+        that slug with representativeness regional. Seven of those eight rows declare source ward2016,
+        the same source the composite's label names, so substituting a regional row for a city one stays
+        inside one study rather than importing another site's values. snow_lim_patch takes a Helsinki
+        row because records/surfaces/evetr/helsinki--jarvi2014--snow-lim is the only evergreen-tree snow
+        limit in the database, so that borrow is forced. vegetation_growth is not forced. It takes records/surfaces/evetr/helsinki--jarvi2014--phenology,
+        which declares place helsinki with lai.base_temperature 5 and lai.base_temperature_senescence
+        10, while records/surfaces/evetr/se-england--ward2016--phenology exists, declares place se-england
+        and source ward2016 with lai.base_temperature 6 and lai.base_temperature_senescence 11, and is
+        selected by no archetype in the database. schema/parameter_groups.yml classes the degree-day thresholds
+        as a tight group whose members have to be chosen consistently, so a Ward et al. (2016) composite
+        taking Helsinki base temperatures while its own region's record goes unused is a selection a maintainer
+        should confirm or correct.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-se-england-ward2016-lai-power
+      - component-surfaces-evetr-se-england-ward2016-drainage
+      - component-surfaces-evetr-se-england-ward2016-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
+      note: The composite declares representativeness city. Eight components are classed regional, seven
+        se-england evergreen rows and the plant-canopy biogenic CO2 row, which is a wider class standing
+        in for a city rather than a city row standing in for a region; the two Helsinki rows are classed
+        city, the porosity record generic, and the two OHM records carry no representativeness at all.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-se-england-ward2016-lai-power
+      - component-surfaces-evetr-se-england-ward2016-drainage
+      - component-surfaces-evetr-se-england-ward2016-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
+      note: An assembly of existing records into slots; the composite asserts no value of its own.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-se-england-ward2016-lai-power
+      - component-surfaces-evetr-se-england-ward2016-drainage
+      - component-surfaces-evetr-se-england-ward2016-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
+      note: The composite fills all eleven named slots and the four OHM positions, which is the slot set
+        every deciduous-tree, evergreen-tree and grass archetype in this database uses, so the assembly
+        is complete. The porosity slot takes records/surfaces/evetr/generic--unreferenced--porosity, whose
+        parameters block is empty and whose origin reads "Porisity only used for Deciduous Tree. This
+        is a Dummy Variable", so that slot contributes no value by design rather than by omission. The
+        composite is not unique. archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016
+        carries a byte-identical uses block, the identical name "Evergreen Tree Ward et al. (2016)" and
+        no parameters of its own, so the two differ only in place and legacy_id and deliver identical
+        values under two labels. The same duplication holds in three other surface classes, where archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
+        and archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016, archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
+        and archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016, and archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016
+        and archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016 each share a uses block. Whether
+        these pairs should stay as two site labels pointing at one regional parameterisation or be merged
+        is a curation decision, and it should be taken once across the four classes.
+      related_records:
+      - archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016
+  evidence:
+  - id: component-surfaces-evetr-se-england-ward2016-albedo
+    record: records/surfaces/evetr/se-england--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-emissivity
+    record: records/surfaces/evetr/se-england--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-water-storage
+    record: records/surfaces/evetr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-lai
+    record: records/surfaces/evetr/se-england--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-lai-power
+    record: records/surfaces/evetr/se-england--ward2016--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-drainage
+    record: records/surfaces/evetr/se-england--ward2016--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-max-conductance
+    record: records/surfaces/evetr/se-england--ward2016--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.evetr, place se-england
+      and representativeness regional, and is named "Evergreen Tree (SE England)"; its source field reads
+      ward2016.
+  - id: component-surfaces-evetr-generic-unreferenced-porosity
+    record: records/surfaces/evetr/generic--unreferenced--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Dummy value"; its source field reads unreferenced.
+  - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
+    record: records/surfaces/common/se-england--ruimy1995--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.common, place se-england and representativeness
+      regional, and is named "Plant canopies"; its source field reads ruimy1995.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
+    record: records/surfaces/evetr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-ohm-generic-ward2016-all-vegetation
+    record: records/ohm/generic--ward2016--all-vegetation
+    role: component
+    note: Fills ohm.summer_wet and ohm.summer_dry. The record declares target ohm_coefficients and is
+      named "Code 201 x Mulitplier for summer [2011]"; its source field reads ward2016, it declares season_label
+      Summer and it declares no place or representativeness.
+  - id: component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
+    record: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+    role: component
+    note: Fills ohm.winter_wet and ohm.winter_dry. The record declares target ohm_coefficients and is
+      named "Code 201 x Multiplier for winter [2012]"; its source field reads ward2016, it declares season_label
+      Winter and it declares no place or representativeness.
+  scientific_note: 'This composite is the most internally consistent of the evergreen-tree set on everything
+    except two points. Nine of its thirteen components declare source ward2016, its two OHM records carry
+    season_label Summer and Winter and are mapped to exactly those positions, and its two LAI components
+    agree on lai_type 1. The first point is the phenology: vegetation_growth takes the Helsinki record
+    when records/surfaces/evetr/se-england--ward2016--phenology, from the composite''s own region and
+    source, exists and is used by no archetype at all, and the degree-day thresholds are a tight group
+    in schema/parameter_groups.yml. The second is duplication: this composite and its counterpart carry
+    identical uses blocks, the identical name "Evergreen Tree Ward et al. (2016)", and no parameters of
+    their own, so they deliver identical values under two labels, and the same pairing recurs in the bare-soil,
+    deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
+    and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
+    time.'
+  evidence_revision: sha256:b39eb2d918a4832b0110314813c25b25b07f49efbb563465d7010789d09f3ce6
+verification:
+  attestations: []

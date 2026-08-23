@@ -1,0 +1,119 @@
+provenance_record: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:1c055ce3e5f840d50011c31815bb58825df78da3c113efc986f12a9f96f7e3a0
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: Grass, irrigated matches Table 4a's Irr. veg column.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: Drainage coefficients and a wet threshold are land_cover.grass properties.
+    values:
+      conclusion: contradicted
+      evidence_ids:
+      - jarvi-table-4a
+      note: One of the three agrees and two do not. Table 4a's Irr. veg column gives D0,i 10, which is
+        the stored drain_coef_1, but b 0.013, where the record stores drain_coef_2 as 3. Three is the
+        value the table gives in its Bldg and Pav columns, not for irrigated vegetation. The Irr. veg
+        cell of the Si row is blank, so the stored wet threshold of 1.9 mm is the Grass column's figure
+        rather than one published for irrigated vegetation. Column alignment was verified by character
+        position.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
+        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
+        value rather than deriving it.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is the study location; the drainage values are inherited rather than determined there.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
+        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
+        neighbourhood-scale values, not city-wide ones.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-table-4a
+      note: With one coefficient contradicted and one taken from a different column, how the stored set
+        was produced is open.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: An irrigated grass record separate from the unirrigated one follows the source, which gives
+        Irr. veg its own column.
+      related_records:
+      - records/surfaces/grass/helsinki--jarvi2014--drainage
+  evidence:
+  - id: jarvi-table-4a
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4a, parameters used in SUEWS by surface
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
+        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
+        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
+        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
+        marks Vargo et al. (2013).'
+  - id: jarvi-table-caption
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
+        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: 'The irrigated drainage rate of 10 mm is right. The second coefficient is not: Table
+    4a gives b as 0.013 for irrigated vegetation, and the record stores 3, which is the figure the same
+    row carries for buildings and pavement. The pattern is what a column slip looks like, and it is worth
+    saying that the table''s own Irr. veg pair, D0,i 10 with b 0.013, is the mirror image of the vegetated
+    columns, so a reader repairing this should check the source rather than assume the table is transposed.
+    The wet threshold has a separate problem: the cell the record needs is blank, and 1.9 mm comes from
+    the Grass column, so it is borrowed rather than published for this surface.'
+  evidence_revision: sha256:7d8db46e2e53dc67d6549861838be67d030f4a61d3e55d417cf2b11742a83531
+verification:
+  attestations: []

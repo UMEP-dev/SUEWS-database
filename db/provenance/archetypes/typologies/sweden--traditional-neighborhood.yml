@@ -1,0 +1,127 @@
+provenance_record: archetypes/typologies/sweden--traditional-neighborhood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:4f3fed8fba678cd69748e91d13c635c2839b9c4357e1fa5f03cee4e734a7548c
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood: sha256:f1d978d90a398d73c2afb30ac14aa27c846f79d63416e6938e2f125233c17ef6
+    archetypes/surfaces/paved/sweden--asphalt-mixed-city: sha256:be941d8ae1ea8514ce7629ac3e0c3daa062e394256ab58ecd33bc7ff7f9ed9f5
+    archetypes/typologies/sweden--traditional-stone-house-neighbourhood: sha256:4ead611aa3c47ac1d57475781fb51e45a6ca526bb02a2b05d034cf54c221770d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      note: 'The composite is named ''Traditional neighborhood'' and described as ''Traditional neighborhood
+        (Stone houses)''. The bldgs slot takes archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood,
+        named ''Brick House, Traditional Neighbourhood'', whose construction is records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
+        named ''Traditional Neighbourhood, early 1900s''. The description therefore says stone while the
+        component it selects says brick, and this database keeps the two apart: archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+        exists separately, is named ''Stone Houses, Traditional Neighbourhood'', rests on records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+        and is the bldgs component of archetypes/typologies/sweden--traditional-stone-house-neighbourhood.
+        Either the description names a wall material this composite does not assemble, or the wrong building
+        archetype fills the slot. Nothing in the repository decides which, and the two fixes are not equivalent,
+        so a maintainer must settle it.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: 'The composite''s own target is ''typology'', which is what every entry under archetypes/typologies
+        declares, and each slot takes a component declared for it: the bldgs slot takes an archetype declaring
+        target land_cover.bldgs and the paved slot an archetype declaring target land_cover.paved. Neither
+        component declares attaches_to; in this database that field is carried only by the profile records
+        under db/records/profiles, so slot fit here is judged on the components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        components it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this pairing. The components' own sources belong to their assessments, not to this review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: 'The composite claims place ''sweden'' and both components declare place ''sweden'', so the
+        typology is assembled entirely from Swedish rows. The claim survives a level down as well: the
+        bldgs component''s construction, records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
+        declares place ''gothenburg'', which db/places.yml resolves to country ''sweden''.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: The composite declares representativeness 'regional' and both components declare 'regional',
+        so nothing here stretches a narrower class to cover a country-scale typology. Four of the seven
+        Swedish typologies are assembled this way; the other three (archetypes/typologies/sweden--industrial,
+        archetypes/typologies/sweden--sub-urban and archetypes/typologies/sweden--traditional-stone-house-neighbourhood)
+        reach into Helsinki city surfaces for their paved slot.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: An assembly of two existing surface archetypes into the two slots the typology format defines;
+        the composite produces no value of its own. A typology carries no season and no wet/dry mapping
+        of its own, because those live inside the surface components' ohm blocks, so there is no seasonal
+        mapping to check at this level.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+      - component-surfaces-paved-sweden-asphalt-mixed-city
+      note: 'The assembly is complete: scripts/migrate_to_records.py maps only the legacy Types table''s
+        ''Buildings'' and ''Paved'' columns into a typology''s uses block, and both slots are filled.
+        The bldgs component is used by no other typology. The paved component is the Swedish set''s common
+        surface, shared with archetypes/typologies/sweden--mixed-city-ideal, archetypes/typologies/sweden--modernism
+        and archetypes/typologies/sweden--residential-functionalism, which is reuse rather than duplication.
+        The nearest composite is archetypes/typologies/sweden--traditional-stone-house-neighbourhood,
+        which shares this one''s place ''sweden'', representativeness ''regional'', profile_type ''Residential''
+        and period ''Pre80'' and also describes a traditional neighbourhood, but selects different components
+        in both slots and carries a distinct legacy_id (12251392 against 12240002 here). The two are separate
+        entries whose descriptions overlap more than their contents do, which is the subject of the name
+        finding rather than a duplication.'
+      related_records:
+      - archetypes/typologies/sweden--traditional-stone-house-neighbourhood
+  evidence:
+  - id: component-surfaces-bldgs-sweden-brick-house-traditional-neighbourhood
+    record: archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood
+    role: component
+    note: Fills bldgs. The archetype is named 'Brick House, Traditional Neighbourhood' and declares target
+      land_cover.bldgs, place 'sweden' and representativeness 'regional'. It declares no attaches_to,
+      and its construction slot takes records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s.
+  - id: component-surfaces-paved-sweden-asphalt-mixed-city
+    record: archetypes/surfaces/paved/sweden--asphalt-mixed-city
+    role: component
+    note: Fills paved. The archetype is named 'Asphalt, mixed city' and declares target land_cover.paved,
+      place 'sweden' and representativeness 'regional'. It declares no attaches_to.
+  scientific_note: 'On place and reach this is the cleanest of the Swedish typologies: both components
+    declare place ''sweden'' and representativeness ''regional'', so a Swedish country-scale typology
+    is assembled entirely from Swedish country-scale surfaces, and the paved component is the same one
+    three sibling Swedish typologies use. The problem is what the entry says it assembles. Its description
+    reads ''Traditional neighborhood (Stone houses)'', but the building archetype it selects is named
+    ''Brick House, Traditional Neighbourhood'' and rests on a construction named ''Traditional Neighbourhood,
+    early 1900s''. The database is not indifferent to that distinction: it holds a separate archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+    with its own stone construction, and a separate typology, archetypes/typologies/sweden--traditional-stone-house-neighbourhood,
+    that uses it. So either this composite''s description belongs to that other typology and should be
+    corrected here, or the bldgs slot is filled by the wrong archetype and the two Swedish traditional-neighbourhood
+    entries are crossed. The evidence in the repository does not distinguish those two readings, and they
+    have different consequences for anyone selecting this typology, so a maintainer should settle it.
+    Nothing here turns on a component''s values, which remain subject to their own assessments.'
+  evidence_revision: sha256:503a3bed059b582cd83a16af3ea2917ab29684dc2b389bda32937a06568f4f35
+verification:
+  attestations: []

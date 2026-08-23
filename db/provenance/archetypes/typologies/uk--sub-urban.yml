@@ -1,0 +1,116 @@
+provenance_record: archetypes/typologies/uk--sub-urban
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:e70cfe9e73010624214d00bada6aeed60efbec6f80a5f3355b4670e05e3c192d
+dependency_revisions:
+  sources: {}
+  places:
+    uk: sha256:cf1d940381097ce83ea1b68dba9e06d6fa92a1f97c778bf52f62fda3acb81681
+  records:
+    archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016: sha256:2039a17a1d0ffda50e3cd2a5adcfc986116b35ec882841566a8fb57bc0f09dc4
+    archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016: sha256:66e4bfd8c26d222b3dbddea8505e91872e65174da784d5d1de91fef53ec7d41a
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: The composite is named 'Sub-urban' and described as 'Swindon (sub-urban)'. Both slots take
+        archetypes named 'Suburban residential, Ward et al. (2016)' declaring place 'swindon', so the
+        name and the description are both carried by what is assembled. The composite declares profile_type
+        'Residential', which agrees with the 'residential' in the component names, and period 'Pre80',
+        which nothing in the assembly contradicts.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: 'The composite''s own target is ''typology'', which is what every entry under archetypes/typologies
+        declares, and each slot takes a component declared for it: the bldgs slot takes an archetype declaring
+        target land_cover.bldgs and the paved slot an archetype declaring target land_cover.paved. The
+        two share the slug ''swindon-uk--suburban-residential-ward-et-al-2016'' under different surface
+        families, so the shared name does not put either in the wrong slot. Neither component declares
+        attaches_to; in this database that field is carried only by the profile records under db/records/profiles,
+        so slot fit here is judged on the components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        components it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for taking Swindon as the UK's sub-urban type. The components' own sources belong to their assessments,
+        not to this review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: The composite claims place 'uk', which db/places.yml gives as name 'UK', country 'united-kingdom'
+        and subnational true. Both components declare place 'swindon', which db/places.yml resolves to
+        country 'united-kingdom'. Every part of the typology comes from inside the country it claims.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: 'The composite declares representativeness ''regional'' while both components declare ''city''.
+        Nothing in this assembly carries the class the composite claims: one town''s suburban surfaces
+        are offered as the UK''s sub-urban urban type. A maintainer should decide whether to reclassify
+        the composite or to record that Swindon is the intended stand-in for UK suburbs.'
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: An assembly of two existing surface archetypes into the two slots the typology format defines;
+        the composite produces no value of its own. A typology carries no season and no wet/dry mapping
+        of its own, because those live inside the surface components' ohm blocks, so there is no seasonal
+        mapping to check at this level.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+      - component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+      note: 'The assembly is complete: scripts/migrate_to_records.py maps only the legacy Types table''s
+        ''Buildings'' and ''Paved'' columns into a typology''s uses block, and both slots are filled.
+        Both components come from the same curated Swindon pair and neither is used by any other typology,
+        so the composite is distinguishable from every other entry under archetypes/typologies. It is
+        the only UK typology that is not a central-London entry, and the only one of the three declaring
+        place ''uk'' whose description does not say ''sample data''. The name ''Sub-urban'' is shared
+        with archetypes/typologies/sweden--sub-urban and archetypes/typologies/finland--sub-urban, which
+        declare different places and different components in both slots.'
+  evidence:
+  - id: component-surfaces-bldgs-swindon-uk-suburban-residential-ward-et-al-2016
+    record: archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
+    role: component
+    note: Fills bldgs. The archetype is named 'Suburban residential, Ward et al. (2016)' and declares
+      target land_cover.bldgs, place 'swindon' and representativeness 'city'. It declares no attaches_to.
+  - id: component-surfaces-paved-swindon-uk-suburban-residential-ward-et-al-2016
+    record: archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
+    role: component
+    note: Fills paved. The archetype is named 'Suburban residential, Ward et al. (2016)' and declares
+      target land_cover.paved, place 'swindon' and representativeness 'city'. It declares no attaches_to.
+  scientific_note: 'This is the tidiest typology of the seven reviewed. The bldgs and paved slots take
+    the matched Swindon pair from one curated bundle, both named ''Suburban residential, Ward et al. (2016)'',
+    both declaring place ''swindon'' inside the country the composite claims, and neither is used anywhere
+    else, so name, description, profile type and components all say the same thing and nothing borrows
+    across a border or across an urban form. The one claim the assembly does not support is reach: the
+    composite declares representativeness ''regional'' while both components declare ''city'', so the
+    UK''s sub-urban type rests entirely on one town''s measurements. That may well be intended, since
+    a national typology has to come from somewhere and Swindon is what the database has, but the composite
+    records no such decision, and a country-scale claim resting on a single city is exactly what the representativeness
+    field exists to make visible. A maintainer should either narrow the class or state on the composite
+    that Swindon stands deliberately for UK suburbs. No component value is at issue; those remain subject
+    to their own assessments.'
+  evidence_revision: sha256:4a6df842c3a9cfcbd2d6de5f75404c9ac9e159c026491e3d626603c0da825e3a
+verification:
+  attestations: []

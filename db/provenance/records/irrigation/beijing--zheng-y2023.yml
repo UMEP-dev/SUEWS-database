@@ -1,0 +1,126 @@
+provenance_record: records/irrigation/beijing--zheng-y2023
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a1dfe38b67ba6ce4704d0c3bafea6d0280e3c10a7b6964c6081c831cbf2797f8
+dependency_revisions:
+  sources:
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:00:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The label restates the target. Neither the article nor the archive names the row, and the
+        record claims no published name.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The archived row is a SUEWS_Irrigation entry, which is what the irrigation target holds.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      - zheng-supplement
+      note: SUEWS_SiteSelect.txt gives the Beijing grid IrrigationCode 5, and code 5 of SUEWS_Irrigation.txt
+        carries Ie_start 60, Ie_end 334, InternalWaterUse 0, Faut 0, H_maintain -999, Ie_a1 -19.1853,
+        Ie_a2 2.2195, Ie_a3 0.7836, Ie_m1 -5.7556, Ie_m2 0.6658, Ie_m3 0.2351 and DayWat and DayWatPer
+        of 1 on every day, which is the record exactly. Supplement Table S3 gives the same six coefficients
+        rounded to -19.19, 2.22, 0.78, -5.76, 0.67 and 0.24.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-supplement
+      - zheng-model-archive
+      note: Supplement Table S3 heads the block as overall model parameter values used in model runs in
+        Beijing following Kokkonen et al. (2019), so Zheng et al. apply the six irrigation coefficients
+        rather than deriving them, and the article body contains no irrigation section at all. The dates
+        and day flags, by contrast, are established only by the released Beijing input. One source key
+        currently carries both halves.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/328
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-supplement
+      note: Beijing is where the row was applied. The inherited coefficients are not Beijing determinations,
+        so whether this record should carry Beijing as its place is a curation decision.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/328
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - zheng-domain
+      note: The record claims city representativeness, but Sect. 3 states that the modelled area is a
+        1 km circle around the IAP tower.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/328
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - zheng-supplement
+      - zheng-model-archive
+      note: The row mixes coefficients fitted in earlier work with a schedule that exists only as model
+        configuration, so no single production method describes it.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - zheng-model-archive
+      note: The archive holds codes 4 and 5 with identical contents and the Beijing grid uses code 5;
+        the database holds one record, which is the right count.
+  evidence:
+  - id: zheng-model-archive
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_Irrigation.txt, code 5
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Carries every stored value, including the day-of-year window 60 to 334 and the six Ie coefficients
+        at four decimal places.
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing grid 1 (2015 and 2016)
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
+        Beijing grid, so those rows are the ones the published runs used.
+  - id: zheng-supplement
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, overall model parameter values used in model runs in Beijing
+      page: 2
+      url: https://doi.org/10.5194/gmd-16-4551-2023-supplement
+      note: Publishes b0,a = -19.19 mm, b1,a = 2.22 mm K-1, b2,a = 0.78 mm d-1, b0,m = -5.76 mm, b1,m
+        = 0.67 mm K-1 and b2,m = 0.24 mm d-1, and attributes the whole table to Kokkonen et al. (2019).
+  - id: zheng-domain
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3, Study site and measurements
+      page: 4554
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
+        flux footprint; no city-wide domain is modelled.
+  scientific_note: 'Every stored number is confirmed against the released Beijing model input, so nothing
+    here is unverifiable. The difficulty is that one record carries two different kinds of provenance.
+    The six empirical irrigation coefficients are inherited: the supplement presents them as overall parameters
+    following Kokkonen et al. (2019), rounded, and the article never discusses irrigation. The start and
+    end days, the automatic fraction and the day flags exist only in the released input. Attributing the
+    whole row to Zheng et al. credits them with coefficients they did not derive; attributing it elsewhere
+    loses the schedule. A maintainer needs to decide whether to split the record or to record the two
+    roles separately.'
+  evidence_revision: sha256:a95f0e3a3e9cbc3f07af6bbf0334f1951735564bf3de79864e457b3d3b620dfc
+verification:
+  attestations: []

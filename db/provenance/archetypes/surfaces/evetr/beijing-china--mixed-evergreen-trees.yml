@@ -1,0 +1,219 @@
+provenance_record: archetypes/surfaces/evetr/beijing-china--mixed-evergreen-trees
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:630dbb174d27d75ebba45197c0deea50fc26a740bea044a6fc534143a57584be
+dependency_revisions:
+  sources: {}
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+    records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
+    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:6c9acaecdd482bfe013e3267ce25956987eee2ab96ce8298fb0e045d29ea9944
+    records/surfaces/evetr/beijing--zheng-y2023--max-conductance: sha256:6145a6acf68b5e07dbed85748d776d8c56e986d78e5a4bf1f8feff0dc52bb6b0
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/london--havu-m2024--drainage: sha256:c8823d8ed14278d8fafdc8416a869a221b91826161fa4c575f26e54dcb96f996
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      - component-surfaces-evetr-beijing-zheng-y2023-max-conductance
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      note: 'The composite is named "Mixed Evergreen Trees" and declares place beijing with origin "Beijing,
+        China". What distinguishes it from the other evergreen-tree composites is a group of Beijing rows:
+        leaf_area_index, leaf_growth_power, max_vegetation_conductance and biogen_co2 all take records
+        declaring place beijing, the last three sourced to zheng-y2023, and the biogenic CO2 record is
+        itself named "Mixed trees". The label identifies what the composite assembles.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-beijing-ward2016-lai
+      - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-beijing-zheng-y2023-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: 'The composite declares target land_cover.evetr. Every component declares that same target
+        except two: biogen_co2 takes records/surfaces/common/beijing--zheng-y2023--biogen-co2, declaring
+        target land_cover.common, which docs/FORMAT.md defines as the surface-agnostic class, and the
+        four OHM positions take a record declaring target ohm_coefficients, which is the type that slot
+        takes. leaf_area_index and leaf_growth_power both declare lai.lai_type 0, which satisfies the
+        leaf_area_index coupling rule in schema/parameter_groups.yml, which makes an archetype whose two
+        LAI components carry different lai_type values internally contradictory. All four OHM positions
+        take one record, which carries no season_label, so an undifferentiated season and wet/dry mapping
+        contradicts nothing the component declares.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so every value it delivers is the component's.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this assembly. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      note: 'The drainage slot takes records/surfaces/evetr/london--havu-m2024--drainage, which declares
+        place london and origin "London" while its own name reads "EvergreenTree - Helsinki, Zurich, Beijing"
+        and its source field reads havu-m2024. That record fills the drainage slot in exactly the five
+        evergreen-tree composites placed at the three cities its name lists, so the selection reads as
+        deliberate and the declared place as wrong, but nothing in the repository settles which of the
+        two is in error, and it should be settled once rather than five times. The rest of the borrowing
+        is ordinary and forced: albedo, emissivity and water_storage take se-england rows because the
+        database holds no Beijing radiative or storage record for evergreen trees, records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+        is the only evergreen-tree snow limit in the database, so that borrow is forced, and vegetation_growth
+        takes a Helsinki record because no Beijing phenology record exists.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-beijing-ward2016-lai
+      note: 'The composite declares representativeness city and most components fit it: the Beijing rows
+        are classed city, the SE England rows regional, which is a wider class standing in for a city
+        and the ordinary direction of travel, and the porosity record generic. leaf_area_index is the
+        exception. It takes records/surfaces/evetr/beijing--ward2016--lai, which declares place beijing
+        and representativeness city but is named "Evergreen Tree (sample data)" and is reported by the
+        quality pass in scripts/check_db.py as a suspect name. The Beijing leaf area index therefore rests
+        on a class claim the record''s own name contradicts, and a maintainer has to decide whether that
+        row is the intended Beijing value.'
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-beijing-ward2016-lai
+      - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-beijing-zheng-y2023-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: An assembly of existing records into slots; the composite asserts no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-beijing-ward2016-lai
+      - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-beijing-zheng-y2023-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite fills all eleven named slots and the four OHM positions, which is the slot set
+        every deciduous-tree, evergreen-tree and grass archetype in this database uses, so the assembly
+        is complete. The porosity slot takes records/surfaces/evetr/generic--unreferenced--porosity, whose
+        parameters block is empty and whose origin reads "Porisity only used for Deciduous Tree. This
+        is a Dummy Variable", so that slot contributes no value by design rather than by omission. This
+        is the only evergreen-tree composite declaring place beijing, and no other composite in the class
+        carries the same component set.
+  evidence:
+  - id: component-surfaces-evetr-se-england-ward2016-albedo
+    record: records/surfaces/evetr/se-england--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-emissivity
+    record: records/surfaces/evetr/se-england--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-water-storage
+    record: records/surfaces/evetr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+  - id: component-surfaces-evetr-beijing-ward2016-lai
+    record: records/surfaces/evetr/beijing--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.evetr, place beijing and representativeness
+      city, and is named "Evergreen Tree (sample data)"; its source field reads ward2016.
+  - id: component-surfaces-evetr-beijing-zheng-y2023-lai-power
+    record: records/surfaces/evetr/beijing--zheng-y2023--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place beijing and representativeness
+      city, and is named "Evergreen Tree, LaiEq = 0"; its source field reads zheng-y2023.
+  - id: component-surfaces-evetr-london-havu-m2024-drainage
+    record: records/surfaces/evetr/london--havu-m2024--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
+      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads havu-m2024.
+  - id: component-surfaces-evetr-beijing-zheng-y2023-max-conductance
+    record: records/surfaces/evetr/beijing--zheng-y2023--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.evetr, place beijing
+      and representativeness city, and is named "Evergreen Tree"; its source field reads zheng-y2023.
+  - id: component-surfaces-evetr-generic-unreferenced-porosity
+    record: records/surfaces/evetr/generic--unreferenced--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Dummy value"; its source field reads unreferenced.
+  - id: component-surfaces-common-beijing-zheng-y2023-biogen-co2
+    record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.common, place beijing and representativeness
+      city, and is named "Mixed trees"; its source field reads zheng-y2023.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
+    record: records/surfaces/evetr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record declares
+      target ohm_coefficients and is named "Mixed Forest [20]  McCaughey (1985)"; its source field reads
+      grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
+      representativeness.
+  scientific_note: 'Where Beijing evidence exists this composite uses it: leaf area index, leaf growth
+    power, maximum conductance and biogenic CO2 all come from rows placed at beijing, three of them sourced
+    to zheng-y2023, and the radiative, storage, snow and phenology slots borrow from SE England and Helsinki
+    because the database holds no Beijing rows for them. Two selections need a maintainer rather than
+    an agent. The leaf area index comes from records/surfaces/evetr/beijing--ward2016--lai, a row named
+    "Evergreen Tree (sample data)" that nonetheless supplies the lai_min and lai_max the model will run
+    on, and the drainage comes from records/surfaces/evetr/london--havu-m2024--drainage, whose place field
+    says london while its name says "EvergreenTree - Helsinki, Zurich, Beijing". The drainage record fills
+    that slot in all five of the composites placed at the three cities it names, so its place should be
+    settled once for the class. Everything else in the assembly is coherent: the slot set is complete,
+    the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
+    positions matches a coefficient record that declares no season. This review does not revisit any component''s
+    values.'
+  evidence_revision: sha256:e93605308cb92721a0a64713c2f78d27c23408f6573cfa7c7a079742f509d428
+verification:
+  attestations: []

@@ -1,0 +1,230 @@
+provenance_record: archetypes/surfaces/evetr/tropics--broad-leaf
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:20cf680211cd3f777c2d6f7f7834d358e60dc3a0e96293e0e42b95747b1ccdd9
+dependency_revisions:
+  sources: {}
+  places:
+    tropics: sha256:f7443a4778b8c70ecb4a06d98db62d34463dbb7fcdb8489a6fe5c53bfb65116b
+  records:
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--ward2016--all-vegetation: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+    records/surfaces/common/midwest-usa--schmid2000--biogen-co2: sha256:59ec8dde559dba393bb913b78e1d7e191c7e534e8d4f461c27cb7f3b523a7c89
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/london--jarvi2011--drainage: sha256:26563d2be0d8d4f4324a5fe89df25c8191a9051856bdbf6b0ec774d4f93d0e5a
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+    records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
+    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
+      note: The composite is named "Broad leaf" and declares place tropics with origin "Tropics" and representativeness
+        regional. The label names a leaf form rather than a place or a source, so the tropical claim rests
+        entirely on the place and origin fields; db/places.yml gives tropics a name and nothing else,
+        with no lat, lon, koppen or country field. The label does not misdescribe what is assembled, but
+        it carries none of the composite's identity either, which is why the place and representativeness
+        findings below do the work.
+    target:
+      conclusion: curation_required
+      evidence_ids:
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+      note: 'The composite declares target land_cover.evetr. Every component declares that same target
+        except two: biogen_co2 takes records/surfaces/common/midwest-usa--schmid2000--biogen-co2, declaring
+        target land_cover.common, which docs/FORMAT.md defines as the surface-agnostic class, and the
+        OHM positions take records declaring target ohm_coefficients. leaf_area_index and leaf_growth_power
+        both declare lai.lai_type 1, which satisfies the leaf_area_index coupling rule in schema/parameter_groups.yml,
+        which makes an archetype whose two LAI components carry different lai_type values internally contradictory.
+        The season mapping is mixed and needs a decision. summer_wet and summer_dry take records/ohm/generic--ward2016--all-vegetation,
+        which declares season_label Summer, so those two positions agree with the record''s own declaration;
+        winter_wet and winter_dry take records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985,
+        which carries no season_label at all, so the winter positions take a coefficient set never declared
+        for a season, from a different source, alongside a summer multiplier sourced to ward2016. In a
+        composite whose place is Tropics the summer/winter split is itself questionable, and a maintainer
+        has to settle what the four positions should carry.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so every value it delivers is the component's.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this assembly. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+      - component-surfaces-evetr-london-jarvi2011-drainage
+      - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite declares place tropics, and not one component declares a tropical place. Four
+        declare se-england, one zurich, one london, one midwest-usa, two helsinki, two generic, and the
+        two OHM records declare no place at all. The nearest thing to support for the label is biogen_co2,
+        which takes records/surfaces/common/midwest-usa--schmid2000--biogen-co2, named "Mixed Hardwood
+        Forest"; the snow limit is a Helsinki record and the leaf growth power a Zurich one. Whether a
+        tropical default should exist on this evidence, and if so which rows should fill it, is a maintainer's
+        decision rather than something the entries settle.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+      - component-surfaces-evetr-london-jarvi2011-drainage
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      note: 'The composite declares representativeness regional, the class this database uses for a value
+        offered as typical of a region. Four of its thirteen components are classed city and so stand
+        in for a regional default: records/surfaces/evetr/zurich--stagakis-s2024--lai-power, records/surfaces/evetr/london--jarvi2011--drainage,
+        records/surfaces/evetr/helsinki--jarvi2014--snow-lim and records/surfaces/evetr/helsinki--jarvi2014--phenology.
+        Two more are classed generic and the two OHM records carry no representativeness, which leaves
+        five regional rows to carry the regional claim. The drainage component compounds it: it declares
+        representativeness city while its name reads "EvergreenTree [sample run]", which the quality pass
+        in scripts/check_db.py reports as a suspect name.'
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+      - component-surfaces-evetr-london-jarvi2011-drainage
+      - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: An assembly of existing records into slots; the composite asserts no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+      - component-surfaces-evetr-london-jarvi2011-drainage
+      - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite fills all eleven named slots and the four OHM positions, which is the slot set
+        every deciduous-tree, evergreen-tree and grass archetype in this database uses, so the assembly
+        is complete. The porosity slot takes records/surfaces/evetr/generic--unreferenced--porosity, whose
+        parameters block is empty and whose origin reads "Porisity only used for Deciduous Tree. This
+        is a Dummy Variable", so that slot contributes no value by design rather than by omission. It
+        is the only composite in the class declaring place tropics, and no other composite carries the
+        same component set.
+  evidence:
+  - id: component-surfaces-evetr-se-england-ward2016-albedo
+    record: records/surfaces/evetr/se-england--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-emissivity
+    record: records/surfaces/evetr/se-england--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-water-storage
+    record: records/surfaces/evetr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-lai
+    record: records/surfaces/evetr/se-england--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+  - id: component-surfaces-evetr-zurich-stagakis-s2024-lai-power
+    record: records/surfaces/evetr/zurich--stagakis-s2024--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place zurich and representativeness
+      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads stagakis-s2024.
+  - id: component-surfaces-evetr-london-jarvi2011-drainage
+    record: records/surfaces/evetr/london--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
+      city, and is named "EvergreenTree [sample run]"; its source field reads jarvi2011.
+  - id: component-surfaces-evetr-vancouver-jarvi2011-max-conductance
+    record: records/surfaces/evetr/vancouver--jarvi2011--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.evetr, place generic
+      and representativeness generic, and is named "Evergreen Tree"; its source field reads breuer2003.
+  - id: component-surfaces-evetr-generic-unreferenced-porosity
+    record: records/surfaces/evetr/generic--unreferenced--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Dummy value"; its source field reads unreferenced.
+  - id: component-surfaces-common-midwest-usa-schmid2000-biogen-co2
+    record: records/surfaces/common/midwest-usa--schmid2000--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.common, place midwest-usa and representativeness
+      regional, and is named "Mixed Hardwood Forest"; its source field reads schmid2000.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
+    record: records/surfaces/evetr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-ohm-generic-ward2016-all-vegetation
+    record: records/ohm/generic--ward2016--all-vegetation
+    role: component
+    note: Fills ohm.summer_wet and ohm.summer_dry. The record declares target ohm_coefficients and is
+      named "Code 201 x Mulitplier for summer [2011]"; its source field reads ward2016, it declares season_label
+      Summer and it declares no place or representativeness.
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills ohm.winter_wet and ohm.winter_dry. The record declares target ohm_coefficients and is
+      named "Mixed Forest [20]  McCaughey (1985)"; its source field reads grimmond1991b, it declares method
+      fitted, it carries no season_label and it declares no place or representativeness.
+  scientific_note: 'The assembly is structurally complete and the two LAI components agree on lai_type
+    1, but the composite''s own claims are not supported by what it selects. It declares place tropics
+    and representativeness regional, and every component is a mid-latitude row: SE England for albedo,
+    emissivity, water storage and leaf area index, Zurich for leaf growth power, London for drainage,
+    Helsinki for the snow limit and the phenology, the Midwest of the United States for biogenic CO2,
+    and generic rows for maximum conductance and porosity. Four of those are classed city and stand in
+    for a regional default, which is the substitution the scale test exists to catch, and the London drainage
+    row is named a sample run. The OHM mapping compounds it: the summer positions take a record that declares
+    season_label Summer and the winter positions a record that declares no season at all, in a place where
+    a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
+    value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
+    should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
+  evidence_revision: sha256:125538ed4b6ba161c2825850f60336099ba51eaade76703da3bb46a98133e2bf
+verification:
+  attestations: []

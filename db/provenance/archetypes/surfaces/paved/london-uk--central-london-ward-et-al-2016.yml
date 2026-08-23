@@ -1,0 +1,209 @@
+provenance_record: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
+dependency_revisions:
+  sources: {}
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records:
+    archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016: sha256:66e4bfd8c26d222b3dbddea8505e91872e65174da784d5d1de91fef53ec7d41a
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
+    records/ohm/generic--ward2016--paved: sha256:fccfab58530d5cf876446bd4e7687587a95ecedabf1361fc661e37fed1a4e77c
+    records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:63daa10ccdd4d9e4a7cade85b2aa3e00d9714e0d7a2ec32e94c7a6f6c5e464fd
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/london--ward2016--emissivity: sha256:f0cffcd3bb177b2f0dcb0babd5751c9752e62ffb34c3870bf07594b6ec6de6dc
+    records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
+    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2563e8b2a6c23aafcdff61098a524550e641ff035e9a63700d8990b91096be8
+    records/surfaces/paved/se-england--ward2016--water-storage: sha256:e772c7df24dcf40490aa7f9437326307c5cd01699b2ec780a69851845a56edf6
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T00:43:17Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      note: The composite's name reads 'Central London, Ward et al. (2016)', its place reads london and
+        its origin reads 'London, UK'. The label names both the typology and the study the selection follows,
+        and six of the eight components declare source ward2016, so the label identifies what the entry
+        actually assembles.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      note: 'The composite declares target land_cover.paved. The albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.paved; the construction
+        slot takes a record declaring target construction and the four ohm positions take records declaring
+        target ohm_coefficients, which are the entry types those slots exist for. Surface records carry
+        no attaches_to field, since attaches_to appears in this database only on the profile records under
+        records/profiles/, so the slot check rests on the parameters each component carries: alb into
+        albedo, emis into emissivity, store_min and store_max into water_storage, drain_eq, drain_coef_1,
+        drain_coef_2 and wet_threshold into drainage, snowpack_limit into snow_lim_patch, and a1, a2 and
+        a3 into each ohm position. The water_storage and drainage components both write into storage_drain_params
+        and their keys do not overlap, so neither overrides the other. The two OHM components carry season_label:
+        records/ohm/generic--ward2016--paved declares Summer and fills summer_wet and summer_dry, and
+        records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512 declares Winter and
+        fills winter_wet and winter_dry, so the season mapping follows each record''s own label. Neither
+        carries a wetness label, so a season''s wet and dry positions taking the same record asserts nothing
+        the records deny.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so it overrides no component value; every
+        number in its exported fragment arrives from a component.
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and the repository records no published rationale for
+        this selection. Each component's own source belongs to that component's evidence assessment, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      note: 'The composite declares place london. The emissivity slot takes records/surfaces/paved/london--ward2016--emissivity,
+        place london. The albedo, water_storage and drainage slots take records with place se-england,
+        which db/places.yml records as ''SE England'', subnational: true, country united-kingdom, so they
+        are the region containing the city and applying them to London is a downscaling rather than a
+        substitution. The snow_lim_patch slot takes records/surfaces/paved/helsinki--jarvi2014--snow-lim,
+        place helsinki, which is forced: it is the only paved snow_lim record in the database. The construction
+        record declares place generic and the two OHM records declare no place.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      note: The composite declares representativeness city. The three se-england components declare regional,
+        which is broader than the composite's scale and therefore a downscaling; records/surfaces/paved/london--ward2016--emissivity
+        and records/surfaces/paved/helsinki--jarvi2014--snow-lim declare city; the construction record
+        declares generic; the two OHM records declare no representativeness. No component is classed below
+        city, so nothing narrower stands in for the composite's claim.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      note: An assembly of eight existing records into eleven slot positions; the composite produces no
+        value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-se-england--ward2016--albedo
+      - component-surfaces-paved-london--ward2016--emissivity
+      - component-surfaces-paved-se-england--ward2016--water-storage
+      - component-surfaces-paved-se-england--ward2016--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--ward2016--paved
+      - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+      related_records:
+      - archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
+      note: The composite fills all seven slots the land_cover.paved archetypes use, so the assembly is
+        complete, and it is the only Central London paved typology in the database. It shares seven of
+        its eight components with archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
+        and differs in the emissivity slot, which takes records/surfaces/paved/london--ward2016--emissivity
+        here and records/surfaces/paved/swindon--ward2016--emissivity there, so the two are distinct entries
+        rather than duplicates. records/surfaces/paved/se-england--ward2016--water-state carries state_limit
+        and is referenced by no archetype, but no land_cover.paved archetype anywhere declares a water_state
+        slot, so that is a target-wide design question rather than an omission in this entry.
+  evidence:
+  - id: component-surfaces-paved-se-england--ward2016--albedo
+    record: records/surfaces/paved/se-england--ward2016--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place se-england,
+      representativeness regional and source ward2016, and carries alb.
+  - id: component-surfaces-paved-london--ward2016--emissivity
+    record: records/surfaces/paved/london--ward2016--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target land_cover.paved, name 'Central London',
+      place london, representativeness city and source ward2016, and carries emis.
+  - id: component-surfaces-paved-se-england--ward2016--water-storage
+    record: records/surfaces/paved/se-england--ward2016--water-storage
+    role: component
+    note: Fills the water_storage slot. The record declares target land_cover.paved, name Paved, place
+      se-england, representativeness regional and source ward2016, and carries store_min and store_max
+      under storage_drain_params.
+  - id: component-surfaces-paved-se-england--ward2016--drainage
+    record: records/surfaces/paved/se-england--ward2016--drainage
+    role: component
+    note: Fills the drainage slot. The record declares target land_cover.paved, name Paved, place se-england,
+      representativeness regional and source ward2016, and carries drain_eq, drain_coef_1, drain_coef_2
+      and wet_threshold.
+  - id: component-constructions-generic--lindberg-f2020--placeholder
+    record: records/constructions/generic--lindberg-f2020--placeholder
+    role: component
+    note: Fills the construction slot. The record declares target construction, name Placeholder, place
+      generic, representativeness generic and source lindberg-f2020, and carries roof and wall layer lists
+      with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
+      slot out of the surface fragment, so this reference contributes no exported value.
+  - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
+    record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
+      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
+      snowpack_limit.
+  - id: component-ohm-generic--ward2016--paved
+    record: records/ohm/generic--ward2016--paved
+    role: component
+    note: Fills the ohm summer_wet and summer_dry positions. The record declares target ohm_coefficients,
+      name 'Code 851 x Multiplier for summer [8511]', season_label Summer and source ward2016, carries
+      a1, a2 and a3, and declares no place and no representativeness.
+  - id: component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+    record: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
+    role: component
+    note: Fills the ohm winter_wet and winter_dry positions. The record declares target ohm_coefficients,
+      name 'Code 851 x Multiplier for winter [8512]', season_label Winter and source ward2016, carries
+      a1, a2 and a3, and declares no place and no representativeness.
+  scientific_note: 'This entry does what a study-named composite should. archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
+    declares place london and representativeness city, and six of its eight components declare source
+    ward2016, the study its name cites. Where the study reports a London value the composite takes it,
+    in the emissivity slot; where it reports a value for the wider region the composite takes the se-england
+    row, classed regional, and applies it down to the city, which is the sound direction for a class mismatch.
+    The season mapping is right: the OHM record labelled Summer fills the two summer positions and the
+    one labelled Winter fills the two winter positions, and since neither record carries a wetness label
+    the wet and dry positions within a season taking the same coefficients contradicts nothing. Two slots
+    leave the ward2016 set. snow_lim_patch takes the Helsinki record because it is the only paved snowpack-limit
+    record in the database, and construction takes a record named Placeholder, which changes no exported
+    number because scripts/export_record.py keeps the construction slot out of the surface fragment. Neither
+    is a selection error. The components'' own values, and the ''sample run'' and Placeholder labels some
+    of them carry, remain subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:2d441e011ea36b772fd581a92fa55d9d638b47aae7e53fbbec8dbe88f4f5f12e
+verification:
+  attestations: []

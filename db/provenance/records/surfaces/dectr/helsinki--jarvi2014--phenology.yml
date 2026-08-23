@@ -1,0 +1,114 @@
+provenance_record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: Deciduous Tree matches the record's land_cover.dectr target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: Growing and senescence degree-day thresholds are land_cover.dectr phenology properties.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: 'All four are in Table 4b exactly: TBaseGDD 5 degC, TBaseSDD 10 degC, GDD 300 and SDD -450.
+        Table 4b is headed overall area parameter values, so it gives one set for the whole area rather
+        than per vegetation type, which is why the three vegetation records here are identical.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
+        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
+        value rather than deriving it.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is where the study ran; these thresholds are carried forward from earlier work rather
+        than determined there.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
+        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
+        neighbourhood-scale values, not city-wide ones.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: Inherited from an earlier publication, so the production method is not this study's.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: The three vegetation phenology records hold the same four thresholds because Table 4b publishes
+        one area-wide set, not three.
+      related_records:
+      - records/surfaces/evetr/helsinki--jarvi2014--phenology
+      - records/surfaces/grass/helsinki--jarvi2014--phenology
+  evidence:
+  - id: jarvi-table-4b
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4b, overall area parameter values
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
+        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
+        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
+        area.
+  - id: jarvi-table-caption
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
+        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: 'The four thresholds are in Table 4b verbatim and the triplication across deciduous,
+    evergreen and grass is what the source prescribes: Table 4b gives one area-wide set rather than a
+    set per vegetation type. What the record overstates is provenance. The caption makes these inherited
+    values, so citing this paper credits it with thresholds it carried forward, and Helsinki city representativeness
+    does not follow from a study whose footprints are 1 km circles.'
+  evidence_revision: sha256:9984a68d12ade5f5d3e2a2daada4e49db15b048cb5ff6fdde335919f766c29f2
+verification:
+  attestations: []

@@ -1,0 +1,109 @@
+provenance_record: records/snow/helsinki--jarvi2014--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: The record is named Snow (sample data). Nothing in the article describes this value as sample
+        data, and a name that marks a value as a test fixture while the database serves it as evidence
+        is a curation problem in its own right, the more so because this is the only snow emissivity record
+        in the database.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: A snow emissivity is a snow property.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: Table 4b gives epsilon_s 0.99, which is the stored value.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
+        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
+        value rather than deriving it.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is the study location; an unfootnoted Table 4 value is not a Helsinki determination.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
+        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
+        neighbourhood-scale values, not city-wide ones.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: An inherited literature value; the method is not this study's.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: This is the only snow emissivity record in the database, so every snow composite depends on
+        it, and it is named as sample data. That combination needs a decision.
+  evidence:
+  - id: jarvi-table-4b
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4b, overall area parameter values
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
+        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
+        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
+        area.
+  - id: jarvi-table-caption
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
+        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: 'The value is exactly what Table 4b publishes. The difficulty is the name: this record
+    calls itself sample data, nothing in the article supports that description, and it is the only snow
+    emissivity the database has, so every snow composite rests on a row labelled as a test artefact. Either
+    the label is wrong and should go, or it is right and the record should not be serving composites.
+    That is a maintainer''s call, not an audit''s.'
+  evidence_revision: sha256:db8dbe85ece78857f5e66b3a8a279b45f170eacc76daab03e0589c6e5ec2a06c
+verification:
+  attestations: []

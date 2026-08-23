@@ -1,0 +1,179 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--industry
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:96660a6fa8f14dd6569f8444fb2f18ed7d467c93f97cd1320c43d24685ca1bfb
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood: sha256:f1d978d90a398d73c2afb30ac14aa27c846f79d63416e6938e2f125233c17ef6
+    archetypes/surfaces/bldgs/sweden--concrete-million-program: sha256:68d7b5429fd8741c01b624bba6fd8e12d4c0dc061ec96d7cccee397dfb4cb7d6
+    archetypes/surfaces/bldgs/sweden--detached-houses-wood: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
+    archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
+    archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
+    archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
+    records/constructions/sweden--unreferenced--industrial: sha256:1f1f229ed5f3aebc8ac5602c8640030c414c92faa9c070d3070013efed705701
+    records/ohm/generic--jarvi2014--buildings: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+    records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:3192a50d224ef0dd9060543e3f2ce0f58e4008e3705075f757d4c72b15d4ed65
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-sweden-unreferenced-industrial
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo
+      note: The composite is named Industry. The construction it selects, records/constructions/sweden--unreferenced--industrial,
+        is named Industrial and declares place sweden, and the albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo,
+        named 'Industry, dark roofs'. Both slots that carry the typology's identity name the same building
+        class the composite does.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-unreferenced-industrial
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-jarvi2014-buildings
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-unreferenced-industrial
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-jarvi2014-buildings
+      note: The composite claims place sweden. The construction declares place sweden and the albedo declares
+        place gothenburg. Emissivity, water storage, drainage and the snow limit all take records declaring
+        place helsinki, which db/places.yml resolves to country finland, and the four ohm positions take
+        records/ohm/generic--jarvi2014--buildings, which declares no place at all. The database holds
+        no Swedish record for any of those quantities, so the Helsinki substitution is forced rather than
+        careless, but neither it nor the placeless coefficient row is justified anywhere in the composite,
+        and only a maintainer can settle whether both are intended.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-unreferenced-industrial
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-jarvi2014-buildings
+      note: The composite declares representativeness regional. The construction is the only component
+        of that class. Emissivity, water storage, drainage, the snow limit and the albedo all declare
+        representativeness city, and records/ohm/generic--jarvi2014--buildings declares no representativeness
+        at all while naming itself 'Original roof average (inlcudes two not recommended - Meyn 2001 and
+        old Meyn 2001 coefficients) [799] [sample run]'. A country-scale default therefore rests on five
+        city rows and one row whose reach is undeclared and which flags itself as a sample run.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-jarvi2014-buildings
+      note: An assembly of existing records into slots; the composite produces no value of its own. records/ohm/generic--jarvi2014--buildings
+        fills all four ohm positions, so the composite draws no summer/winter and no wet/dry distinction,
+        and that record declares no season_label of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-jarvi2014-buildings
+      note: 'All seven slots are filled and no second Swedish industry composite exists. The ohm slot
+        is where this composite parts company with its siblings: archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood,
+        archetypes/surfaces/bldgs/sweden--concrete-million-program, archetypes/surfaces/bldgs/sweden--detached-houses-wood,
+        archetypes/surfaces/bldgs/sweden--mixed-city, archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+        and archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood all take records/ohm/helsinki--jarvi2014--buildings
+        in the same four positions, while this one takes records/ohm/generic--jarvi2014--buildings. The
+        two are distinct records and nothing in the composite explains the divergence; it is recorded
+        here as a fact rather than read as an error.'
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood
+      - archetypes/surfaces/bldgs/sweden--concrete-million-program
+      - archetypes/surfaces/bldgs/sweden--detached-houses-wood
+      - archetypes/surfaces/bldgs/sweden--mixed-city
+      - archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+      - archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+  evidence:
+  - id: component-surfaces-bldgs-gothenburg-oke1987-albedo
+    record: records/surfaces/bldgs/gothenburg--oke1987--albedo
+    role: component
+    note: Fills albedo. The record is named 'Industry, dark roofs', declares target land_cover.bldgs,
+      place gothenburg and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-constructions-sweden-unreferenced-industrial
+    record: records/constructions/sweden--unreferenced--industrial
+    role: component
+    note: Fills construction. The record is named Industrial, declares target construction, place sweden
+      and representativeness regional.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-generic-jarvi2014-buildings
+    record: records/ohm/generic--jarvi2014--buildings
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
+      'Original roof average (inlcudes two not recommended - Meyn 2001 and old Meyn 2001 coefficients)
+      [799] [sample run]', declares target ohm_coefficients, and declares no place, no representativeness
+      and no season_label.
+  scientific_note: 'The two slots that make this an industrial typology are well chosen and Swedish: the
+    construction is records/constructions/sweden--unreferenced--industrial, place sweden, and the albedo
+    is a Gothenburg row named ''Industry, dark roofs''. The remaining surface properties come from Helsinki,
+    which the record set forces, since the database holds no Swedish emissivity, water storage, drainage
+    or snow limit record for buildings. What deserves a maintainer''s attention is the coefficient slot.
+    All four ohm positions take records/ohm/generic--jarvi2014--buildings, a record that declares neither
+    place nor representativeness and whose own name ends ''[799] [sample run]'', where every other Swedish
+    building composite takes records/ohm/helsinki--jarvi2014--buildings. A country-scale default resting
+    on a self-declared sample run, and diverging from its siblings for no recorded reason, is a curation
+    decision rather than something this review can settle. The same is true of the composite''s declared
+    regional reach, which no component except the construction supports. Neither question requires a component
+    value to change; both live in the composite.'
+  evidence_revision: sha256:d0e9ce493b34f892d52623ef55da2f33a308914e6d0868a4618f2095017ec82e
+verification:
+  attestations: []

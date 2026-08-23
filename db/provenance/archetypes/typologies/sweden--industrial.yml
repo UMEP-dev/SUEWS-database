@@ -1,0 +1,128 @@
+provenance_record: archetypes/typologies/sweden--industrial
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:9a631ecc5a5e7467d7ac4e90e982208b7c493b7a1f2bd91469bbf6ce468bc64c
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--industry: sha256:96660a6fa8f14dd6569f8444fb2f18ed7d467c93f97cd1320c43d24685ca1bfb
+    archetypes/surfaces/paved/helsinki--kumpula: sha256:9da1346d28ae822bf40091a56cb17317f84d050b281d4d5937600adecfca454f
+    archetypes/surfaces/paved/sweden--asphalt-mixed-city: sha256:be941d8ae1ea8514ce7629ac3e0c3daa062e394256ab58ecd33bc7ff7f9ed9f5
+    archetypes/typologies/finland--sub-urban: sha256:4fbb216deed54b6f4d6e08104a4ac216b1777af4f0c2d2e99d35f630bca05839
+    archetypes/typologies/sweden--sub-urban: sha256:daee55cad6edbcd1155001fb115f37cdf34c3795d4496d38dcd9251826885ac0
+    archetypes/typologies/sweden--traditional-stone-house-neighbourhood: sha256:4ead611aa3c47ac1d57475781fb51e45a6ca526bb02a2b05d034cf54c221770d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-surfaces-bldgs-sweden-industry
+      - component-surfaces-paved-helsinki-kumpula
+      note: The composite is named Industrial, described 'Extensive low warehouse type buildings' and
+        carries profile_type 'Industrial'. The building component is named Industry and declares place
+        sweden, so the label describes the building side of the assembly. The paved component is named
+        Kumpula, the Helsinki neighbourhood that archetypes/typologies/finland--sub-urban describes as
+        sub-urban and mixed, and it describes no industrial surface; that mismatch is a selection question
+        and is taken up under place and representativeness rather than here.
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s own target is typology, and each slot takes a component declared for it:
+        the bldgs slot takes an archetype declaring target land_cover.bldgs and the paved slot an archetype
+        declaring target land_cover.paved. No archetype in this database declares attaches_to, which is
+        carried only by the 477 records under records/profiles, so slot fit here is judged on the components''
+        declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        archetypes it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing a Swedish building archetype with a Finnish paved one. The components' own selections
+        belong to their composition assessments, not to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: 'The composite claims place sweden. The building component declares place sweden and fits.
+        The paved component, archetypes/surfaces/paved/helsinki--kumpula, declares place helsinki, which
+        db/places.yml resolves to country finland, so half of this Swedish typology is Finnish. Leaving
+        Sweden was not forced: archetypes/surfaces/paved/sweden--asphalt-mixed-city declares place sweden
+        and representativeness regional, and four other Swedish typologies select it. Nor was a thematically
+        exact choice available: none of the seven entries under archetypes/surfaces/paved describes an
+        industrial or warehouse surface. A maintainer therefore has a real choice to record, between a
+        generic Swedish asphalt archetype and the Helsinki neighbourhood archetype now in place. The same
+        substitution recurs in the Swedish set: archetypes/typologies/sweden--sub-urban also takes archetypes/surfaces/paved/helsinki--kumpula
+        and archetypes/typologies/sweden--traditional-stone-house-neighbourhood takes archetypes/surfaces/paved/helsinki--city-centre,
+        so it should be settled across those entries together.'
+      related_records:
+      - archetypes/surfaces/paved/sweden--asphalt-mixed-city
+      - archetypes/typologies/sweden--sub-urban
+      - archetypes/typologies/sweden--traditional-stone-house-neighbourhood
+    representativeness:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: 'The composite declares representativeness regional. The building component declares regional
+        and matches. The paved component declares city, so a single city''s paved archetype stands in
+        a slot of a composite claiming national reach, and here the narrower class is avoidable: archetypes/surfaces/paved/sweden--asphalt-mixed-city
+        is classed regional and is already used by four Swedish typologies. This is the same decision
+        as the place finding and should be settled with it.'
+      related_records:
+      - archetypes/surfaces/paved/sweden--asphalt-mixed-city
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of two existing archetypes into two slots; the composite produces no value of
+        its own. A typology carries no seasonal or wet/dry axis, because the four OHM positions live inside
+        the surface archetypes, so the only mapping made here is one archetype per slot and each slot
+        receives exactly one.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'A typology has two component slots and no others: the migration maps the legacy Types table''s
+        Buildings and Paved columns into bldgs and paved and nothing else (scripts/migrate_to_records.py),
+        and all fourteen entries under archetypes/typologies fill exactly those two. This composite fills
+        both, so the assembly is complete. Its pair of components is unique: archetypes/surfaces/bldgs/sweden--industry
+        is selected by no other typology, and no other entry pairs it with archetypes/surfaces/paved/helsinki--kumpula,
+        which is otherwise taken by archetypes/typologies/finland--sub-urban and archetypes/typologies/sweden--sub-urban.
+        It is the only industrial typology in the database, so nothing duplicates it.'
+      related_records:
+      - archetypes/typologies/finland--sub-urban
+      - archetypes/typologies/sweden--sub-urban
+  evidence:
+  - id: component-surfaces-bldgs-sweden-industry
+    record: archetypes/surfaces/bldgs/sweden--industry
+    role: component
+    note: Fills bldgs. The archetype is named Industry, declares target land_cover.bldgs, place sweden
+      and representativeness regional.
+  - id: component-surfaces-paved-helsinki-kumpula
+    record: archetypes/surfaces/paved/helsinki--kumpula
+    role: component
+    note: Fills paved. The archetype is named Kumpula, declares target land_cover.paved, place helsinki
+      and representativeness city.
+  scientific_note: 'Sweden''s industrial typology is half Swedish. Its building side is archetypes/surfaces/bldgs/sweden--industry,
+    place sweden and representativeness regional, which is what a Swedish national typology should select
+    and is the only industrial building archetype the database holds. Its paved side is archetypes/surfaces/paved/helsinki--kumpula,
+    place helsinki and representativeness city: the paved set of a Finnish neighbourhood standing in a
+    composite that claims Sweden and claims regional reach. That choice was not forced by scarcity. archetypes/surfaces/paved/sweden--asphalt-mixed-city
+    is Swedish, classed regional, and already carries four other Swedish typologies. What was genuinely
+    unavailable is an industrial paved surface, since none of the seven paved archetypes describes one,
+    so whoever assembled this entry had to substitute something and left no record of why the substitution
+    went to Helsinki rather than to the Swedish row. A maintainer can settle that without touching a single
+    value, and should settle it alongside archetypes/typologies/sweden--sub-urban and archetypes/typologies/sweden--traditional-stone-house-neighbourhood,
+    which import Finnish paved archetypes in the same way. Everything else holds: both slots are filled,
+    each takes a component declaring the target that slot needs, and the pair appears in no other entry.
+    The components'' own compositions and values remain subject to their own assessments; this review
+    does not revisit them.'
+  evidence_revision: sha256:901146bd5d1c5e225a1039c2d9fe7ec79b4bbc07efce4a372d5eb095b61581ad
+verification:
+  attestations: []

@@ -1,0 +1,123 @@
+provenance_record: records/anthropogenic/helsinki--jarvi2014
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:0d31f8121048deff7ec923d9814c5718c950921bdb1806de20197b10abedcd36
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:5bbbf7c05e6c4a8eb09a20308c3e4a04c1442c9809c5ec1e186ddf4f7b742710
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: The record is named Unclear one, which identifies nothing and reads as migration residue rather
+        than a description.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: The stored fields are anthropogenic heat and CO2 model parameters, which is the anthropogenic_emissions
+        target.
+    values:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: 'Three heat coefficients are traceable and the rest are not. Table 4b gives a0 as 0.1, which
+        is the stored qf_a, and a2 as 0.0102, which is qf_c. The stored qf_b of 0.0099 corresponds to
+        a1 as 9.9 x 10^-3, whereas the table prints 9.9 x 10^3; the printed exponent is inconsistent with
+        the neighbouring coefficients and with the stated unit, so this looks like a typesetting error
+        in the article, but the audit records the discrepancy rather than assuming it away. The legacy
+        base temperature of 18.2 degC matches TBaseQF. Nothing in the article publishes ah_min 15, the
+        heating and cooling slopes of 2.7, the base temperatures of 7, or any of the CO2 block: the metabolic
+        rates, the fossil-fuel fractions, the vehicle energy factor of 3970000 J km-1 or the emission
+        factor of 0.29 kg km-1.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: For the three traceable coefficients the Table 4 caption makes this a compiler rather than
+        a source. For everything else it is not a source in any sense, since the values are absent.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is a study site, but the published coefficients are inherited and the remainder are
+        unlocated.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
+        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
+        neighbourhood-scale values, not city-wide ones.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: Part inherited regression coefficients, part unlocated inventory factors, so no single production
+        method describes the record.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: A second record, Unclear two, carries a different set under the same citation and place. Which
+        site each belongs to is not recorded, and Table 4b publishes only one area-wide set.
+      related_records:
+      - records/anthropogenic/helsinki--jarvi2014--unclear-two
+  evidence:
+  - id: jarvi-table-4b
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4b, overall area parameter values
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
+        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
+        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
+        area.
+  - id: jarvi-table-caption
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
+        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: 'Three of the heat coefficients can be pointed to in Table 4b, and one of those three
+    raises a question about the article rather than the record: the table prints a1 as 9.9 x 10^3 where
+    the stored 0.0099 corresponds to 9.9 x 10^-3. Given a0 of 0.1 and a2 of 0.0102 beside it, the printed
+    exponent is almost certainly a typesetting slip, but this audit will not silently correct a published
+    figure, so the discrepancy is recorded. The larger problem is the rest of the record. The anthropogenic
+    heat minima and slopes and the whole CO2 block are not in this article, and a record named Unclear
+    one, paired with another named Unclear two under the same citation and place, cannot say which of
+    the study''s five sites it describes.'
+  evidence_revision: sha256:3f42fa179e060b6a0647c6d7991444d4e60147b29c62f8ade2fac6c3e2dab51f
+verification:
+  attestations: []

@@ -1,0 +1,121 @@
+provenance_record: archetypes/typologies/china--cbd
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:c532dac2a6e13cabd974294145a91edbe66be82019a1295155da8aaee752fed9
+dependency_revisions:
+  sources: {}
+  places:
+    china: sha256:6152650c492761841dde62f843c84e4dd83016b582a2e96fcf8b0e3a47e0265d
+  records:
+    archetypes/surfaces/bldgs/beijing--city-centre: sha256:f82020c4d1d9277e287e36617a6eab2582f8cba19d6d037d2cba004530052978
+    archetypes/surfaces/paved/beijing--city-centre: sha256:93698df964bdb43e4e592980da8979cfaee0793da142f11154e1cfc0a6f3126a
+    archetypes/typologies/finland--cbd: sha256:d24d3aeb8ad889d4a3f5a8d063bda9cab7a50ac4d1033b0f8109228f3b6c384d
+    archetypes/typologies/switzerland--cbd: sha256:ea5dabe495b74f1dd2a89c1cbd5c4041b7bb4beb481a579bbb85a6baa35027ad
+    archetypes/typologies/uk--cbd-sample-run: sha256:def583aae58bc8fd41282a592f31587f93c4bd74578757b68af72f5f75c77594
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-surfaces-bldgs-beijing-city-centre
+      - component-surfaces-paved-beijing-city-centre
+      note: 'The composite is named CBD and described ''Central Beijing'', and both components are the
+        Beijing archetypes named ''City centre '' carrying place beijing, so the label identifies what
+        is assembled. One envelope field does not fit that reading: profile_type reads ''Residential''
+        on an entry named ''CBD''. In the legacy Types table profile_type is descriptive metadata migrated
+        verbatim, it selects no component and sits outside the uses block, so it changes nothing this
+        review covers, but the two strings do not describe the same district and the field is worth settling
+        when the typology metadata is next revisited.'
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s own target is typology, and each slot takes a component declared for it:
+        the bldgs slot takes an archetype declaring target land_cover.bldgs and the paved slot an archetype
+        declaring target land_cover.paved. No archetype in this database declares attaches_to, which is
+        carried only by the 477 records under records/profiles, so slot fit here is judged on the components''
+        declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        archetypes it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing these two archetypes. The components' own selections belong to their composition assessments,
+        not to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite claims place china, and both components declare place beijing, which db/places.yml
+        resolves to country china. Nothing is imported from outside the country the composite claims.
+        The national typology does rest on one city: archetypes/surfaces/bldgs/beijing--city-centre and
+        archetypes/surfaces/paved/beijing--city-centre are the only building and paved archetypes in the
+        database carrying a Chinese place, the remaining Chinese entries under archetypes/surfaces being
+        vegetation sets for which a typology has no slot, so no broader Chinese assembly was available
+        to select.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: 'The composite declares representativeness regional while both components declare city, so
+        one city''s archetypes stand for a national typology. The substitution was not avoidable, because
+        the database holds no Chinese building or paved archetype classed regional, but the reach the
+        composite claims is its own: either this is a Beijing typology and should say so, or Beijing is
+        accepted as the Chinese exemplar and that decision is recorded. Every typology whose components
+        come from a named city carries the same city-under-regional pattern, so a maintainer should settle
+        it once across the typology set rather than entry by entry.'
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of two existing archetypes into two slots; the composite produces no value of
+        its own. A typology carries no seasonal or wet/dry axis, because the four OHM positions live inside
+        the surface archetypes, so the only mapping made here is one archetype per slot and each slot
+        receives exactly one.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'A typology has two component slots and no others: the migration maps the legacy Types table''s
+        Buildings and Paved columns into bldgs and paved and nothing else (scripts/migrate_to_records.py),
+        and all fourteen entries under archetypes/typologies fill exactly those two. This composite fills
+        both, so the assembly is complete. Its pair of components is unique: no other entry under archetypes/typologies
+        selects archetypes/surfaces/bldgs/beijing--city-centre or archetypes/surfaces/paved/beijing--city-centre.
+        The name CBD alone does not identify the entry, since archetypes/typologies/finland--cbd, archetypes/typologies/switzerland--cbd
+        and archetypes/typologies/uk--cbd-sample-run carry it too; the path, the place and the selected
+        components separate them.'
+      related_records:
+      - archetypes/typologies/finland--cbd
+      - archetypes/typologies/switzerland--cbd
+      - archetypes/typologies/uk--cbd-sample-run
+  evidence:
+  - id: component-surfaces-bldgs-beijing-city-centre
+    record: archetypes/surfaces/bldgs/beijing--city-centre
+    role: component
+    note: Fills bldgs. The archetype is named 'City centre ', declares target land_cover.bldgs, place
+      beijing and representativeness city.
+  - id: component-surfaces-paved-beijing-city-centre
+    record: archetypes/surfaces/paved/beijing--city-centre
+    role: component
+    note: Fills paved. The archetype is named 'City centre ', declares target land_cover.paved, place
+      beijing and representativeness city.
+  scientific_note: 'China''s CBD typology is assembled from the two Beijing city-centre archetypes and
+    from nothing else, which is the right instinct: the components sit inside the country the composite
+    claims, they are the only Chinese building and paved archetypes the database holds, they carry the
+    targets their slots need, and both of the two slots a typology has are filled. What the composite
+    adds on its own account is reach. It declares representativeness regional while both components declare
+    city, so Beijing stands for China. No alternative existed at the time of assembly, so this is not
+    a selection error; it is an unrecorded decision about how far one city may travel, and it recurs wherever
+    a typology draws on a named city. A maintainer should settle it once for the typology set: relabel
+    these entries to the class of their components, or state that the city named in the description is
+    the accepted national exemplar. Separately, the entry''s legacy profile_type field reads ''Residential''
+    on an entry named ''CBD''; it drives no selection here, but it does not describe the same district.
+    The components'' own compositions and values remain subject to their own assessments; this review
+    does not revisit them.'
+  evidence_revision: sha256:5633fd64e7badefa4e48398169e7af5c8936ae9a6c8a3f5803155be3669dd77a
+verification:
+  attestations: []
