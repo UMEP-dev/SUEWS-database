@@ -10,7 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
-    records/snow/helsinki--jarvi2014--albedo: sha256:97a3dcd81fb00bb7ccb0f5967af2f61273cdf678fdd887df93881e7648bd7a8e
+    records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
     records/snow/se-england--ward2016--albedo: sha256:983db6c590ff1f2e1ac61b3c6c10b27012ab8aab8393f39c1fffb4442e6e2f23
 assessment:
@@ -61,14 +61,15 @@ assessment:
       - component-snow-helsinki-jarvi2014-emissivity
       related_records:
       - records/snow/se-england--ward2016--albedo
-      note: The composite declares place se-england; both components declare place helsinki, so an SE
-        England snow set publishes two Helsinki values. The database holds records/snow/se-england--ward2016--albedo,
+      note: The composite declares place se-england. Its albedo component declares montreal-suburban and
+        its emissivity component declares helsinki, so an SE England snow set publishes values from a
+        Montreal site and Helsinki. The database holds records/snow/se-england--ward2016--albedo,
         which declares place se-england, representativeness regional and source ward2016, the composite's
         own three fields, carries snow_albedo_min and snow_albedo_max, and is referenced by no archetype;
         it would fill the albedo slot. There is no SE England snow emissivity record, and records/snow/helsinki--jarvi2014--emissivity
         is the only snow emissivity record in the database, so the emissivity slot has no local alternative
-        and re-pointing the albedo slot alone would leave the composite half Helsinki. A maintainer has
-        to decide whether the Helsinki rows are a deliberate stand-in or a mis-selection.
+        and re-pointing the albedo slot alone would still leave the composite partly non-local. A maintainer
+        has to decide whether the two transplants are deliberate stand-ins or a mis-selection.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -76,11 +77,11 @@ assessment:
       - component-snow-helsinki-jarvi2014-emissivity
       related_records:
       - records/snow/se-england--ward2016--albedo
-      note: The composite declares representativeness regional and both components declare city, so two
-        city rows stand in for a regional default. The unused records/snow/se-england--ward2016--albedo
-        is classed regional, so for the albedo slot the class gap and the place gap would close together,
-        while the emissivity slot has no regional snow record to take. This rides on the decision recorded
-        under place rather than being a separate defect.
+      note: The composite declares representativeness regional. The albedo component declares site and
+        the emissivity component declares city, so both stand in below the composite's scale. The unused
+        records/snow/se-england--ward2016--albedo is classed regional, so for the albedo slot the class
+        gap and the place gap would close together, while the emissivity slot has no regional snow record
+        to take. This rides on the decision recorded under place rather than being a separate defect.
     method:
       conclusion: supported
       evidence_ids:
@@ -109,8 +110,9 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-albedo
     record: records/snow/helsinki--jarvi2014--albedo
     role: component
-    note: Fills the albedo slot. The record declares target snow, name Snow, place helsinki, representativeness
-      city and source jarvi2014, and carries snow_albedo_min and snow_albedo_max.
+    note: Fills the albedo slot. The record declares target snow, name Snow, place montreal-suburban,
+      representativeness site and source jarvi2014, and carries snow_albedo_min and snow_albedo_max. Its
+      stable path and origin retain legacy Helsinki migration text.
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
@@ -120,9 +122,10 @@ assessment:
     snow_albedo_min and snow_albedo_max, the emissivity slot the record carrying narp_emissivity_snow,
     and both components declare target snow. The selection does not match what the composite claims about
     itself. archetypes/snow/se-england--not-used declares place se-england, representativeness regional
-    and source ward2016, and then takes both components from records declaring place helsinki, representativeness
-    city and source jarvi2014. The assembled fragment shows the split plainly: snow_albedo_min 0.18, snow_albedo_max
-    0.85 and narp_emissivity_snow 0.99 arrive under ID jarvi2014 described as helsinki, city, while the
+    and source ward2016, then takes a site-classed albedo component from Montreal and a city-classed emissivity
+    component from Helsinki, both sourced to jarvi2014. The assembled fragment shows the split plainly:
+    snow_albedo_min 0.18 and snow_albedo_max 0.85 arrive under ID jarvi2014 described as montreal-suburban,
+    site, narp_emissivity_snow 0.99 arrives under the same ID described as helsinki, city, while the
     eleven scalars the composite asserts arrive under ID ward2016 described as se-england, regional. Two
     readings fit and the files do not decide between them. The first is that the arrangement is deliberate:
     the composite is named Not used, and records/snow/se-england--ward2016--albedo, which matches the
@@ -131,7 +134,7 @@ assessment:
     was pointed at the wrong record, since that SE England record exists, agrees with the composite on
     all three fields and is referenced by no archetype at all. The choice is not free either way: no SE
     England snow emissivity record exists, so re-pointing the albedo slot alone would leave a regional
-    composite drawing half its values from Helsinki. A maintainer should settle both slots in one decision.'
-  evidence_revision: sha256:08ed18f5ff4a93441eda30691df9f0311bfeaf6a703f6a88e24519115458dc36
+    composite drawing its emissivity from Helsinki. A maintainer should settle both slots in one decision.'
+  evidence_revision: sha256:1ab683fe38b2cdaab173547fcd06543da5eb920f5cfb6b115c62deaf585b84ee
 verification:
   attestations: []

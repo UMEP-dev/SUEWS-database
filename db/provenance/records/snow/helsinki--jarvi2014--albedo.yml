@@ -1,12 +1,12 @@
 provenance_record: records/snow/helsinki--jarvi2014--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:97a3dcd81fb00bb7ccb0f5967af2f61273cdf678fdd887df93881e7648bd7a8e
+record_revision: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    montreal-suburban: sha256:b10fe91ea2fb9cde2b197a0f807398c66c48abd4ead58d6314cb73eae75078c8
   records: {}
 assessment:
   status: curation_required
@@ -41,19 +41,22 @@ assessment:
       note: The article determines these values itself and says so, contrasting them with Lemonsu et al.
         (2010), so it is the parameter publication.
     place:
-      conclusion: correction_required
-      evidence_ids:
-      - jarvi-snow
-      note: The record's place is Helsinki. Figure 4 shows the snow albedo observations behind these values
-        are from the suburban site in Montreal, January 2008 to April 2009. Helsinki is where the values
-        were then applied.
-    representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - jarvi-snow
       - jarvi-sites
-      note: City representativeness for Helsinki does not follow from a determination made at one suburban
-        site in Montreal.
+      note: The record declares montreal-suburban. Section 2.2.2 identifies Pr as the suburban Montreal
+        site in the Pierrefonds–Roxboro borough, Table 1 locates it at 45.501 N, 73.811 W, and Figure 4
+        shows that its snow observations determine these values. The stable path and origin retain the
+        legacy Helsinki migration text; Helsinki is where the values were later checked and applied.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-snow
+      - jarvi-sites
+      note: Site representativeness matches a determination from observations at the single Pr suburban
+        site. The four locations in Figure 4 are surface types measured within that site, not four cities
+        or a city-wide sample.
     method:
       conclusion: curation_required
       evidence_ids:
@@ -97,15 +100,16 @@ assessment:
       label: Table 1, characteristics of the observational sites
       page: 1696
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
+      note: Table 1 locates the suburban Montreal site Pr at 45.501 N, 73.811 W. Section 2.2.2 identifies
+        it as a single-family residential area in the Pierrefonds–Roxboro borough, and Section 2.3 says
+        its snow density and albedo observations were used for model development.
   scientific_note: Both values are the article's own, which is unusual in this group, and the text is
     explicit that they were set from observations and differ from the earlier Lemonsu ageing function.
-    The problem is geography. The observations in Figure 4 are from the suburban site in Montreal over
-    one winter, and the record presents the result as Helsinki city evidence. The values are sound; the
-    label on them is not.
-  evidence_revision: sha256:21dadf43f054e67529dedf8bfcb94f18f37dbaf40f98b8985318bbddb1edb745
+    Figure 4 and Sections 2.2.2–3.1 locate those observations at the Pr suburban site in Montreal, so
+    the record now declares that site and site-scale representativeness. Its stable path and origin remain
+    legacy migration identifiers rather than claims about where the parameters were determined. The only
+    unresolved question is whether a value set from observations by comparison with an existing ageing
+    function should be classed measured or fitted.
+  evidence_revision: sha256:df2da239535d940e2aafd26917dad4a98a1446ab7bb2e8a80f772ece5c953a24
 verification:
   attestations: []
