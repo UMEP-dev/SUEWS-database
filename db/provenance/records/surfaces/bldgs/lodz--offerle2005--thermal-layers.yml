@@ -1,0 +1,117 @@
+provenance_record: records/surfaces/bldgs/lodz--offerle2005--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b574d032947c8d785ca95f73d880869bec0dbe923a2585dcd860e84551deed86
+dependency_revisions:
+  sources:
+    offerle2005: sha256:1c21aebf8238fd7804f23e47e7b1c1910e687165ae0f188bea6a433ffc64e348
+  places:
+    lodz: sha256:46824b062d53f2cc4da07553a76dafc05d60428af723f94181fdd4bfbfff2241
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T11:59:14Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+    target:
+      conclusion: supported
+      evidence_ids:
+      - offerle-layer-properties
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-layer-properties
+      note: >-
+        The exported three-layer thickness, conductivity and volumetric heat-capacity
+        values match Table III after converting MJ m-3 K-1 to J m-3 K-1. The source
+        does not establish legacy Internal_albedo 0.2 or the three Internal_CH values
+        of 0.001.
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-layer-properties
+      note: >-
+        Offerle et al. supports the active thermal-layer values and several legacy
+        building attributes, but it does not support every value retained in the
+        legacy mapping.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+      note: >-
+        The 500 by 500 m grid is approximately congruent with the unstable flux
+        source area, supporting site rather than city-wide representativeness.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+      note: >-
+        The paper identifies the site as downtown and as a central European city
+        centre. It does not identify the site as a central business district.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - offerle-layer-properties
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-layer-properties
+      note: >-
+        The active thermal-layer identity is supported, but the record also retains
+        legacy fields that cannot all be traced to this source.
+  evidence:
+  - id: offerle-study-context
+    source: offerle2005
+    role: parameter_source
+    locators:
+    - kind: text
+      label: Title and abstract, city-centre and downtown wording
+      page: 1405
+    - kind: section
+      label: Section 2.1, representative buildings and homogeneous urban sub-unit
+      page: 1407
+    - kind: section
+      label: Section 2.1.2, downtown Łódź site and coordinates
+      page: 1409
+    - kind: table
+      label: Table I, Lipowa DUD/BEB and Oke UCZ 2 classification
+      page: 1409
+    - kind: section
+      label: Section 2.1.3, 500 by 500 m grid and source-area description
+      page: 1410
+  - id: offerle-layer-properties
+    source: offerle2005
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 2.1.1, building dimensions, rooms, emissivity and heat-transfer coefficient
+      page: 1408
+    - kind: section
+      label: Section 2.1.3, three roof, wall and internal layers
+      page: 1410
+    - kind: table
+      label: Table III, roof thermal-layer properties
+      page: 1411
+    note: >-
+      Table III gives the three roof layers used by the active record. The paper
+      reports one heat-transfer coefficient of 1.2 W m-2 K-1, not the three stored
+      legacy Internal_CH values of 0.001.
+  scientific_note: >-
+    Offerle et al. conclusively supports city_centre and the active thermal-layer
+    values. Human curation is still required for legacy Internal_albedo and the
+    three Internal_CH fields, so this assessment is not eligible for sign-off.
+  evidence_revision: sha256:efa4e35f47c90cfd63df27907f4ec621197138548a38c17fff13001dda60d914
+verification:
+  attestations: []
