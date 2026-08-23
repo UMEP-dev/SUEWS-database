@@ -4,7 +4,8 @@ target: anthropogenic_emissions
 name: Unclear
 place: swindon
 origin: Swindon
-representativeness: city
+representativeness: site
+urban_setting: suburban
 source: ward2013
 legacy_id: 53240551
 parameters:

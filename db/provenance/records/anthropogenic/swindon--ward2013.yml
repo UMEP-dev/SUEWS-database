@@ -1,7 +1,7 @@
 provenance_record: records/anthropogenic/swindon--ward2013
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:234e28d86270a6094306f50cb63efd48e42beaa9113af131ff12251f66915145
+record_revision: sha256:32a7f584e23851ccdda122b911d13e97b72d4e0229c96e1772e785dcce533ef3
 dependency_revisions:
   sources:
     ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
@@ -63,12 +63,19 @@ assessment:
       - ward-scope
       note: The study site is in Swindon, which is the record's place.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - ward-scope
-      note: The record claims city representativeness. The article is titled for a suburban area, reports
-        its land cover within a 500 m radius of the flux mast, and Appendix A states that the aim is a
-        first-order estimate for the study area rather than for Swindon as a whole.
+      note: Site matches the article's suburban study area and the 500 m radius around the flux mast used
+        to characterise it. The estimate is for the study area, not Swindon as a whole.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/379
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: Suburban is explicitly established by the article's title and abstract and by the site description
+        of the residential area as typical of UK suburbia.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/379
     method:
@@ -116,6 +123,16 @@ assessment:
     source: ward2013
     role: compilation
     locators:
+    - kind: text
+      label: Title and abstract, suburban area in Swindon
+      page: 4645
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: The title and abstract explicitly identify the study area and its energy-balance behaviour as suburban.
+    - kind: section
+      label: Sections 1 and 2, local-scale objective and study-site description
+      page: 4646
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: The flux mast is in a residential area 3 km north of the town centre described as typical of UK suburbia.
     - kind: table
       label: Table 1, Land cover within a radius of 500 m around the flux mast
       page: 4647
@@ -123,15 +140,21 @@ assessment:
       note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
         a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
         determination.'
+    - kind: section
+      label: Appendix A, scope of the anthropogenic heat-flux estimate
+      page: 4661
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: The inventory is explicitly a first-order estimate for the study area and discusses the coarseness of its spatial scale.
   scientific_note: 'This record holds two different things. Its metabolic and vehicle emission factors
     really are in Ward et al., in Appendix A, and can be pointed to line by line; but the article presents
     them as literature values borrowed from Sailor and Lu and from Moriwaki and Kanda for a first-order
     Swindon inventory, so Ward et al. is their compiler, not their source. The qf_a, qf_b and qf_c coefficients
     are a different matter: they belong to a fitted temperature-dependent QF model, and this article neither
     publishes them nor uses that model. Citing one paper for both halves credits it with work it did not
-    do and leaves the coefficients with no provenance at all. The scale claim compounds it, because the
-    article is explicit that its estimate covers a suburban study area characterised over 500 m, not the
-    city.'
-  evidence_revision: sha256:6aae34ac9bf509f7faa157a8765fdcceb1e70c8249c1d727516681731eef4951
+    do and leaves the coefficients with no provenance at all. The record now accurately separates the
+    source-established suburban urban setting from site representativeness
+    over the 500 m study area; that scope correction resolves issue #379 without resolving the source,
+    value, method and identity blockers tracked separately.'
+  evidence_revision: sha256:810859114624eb35640e43517219424c07f477d18e8e9f67d019cc1f34d68128
 verification:
   attestations: []
