@@ -4,8 +4,9 @@ target: ohm_coefficients
 name: Canyon, Vancouver [11]
 place: vancouver
 origin: Vanvouver
-representativeness: city
-source: unreferenced
+representativeness: site
+source: grimmond1991b
+method: fitted
 legacy_id: 50240014
 parameters:
   a1: 0.32
