@@ -5,7 +5,7 @@ name: Evergreen Tree, LaiEq = 1
 place: helsinki
 origin: Helsinki
 representativeness: city
-source: havu-m2024
+source: jarvi2014
 legacy_id: 32240033
 parameters:
   lai:

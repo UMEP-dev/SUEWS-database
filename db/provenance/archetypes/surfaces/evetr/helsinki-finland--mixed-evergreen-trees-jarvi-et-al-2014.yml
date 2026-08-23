@@ -13,7 +13,7 @@ dependency_revisions:
     : sha256:cb5fd2090c28c17b90ad23574e3245f236607a739eec32602cb1c74bcbe272b4
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street: sha256:9dc5ba04fd5506c034a2dd41ee4a932a94e6d024cf44af5cdfd5da2354b0878a
-    records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:e461584aa40c4f2576b5acd68b55f7e4798a7855acd0a7e2ff5d36e5da47bcfe
+    records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:26563d2be0d8d4f4324a5fe89df25c8191a9051856bdbf6b0ec774d4f93d0e5a
@@ -38,9 +38,10 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2-evergreen-trees
       note: 'The composite is named "Mixed Evergreen Trees, Järvi et al (2014)" and declares place helsinki.
-        Two of its thirteen components declare source jarvi2014: snow_lim_patch and vegetation_growth.
+        Three of its thirteen components declare source jarvi2014: snow_lim_patch, vegetation_growth and
+        leaf_growth_power.
         The others declare ward2016 for albedo, emissivity, water_storage and leaf_area_index, havu-m2024
-        for leaf_growth_power and biogen_co2, jarvi2011 for drainage, breuer2003 for max_vegetation_conductance,
+        for biogen_co2, jarvi2011 for drainage, breuer2003 for max_vegetation_conductance,
         grimmond1991b for the coefficient record filling summer_wet, and unreferenced for porosity and
         for the coefficient record filling the other three OHM positions. The biogen_co2 slot in particular
         takes records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street, a record
@@ -168,7 +169,7 @@ assessment:
     record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
     role: component
     note: Fills leaf_growth_power. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads havu-m2024.
+      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads jarvi2014.
   - id: component-surfaces-evetr-london-jarvi2011-drainage
     record: records/surfaces/evetr/london--jarvi2011--drainage
     role: component
@@ -223,6 +224,6 @@ assessment:
     and the maximum conductance row, which is openly classed generic rather than passed off as a Helsinki
     value. The questions are all about selection and mapping, so they can be settled inside the composite
     without touching any record.'
-  evidence_revision: sha256:f3d11c4e9353fa149674888ff5bbcf78f515b44bb872dee3908ffc10e2df521e
+  evidence_revision: sha256:538360c72302255d3fe78c3c576b8f289ef1149405a3b7dad3bcc088a431b864
 verification:
   attestations: []
