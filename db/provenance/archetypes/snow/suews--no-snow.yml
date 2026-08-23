@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
-    records/snow/helsinki--jarvi2014--emissivity: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
+    records/snow/helsinki--jarvi2014--emissivity: sha256:10f521707db6ef8a2e876b5fbd5c77927badc597cab6e4259c1025f92e962fae
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:26:59Z'
@@ -29,9 +29,9 @@ assessment:
         RadMeltFactor, TempMeltFactor, tau_a, tau_f, PrecipLimAlb, SnowDensMin, SnowDensMax, tau_r, CRWMin,
         CRWMax and PrecipLimSnow, to -999. It nevertheless selects two components, and because it declares
         no parameters block of its own the assembled fragment is exactly what they supply: snow_albedo_min
-        0.18, snow_albedo_max 0.85 and narp_emissivity_snow 0.99, each referenced to jarvi2014. The albedo
-        pair is described as montreal-suburban, site, while emissivity is described as helsinki, city.
-        A no-snow default therefore publishes snow optical properties from two specific places
+        0.18 and snow_albedo_max 0.85 referenced to jarvi2014, plus narp_emissivity_snow 0.99 referenced
+        to jarvi2011. The albedo pair is described as montreal-suburban, site, while emissivity is generic
+        and placeless. A no-snow default therefore publishes a site-derived albedo and a general emissivity
         and nothing else. Whether SUEWS still needs those fields populated when the snow module is off,
         which would make the selection right and the label misleading, or whether the uses block does
         not belong here, is not something these files settle.'
@@ -52,8 +52,9 @@ assessment:
     source:
       conclusion: not_applicable
       note: The composite claims no composition rationale, and its source field reads unreferenced, which
-        docs/FORMAT.md defines as marking legacy values that carried no citation. Both components declare
-        source jarvi2014, so an unreferenced composite exports three values that carry that citation.
+        docs/FORMAT.md defines as marking legacy values that carried no citation. Its albedo component
+        declares jarvi2014 and its emissivity component declares jarvi2011, so an unreferenced composite
+        exports cited component values from both publications.
     place:
       conclusion: curation_required
       evidence_ids:
@@ -61,8 +62,8 @@ assessment:
       - component-snow-helsinki-jarvi2014-emissivity
       note: The composite declares place generic, which db/places.yml holds as the bare entry Generic
         with no coordinates, country or Koppen class. Its albedo component declares montreal-suburban
-        and its emissivity component declares helsinki, so a generic default is assembled from two specific
-        places. No snow record in the database
+        and its emissivity component declares no place, so one component matches the generic scope while
+        the other remains site-specific. No snow record in the database
         declares a generic place, the only three being the two Helsinki records and records/snow/se-england--ward2016--albedo,
         so this cannot be closed by re-selection and turns on the decision recorded under name.
     representativeness:
@@ -71,8 +72,8 @@ assessment:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
       note: The composite declares representativeness generic, the broadest class the format offers. Its
-        albedo component declares site and its emissivity component declares city, so two narrower rows
-        stand in for a default that claims to apply anywhere.
+        emissivity component also declares generic, while its albedo component declares site and therefore
+        stands in below the default's claimed scale.
         No snow record classed generic exists, and the only one classed regional, records/snow/se-england--ward2016--albedo,
         carries albedo alone, so as with place the gap cannot be closed by re-selection.
     method:
@@ -106,14 +107,15 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", place
-      helsinki, representativeness city and source jarvi2014, and carries narp_emissivity_snow.
+    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", no place,
+      representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
+      Its stable path and origin retain legacy Helsinki migration text.
   scientific_note: 'archetypes/snow/suews--no-snow is a generic, unreferenced entry whose legacy block
     disables snow by setting eleven scalars to -999, and it selects the same two components as the other
     two snow composites. Because it declares no parameters block of its own, what it assembles is those
     components and nothing more: the fragment exports snow_albedo_min 0.18, snow_albedo_max 0.85 and narp_emissivity_snow
-    0.99, all three referenced to jarvi2014; the albedo is described as montreal-suburban, site, and the
-    emissivity as helsinki, city, while the -999 sentinels never leave the legacy block. An entry named
+    0.99; the albedo is referenced to jarvi2014 and described as montreal-suburban, site, while the emissivity
+    is referenced to jarvi2011 and described as generic, and the -999 sentinels never leave the legacy block. An entry named
     No Snow, placed generic and classed generic, therefore resolves under the modern schema to specific-place
     snow optical properties alone. Two things
     follow, neither of them settled by the files. The database holds no snow record with a generic place
@@ -123,6 +125,6 @@ assessment:
     does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
     the uses block should not be here at all. A maintainer with the model''s requirements to hand can
     settle all three findings in one decision.'
-  evidence_revision: sha256:6c7c57adee90b0edbe1bf4f4881701b95923f12e40c94b92a984255d3f6231cb
+  evidence_revision: sha256:df5be1e5807245e5c571566b721fcbe272477e8522edac72e6173cea83879bc0
 verification:
   attestations: []
