@@ -11,5 +11,5 @@ parameters:
   storage_drain_params:
     drain_eq: 3
     drain_coef_1: 10
-    drain_coef_2: 3
+    drain_coef_2: 0.013
   wet_threshold: 1.9
