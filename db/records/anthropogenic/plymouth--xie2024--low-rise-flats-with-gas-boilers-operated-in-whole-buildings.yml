@@ -20,6 +20,9 @@ parameters:
     qf_c:
       working_day: 0.002
       holiday: 0.002
+    baset_heating:
+      working_day: 15.0
+      holiday: 15.0
   co2:
     minqfmetab: 75
     maxqfmetab: 175
