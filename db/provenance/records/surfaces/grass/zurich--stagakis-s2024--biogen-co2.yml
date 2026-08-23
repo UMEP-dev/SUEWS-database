@@ -1,0 +1,98 @@
+provenance_record: records/surfaces/grass/zurich--stagakis-s2024--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:50a3cb169e10414d6374495276d3a80c4ba934b7e38d1376a32d28649afb38e2
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Grass corresponds to the Lawn column of Table S3.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Photosynthesis and respiration parameters are land_cover.grass properties.
+    values:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: 'Three of the six are in Table S3''s Lawn column exactly: Fpho,max 8.92, which is beta_bio_co2,
+        and ai 1.7 and bi 0.06, which are resp_a and resp_b. The other three are not published anywhere
+        in the article or supplement: alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2 0.6.
+        One record therefore carries verified and unverified values side by side.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Table S3 credits Fpho,max, ai and bi to Havu et al. (2024). Stagakis et al. apply them; they
+        are not the parameter publication.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-parameter-table
+      - stagakis-scope
+      note: Zurich is the application location. The three published values are credited to an earlier
+        study, so no Zurich determination stands behind them.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-scope
+      note: City representativeness overstates a four-park study.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Half the tuple is compiled from a named earlier study and half has no traceable origin, so
+        no single method describes the record.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: The lawn tuple is distinct from the two tree records in this group.
+  evidence:
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title, abstract and Sect. 2.1, study areas
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  scientific_note: 'The lawn record is the one biogenic entry in this group that largely holds up. Its
+    photosynthesis maximum and both respiration coefficients are in Table S3''s Lawn column exactly as
+    stored, though the table credits them to Havu et al. rather than to this study. What is missing is
+    the other half of the tuple: the light-response alpha, the curvature theta and the minimum respiration
+    appear nowhere in the article or its supplement, so three of the six stored numbers rest on nothing
+    this citation provides.'
+  evidence_revision: sha256:ebac5c3424754621b6be935498470903d34a7e047f33b6e35f9f9048385cfcba
+verification:
+  attestations: []

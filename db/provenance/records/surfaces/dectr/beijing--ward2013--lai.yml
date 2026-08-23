@@ -1,0 +1,108 @@
+provenance_record: records/surfaces/dectr/beijing--ward2013--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
+dependency_revisions:
+  sources:
+    ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:35:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: Deciduous Tree matches the record's land_cover.dectr target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: A leaf area index range is a land_cover.dectr property.
+    values:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-scope
+      - ward-vegetation
+      note: The article publishes no leaf area index values. Its only table reports land cover fractions
+        within 500 m of the flux mast, and leaf area index appears in the text solely as a qualitative
+        control on surface conductance. Neither 1 nor 5.5 occurs as a leaf area index anywhere in the
+        paper.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/380
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: The cited article cannot be the source, and this audit cannot name the correct one without
+        checking a further publication, which it has not done. Naming a replacement on resemblance alone
+        is exactly what this database forbids.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/380
+    place:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-scope
+      note: The record's place is Beijing. Ward et al. (2013) reports a single site in Swindon, UK, and
+        contains no Chinese data of any kind.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+    representativeness:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-scope
+      note: City representativeness for Beijing cannot rest on a UK suburban flux-site paper.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: With no source established, how the range was produced cannot be stated.
+    identity:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: What the record is a record of, once the citation falls away, is itself open.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+  evidence:
+  - id: ward-scope
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, Land cover within a radius of 500 m around the flux mast
+      page: 4647
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
+        a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
+        determination.'
+  - id: ward-vegetation
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: text
+      label: Mentions of leaf area index in the results discussion
+      page: 4654, 4655
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Leaf area index is invoked qualitatively, as one of the controls on surface conductance and
+        as a seasonal explanation, with no values given.
+  scientific_note: 'Nothing connects this record to the paper it cites. Ward et al. (2013) is a twelve-month
+    eddy covariance study of one suburban site in Swindon; it publishes no leaf area index values and
+    no Chinese measurements, so it can support neither the stored range nor the Beijing label. One lead
+    is worth recording for whoever repairs this, and it is a lead rather than a finding: Zheng et al.
+    (2023), the Beijing SUEWS study, gives a deciduous maximum of 5.5 and minimum of 1.0 in its Table
+    2 and credits them to Järvi et al. (2011). That would make the values a reused generic pair rather
+    than Beijing evidence, but this audit has not opened Järvi et al. (2011), so the attribution stays
+    open rather than being transferred on resemblance.'
+  evidence_revision: sha256:62d80db1d56a7718782d9c88fad10ad5feeebde8bde49168a1295f7f72fba6b3
+verification:
+  attestations: []

@@ -1,0 +1,96 @@
+provenance_record: records/surfaces/paved/swindon--ward2013--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d2fae72d5cf8c38209d9d9b1cc8829cc336bf3d69176d757d848494cfc72abf7
+dependency_revisions:
+  sources:
+    ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:35:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: Paved matches the record's land_cover.paved target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: Drainage equation, coefficients and a wet threshold are land_cover.paved properties.
+    values:
+      conclusion: contradicted
+      evidence_ids:
+      - ward-scope
+      note: The article publishes no drainage parameters. It contains no drainage equation, no drainage
+        coefficients and no wet threshold; its water-balance discussion is observational, and its only
+        parameterised sub-model is the objective hysteresis model in Appendix B, which concerns storage
+        heat rather than drainage.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/382
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: The cited article cannot be the source. The correct one is not established here and is not
+        guessed.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/382
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: Swindon is where the study sits, which is at least consistent with the record's place, though
+        the article supports no drainage value for it.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - ward-scope
+      note: The record claims city representativeness for Swindon, while the article characterises a suburban
+        site over a 500 m radius.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/383
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: With no source established, how the coefficients were produced cannot be stated.
+    identity:
+      conclusion: unresolved
+      evidence_ids:
+      - ward-scope
+      note: Whether this is a Swindon-specific paved drainage record at all is open until its provenance
+        is settled.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/382
+  evidence:
+  - id: ward-scope
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, Land cover within a radius of 500 m around the flux mast
+      page: 4647
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
+        a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
+        determination.'
+  scientific_note: 'Ward et al. (2013) is an observational paper. It reports fluxes, not model parameters,
+    and the one parameterisation it does describe, in Appendix B, is the objective hysteresis model for
+    storage heat. There is no drainage equation in it, so the citation cannot stand behind drain_eq 3,
+    drain_coef_1 0.013, drain_coef_2 1.71 or a wet threshold of 0.6. The separate question raised against
+    this record, whether those coefficients belong to the vegetation drainage formulation rather than
+    a paved one, is not settled here either: it needs the source that actually published them, and this
+    audit has not found it. The scale claim is independently wrong, since the study is suburban and characterised
+    over 500 m.'
+  evidence_revision: sha256:4dfe5955c982122db25d7edf895b2459b665a60793747073b74b89d720597ac2
+verification:
+  attestations: []

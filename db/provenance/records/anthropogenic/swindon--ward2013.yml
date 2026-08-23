@@ -1,0 +1,137 @@
+provenance_record: records/anthropogenic/swindon--ward2013
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:234e28d86270a6094306f50cb63efd48e42beaa9113af131ff12251f66915145
+dependency_revisions:
+  sources:
+    ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:35:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      note: The record is named Unclear, which identifies nothing. The article publishes no label for
+        this parameter set, and the set itself spans two unrelated kinds of quantity, so a maintainer
+        has to decide what the record is before it can be named.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/378
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-metabolism
+      - ward-vehicles
+      note: Appendix A treats vehicular, building and metabolic emissions, which is what the anthropogenic_emissions
+        target holds.
+    values:
+      conclusion: correction_required
+      evidence_ids:
+      - ward-metabolism
+      - ward-vehicles
+      note: 'Five stored values are in the article and one is a rounding of a published figure. Appendix
+        A3 gives 175 W per person by day and 75 W by night, and 280 and 120 umol CO2 per second per person
+        for the same periods, which are maxqfmetab, minqfmetab, maxfcmetab and minfcmetab; Appendix A1
+        gives a mean energy release of 3.97 MJ per vehicle kilometre, which is enef_v_jkm as 3970000 J.
+        The stored fcef_v_kgkm of 0.21 rounds the 0.2069 kg per kilometre the article publishes. Everything
+        else is absent: the article contains no qf_a, qf_b or qf_c regression coefficients, no fossil-fuel
+        fractions, no emission factor per joule, no qf_model selector and no base temperature. Its QF
+        is a bottom-up inventory, not a regression.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - ward-metabolism
+      - ward-vehicles
+      note: 'Ward et al. compile the values they do publish rather than derive them: Appendix A3 attributes
+        the metabolic heat rates to Sailor and Lu (2004) and the metabolic CO2 rates to Moriwaki and Kanda
+        (2004), and Appendix A1 attributes the 3.97 MJ per kilometre to Sailor and Lu (2004). For the
+        regression coefficients the article is not a compilation either, because it does not contain them
+        at all.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-scope
+      note: The study site is in Swindon, which is the record's place.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - ward-scope
+      note: The record claims city representativeness. The article is titled for a suburban area, reports
+        its land cover within a 500 m radius of the flux mast, and Appendix A states that the aim is a
+        first-order estimate for the study area rather than for Swindon as a whole.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/379
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-metabolism
+      - ward-vehicles
+      note: Two methods are present in one record. The metabolic and vehicle factors are literature values
+        compiled for an inventory; the qf_a, qf_b and qf_c coefficients belong to a fitted temperature-dependent
+        QF model that this article never runs. No single method describes the record as it stands.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-metabolism
+      - ward-vehicles
+      note: Whether this should remain one record or be split, so that the compiled inventory factors
+        and the fitted heat coefficients each carry their own provenance, is a maintainer decision.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+  evidence:
+  - id: ward-metabolism
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: section
+      label: Appendix A3, Human metabolism
+      page: 4662
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Gives 175 W per person for daytime, 75 W for nighttime and 125 W in transition, following
+        Sailor and Lu (2004), and 280, 120 and 200 umol CO2 per second per person for the same periods,
+        following Moriwaki and Kanda (2004).
+  - id: ward-vehicles
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: section
+      label: Appendix A1, Vehicular emissions
+      page: 4661
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Gives a mean energy release of 3.97 MJ per vehicle kilometre from Sailor and Lu (2004) and
+        a CO2 emission factor of 0.2069 kg per kilometre from the Department of Energy and Climate Change.
+  - id: ward-scope
+    source: ward2013
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, Land cover within a radius of 500 m around the flux mast
+      page: 4647
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
+        a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
+        determination.'
+  scientific_note: 'This record holds two different things. Its metabolic and vehicle emission factors
+    really are in Ward et al., in Appendix A, and can be pointed to line by line; but the article presents
+    them as literature values borrowed from Sailor and Lu and from Moriwaki and Kanda for a first-order
+    Swindon inventory, so Ward et al. is their compiler, not their source. The qf_a, qf_b and qf_c coefficients
+    are a different matter: they belong to a fitted temperature-dependent QF model, and this article neither
+    publishes them nor uses that model. Citing one paper for both halves credits it with work it did not
+    do and leaves the coefficients with no provenance at all. The scale claim compounds it, because the
+    article is explicit that its estimate covers a suburban study area characterised over 500 m, not the
+    city.'
+  evidence_revision: sha256:6aae34ac9bf509f7faa157a8765fdcceb1e70c8249c1d727516681731eef4951
+verification:
+  attestations: []

@@ -1,0 +1,113 @@
+provenance_record: records/irrigation/zurich--stagakis-s2024
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:14add6e6b73d0d2eb249d50503b01a331a08b5ab777a434cdd1def5140807f60
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-suews-section
+      note: No Irrigation describes a switched-off configuration rather than a measured property. The
+        article never states whether irrigation was enabled, so the name asserts something the source
+        does not.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-suews-section
+      note: The stored fields are SUEWS irrigation settings, which is the irrigation target.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-suews-section
+      - stagakis-parameter-table
+      note: The article mentions irrigation once, as one of the submodels SUEWS contains, and gives no
+        irrigation setting. Table S3 has no irrigation row. Nothing published shows the day-of-year window
+        of 1 to 366, the zero automatic fraction, or the all-zero watering days and fractions.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-suews-section
+      note: The cited study cannot be shown to establish these settings. It is plausible that irrigation
+        was simply left off for the park simulations, but plausibility is not evidence and this audit
+        will not record it as one.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-scope
+      note: Nothing published ties an irrigation configuration to Zurich.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-scope
+      note: City representativeness would in any case overstate a four-park study, and a whole-city irrigation
+        claim least of all follows from park simulations.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - stagakis-suews-section
+      note: A model configuration rather than a determined value; which it is cannot be settled from the
+        publication.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-suews-section
+      note: Whether a switched-off irrigation configuration should be a citable database record at all,
+        as opposed to a model default, is a maintainer decision.
+  evidence:
+  - id: stagakis-suews-section
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 2.3.3, SUEWS
+      page: 2139
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: Describes the SUEWS configuration used. Irrigation is named only as one of the submodels SUEWS
+        contains; no irrigation setting, schedule or fraction is stated anywhere in the article or its
+        supplement.
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title, abstract and Sect. 2.1, study areas
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  scientific_note: 'This record encodes a decision rather than a measurement: irrigation off, every day,
+    all year. The cited study says nothing about it. Section 2.3.3 lists irrigation among the SUEWS submodels
+    and moves on, and the supplement''s parameter table has no irrigation row. The configuration may well
+    be exactly what the authors ran, and for four Zurich parks it would be unsurprising, but the publication
+    does not record it, so the record is asserting on the authors'' behalf. Beyond the sourcing, there
+    is a design question worth a maintainer''s attention: a row that turns a submodel off is not the same
+    kind of thing as a parameter derived from evidence, and giving it a citation implies it is.'
+  evidence_revision: sha256:4978f905bfba7c99788408bc23f39256fddb0b218043e006d184137ee6ebf19a
+verification:
+  attestations: []

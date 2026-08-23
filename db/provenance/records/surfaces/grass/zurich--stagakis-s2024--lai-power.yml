@@ -1,0 +1,112 @@
+provenance_record: records/surfaces/grass/zurich--stagakis-s2024--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
+dependency_revisions:
+  sources:
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records:
+    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
+    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: The name asserts LaiEq = 1 and the record stores lai_type 1. Table S3 publishes the four power
+        coefficients but never states which form of the LAI equation SUEWS was run with, so the selector
+        in both the name and the parameters is unverified.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: LAI power coefficients are a land_cover.grass property, and Table S3 assigns the same set
+        to the vegetation classes.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: 'All four coefficients appear verbatim in Table S3, identically in the Trees and Lawn columns:
+        omega1,GDD 0.04, omega2,GDD 0.0005, omega1,SDD -1.5 and omega2,SDD 0.0025. The table labels its
+        fourth LAI row omega1,SDD a second time, which is a typographical slip; the row order and the
+        values make the intended omega2,SDD unambiguous.'
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Table S3 credits omega1,GDD and omega1,SDD to Järvi et al. (2014), omega2,GDD to Järvi et
+        al. (2011), and omega2,SDD to Järvi et al. (2014) modified. Stagakis et al. compile and in one
+        case adjust these coefficients; they do not derive them.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-parameter-table
+      - stagakis-scope
+      note: Zurich is where the coefficients were applied. Table S3 traces them to earlier publications,
+        so no Zurich determination stands behind them.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stagakis-scope
+      note: The record claims city representativeness. The study covers four urban parks in Zurich and
+        evaluates against measurements made in those parks.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - stagakis-parameter-table
+      note: Three coefficients are taken unchanged from earlier work and one is marked modified without
+        the modification being described, so no single production method describes the set.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - stagakis-parameter-table
+      note: This record holds the same four coefficients as its two siblings. That is what the source
+        prescribes rather than an accidental duplication, because Table S3 gives one identical LAI set
+        for both its Trees and Lawn columns.
+      related_records:
+      - records/surfaces/dectr/zurich--stagakis-s2024--lai-power
+      - records/surfaces/evetr/zurich--stagakis-s2024--lai-power
+  evidence:
+  - id: stagakis-parameter-table
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplement Table S3, Parameters used by SUEWS model
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
+        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
+        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
+        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
+        storage capacity, no light-response alpha or theta and no minimum respiration.
+  - id: stagakis-scope
+    source: stagakis-s2024
+    role: compilation
+    locators:
+    - kind: section
+      label: Title, abstract and Sect. 2.1, study areas
+      page: 2133
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
+        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+  scientific_note: 'The four coefficients are exactly right: they sit in Table S3 verbatim, and the fact
+    that all three vegetation records carry the same set is what the source prescribes. Two things around
+    them are not settled. Table S3 credits every coefficient to Järvi et al., one of them as modified,
+    so Stagakis et al. is the compiler rather than the parameter publication, and citing it as the source
+    credits this study with coefficients it inherited. And the record claims Zurich city representativeness
+    for a four-park study whose parameters are not Zurich determinations at all. The LaiEq = 1 selector,
+    carried in both the name and lai_type, is nowhere in the article or the supplement and should not
+    be treated as verified.'
+  evidence_revision: sha256:9d5eb4124b4668c74252ef67143697921c60e1cda152502d7bdc8ca43c4ad7f8
+verification:
+  attestations: []
