@@ -31,6 +31,8 @@ assessment:
       conclusion: unresolved
       evidence_ids:
       - jarvi-table-4a
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/185
       note: Table 4a's Irr. veg column gives D0,i 10 and b 0.013, matching the two stored drainage coefficients.
         The Irr. veg cell of the Si row is blank, however, so the stored wet threshold of 1.9 mm is the
         Grass column's figure rather than one published for irrigated vegetation. Column alignment was
@@ -109,6 +111,6 @@ assessment:
     mirror image of the vegetated columns, but it is what the source prints. The wet threshold has a separate
     unresolved problem: the cell the record needs is blank, and 1.9 mm comes from the Grass column, so
     it is borrowed rather than published for this surface.'
-  evidence_revision: sha256:72c6c6e2389a2562ebe145861f859ed611a7e92ab3130e8992ee7532b6fb661f
+  evidence_revision: sha256:476310959002a1ee9d060474b00b9e30db67893f49fcf1ea23d835af80749a7e
 verification:
   attestations: []
