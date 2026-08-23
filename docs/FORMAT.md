@@ -210,8 +210,9 @@ editable claims. The state is computed in this order:
    directly from the assessment outcome;
 3. an `agent_assessed` sidecar with contradicted or correction-required
    findings remains `agent_assessed` until the record or assessment is fixed;
-4. an assessment with only supported or not-applicable findings but without
-   enough current eligible attestations is `awaiting_signoff`;
+4. an assessment with only supported or not-applicable findings, supported
+   `method`, and (for evidence reviews) supported `values`, but without enough
+   current eligible attestations is `awaiting_signoff`;
 5. only the configured number of distinct eligible verifiers signing the
    current evidence and policy revisions produces `verified`.
 
@@ -240,7 +241,7 @@ differently:
 |---|---|---|
 | `name` | record name | composite identity |
 | `target` | parameter target | composite target |
-| `values` | stored values | component selection |
+| `values` | stored values | own parameter values (normally not applicable) |
 | `source` | parameter source | composition rationale/source |
 | `place` | observation place | place applicability |
 | `representativeness` | value representativeness | composite representativeness |
@@ -251,6 +252,9 @@ A composition sidecar uses `method: assembled`, records each direct `uses:`
 reference as `role: component`, and fingerprints those components as
 dependencies. Changing a selected component, its content, or the mapping makes
 the composition review stale without changing any record-level decision.
+Because a composite normally declares no parameter values of its own, its
+`values` finding is normally `not_applicable`; selection of component values is
+reviewed through the component evidence and dependency revisions instead.
 
 ### GitHub-backed verifier attestations
 

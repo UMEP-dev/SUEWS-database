@@ -107,7 +107,7 @@ METHOD_LABEL = {
 COMPOSITION_FINDING_LABEL = {
     "name": "Composite identity",
     "target": "Composite target",
-    "values": "Component selection",
+    "values": "Own parameter values",
     "source": "Composition rationale",
     "place": "Place applicability",
     "representativeness": "Representativeness",
@@ -314,17 +314,26 @@ def provenance_state(sidecar, policy):
     if status != "agent_assessed":
         return "agent_assessed"
     findings = assessment.get("findings", {})
+    review_type = sidecar.get("review_type", "evidence")
+    required_supported = (
+        ("values", "method") if review_type == "evidence" else ("method",)
+    )
     if (
         not findings
         or any(
             item.get("conclusion") not in {"supported", "not_applicable"}
             for item in findings.values()
         )
-        or findings.get("values", {}).get("conclusion") != "supported"
-        or findings.get("method", {}).get("conclusion") != "supported"
+        or any(
+            findings.get(scope, {}).get("conclusion") != "supported"
+            for scope in required_supported
+        )
     ):
         return "agent_assessed"
-    if assessment.get("method") in {"measured", "fitted", "literature"}:
+    if (
+        review_type == "evidence"
+        and assessment.get("method") in {"measured", "fitted", "literature"}
+    ):
         if findings.get("source", {}).get("conclusion") != "supported":
             return "agent_assessed"
     if not policy:

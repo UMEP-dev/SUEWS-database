@@ -90,6 +90,37 @@ class SiteProvenanceTests(unittest.TestCase):
                     provenance_state(candidate, self.policy), "awaiting_signoff"
                 )
 
+    def test_clean_composition_without_own_values_awaits_signoff(self):
+        sidecar = next(
+            candidate
+            for candidate in self.sidecars.values()
+            if candidate.get("review_type") == "composition"
+            and candidate.get("assessment", {}).get("status") == "agent_assessed"
+            and all(
+                finding.get("conclusion") in {"supported", "not_applicable"}
+                for finding in candidate["assessment"]["findings"].values()
+            )
+        )
+        self.assertEqual(
+            sidecar["assessment"]["findings"]["values"]["conclusion"],
+            "not_applicable",
+        )
+        self.assertEqual(
+            sidecar["assessment"]["findings"]["method"]["conclusion"],
+            "supported",
+        )
+        self.assertEqual(
+            provenance_state(sidecar, self.policy), "awaiting_signoff"
+        )
+
+        evidence = deepcopy(self.sidecars[MIXED])
+        evidence["assessment"]["findings"]["values"] = {
+            "conclusion": "not_applicable"
+        }
+        self.assertEqual(
+            provenance_state(evidence, self.policy), "agent_assessed"
+        )
+
     def test_unaudited_entry_links_to_gated_review_procedure(self):
         key = next(path for path in self.records if path not in self.sidecars)
         page = self.render(key)
@@ -213,7 +244,7 @@ class SiteProvenanceTests(unittest.TestCase):
         candidate[COMPOSITE] = sidecar
         reviewed = self.render(COMPOSITE, candidate)
         self.assertIn("Composition provenance", reviewed)
-        self.assertIn("Component selection", reviewed)
+        self.assertIn("Own parameter values", reviewed)
         self.assertIn("Slot and season mapping", reviewed)
         self.assertIn("Sign off composition on GitHub", reviewed)
         self.assertIn("review_type=Composition", reviewed)

@@ -225,7 +225,7 @@ def composition_fixture():
             "findings": {
                 "name": deepcopy(support),
                 "target": deepcopy(support),
-                "values": deepcopy(support),
+                "values": {"conclusion": "not_applicable"},
                 "source": {"conclusion": "not_applicable"},
                 "place": {"conclusion": "not_applicable"},
                 "representativeness": {"conclusion": "not_applicable"},
@@ -419,6 +419,17 @@ class ProvenanceSemanticTests(unittest.TestCase):
             check_provenance(records, {}, {}, {composite_key: sidecar}), []
         )
         self.assertTrue(signoff_eligible(sidecar, records[composite_key]))
+
+        skipped_method = deepcopy(sidecar)
+        skipped_method["assessment"]["findings"]["method"] = {
+            "conclusion": "not_applicable"
+        }
+        skipped_method["assessment"]["evidence_revision"] = evidence_revision(
+            skipped_method
+        )
+        self.assertFalse(
+            signoff_eligible(skipped_method, records[composite_key])
+        )
 
         missing = deepcopy(sidecar)
         missing["assessment"]["evidence"] = []
