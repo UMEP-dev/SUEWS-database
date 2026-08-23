@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:7680a5acbbbed647249e2446c6b8d79c4c1f905657620f1d21b61e9b6b2d447a
-    records/surfaces/grass/london--jarvi2011--drainage: sha256:f281f652a72fed80dff66e02b894cedfa4cb49777dad79dd2290a8e4bf41b940
+    records/surfaces/grass/london--jarvi2011--drainage: sha256:87648d59fda7ebf35e4595c33e9c3ace309638d4c4ce929c64b996194ca38718
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
@@ -216,6 +216,6 @@ assessment:
     local, so the choice between two transplants is a maintainer''s and not a correction. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:de70f7933bdf248925086b9411637b6e60c68b0a9cb743c600e3bba4acb44c24
+  evidence_revision: sha256:2509256b3dbf7c04c3e86c719dc4ec46770eb302c16468de9cf932505b4a0b43
 verification:
   attestations: []
