@@ -209,15 +209,18 @@ def signoff_eligible(sidecar, record):
         for finding in findings.values()
     ):
         return False
+    review_type = _review_type(sidecar)
+    required_supported = (
+        ("values", "method") if review_type == "evidence" else ("method",)
+    )
     if any(
         findings.get(scope, {}).get("conclusion") != "supported"
-        for scope in ("values", "method")
+        for scope in required_supported
     ):
         return False
     if (
-        _review_type(sidecar) == "evidence"
-        and
-        assessment.get("method") in EXTERNAL_METHODS
+        review_type == "evidence"
+        and assessment.get("method") in EXTERNAL_METHODS
         and findings.get("source", {}).get("conclusion") != "supported"
     ):
         return False
@@ -230,7 +233,7 @@ def signoff_eligible(sidecar, record):
         return False
     if not revisions_are_current:
         return False
-    if _review_type(sidecar) == "composition":
+    if review_type == "composition":
         return assessment.get("method") == "assembled"
     return _parameter_source_aligned(record, assessment)
 
