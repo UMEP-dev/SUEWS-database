@@ -1,0 +1,85 @@
+provenance_record: records/surfaces/paved/generic--kotthaus2014--emissivity--grey-white-concrete-new
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:72fd71762b4c7055a5bac38f4ba5f0e5b28acc87f01829ecab4c1f4e0c123f8c
+dependency_revisions:
+  sources:
+    kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T14:28:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: measured
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: Grey/white concrete, new matches the material description for specimen C002 in Table C.1.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: Specimen C002 is an impervious concrete surface material, so its emissivity belongs under
+        land_cover.paved.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: Table C.1 reports emissivity 0.92 for specimen C002, exactly matching the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: Kotthaus et al. directly report the measured emissivity and specimen metadata for C002,
+        so kotthaus2014 is the parameter source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/240
+      note: The source and SLUM collection identify C002 as a London urban-material specimen; place london
+        replaces the unsupported generic place.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/240
+      note: The value is one measured specimen, so site is the supported scope; the paper does not establish
+        it as a generic material constant.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: The emissivity is a specimen measurement tabulated by Kotthaus et al., so measured is the
+        supported method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-c002
+      note: The description and value identify source specimen C002 unambiguously within Table C.1.
+  evidence:
+  - id: kotthaus-c002
+    source: kotthaus2014
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Appendix C, Table C.1, specimen C002
+      page: '210-211'
+      url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
+      note: Lists C002 as grey/white concrete, new with measured emissivity 0.92; the sample collection
+        is from London urban impervious materials.
+  scientific_note: The stored emissivity is unchanged because it exactly matches specimen C002. The correction
+    is scope; a measurement of one London specimen is London/site evidence, not a place-independent generic
+    constant.
+  evidence_revision: sha256:0f3c8293ba7256592872be152d7a6270c71a57483785d9522f6d3ef0dc3ac966
+verification:
+  attestations: []
