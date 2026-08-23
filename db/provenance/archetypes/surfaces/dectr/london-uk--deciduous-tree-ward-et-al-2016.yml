@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
     records/surfaces/dectr/se-england--ward2016--drainage: sha256:9b2f37239f370169ddda58ca87fff27142039666d9d870073ab26688bac6f2cb
     records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
-    records/surfaces/dectr/se-england--ward2016--lai-power: sha256:14aedc9964645c9fbbf5c0f399a64dc3f8491345a0b878f3234d3df6c4449da4
+    records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:f2a005afcc18ffe49e1e3fdaa965725ed5a72186d9cd8f6a6d3cc6eb13117456
     records/surfaces/dectr/se-england--ward2016--phenology: sha256:b74c916d81110d79627efef71f3119c9bdce94a04e537b4c291532fe33a15ce0
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
@@ -40,7 +40,7 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-max-conductance
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and nine of its thirteen components
+      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and eight of its thirteen components
         declare source ward2016, registered in db/sources.yml as Ward, H. C.; Kotthaus, S.; Järvi, L.;
         Grimmond, C. S. B., 2016, "Surface Urban Energy and Water Balance Scheme (SUEWS): Development
         and evaluation at two UK sites", Urban Climate. The label names the study rather than the city,
@@ -182,7 +182,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It is named "Deciduous Tree (SE England)", carries source ward2016 and declares lai.lai_type
+      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2014 and declares lai.lai_type
       1.
   - id: component-surfaces-dectr-se-england-ward2016-lai-power
     record: records/surfaces/dectr/se-england--ward2016--lai-power
@@ -207,7 +207,7 @@ assessment:
     note: Fills emissivity. The record declares target land_cover.dectr, place swindon and representativeness
       city. It is named "Deciduous trees" and carries source ward2016; its place is a different city from
       the one the composite claims.
-  scientific_note: Nine of the thirteen components come from Ward et al. 2016, the study the label names,
+  scientific_note: Eight of the thirteen components come from Ward et al. 2016, the study the label names,
     and seven of those are placed at se-england, which contains London; the two LAI records agree on lai.lai_type
     1; and the OHM mapping is the best in this family, with the summer record in both summer positions
     and the winter record in both winter positions, each confirmed by its own season_label. Three slots
@@ -220,6 +220,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:156ea293eef6e07cf7d1f51e42793c920afe194e4369e1183c6d8882ad70d68f
+  evidence_revision: sha256:6c2568ed2d8e1c3971dbc1a31c4cfe1033f7253f50dae3f2911489d0036213f7
 verification:
   attestations: []
