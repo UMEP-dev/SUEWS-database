@@ -1,0 +1,128 @@
+provenance_record: records/surfaces/bsoil/lodz--offerle2005--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8b489e181910f761f6a165efd20eab8b47a4f9529425bdacccabf1a1150c9a59
+dependency_revisions:
+  sources:
+    offerle2005: sha256:1c21aebf8238fd7804f23e47e7b1c1910e687165ae0f188bea6a433ffc64e348
+  places:
+    lodz: sha256:46824b062d53f2cc4da07553a76dafc05d60428af723f94181fdd4bfbfff2241
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T12:07:10Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-road-soil-identity
+      note: >-
+        The paper calls this construction the road element or the road and soil
+        element, not an independent Bare Soil construction.
+    target:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-road-soil-identity
+      note: >-
+        The source deliberately averages road and vegetated-soil fractions into one
+        model element, so neither land_cover.bsoil nor a record-local retargeting to
+        paved can be established from the paper alone.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - offerle-road-soil-properties
+      note: >-
+        Table III publishes all four thickness, conductivity and volumetric
+        heat-capacity values exactly as stored after converting MJ m-3 K-1 to
+        J m-3 K-1.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - offerle-road-soil-properties
+    place:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+      note: >-
+        The approximately 500 by 500 m grid represents the local flux source area,
+        supporting site rather than city-wide representativeness.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - offerle-study-context
+      note: >-
+        The paper identifies the site as downtown and as a central European city
+        centre. It does not identify the site as a central business district.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - offerle-road-soil-properties
+      note: The published model-input tuple is adopted from the literature rather than fitted in this record.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - offerle-road-soil-identity
+      note: >-
+        Resolving the combined road-and-soil construction requires a maintainer
+        decision or a composite construction model; a record-local rename or
+        retarget would overstate the source.
+  evidence:
+  - id: offerle-study-context
+    source: offerle2005
+    role: parameter_source
+    locators:
+    - kind: text
+      label: Title and abstract, city-centre and downtown wording
+      page: 1405
+    - kind: section
+      label: Section 2.1.2, downtown Łódź site and coordinates
+      page: 1409
+    - kind: table
+      label: Table I, Lipowa DUD/BEB and Oke UCZ 2 classification
+      page: 1409
+    - kind: section
+      label: Section 2.1.3, 500 by 500 m grid and source-area description
+      page: 1410
+  - id: offerle-road-soil-properties
+    source: offerle2005
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 2.1.1, road and soil properties averaged into one model element
+      page: 1409
+    - kind: table
+      label: Table III, Road thermal properties
+      page: 1411
+    note: >-
+      The Road row gives the exact four-layer tuple stored in the record and states
+      that the material properties are based on ASHRAE (1981).
+  - id: offerle-road-soil-identity
+    source: offerle2005
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 2.1.1, averaging of road and soil fractions
+      page: 1409
+    - kind: section
+      label: Section 2.1.3, grid model elements and surface fractions
+      page: 1410
+    - kind: table
+      label: Table III, tuple labelled Road rather than Bare Soil
+      page: 1411
+  scientific_note: >-
+    The complete value tuple and its Łódź city-centre setting are source-supported,
+    but the paper defines a combined road-and-soil model element rather than an
+    independent Bare Soil construction. Human curation must decide how that combined
+    identity should be represented; no value, stable path or target is changed here.
+  evidence_revision: sha256:606998fc8e7abb584f47952534e7869cfd39ebbdeff94005fa0b8e9da161e7bb
+verification:
+  attestations: []
