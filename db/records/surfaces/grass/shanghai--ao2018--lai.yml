@@ -4,7 +4,8 @@ target: land_cover.grass
 name: Grass
 place: shanghai
 origin: Shanghai
-representativeness: city
+representativeness: site
+urban_setting: central_business_district
 source: ao2018
 legacy_id: 31240020
 parameters:
