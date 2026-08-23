@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/london--ward2016--emissivity: sha256:f0cffcd3bb177b2f0dcb0babd5751c9752e62ffb34c3870bf07594b6ec6de6dc
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
-    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2563e8b2a6c23aafcdff61098a524550e641ff035e9a63700d8990b91096be8
+    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2f4f8fcc956087c93b6b6838c874faf3c04200b083d449d8fc4711f57d85ce1
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:e772c7df24dcf40490aa7f9437326307c5cd01699b2ec780a69851845a56edf6
 assessment:
   status: agent_assessed
@@ -38,7 +38,7 @@ assessment:
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite's name reads 'Central London, Ward et al. (2016)', its place reads london and
         its origin reads 'London, UK'. The label names both the typology and the study the selection follows,
-        and six of the eight components declare source ward2016, so the label identifies what the entry
+        and five of the eight components declare source ward2016, so the label identifies what the entry
         actually assembles.
     target:
       conclusion: supported
@@ -164,7 +164,7 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.paved, name Paved, place se-england,
-      representativeness regional and source ward2016, and carries drain_eq, drain_coef_1, drain_coef_2
+      representativeness regional and source ward2018, and carries drain_eq, drain_coef_1, drain_coef_2
       and wet_threshold.
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
@@ -192,8 +192,9 @@ assessment:
       name 'Code 851 x Multiplier for winter [8512]', season_label Winter and source ward2016, carries
       a1, a2 and a3, and declares no place and no representativeness.
   scientific_note: 'This entry does what a study-named composite should. archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
-    declares place london and representativeness city, and six of its eight components declare source
-    ward2016, the study its name cites. Where the study reports a London value the composite takes it,
+    declares place london and representativeness city, and five of its eight components declare source
+    ward2016, the study its name cites. Its drainage component is the Ward et al. (2018) publication of
+    the SE England tuple. Where the named study reports a London value the composite takes it,
     in the emissivity slot; where it reports a value for the wider region the composite takes the se-england
     row, classed regional, and applies it down to the city, which is the sound direction for a class mismatch.
     The season mapping is right: the OHM record labelled Summer fills the two summer positions and the
@@ -202,8 +203,9 @@ assessment:
     leave the ward2016 set. snow_lim_patch takes the Helsinki record because it is the only paved snowpack-limit
     record in the database, and construction takes a record named Placeholder, which changes no exported
     number because scripts/export_record.py keeps the construction slot out of the surface fragment. Neither
-    is a selection error. The components'' own values, and the ''sample run'' and Placeholder labels some
+    is a selection error. Together with the drainage source correction, three component slots therefore
+    do not declare ward2016. The components'' own values, and the ''sample run'' and Placeholder labels some
     of them carry, remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:2d441e011ea36b772fd581a92fa55d9d638b47aae7e53fbbec8dbe88f4f5f12e
+  evidence_revision: sha256:fb8f0ca3b2ebdd9de6895add90add0f5e369178c5cb612cf2a1af270f3e7bd93
 verification:
   attestations: []
