@@ -5,7 +5,7 @@ name: Deciduous Tree (SE England)
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: jarvi2014
 legacy_id: 32240045
 parameters:
   lai:
