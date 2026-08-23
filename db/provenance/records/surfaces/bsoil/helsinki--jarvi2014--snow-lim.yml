@@ -91,8 +91,9 @@ assessment:
       note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
         1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
         1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for every surface. Footnote
-        a marks a value optimised using data from Helsinki, footnote b marks Vargo et al. (2013).'
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
+        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
+        marks Vargo et al. (2013).'
   - id: jarvi-table-caption
     source: jarvi2014
     role: compilation
@@ -122,6 +123,6 @@ assessment:
     same values used at all sites because no further information was available. City representativeness
     for Helsinki does not follow from that. This record also asks the table for a surface it does not
     have: there is no bare soil column, and the value is carried across from the uniform row.'
-  evidence_revision: sha256:08aa28deaa7dfa2f58872414a701c01d38f5927b7ecde16cfe48ad0df5d1ed15
+  evidence_revision: sha256:b7ea888502495fa43c11d748eca95d67f7ebe145bc0ed1e35dd56b19ce46e718
 verification:
   attestations: []

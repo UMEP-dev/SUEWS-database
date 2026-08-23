@@ -96,7 +96,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -108,6 +108,6 @@ assessment:
     does not record it, so the record is asserting on the authors'' behalf. Beyond the sourcing, there
     is a design question worth a maintainer''s attention: a row that turns a submodel off is not the same
     kind of thing as a parameter derived from evidence, and giving it a citation implies it is.'
-  evidence_revision: sha256:4978f905bfba7c99788408bc23f39256fddb0b218043e006d184137ee6ebf19a
+  evidence_revision: sha256:0d0e09837901c0a10855d254bdede8a6dbab003a520457c6b1663d2b755032f2
 verification:
   attestations: []

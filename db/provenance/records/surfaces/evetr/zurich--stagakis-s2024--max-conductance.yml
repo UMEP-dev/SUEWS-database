@@ -83,7 +83,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -107,6 +107,6 @@ assessment:
     outside this audit: the authors'' own SUEWS input files, or an earlier publication that carries the
     number and that this record should cite instead. Separately, the study treats trees as one class,
     so the split between a deciduous and an evergreen Zurich record does not come from here.'
-  evidence_revision: sha256:7e337c870dd7a9911e44329cdaf79709f38093fd309ff9b91148f64652ec02d9
+  evidence_revision: sha256:3ffe7ee0cea27d97972e60850ea6dfbee195044dc9d80f2a9b410a8f6d859e20
 verification:
   attestations: []

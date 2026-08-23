@@ -82,7 +82,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -93,6 +93,6 @@ assessment:
     the other half of the tuple: the light-response alpha, the curvature theta and the minimum respiration
     appear nowhere in the article or its supplement, so three of the six stored numbers rest on nothing
     this citation provides.'
-  evidence_revision: sha256:ebac5c3424754621b6be935498470903d34a7e047f33b6e35f9f9048385cfcba
+  evidence_revision: sha256:7763ad7ed7ffb60856deeba228619635ea056f5d9d740affb55240b806388d7f
 verification:
   attestations: []

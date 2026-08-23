@@ -75,8 +75,9 @@ assessment:
       note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
         1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
         1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for every surface. Footnote
-        a marks a value optimised using data from Helsinki, footnote b marks Vargo et al. (2013).'
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
+        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
+        marks Vargo et al. (2013).'
   - id: jarvi-table-4b
     source: jarvi2014
     role: compilation
@@ -105,6 +106,6 @@ assessment:
     is mostly dashes, and Table 4b, which carries the area-wide values, does not list one either. So 2000
     has no locator in this source. The record's name compounds the problem by naming the citation instead
     of the quantity, which is how an unsupported value can look documented at a glance.
-  evidence_revision: sha256:820d08270974217dc757e9b562d6c2d2d4c75543a9c27900fc42b78ca6aaeeba
+  evidence_revision: sha256:0ec423abf73cb3cf4e93138c42f383255c2407ecde75772d91b69effbe8797f3
 verification:
   attestations: []

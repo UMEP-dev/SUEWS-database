@@ -94,7 +94,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -107,6 +107,6 @@ assessment:
     for a four-park study whose parameters are not Zurich determinations at all. The LaiEq = 1 selector,
     carried in both the name and lai_type, is nowhere in the article or the supplement and should not
     be treated as verified.'
-  evidence_revision: sha256:9d5eb4124b4668c74252ef67143697921c60e1cda152502d7bdc8ca43c4ad7f8
+  evidence_revision: sha256:34ee40170bb2d4d384680c625a22bc2f6d5f34feee92b8818816f4ad24a51b36
 verification:
   attestations: []

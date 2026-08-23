@@ -81,7 +81,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -93,6 +93,6 @@ assessment:
     may well have been used, but nothing published shows it. Two things would settle it, and both are
     outside this audit: the authors'' own SUEWS input files, or an earlier publication that carries the
     number and that this record should cite instead.'
-  evidence_revision: sha256:e6bf83d3e66c9502ed9b698a18eb4a6a3fa43c2ef054096a984965fcbf67644b
+  evidence_revision: sha256:418bc6fe04a4e40a9c6646a8f11dfc6d7663cb1167ec894a20b0c0678bfbc866
 verification:
   attestations: []

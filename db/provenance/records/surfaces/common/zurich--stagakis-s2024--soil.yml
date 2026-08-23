@@ -84,7 +84,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -95,6 +95,6 @@ assessment:
     into treating one as the other. The stored depth, conductivity and density have no locator in this
     source at all. What keeps this from being a contradiction is that Table S3 covers the photosynthesis
     and conductance equations rather than the water balance, so its silence on soil is not a denial.
-  evidence_revision: sha256:b03ea6bce696f3bb33766f7c3197a5df9b04ee0c66ebba032345114a8d5a5927
+  evidence_revision: sha256:79a2133809e060330e92ffb334145606715e91026ba46e7b7b4c013050c65389
 verification:
   attestations: []

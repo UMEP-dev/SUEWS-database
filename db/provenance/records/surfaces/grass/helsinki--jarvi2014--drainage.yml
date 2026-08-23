@@ -80,8 +80,9 @@ assessment:
       note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
         1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
         1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for every surface. Footnote
-        a marks a value optimised using data from Helsinki, footnote b marks Vargo et al. (2013).'
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
+        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
+        marks Vargo et al. (2013).'
   - id: jarvi-table-caption
     source: jarvi2014
     role: compilation
@@ -108,6 +109,6 @@ assessment:
     drain_eq 2, is not in Table 4a at all, so that part of the record is unverified even though the coefficients
     are sound. As elsewhere in this table, the caption makes the values inherited rather than determined
     here.
-  evidence_revision: sha256:87d12b0f8781e6a003ffb74015e168109febcc59f18462f04c9a4a23f0bea819
+  evidence_revision: sha256:6a1f03f8c5772c546dcd83c1c0a4f0d680836aea8450efb2618c402e6dd9fab7
 verification:
   attestations: []

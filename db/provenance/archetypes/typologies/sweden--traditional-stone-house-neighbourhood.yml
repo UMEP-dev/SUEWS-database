@@ -118,14 +118,12 @@ assessment:
     Finnish. archetypes/surfaces/paved/helsinki--city-centre declares place ''helsinki'' and representativeness
     ''city'', so a Swedish country-scale typology takes half its surface description from one Finnish
     city. Unlike the building slot, this one had a Swedish option: archetypes/surfaces/paved/sweden--asphalt-mixed-city
-    is Swedish and regional and four sibling Swedish typologies use it. The reason it was probably not
-    used is visible in the two names, because the Swedish surface describes a mixed city and this typology
-    describes a city centre, and the Helsinki surface is the database''s city-centre paved bundle. That
-    is a defensible trade of country for urban form, but it is nowhere stated, and it leaves an entry
-    claiming regional reach while half of it is a city row. A maintainer should either record on the composite
-    that urban form governs this slot and accept the cross-border substitution, or narrow what the entry
-    claims. Neither question requires touching a component''s values, which remain subject to their own
-    assessments.'
-  evidence_revision: sha256:b5674c4f5b8a4e1b9fb3d1323a14094f3b22d5aa519c9c18cf20ceca384fcb37
+    is Swedish and regional and four sibling Swedish typologies use it. Why it was not used is not recorded
+    anywhere, and this review does not infer it from the two names. That is a defensible trade of country
+    for urban form, but it is nowhere stated, and it leaves an entry claiming regional reach while half
+    of it is a city row. A maintainer should either record on the composite that urban form governs this
+    slot and accept the cross-border substitution, or narrow what the entry claims. Neither question requires
+    touching a component''s values, which remain subject to their own assessments.'
+  evidence_revision: sha256:2334bb9eca200ee46fc10adb5433e92843521228e32ed2cc40a6b7bddba4682d
 verification:
   attestations: []

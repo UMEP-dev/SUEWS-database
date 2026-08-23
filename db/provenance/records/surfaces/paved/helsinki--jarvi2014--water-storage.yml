@@ -76,8 +76,9 @@ assessment:
       note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
         1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
         1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for every surface. Footnote
-        a marks a value optimised using data from Helsinki, footnote b marks Vargo et al. (2013).'
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
+        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
+        marks Vargo et al. (2013).'
   - id: jarvi-table-caption
     source: jarvi2014
     role: compilation
@@ -104,6 +105,6 @@ assessment:
     with it. The table gives one storage figure and the record splits it into a minimum and a maximum,
     which is a faithful but not identical representation. And the caption makes this an inherited value,
     so the citation names the compiler.
-  evidence_revision: sha256:8eb4b4a0f6f8479e035167d32c458e2944bcf7e6dbd2aacd66b1f5e4add1ffef
+  evidence_revision: sha256:a0a322a9d6fbfd4095e476ce619cb01611d0298ac9f76f93a32e586c5c6962cc
 verification:
   attestations: []

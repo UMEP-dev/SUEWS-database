@@ -87,7 +87,7 @@ assessment:
     role: compilation
     locators:
     - kind: section
-      label: Title, abstract and Sect. 2.1, study areas
+      label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
@@ -112,6 +112,6 @@ assessment:
     together with alpha 0.031 and theta 0.723, are the shape of a Helsinki parameter set rather than anything
     in this Zurich study, and the resemblance is close enough to be worth checking against the Helsinki
     records already in this database. Where 2.88 comes from is not apparent from any source read here.'
-  evidence_revision: sha256:cc1ad6c056877511d2c7322623e6ff439981a0c0700cb4762a276ecb9f63ca93
+  evidence_revision: sha256:ef520ad20ffed902e1d0f2ea56bbda69d3a2ad6d15eed92a0161924cc555bdf8
 verification:
   attestations: []
