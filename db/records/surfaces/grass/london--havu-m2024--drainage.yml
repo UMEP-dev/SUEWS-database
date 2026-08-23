@@ -12,4 +12,4 @@ parameters:
     drain_eq: 3
     drain_coef_1: 0.013
     drain_coef_2: 1.71
-  wet_threshold: 0.8
+  wet_threshold: 1.9

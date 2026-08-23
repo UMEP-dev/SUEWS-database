@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
-    records/surfaces/grass/london--havu-m2024--drainage: sha256:d1a64355ca380b83dc4641bf7caaeeb21dae2642171cff1ec388434b00bb042e
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
@@ -211,6 +211,6 @@ assessment:
     place london while its name reads "Grass - Helsinki, Zurich, Beijing", which its own evidence review
     must settle; and this entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry.'
-  evidence_revision: sha256:b88501ff2a5c45bc5761015170d4a3c4e2c3d39a4603314bcb6b1f9b16afb523
+  evidence_revision: sha256:85373607b1c7792e4efba66f3a62f8571a9fb3764fe677656d2fc1da1495e417
 verification:
   attestations: []
