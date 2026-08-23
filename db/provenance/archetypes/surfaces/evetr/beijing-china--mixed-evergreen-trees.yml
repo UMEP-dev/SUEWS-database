@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
     records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
-    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:f97c533944fa1ee50906c94c1a6120e21c1caf9b6f864689afdffe453ec434d7
+    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:499ec6a2d278839b2eb1aa2c6361d80992e53aa74718b4c55c16a8e050f41b79
     records/surfaces/evetr/beijing--zheng-y2023--max-conductance: sha256:6145a6acf68b5e07dbed85748d776d8c56e986d78e5a4bf1f8feff0dc52bb6b0
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-23T10:03:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -92,14 +92,14 @@ assessment:
       conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-beijing-ward2016-lai
-      note: 'The composite declares representativeness city and most components fit it: the Beijing rows
-        are classed city, the SE England rows regional, which is a wider class standing in for a city
-        and the ordinary direction of travel, and the porosity record generic. leaf_area_index is the
-        exception. It takes records/surfaces/evetr/beijing--ward2016--lai, which declares place beijing
-        and representativeness city but is named "Evergreen Tree (sample data)" and is reported by the
-        quality pass in scripts/check_db.py as a suspect name. The Beijing leaf area index therefore rests
-        on a class claim the record''s own name contradicts, and a maintainer has to decide whether that
-        row is the intended Beijing value.'
+      - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      note: 'The composite declares representativeness city. Its leaf_growth_power component is now correctly
+        classed site because the coefficients were fitted to one park, so retaining it in a city archetype
+        requires an explicit composition decision. A second issue remains in leaf_area_index: it takes
+        records/surfaces/evetr/beijing--ward2016--lai, which declares place beijing and representativeness
+        city but is named "Evergreen Tree (sample data)" and is reported by the quality pass as a suspect
+        name. The SE England records are regional and therefore broader than the composite; porosity is
+        generic.'
     method:
       conclusion: supported
       evidence_ids:
@@ -163,7 +163,7 @@ assessment:
     record: records/surfaces/evetr/beijing--zheng-y2023--lai-power
     role: component
     note: Fills leaf_growth_power. The record declares target land_cover.evetr, place beijing and representativeness
-      city, and is named "Evergreen Tree, LaiEq = 0"; its source field reads zheng-y2023.
+      site, and is named "Evergreen Tree, LaiEq = 0"; its source field reads zheng-y2023.
   - id: component-surfaces-evetr-london-havu-m2024-drainage
     record: records/surfaces/evetr/london--havu-m2024--drainage
     role: component
@@ -213,7 +213,8 @@ assessment:
     settled once for the class. Everything else in the assembly is coherent: the slot set is complete,
     the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
-    values.'
-  evidence_revision: sha256:10a599d9be4d6857eaad2d38bab5d05f47a04edfd8c20ef0d5befe9858fd723d
+    values. The leaf_growth_power component is a one-park site fit inside this city-classed composite,
+    so its scale also needs explicit composition curation.'
+  evidence_revision: sha256:0d501d37f243cd966303038c54ca26e8e45c4a01bd73db56e3c3245169e1df51
 verification:
   attestations: []
