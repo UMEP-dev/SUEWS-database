@@ -5,7 +5,7 @@ name: Bare Soil
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: ward2018
 legacy_id: 43240043
 parameters:
   storage_drain_params:

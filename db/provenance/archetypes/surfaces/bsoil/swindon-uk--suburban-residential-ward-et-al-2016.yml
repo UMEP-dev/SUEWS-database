@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:2cbc1a83b31231fd6bb5092852a2b878cfb59618bb9d9cebf5f4e6dc74805d7c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
-    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:b478f88444edba4d83d6bd3f517044f45d72ee7e35f1fc7cdfb410cdee546f5e
+    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:43:17Z'
@@ -38,7 +38,7 @@ assessment:
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
       note: The composite's name reads 'Suburban residential, Ward et al. (2016)', its place reads swindon
         and its origin reads 'Swindon, UK'. The label names both the typology and the study the selection
-        follows, and five of the eight components declare source ward2016, so the label identifies what
+        follows, and four of the eight components declare source ward2016, so the label identifies what
         the entry assembles.
     target:
       conclusion: supported
@@ -165,7 +165,7 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.bsoil, name 'Bare Soil',
-      place se-england, representativeness regional and source ward2016, and carries store_min and store_max
+      place se-england, representativeness regional and source ward2018, and carries store_min and store_max
       under storage_drain_params.
   - id: component-surfaces-bsoil-se-england--ward2016--drainage
     record: records/surfaces/bsoil/se-england--ward2016--drainage
@@ -201,8 +201,8 @@ assessment:
       a2 and a3, and declares no place and no representativeness.
   scientific_note: 'Nothing in this assembly can be improved by re-pointing a slot. archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016
     declares place swindon and representativeness city, and the database holds no bare-soil record for
-    Swindon at all, so its albedo, emissivity and water storage come from ward2016 se-england rows, while
-    drainage comes from the ward2018 se-england row. These regional records cover the town and are applied
+    Swindon at all, so its albedo and emissivity come from ward2016 se-england rows, while water storage
+    and drainage come from ward2018 se-england rows. These regional records cover the town and are applied
     down. The season mapping follows
     the components'' own season_label fields, and every slot takes a record declaring the target that
     slot fills. Two things are worth a reader''s attention without being defects in the selection. The
@@ -215,6 +215,6 @@ assessment:
     and exports the same fragment, which is defensible here in a way it would not be for two entries claiming
     the same place: the shared evidence is regional and covers both towns. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:adbe734d266cb776f3b63e7296cde32555ba23df49f8f4dd604da935e0b77ef4
+  evidence_revision: sha256:08e91e23c7895c555c3901be4f74fe9fdd4d18eb39fcb5babbb237194877ef50
 verification:
   attestations: []
