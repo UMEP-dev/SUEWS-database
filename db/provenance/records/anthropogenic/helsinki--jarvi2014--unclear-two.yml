@@ -1,0 +1,105 @@
+provenance_record: records/anthropogenic/helsinki--jarvi2014--unclear-two
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:5bbbf7c05e6c4a8eb09a20308c3e4a04c1442c9809c5ec1e186ddf4f7b742710
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/anthropogenic/helsinki--jarvi2014: sha256:0d31f8121048deff7ec923d9814c5718c950921bdb1806de20197b10abedcd36
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: The record is named Unclear two, which identifies nothing and marks it as the unresolved half
+        of a pair.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4b
+      note: The stored fields are anthropogenic heat and CO2 model parameters, which is the anthropogenic_emissions
+        target.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-table-4b
+      note: The distinguishing values are not in the article. Table 4b publishes one area-wide set with
+        a0 0.1 and a2 0.0102; this record stores qf_a 0.1337 for working days and 0.1153 for holidays
+        and qf_c 0.0149, none of which appears anywhere in the paper. Its vehicle energy factor of 4110000
+        J km-1 and its weekend population factor of 0.68 are likewise absent. Only qf_b 0.0099 lines up,
+        and then only against a printed exponent that does not match.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-table-4b
+      note: The cited article publishes a single parameter set and this is not it, so the citation cannot
+        stand behind these values; no replacement is named here.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: The record's place is Helsinki, but nothing identifies which of the study's sites, if any,
+        these coefficients describe.
+    representativeness:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: Representativeness cannot be assessed while the provenance is unknown.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-table-4b
+      note: With no source established, the production method is open.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-4b
+      note: Two anonymous records under one citation and one place, where the article publishes a single
+        area-wide set. A maintainer has to establish what the second one is before it can be named or
+        cited.
+      related_records:
+      - records/anthropogenic/helsinki--jarvi2014
+  evidence:
+  - id: jarvi-table-4b
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4b, overall area parameter values
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
+        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
+        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
+        area.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: This is the weaker of the pair. Table 4b gives one set of area parameters, and the
+    record's distinguishing figures, qf_a 0.1337 and 0.1153, qf_c 0.0149, a vehicle energy factor of 4110000
+    J km-1 and a weekend population factor of 0.68, are not among them or anywhere else in the article.
+    The study has five sites across two cities, so a second parameter set is not implausible; it is simply
+    not published here. Until someone establishes where it came from, the record is a set of numbers with
+    a citation that does not carry them and a name that admits as much.
+  evidence_revision: sha256:4fcf28e7859c8309289617059e0adb39997e972e0c2777cf45e67ab352851ecd
+verification:
+  attestations: []

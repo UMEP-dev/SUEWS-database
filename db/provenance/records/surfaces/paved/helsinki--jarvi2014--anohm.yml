@@ -1,0 +1,95 @@
+provenance_record: records/surfaces/paved/helsinki--jarvi2014--anohm
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:431b1cecab1459c22f97ea733303345b1eeab8eaf0f41024b4d05a4e28dff086
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: Paved is consistent with the record's land_cover.paved target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: AnOHM material properties are land_cover.paved properties.
+    values:
+      conclusion: contradicted
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: None of the three stored values is in the article. AnOHM is never mentioned in it, and the
+        paper publishes no volumetric heat capacity, thermal conductivity or bulk transfer coefficient
+        for any surface. Its storage heat treatment is the objective hysteresis model, with snow coefficients
+        determined in Sect. 3.1.
+    source:
+      conclusion: contradicted
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: A paper that does not contain the scheme these parameters belong to cannot be their source.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is a study site, but with the citation contradicted nothing establishes these values
+        as Helsinki evidence.
+    representativeness:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: Representativeness cannot be assessed while the provenance is unknown; city scale would overstate
+        this study in any case.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: With no source established, the production method is open.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-anohm-absent
+      note: One AnOHM record for this surface under this citation.
+  evidence:
+  - id: jarvi-anohm-absent
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Whole-article search for AnOHM and for its parameters
+      page: 1691-1711
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: The string AnOHM does not occur anywhere in the article. Storage heat is handled through the
+        objective hysteresis model and, for snow, through coefficients determined in Sect. 3.1; no volumetric
+        heat capacity, thermal conductivity or bulk transfer coefficient is published for any surface.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: The citation is simply wrong for this record. AnOHM does not appear in Järvi et al.
+    (2014) at all, and the article publishes no material thermal properties of any kind; its storage heat
+    comes from the objective hysteresis model. This audit does not name a replacement source, because
+    doing so on the strength of the scheme's name would be exactly the inference this database forbids.
+    What is needed is the publication that introduced AnOHM and published these coefficients.
+  evidence_revision: sha256:14073c5aa87a6c14dd2208d87c2653a2b976ba7169c736ee491ce7ab44925af3
+verification:
+  attestations: []

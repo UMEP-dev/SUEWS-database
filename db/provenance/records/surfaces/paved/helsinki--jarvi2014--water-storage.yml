@@ -1,0 +1,109 @@
+provenance_record: records/surfaces/paved/helsinki--jarvi2014--water-storage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: Paved matches the surface column the value is read from.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: A surface water storage capacity is a land_cover.paved property.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: Table 4a gives Si as 0.48 mm in the Pav column, which is the stored store_min and store_max.
+        The table gives one value where the record stores a minimum and a maximum, so the pair is the
+        single published figure repeated.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
+        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
+        value rather than deriving it.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: Helsinki is where the study ran, but this cell is an inherited value rather than a Helsinki
+        determination.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-sites
+      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
+        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
+        neighbourhood-scale values, not city-wide ones.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-caption
+      note: A value carried forward from an earlier publication, so the production method belongs to that
+        publication rather than to this one.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: The value occupies its own cell in Table 4a, distinct from the other surface columns.
+  evidence:
+  - id: jarvi-table-4a
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4a, parameters used in SUEWS by surface
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
+        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
+        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
+        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for every surface. Footnote
+        a marks a value optimised using data from Helsinki, footnote b marks Vargo et al. (2013).'
+  - id: jarvi-table-caption
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
+        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: The 0.48 mm is exactly what Table 4a publishes for pavement. Two smaller points sit
+    with it. The table gives one storage figure and the record splits it into a minimum and a maximum,
+    which is a faithful but not identical representation. And the caption makes this an inherited value,
+    so the citation names the compiler.
+  evidence_revision: sha256:8eb4b4a0f6f8479e035167d32c458e2944bcf7e6dbd2aacd66b1f5e4add1ffef
+verification:
+  attestations: []

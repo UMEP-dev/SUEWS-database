@@ -1,0 +1,103 @@
+provenance_record: records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c3b918b41b86abcf3d1ca99478c32e909cbdd5555bc3079adfe820846901a7fa
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places: {}
+  records:
+    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:6faf655037c29fec22a19f4c91ba67b65c0f8cf9571f3e711177213022429baa
+    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-23T02:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-snow-removal
+      note: The name reads No snow removeal; removal is misspelt. Record paths are identity in this database,
+        so the misspelling is in the path as well and cannot be corrected as a side effect of another
+        change.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-snow-removal
+      note: A 24-hour snow-removal profile is a profile.snow-removal record.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-snow-removal
+      note: The article publishes no diurnal snow-removal profile. Snow removal enters its model through
+        a snow water equivalent limit, 40 mm for buildings and 100 mm for pavement in Table 4a, and the
+        text says the same values were used at all sites for want of further information. The stored hourly
+        pattern has no locator here.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-snow-removal
+      note: The cited article cannot be shown to publish this profile, and no replacement is named here.
+    place:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: Nothing published ties this pattern to a place, and one of the three records in this family
+        carries no place at all.
+    representativeness:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-sites
+      note: Representativeness cannot be assessed while the provenance is unknown.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-snow-removal
+      note: A model configuration rather than a determined value, as far as can be told.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-snow-removal
+      note: 'Three snow-removal profiles sit under one citation that publishes none of them: an all-zero
+        pattern, an all-one pattern and a daytime pattern. They read as model configuration options rather
+        than as evidence, and whether they belong in the database as citable records is a maintainer decision.'
+      related_records:
+      - records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
+      - records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
+  evidence:
+  - id: jarvi-snow-removal
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3.2 and Appendix C, snow transport limit
+      page: 1700
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Snow removal enters the model through SWE,Lim, a limit of the snow water equivalent for snow
+        removal, given in Table 4a as 40 mm for buildings and 100 mm for pavement. The article says the
+        same values were used at all sites because no additional information was available. It publishes
+        no diurnal profile of snow removal.
+  - id: jarvi-sites
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1, characteristics of the observational sites
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
+        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
+        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
+        address and in a publisher''s address in the reference list.'
+  scientific_note: 'Snow removal in this article is a threshold, not a schedule: a snow water equivalent
+    limit of 40 mm on buildings and 100 mm on pavement, applied uniformly across the sites because nothing
+    better was available. There is no diurnal profile in it. The three records in this family encode switching
+    patterns instead, and the citation does not support any of them. This one also carries a misspelling
+    in its name and therefore in its path, which is identity here and cannot be tidied in passing.'
+  evidence_revision: sha256:0fae4a32662bfbf6f247bfa3e9ac55aeba0abccd63256990d2d9ab5bd969606a
+verification:
+  attestations: []
