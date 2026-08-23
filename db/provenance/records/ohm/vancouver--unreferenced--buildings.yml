@@ -1,7 +1,7 @@
 provenance_record: records/ohm/vancouver--unreferenced--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c5e11da0c24fb338fb57de19c1d4c3e9080a15cef4e48d7535c6963146f60b33
+record_revision: sha256:6482cb2b959bbe645c9d5e62d52bbb56f033008dd9b981b9d08e9a1c15c5476f
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -34,24 +34,19 @@ assessment:
       - parameter-publication
       - later-compilation
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - parameter-publication
-      note: Grimmond et al. (1991) publishes the fitted tuple; the record is unreferenced.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/290
     place:
       conclusion: supported
       evidence_ids:
       - parameter-publication
       note: The parameter table identifies the N-S canyon observation input as Vancouver.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - parameter-publication
       note: The fit comes from one canyon dataset and supports site rather than city scale.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/290
     method:
       conclusion: supported
       evidence_ids:
@@ -79,9 +74,9 @@ assessment:
       label: Table 4, N-S canyon
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-  scientific_note: Grimmond et al. (1991) is the parameter publication and Nunez is the observation source.
-    The canonical source and representativeness need correction; the raw origin typo is retained only
-    as migration history and is not treated as evidence.
-  evidence_revision: sha256:eb7b13429848f57566a64c422fcd99993233b4b4a940c9341fd04ee8f58498ca
+  scientific_note: Grimmond et al. (1991) is the canonical parameter publication and Nunez is the observation
+    source. The record is classified at the site scale supported by the single canyon dataset; the raw
+    origin typo is retained only as migration history and is not treated as evidence.
+  evidence_revision: sha256:fa99b0a0d2607365cf9cebf982fd22df5c178325287734f7760098508fa6a9ab
 verification:
   attestations: []
