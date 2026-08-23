@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -182,7 +182,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   scientific_note: This is the cleanest of the eight deciduous-tree composites. Its label names Havu et
     al. 2024, and the three slots that carry the vegetation behaviour of a forest canopy take havu-m2024
@@ -195,6 +195,6 @@ assessment:
     not mix equations. What is missing is only the written rationale for the imports, which no composite
     in this family carries and which the format expects a composition sidecar to supply. The components'
     values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:c00153c8a193be8e1b08beff9962ea241c42d381230a8298f84259b04c1b7a3c
+  evidence_revision: sha256:3810dfc6433798a327a27e8cc9e7c1ccba576523956edb02b22172b54f76e538
 verification:
   attestations: []

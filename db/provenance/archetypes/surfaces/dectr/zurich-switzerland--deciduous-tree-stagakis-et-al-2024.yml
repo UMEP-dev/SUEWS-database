@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
@@ -162,7 +162,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   - id: component-surfaces-dectr-zurich-jarvi2011-lai
     record: records/surfaces/dectr/zurich--jarvi2011--lai
@@ -199,6 +199,6 @@ assessment:
     Zurich while its place field says London. Neither question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:5b8c48c756d689d3778af595950727bcbaf08d1319b13f2b5c73ce7b92333488
+  evidence_revision: sha256:ca9ccfbb13671f29f032e1d55ade20f32011f0cea4757b85a5b80d3250bed2c9
 verification:
   attestations: []

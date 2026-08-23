@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:f2a005afcc18ffe49e1e3fdaa965725ed5a72186d9cd8f6a6d3cc6eb13117456
     records/surfaces/dectr/se-england--ward2016--phenology: sha256:b74c916d81110d79627efef71f3119c9bdce94a04e537b4c291532fe33a15ce0
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/swindon--ward2016--emissivity: sha256:cb25f320a6b6df0d68b28eed0ba6f5aa2c91c8ddcae76e77437caab40ec66c1c
 assessment:
   status: curation_required
@@ -39,7 +39,7 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-max-conductance
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and nine of its thirteen components
+      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and eight of its thirteen components
         declare source ward2016, registered in db/sources.yml as Ward, H. C.; Kotthaus, S.; Järvi, L.;
         Grimmond, C. S. B., 2016, "Surface Urban Energy and Water Balance Scheme (SUEWS): Development
         and evaluation at two UK sites", Urban Climate. The label names the study rather than the city,
@@ -195,7 +195,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   - id: component-surfaces-dectr-swindon-ward2016-emissivity
     record: records/surfaces/dectr/swindon--ward2016--emissivity
@@ -214,6 +214,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology and the
     snow limit, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:fbe8b3c53903b7f77a2898a57ab7b4e441d7b5b2988ccf62b0f8da989735eb0d
+  evidence_revision: sha256:d5e34ceb1d7e6b33d2450bafa98d9a40ee1e58147955795a302980b73cd5a5aa
 verification:
   attestations: []

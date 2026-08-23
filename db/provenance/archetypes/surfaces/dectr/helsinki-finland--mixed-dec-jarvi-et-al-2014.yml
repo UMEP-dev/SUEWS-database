@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/vancouver--jarvi2011--max-conductance: sha256:f4571a9f8f86075e0df82cd8e605b30d659bc63c3488a6e50fa17f4003e69fcb
 assessment:
   status: curation_required
@@ -188,7 +188,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   - id: component-surfaces-dectr-vancouver-jarvi2011-max-conductance
     record: records/surfaces/dectr/vancouver--jarvi2011--max-conductance
@@ -211,6 +211,6 @@ assessment:
     a component''s value. A maintainer should read the two Helsinki typologies against their publications
     together, since a swap in one implies the other. The components'' values remain subject to their own
     evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:48c126dced14f316dd40b197bb3d94583f00830a08e1b75087b3f2fc7ed6a4a9
+  evidence_revision: sha256:345d0dc541407587e4ad126abc90bb2b57bf5c1b29e1251bc2d9fdc53d9aa513
 verification:
   attestations: []
