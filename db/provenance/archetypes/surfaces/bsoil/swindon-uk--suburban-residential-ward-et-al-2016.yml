@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:3e0ed22815f2df9ba07ef0b78a5176140ea52e750644a4ed55322f92c6296393
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
-    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:f10da0a5129d8ce0ecd436d57e1697b5468c1237e9d632af3129732b644b653d
+    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:2cbc1a83b31231fd6bb5092852a2b878cfb59618bb9d9cebf5f4e6dc74805d7c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:b478f88444edba4d83d6bd3f517044f45d72ee7e35f1fc7cdfb410cdee546f5e
 assessment:
@@ -38,7 +38,7 @@ assessment:
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
       note: The composite's name reads 'Suburban residential, Ward et al. (2016)', its place reads swindon
         and its origin reads 'Swindon, UK'. The label names both the typology and the study the selection
-        follows, and six of the eight components declare source ward2016, so the label identifies what
+        follows, and five of the eight components declare source ward2016, so the label identifies what
         the entry assembles.
     target:
       conclusion: supported
@@ -171,7 +171,7 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.bsoil, name 'Bare Soil', place
-      se-england, representativeness regional and source ward2016, and carries drain_eq, drain_coef_1,
+      se-england, representativeness regional and source ward2018, and carries drain_eq, drain_coef_1,
       drain_coef_2 and wet_threshold.
   - id: component-constructions-uk--lindberg-f2020--central-london-sample-run
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
@@ -201,8 +201,9 @@ assessment:
       a2 and a3, and declares no place and no representativeness.
   scientific_note: 'Nothing in this assembly can be improved by re-pointing a slot. archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016
     declares place swindon and representativeness city, and the database holds no bare-soil record for
-    Swindon at all, so its albedo, emissivity, water storage and drainage come from the ward2016 se-england
-    rows, the region containing the town, classed regional and applied down. The season mapping follows
+    Swindon at all, so its albedo, emissivity and water storage come from ward2016 se-england rows, while
+    drainage comes from the ward2018 se-england row. These regional records cover the town and are applied
+    down. The season mapping follows
     the components'' own season_label fields, and every slot takes a record declaring the target that
     slot fills. Two things are worth a reader''s attention without being defects in the selection. The
     snow_lim_patch slot leaves the UK entirely, because records/surfaces/bsoil/helsinki--jarvi2014--snow-lim
@@ -214,6 +215,6 @@ assessment:
     and exports the same fragment, which is defensible here in a way it would not be for two entries claiming
     the same place: the shared evidence is regional and covers both towns. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:db30717cb4603f6e53e322142cb6c3c6013e36f6a41bf2d536349d0623597fdd
+  evidence_revision: sha256:adbe734d266cb776f3b63e7296cde32555ba23df49f8f4dd604da935e0b77ef4
 verification:
   attestations: []

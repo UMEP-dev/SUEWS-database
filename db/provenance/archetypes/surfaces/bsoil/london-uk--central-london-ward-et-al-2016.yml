@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/london--ward2016--albedo: sha256:456b8022108c75aea359ba598c32137557bac3863f92088342a974d382ccce86
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
-    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:f10da0a5129d8ce0ecd436d57e1697b5468c1237e9d632af3129732b644b653d
+    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:2cbc1a83b31231fd6bb5092852a2b878cfb59618bb9d9cebf5f4e6dc74805d7c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:b478f88444edba4d83d6bd3f517044f45d72ee7e35f1fc7cdfb410cdee546f5e
 assessment:
@@ -39,7 +39,7 @@ assessment:
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
       note: The composite's name reads 'Central London, Ward et al. (2016)', its place reads london and
         its origin reads 'London, UK'. The label names both the typology and the study the selection follows,
-        and six of the eight components declare source ward2016, so the label identifies what the entry
+        and five of the eight components declare source ward2016, so the label identifies what the entry
         assembles.
     target:
       conclusion: supported
@@ -174,7 +174,7 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.bsoil, name 'Bare Soil', place
-      se-england, representativeness regional and source ward2016, and carries drain_eq, drain_coef_1,
+      se-england, representativeness regional and source ward2018, and carries drain_eq, drain_coef_1,
       drain_coef_2 and wet_threshold.
   - id: component-constructions-uk--lindberg-f2020--central-london-sample-run
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
@@ -203,8 +203,9 @@ assessment:
       name 'Code 55 x Mulitplier for winter [552]', season_label Winter and source ward2016, carries a1,
       a2 and a3, and declares no place and no representativeness.
   scientific_note: The mapping is sound and the selection has one gap. archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
-    declares place london and representativeness city, and takes six of its eight components from ward2016,
-    the study its name cites. The emissivity, water storage and drainage slots take the se-england rows,
+    declares place london and representativeness city, and takes five of its eight components from ward2016,
+    the study its name cites. The emissivity and water storage slots take ward2016 se-england rows, while
+    drainage takes the ward2018 se-england row,
     classed regional and applied down to a city inside that region, which is the sound direction for a
     class difference and the closest the database offers. The albedo slot is the exception. records/surfaces/bsoil/london--ward2016--albedo
     carries place london, representativeness city and source ward2016, matching this composite on all
@@ -217,6 +218,6 @@ assessment:
     London [sample run]', a building-fabric entry with roof and wall layers, which sits oddly on a bare-soil
     surface but contributes nothing to the exported fragment, because scripts/export_record.py keeps the
     construction slot out of it.
-  evidence_revision: sha256:8909d3beae5f3ce94e160aea98edede435037ff119d65fdfb7c1c792169c9225
+  evidence_revision: sha256:68a7c138cea8b9e239fefa37ac7573dd77541e866a06f50f6262016318f7ad76
 verification:
   attestations: []
