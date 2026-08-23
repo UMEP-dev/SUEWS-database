@@ -8,7 +8,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024: sha256:5d701b680f6c6762e9c9a877b540063da3ced7523ade8c3a3429cb77fa56e535
-    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+    records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation: sha256:b49b78b6fc69a49c09929d0f2a1662c258eb6b5bf73ea6f04f327fc0558d4f3b
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
@@ -208,6 +208,6 @@ assessment:
     forward without acting on it here is records/surfaces/grass/london--havu-m2024--drainage, which declares
     place london while its name reads "Grass - Helsinki, Zurich, Beijing"; that belongs to the record''s
     own evidence review.'
-  evidence_revision: sha256:86463c1d09b386308fb00fda55475da74c4a5e72e994e32f9faf0c60e10dc278
+  evidence_revision: sha256:a45b5a0d5ed821b1184804db3277afaa8f3464bcc431310126eb803cc69344f0
 verification:
   attestations: []

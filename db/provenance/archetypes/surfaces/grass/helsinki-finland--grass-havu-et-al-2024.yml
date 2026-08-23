@@ -8,7 +8,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024: sha256:640c1fffbf7a952ca36154288dfec52e16fe1437e792334d081894d55e4dede7
-    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+    records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
@@ -211,6 +211,6 @@ assessment:
     place london while its name reads "Grass - Helsinki, Zurich, Beijing", which its own evidence review
     must settle; and this entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry.'
-  evidence_revision: sha256:85373607b1c7792e4efba66f3a62f8571a9fb3764fe677656d2fc1da1495e417
+  evidence_revision: sha256:eb8ee0f912a052260d64842db18292e76dd104fbefd0507377f902342ec95144
 verification:
   attestations: []
