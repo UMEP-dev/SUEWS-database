@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
-    records/surfaces/bldgs/se-england--ward2016--drainage: sha256:11d4566e3b5b7e9668bfe3f0dd102572d1d57df1190c10b4443cf1fae34a9342
+    records/surfaces/bldgs/se-england--ward2016--drainage: sha256:016ceb6a34b9f9542130d9656ceec37ae74f6029ca327881f3e2f3713d51a898
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:bf766a3240a3c26de34cd1b3ad9ec228c8759dbbe5eebac680e42a203db3945a
 assessment:
   status: curation_required
@@ -38,12 +38,12 @@ assessment:
       - component-ohm-generic-ward2016-buildings-summer
       - component-ohm-generic-ward2016-buildings-winter
       note: 'The name field of the composite reads ''Central London, Ward et al. (2016)'', its place field
-        london and its origin field ''London, UK''. Six of the eight components declare source ward2016,
-        so the attribution holds for most of the assembly. Two do not: records/constructions/uk--lindberg-f2020--central-london-sample-run
-        declares source lindberg-f2020 and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim declares
-        source jarvi2014. Both fill parameter groups the named study does not supply, the thermal layer
-        stack and the snowpack limit, so the label identifies the typology correctly while falling short
-        of a complete statement of provenance.'
+        london and its origin field ''London, UK''. Five of the eight components declare source ward2016,
+        so the attribution holds for most of the assembly. Three do not: records/surfaces/bldgs/se-england--ward2016--drainage
+        declares source ward2018, records/constructions/uk--lindberg-f2020--central-london-sample-run declares
+        source lindberg-f2020, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim declares source
+        jarvi2014. They fill drainage, the thermal layer stack and the snowpack limit, so the label identifies
+        the typology correctly while falling short of a complete statement of provenance.'
     target:
       conclusion: supported
       evidence_ids:
@@ -157,7 +157,7 @@ assessment:
     record: records/surfaces/bldgs/se-england--ward2016--drainage
     role: component
     note: Fills drainage. The record declares target land_cover.bldgs, name 'Buildings', place se-england,
-      representativeness regional and source ward2016.
+      representativeness regional and source ward2018.
   - id: component-constructions-uk-lindberg-f2020-central-london-sample-run
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
     role: component
@@ -182,8 +182,9 @@ assessment:
       name 'Code 798 x Multiplier for winter [7982]', season_label Winter and source ward2016, and declares
       neither place nor representativeness.
   scientific_note: 'This is the most internally coherent composite in the batch on source and the most
-    consequential on reach. Six of its eight components declare source ward2016, the albedo and emissivity
-    rows are placed in London, the water rows in SE England, and the seasonal OHM mapping is genuinely
+    consequential on reach. Five of its eight components declare source ward2016; the drainage component
+    declares source ward2018, the albedo and emissivity rows are placed in London, the water rows in SE
+    England, and the seasonal OHM mapping is genuinely
     correct: the summer-labelled row fills both summer slots and the winter-labelled row fills both winter
     slots, with no wet or dry distinction in either record to honour. Two slots need a maintainer. The
     construction is records/constructions/uk--lindberg-f2020--central-london-sample-run, whose own name
@@ -197,6 +198,6 @@ assessment:
     America. The snowpack limit reaching to Helsinki is a third-order concern by comparison, and it is
     forced, since no other buildings snowpack_limit record exists. This review does not revisit any component
     value.'
-  evidence_revision: sha256:03025aceb20bea517f792f9d10b1c286a8242dae1a573d4a85d21b90172ffe81
+  evidence_revision: sha256:2a2f2beeafadace35820fa095e624308653dcd866c7d95c1dc6792ad5b389d42
 verification:
   attestations: []
