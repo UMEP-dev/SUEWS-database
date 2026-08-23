@@ -1,7 +1,7 @@
 provenance_record: records/ohm/nanjing--dou2023--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2e74f6b88bb73fbda76af427ab21c6b3a6adeb44e72e493bdc248ae23b161afd
+record_revision: sha256:2ba74cf2a30693ad34b9062173497f8dcedd9e379ab350ce0331001328784a9b
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
@@ -40,7 +40,7 @@ assessment:
       evidence_ids:
       - dou-derived-mean
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - dou-derived-mean
       note: The summer and winter inputs come from one concrete roof measurement site in Nanjing, so the
@@ -82,6 +82,6 @@ assessment:
     so its record-level method is literature. Within that publication, the tuple is explicitly the component-wise
     arithmetic mean of the Wang et al. summer and winter rows: (0.83 + 0.86) / 2 = 0.845; (0.52 + 0.27)
     / 2 = 0.395; and (-16.95 + -9.64) / 2 = -13.295.'
-  evidence_revision: sha256:39904b7ef26156beae2036ff599f407ddf52357e84d1246dc3be9121e539e671
+  evidence_revision: sha256:04b4979d46d096489b764e51078299d1e3ff36ca8b7c8f438329e34125279cc2
 verification:
   attestations: []
