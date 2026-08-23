@@ -644,6 +644,11 @@ places:
     lon: -93.5
     country: united-states-of-america
     subnational: true
+  morgan-monroe-state-forest:
+    name: Morgan–Monroe State Forest
+    lat: 39.3167
+    lon: -86.4167
+    country: united-states-of-america
   monaco:
     kind: country
     name: Monaco

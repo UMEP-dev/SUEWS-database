@@ -2,9 +2,9 @@ record: records/surfaces/common/midwest-usa--schmid2000--biogen-co2
 schema_version: '2026.5'
 target: land_cover.common
 name: Mixed Hardwood Forest
-place: midwest-usa
+place: morgan-monroe-state-forest
 origin: Midwest America
-representativeness: regional
+representativeness: site
 source: schmid2000
 legacy_id: 30240008
 parameters:
