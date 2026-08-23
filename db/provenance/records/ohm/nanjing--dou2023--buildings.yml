@@ -9,7 +9,7 @@ dependency_revisions:
     nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
   records:
     records/ohm/nanjing--wang2008--buildings: sha256:ca173a894025c4ee88fdf4dc1eb824f56953e471244e552d355066bed6c4e3de
-    records/ohm/nanjing--wang2008--buildings--concrete-roof: sha256:209276bde9cf9c01cd74a271739e3fca77a8493b1088f840681e726dbf577bed
+    records/ohm/nanjing--wang2008--buildings--concrete-roof: sha256:fee46be1da731ecc1a655d1dd5ffe92a960d286d9b81a89c334668233a0670fd
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:21:09Z'
@@ -82,6 +82,6 @@ assessment:
     so its record-level method is literature. Within that publication, the tuple is explicitly the component-wise
     arithmetic mean of the Wang et al. summer and winter rows: (0.83 + 0.86) / 2 = 0.845; (0.52 + 0.27)
     / 2 = 0.395; and (-16.95 + -9.64) / 2 = -13.295.'
-  evidence_revision: sha256:45c192c3a8f5f5a16c8c8c0f91cb6e81298d99c4aa2574aa31f9f20d65338f73
+  evidence_revision: sha256:39904b7ef26156beae2036ff599f407ddf52357e84d1246dc3be9121e539e671
 verification:
   attestations: []
