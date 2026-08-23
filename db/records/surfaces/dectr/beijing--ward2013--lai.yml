@@ -5,7 +5,8 @@ name: Deciduous Tree
 place: beijing
 origin: Beijing
 representativeness: city
-source: ward2013
+source: jarvi2011
+method: literature
 legacy_id: 31240024
 parameters:
   lai:

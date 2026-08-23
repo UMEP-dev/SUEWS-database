@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
-    records/surfaces/dectr/beijing--ward2013--lai: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
+    records/surfaces/dectr/beijing--ward2013--lai: sha256:8e1c501369840a65a5d33d7af48c2c1d6a8f6aef7cd6eadd669d0a9b30a4259a
     records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
@@ -129,7 +129,7 @@ assessment:
     record: records/surfaces/dectr/beijing--ward2013--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place beijing and representativeness
-      city. It carries source ward2013 and declares lai.lai_type 0.
+      city. It carries source jarvi2011, method literature and declares lai.lai_type 0.
   - id: component-surfaces-dectr-beijing-zheng-y2023-lai-power
     record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
     role: component
@@ -182,7 +182,7 @@ assessment:
       regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   scientific_note: 'The Beijing-specific content of this typology is real but partial. Four slots take
-    Beijing records: the leaf area index from ward2013 and the leaf growth power, maximum conductance
+    Beijing records: the literature-sourced leaf area index from jarvi2011 and the leaf growth power, maximum conductance
     and biogenic CO2 set from zheng-y2023, whose registered title in db/sources.yml is about simulating
     heat and CO2 fluxes in Beijing. The LAI pair is internally consistent, both records declaring lai.lai_type
     0, and the targets and the OHM mapping are sound. The leaf_growth_power component is a one-park site
@@ -196,6 +196,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:60811bc0083da5f4d533c254d3e8c978476fa987a20d659a64a4480074a725c0
+  evidence_revision: sha256:9673fcfa73411dcb77161ac50cfab081f51f12be107c43dbf4c0f1565d2e9579
 verification:
   attestations: []
