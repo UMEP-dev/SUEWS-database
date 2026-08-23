@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
     records/surfaces/dectr/beijing--ward2013--lai: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
-    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-23T09:56:50Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -85,14 +85,16 @@ assessment:
         Nothing in the entries settles whether these transfers are intended, and a maintainer should record
         the reasoning or replace the components.'
     representativeness:
-      conclusion: supported
+      conclusion: correction_required
       evidence_ids:
+      - component-surfaces-dectr-beijing-zheng-y2023-lai-power
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Ten components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional and the OHM record declares no class. A regional value is offered as typical
-        of a wider area and so covers a city, which is the direction that does not overreach; the absent
-        class on the OHM record is a gap in that record family rather than a defect of this assembly.
+      note: The composite claims representativeness city, but its leaf_growth_power component is now
+        correctly classed site because the coefficients were fitted to one park. A city archetype therefore
+        contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
+        a separate composition-curation decision. The regional water-storage record is broader than
+        the composite and does not create the same over-claim; the OHM record declares no class.
     method:
       conclusion: supported
       evidence_ids:
@@ -132,7 +134,7 @@ assessment:
     record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
     role: component
     note: Fills leaf_growth_power. The record declares target land_cover.dectr, place beijing and representativeness
-      city. It is named "Deciduous Tree, LaiEq = 0", carries source zheng-y2023 and declares lai.lai_type
+      site. It is named "Deciduous Tree, LaiEq = 0", carries source zheng-y2023 and declares lai.lai_type
       0, matching the leaf_area_index component.
   - id: component-surfaces-dectr-beijing-zheng-y2023-max-conductance
     record: records/surfaces/dectr/beijing--zheng-y2023--max-conductance
@@ -183,7 +185,9 @@ assessment:
     Beijing records: the leaf area index from ward2013 and the leaf growth power, maximum conductance
     and biogenic CO2 set from zheng-y2023, whose registered title in db/sources.yml is about simulating
     heat and CO2 fluxes in Beijing. The LAI pair is internally consistent, both records declaring lai.lai_type
-    0, and the targets and the OHM mapping are sound. The remaining eight slots are imports, and two of
+    0, and the targets and the OHM mapping are sound. The leaf_growth_power component is a one-park site
+    fit inside this city-classed composite, which now requires explicit composition curation. The remaining
+    eight slots are imports, and two of
     them matter more than the rest: the snowpack limit and the four degree-day thresholds both come from
     Helsinki, a Dfb city, into a composite placed at Beijing, a Dwa city, and both quantities describe
     when snow accumulates and when leaves appear and fall rather than what a deciduous tree is. The drainage
@@ -192,6 +196,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:6c4d3329dc91187412f4d18b38a60db86a306ba4552ce40df6579b5e5cd29c9c
+  evidence_revision: sha256:5c4d9fe9b851db0a7e78bc313fbf6e76a39d48b5c2ddf01556970703c9c3b1e1
 verification:
   attestations: []

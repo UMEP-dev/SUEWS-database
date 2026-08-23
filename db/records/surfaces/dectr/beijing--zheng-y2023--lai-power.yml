@@ -4,7 +4,7 @@ target: land_cover.dectr
 name: Deciduous Tree, LaiEq = 0
 place: beijing
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 32240008
 parameters:

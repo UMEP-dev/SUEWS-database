@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
+record_revision: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
 dependency_revisions:
   sources:
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T00:00:44Z'
+  assessed_at: '2026-08-23T09:56:50Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -52,16 +52,13 @@ assessment:
       - zheng-parameter-publication
       note: The LAI series and the modelling domain are both in Beijing.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-parameter-publication
       - zheng-domain
-      note: The record claims city representativeness. Appendix A fits the coefficients to a six-year
-        (2011-2016) Landsat 7 ETM+ LAI series for one park near the IAP tower, and Sect. 3 states that
-        the modelled domain is a 1 km circle around that tower. The paper establishes neither city-wide
-        sampling nor a city-wide domain.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/325
+      note: Site representativeness matches the fit to a six-year Landsat LAI series for one park near
+        the IAP tower and the 1 km model domain; the paper explicitly describes the LAI parameters as
+        site-specific.
     method:
       conclusion: supported
       evidence_ids:
@@ -98,6 +95,11 @@ assessment:
       note: Derives the coefficients by CMA-ES from a 2011-2016 Landsat 7 ETM+ LAI series for a park near
         the IAP tower.
     - kind: section
+      label: Conclusion
+      page: 4566
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: Describes the optimised LAI parameters as site-specific.
+    - kind: section
       label: Sect. 4.5.1, model cases
       page: 4558
       url: https://doi.org/10.5194/gmd-16-4551-2023
@@ -130,11 +132,10 @@ assessment:
         flux footprint; no city-wide domain is modelled.
   scientific_note: 'The optimised LAI coefficients are genuinely Zheng et al.''s own: Appendix A sets
     out the CMA-ES fit and Table 3 publishes the result, so the source attribution and the method are
-    sound. The stored senescence_sdd was 0.001 where both the article and the released model input give
-    0.0001, an order of magnitude, matching neither the optimised case nor the base case; it has been
-    corrected. What remains is that the record claims city representativeness for coefficients fitted
-    to one park''s satellite LAI series and applied to a 1 km circle. The three identical sibling records
-    are intentional, not duplicates, and any correction has to move all three together.'
-  evidence_revision: sha256:7213138a93a29ed3bb5476e6ec23d4abaa1defb27197c8429eda71f0113b73ef
+    sound. The stored senescence_sdd was previously corrected to the published 0.0001. Because the fit
+    uses one park''s satellite LAI series and a 1 km domain and the paper calls the parameters site-specific,
+    this deciduous-tree record is now classified at site scale. The identical evergreen and grass sibling
+    tuples are intentional; evergreen representativeness remains tracked separately in issue 324.'
+  evidence_revision: sha256:1c2c93ee4bf9c3bbdf15edd18fe763571f8a4501ae2372bf1251e79a20d6d6fe
 verification:
   attestations: []
