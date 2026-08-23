@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:3e959491006a1134705c585b09797346054dcd240be055be7362ca202d5b370d
+record_revision: sha256:a92cd645c3105a5c64c135914bfe1fa0d61cf4535e108cf578a5a331d494797f
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -33,12 +33,9 @@ assessment:
       - parameter-publication
       - later-compilation
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - parameter-publication
-      note: The record is unreferenced even though Grimmond et al. (1991) publishes the fitted tuple.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/282
     place:
       conclusion: not_applicable
     representativeness:
@@ -70,9 +67,9 @@ assessment:
       label: Table 4, Bare soil
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-  scientific_note: Grimmond et al. (1991) is the parameter publication; Novak is the underlying observation
-    source, not the author of the stored fitted coefficients. The current source field needs a record-specific
-    correction while the sidecar preserves the role distinction.
-  evidence_revision: sha256:97cceb0fab4ce7c6c9705b654ae50e76dba1c09a5c1acf1c8f3584163b301283
+  scientific_note: Grimmond et al. (1991) is the canonical parameter publication; Novak is the underlying
+    observation source, not the author of the stored fitted coefficients. The sidecar preserves the role
+    distinction.
+  evidence_revision: sha256:94843d422e49dba4c85a81cbefc02ac8a3f8d6b5f781368dfa44c1a9afeb5aa3
 verification:
   attestations: []
