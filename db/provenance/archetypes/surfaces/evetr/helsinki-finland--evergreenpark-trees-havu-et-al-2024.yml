@@ -12,7 +12,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-grass: sha256:2500135cb48b7356c1cc9daf1f7e131c122bce4c46a2cd6d4b7299c295a5d05e
-    records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:e461584aa40c4f2576b5acd68b55f7e4798a7855acd0a7e2ff5d36e5da47bcfe
+    records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
@@ -173,7 +173,7 @@ assessment:
     record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
     role: component
     note: Fills leaf_growth_power. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads havu-m2024.
+      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads jarvi2014.
   - id: component-surfaces-evetr-london-havu-m2024-drainage
     record: records/surfaces/evetr/london--havu-m2024--drainage
     role: component
@@ -222,6 +222,6 @@ assessment:
     to be settled: records/surfaces/evetr/london--havu-m2024--drainage declares place london while its
     name reads "EvergreenTree - Helsinki, Zurich, Beijing", and it fills the drainage slot in all five
     composites placed at the three cities it names.'
-  evidence_revision: sha256:13cb206da12afed16b2df67515cb3ba61b43b0c2c8749d117d62dbb9df0140b4
+  evidence_revision: sha256:277d40bd5d83d1d8bd03770fff041abe43f36180645c822bfe5bc437d7ef6cc7
 verification:
   attestations: []
