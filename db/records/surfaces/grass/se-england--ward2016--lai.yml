@@ -9,6 +9,6 @@ source: ward2016
 legacy_id: 31240046
 parameters:
   lai:
-    lai_type: 0
+    lai_type: 1
     lai_min: 1.6
     lai_max: 5.9
