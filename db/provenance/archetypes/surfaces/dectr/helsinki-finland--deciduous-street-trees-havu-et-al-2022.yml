@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:886a194cf2b63a37dd1136a29556831187323d81e836c10076a3a3f5da76ff65
-    records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
@@ -164,8 +164,9 @@ assessment:
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
     note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
-      city. Its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", which names three cities
-      its place field does not.
+      city, source jarvi2011 and method literature. Its own name reads "Deciduous Tree - Helsinki, Zurich,
+      Beijing", which names three cities its place field does not; Havu's archive is retained as later
+      compilation evidence.
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
@@ -202,6 +203,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:964b276d26e3a9dbd2936766026e22bf12ff5a2bd633efc4dea4da02dab8d14a
+  evidence_revision: sha256:746393f8eaa05dd24a187d29faabd51809399370deb6a8a59c6e0f5cde271a2a
 verification:
   attestations: []
