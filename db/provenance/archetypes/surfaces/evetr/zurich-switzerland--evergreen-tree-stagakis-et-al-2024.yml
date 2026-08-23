@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
     records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:401ea9e3db67da8d86c7e41c91005fdec27653f0e3660e109ae1e8267cfd72bb
     records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
-    records/surfaces/evetr/zurich--stagakis-s2024--max-conductance: sha256:f29918672885c415ae15c22acd210c49b3567364024b816c4189a23512e30d8a
+    records/surfaces/evetr/zurich--stagakis-s2024--max-conductance: sha256:070b5ef8c0326d83dfb688d2d7603e2d91351a84f5e62687943777b70d2c51c1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -36,8 +36,10 @@ assessment:
       - component-surfaces-evetr-zurich-stagakis-s2024-biogen-co2
       note: 'The composite is named "Evergreen Tree Stagakis et al. 2024" and declares place zurich with
         origin "Zurich, Switzerland". The components that distinguish it are leaf_growth_power, max_vegetation_conductance
-        and biogen_co2, all taking rows that declare place zurich and source stagakis-s2024, so the label
-        matches the source key the composite is built on. One discrepancy is worth recording without overstating
+        and biogen_co2. All three rows declare place zurich; leaf_growth_power and biogen_co2 declare source
+        stagakis-s2024, while max_vegetation_conductance now records its earlier jarvi2011 parameter source.
+        The label therefore identifies the Zurich configuration rather than the source of every value.
+        One discrepancy is worth recording without overstating
         it: db/sources.yml stores stagakis-s2024 with year 2025 and doi 10.5194/bg-22-2133-2025, so the
         label''s year and the registry''s year differ. That is registry metadata rather than a composition
         defect, and it does not change what the label identifies.'
@@ -180,7 +182,8 @@ assessment:
     record: records/surfaces/evetr/zurich--stagakis-s2024--max-conductance
     role: component
     note: Fills max_vegetation_conductance. The record declares target land_cover.evetr, place zurich
-      and representativeness city, and is named "Evergreen Tree"; its source field reads stagakis-s2024.
+      and representativeness city, and is named "Evergreen Tree"; its source field reads jarvi2011 and
+      its method is literature.
   - id: component-surfaces-evetr-generic-unreferenced-porosity
     record: records/surfaces/evetr/generic--unreferenced--porosity
     role: component
@@ -209,7 +212,8 @@ assessment:
       grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
       representativeness.
   scientific_note: 'The composite does what a city archetype should: it takes Zurich rows for the three
-    slots Stagakis et al. supply, leaf growth power, maximum conductance and biogenic CO2, and falls back
+    distinctive slots: Stagakis et al. supply leaf growth power and biogenic CO2, while maximum conductance
+    is the earlier Järvi et al. literature value. It falls back
     to SE England regional rows and Helsinki city rows only where the database holds nothing for Zurich,
     the snow limit being the clearest case since there is exactly one evergreen-tree snow limit in the
     database. The two LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled
@@ -219,6 +223,6 @@ assessment:
     is a Helsinki study, and it fills the drainage slot in all five composites placed at the three cities
     it names. A secondary, smaller point for the record: the label says 2024 while db/sources.yml stores
     stagakis-s2024 with year 2025.'
-  evidence_revision: sha256:2aa539fbb8301cdd4f3829d67911d7a91fb8b8019da4ba837fa6a0e52917ab23
+  evidence_revision: sha256:708a3d5b61166aebd7aad6a2a6e3b27b7b2ce4de807c6ce4166b6a70a94c827b
 verification:
   attestations: []
