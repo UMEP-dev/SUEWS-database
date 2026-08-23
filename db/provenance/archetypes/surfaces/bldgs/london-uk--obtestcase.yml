@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:016ceb6a34b9f9542130d9656ceec37ae74f6029ca327881f3e2f3713d51a898
-    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:bf766a3240a3c26de34cd1b3ad9ec228c8759dbbe5eebac680e42a203db3945a
+    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:870dfa98f10b10faf624b0e0f327c14e135d31dfc1af8e344557594086dc13f1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -160,7 +160,7 @@ assessment:
     record: records/surfaces/bldgs/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.bldgs, name 'Buildings', place se-england,
-      representativeness regional and source ward2016.
+      representativeness regional and source jarvi2011.
   - id: component-surfaces-bldgs-se-england-ward2016-drainage
     record: records/surfaces/bldgs/se-england--ward2016--drainage
     role: component
@@ -202,6 +202,6 @@ assessment:
     so a maintainer must. Two smaller matters ride along: the two OHM rows declare neither place nor representativeness,
     and the construction is a UK stock class rather than a Central London one. This review does not revisit
     any component value.'
-  evidence_revision: sha256:5cf5a28ff79a73b8e10ae571f8bdba098fa1937fda574d65065707d8c1835d92
+  evidence_revision: sha256:e6d1b29e78114dcabb0f16100f2194887aa16e6e6fad7c56c670325387686b72
 verification:
   attestations: []
