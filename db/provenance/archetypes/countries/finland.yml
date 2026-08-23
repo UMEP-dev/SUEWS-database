@@ -9,10 +9,10 @@ dependency_revisions:
     records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:acfa8ee5eaf45f6eb5bb02ab0befbccdf9543c1dae0caf227dc8a7831505c23a
     records/profiles/human-activity/helsinki--jarvi2019--human-activity: sha256:c88e9484f0b7be760a5f82e95a93c1dba3f58d39d73a3940a9a93d41e0de0e35
     records/profiles/population/helsinki--jarvi2019--population-profile: sha256:b4cabe91d07f67f9d26b53383a61b0cb01e1f13d8e1a913eab334baca2368437
-    records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:944aa764c10100eec8beec8021dec258add9a39c6417ae903eb9708b965cc423
+    records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:b2b5c4d2c1b79f0495cb13e71b848346aae327e86c8fc018570ae4594d8a239e
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-23T13:16:35Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -52,7 +52,7 @@ assessment:
       conclusion: correction_required
       evidence_ids: *id001
       note: A country default should assemble country-scale rows, but records/profiles/traffic/helsinki--jarvi2019--traffic
-        is classed city; records/profiles/energy-use/helsinki--jarvi2019--energy-use is classed city;
+        is classed site; records/profiles/energy-use/helsinki--jarvi2019--energy-use is classed city;
         records/profiles/human-activity/helsinki--jarvi2019--human-activity is classed city; records/profiles/population/helsinki--jarvi2019--population-profile
         is classed city.
     method:
@@ -70,7 +70,7 @@ assessment:
     record: records/profiles/traffic/helsinki--jarvi2019--traffic
     role: component
     note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
-      helsinki and representativeness city.
+      helsinki, representativeness site and urban_setting suburban.
   - id: component-energy-use-helsinki-jarvi2019-energy-use
     record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
     role: component
@@ -90,11 +90,12 @@ assessment:
     records/profiles/traffic/helsinki--jarvi2019--traffic (place helsinki), records/profiles/energy-use/helsinki--jarvi2019--energy-use
     (place helsinki), records/profiles/human-activity/helsinki--jarvi2019--human-activity (place helsinki),
     records/profiles/population/helsinki--jarvi2019--population-profile (place helsinki) and stands records/profiles/traffic/helsinki--jarvi2019--traffic,
-    classed city, records/profiles/energy-use/helsinki--jarvi2019--energy-use, classed city, records/profiles/human-activity/helsinki--jarvi2019--human-activity,
+    classed site with urban_setting suburban, records/profiles/energy-use/helsinki--jarvi2019--energy-use,
+    classed city, records/profiles/human-activity/helsinki--jarvi2019--human-activity,
     classed city, records/profiles/population/helsinki--jarvi2019--population-profile, classed city, in
     for a country-scale value. Each slot takes a component declared for the field that slot fills, so
     the mapping itself is sound. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:4cb9b9679a3863163e79efa254e22e314696895d42c5084de003ef4cfa55fb97
+  evidence_revision: sha256:8ae065908b5fb67fef23369fd6b4409431394f8591c341c4f60a1e6c167c5e5d
 verification:
   attestations: []

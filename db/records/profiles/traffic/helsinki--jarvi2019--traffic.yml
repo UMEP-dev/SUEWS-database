@@ -6,7 +6,8 @@ profile_type: Traffic
 name: Traffic
 place: helsinki
 origin: Helsinki, Finland
-representativeness: city
+representativeness: site
+urban_setting: suburban
 source: jarvi2019
 legacy_id:
 - 60240955
