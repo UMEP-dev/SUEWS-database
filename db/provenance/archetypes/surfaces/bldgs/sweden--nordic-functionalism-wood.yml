@@ -1,0 +1,167 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--detached-houses-wood: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
+    archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
+    records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s: sha256:963d9d8604a87241f4d84459869855d24a2ad2fc6b253c75921d083896ff01e1
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      note: 'The composite is named ''Nordic Functionalism, Wood''. The construction it selects, records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s,
+        is named ''Nordic Functionalism, mid 1900s '' and carries no wood qualifier: its five wall layers
+        are limestone, brick twice, mineral wool batts and dense plaster, with no wood among them, and
+        its roof is clay tile over wood-wool slab, waterproof covering and air. The only component supporting
+        the composite''s Wood qualifier is the albedo row records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
+        named ''Wood ''. That construction is also the only Nordic Functionalism record in records/constructions,
+        so no wood variant was passed over. A maintainer should decide whether the composite''s name claims
+        more than it assembles or whether a wood-framed fabric record is missing.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite claims place sweden. The construction declares place sweden and the albedo declares
+        place gothenburg. Emissivity, water storage, drainage, the snow limit and all four ohm positions
+        take records declaring place helsinki, which db/places.yml resolves to country finland. The database
+        holds no Swedish record for any of those quantities, so the substitution is forced by the record
+        set, but it is stated nowhere and only a maintainer can decide whether it is the intended policy
+        for these typologies.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite declares representativeness regional. Only the construction carries that class;
+        the albedo, emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
+        city. Six of the seven components are therefore city rows standing in for a country-scale default.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: An assembly of existing records into slots; the composite produces no value of its own. records/ohm/helsinki--jarvi2014--buildings
+        fills all four ohm positions, so the composite draws no summer/winter and no wet/dry distinction,
+        and that record declares no season_label of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+      note: 'All seven slots are filled and the composite remains distinguishable: it differs from archetypes/surfaces/bldgs/sweden--detached-houses-wood
+        and from archetypes/surfaces/bldgs/sweden--mixed-city only in the construction slot, and that
+        is the slot carrying the typology''s identity. No second Nordic Functionalism composite exists.'
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--detached-houses-wood
+      - archetypes/surfaces/bldgs/sweden--mixed-city
+  evidence:
+  - id: component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+    record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+    role: component
+    note: Fills albedo. The record is named 'Wood ', declares target land_cover.bldgs, place gothenburg
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
+    record: records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s
+    role: component
+    note: Fills construction. The record is named 'Nordic Functionalism, mid 1900s ', declares target
+      construction, place sweden and representativeness regional. Its five wall layers are records/materials/generic--cibse2015--limestone-bright,
+      records/materials/generic--hertwig2024a--brick-protected twice, records/materials/generic--hertwig2024a--mineral-wool-batts
+      and records/materials/generic--hertwig2024a--plaster-dense, none of them wood; its roof layers are
+      clay tile, wood-wool slab twice, a waterproof roof covering and air.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-helsinki-jarvi2014-buildings
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
+      'Roof (own for SMEAR III, Helsinki) [750]', declares target ohm_coefficients, place helsinki and
+      representativeness city, and declares no season_label.
+  scientific_note: The composite promises a wood variant of Nordic Functionalism and does not assemble
+    one. Its construction, records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s, is
+    Swedish, regional and correctly named for the period, but its wall is limestone, brick, mineral wool
+    and plaster with no wood layer, and it is the only Nordic Functionalism construction the database
+    holds. The Wood in the composite's name is carried by the albedo alone, a Gothenburg row named 'Wood
+    '. Either the name claims a variant the database cannot yet describe, in which case the fabric record
+    is missing, or the name should say what the construction says; a maintainer has to choose, and this
+    review will not choose for them. Alongside that, the composite declares representativeness regional
+    while six of its seven components are city rows, and its emissivity, water storage, drainage, snow
+    limit and OHM coefficients all come from Helsinki because no Swedish record for those quantities exists.
+    None of this requires a component value to change.
+  evidence_revision: sha256:b8986c3c5e816695931e8528fb5e6c896ab9e53af4e84ee3d55e27911d4165d6
+verification:
+  attestations: []

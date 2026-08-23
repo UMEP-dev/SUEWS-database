@@ -1,0 +1,206 @@
+provenance_record: archetypes/surfaces/paved/zurich--city-centre
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
+dependency_revisions:
+  sources: {}
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records:
+    archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
+    archetypes/surfaces/paved/helsinki--kumpula: sha256:9da1346d28ae822bf40091a56cb17317f84d050b281d4d5937600adecfca454f
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
+    records/ohm/generic--unreferenced--paved: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
+    records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:fb4daff1044bc8a4062ef5f9f0bf63f37f43310fa8adea47d405ee27f23407bf
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
+    records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:43:17Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      note: The composite's name reads 'City centre', its place reads zurich and its origin reads Zurich,
+        so read with those fields the label identifies a Zurich city-centre paved surface. The label names
+        the typology rather than the provenance of its parts, none of which is Zurich's; that is dealt
+        with under place.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      note: 'The composite declares target land_cover.paved. The albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.paved; the construction
+        slot takes a record declaring target construction and the four ohm positions take records declaring
+        target ohm_coefficients, which are the entry types those slots exist for. Surface records carry
+        no attaches_to field, since attaches_to appears in this database only on the profile records under
+        records/profiles/, so the slot check rests on the parameters each component carries: alb into
+        albedo, emis into emissivity, store_min and store_max into water_storage, drain_eq, drain_coef_1,
+        drain_coef_2 and wet_threshold into drainage, snowpack_limit into snow_lim_patch, and a1, a2 and
+        a3 into each ohm position. The water_storage and drainage components both write into storage_drain_params
+        and their keys do not overlap, so neither overrides the other. records/ohm/generic--unreferenced--paved
+        declares no season_label, so filling all four season and wetness positions from it asserts no
+        seasonal split the record itself denies.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so it overrides no component value; every
+        number in its exported fragment arrives from a component.
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and the repository records no published rationale for
+        this selection. Each component's own source belongs to that component's evidence assessment, not
+        to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      related_records:
+      - archetypes/surfaces/paved/helsinki--city-centre
+      - archetypes/surfaces/paved/helsinki--kumpula
+      note: 'The composite declares place zurich, which db/places.yml records as Zurich, Koppen Cfb, country
+        switzerland. Not one of its seven components declares that place. The albedo, emissivity, water_storage
+        and snow_lim_patch slots take Helsinki records, which db/places.yml records as Koppen Dfb; the
+        drainage slot takes records/surfaces/paved/london--jarvi2011--drainage, place london; the construction
+        record declares place generic and records/ohm/generic--unreferenced--paved declares no place.
+        The database holds Zurich records elsewhere, under records/surfaces/evetr/, records/surfaces/grass/,
+        records/surfaces/dectr/, records/surfaces/common/ and records/irrigation/, but none for land_cover.paved,
+        so no Zurich paved value is being passed over. What makes this a decision rather than a forced
+        gap is that the uses block is byte-identical to those of archetypes/surfaces/paved/helsinki--city-centre
+        and archetypes/surfaces/paved/helsinki--kumpula: the entry publishes the Helsinki paved set under
+        a Zurich label, including a snowpack_limit carried across a Dfb to Cfb difference the place registry
+        itself records. A maintainer has to decide whether that is a deliberate stand-in or an artefact
+        of the migration.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      note: The composite declares representativeness city. The four Helsinki components and records/surfaces/paved/london--jarvi2011--drainage
+        all declare city, records/constructions/generic--lindberg-f2020--placeholder declares generic
+        and records/ohm/generic--unreferenced--paved declares no representativeness. No component is classed
+        below the composite's scale, so the class fit is sound even though the places are not.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      note: An assembly of seven existing records into eleven slot positions; the composite produces no
+        value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-helsinki--jarvi2014--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-generic--unreferenced--paved
+      related_records:
+      - archetypes/surfaces/paved/helsinki--city-centre
+      - archetypes/surfaces/paved/helsinki--kumpula
+      note: The composite fills all seven slots the land_cover.paved archetypes use, so the assembly is
+        complete, and it is the only Zurich paved typology in the database. Its uses block is byte-identical
+        to those of archetypes/surfaces/paved/helsinki--city-centre, archetypes/surfaces/paved/helsinki--kumpula
+        and archetypes/surfaces/paved/zurich--city-centre, the same seven records in the same eleven positions.
+        Those two declare place helsinki while this declares place zurich, so the three are not interchangeable
+        entries and the consequence of the sharing is recorded under place rather than counted twice here.
+        records/surfaces/paved/se-england--ward2016--water-state carries state_limit and is referenced
+        by no archetype, but no land_cover.paved archetype anywhere declares a water_state slot, so that
+        is a target-wide design question rather than an omission in this entry.
+  evidence:
+  - id: component-surfaces-paved-helsinki--jarvi2014--albedo
+    record: records/surfaces/paved/helsinki--jarvi2014--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place helsinki,
+      representativeness city and source jarvi2014, and carries alb.
+  - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
+    record: records/surfaces/paved/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place helsinki,
+      representativeness city and source jarvi2014, and carries emis.
+  - id: component-surfaces-paved-helsinki--jarvi2014--water-storage
+    record: records/surfaces/paved/helsinki--jarvi2014--water-storage
+    role: component
+    note: Fills the water_storage slot. The record declares target land_cover.paved, name 'Paved ', place
+      helsinki, representativeness city and source jarvi2014, and carries store_min and store_max under
+      storage_drain_params.
+  - id: component-surfaces-paved-london--jarvi2011--drainage
+    record: records/surfaces/paved/london--jarvi2011--drainage
+    role: component
+    note: Fills the drainage slot. The record declares target land_cover.paved, name 'Paved [sample run]',
+      place london, representativeness city and source jarvi2011, and carries drain_eq, drain_coef_1,
+      drain_coef_2 and wet_threshold.
+  - id: component-constructions-generic--lindberg-f2020--placeholder
+    record: records/constructions/generic--lindberg-f2020--placeholder
+    role: component
+    note: Fills the construction slot. The record declares target construction, name Placeholder, place
+      generic, representativeness generic and source lindberg-f2020, and carries roof and wall layer lists
+      with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
+      slot out of the surface fragment, so this reference contributes no exported value.
+  - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
+    record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
+      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
+      snowpack_limit.
+  - id: component-ohm-generic--unreferenced--paved
+    record: records/ohm/generic--unreferenced--paved
+    role: component
+    note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
+      declares target ohm_coefficients, name 'Impervious (average). This is the average of Codes 801,
+      802, 901, 902, 903, 905, 906. [800]' and source unreferenced, carries a1, a2 and a3, and declares
+      no place, no representativeness and no season_label.
+  scientific_note: 'archetypes/surfaces/paved/zurich--city-centre is a Zurich typology with no Zurich
+    content. Its albedo, emissivity, water storage and snowpack limit come from Helsinki, its drainage
+    from a London record named ''Paved [sample run]'', its construction from a record named Placeholder
+    and its four OHM positions from a generic row whose source field reads unreferenced. Scarcity explains
+    part of that, since the database holds no paved surface record for Zurich at all, and its Zurich records
+    sit under vegetation, soil and irrigation instead. Scarcity does not explain the shape of the result.
+    The uses block is identical, record for record and position for position, to those of archetypes/surfaces/paved/helsinki--city-centre
+    and archetypes/surfaces/paved/helsinki--kumpula, so what this entry publishes is the Helsinki paved
+    set relabelled. That matters most for snowpack_limit, which arrives from a city db/places.yml classes
+    Dfb into an entry for a city it classes Cfb. Two readings fit and the files do not decide between
+    them: the Helsinki set may be a deliberate stand-in chosen because nothing closer exists, or the Zurich
+    row may simply have inherited its neighbours'' references during migration. A maintainer should settle
+    it, and should settle it together with the duplication between the two Helsinki entries, because the
+    same seven components carry all three.'
+  evidence_revision: sha256:a1af4662a6ac40a373b7cfba0601f916362d3fe7471ee4e547a04860030b472e
+verification:
+  attestations: []

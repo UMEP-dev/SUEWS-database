@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/canada
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:48e51327a9f8a6a577e6028aa85cbe6e97e88d9dd12944fff34f76e03c4f2114
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/canada: sha256:dbc0e9943391715e82c6d0a7936e8f8b8cf006669985c02392e07a20743ebf52
+    records/profiles/traffic/lucy/canada: sha256:6bf12b3e9bc5faddee1e1c3d3d1ed1c0ed8fe9e61749517a25b1c24300091cea
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-canada
+      - component-traffic-lucy-canada
+      note: The composite is named Canada, its country field reads Canada, and both agree with the entry
+        path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-canada
+      - component-traffic-lucy-canada
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/canada, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/canada,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place canada, so the default is assembled from that country's own
+        rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/north-america,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Canada.
+  evidence:
+  - id: component-traffic-lucy-canada
+    record: records/profiles/traffic/lucy/canada
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place canada and representativeness regional.
+  - id: component-human-activity-lucy-canada
+    record: records/profiles/human-activity/lucy/canada
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place canada and representativeness regional.
+  scientific_note: Canada's default takes Canada's own rows, every one of them classed regional, which
+    is what a country default should do. The slot mapping, however, is not. Reading the composite against
+    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/canada,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/canada,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:abd716fab0d1c3e4c5bb14015d24b0305a5f987160abc9241830eb09c86a28da
+verification:
+  attestations: []

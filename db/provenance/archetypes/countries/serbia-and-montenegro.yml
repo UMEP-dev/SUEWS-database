@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/serbia-and-montenegro
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:1c9a2ab58bfa02b7b2099ec924047e7f99c66c952208957dde5caf3e2b0aee82
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/serbia-and-montenegro: sha256:dbe69c521bcb33ba43a06ea48479247f43871a6d30804957fa7303aa7e5fb7a4
+    records/profiles/traffic/lucy/serbia-and-montenegro: sha256:f8de3a7b322692f416e6f9b493507cd08636c1059c9256b65a4448f53941c50c
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-serbia-and-montenegro
+      - component-traffic-lucy-serbia-and-montenegro
+      note: The composite is named Serbia and Montenegro, its country field reads Serbia and Montenegro,
+        and both agree with the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-serbia-and-montenegro
+      - component-traffic-lucy-serbia-and-montenegro
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/serbia-and-montenegro,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/serbia-and-montenegro,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place serbia-and-montenegro, so the default is assembled from that
+        country's own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/southern-europe,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Serbia and Montenegro.
+  evidence:
+  - id: component-traffic-lucy-serbia-and-montenegro
+    record: records/profiles/traffic/lucy/serbia-and-montenegro
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place serbia-and-montenegro and representativeness regional.
+  - id: component-human-activity-lucy-serbia-and-montenegro
+    record: records/profiles/human-activity/lucy/serbia-and-montenegro
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place serbia-and-montenegro and representativeness regional.
+  scientific_note: Serbia and Montenegro's default takes Serbia and Montenegro's own rows, every one of
+    them classed regional, which is what a country default should do. The slot mapping, however, is not.
+    Reading the composite against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/serbia-and-montenegro,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/serbia-and-montenegro,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:8484a1fb721cfbc308585b1b40ce4cb34eeafc488d840c37e3ecf28cc0206df2
+verification:
+  attestations: []

@@ -1,0 +1,169 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--detached-houses-wood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
+    archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
+    records/constructions/sweden--bjork2002--detached-houses-wood: sha256:2c3d1bfa5a3169888be5d488c1ce13954786464d7f3ebb0f2c919faa87f60a30
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-sweden-bjork2002-detached-houses-wood
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      note: The composite is named 'Detached houses, Wood'. The construction it selects, records/constructions/sweden--bjork2002--detached-houses-wood,
+        is named 'Detached houses, Wood' and is built mostly from records/materials/generic--cibse2015--wood
+        layers, and the albedo slot takes a record named 'Wood '. The label identifies what the composite
+        assembles.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-detached-houses-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-detached-houses-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite claims place sweden. Two components are Swedish: the construction declares
+        place sweden and the albedo declares place gothenburg. The other five distinct components, which
+        fill emissivity, water storage, drainage, the snow limit and all four ohm positions, declare place
+        helsinki, which db/places.yml resolves to country finland. The database holds no Swedish record
+        for any of those quantities: of the twenty-one records under records/surfaces/bldgs the only Swedish
+        ones are the two Gothenburg albedo rows, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+        is the only building snowpack_limit record there is. The substitution is therefore forced by the
+        record set rather than chosen carelessly, but a Swedish national default assembled mostly from
+        Finnish city measurements carries no recorded justification, and only a maintainer can decide
+        whether that substitution is intended and should be stated on the composite.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-sweden-bjork2002-detached-houses-wood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite declares representativeness regional. Only the construction carries that class;
+        the albedo, emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
+        city. Six of the seven components are therefore city rows standing in for a country-scale default,
+        which extends their claimed reach without anything in the composite recording the decision.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: An assembly of existing records into slots; the composite produces no value of its own. records/ohm/helsinki--jarvi2014--buildings
+        fills all four ohm positions, so the composite draws no summer/winter and no wet/dry distinction,
+        and that record declares no season_label of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-constructions-sweden-bjork2002-detached-houses-wood
+      note: 'All seven slots are filled and the composite remains distinguishable: it differs from archetypes/surfaces/bldgs/sweden--mixed-city
+        and from archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood only in the construction
+        slot, and that is the slot carrying the typology''s identity. No second detached-houses composite
+        exists.'
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--mixed-city
+      - archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood
+  evidence:
+  - id: component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
+    record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+    role: component
+    note: Fills albedo. The record is named 'Wood ', declares target land_cover.bldgs, place gothenburg
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
+      and representativeness city.
+  - id: component-constructions-sweden-bjork2002-detached-houses-wood
+    record: records/constructions/sweden--bjork2002--detached-houses-wood
+    role: component
+    note: Fills construction. The record is named 'Detached houses, Wood', declares target construction,
+      place sweden and representativeness regional, and three of its five roof layers and three of its
+      five wall layers are records/materials/generic--cibse2015--wood.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-helsinki-jarvi2014-buildings
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
+      'Roof (own for SMEAR III, Helsinki) [750]', declares target ohm_coefficients, place helsinki and
+      representativeness city, and declares no season_label.
+  scientific_note: 'The selection is coherent where Sweden''s own records reach and borrowed where they
+    do not. The construction, records/constructions/sweden--bjork2002--detached-houses-wood, is a Swedish
+    regional record whose name matches the composite''s and whose layers are mostly wood, and the albedo
+    is a Gothenburg row named ''Wood '', so the two slots that carry the typology''s identity are Swedish
+    and consistent with the label. Emissivity, water storage, drainage, the snow limit and all four OHM
+    positions come from Helsinki records, because the database contains no Swedish record for any of those
+    quantities and only one building snowpack_limit record in total. That substitution is forced rather
+    than careless, but it is nowhere stated, and it also leaves a composite declaring representativeness
+    regional resting on six city rows. Both questions live in the composite and can be settled without
+    touching a component value: a maintainer should either record that Nordic cross-border substitution
+    is the intended policy for these typologies, or narrow what the composite claims to what its components
+    support. The components'' own values remain subject to their evidence assessments; this review does
+    not revisit them.'
+  evidence_revision: sha256:c8f5a8c53b3db0a4c4487e978d8936ba40190bf9f99beb8a9093b126c20ccd6a
+verification:
+  attestations: []

@@ -1,0 +1,100 @@
+provenance_record: archetypes/countries/finland
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:94f2beefe064aa48b33ad972fe3dd338f3bcb3e034d48e859bd32af50e310db8
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:acfa8ee5eaf45f6eb5bb02ab0befbccdf9543c1dae0caf227dc8a7831505c23a
+    records/profiles/human-activity/helsinki--jarvi2019--human-activity: sha256:c88e9484f0b7be760a5f82e95a93c1dba3f58d39d73a3940a9a93d41e0de0e35
+    records/profiles/population/helsinki--jarvi2019--population-profile: sha256:b4cabe91d07f67f9d26b53383a61b0cb01e1f13d8e1a913eab334baca2368437
+    records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:944aa764c10100eec8beec8021dec258add9a39c6417ae903eb9708b965cc423
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-energy-use-helsinki-jarvi2019-energy-use
+      - component-human-activity-helsinki-jarvi2019-human-activity
+      - component-population-helsinki-jarvi2019-population-profile
+      - component-traffic-helsinki-jarvi2019-traffic
+      note: The composite is named Finland, its country field reads Finland, and both agree with the entry
+        path.
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite's target is site, and every profile slot takes a component whose declared attaches_to
+        is the field that slot fills.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: correction_required
+      evidence_ids: *id001
+      note: 'Not every component belongs to this country: records/profiles/traffic/helsinki--jarvi2019--traffic
+        carries place helsinki; records/profiles/energy-use/helsinki--jarvi2019--energy-use carries place
+        helsinki; records/profiles/human-activity/helsinki--jarvi2019--human-activity carries place helsinki;
+        records/profiles/population/helsinki--jarvi2019--population-profile carries place helsinki.'
+    representativeness:
+      conclusion: correction_required
+      evidence_ids: *id001
+      note: A country default should assemble country-scale rows, but records/profiles/traffic/helsinki--jarvi2019--traffic
+        is classed city; records/profiles/energy-use/helsinki--jarvi2019--energy-use is classed city;
+        records/profiles/human-activity/helsinki--jarvi2019--human-activity is classed city; records/profiles/population/helsinki--jarvi2019--population-profile
+        is classed city.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/northern-europe,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Finland.
+  evidence:
+  - id: component-traffic-helsinki-jarvi2019-traffic
+    record: records/profiles/traffic/helsinki--jarvi2019--traffic
+    role: component
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      helsinki and representativeness city.
+  - id: component-energy-use-helsinki-jarvi2019-energy-use
+    record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
+    role: component
+    note: Fills energy_use. The record declares attaches_to anthropogenic_emissions.heat.ahprof_24hr,
+      place helsinki and representativeness city.
+  - id: component-human-activity-helsinki-jarvi2019-human-activity
+    record: records/profiles/human-activity/helsinki--jarvi2019--human-activity
+    role: component
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place helsinki and representativeness city.
+  - id: component-population-helsinki-jarvi2019-population-profile
+    record: records/profiles/population/helsinki--jarvi2019--population-profile
+    role: component
+    note: Fills population. The record declares attaches_to anthropogenic_emissions.heat.popprof_24hr,
+      place helsinki and representativeness city.
+  scientific_note: 'Finland''s default is not assembled from Finland''s own country-scale rows: it borrows
+    records/profiles/traffic/helsinki--jarvi2019--traffic (place helsinki), records/profiles/energy-use/helsinki--jarvi2019--energy-use
+    (place helsinki), records/profiles/human-activity/helsinki--jarvi2019--human-activity (place helsinki),
+    records/profiles/population/helsinki--jarvi2019--population-profile (place helsinki) and stands records/profiles/traffic/helsinki--jarvi2019--traffic,
+    classed city, records/profiles/energy-use/helsinki--jarvi2019--energy-use, classed city, records/profiles/human-activity/helsinki--jarvi2019--human-activity,
+    classed city, records/profiles/population/helsinki--jarvi2019--population-profile, classed city, in
+    for a country-scale value. Each slot takes a component declared for the field that slot fills, so
+    the mapping itself is sound. The components'' values remain subject to their own evidence assessments;
+    this review does not revisit them.'
+  evidence_revision: sha256:4cb9b9679a3863163e79efa254e22e314696895d42c5084de003ef4cfa55fb97
+verification:
+  attestations: []

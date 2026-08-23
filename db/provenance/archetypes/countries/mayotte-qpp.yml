@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/mayotte-qpp
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:7c38e364f08b4b7b73d24706daaf3f9cbf0103e4439af5c29e48368dccf19d35
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/mayotte-qpp: sha256:af17e4eb772721b1b74f0a247e27dca30391b82de9d76d1161e8e2c76aa6232a
+    records/profiles/traffic/lucy/mayotte-qpp: sha256:8feda1298fa719ed602cf56e10bad108e02a1a1e53a3fa8aa1e139fcdbe4afec
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-mayotte-qpp
+      - component-traffic-lucy-mayotte-qpp
+      note: The composite is named Mayotte* qpp, its country field reads Mayotte* qpp, and both agree
+        with the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-mayotte-qpp
+      - component-traffic-lucy-mayotte-qpp
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/mayotte-qpp,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/mayotte-qpp,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place mayotte-qpp, so the default is assembled from that country's
+        own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/eastern-africa,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Mayotte* qpp.
+  evidence:
+  - id: component-traffic-lucy-mayotte-qpp
+    record: records/profiles/traffic/lucy/mayotte-qpp
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place mayotte-qpp and representativeness regional.
+  - id: component-human-activity-lucy-mayotte-qpp
+    record: records/profiles/human-activity/lucy/mayotte-qpp
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place mayotte-qpp and representativeness regional.
+  scientific_note: Mayotte* qpp's default takes Mayotte* qpp's own rows, every one of them classed regional,
+    which is what a country default should do. The slot mapping, however, is not. Reading the composite
+    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/mayotte-qpp,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/mayotte-qpp,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:f2cfa4ebadfb631d4496458b73c13a0d19c4b2918a4a29faa9436e43f4940b4d
+verification:
+  attestations: []

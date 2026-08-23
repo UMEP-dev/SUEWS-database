@@ -1,0 +1,225 @@
+provenance_record: archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:ee9703069152b5adb93085f1e95de0f01bdbfe625312ebbc79cdfcf28202b64f
+dependency_revisions:
+  sources: {}
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records:
+    archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016: sha256:38f3ce959a62e50c9416b30e99bd539fae7779db6e41cd23672cbb7b02c3ceee
+    records/ohm/generic--ward2016--all-vegetation: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
+    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
+    records/surfaces/dectr/se-england--ward2016--drainage: sha256:9b2f37239f370169ddda58ca87fff27142039666d9d870073ab26688bac6f2cb
+    records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
+    records/surfaces/dectr/se-england--ward2016--lai-power: sha256:14aedc9964645c9fbbf5c0f399a64dc3f8491345a0b878f3234d3df6c4449da4
+    records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:f2a005afcc18ffe49e1e3fdaa965725ed5a72186d9cd8f6a6d3cc6eb13117456
+    records/surfaces/dectr/se-england--ward2016--phenology: sha256:b74c916d81110d79627efef71f3119c9bdce94a04e537b4c291532fe33a15ce0
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/swindon--ward2016--emissivity: sha256:cb25f320a6b6df0d68b28eed0ba6f5aa2c91c8ddcae76e77437caab40ec66c1c
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-se-england-ward2016-albedo
+      - component-surfaces-dectr-se-england-ward2016-lai
+      - component-surfaces-dectr-se-england-ward2016-max-conductance
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
+      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and nine of its thirteen components
+        declare source ward2016, registered in db/sources.yml as Ward, H. C.; Kotthaus, S.; Järvi, L.;
+        Grimmond, C. S. B., 2016, "Surface Urban Energy and Water Balance Scheme (SUEWS): Development
+        and evaluation at two UK sites", Urban Climate. The label names the study rather than the city,
+        and the origin field, "London, UK", is what distinguishes this entry; the identically named Swindon
+        composite is taken up under identity.'
+      related_records:
+      - archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
+      - component-surfaces-dectr-se-england-ward2016-lai
+      - component-surfaces-dectr-se-england-ward2016-lai-power
+      note: The composite's own target is land_cover.dectr. Ten of its thirteen components declare target
+        land_cover.dectr; the biogenic CO2 component declares land_cover.common, which docs/FORMAT.md
+        defines as the target for surface-agnostic sets; and the two OHM records declare ohm_coefficients,
+        the type that slot carries. The leaf_area_index and leaf_growth_power components both declare
+        lai.lai_type 1, so the pair belongs to one LAI equation, which is the coupling schema/parameter_groups.yml
+        makes a rule for that slot pair.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this typology. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-dectr-swindon-ward2016-emissivity
+      - component-surfaces-dectr-helsinki-jarvi2014-phenology
+      - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+      note: The composite claims place london, registered in db/places.yml with Köppen class Cfb, and
+        only one component carries that place, the porosity record. Seven carry place se-england, which
+        db/places.yml marks subnational and which contains London, so those sit comfortably. Three do
+        not. The emissivity slot takes records/surfaces/dectr/swindon--ward2016--emissivity, placed at
+        swindon, although records/surfaces/dectr/london--ward2016--emissivity exists, carries the same
+        source ward2016, declares emis 0.98 exactly as the Swindon record does, and is the emissivity
+        of the six other deciduous-tree composites; on the entries as they stand the London record is
+        the one this composite should take, and the swap costs nothing. The vegetation_growth slot takes
+        records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature 5, base_temperature_senescence
+        10) although records/surfaces/dectr/se-england--ward2016--phenology exists with the composite's
+        own source and region (base_temperature 6, base_temperature_senescence 11) and is referenced by
+        no archetype in the database; schema/parameter_groups.yml classes those thresholds as a tightly
+        linked set whose base temperature was localised for SE England. The snow_lim_patch slot takes
+        a Helsinki snowpack limit, a Dfb value, for a Cfb place. A maintainer should settle all three.
+      related_records:
+      - records/surfaces/dectr/london--ward2016--emissivity
+      - records/surfaces/dectr/se-england--ward2016--phenology
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-se-england-ward2016-albedo
+      - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
+      note: The composite claims representativeness city. Seven components are classed regional, the SE
+        England Ward 2016 set and the Ruimy biogenic record; four are classed city, the Swindon emissivity,
+        the London porosity and the two Helsinki records; and the two OHM records declare no class. A
+        regional value is offered as typical of a wider area and so covers a city, which is the direction
+        that does not overreach, and no component claims a narrower scale than the composite does.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-ward2016-all-vegetation
+      - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
+      note: The composite assembles existing records into slots and produces no value of its own, and
+        its season mapping is the one the entries support. summer_wet and summer_dry take records/ohm/generic--ward2016--all-vegetation,
+        which declares season_label Summer; winter_wet and winter_dry take records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012,
+        which declares season_label Winter. This is the only deciduous-tree composite pair that separates
+        the seasons rather than repeating one set four times. Wet and dry take the same record within
+        each season, which is all the entries allow, since no OHM record in the database declares a wet
+        or dry label.
+    identity:
+      conclusion: curation_required
+      note: 'Thirteen distinct records fill the fifteen slot positions, and every slot the deciduous-tree
+        composites use is filled. Uniqueness is not satisfied: archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016
+        carries the identical name "Deciduous Tree Ward et al. (2016)" and an identical uses block, component
+        for component and slot for slot, so the two differ only in place, origin and legacy_id and export
+        the same fragment. Ward et al. 2016 evaluated two UK sites, so two typologies is a defensible
+        intent, but as stored they are indistinguishable by content and a reader choosing between them
+        has nothing to choose on. A maintainer should either differentiate them or record that one entry
+        serves both sites. scripts/export_record.py also recognises a water_state slot and db/records/surfaces/dectr
+        holds records/surfaces/dectr/se-england--ward2016--water-state, which no deciduous-tree composite
+        references.'
+      related_records:
+      - archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016
+  evidence:
+  - id: component-ohm-generic-ward2016-all-vegetation
+    record: records/ohm/generic--ward2016--all-vegetation
+    role: component
+    note: Fills the OHM positions summer_wet and summer_dry. The record declares target ohm_coefficients,
+      source ward2016, no place and no representativeness, and is named "Code 201 x Mulitplier for summer
+      [2011]". It declares season_label Summer, which is the season it is mapped into.
+  - id: component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
+    record: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
+    role: component
+    note: Fills the OHM positions winter_wet and winter_dry. The record declares target ohm_coefficients,
+      source ward2016, no place and no representativeness, and is named "Code 201 x Multiplier for winter
+      [2012]". It declares season_label Winter, which is the season it is mapped into.
+  - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
+    record: records/surfaces/common/se-england--ruimy1995--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.common, place se-england and representativeness
+      regional. It is named "Plant canopies" and carries source ruimy1995; docs/FORMAT.md defines land_cover.common
+      as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
+    record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
+      and sdd_full, which schema/parameter_groups.yml classes as one tightly linked set.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies snowpack_limit, a quantity conditioned on the snow
+      climate it was set for.
+  - id: component-surfaces-dectr-london-jarvi2011-porosity
+    record: records/surfaces/dectr/london--jarvi2011--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
+      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
+      to all eight deciduous-tree composites.
+  - id: component-surfaces-dectr-se-england-ward2016-albedo
+    record: records/surfaces/dectr/se-england--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It is named "Deciduous trees" and carries source ward2016.
+  - id: component-surfaces-dectr-se-england-ward2016-drainage
+    record: records/surfaces/dectr/se-england--ward2016--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It carries source ward2016 and declares storage_drain_params.drain_eq 2.
+  - id: component-surfaces-dectr-se-england-ward2016-lai
+    record: records/surfaces/dectr/se-england--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It is named "Deciduous Tree (SE England)", carries source ward2016 and declares lai.lai_type
+      1.
+  - id: component-surfaces-dectr-se-england-ward2016-lai-power
+    record: records/surfaces/dectr/se-england--ward2016--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It is named "Deciduous Tree (SE England)", carries source ward2016 and declares lai.lai_type
+      1, matching the leaf_area_index component.
+  - id: component-surfaces-dectr-se-england-ward2016-max-conductance
+    record: records/surfaces/dectr/se-england--ward2016--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place se-england
+      and representativeness regional. It is named "Deciduous Tree (SE England)" and carries source ward2016.
+  - id: component-surfaces-dectr-se-england-ward2016-water-storage
+    record: records/surfaces/dectr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      composite.
+  - id: component-surfaces-dectr-swindon-ward2016-emissivity
+    record: records/surfaces/dectr/swindon--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.dectr, place swindon and representativeness
+      city. It is named "Deciduous trees" and carries source ward2016; its place is a different city from
+      the one the composite claims.
+  scientific_note: Nine of the thirteen components come from Ward et al. 2016, the study the label names,
+    and seven of those are placed at se-england, which contains London; the two LAI records agree on lai.lai_type
+    1; and the OHM mapping is the best in this family, with the summer record in both summer positions
+    and the winter record in both winter positions, each confirmed by its own season_label. Three slots
+    do not follow. The emissivity comes from the Swindon record when a London record with the same source
+    and the same stored emis 0.98 exists and is used by six sibling composites. The phenology comes from
+    Helsinki when an SE England Ward 2016 phenology record exists, carries the localised base temperatures,
+    and is referenced by no archetype at all. The snowpack limit is a Helsinki value in a Cfb city. Separately,
+    this composite and the Swindon one are identical in every component and in their name, differing only
+    in place, origin and legacy_id, so nothing in the data tells the two UK sites apart. None of this
+    questions a stored value; all of it is selection and mapping, which is where a composition review
+    can act. The components' values remain subject to their own evidence assessments; this review does
+    not revisit them.
+  evidence_revision: sha256:156ea293eef6e07cf7d1f51e42793c920afe194e4369e1183c6d8882ad70d68f
+verification:
+  attestations: []

@@ -1,0 +1,131 @@
+provenance_record: archetypes/typologies/sweden--traditional-stone-house-neighbourhood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:4ead611aa3c47ac1d57475781fb51e45a6ca526bb02a2b05d034cf54c221770d
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
+    archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
+    archetypes/typologies/sweden--traditional-neighborhood: sha256:4f3fed8fba678cd69748e91d13c635c2839b9c4357e1fa5f03cee4e734a7548c
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: The composite is named 'Traditional Stone House Neighbourhood' and described as 'Traditional
+        City Centre Stone House Neighbourhood, early 1900s'. The bldgs slot takes archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood,
+        named 'Stone Houses, Traditional Neighbourhood', whose construction is records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+        named 'Traditional Stone Neighbourhood City, late 1800s-early 1900s'. The paved slot takes archetypes/surfaces/paved/helsinki--city-centre,
+        named 'City centre '. Stone, the city centre and the early 1900s each appear in what the composite
+        actually assembles, so the label identifies it correctly.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: 'The composite''s own target is ''typology'', which is what every entry under archetypes/typologies
+        declares, and each slot takes a component declared for it: the bldgs slot takes an archetype declaring
+        target land_cover.bldgs and the paved slot an archetype declaring target land_cover.paved. Neither
+        component declares attaches_to; in this database that field is carried only by the profile records
+        under db/records/profiles, so slot fit here is judged on the components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        components it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing a Swedish building surface with a Helsinki city-centre paved surface. The components'
+        own sources belong to their assessments, not to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: The composite claims place 'sweden'. The bldgs component declares place 'sweden' and rests
+        on a Gothenburg construction, so the building side is Swedish. The paved component declares place
+        'helsinki', which db/places.yml resolves to country 'finland'. A Swedish paved archetype exists,
+        archetypes/surfaces/paved/sweden--asphalt-mixed-city, place 'sweden' and representativeness 'regional',
+        and four other Swedish typologies take it, so the Finnish surface was not forced by an empty record
+        set. What the Finnish surface supplies is a city-centre paved description, which the Swedish alternative,
+        named 'Asphalt, mixed city', is not, and this composite describes a city centre; the same Helsinki
+        surface also fills the paved slot of archetypes/typologies/finland--cbd. Whether a Swedish city-centre
+        typology should take the Swedish regional surface or the Finnish city-centre one is a decision
+        the composite does not record, and a maintainer must make it.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: The composite declares representativeness 'regional'. The bldgs component declares 'regional'
+        and matches it; the paved component declares 'city'. A Helsinki city surface therefore stands
+        in for half of a Swedish country-scale typology, extending its claimed reach without anything
+        in the composite recording the decision.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: An assembly of two existing surface archetypes into the two slots the typology format defines;
+        the composite produces no value of its own. A typology carries no season and no wet/dry mapping
+        of its own, because those live inside the surface components' ohm blocks, so there is no seasonal
+        mapping to check at this level.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+      - component-surfaces-paved-helsinki-city-centre
+      note: 'The assembly is complete: scripts/migrate_to_records.py maps only the legacy Types table''s
+        ''Buildings'' and ''Paved'' columns into a typology''s uses block, and both slots are filled.
+        The bldgs component is used by no other typology; the paved component is shared with archetypes/typologies/finland--cbd,
+        which is reuse of a curated surface rather than duplication. The nearest composite is archetypes/typologies/sweden--traditional-neighborhood,
+        which shares this one''s place ''sweden'', representativeness ''regional'', profile_type ''Residential''
+        and period ''Pre80'' and is described as ''Traditional neighborhood (Stone houses)'' although
+        its own bldgs component is named ''Brick House, Traditional Neighbourhood''. The two select different
+        components in both slots and carry distinct legacy_ids (12251392 here against 12240002 there),
+        so they are separate entries rather than a migration duplicate; it is the other composite''s description,
+        not this one''s, that overlaps where the contents do not.'
+      related_records:
+      - archetypes/typologies/sweden--traditional-neighborhood
+  evidence:
+  - id: component-surfaces-bldgs-sweden-stone-houses-traditional-neighbourhood
+    record: archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+    role: component
+    note: Fills bldgs. The archetype is named 'Stone Houses, Traditional Neighbourhood' and declares target
+      land_cover.bldgs, place 'sweden' and representativeness 'regional'. It declares no attaches_to,
+      and its construction slot takes records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s.
+  - id: component-surfaces-paved-helsinki-city-centre
+    record: archetypes/surfaces/paved/helsinki--city-centre
+    role: component
+    note: Fills paved. The archetype is named 'City centre ' and declares target land_cover.paved, place
+      'helsinki' and representativeness 'city'. It declares no attaches_to.
+  scientific_note: 'The composite says what it assembles and assembles what it says on the building side.
+    Its bldgs component is Swedish, regional, named ''Stone Houses, Traditional Neighbourhood'' and built
+    on a Gothenburg construction named ''Traditional Stone Neighbourhood City, late 1800s-early 1900s'',
+    which matches the entry''s own ''early 1900s'' and its city-centre framing. The paved component is
+    Finnish. archetypes/surfaces/paved/helsinki--city-centre declares place ''helsinki'' and representativeness
+    ''city'', so a Swedish country-scale typology takes half its surface description from one Finnish
+    city. Unlike the building slot, this one had a Swedish option: archetypes/surfaces/paved/sweden--asphalt-mixed-city
+    is Swedish and regional and four sibling Swedish typologies use it. The reason it was probably not
+    used is visible in the two names, because the Swedish surface describes a mixed city and this typology
+    describes a city centre, and the Helsinki surface is the database''s city-centre paved bundle. That
+    is a defensible trade of country for urban form, but it is nowhere stated, and it leaves an entry
+    claiming regional reach while half of it is a city row. A maintainer should either record on the composite
+    that urban form governs this slot and accept the cross-border substitution, or narrow what the entry
+    claims. Neither question requires touching a component''s values, which remain subject to their own
+    assessments.'
+  evidence_revision: sha256:b5674c4f5b8a4e1b9fb3d1323a14094f3b22d5aa519c9c18cf20ceca384fcb37
+verification:
+  attestations: []

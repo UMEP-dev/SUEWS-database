@@ -1,0 +1,206 @@
+provenance_record: archetypes/surfaces/grass/beijing-china--grass
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:421460379062cb1c1041af8fd60f51e6d99a7947b45a9c06413310031a1fd7d2
+dependency_revisions:
+  sources: {}
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
+    records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
+    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:a397fe05d296e50fa8192fe43e9a6f9f068eea35f11bb00b27c8f959b2287628
+    records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:d1a64355ca380b83dc4641bf7caaeeb21dae2642171cff1ec388434b00bb042e
+    records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
+    records/surfaces/grass/se-england--ward2016--lai: sha256:ed6c1983d321d96cc8caec100e00dd00166427aa8fba945eb9d969f439bf5fb3
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T00:35:20Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-grass-beijing-zheng-y2023-lai-power
+      - component-surfaces-grass-beijing-zheng-y2023-max-conductance
+      - component-surfaces-grass-beijing-zheng-y2023-biogen-co2
+      note: The composite's name reads Grass, its place reads beijing and its origin reads Beijing, China,
+        so the label together with the entry path identifies a grass surface for Beijing. The label on
+        its own is the barest of the nine grass composites, the other eight naming a study or a qualifier,
+        so the place field and the path carry the distinction. Three components declare place beijing
+        and source zheng-y2023, and they are every Beijing grass record the database holds.
+    target:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-ohm-generic-unreferenced-grass
+      - component-surfaces-grass-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-grass-beijing-zheng-y2023-lai-power
+      - component-surfaces-grass-beijing-zheng-y2023-max-conductance
+      - component-surfaces-grass-generic-unreferenced-porosity
+      - component-surfaces-grass-helsinki-jarvi2014-phenology
+      - component-surfaces-grass-helsinki-jarvi2014-snow-lim
+      - component-surfaces-grass-helsinki-vargo2013-albedo
+      - component-surfaces-grass-london-havu-m2024-drainage
+      - component-surfaces-grass-se-england-ward2016-emissivity
+      - component-surfaces-grass-se-england-ward2016-lai
+      - component-surfaces-grass-se-england-ward2016-water-storage
+      note: 'The composite declares target land_cover.grass. Eleven of the twelve components declare target
+        land_cover.grass and the twelfth, records/ohm/generic--unreferenced--grass, declares target ohm_coefficients,
+        which is what the ohm slot takes: docs/FORMAT.md puts the four season and wetness positions of
+        supy''s ohm_coef on the archetype rather than on the coefficient records. Surface records carry
+        no attaches_to field, which in this database appears only on the profile records under records/profiles/,
+        so the slot check rests on the parameter names each component carries, and every slot receives
+        a component holding the fields that slot names. The ohm component is named "Short grass [30]",
+        the grass-specific coefficient set rather than a vegetation average, and it fills all four positions
+        because it declares no season_label and no wet or dry distinction.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so it overrides no component value; the exported
+        fragment is its components merged into their slots.
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and asserts no parameters of its own, so there is no
+        published composition rationale to review. The archetype format does allow a composite to carry
+        a source, as the snow archetypes do for the scalars they assert themselves, and this entry carries
+        none. Each component's own source belongs to that component's evidence assessment.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-grass-beijing-zheng-y2023-lai-power
+      - component-surfaces-grass-beijing-zheng-y2023-max-conductance
+      - component-surfaces-grass-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-grass-helsinki-vargo2013-albedo
+      - component-surfaces-grass-se-england-ward2016-emissivity
+      - component-surfaces-grass-london-havu-m2024-drainage
+      note: The composite declares place beijing, which db/places.yml gives as lat 39.9, lon 116.41, koppen
+        Dwa. Three of the twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
+        and biogen_co2, and no unused Beijing grass record exists for any remaining slot. Three declare
+        place helsinki (koppen Dfb), filling albedo, snow_lim_patch and vegetation_growth, and three declare
+        place se-england (koppen Cfb, subnational), filling emissivity, water_storage and leaf_area_index;
+        porosity declares place generic and the ohm component carries no place field. Nine of twelve slots
+        are therefore filled from outside China because the database offers nothing closer, which is a
+        transparent transfer rather than a defect. One component has to be recorded without being settled
+        here. records/surfaces/grass/london--havu-m2024--drainage declares place london and origin London
+        while its name reads "Grass - Helsinki, Zurich, Beijing". Under the declared place it is a London
+        value standing in for Beijing; under its own name it is the set havu-m2024 intended for Beijing
+        among others. The selection is defensible for the drainage slot on either reading, so this review
+        is not blocked by it, and which of the two fields is authoritative is a question for that record's
+        own evidence review.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-grass-se-england-ward2016-emissivity
+      - component-surfaces-grass-se-england-ward2016-water-storage
+      - component-surfaces-grass-se-england-ward2016-lai
+      - component-surfaces-grass-generic-unreferenced-porosity
+      note: The composite declares representativeness city. Seven components declare city, three declare
+        regional, records/surfaces/grass/generic--unreferenced--porosity declares generic and the ohm
+        component carries no representativeness field. No component is classed narrower than the composite,
+        so no single-site measurement is being offered as a city typology; the three regional components
+        are classed broader, the direction that does not over-claim on scale. Whether a value typical
+        of SE England applies in Beijing is a question of place, taken above.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of twelve existing records into the twelve slots the vegetation archetypes use,
+        and assembled is the method a composition sidecar takes. The composite produces no value of its
+        own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The uses block fills all twelve slots the vegetation archetypes use, namely albedo, emissivity,
+        water_storage, leaf_area_index, leaf_growth_power, drainage, max_vegetation_conductance, porosity,
+        biogen_co2, snow_lim_patch, vegetation_growth and ohm, which is the slot vocabulary every land_cover.grass,
+        land_cover.dectr and land_cover.evetr archetype in the database uses, so no slot is missing. The
+        ohm slot names one record in all four positions. This is the only Beijing grass composite in the
+        database, and its uses block is not repeated anywhere: the three nearest entries, archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024,
+        archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024 and archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024,
+        each differ from it in the leaf_area_index, leaf_growth_power, max_vegetation_conductance and
+        biogen_co2 slots.'
+  evidence:
+  - id: component-ohm-generic-unreferenced-grass
+    record: records/ohm/generic--unreferenced--grass
+    role: component
+    note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
+      declares target ohm_coefficients, name "Short grass [30]" and source unreferenced; it carries no
+      place or representativeness field. It declares no season_label, so one set fills all four positions.
+  - id: component-surfaces-grass-beijing-zheng-y2023-biogen-co2
+    record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
+    role: component
+    note: Fills the biogen_co2 slot. The record declares target land_cover.grass, name "Grass", place
+      beijing, representativeness city and source zheng-y2023.
+  - id: component-surfaces-grass-beijing-zheng-y2023-lai-power
+    record: records/surfaces/grass/beijing--zheng-y2023--lai-power
+    role: component
+    note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass,
+      LaiEq = 0", place beijing, representativeness city and source zheng-y2023.
+  - id: component-surfaces-grass-beijing-zheng-y2023-max-conductance
+    record: records/surfaces/grass/beijing--zheng-y2023--max-conductance
+    role: component
+    note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
+      "Grass", place beijing, representativeness city and source zheng-y2023.
+  - id: component-surfaces-grass-generic-unreferenced-porosity
+    record: records/surfaces/grass/generic--unreferenced--porosity
+    role: component
+    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
+      generic, representativeness generic and source unreferenced.
+  - id: component-surfaces-grass-helsinki-jarvi2014-phenology
+    record: records/surfaces/grass/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
+      place helsinki, representativeness city and source jarvi2014.
+  - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
+      helsinki, representativeness city and source jarvi2014.
+  - id: component-surfaces-grass-helsinki-vargo2013-albedo
+    record: records/surfaces/grass/helsinki--vargo2013--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target land_cover.grass, name "Unirrigated Grass",
+      place helsinki, representativeness city and source vargo2013.
+  - id: component-surfaces-grass-london-havu-m2024-drainage
+    record: records/surfaces/grass/london--havu-m2024--drainage
+    role: component
+    note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass - Helsinki,
+      Zurich, Beijing", place london, representativeness city and source havu-m2024. The declared place
+      and the name disagree, which is recorded under the place finding.
+  - id: component-surfaces-grass-se-england-ward2016-emissivity
+    record: records/surfaces/grass/se-england--ward2016--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target land_cover.grass, name "Grass", place
+      se-england, representativeness regional and source ward2016.
+  - id: component-surfaces-grass-se-england-ward2016-lai
+    record: records/surfaces/grass/se-england--ward2016--lai
+    role: component
+    note: Fills the leaf_area_index slot. The record declares target land_cover.grass, name "Grass (London)",
+      place se-england, representativeness regional and source ward2016.
+  - id: component-surfaces-grass-se-england-ward2016-water-storage
+    record: records/surfaces/grass/se-england--ward2016--water-storage
+    role: component
+    note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
+      se-england, representativeness regional and source ward2016.
+  scientific_note: 'The mapping is sound and the selection is defensible, but the entry is only in part
+    a Beijing set. Three of its twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
+    and biogen_co2 from zheng-y2023, and those three are every Beijing grass record the database holds,
+    so the other nine slots had no local option to take. The radiative and hydrological slots come from
+    Helsinki and SE England and the ohm slot from an unreferenced generic set named "Short grass [30]".
+    A reader should treat the composite as the phenology and conductance parameters zheng-y2023 fitted
+    for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
+    component''s own place is declared on its record, so the transfer is visible rather than hidden. One
+    field-level inconsistency is worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
+    declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
+    field is authoritative belongs to that record''s evidence review, not to this one.'
+  evidence_revision: sha256:14fb81b5f53bd95bd3aa35ce6947d9bd641b18ea9ef938859bdf6645d432c8c2
+verification:
+  attestations: []

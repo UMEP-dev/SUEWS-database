@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/puerto-rico
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:29e672321bc187553283af08dc0a2e36fe0f887b407f69dd4e2d2aaa6c8e4611
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/puerto-rico: sha256:481613c0fe2858b94d6981d3cbf45a5aedb61ca5056d7f485e304739c8b86779
+    records/profiles/traffic/lucy/puerto-rico: sha256:f1f78cbbf89e741c59ec92a5ff560c51ad648dd0d7640c58960572e1fc27938d
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-puerto-rico
+      - component-traffic-lucy-puerto-rico
+      note: The composite is named Puerto Rico, its country field reads Puerto Rico, and both agree with
+        the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-puerto-rico
+      - component-traffic-lucy-puerto-rico
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/puerto-rico,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/puerto-rico,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place puerto-rico, so the default is assembled from that country's
+        own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/caribbean,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Puerto Rico.
+  evidence:
+  - id: component-traffic-lucy-puerto-rico
+    record: records/profiles/traffic/lucy/puerto-rico
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place puerto-rico and representativeness regional.
+  - id: component-human-activity-lucy-puerto-rico
+    record: records/profiles/human-activity/lucy/puerto-rico
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place puerto-rico and representativeness regional.
+  scientific_note: Puerto Rico's default takes Puerto Rico's own rows, every one of them classed regional,
+    which is what a country default should do. The slot mapping, however, is not. Reading the composite
+    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/puerto-rico,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/puerto-rico,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:afa8e1a40fe32efdc3429e77d01ba1584157a79ca2f0c634020a476386ca7839
+verification:
+  attestations: []

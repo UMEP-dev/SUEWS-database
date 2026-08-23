@@ -1,0 +1,207 @@
+provenance_record: archetypes/surfaces/bldgs/london-uk--obtestcase
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:3764d0a48ab628914a5ef4a2525467ff15cab9149223ca72e789529750617cba
+dependency_revisions:
+  sources: {}
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records:
+    archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016: sha256:64b267270f8833ad255e7f62f7931a80042575d1d8d8abae58660a9297b691ef
+    archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016: sha256:2039a17a1d0ffda50e3cd2a5adcfc986116b35ec882841566a8fb57bc0f09dc4
+    archetypes/typologies/uk--obtestcase: sha256:faa6384e62528c0e5d612eb7855971b568ada2a1689cf48cfa7876d5aaa2f7cd
+    records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks: sha256:7ff26a8c6c84560c8d45efd1963c60fad4a6180551c589a15f4f0cf2464a318f
+    records/ohm/generic--ward2016--buildings: sha256:68fa8af89855b717d154431821b0e4199df5aa96c181d3e0b6110c2a978c89c7
+    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+    records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
+    records/surfaces/bldgs/se-england--ward2016--drainage: sha256:11d4566e3b5b7e9668bfe3f0dd102572d1d57df1190c10b4443cf1fae34a9342
+    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:bf766a3240a3c26de34cd1b3ad9ec228c8759dbbe5eebac680e42a203db3945a
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-london-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings-summer
+      - component-ohm-generic-ward2016-buildings-winter
+      related_records:
+      - archetypes/typologies/uk--obtestcase
+      note: 'The name field of the composite reads ''OBTESTCASE'' and its entry path is archetypes/surfaces/bldgs/london-uk--obtestcase.
+        The label says nothing about what the archetype assembles; it is a test-case identifier, which
+        is the suspect-name class AGENTS.md records as a quality warning left for human adjudication.
+        What the composite actually holds is the Central London radiative parameterisation from ward2016
+        laid over records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks,
+        whose own name reads ''Residential,from 2010, flat roof, type: multi-family, apartment blocks''.
+        A maintainer must decide whether this is a genuine typology that needs a descriptive name or a
+        test fixture that should not be published; archetypes/typologies/uk--obtestcase references it,
+        so the decision reaches that entry too.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-london-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings-summer
+      - component-ohm-generic-ward2016-buildings-winter
+      note: 'The composite declares target land_cover.bldgs, which agrees with its position under archetypes/surfaces/bldgs.
+        The albedo, emissivity, water_storage, drainage and snow_lim_patch slots each take a record declaring
+        target land_cover.bldgs; the construction slot takes a record declaring target construction; and
+        the four ohm slots take records declaring target ohm_coefficients. This is one of the few composites
+        where the season mapping can be checked against the components, and it is right: records/ohm/generic--ward2016--buildings
+        declares season_label Summer and fills summer_wet and summer_dry, while records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982
+        declares season_label Winter and fills winter_wet and winter_dry. Neither record distinguishes
+        wet from dry, so taking the same row for both wetness states within a season is the only mapping
+        their content supports. None of these records declares attaches_to, which in this database appears
+        only on the profile and snow-profile records, so the SUEWS field each slot writes is fixed by
+        the slot name alone and cannot be cross-checked against the component.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block, so it overrides no component value.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for assembling these particular records into this London building typology. The sources of the
+        components belong to their own evidence assessments, not to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-london-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings-summer
+      - component-ohm-generic-ward2016-buildings-winter
+      note: 'The composite claims place london and origin ''London, UK''. Every component that declares
+        a place declares one inside the United Kingdom except the snowpack limit: the albedo and emissivity
+        rows are place london, the water storage and drainage rows place se-england, and the construction
+        place uk, while records/surfaces/bldgs/helsinki--jarvi2014--snow-lim is place helsinki and is
+        the only buildings snowpack_limit record in the database, so that selection is forced. Two components
+        declare no place at all: records/ohm/generic--ward2016--buildings and records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982
+        carry no place field, so for a quarter of the assembly the London claim cannot be checked against
+        the component, and a maintainer should settle whether generic OHM rows may fill a place-bearing
+        composite without declaring a place. Worth recording separately: the composite pairs radiative
+        rows named ''Central London'' with a construction the record describes as UK residential stock
+        from 2010 onwards, flat roof, multi-family apartment blocks, which is a building-stock class rather
+        than a Central London one.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-london-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings-summer
+      - component-ohm-generic-ward2016-buildings-winter
+      note: The composite is classed city. The two London radiative rows are classed city, the two SE
+        England water rows and the UK construction are classed regional, which is a broadening and acceptable,
+        and the Helsinki snowpack limit is classed city. The two OHM rows declare no representativeness
+        field at all, so for a quarter of the assembly the scale the composite claims cannot be checked
+        against the component. That is not universal among generic rows, since records/ohm/generic--unreferenced--paved--asphalt-902
+        does declare both place and representativeness, so a maintainer should decide whether an OHM row
+        may fill a place-bearing and scale-bearing composite while declaring neither.
+    method:
+      conclusion: supported
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-london-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings-summer
+      - component-ohm-generic-ward2016-buildings-winter
+      related_records:
+      - archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+      - archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
+      note: Eight distinct components fill the seven slots a buildings archetype carries, with the four
+        ohm slots split by season across two records, so the assembly is complete. No other archetype
+        carries an identical uses block. archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+        shares seven of the eight references and differs only in the construction slot, where it takes
+        records/constructions/uk--lindberg-f2020--central-london-sample-run, and archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
+        shares six. The construction is therefore the only thing that distinguishes this entry from the
+        published Central London default, which is the fact a maintainer needs when deciding what to do
+        about its name.
+  evidence:
+  - id: component-surfaces-bldgs-london-ward2016-albedo
+    record: records/surfaces/bldgs/london--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
+      representativeness city and source ward2016.
+  - id: component-surfaces-bldgs-london-ward2016-emissivity
+    record: records/surfaces/bldgs/london--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.bldgs, name 'Central London', place
+      london, representativeness city and source ward2016.
+  - id: component-surfaces-bldgs-se-england-ward2016-water-storage
+    record: records/surfaces/bldgs/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.bldgs, name 'Buildings', place se-england,
+      representativeness regional and source ward2016.
+  - id: component-surfaces-bldgs-se-england-ward2016-drainage
+    record: records/surfaces/bldgs/se-england--ward2016--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.bldgs, name 'Buildings', place se-england,
+      representativeness regional and source ward2016.
+  - id: component-constructions-uk-hertwig2024a-residential-from-2010-flat-roof
+    record: records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks
+    role: component
+    note: 'Fills construction. The record declares target construction, name ''Residential,from 2010,
+      flat roof, type: multi-family, apartment blocks'', place uk, representativeness regional and source
+      hertwig2024a.'
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.bldgs, name 'Buildings', place helsinki
+      and representativeness city, and is the only buildings snowpack_limit record in the database.
+  - id: component-ohm-generic-ward2016-buildings-summer
+    record: records/ohm/generic--ward2016--buildings
+    role: component
+    note: Fills the summer_wet and summer_dry ohm slots. The record declares target ohm_coefficients,
+      name 'Code 798 x Multiplier for summer [7981]', season_label Summer and source ward2016, and declares
+      neither place nor representativeness.
+  - id: component-ohm-generic-ward2016-buildings-winter
+    record: records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982
+    role: component
+    note: Fills the winter_wet and winter_dry ohm slots. The record declares target ohm_coefficients,
+      name 'Code 798 x Multiplier for winter [7982]', season_label Winter and source ward2016, and declares
+      neither place nor representativeness.
+  scientific_note: 'The components here are individually unremarkable and the mapping is right: the Central
+    London radiative rows, the SE England water rows and a UK residential construction from hertwig2024a,
+    with the seasonal OHM split honoured correctly and the only out-of-country component, the Helsinki
+    snowpack limit, forced by the absence of any other buildings snowpack_limit record. The problem is
+    what the entry is for. Its name field reads OBTESTCASE, a test-case identifier that describes nothing,
+    and it differs from the published Central London default archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+    in exactly one reference, the construction. Read charitably, it is a legitimate variant typology,
+    Central London radiative properties over post-2010 multi-family apartment blocks, that was never given
+    a real name. Read literally, it is a test fixture that reached the published database and acquired
+    a typology entry, archetypes/typologies/uk--obtestcase, on the way. Nothing in the files settles which,
+    so a maintainer must. Two smaller matters ride along: the two OHM rows declare neither place nor representativeness,
+    and the construction is a UK stock class rather than a Central London one. This review does not revisit
+    any component value.'
+  evidence_revision: sha256:db76485023cf95374d08d2cabcf454363d9aef1ee22519bdf1e7127def241cb2
+verification:
+  attestations: []

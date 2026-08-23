@@ -1,0 +1,115 @@
+provenance_record: archetypes/typologies/finland--cbd
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:d24d3aeb8ad889d4a3f5a8d063bda9cab7a50ac4d1033b0f8109228f3b6c384d
+dependency_revisions:
+  sources: {}
+  places:
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
+  records:
+    archetypes/surfaces/bldgs/helsinki--city-centre: sha256:1be8e36d5862b1bdf5930efa257243fe94077d4abcc5f62e942c65662f779d04
+    archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
+    archetypes/typologies/china--cbd: sha256:c532dac2a6e13cabd974294145a91edbe66be82019a1295155da8aaee752fed9
+    archetypes/typologies/sweden--traditional-stone-house-neighbourhood: sha256:4ead611aa3c47ac1d57475781fb51e45a6ca526bb02a2b05d034cf54c221770d
+    archetypes/typologies/switzerland--cbd: sha256:ea5dabe495b74f1dd2a89c1cbd5c4041b7bb4beb481a579bbb85a6baa35027ad
+    archetypes/typologies/uk--cbd-sample-run: sha256:def583aae58bc8fd41282a592f31587f93c4bd74578757b68af72f5f75c77594
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-surfaces-bldgs-helsinki-city-centre
+      - component-surfaces-paved-helsinki-city-centre
+      note: The composite is named CBD, described 'Central Helsinki' and carries profile_type 'Commercial',
+        and both components are the Helsinki archetypes named 'City centre ' carrying place helsinki.
+        Label, description, profile type and components all describe the same thing.
+    target:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s own target is typology, and each slot takes a component declared for it:
+        the bldgs slot takes an archetype declaring target land_cover.bldgs and the paved slot an archetype
+        declaring target land_cover.paved. No archetype in this database declares attaches_to, which is
+        carried only by the 477 records under records/profiles, so slot fit here is judged on the components''
+        declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the two
+        archetypes it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for pairing these two archetypes. The components' own selections belong to their composition assessments,
+        not to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite claims place finland, and both components declare place helsinki, which db/places.yml
+        resolves to country finland. Nothing is imported from outside the country the composite claims.
+        The only Finnish building and paved archetypes are the two city-centre entries and the two Kumpula
+        entries, all four of them Helsinki, so a Finnish typology can only be a Helsinki typology in this
+        database as it stands.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids: *id001
+      note: The composite declares representativeness regional while both components declare city, so
+        one city's archetypes stand for a national typology. The database holds no Finnish building or
+        paved archetype classed regional, so the substitution was not avoidable, but the national reach
+        is the composite's own claim and nothing records the decision to make it. The same city-under-regional
+        pattern holds for every typology whose components come from a named city, so a maintainer should
+        settle it once across the typology set rather than entry by entry.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of two existing archetypes into two slots; the composite produces no value of
+        its own. A typology carries no seasonal or wet/dry axis, because the four OHM positions live inside
+        the surface archetypes, so the only mapping made here is one archetype per slot and each slot
+        receives exactly one.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'A typology has two component slots and no others: the migration maps the legacy Types table''s
+        Buildings and Paved columns into bldgs and paved and nothing else (scripts/migrate_to_records.py),
+        and all fourteen entries under archetypes/typologies fill exactly those two. This composite fills
+        both, so the assembly is complete. Its pair of components is unique: archetypes/surfaces/bldgs/helsinki--city-centre
+        is selected by no other typology, and archetypes/surfaces/paved/helsinki--city-centre is selected
+        only by archetypes/typologies/sweden--traditional-stone-house-neighbourhood, which pairs it with
+        a different building archetype. The name CBD alone does not identify the entry, since archetypes/typologies/china--cbd,
+        archetypes/typologies/switzerland--cbd and archetypes/typologies/uk--cbd-sample-run carry it too.'
+      related_records:
+      - archetypes/typologies/china--cbd
+      - archetypes/typologies/switzerland--cbd
+      - archetypes/typologies/uk--cbd-sample-run
+      - archetypes/typologies/sweden--traditional-stone-house-neighbourhood
+  evidence:
+  - id: component-surfaces-bldgs-helsinki-city-centre
+    record: archetypes/surfaces/bldgs/helsinki--city-centre
+    role: component
+    note: Fills bldgs. The archetype is named 'City centre ', declares target land_cover.bldgs, place
+      helsinki and representativeness city.
+  - id: component-surfaces-paved-helsinki-city-centre
+    record: archetypes/surfaces/paved/helsinki--city-centre
+    role: component
+    note: Fills paved. The archetype is named 'City centre ', declares target land_cover.paved, place
+      helsinki and representativeness city.
+  scientific_note: 'Finland''s CBD typology is internally consistent in everything a composition review
+    can check from the composite itself. Both components are Helsinki city-centre archetypes, helsinki
+    resolves to country finland, the building slot takes an archetype declaring land_cover.bldgs and the
+    paved slot one declaring land_cover.paved, both of the two slots a typology has are filled, and the
+    label, the description ''Central Helsinki'' and the profile type ''Commercial'' agree with each other
+    and with what is assembled. The one thing the composite asserts beyond its components is reach: it
+    declares representativeness regional while both components declare city, so Helsinki stands for Finland.
+    The database holds no Finnish building or paved archetype classed regional, so nothing better was
+    available, which makes this an unrecorded decision rather than a wrong selection, and the same decision
+    is embedded in every typology built on a named city. It should be settled once for the set. The components''
+    own compositions and values remain subject to their own assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:da35501474b77493f875772113be2659506f4e3083bf06c950e4811cbc104239
+verification:
+  attestations: []

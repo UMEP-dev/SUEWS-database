@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/western-samoa
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:730e229e704bca374473b8609a066236c5d2c23ca867afeb7eb76eea2d0c2ea7
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/western-samoa: sha256:54905be4a7afae6d535f8ca75883b072b7f656a04bf1e765d8dc922874b437ec
+    records/profiles/traffic/lucy/western-samoa: sha256:e8fef34034c2c727064e7adfcd526cf4dfb8618855e0dc0a7a32f635256d277a
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-western-samoa
+      - component-traffic-lucy-western-samoa
+      note: The composite is named Western Samoa, its country field reads Western Samoa, and both agree
+        with the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-western-samoa
+      - component-traffic-lucy-western-samoa
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/western-samoa,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/western-samoa,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place western-samoa, so the default is assembled from that country's
+        own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for Western Samoa.
+  evidence:
+  - id: component-traffic-lucy-western-samoa
+    record: records/profiles/traffic/lucy/western-samoa
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place western-samoa and representativeness regional.
+  - id: component-human-activity-lucy-western-samoa
+    record: records/profiles/human-activity/lucy/western-samoa
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place western-samoa and representativeness regional.
+  scientific_note: Western Samoa's default takes Western Samoa's own rows, every one of them classed regional,
+    which is what a country default should do. The slot mapping, however, is not. Reading the composite
+    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/western-samoa,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/western-samoa,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:79c85941225db6eb92493d7f9ee18add4d89d9decbc6fd900b70ca23efe696fa
+verification:
+  attestations: []

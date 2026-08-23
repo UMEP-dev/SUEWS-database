@@ -1,0 +1,204 @@
+provenance_record: archetypes/surfaces/dectr/zurich-switzerland--deciduous-tree-stagakis-et-al-2024
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:ff8ca653954309f8d20bfb653a8afb48a8b8220d653acbe15c94675dbbc1eb20
+dependency_revisions:
+  sources: {}
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records:
+    archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:886a194cf2b63a37dd1136a29556831187323d81e836c10076a3a3f5da76ff65
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
+    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
+    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
+    records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:a42f6262981d4f8ec3b67ad1e108a9bd6af8c565d0bf37c7c4ba5032ece343c6
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-dectr-zurich-stagakis-s2024-lai-power
+      - component-surfaces-dectr-zurich-stagakis-s2024-max-conductance
+      - component-surfaces-dectr-zurich-stagakis-s2024-biogen-co2
+      - component-surfaces-dectr-zurich-jarvi2011-lai
+      note: 'The composite is named "Deciduous Tree Stagakis et al. 2024", and three components declare
+        source stagakis-s2024: the leaf growth power, the maximum conductance and the biogenic CO2 set.
+        db/sources.yml registers that key as Stagakis S., Brunner D., Li J., Backman L., Karvonen A.,
+        Constantin L., Järvi L., Havu M., Chen J., Emberger S. and Kulmala L., "Intercomparison of biogenic
+        CO2 flux models in four urban parks in the city of Zurich", Biogeosciences, with year 2025 and
+        doi 10.5194/bg-22-2133-2025, so the year in the label and the year in the registry disagree. Which
+        of the two moves is a bibliographic question this review cannot settle without reading the publication,
+        and it should not be guessed. The label also covers only three of the four Zurich slots: the leaf_area_index
+        component is records/surfaces/dectr/zurich--jarvi2011--lai, named "Deciduous Tree (sample data)
+        a" and sourced jarvi2011.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      - component-surfaces-dectr-zurich-jarvi2011-lai
+      - component-surfaces-dectr-zurich-stagakis-s2024-lai-power
+      note: The composite's own target is land_cover.dectr. Eleven of its twelve components declare target
+        land_cover.dectr, and the four OHM positions take a record declaring ohm_coefficients, the type
+        that slot carries. The leaf_area_index and leaf_growth_power components both declare lai.lai_type
+        1, so the pair belongs to one LAI equation, which is the coupling schema/parameter_groups.yml
+        makes a rule for that slot pair.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this typology. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-dectr-helsinki-jarvi2014-phenology
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-london-havu-m2024-drainage
+      - component-surfaces-dectr-london-ward2016-emissivity
+      - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      note: 'The composite claims place zurich, registered in db/places.yml with Köppen class Cfb, and
+        four of its twelve components carry that place: the leaf area index, the leaf growth power, the
+        maximum conductance and the biogenic CO2 set. Three carry place helsinki, registered Dfb; three
+        carry place london; one carries place se-england; and the OHM record carries no place. Two of
+        the Helsinki imports are conditioned on climate rather than on species: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+        supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology supplies the
+        growing- and senescing-degree-day thresholds, both set for a Nordic city and carried here into
+        a temperate one. The drainage component records/surfaces/dectr/london--havu-m2024--drainage declares
+        place london while its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", so whether
+        that slot applies to Zurich cannot be read off the field that is supposed to say so. A maintainer
+        should record why the Nordic snow limit and phenology stand for Zurich, or replace them.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite claims representativeness city. Ten components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional and the OHM record declares no class. A regional value is offered as typical
+        of a wider area and so covers a city, and no component claims a narrower scale than the composite
+        does.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite assembles existing records into slots and produces no value of its own. All
+        four OHM positions take records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985,
+        which declares no season_label, and no OHM record in the database declares a wet or dry label,
+        so one season-agnostic coefficient set in all four positions is the only mapping the entries support.
+    identity:
+      conclusion: supported
+      note: Twelve distinct records fill the fifteen slot positions the deciduous-tree composites use,
+        and every one of those slots is filled. No other archetype under db/archetypes/surfaces/dectr
+        carries place zurich, and this is the only one of the eight to take the three stagakis-s2024 records,
+        so it is not a duplicate of any sibling. db/records/surfaces/dectr holds three Zurich jarvi2011
+        leaf-area-index records; this composite takes records/surfaces/dectr/zurich--jarvi2011--lai while
+        the Helsinki park-trees composite takes the one suffixed deciduous-tree-sample-data-c, and the
+        one suffixed deciduous-tree-sample-data-b is used by no deciduous-tree composite. scripts/export_record.py
+        also recognises a water_state slot and db/records/surfaces/dectr holds records/surfaces/dectr/se-england--ward2016--water-state,
+        which no deciduous-tree composite references.
+      related_records:
+      - archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024
+  evidence:
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills the four OHM positions summer_wet, summer_dry, winter_wet and winter_dry. The record declares
+      target ohm_coefficients, source grimmond1991b, no place and no representativeness, and is named
+      "Mixed Forest [20]  McCaughey (1985)". It declares no season_label, so nothing in it distinguishes
+      the four positions it fills.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
+    record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
+      and sdd_full, which schema/parameter_groups.yml classes as one tightly linked set.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies snowpack_limit, a quantity conditioned on the snow
+      climate it was set for.
+  - id: component-surfaces-dectr-helsinki-vargo2013-albedo
+    record: records/surfaces/dectr/helsinki--vargo2013--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It is named "Mixed Deciduous Tree" and carries source vargo2013.
+  - id: component-surfaces-dectr-london-havu-m2024-drainage
+    record: records/surfaces/dectr/london--havu-m2024--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
+      city. Its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", which names three cities
+      its place field does not.
+  - id: component-surfaces-dectr-london-jarvi2011-porosity
+    record: records/surfaces/dectr/london--jarvi2011--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
+      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
+      to all eight deciduous-tree composites.
+  - id: component-surfaces-dectr-london-ward2016-emissivity
+    record: records/surfaces/dectr/london--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.dectr, place london and representativeness
+      city. It is named "Deciduous trees" and carries source ward2016.
+  - id: component-surfaces-dectr-se-england-ward2016-water-storage
+    record: records/surfaces/dectr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      composite.
+  - id: component-surfaces-dectr-zurich-jarvi2011-lai
+    record: records/surfaces/dectr/zurich--jarvi2011--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.dectr, place zurich and representativeness
+      city. It is named "Deciduous Tree (sample data) a", carries source jarvi2011 rather than the stagakis-s2024
+      the composite's label names, and declares lai.lai_type 1; it is one of three Zurich jarvi2011 leaf-area-index
+      records in db/records/surfaces/dectr.
+  - id: component-surfaces-dectr-zurich-stagakis-s2024-biogen-co2
+    record: records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.dectr, place zurich and representativeness
+      city. It is named "Deciduous trees" and carries source stagakis-s2024.
+  - id: component-surfaces-dectr-zurich-stagakis-s2024-lai-power
+    record: records/surfaces/dectr/zurich--stagakis-s2024--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place zurich and representativeness
+      city. It is named "Deciduous Tree, LaiEq = 1", carries source stagakis-s2024 and declares lai.lai_type
+      1, matching the leaf_area_index component.
+  - id: component-surfaces-dectr-zurich-stagakis-s2024-max-conductance
+    record: records/surfaces/dectr/zurich--stagakis-s2024--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place zurich
+      and representativeness city. It carries source stagakis-s2024.
+  scientific_note: 'The Zurich-specific content is the vegetation behaviour: leaf growth power, maximum
+    conductance and the biogenic CO2 set all come from stagakis-s2024 records placed at Zurich, which
+    is what the label promises, and the leaf area index is a Zurich record too, though it comes from jarvi2011
+    and its own name calls it sample data. The LAI pair agrees on lai.lai_type 1, the targets are right
+    and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
+    2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
+    nothing in the repository says which is correct. And the snowpack limit and the four degree-day thresholds
+    are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
+    makes and the one a reader is least able to check, since the drainage record''s own name mentions
+    Zurich while its place field says London. Neither question touches a stored value; both are composition
+    decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
+    this review does not revisit them.'
+  evidence_revision: sha256:5b8c48c756d689d3778af595950727bcbaf08d1319b13f2b5c73ce7b92333488
+verification:
+  attestations: []

@@ -1,0 +1,225 @@
+provenance_record: archetypes/surfaces/evetr/helsinki-finland--evergreen-forest-trees-havu-et-al-2024
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:e0d05425776ad08c021daddb3a2325d57a9a951d60cd4f063caaf8bb966a19a2
+dependency_revisions:
+  sources: {}
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    archetypes/surfaces/evetr/helsinki-finland--evergreen-street-trees-havu-et-al-2022: sha256:f09cd2030a94be38383a7fa7ca77904345ca6bfa54260f8dd18fe2e588a73650
+    archetypes/surfaces/evetr/helsinki-finland--evergreenpark-trees-havu-et-al-2024: sha256:b78d5d5e4d429f2988a0e09b00e36a1159d69a48d3518fb732ee9bd20b663496
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/helsinki--havu-m2024--biogen-co2: sha256:6163b08fa8d104900860d42dccffccbad0f22c8cb7fedad04c8adcc8cf971012
+    records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:e461584aa40c4f2576b5acd68b55f7e4798a7855acd0a7e2ff5d36e5da47bcfe
+    records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/london--havu-m2024--drainage: sha256:c8823d8ed14278d8fafdc8416a869a221b91826161fa4c575f26e54dcb96f996
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+      note: The composite is named "Evergreen Forest trees, Havu et al. 2024" and declares place helsinki
+        with origin "Helsinki, Finland". The component that distinguishes it from the street and park
+        composites is biogen_co2, which takes records/surfaces/evetr/helsinki--havu-m2024--biogen-co2,
+        named "Evergreen trees - forest" and sourced to havu-m2024; db/sources.yml records that key with
+        year 2024. Label, component and registry agree.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-helsinki-havu-m2024-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-helsinki-havu-m2024-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite declares target land_cover.evetr, and every component declares that same target
+        except the four OHM positions, which take a record declaring target ohm_coefficients. leaf_area_index
+        takes records/surfaces/evetr/se-england--ward2016--lai and leaf_growth_power takes records/surfaces/evetr/helsinki--havu-m2024--lai-power,
+        both declaring lai.lai_type 1, which satisfies the leaf_area_index coupling rule in schema/parameter_groups.yml,
+        which makes an archetype whose two LAI components carry different lai_type values internally contradictory.
+        All four OHM positions take one record, which carries no season_label, so an undifferentiated
+        season and wet/dry mapping contradicts nothing the component declares.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so every value it delivers is the component's.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this assembly. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-lai
+      note: 'The drainage slot takes records/surfaces/evetr/london--havu-m2024--drainage, which declares
+        place london and origin "London" while its own name reads "EvergreenTree - Helsinki, Zurich, Beijing"
+        and its source field reads havu-m2024. That record fills the drainage slot in exactly the five
+        evergreen-tree composites placed at the three cities its name lists, so the selection reads as
+        deliberate and the declared place as wrong, but nothing in the repository settles which of the
+        two is in error, and it should be settled once rather than five times. Otherwise the composite
+        is well placed: leaf_growth_power, max_vegetation_conductance, biogen_co2, snow_lim_patch and
+        vegetation_growth all take rows declaring place helsinki, and albedo, emissivity, water_storage
+        and leaf_area_index take se-england rows because the database holds no Helsinki record for those
+        four slots.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-helsinki-havu-m2024-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-helsinki-havu-m2024-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite declares representativeness city. The Helsinki and London rows are classed city,
+        the four SE England rows regional, which is a wider class standing in for a city rather than a
+        city row standing in for a region, the porosity record generic, and the OHM record carries no
+        representativeness at all.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-helsinki-havu-m2024-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-helsinki-havu-m2024-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: An assembly of existing records into slots; the composite asserts no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-evetr-se-england-ward2016-emissivity
+      - component-surfaces-evetr-se-england-ward2016-water-storage
+      - component-surfaces-evetr-se-england-ward2016-lai
+      - component-surfaces-evetr-helsinki-havu-m2024-lai-power
+      - component-surfaces-evetr-london-havu-m2024-drainage
+      - component-surfaces-evetr-helsinki-havu-m2024-max-conductance
+      - component-surfaces-evetr-generic-unreferenced-porosity
+      - component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+      - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-evetr-helsinki-jarvi2014-phenology
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+      note: The composite fills all eleven named slots and the four OHM positions, which is the slot set
+        every deciduous-tree, evergreen-tree and grass archetype in this database uses, so the assembly
+        is complete. The porosity slot takes records/surfaces/evetr/generic--unreferenced--porosity, whose
+        parameters block is empty and whose origin reads "Porisity only used for Deciduous Tree. This
+        is a Dummy Variable", so that slot contributes no value by design rather than by omission. It
+        is one of three Helsinki composites built on Havu et al. rows that differ in exactly one component,
+        biogen_co2, and each of the three takes the biogenic CO2 record whose own name matches its label,
+        so the three are distinct and correctly told apart.
+      related_records:
+      - archetypes/surfaces/evetr/helsinki-finland--evergreen-street-trees-havu-et-al-2022
+      - archetypes/surfaces/evetr/helsinki-finland--evergreenpark-trees-havu-et-al-2024
+  evidence:
+  - id: component-surfaces-evetr-se-england-ward2016-albedo
+    record: records/surfaces/evetr/se-england--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-emissivity
+    record: records/surfaces/evetr/se-england--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen trees"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-water-storage
+    record: records/surfaces/evetr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+  - id: component-surfaces-evetr-se-england-ward2016-lai
+    record: records/surfaces/evetr/se-england--ward2016--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
+      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+  - id: component-surfaces-evetr-helsinki-havu-m2024-lai-power
+    record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads havu-m2024.
+  - id: component-surfaces-evetr-london-havu-m2024-drainage
+    record: records/surfaces/evetr/london--havu-m2024--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
+      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads havu-m2024.
+  - id: component-surfaces-evetr-helsinki-havu-m2024-max-conductance
+    record: records/surfaces/evetr/helsinki--havu-m2024--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.evetr, place helsinki
+      and representativeness city, and is named "Evergreen Tree"; its source field reads havu-m2024.
+  - id: component-surfaces-evetr-generic-unreferenced-porosity
+    record: records/surfaces/evetr/generic--unreferenced--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Dummy value"; its source field reads unreferenced.
+  - id: component-surfaces-evetr-helsinki-havu-m2024-biogen-co2
+    record: records/surfaces/evetr/helsinki--havu-m2024--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen trees - forest"; its source field reads havu-m2024.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
+    record: records/surfaces/evetr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.evetr, place helsinki and representativeness
+      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record declares
+      target ohm_coefficients and is named "Mixed Forest [20]  McCaughey (1985)"; its source field reads
+      grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
+      representativeness.
+  scientific_note: 'This is a well-formed Helsinki composite. The slots that carry the typology, leaf
+    growth power, maximum conductance and biogenic CO2, all take Helsinki rows sourced to havu-m2024,
+    the biogenic CO2 record is the one named for forest, and the four slots with no Helsinki row available
+    fall back to SE England regional rows from Ward et al. The two LAI components agree on lai_type 1,
+    the slot set is complete, and one unlabelled coefficient record fills all four OHM positions, which
+    its own lack of a season_label permits. The single thing a maintainer must settle is the drainage
+    component: records/surfaces/evetr/london--havu-m2024--drainage declares place london while its name
+    reads "EvergreenTree - Helsinki, Zurich, Beijing" and its source is a Helsinki study, and it fills
+    the drainage slot in all five composites placed at the three cities its name lists. Either the record''s
+    place is wrong or five composites are drawing drainage from London; the entries do not say which,
+    and the answer belongs with the record''s own evidence review.'
+  evidence_revision: sha256:a8ad38a94f777e03b84367af786c441ddfde68d8aa86fa6bed5f4411ed5a4cdf
+verification:
+  attestations: []

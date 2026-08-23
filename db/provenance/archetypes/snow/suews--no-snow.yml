@@ -1,0 +1,123 @@
+provenance_record: archetypes/snow/suews--no-snow
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
+dependency_revisions:
+  sources: {}
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records:
+    archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
+    archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
+    records/snow/helsinki--jarvi2014--albedo: sha256:97a3dcd81fb00bb7ccb0f5967af2f61273cdf678fdd887df93881e7648bd7a8e
+    records/snow/helsinki--jarvi2014--emissivity: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:26:59Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: 'The composite''s name reads No Snow and its legacy block sets every snow scalar it carries,
+        RadMeltFactor, TempMeltFactor, tau_a, tau_f, PrecipLimAlb, SnowDensMin, SnowDensMax, tau_r, CRWMin,
+        CRWMax and PrecipLimSnow, to -999. It nevertheless selects two components, and because it declares
+        no parameters block of its own the assembled fragment is exactly what they supply: snow_albedo_min
+        0.18, snow_albedo_max 0.85 and narp_emissivity_snow 0.99, each referenced to jarvi2014 and described
+        as helsinki, city. A no-snow default therefore publishes one city''s measured snow optical properties
+        and nothing else. Whether SUEWS still needs those fields populated when the snow module is off,
+        which would make the selection right and the label misleading, or whether the uses block does
+        not belong here, is not something these files settle.'
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares target snow and both components declare target snow. Snow records carry
+        no attaches_to field; in this database attaches_to appears only on the profile records under records/profiles/,
+        so the slot check rests on the parameter names each component carries. The albedo slot takes the
+        record holding snow_albedo_min and snow_albedo_max and the emissivity slot takes the record holding
+        narp_emissivity_snow, so each slot receives a component declared for it.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block, so it overrides nothing. The -999 sentinels sit
+        in its legacy block alone and do not reach the assembled fragment.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition rationale, and its source field reads unreferenced, which
+        docs/FORMAT.md defines as marking legacy values that carried no citation. Both components declare
+        source jarvi2014, so an unreferenced composite exports three values that carry that citation.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares place generic, which db/places.yml holds as the bare entry Generic
+        with no coordinates, country or Koppen class, while both components declare place helsinki. A
+        generic default is therefore assembled entirely from one city's rows. No snow record in the database
+        declares a generic place, the only three being the two Helsinki records and records/snow/se-england--ward2016--albedo,
+        so this cannot be closed by re-selection and turns on the decision recorded under name.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: The composite declares representativeness generic, the broadest class the format offers, and
+        both components declare city, so two city rows stand in for a default that claims to apply anywhere.
+        No snow record classed generic exists, and the only one classed regional, records/snow/se-england--ward2016--albedo,
+        carries albedo alone, so as with place the gap cannot be closed by re-selection.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      note: An assembly of two existing records into the albedo and emissivity slots, and assembled is
+        the method a composition sidecar takes. Unlike the other two snow composites this one asserts
+        no scalars of its own, so everything it contributes arrives through those two slots.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-snow-helsinki-jarvi2014-albedo
+      - component-snow-helsinki-jarvi2014-emissivity
+      related_records:
+      - archetypes/snow/helsinki--snow
+      - archetypes/snow/se-england--not-used
+      note: It is the only no-snow default in the database. Its uses block is identical to those of archetypes/snow/helsinki--snow
+        and archetypes/snow/se-england--not-used, and unlike them it asserts no parameters of its own,
+        so under the modern schema it is not a full snow parameter set but the two component values alone,
+        which is the point the name finding turns on. The one remaining snow record, records/snow/generic--kawai2009--thermal-layers,
+        carries an empty parameters block with everything in legacy, so no slot is missing on its account.
+  evidence:
+  - id: component-snow-helsinki-jarvi2014-albedo
+    record: records/snow/helsinki--jarvi2014--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target snow, name Snow, place helsinki, representativeness
+      city and source jarvi2014, and carries snow_albedo_min and snow_albedo_max.
+  - id: component-snow-helsinki-jarvi2014-emissivity
+    record: records/snow/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", place
+      helsinki, representativeness city and source jarvi2014, and carries narp_emissivity_snow.
+  scientific_note: 'archetypes/snow/suews--no-snow is a generic, unreferenced entry whose legacy block
+    disables snow by setting eleven scalars to -999, and it selects the same two components as the other
+    two snow composites. Because it declares no parameters block of its own, what it assembles is those
+    components and nothing more: the fragment exports snow_albedo_min 0.18, snow_albedo_max 0.85 and narp_emissivity_snow
+    0.99, all three referenced to jarvi2014 and described as helsinki, city, while the -999 sentinels
+    never leave the legacy block. An entry named No Snow, placed generic and classed generic, therefore
+    resolves under the modern schema to Helsinki''s measured snow albedo and emissivity alone. Two things
+    follow, neither of them settled by the files. The database holds no snow record with a generic place
+    or a generic class, so the place and class gaps cannot be closed by choosing different components.
+    And whether a configuration running with the snow module off still needs snow_albedo_min, snow_albedo_max
+    and narp_emissivity_snow present is a question about SUEWS rather than about this database: if it
+    does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
+    the uses block should not be here at all. A maintainer with the model''s requirements to hand can
+    settle all three findings in one decision.'
+  evidence_revision: sha256:9d2f8168c97d18feba5e076e28a58afb299f97b244ea0bf789b8b39270890e7c
+verification:
+  attestations: []

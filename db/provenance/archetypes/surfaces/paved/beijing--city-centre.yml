@@ -1,0 +1,198 @@
+provenance_record: archetypes/surfaces/paved/beijing--city-centre
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:93698df964bdb43e4e592980da8979cfaee0793da142f11154e1cfc0a6f3126a
+dependency_revisions:
+  sources: {}
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
+    records/ohm/beijing--zheng-y2023--paved: sha256:38e916ccd944e9bcf64e33064d843bfcada25cb908e38ad5f0c3d066c7748f41
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:fb4daff1044bc8a4062ef5f9f0bf63f37f43310fa8adea47d405ee27f23407bf
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
+    records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
+    records/surfaces/paved/shanghai--ao2016--albedo: sha256:a822dc21a7c356be87afb9eb50ce48c61ceb8fc1803c6adb8f5f56d1cffee67c
+    records/surfaces/paved/shanghai--ao2016--emissivity: sha256:b245af73d687ed5a54efc1e1fe35ba0dd522efbcdee8608ebef1096332c8038e
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T00:43:17Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      note: The composite's name reads 'City centre ', with a trailing space, its place reads beijing
+        and its origin reads Beijing, so read with those fields the label identifies a Beijing city-centre
+        paved surface. The label names the typology rather than the provenance of its parts, and six of
+        the seven components come from somewhere other than Beijing, which is dealt with under place.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      note: 'The composite declares target land_cover.paved. The albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.paved; the construction
+        slot takes a record declaring target construction and the four ohm positions take records declaring
+        target ohm_coefficients, which are the entry types those slots exist for. Surface records carry
+        no attaches_to field, since attaches_to appears in this database only on the profile records under
+        records/profiles/, so the slot check rests on the parameters each component carries: alb into
+        albedo, emis into emissivity, store_min and store_max into water_storage, drain_eq, drain_coef_1,
+        drain_coef_2 and wet_threshold into drainage, snowpack_limit into snow_lim_patch, and a1, a2 and
+        a3 into each ohm position. The water_storage and drainage components both write into storage_drain_params
+        and their keys do not overlap, so neither overrides the other. records/ohm/beijing--zheng-y2023--paved
+        declares no season_label and is named ''An99 weighted average (all year)'', so filling all four
+        season and wetness positions from it asserts no seasonal split the record itself denies.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters of its own, so it overrides no component value; every
+        number in its exported fragment arrives from a component.
+    source:
+      conclusion: not_applicable
+      note: The composite declares no source field and the repository records no published rationale for
+        this selection. Each component's own source belongs to that component's evidence assessment, not
+        to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      related_records:
+      - records/surfaces/paved/shanghai--ao2016--emissivity
+      note: 'The composite declares place beijing and only records/ohm/beijing--zheng-y2023--paved carries
+        that place. The albedo slot takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
+        the emissivity, water_storage and snow_lim_patch slots take records with place helsinki; the drainage
+        slot takes records/surfaces/paved/london--jarvi2011--drainage, place london; the construction
+        slot takes a record with place generic. Most of that borrowing is forced, because the database
+        holds no paved surface record with place beijing. The emissivity slot is not forced: records/surfaces/paved/shanghai--ao2016--emissivity
+        exists with place shanghai and source ao2016, the same place and the same study as the albedo
+        this composite did take, and it is referenced by no archetype at all, while the emissivity slot
+        reaches instead to Helsinki. A maintainer has to decide whether taking half of the Shanghai pair
+        is deliberate or a mis-selection.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      note: The composite declares representativeness city. The Shanghai, Helsinki, London and Beijing
+        components all declare city, and records/constructions/generic--lindberg-f2020--placeholder declares
+        generic, which is broader rather than narrower. No component is classed below the composite's
+        scale, so nothing narrower stands in for a city typology.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      note: An assembly of seven existing records into eleven slot positions; the composite produces no
+        value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-paved-shanghai--ao2016--albedo
+      - component-surfaces-paved-helsinki--jarvi2014--emissivity
+      - component-surfaces-paved-helsinki--jarvi2014--water-storage
+      - component-surfaces-paved-london--jarvi2011--drainage
+      - component-constructions-generic--lindberg-f2020--placeholder
+      - component-surfaces-paved-helsinki--jarvi2014--snow-lim
+      - component-ohm-beijing--zheng-y2023--paved
+      note: The composite fills all seven slots the land_cover.paved archetypes use, albedo, emissivity,
+        water_storage, drainage, construction, snow_lim_patch and ohm, which is the full set every other
+        paved archetype carries, so the assembly is complete on that pattern. It is the only Beijing paved
+        typology in the database and its uses block is shared with no other archetype. records/surfaces/paved/se-england--ward2016--water-state
+        carries state_limit and is referenced by no archetype, but no land_cover.paved archetype anywhere
+        declares a water_state slot, so that is a target-wide design question rather than an omission
+        in this entry.
+  evidence:
+  - id: component-surfaces-paved-shanghai--ao2016--albedo
+    record: records/surfaces/paved/shanghai--ao2016--albedo
+    role: component
+    note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place shanghai,
+      representativeness city and source ao2016, and carries alb.
+  - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
+    record: records/surfaces/paved/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place helsinki,
+      representativeness city and source jarvi2014, and carries emis.
+  - id: component-surfaces-paved-helsinki--jarvi2014--water-storage
+    record: records/surfaces/paved/helsinki--jarvi2014--water-storage
+    role: component
+    note: Fills the water_storage slot. The record declares target land_cover.paved, name 'Paved ', place
+      helsinki, representativeness city and source jarvi2014, and carries store_min and store_max under
+      storage_drain_params.
+  - id: component-surfaces-paved-london--jarvi2011--drainage
+    record: records/surfaces/paved/london--jarvi2011--drainage
+    role: component
+    note: Fills the drainage slot. The record declares target land_cover.paved, name 'Paved [sample run]',
+      place london, representativeness city and source jarvi2011, and carries drain_eq, drain_coef_1,
+      drain_coef_2 and wet_threshold.
+  - id: component-constructions-generic--lindberg-f2020--placeholder
+    record: records/constructions/generic--lindberg-f2020--placeholder
+    role: component
+    note: Fills the construction slot. The record declares target construction, name Placeholder, place
+      generic, representativeness generic and source lindberg-f2020, and carries roof and wall layer lists
+      with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
+      slot out of the surface fragment, so this reference contributes no exported value.
+  - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
+    record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
+      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
+      snowpack_limit.
+  - id: component-ohm-beijing--zheng-y2023--paved
+    record: records/ohm/beijing--zheng-y2023--paved
+    role: component
+    note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
+      declares target ohm_coefficients, name 'An99 weighted average (all year)', place beijing, representativeness
+      city and source zheng-y2023, carries a1, a2 and a3, and declares no season_label.
+  scientific_note: 'archetypes/surfaces/paved/beijing--city-centre is a Beijing typology whose only Beijing
+    content is its storage heat coefficients. records/ohm/beijing--zheng-y2023--paved fills all four season
+    and wetness positions, and since it declares no season_label and is named ''An99 weighted average
+    (all year)'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
+    albedo from Shanghai, emissivity, water storage and snowpack limit from Helsinki, drainage from London,
+    and the construction reference from a record named Placeholder. The database holds no paved surface
+    record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
+    One selection does not follow from scarcity. The composite took records/surfaces/paved/shanghai--ao2016--albedo,
+    and records/surfaces/paved/shanghai--ao2016--emissivity sits in the database with the same place and
+    the same source, referenced by no archetype, while the emissivity slot reaches to Helsinki instead.
+    Either the Shanghai pair was meant to be taken together and half of it was missed, or the Helsinki
+    emissivity was judged the better value for Beijing; the files do not say which, and a maintainer should
+    settle it. Two labels a reader should carry forward without acting on them here: the drainage component
+    is named ''Paved [sample run]'' and the construction component is named Placeholder, both questions
+    for those records'' own evidence reviews. The construction reference changes no exported number in
+    any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
+    fragment.'
+  evidence_revision: sha256:316653e3c5f808de1ce3886607deb5563e6f581a84b21c8c8c592e79194d8a20
+verification:
+  attestations: []

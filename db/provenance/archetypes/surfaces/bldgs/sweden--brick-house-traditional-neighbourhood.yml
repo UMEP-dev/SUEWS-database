@@ -1,0 +1,195 @@
+provenance_record: archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:f1d978d90a398d73c2afb30ac14aa27c846f79d63416e6938e2f125233c17ef6
+dependency_revisions:
+  sources: {}
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records:
+    archetypes/surfaces/bldgs/sweden--concrete-million-program: sha256:68d7b5429fd8741c01b624bba6fd8e12d4c0dc061ec96d7cccee397dfb4cb7d6
+    archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
+    records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s: sha256:72f8509bebf0412cb77537c73b0bd01ca8a3973911e03bd2440911c82de5c7e4
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+      note: The name field of the composite reads 'Brick House, Traditional Neighbourhood'. Its construction
+        slot takes records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
+        whose own name reads 'Traditional Neighbourhood, early 1900s' and whose wall stack is records/materials/generic--cibse2015--wood
+        at 0.025 m, records/materials/generic--hertwig2024a--felt-sheathing at 0.001 m, records/materials/generic--cibse2015--wood
+        at 0.075 m, records/materials/generic--cibse2015--wood at 0.025 m and records/materials/generic--hertwig2024a--plaster-dense
+        at 0.025 m. No layer is brick, and the roof is clay tile over wood. The one bjork2002 construction
+        in the database whose wall does carry brick is records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+        with records/materials/generic--hertwig2024a--brick-protected at 0.29 m, and that record is taken
+        by archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood. The archetype named
+        for brick therefore has a timber wall while the archetype named for stone has a brick wall. This
+        review does not assert that the two selections were exchanged; it records that the name and the
+        selected construction disagree, and a maintainer must decide which of the two is wrong.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: The composite declares target land_cover.bldgs, which agrees with its position under archetypes/surfaces/bldgs.
+        The albedo, emissivity, water_storage, drainage and snow_lim_patch slots each take a record declaring
+        target land_cover.bldgs; the construction slot takes a record declaring target construction; and
+        the four ohm slots take a record declaring target ohm_coefficients. records/ohm/helsinki--jarvi2014--buildings
+        declares no season_label and no wet or dry distinction, so filling summer_wet, summer_dry, winter_wet
+        and winter_dry with the one record is the only mapping its content supports. None of these records
+        declares attaches_to, which in this database appears only on the profile and snow-profile records,
+        so the SUEWS field each slot writes is fixed by the slot name alone and cannot be cross-checked
+        against the component.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block, so it overrides no component value.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for assembling these particular records into a Swedish brick-house traditional neighbourhood.
+        The sources of the components belong to their own evidence assessments, not to this review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite claims place sweden, whose registry entry reads kind country. Exactly one of
+        the seven components is in Sweden: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
+        place gothenburg, origin ''Gothenburg, Sweden''. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo,
+        place london, and the emissivity, water storage, drainage, snowpack limit and OHM slots all take
+        Helsinki records, place helsinki, country finland. The database does hold two Swedish buildings
+        albedo rows, records/surfaces/bldgs/gothenburg--oke1987--albedo--wood, named ''Wood '', and records/surfaces/bldgs/gothenburg--oke1987--albedo,
+        named ''Industry, dark roofs'', and the other Swedish buildings archetypes do use them; neither
+        describes brick masonry, and nothing in the files records why a Central London city-centre albedo
+        was taken instead. Part of the Helsinki borrowing is forced, since records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+        is the only buildings snowpack_limit record in the database and no Swedish water storage, drainage
+        or emissivity row exists, but the composite as a whole rests on one Swedish record out of seven
+        while claiming to be a Swedish typology, and a maintainer should decide whether that is a defensible
+        national default.'
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      note: 'The composite is classed regional, at the scale of Sweden. Every one of its seven components
+        is classed city: the London albedo, the four Helsinki surface rows, the Helsinki OHM row, and
+        records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s, which declares
+        place gothenburg and representativeness city. A country-scale default assembled entirely from
+        city measurements is the case this review is asked to treat as a finding, and it cannot be fixed
+        inside the composite: either the class the composite declares is too broad for what it holds,
+        or the slots need country-scale rows that do not yet exist. The same pattern runs through the
+        Swedish buildings family, so a maintainer should settle it once for the family rather than archetype
+        by archetype.'
+    method:
+      conclusion: supported
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-london-ward2016-albedo
+      - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+      - component-surfaces-bldgs-helsinki-ward2016-water-storage
+      - component-surfaces-bldgs-helsinki-jarvi2011-drainage
+      - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-helsinki-jarvi2014-buildings
+      related_records:
+      - archetypes/surfaces/bldgs/sweden--concrete-million-program
+      - archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+      note: All seven slots are filled, and the four ohm slots take one record, consistent with records/ohm/helsinki--jarvi2014--buildings
+        declaring no season_label. No other archetype in the repository carries an identical uses block,
+        and no other archetype uses records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s.
+        The seven Swedish buildings archetypes form a family that varies in the construction slot throughout,
+        in the albedo slot across the masonry, timber and industry variants, and, for archetypes/surfaces/bldgs/sweden--industry
+        alone, in the ohm slots as well; this entry is distinguished from archetypes/surfaces/bldgs/sweden--concrete-million-program
+        and archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood by its construction
+        alone.
+  evidence:
+  - id: component-surfaces-bldgs-london-ward2016-albedo
+    record: records/surfaces/bldgs/london--ward2016--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
+      representativeness city and source ward2016.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
+    record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.bldgs, name 'Building', place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
+    record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.bldgs, name 'Building', place helsinki
+      and representativeness city.
+  - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
+    record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.bldgs, name 'Building', place helsinki
+      and representativeness city.
+  - id: component-constructions-gothenburg-bjork2002-traditional-neighbourhood
+    record: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s
+    role: component
+    note: Fills construction. The record declares target construction, name 'Traditional Neighbourhood,
+      early 1900s', place gothenburg, origin 'Gothenburg, Sweden', representativeness city and source
+      bjork2002, and its wall stack is wood, felt sheathing, wood, wood and dense plaster, with no brick
+      layer.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.bldgs, name 'Buildings', place helsinki
+      and representativeness city, and is the only buildings snowpack_limit record in the database.
+  - id: component-ohm-helsinki-jarvi2014-buildings
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: component
+    note: Fills the summer_wet, summer_dry, winter_wet and winter_dry ohm slots. The record declares target
+      ohm_coefficients, name 'Roof (own for SMEAR III, Helsinki) [750]', place helsinki, representativeness
+      city and source jarvi2017, and carries no season_label.
+  scientific_note: 'Two things are wrong with this composite and they are independent. The first is the
+    name. The entry is called ''Brick House, Traditional Neighbourhood'', but the construction it selects,
+    records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s, has a wall of
+    wood, felt sheathing, wood, wood and dense plaster under a clay-tile roof, with no brick anywhere
+    in the stack. The bjork2002 construction that does carry brick, records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s
+    with records/materials/generic--hertwig2024a--brick-protected at 0.29 m, is the one taken by the archetype
+    named for stone. That is a striking pattern but it is not proof of a swap, and this review will not
+    assert one: what is established is that the label and the selected construction disagree, and a maintainer
+    must decide whether to rename the archetype or reselect its construction. The second problem is scale
+    and place together. The composite claims to be a Swedish regional typology, yet exactly one of its
+    seven components is Swedish and all seven are classed city, so a country default is assembled from
+    city measurements taken mostly in Finland and, for albedo, in London. Some of that is forced by what
+    the database holds, but the albedo is not: two Gothenburg rows exist, named ''Wood '' and ''Industry,
+    dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
+    be settled once rather than seven times. This review does not revisit any component value.'
+  evidence_revision: sha256:0e14ed5cc7838bd711c3222865147433ae490c6c812e525f155cd908699a3755
+verification:
+  attestations: []

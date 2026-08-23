@@ -1,0 +1,184 @@
+provenance_record: archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:2039a17a1d0ffda50e3cd2a5adcfc986116b35ec882841566a8fb57bc0f09dc4
+dependency_revisions:
+  sources: {}
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records:
+    archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016: sha256:64b267270f8833ad255e7f62f7931a80042575d1d8d8abae58660a9297b691ef
+    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:40de5fbe382affc13a60d2f3032a051a6843b57783b7fe63b86abf44b6186943
+    records/ohm/generic--ward2016--buildings: sha256:68fa8af89855b717d154431821b0e4199df5aa96c181d3e0b6110c2a978c89c7
+    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/se-england--ward2016--drainage: sha256:11d4566e3b5b7e9668bfe3f0dd102572d1d57df1190c10b4443cf1fae34a9342
+    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:bf766a3240a3c26de34cd1b3ad9ec228c8759dbbe5eebac680e42a203db3945a
+    records/surfaces/bldgs/swindon--ward2016--albedo: sha256:4e9c4de714d48f7b591e5c4b2dd4846422695e5804f81b9931880fa071a2df9a
+    records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-ward2016-albedo
+      - component-surfaces-bldgs-swindon-ward2016-emissivity
+      - component-constructions-uk-lindberg-f2020-central-london-sample-run
+      note: The composite is named 'Suburban residential, Ward et al. (2016)'. Its albedo and emissivity
+        slots take records/surfaces/bldgs/swindon--ward2016--albedo and records/surfaces/bldgs/swindon--ward2016--emissivity,
+        both named 'Suburban residential', both place swindon and both sourced to ward2016, so the label
+        matches those slots exactly. The construction slot takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
+        named 'Central London [sample run]', which names a different settlement type from the one the
+        composite claims and marks itself as a sample run, while records/constructions holds twelve uk--hertwig2024a
+        residential records, several of them pitched-roof terraced, detached and semi-detached sets. Which
+        of those describes Swindon's suburban fabric, if any, is a curation decision about build period
+        and roof form that this review cannot make.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-ward2016-albedo
+      - component-surfaces-bldgs-swindon-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-lindberg-f2020-central-london-sample-run
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings
+      - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
+      note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
+        and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
+        and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
+        slot takes a record declaring target construction, and the ohm positions take records declaring
+        target ohm_coefficients. No record under records/surfaces/bldgs or records/ohm declares attaches_to,
+        which in this database is carried only by the profile records, so slot fit here is judged on the
+        components'' declared target.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameters block of its own, so it asserts no value beyond the components
+        it selects.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this selection. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-ward2016-albedo
+      - component-surfaces-bldgs-swindon-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-lindberg-f2020-central-london-sample-run
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings
+      - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
+      note: The composite claims place swindon. The albedo and emissivity components declare place swindon;
+        the water storage and drainage components declare place se-england, which db/places.yml marks
+        subnational within country united-kingdom; the construction declares place uk, likewise subnational
+        within country united-kingdom. The two ohm records declare no place. The one component from outside
+        the United Kingdom is records/surfaces/bldgs/helsinki--jarvi2014--snow-lim, place helsinki, and
+        it is the only record in the database declaring snowpack_limit for buildings, so no closer alternative
+        existed to select.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-ward2016-albedo
+      - component-surfaces-bldgs-swindon-ward2016-emissivity
+      - component-surfaces-bldgs-se-england-ward2016-water-storage
+      - component-surfaces-bldgs-se-england-ward2016-drainage
+      - component-constructions-uk-lindberg-f2020-central-london-sample-run
+      - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+      - component-ohm-generic-ward2016-buildings
+      - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
+      note: The composite declares representativeness city. The albedo, emissivity and snow limit components
+        declare representativeness city; the water storage, drainage and construction components declare
+        representativeness regional, which is broader than the composite's claim rather than narrower,
+        so no component is stretched past its stated reach. The two ohm records declare no representativeness,
+        leaving how far their coefficients were meant to travel undeclared on the records themselves.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-ward2016-buildings
+      - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
+      note: 'An assembly of existing records into slots; the composite produces no value of its own. The
+        season mapping can be checked against the components'' own declarations here, and it is right:
+        ohm.summer_wet and ohm.summer_dry take records/ohm/generic--ward2016--buildings, which declares
+        season_label Summer, and ohm.winter_wet and ohm.winter_dry take records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982,
+        which declares season_label Winter. Within each season the same record fills both the wet and
+        the dry position, so the composite draws no wet/dry distinction.'
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-bldgs-swindon-ward2016-albedo
+      - component-surfaces-bldgs-swindon-ward2016-emissivity
+      note: All seven slots are filled and the composite is unique. It differs from archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+        in the albedo and emissivity slots, which take the Swindon ward2016 rows here and the London ward2016
+        rows there; the remaining five slots and all four ohm positions are the same in both. No second
+        Swindon composite exists.
+      related_records:
+      - archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016
+  evidence:
+  - id: component-surfaces-bldgs-swindon-ward2016-albedo
+    record: records/surfaces/bldgs/swindon--ward2016--albedo
+    role: component
+    note: Fills albedo. The record is named 'Suburban residential', declares target land_cover.bldgs,
+      place swindon and representativeness city.
+  - id: component-surfaces-bldgs-swindon-ward2016-emissivity
+    record: records/surfaces/bldgs/swindon--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record is named 'Suburban residential', declares target land_cover.bldgs,
+      place swindon and representativeness city.
+  - id: component-surfaces-bldgs-se-england-ward2016-water-storage
+    record: records/surfaces/bldgs/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record is named Buildings, declares target land_cover.bldgs, place
+      se-england and representativeness regional.
+  - id: component-surfaces-bldgs-se-england-ward2016-drainage
+    record: records/surfaces/bldgs/se-england--ward2016--drainage
+    role: component
+    note: Fills drainage. The record is named Buildings, declares target land_cover.bldgs, place se-england
+      and representativeness regional.
+  - id: component-constructions-uk-lindberg-f2020-central-london-sample-run
+    record: records/constructions/uk--lindberg-f2020--central-london-sample-run
+    role: component
+    note: Fills construction. The record is named 'Central London [sample run]', declares target construction,
+      place uk and representativeness regional.
+  - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
+      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
+      for buildings.
+  - id: component-ohm-generic-ward2016-buildings
+    record: records/ohm/generic--ward2016--buildings
+    role: component
+    note: Fills ohm.summer_wet and ohm.summer_dry. The record is named 'Code 798 x Multiplier for summer
+      [7981]', declares target ohm_coefficients and season_label Summer, and declares no place and no
+      representativeness.
+  - id: component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
+    record: records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982
+    role: component
+    note: Fills ohm.winter_wet and ohm.winter_dry. The record is named 'Code 798 x Multiplier for winter
+      [7982]', declares target ohm_coefficients and season_label Winter, and declares no place and no
+      representativeness.
+  scientific_note: 'Most of this composite is anchored in the place it claims. Its albedo and emissivity
+    are Swindon rows named ''Suburban residential'', its water storage and drainage are SE England rows,
+    and its OHM mapping is confirmed by the components themselves: the summer positions take the record
+    declaring season_label Summer and the winter positions the record declaring season_label Winter. The
+    one component from outside the United Kingdom, the Helsinki snow limit, is the only building snowpack_limit
+    record the database has, so that slot could not have been filled otherwise. What does not follow is
+    the construction. A composite labelled suburban residential takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
+    a record that names a different settlement type and flags itself as a sample run, while twelve uk--hertwig2024a
+    residential construction records sit unused. Choosing among those means choosing a build period and
+    a roof form, which is a maintainer''s decision and not one this review should make on resemblance.
+    Nothing here requires a component value to change, and the components'' own values remain subject
+    to their evidence assessments.'
+  evidence_revision: sha256:bd7d918926792b7e827cc773cc756769bae189b164f3375b510c6073af3398a9
+verification:
+  attestations: []

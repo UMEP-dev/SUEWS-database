@@ -1,0 +1,90 @@
+provenance_record: archetypes/countries/san-marino
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:b4fd44491cdf62a0432c27c63099eec68d2fd81d16b4d8193f9d439ecc4a67a4
+dependency_revisions:
+  sources: {}
+  places: {}
+  records:
+    records/profiles/human-activity/lucy/san-marino: sha256:45f9db7db60bb1a5ba1758e9bb965ffd1e6d13879a1fee0a8eb2647e12e711a2
+    records/profiles/traffic/lucy/san-marino: sha256:140e1cac37666323d3d8c997245a868f4928053eb48b23d969769b7668cc1182
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: &id001
+      - component-human-activity-lucy-san-marino
+      - component-traffic-lucy-san-marino
+      note: The composite is named San Marino, its country field reads San Marino, and both agree with
+        the entry path.
+    target:
+      conclusion: correction_required
+      evidence_ids:
+      - component-human-activity-lucy-san-marino
+      - component-traffic-lucy-san-marino
+      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
+        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/san-marino,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+        field that slot fills; the population slot takes records/profiles/human-activity/lucy/san-marino,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+        field that slot fills.'
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this country default. The components' own sources belong to their evidence assessments, not
+        to this review.
+    place:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component carries place san-marino, so the default is assembled from that country's
+        own rows.
+    representativeness:
+      conclusion: supported
+      evidence_ids: *id001
+      note: Every component is classed regional, which is the class this database uses for country-scale
+        values, so the components fit a country default.
+    method:
+      conclusion: supported
+      evidence_ids: *id001
+      note: An assembly of existing records into slots; the composite produces no value of its own.
+    identity:
+      conclusion: supported
+      evidence_ids: *id001
+      note: The composite fills all four profile slots and defers everything else to archetypes/regions/southern-europe,
+        which is the pattern the country defaults follow. The region reference is not a uses component,
+        so it is not documented as one here. No second country default exists for San Marino.
+  evidence:
+  - id: component-traffic-lucy-san-marino
+    record: records/profiles/traffic/lucy/san-marino
+    role: component
+    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
+      place san-marino and representativeness regional.
+  - id: component-human-activity-lucy-san-marino
+    record: records/profiles/human-activity/lucy/san-marino
+    role: component
+    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+      place san-marino and representativeness regional.
+  scientific_note: San Marino's default takes San Marino's own rows, every one of them classed regional,
+    which is what a country default should do. The slot mapping, however, is not. Reading the composite
+    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/san-marino,
+    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
+    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/san-marino,
+    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
+    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
+    for them. This lives in the composite, so it is fixable without touching any component value, and
+    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
+    than country by country. The components' values remain subject to their own evidence assessments;
+    this review does not revisit them.
+  evidence_revision: sha256:6a03ceb4c3e2b7a0e5bcd6283a5295a2e46744f5e02549f2b730a24700bffb93
+verification:
+  attestations: []

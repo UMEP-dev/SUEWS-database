@@ -1,0 +1,197 @@
+provenance_record: archetypes/surfaces/dectr/beijing-china--mixed-deciduous-trees
+review_type: composition
+provenance_format_version: '1.0'
+record_revision: sha256:feace9e95f0e85075ab972d3c72a038a0903f62607f1d73507c33c44be159eb9
+dependency_revisions:
+  sources: {}
+  places:
+    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+  records:
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+    records/surfaces/dectr/beijing--ward2013--lai: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:74e7af5c49ae87f389683f298e37b7c08cc93ab7cd21217c9db1e43079e869a8
+    records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:886a194cf2b63a37dd1136a29556831187323d81e836c10076a3a3f5da76ff65
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T01:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assembled
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-beijing-ward2013-lai
+      - component-surfaces-dectr-beijing-zheng-y2023-lai-power
+      - component-surfaces-dectr-beijing-zheng-y2023-max-conductance
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: The composite is named "Mixed Deciduous Trees", its origin reads "Beijing, China" and its
+        place is beijing, and the four Beijing-placed components that make it a Beijing typology are the
+        leaf area index, the leaf growth power, the maximum conductance and the biogenic CO2 set. The
+        mixed qualifier is carried by the components' own names, "Mixed Deciduous Tree" on the albedo
+        record and "Mixed trees" on the biogenic CO2 record. Alone among the eight deciduous-tree composites
+        this label names no study, so it claims nothing about authorship that the components could contradict.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      - component-surfaces-dectr-beijing-ward2013-lai
+      - component-surfaces-dectr-beijing-zheng-y2023-lai-power
+      note: The composite's own target is land_cover.dectr. Ten of its twelve components declare target
+        land_cover.dectr; the biogenic CO2 component declares land_cover.common, which docs/FORMAT.md
+        defines as the target for surface-agnostic sets; and the four OHM positions take a record declaring
+        ohm_coefficients, the type that slot carries. The leaf_area_index and leaf_growth_power components
+        both declare lai.lai_type 0, so the pair belongs to one LAI equation, which is the coupling schema/parameter_groups.yml
+        makes a rule for that slot pair.
+    values:
+      conclusion: not_applicable
+      note: The composite declares no parameter overrides of its own.
+    source:
+      conclusion: not_applicable
+      note: The composite claims no composition source, and the repository records no published rationale
+        for this typology. The components' own sources belong to their evidence assessments, not to this
+        review.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+      - component-surfaces-dectr-helsinki-jarvi2014-phenology
+      - component-surfaces-dectr-london-havu-m2024-drainage
+      - component-surfaces-dectr-london-ward2016-emissivity
+      - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      note: 'The composite claims place beijing, registered in db/places.yml with Koppen class Dwa, but
+        only four of its twelve components carry that place. Three carry place helsinki, registered Dfb;
+        three carry place london, registered Cfb; one carries place se-england; and the OHM record carries
+        no place at all. Two of the Helsinki imports are conditioned on climate rather than on species:
+        records/surfaces/dectr/helsinki--jarvi2014--snow-lim supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology
+        supplies the growing- and senescing-degree-day thresholds, both set for a cold-climate Nordic
+        city and carried here into a monsoon-influenced continental one. The drainage component records/surfaces/dectr/london--havu-m2024--drainage
+        declares place london while its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", so
+        whether that slot applies to Beijing cannot be read off the field that is supposed to say so.
+        Nothing in the entries settles whether these transfers are intended, and a maintainer should record
+        the reasoning or replace the components.'
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite claims representativeness city. Ten components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional and the OHM record declares no class. A regional value is offered as typical
+        of a wider area and so covers a city, which is the direction that does not overreach; the absent
+        class on the OHM record is a gap in that record family rather than a defect of this assembly.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      note: The composite assembles existing records into slots and produces no value of its own. All
+        four OHM positions take records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985,
+        which declares no season_label, and no OHM record in the database declares a wet or dry label,
+        so one season-agnostic coefficient set in all four positions is the only mapping the entries support.
+    identity:
+      conclusion: supported
+      note: Twelve distinct records fill the fifteen slot positions the deciduous-tree composites use,
+        and every one of those slots is filled. No other archetype under db/archetypes/surfaces/dectr
+        carries place beijing, and this is the only one of the eight to take its leaf area index from
+        records/surfaces/dectr/beijing--ward2013--lai, so the composite is not a duplicate of any sibling.
+        scripts/export_record.py also recognises a water_state slot and db/records/surfaces/dectr holds
+        records/surfaces/dectr/se-england--ward2016--water-state, which no deciduous-tree composite references.
+  evidence:
+  - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+    record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
+    role: component
+    note: Fills the four OHM positions summer_wet, summer_dry, winter_wet and winter_dry. The record declares
+      target ohm_coefficients, source grimmond1991b, no place and no representativeness, and is named
+      "Mixed Forest [20]  McCaughey (1985)". It declares no season_label, so nothing in it distinguishes
+      the four positions it fills.
+  - id: component-surfaces-common-beijing-zheng-y2023-biogen-co2
+    record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
+    role: component
+    note: Fills biogen_co2. The record declares target land_cover.common, place beijing and representativeness
+      city. It is named "Mixed trees" and carries source zheng-y2023; docs/FORMAT.md defines land_cover.common
+      as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
+  - id: component-surfaces-dectr-beijing-ward2013-lai
+    record: records/surfaces/dectr/beijing--ward2013--lai
+    role: component
+    note: Fills leaf_area_index. The record declares target land_cover.dectr, place beijing and representativeness
+      city. It carries source ward2013 and declares lai.lai_type 0.
+  - id: component-surfaces-dectr-beijing-zheng-y2023-lai-power
+    record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
+    role: component
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place beijing and representativeness
+      city. It is named "Deciduous Tree, LaiEq = 0", carries source zheng-y2023 and declares lai.lai_type
+      0, matching the leaf_area_index component.
+  - id: component-surfaces-dectr-beijing-zheng-y2023-max-conductance
+    record: records/surfaces/dectr/beijing--zheng-y2023--max-conductance
+    role: component
+    note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place beijing
+      and representativeness city. It carries source zheng-y2023.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
+    record: records/surfaces/dectr/helsinki--jarvi2014--phenology
+    role: component
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
+      and sdd_full, which schema/parameter_groups.yml classes as one tightly linked set.
+  - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
+    record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
+    role: component
+    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It carries source jarvi2014 and supplies snowpack_limit, a quantity conditioned on the snow
+      climate it was set for.
+  - id: component-surfaces-dectr-helsinki-vargo2013-albedo
+    record: records/surfaces/dectr/helsinki--vargo2013--albedo
+    role: component
+    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
+      city. It is named "Mixed Deciduous Tree" and carries source vargo2013.
+  - id: component-surfaces-dectr-london-havu-m2024-drainage
+    record: records/surfaces/dectr/london--havu-m2024--drainage
+    role: component
+    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
+      city. Its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", which names three cities
+      its place field does not.
+  - id: component-surfaces-dectr-london-jarvi2011-porosity
+    record: records/surfaces/dectr/london--jarvi2011--porosity
+    role: component
+    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
+      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
+      to all eight deciduous-tree composites.
+  - id: component-surfaces-dectr-london-ward2016-emissivity
+    record: records/surfaces/dectr/london--ward2016--emissivity
+    role: component
+    note: Fills emissivity. The record declares target land_cover.dectr, place london and representativeness
+      city. It is named "Deciduous trees" and carries source ward2016.
+  - id: component-surfaces-dectr-se-england-ward2016-water-storage
+    record: records/surfaces/dectr/se-england--ward2016--water-storage
+    role: component
+    note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
+      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      composite.
+  scientific_note: 'The Beijing-specific content of this typology is real but partial. Four slots take
+    Beijing records: the leaf area index from ward2013 and the leaf growth power, maximum conductance
+    and biogenic CO2 set from zheng-y2023, whose registered title in db/sources.yml is about simulating
+    heat and CO2 fluxes in Beijing. The LAI pair is internally consistent, both records declaring lai.lai_type
+    0, and the targets and the OHM mapping are sound. The remaining eight slots are imports, and two of
+    them matter more than the rest: the snowpack limit and the four degree-day thresholds both come from
+    Helsinki, a Dfb city, into a composite placed at Beijing, a Dwa city, and both quantities describe
+    when snow accumulates and when leaves appear and fall rather than what a deciduous tree is. The drainage
+    slot compounds the doubt, since its record names Beijing in its title and London in its place field.
+    None of this can be settled from the entries, and none of it is a defect in a component''s value;
+    it is a composition decision that was never written down. A maintainer should either record why these
+    transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
+    values remain subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:b77a363bb4e7b98cf1e56a33fecf7642e4828d18f7b28f28857d1a9458a22ede
+verification:
+  attestations: []
