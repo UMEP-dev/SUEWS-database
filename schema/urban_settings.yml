@@ -1,0 +1,19 @@
+# Controlled intra-urban context for records and compositions.
+#
+# This is independent of:
+#   place               where the evidence or assembly is located;
+#   representativeness  how far the evidence can travel; and
+#   applicable scale    what spatial unit the value describes (tracked in #46).
+#
+# The field is optional. Absence means the source has not established an urban
+# setting; it must never be inferred from a filename or place alone.
+urban_settings:
+  city_centre:
+    label: City centre
+    description: A central urban district not explicitly established as a CBD.
+  central_business_district:
+    label: Central business district
+    description: A source-identified central business district (CBD).
+  suburban:
+    label: Suburban
+    description: A source-identified suburban urban environment.

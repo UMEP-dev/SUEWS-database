@@ -275,6 +275,98 @@ class ProvenanceFixtureTests(unittest.TestCase):
 
 
 class ProvenanceSemanticTests(unittest.TestCase):
+    def test_declared_urban_setting_requires_a_review_finding(self):
+        record = deepcopy(RECORD)
+        record["urban_setting"] = "city_centre"
+        records, sources, places = registries(record)
+        sidecar = fixture_sidecar()
+        sidecar["record_revision"] = canonical_revision(record)
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: sidecar}
+        )
+        self.assertTrue(
+            any("has no urban_setting finding" in error for error in errors),
+            errors,
+        )
+
+        sidecar["assessment"]["findings"]["urban_setting"] = {
+            "conclusion": "not_applicable"
+        }
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: sidecar}
+        )
+        self.assertTrue(
+            any("cannot be not_applicable" in error for error in errors), errors
+        )
+        self.assertFalse(signoff_eligible(sidecar, record))
+
+        sidecar["assessment"]["findings"]["urban_setting"] = {
+            "conclusion": "supported",
+            "evidence_ids": ["parameter-publication"],
+        }
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        self.assertEqual(
+            check_provenance(
+                records, sources, places, {RECORD_KEY: sidecar}
+            ),
+            [],
+        )
+
+    def test_blocking_status_must_name_the_optional_setting_finding(self):
+        record = deepcopy(RECORD)
+        record["urban_setting"] = "city_centre"
+        records, sources, places = registries(record)
+        legacy_records, legacy_sources, legacy_places = registries()
+
+        for status in ("unresolved", "source_inaccessible", "curation_required"):
+            with self.subTest(status=status):
+                missing = fixture_sidecar()
+                missing["assessment"]["status"] = status
+                missing["assessment"]["evidence_revision"] = evidence_revision(
+                    missing
+                )
+                errors = check_provenance(
+                    legacy_records,
+                    legacy_sources,
+                    legacy_places,
+                    {RECORD_KEY: missing},
+                )
+                self.assertTrue(
+                    any("schema" in error for error in errors), errors
+                )
+
+                sidecar = fixture_sidecar()
+                sidecar["record_revision"] = canonical_revision(record)
+                sidecar["assessment"]["status"] = status
+                sidecar["assessment"]["scientific_note"] = (
+                    "The urban setting remains blocked in this fixture."
+                )
+                if status == "source_inaccessible":
+                    sidecar["assessment"]["attempted_sources"] = [
+                        {
+                            "source": "paper1999",
+                            "attempted_at": "2026-08-21T12:00:00Z",
+                            "outcome": "inaccessible",
+                            "note": "The source could not be accessed.",
+                        }
+                    ]
+                sidecar["assessment"]["findings"]["urban_setting"] = {
+                    "conclusion": status,
+                    "evidence_ids": ["parameter-publication"],
+                }
+                sidecar["assessment"]["evidence_revision"] = evidence_revision(
+                    sidecar
+                )
+                self.assertEqual(
+                    check_provenance(
+                        records, sources, places, {RECORD_KEY: sidecar}
+                    ),
+                    [],
+                )
+
     def test_revision_changes_are_detected_but_operational_fields_are_excluded(self):
         sidecar = fixture_sidecar()
         records, sources, places = registries()

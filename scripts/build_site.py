@@ -6,7 +6,8 @@ deployed by CI). The site is a linked graph with a faceted search front end:
 
   index.html                    faceted browser over every entry: filter by
                                 kind, surface, family, place,
-                                representativeness and source, plus free
+                                representativeness, urban setting and source,
+                                plus free
                                 text; result cards show parameter values
                                 inline; filter state lives in the URL hash
   data/index.json               the search index the browser runs on
@@ -48,7 +49,7 @@ from urllib.parse import quote
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from check_db import iter_uses, load_all  # noqa: E402
+from check_db import iter_uses, load_all, load_urban_settings  # noqa: E402
 from export_record import PlainDumper, assemble  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,6 +57,10 @@ REPO_URL = "https://github.com/UMEP-dev/SUEWS-database"
 SUEWS_SITE = "https://suews.io"
 DOCS = "https://docs.suews.io/latest/inputs/yaml"
 DOCS_REF = f"{DOCS}/config-reference"
+
+URBAN_SETTING_LABEL = {
+    key: value["label"] for key, value in load_urban_settings().items()
+}
 
 
 def build_ref():
@@ -111,6 +116,7 @@ COMPOSITION_FINDING_LABEL = {
     "source": "Composition rationale",
     "place": "Place applicability",
     "representativeness": "Representativeness",
+    "urban_setting": "Urban setting applicability",
     "method": "Slot and season mapping",
     "identity": "Completeness and uniqueness",
 }
@@ -200,7 +206,8 @@ TYP_LABEL = {
 FACET_TITLE = {
     "kind": "Kind", "surface": "Land cover", "family": "Family",
     "typology": "Typology", "region": "Region", "country": "Country",
-    "city": "City", "rep": "Representativeness", "source": "Source",
+    "city": "City", "rep": "Representativeness", "setting": "Urban setting",
+    "source": "Source",
     "method": "Method", "verification": "Review state",
     "role": "Provenance role", "place": "Place",
 }
@@ -318,6 +325,8 @@ def provenance_state(sidecar, policy):
     required_supported = (
         ("values", "method") if review_type == "evidence" else ("method",)
     )
+    if "urban_setting" in findings:
+        required_supported += ("urban_setting",)
     if (
         not findings
         or any(
@@ -1668,7 +1677,8 @@ def review_guide_page(policy):
       </div></li>
       <li><div><h3>Read the original sources</h3>
         <p>Verify the exact values, parameter source, method, place,
-        representativeness, target and identity. For a composite, review component
+        representativeness, any declared urban setting, target and identity.
+        For a composite, review component
         selection, completeness and slot or season mapping instead of re-reviewing
         each component’s values.</p>
       </div></li>
@@ -1766,6 +1776,11 @@ def record_page(
         chips.append(chip_link(
             f"{rel}index.html#rep={esc(rec['representativeness'])}",
             rec["representativeness"]))
+    if rec.get("urban_setting"):
+        setting = rec["urban_setting"]
+        chips.append(chip_link(
+            f"{rel}index.html#setting={esc(setting)}",
+            URBAN_SETTING_LABEL.get(setting, setting)))
     if src_key:
         label = src_key
         if src and src.get("year"):
@@ -1797,6 +1812,9 @@ def record_page(
         "Scope",
         esc(rec["representativeness"]) if rec.get("representativeness") else "",
     )
+    if rec.get("urban_setting"):
+        setting = rec["urban_setting"]
+        row("Urban setting", esc(URBAN_SETTING_LABEL.get(setting, setting)))
     target = rec.get("target")
     target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
                   else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
@@ -2209,7 +2227,8 @@ in the <a href="index.html">browser</a>, or add coordinates to
 BROWSER_JS = """
 <script>
 const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
-                'city', 'rep', 'source', 'method', 'verification', 'role'];
+                'city', 'rep', 'setting', 'source', 'method', 'verification',
+                'role'];
 // 'place' is a hidden exact-match key: not rendered as a facet group, but
 // honoured from the hash so record-page sibling links and old bookmarks
 // filter exactly rather than through the free-text search
@@ -2253,6 +2272,7 @@ function displayVal(facet, value) {
   if (facet === 'surface') return LC_LABEL[value] || value;
   if (facet === 'typology') return TYP_LABEL[value] || value;
   if (facet === 'method') return METHOD_LABEL[value] || value;
+  if (facet === 'setting') return SETTING_LABEL[value] || value;
   if (facet === 'verification') return STATE_LABEL[value] || value;
   if (facet === 'role') return ROLE_LABEL[value] || value;
   return value;
@@ -2351,7 +2371,7 @@ function render() {
         const src = e.source === 'unreferenced'
           ? '<span class="badge-unref">unreferenced</span>' : e.source;
         const meta = [e.family, TYP_LABEL[e.typology],
-                      e.city || e.country, e.rep,
+                      e.city || e.country, e.rep, SETTING_LABEL[e.setting],
                       STATE_LABEL[e.verification], METHOD_LABEL[e.method], src]
           .filter(Boolean).join(' · ');
         const kindTag = e.kind === 'typology'
@@ -2732,6 +2752,8 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
             + fgroup("rep", FACET_TITLE["rep"],
                      cap="what a value stands for: one site, a whole city, "
                          "a region, or generic")
+            + fgroup("setting", FACET_TITLE["setting"],
+                     cap="source-established intra-urban context")
             + fgroup("verification", FACET_TITLE["verification"], is_open=True)
             + fgroup("method", FACET_TITLE["method"])
             + fgroup("role", FACET_TITLE["role"])
@@ -2758,6 +2780,7 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
         f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
         f"const METHOD_LABEL = {json.dumps(METHOD_LABEL)};"
+        f"const SETTING_LABEL = {json.dumps(URBAN_SETTING_LABEL)};"
         f"const STATE_LABEL = {json.dumps(PROVENANCE_STATE_LABEL)};"
         f"const ROLE_LABEL = {json.dumps(PROVENANCE_ROLE_LABEL)};"
         "</script>"
@@ -2801,6 +2824,8 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
         })
         text = " ".join(str(x).lower() for x in [
             path, rec.get("name"), rec.get("place"), rec.get("origin"),
+            rec.get("urban_setting"),
+            URBAN_SETTING_LABEL.get(rec.get("urban_setting")),
             region, country, city,
             rec.get("source"), src.get("author"), src.get("title"),
             rec.get("target"), fam, surface or "",
@@ -2817,6 +2842,7 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             "place": rec.get("place"),
             "region": region, "country": country, "city": city,
             "rep": rec.get("representativeness"),
+            "setting": rec.get("urban_setting"),
             "source": rec.get("source"), "method": method,
             "review_type": review_type,
             "verification": verification, "role": roles,

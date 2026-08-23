@@ -68,6 +68,14 @@ Envelope fields:
 - `place` + `representativeness` — where the values are from and how far
   they travel. A rooftop measurement (`site`) and a value offered as typical
   of a region (`regional`) are no longer indistinguishable.
+- `urban_setting` (optional) — the source-established intra-urban environment:
+  `city_centre`, `central_business_district`, or `suburban`. City centre and
+  CBD are not treated as synonyms. Omit the field when the source does not
+  establish the setting; never infer it from a place, filename or record name.
+  `schema/urban_settings.yml` is the controlled registry.
+  This axis is independent of `representativeness`, which says how far the
+  evidence travels, and of the applicable-scale work in #46, which says what
+  spatial unit the value describes.
 - `method` (optional) — measured | fitted | literature | calculated | assumed.
   Not recoverable for migrated records; fill it in for new ones.
 - `legacy:` (optional) — columns of the migrated row that have no home in
@@ -169,9 +177,10 @@ Internally `calculated` and explicitly `assumed` records are the deliberate
 exception: they use `source: unreferenced`, do not invent a parameter
 publication, and document the calculation or assumption in the sidecar.
 
-An assessment reports a conclusion for each of eight review scopes: `name`,
-`target`, `values`, `source`, `place`, `representativeness`, `method`, and
-`identity`. The allowed conclusions are `supported`, `contradicted`,
+An assessment reports a conclusion for each of eight core review scopes:
+`name`, `target`, `values`, `source`, `place`, `representativeness`, `method`,
+and `identity`. When an entry declares `urban_setting`, its assessment also
+reports that scope. The allowed conclusions are `supported`, `contradicted`,
 `correction_required`, `unresolved`, `source_inaccessible`,
 `curation_required`, and `not_applicable`. Findings may link related records
 and tracking issues. This structure keeps duplicate-record and placement
@@ -233,9 +242,10 @@ independent evidence-review state. A composition sign-off does not re-verify
 the underlying values. If a composite introduces a new scientific value, that
 value must first be represented and evidence-reviewed as a record.
 
-The two layers retain the same eight machine-stable finding keys so tooling
-can derive one state model, but composition pages label their meaning
-differently:
+The two layers retain the same eight core machine-stable finding keys so
+tooling can derive one state model. A ninth `urban_setting` finding is required
+when the reviewed entry declares that optional field. Composition pages label
+the keys differently:
 
 | Finding key | Evidence review | Composition review |
 |---|---|---|
@@ -245,6 +255,7 @@ differently:
 | `source` | parameter source | composition rationale/source |
 | `place` | observation place | place applicability |
 | `representativeness` | value representativeness | composite representativeness |
+| `urban_setting` (when declared) | intra-urban setting | setting applicability |
 | `method` | measurement/fit/calculation method | slot and season mapping |
 | `identity` | duplicate/record identity | completeness and uniqueness |
 
@@ -610,7 +621,9 @@ alb:
 
 which pastes directly into a SUEWS YAML configuration under the path named
 by `target` (`sites[].properties.land_cover.bldgs` here). The citation
-travels with the value into the user's config. This is verified end to end:
+travels with the value into the user's config. Where declared, the controlled
+urban setting is included between place and representativeness in `ref.desc`.
+This is verified end to end:
 `make validate` checks every fragment against the supy data model
 (`PavedProperties`, `SnowParams`, `HourlyProfile`, ...), and fragments
 merged into supy's sample configuration load through
@@ -625,8 +638,10 @@ merged into supy's sample configuration load through
    reference).
 3. Add the citation to `db/sources.yml` (key: `<firstauthor><year>`) and,
    if the place is new, add it to `db/places.yml`.
-4. Set `place`, `representativeness` and `method` honestly. `generic` is a
-   valid answer; a fabricated site is not.
+4. Set `place`, `representativeness` and `method` honestly. Add
+   `urban_setting` only when the source establishes one of its controlled
+   values. `generic` is a valid representativeness answer; a fabricated site
+   or inferred urban setting is not.
 5. Run `make check` (structure, references, coupling rules) and, with supy
    installed, `make validate`. Open a PR; CI runs the same checks.
 
