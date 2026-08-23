@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
-    records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated: sha256:1c055ce3e5f840d50011c31815bb58825df78da3c113efc986f12a9f96f7e3a0
+    records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated: sha256:cbf99e4d3a6381833c24b4156703e9981c8e01e22c88254090d037869ea681b1
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
@@ -23,7 +23,7 @@ dependency_revisions:
     records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:3863938b8d60625a4771afe401617b6de9631f1785ef90283141b1a91c2689a5
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:38:32Z'
+  assessed_at: '2026-08-23T08:33:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -222,6 +222,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:9dfb1ee14cd89c97e724803807a5ad49f6a3a47e492183813860e613c14fa611
+  evidence_revision: sha256:604e067c552d8f5db4d5391bc659ad76368364b3fb9a2e2bad1d04de30fc459f
 verification:
   attestations: []

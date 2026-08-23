@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:1c055ce3e5f840d50011c31815bb58825df78da3c113efc986f12a9f96f7e3a0
+record_revision: sha256:cbf99e4d3a6381833c24b4156703e9981c8e01e22c88254090d037869ea681b1
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -11,7 +11,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
 assessment:
   status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-08-23T08:30:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -28,15 +28,13 @@ assessment:
       - jarvi-table-4a
       note: Drainage coefficients and a wet threshold are land_cover.grass properties.
     values:
-      conclusion: contradicted
+      conclusion: unresolved
       evidence_ids:
       - jarvi-table-4a
-      note: One of the three agrees and two do not. Table 4a's Irr. veg column gives D0,i 10, which is
-        the stored drain_coef_1, but b 0.013, where the record stores drain_coef_2 as 3. Three is the
-        value the table gives in its Bldg and Pav columns, not for irrigated vegetation. The Irr. veg
-        cell of the Si row is blank, so the stored wet threshold of 1.9 mm is the Grass column's figure
-        rather than one published for irrigated vegetation. Column alignment was verified by character
-        position.
+      note: Table 4a's Irr. veg column gives D0,i 10 and b 0.013, matching the two stored drainage coefficients.
+        The Irr. veg cell of the Si row is blank, however, so the stored wet threshold of 1.9 mm is the
+        Grass column's figure rather than one published for irrigated vegetation. Column alignment was
+        verified by character position.
     source:
       conclusion: correction_required
       evidence_ids:
@@ -60,8 +58,8 @@ assessment:
       conclusion: unresolved
       evidence_ids:
       - jarvi-table-4a
-      note: With one coefficient contradicted and one taken from a different column, how the stored set
-        was produced is open.
+      note: The corrected drainage pair is transcribed from Table 4a. How the wet threshold was selected
+        remains open because the irrigated-vegetation cell is blank.
     identity:
       conclusion: supported
       evidence_ids:
@@ -107,13 +105,10 @@ assessment:
         in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
         are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
         address and in a publisher''s address in the reference list.'
-  scientific_note: 'The irrigated drainage rate of 10 mm is right. The second coefficient is not: Table
-    4a gives b as 0.013 for irrigated vegetation, and the record stores 3, which is the figure the same
-    row carries for buildings and pavement. The pattern is what a column slip looks like, and it is worth
-    saying that the table''s own Irr. veg pair, D0,i 10 with b 0.013, is the mirror image of the vegetated
-    columns, so a reader repairing this should check the source rather than assume the table is transposed.
-    The wet threshold has a separate problem: the cell the record needs is blank, and 1.9 mm comes from
-    the Grass column, so it is borrowed rather than published for this surface.'
-  evidence_revision: sha256:7d8db46e2e53dc67d6549861838be67d030f4a61d3e55d417cf2b11742a83531
+  scientific_note: 'The irrigated drainage pair now matches Table 4a: D0,i 10 and b 0.013. This is the
+    mirror image of the vegetated columns, but it is what the source prints. The wet threshold has a separate
+    unresolved problem: the cell the record needs is blank, and 1.9 mm comes from the Grass column, so
+    it is borrowed rather than published for this surface.'
+  evidence_revision: sha256:72c6c6e2389a2562ebe145861f859ed611a7e92ab3130e8992ee7532b6fb661f
 verification:
   attestations: []
