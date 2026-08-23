@@ -1,7 +1,7 @@
 record: records/anthropogenic/birmingham--xie2024
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Low-rise flats with air source heat pumps operated in whole buildings
+name: Low-rise flats with air source heat pumps operated in occupied rooms only
 place: birmingham
 origin: Birmingham
 representativeness: city
