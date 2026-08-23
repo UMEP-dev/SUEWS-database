@@ -1,108 +1,122 @@
 provenance_record: records/surfaces/dectr/beijing--ward2013--lai
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
+record_revision: sha256:8e1c501369840a65a5d33d7af48c2c1d6a8f6aef7cd6eadd669d0a9b30a4259a
 dependency_revisions:
   sources:
-    ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T01:35:00Z'
+  status: curation_required
+  assessed_at: '2026-08-23T16:21:53Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-scope
-      note: Deciduous Tree matches the record's land_cover.dectr target.
+      - jarvi-table-2
+      note: Deciduous Tree matches the deciduous-tree category used for the published LAI range.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-scope
-      note: A leaf area index range is a land_cover.dectr property.
+      - jarvi-table-2
+      note: Minimum and maximum leaf area index are properties of the land_cover.dectr target.
     values:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
-      - ward-scope
-      - ward-vegetation
-      note: The article publishes no leaf area index values. Its only table reports land cover fractions
-        within 500 m of the flux mast, and leaf area index appears in the text solely as a qualitative
-        control on surface conductance. Neither 1 nor 5.5 occurs as a leaf area index anywhere in the
-        paper.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/380
+      - jarvi-table-2
+      - zheng-compilation
+      note: Järvi et al. (2011) Table 2 publishes LAImin,dec 1 and LAImax,dec 5.5. The Zheng Beijing
+        model archive reuses those values with equation type 0, matching the complete stored parameter
+        set without making Ward et al. (2013) its source.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - ward-scope
-      note: The cited article cannot be the source, and this audit cannot name the correct one without
-        checking a further publication, which it has not done. Naming a replacement on resemblance alone
-        is exactly what this database forbids.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/380
+      - jarvi-table-2
+      - breuer-lineage
+      note: Järvi et al. (2011) is the publication that prints the stored minimum and maximum. Its Table
+        2 footnote c attributes the 5.5 maximum to Breuer et al. (2003), so Breuer is recorded as input
+        lineage rather than as this record's direct parameter source.
     place:
-      conclusion: contradicted
+      conclusion: curation_required
       evidence_ids:
-      - ward-scope
-      note: The record's place is Beijing. Ward et al. (2013) reports a single site in Swindon, UK, and
-        contains no Chinese data of any kind.
+      - jarvi-table-2
+      - zheng-compilation
+      note: The parameter pair is published as a deciduous-tree model value, not as a Beijing measurement.
+        The Zheng configuration shows its later use in Beijing but does not turn the underlying literature
+        values into city-specific evidence.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/381
     representativeness:
-      conclusion: contradicted
+      conclusion: curation_required
       evidence_ids:
-      - ward-scope
-      note: City representativeness for Beijing cannot rest on a UK suburban flux-site paper.
+      - jarvi-table-2
+      - zheng-compilation
+      note: The sources support a literature parameter set reused in a Beijing application, not a value
+        measured or fitted to represent the city as a whole.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/381
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - ward-scope
-      note: With no source established, how the range was produced cannot be stated.
+      - jarvi-table-2
+      - breuer-lineage
+      note: The record transcribes published model parameters and their stated literature lineage, so
+        literature is the supported method.
     identity:
-      conclusion: unresolved
+      conclusion: curation_required
       evidence_ids:
-      - ward-scope
-      note: What the record is a record of, once the citation falls away, is itself open.
+      - jarvi-table-2
+      - zheng-compilation
+      note: The parameter set is identifiable, but whether the stable Beijing-labelled record should remain
+        city-classed or be represented as a generic literature record is the separate decision in issue
+        #381.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/381
   evidence:
-  - id: ward-scope
-    source: ward2013
-    role: compilation
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
     locators:
     - kind: table
-      label: Table 1, Land cover within a radius of 500 m around the flux mast
-      page: 4647
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
-        a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
-        determination.'
-  - id: ward-vegetation
-    source: ward2013
-    role: compilation
+      label: Table 2, model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes LAImin,dec 1 and LAImax,dec 5.5; footnote c attributes the maximum to Breuer et
+        al. (2003).
+  - id: breuer-lineage
+    source: breuer2003
+    role: input_data
     locators:
     - kind: text
-      label: Mentions of leaf area index in the results discussion
-      page: 4654, 4655
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: Leaf area index is invoked qualitatively, as one of the controls on surface conductance and
-        as a seasonal explanation, with no values given.
-  scientific_note: 'Nothing connects this record to the paper it cites. Ward et al. (2013) is a twelve-month
-    eddy covariance study of one suburban site in Swindon; it publishes no leaf area index values and
-    no Chinese measurements, so it can support neither the stored range nor the Beijing label. One lead
-    is worth recording for whoever repairs this, and it is a lead rather than a finding: Zheng et al.
-    (2023), the Beijing SUEWS study, gives a deciduous maximum of 5.5 and minimum of 1.0 in its Table
-    2 and credits them to Järvi et al. (2011). That would make the values a reused generic pair rather
-    than Beijing evidence, but this audit has not opened Järvi et al. (2011), so the attribution stays
-    open rather than being transferred on resemblance.'
-  evidence_revision: sha256:62d80db1d56a7718782d9c88fad10ad5feeebde8bde49168a1295f7f72fba6b3
+      label: Citation lineage in Järvi et al. (2011) Table 2 footnote c
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Records the explicit upstream attribution without treating the underlying publication as
+        the direct source of this database record.
+  - id: zheng-compilation
+    source: zheng-y2023
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Zheng2022_version2 ModelRuns VegetationSensitivity SUEWS_Veg.txt, row 992
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: The final Beijing model archive reuses minimum 1, maximum 5.5 and equation type 0.
+  scientific_note: 'The citation problem is settled but the identity problem is not. Järvi et al. (2011)
+    publishes the exact deciduous-tree LAI minimum and maximum, with the 5.5 maximum traced to Breuer
+    et al. (2003), and the final Zheng Beijing archive shows the same pair used with equation type 0.
+    Ward et al. (2013) is therefore removed as the parameter source. Neither Järvi nor Breuer establishes
+    the values as Beijing measurements, while Zheng demonstrates application rather than local derivation.
+    Issue #381 remains the place to decide whether this stable Beijing-labelled record should retain
+    city representativeness or be recast as a generic literature parameter set.'
+  evidence_revision: sha256:c57fff44ecf225caa8566c90203aeb018e5ad8c0579a97a010d8420ccb8d4013
 verification:
   attestations: []
