@@ -4,7 +4,7 @@ target: land_cover.bldgs
 name: Buildings
 place: lodz
 origin: Lodz, Poland
-representativeness: city
+representativeness: site
 source: offerle2005
 legacy_id: 52240002
 parameters:
