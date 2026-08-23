@@ -1,69 +1,85 @@
 provenance_record: records/surfaces/grass/zurich--stagakis-s2024--max-conductance
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:501f95f2bdef34d4845ee66f18ea1bd8448071198e2ff567708d462ae7b70124
+record_revision: sha256:dc1654866786d1b26bf067964998dc5e0894bf0e7fb668b7dc0fad485c8400d2
 dependency_revisions:
   sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
     stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T01:50:00Z'
+  status: curation_required
+  assessed_at: '2026-08-23T16:36:31Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: Grass matches the record's land_cover.grass target.
+      - havu-table-b1
+      note: Grass matches the grass category used for the published conductance value.
     target:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: A maximum conductance is a land_cover.grass property.
+      - havu-table-b1
+      note: Maximum vegetation conductance is a property of the land_cover.grass target.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: The stored 3.7 mm s-1 is not in the article or the supplement. Table S3 is the study's SUEWS
-        parameter set and it lists G2 to G6, the temperature limits, the wilting-point deficit and the
-        maximum incoming shortwave radiation, but neither a maximum conductance nor G1. Whether the value
-        entered the runs undocumented cannot be settled from what is published, and the Zenodo archive
-        named under Data availability contains only land cover, in situ, meteorological and flux files.
+      - havu-table-b1
+      note: Havu et al. (2024) Table B.1 publishes grass maximum conductance as 3.7 mm s-1, exactly matching
+        the stored value.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: With the value absent from the study's own parameter table, this article cannot be shown to
-        be its source, and no replacement is named here on resemblance.
+      - havu-table-b1
+      - stagakis-context
+      note: Havu et al. (2024) is the publication that prints 3.7. Stagakis et al. is retained as the
+        later Zurich application context; its article and Supplement Table S3 do not publish maximum
+        conductance.
     place:
-      conclusion: unresolved
+      conclusion: curation_required
       evidence_ids:
-      - stagakis-scope
-      note: Zurich is the study location, but nothing published ties this value to it.
+      - havu-table-b1
+      - stagakis-context
+      note: Havu publishes 3.7 in a table of Helsinki site characteristics and model parameters, not as
+        a Zurich-derived value. Stagakis establishes Zurich application context but does not document
+        this parameter in its table.
     representativeness:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
-      - stagakis-scope
-      note: Independently of the value question, city representativeness overstates a four-park study.
+      - stagakis-context
+      note: The Zurich study evaluates four urban parks and does not establish a city-wide grass conductance
+        value; whether an inherited Helsinki parameter applied there should remain city-classed requires
+        curation.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: With no source established, the production method is open.
+      - havu-table-b1
+      note: The record transcribes a parameter published in earlier literature.
     identity:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: One grass conductance record under this citation; no duplicate was identified within this
-        source group.
+      - havu-table-b1
+      - stagakis-context
+      note: Both publications use a grass or lawn class, and no duplicate Zurich grass conductance record
+        was identified.
   evidence:
-  - id: stagakis-parameter-table
+  - id: havu-table-b1
+    source: havu-m2024
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Appendix B, Table B.1, Site characteristics and used model parameters for Helsinki
+      page: 11
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      note: Publishes gmax 3.7 mm s-1 in the Grass column.
+  - id: stagakis-context
     source: stagakis-s2024
     role: compilation
     locators:
@@ -71,28 +87,17 @@ assessment:
       label: Supplement Table S3, Parameters used by SUEWS model
       page: 3
       url: https://doi.org/10.5194/bg-22-2133-2025-supplement
-      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
-        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
-        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
-        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
-        storage capacity, no light-response alpha or theta and no minimum respiration.
-  - id: stagakis-scope
-    source: stagakis-s2024
-    role: compilation
-    locators:
+      note: Gives one Lawn column and no maximum-conductance or G1 row.
     - kind: section
       label: Title and abstract
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
-      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
-        situ measurements made in those parks; it is park-scale, not a city-wide determination.
-  scientific_note: 'Table S3 is a full parameter listing for the SUEWS equations the paper sets out, and
-    it has no maximum conductance row. The stored value 3.7 mm s-1 therefore has no locator in this source,
-    and the Zenodo archive the article points to holds data rather than model inputs, so there is nowhere
-    else in the publication to look. This is an honest dead end rather than a contradiction: the value
-    may well have been used, but nothing published shows it. Two things would settle it, and both are
-    outside this audit: the authors'' own SUEWS input files, or an earlier publication that carries the
-    number and that this record should cite instead.'
-  evidence_revision: sha256:418bc6fe04a4e40a9c6646a8f11dfc6d7663cb1167ec894a20b0c0678bfbc866
+      note: Establishes application to four Zurich urban parks.
+  scientific_note: 'The parameter source is now settled: Havu et al. (2024) publishes the exact 3.7
+    mm s-1 grass value, while the later Zurich study does not print maximum conductance. The stable path
+    and Zurich place retain application context, not an assertion that the value was derived there. Human
+    curation is still needed for the city-scale claim because the value is tabulated for Helsinki and
+    the Zurich study evaluates four parks rather than deriving a city-wide grass parameter.'
+  evidence_revision: sha256:dd7d551cb1d648d588d954789f1fc2d6d5de08800de8bd244fe529d269780979
 verification:
   attestations: []
