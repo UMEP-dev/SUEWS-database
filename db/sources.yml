@@ -568,6 +568,14 @@ sources:
       at two UK sites'
     type: journalArticle
     year: 2016
+  ward2018:
+    author: Ward, H. C.; Tan, Y. S.; Gabey, A. M.; Kotthaus, S.; Grimmond, C. S. B.
+    doi: 10.1002/joc.5200
+    journal: International Journal of Climatology
+    title: Impact of temporal resolution of precipitation forcing data on modelled urban-atmosphere
+      exchanges and surface conditions
+    type: journalArticle
+    year: 2018
   xie2024:
     author: Xie, X., Luo, Z., Grimmond, S., Liu, Y., Ugalde-Loo, C. E., Bailey, M. T., Wang,
       X.
