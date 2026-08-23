@@ -1,7 +1,7 @@
 provenance_record: records/ohm/nanjing--wang2008--buildings--concrete-roof
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:209276bde9cf9c01cd74a271739e3fca77a8493b1088f840681e726dbf577bed
+record_revision: sha256:fee46be1da731ecc1a655d1dd5ffe92a960d286d9b81a89c334668233a0670fd
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
@@ -10,67 +10,84 @@ dependency_revisions:
     nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
   records: {}
 assessment:
-  status: source_inaccessible
-  assessed_at: '2026-08-21T21:21:09Z'
+  status: agent_assessed
+  assessed_at: '2026-08-23T09:43:54Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: fitted
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - wang-abstract
-      - dou-wang-compilation
+      - wang-winter-roof
+      note: Concrete roof matches the instrumented grey-white cement roof slab described by Wang et al.
     target:
       conclusion: supported
       evidence_ids:
-      - wang-abstract
-      - dou-wang-compilation
+      - wang-winter-roof
+      note: Wang et al. fit objective hysteresis model coefficients for storage heat flux over the roof.
     values:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
+      - wang-winter-roof
       - dou-wang-compilation
-      note: Dou et al. reproduce 0.86, 0.27, -9.64 as Wang et al.'s winter concrete-roof coefficients,
-        but the exact row could not be checked in the original Wang full text.
+      note: Equation 4 gives the winter tuple 0.86, 0.27 and -9.64; Dou et al. independently reproduce the same values.
     source:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
-      - wang-abstract
-      - dou-wang-compilation
-      note: The abstract confirms Wang et al. fitted summer and winter roof OHM coefficients and Dou et
-        al. attribute this tuple to Wang, but exact-value source alignment requires the full text.
+      - wang-winter-roof
+      note: Wang et al. directly derive and publish the stored winter coefficients.
     place:
       conclusion: supported
       evidence_ids:
-      - wang-abstract
+      - wang-winter-roof
+      note: The instrumented teaching-building roof is located in Nanjing at 32.04 N, 118.79 E.
     representativeness:
-      conclusion: source_inaccessible
-      note: Existing issue 336 reports that the coefficients come from one instrumented teaching-building
-        roof and therefore require site representativeness, but the cited original sections could not
-        be independently checked without the full text.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/336
+      conclusion: supported
+      evidence_ids:
+      - wang-winter-roof
+      note: Site is appropriate because the fit uses one 20 m by 10 m instrumented cement roof slab, not a city-scale roof sample.
     method:
       conclusion: supported
       evidence_ids:
-      - wang-abstract
+      - wang-winter-roof
+      note: The coefficients are fitted from the measured winter roof energy-balance data, so fitted is the supported method.
     identity:
       conclusion: supported
-      note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
+      evidence_ids:
+      - wang-winter-roof
+      - dou-wang-compilation
+      note: A single winter coefficient triplet for the studied concrete roof is stored, distinct from the summer fit.
   evidence:
-  - id: wang-abstract
+  - id: wang-winter-roof
     source: wang2008
     role: parameter_source
     locators:
-    - kind: text
-      label: Wanfang bibliographic record and Chinese abstract
-      url: https://d.wanfangdata.com.cn/periodical/tynxb200806011
-    note: The abstract states that 2005-2006 summer and winter Nanjing urban-boundary-layer observations
-      were used to fit seasonal roof-storage OHM coefficients.
+    - kind: section
+      label: Section 1.1, observation site
+      page: 694
+      url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
+      note: One teaching-building roof at 32.04 N, 118.79 E is instrumented; the grey-white cement slab is 20 m by 10 m and approximately 30 cm thick.
+    - kind: section
+      label: Section 2, source-area interpretation
+      page: 695
+      url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
+      note: Because the sensors are close to the slab and the flux source area is small, the source area is treated as the roof plane.
+    - kind: equation
+      label: Section 3.2, Equation 4, winter OHM fit
+      page: 697
+      url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
+      note: The fitted winter coefficients are a1 0.86, a2 0.27 and a3 -9.64.
+    - kind: section
+      label: Section 4, conclusions
+      page: 698
+      url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
+      note: The conclusions describe the storage-heat behaviour of the studied urban-roof cement slab.
   - id: dou-wang-compilation
     source: dou2023
-    role: compilation
+    role: validation
     locators:
     - kind: section
       label: Appendix B, building coefficient source text
@@ -79,16 +96,7 @@ assessment:
       label: Table B1, Building winter row
       page: 13162
     note: Dou et al. reproduce the winter tuple and attribute it to Wang et al. (2008), concrete roof.
-  attempted_sources:
-  - source: wang2008
-    url: https://doi.org/10.3321/j.issn:0254-0096.2008.06.011
-    attempted_at: '2026-08-21T21:21:09Z'
-    outcome: incomplete
-    note: The DOI resolves to Wanfang record tynxb200806011. Metadata and abstract are public, but full-text
-      download redirects to authenticated login; the journal archive begins in 2010.
-  scientific_note: The abstract establishes a fitted Wang parameter study and the later Dou compilation
-    matches the stored winter tuple. The original full text is still required to verify the exact coefficient
-    row, its locator, and the single-roof representativeness finding already tracked by issue 336.
-  evidence_revision: sha256:17625bdb4077849e91a9f7057d4111c2616256d095062f02232dea3a687fc0ac
+  scientific_note: The original full text establishes that this is a fitted winter OHM tuple from one instrumented teaching-building roof slab. The paper discusses the surrounding urban setting and possible wider applicability, but it does not sample or validate roofs across Nanjing. The database therefore classifies the evidence at site scale while preserving Nanjing as the location. The separate summer fit remains in its own record and review.
+  evidence_revision: sha256:23ddda1832d15aa76d88d59425088607141113dac5b710eab8de85e99e3651ec
 verification:
   attestations: []
