@@ -12,7 +12,7 @@ dependency_revisions:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
     records/ohm/generic--unreferenced--paved: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
-    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:fb4daff1044bc8a4062ef5f9f0bf63f37f43310fa8adea47d405ee27f23407bf
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
@@ -195,6 +195,6 @@ assessment:
     that entry too. Two component labels a reader should carry forward without acting on them here: the
     drainage record is named ''Paved [sample run]'' and the OHM record declares source unreferenced, both
     questions for those records'' own evidence reviews rather than for the assembly.'
-  evidence_revision: sha256:676d346feba8e052ea055168a5f37f2075b9c5f62cf485d879e8555e83e09298
+  evidence_revision: sha256:fb1dcc1258fc2c3878ff6b36a9e94f3e8446a7b4b0ba7db56da2ac1044c43f62
 verification:
   attestations: []

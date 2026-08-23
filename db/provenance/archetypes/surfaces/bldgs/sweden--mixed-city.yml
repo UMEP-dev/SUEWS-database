@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
 assessment:
@@ -163,6 +163,6 @@ assessment:
     records filling emissivity, water storage, drainage, the snow limit and the OHM positions are forced,
     since no Swedish record exists for any of those quantities, but that too is unstated. All of this
     lives in the composite and none of it requires a component value to change.'
-  evidence_revision: sha256:5f6349cfe34f0dd821db10fdb7e1769a9d0a5845f08deeffd8b4576b9a93bde8
+  evidence_revision: sha256:86b9add3c3a26ba14f0c67dee8ea23de570a252aa57dab3e28c3add0d9754018
 verification:
   attestations: []
