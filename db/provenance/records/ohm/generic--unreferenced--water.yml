@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--water
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:03cf0637f002f63c1944c0e737ed79514e28c0471f2bfe42cbc6ae6aa8b83af3
+record_revision: sha256:5ac5e61baf6a9c9749b12d5a1bbfb5801c9ac90059f13f81c490415acadc0559
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -30,12 +30,9 @@ assessment:
       evidence_ids:
       - parameter-publication
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - parameter-publication
-      note: Grimmond and Oke (1999) publishes the fitted tuple, while the record is unreferenced.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/288
     place:
       conclusion: not_applicable
     representativeness:
@@ -63,8 +60,9 @@ assessment:
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
       note: States that the surface coefficients were derived from published data.
-  scientific_note: Grimmond and Oke (1999) is the parameter publication; Souch et al. supplied the observation
-    input. Correcting the canonical source must not attribute the fitted coefficients to Souch.
-  evidence_revision: sha256:8a1cdf787fe4d45616e781d52158f4fe36d7990ac44389e8c6df2a2673f190fe
+  scientific_note: Grimmond and Oke (1999) is the canonical parameter publication; Souch et al. supplied
+    the observation input. The sidecar preserves the role distinction without attributing the fitted
+    coefficients to Souch.
+  evidence_revision: sha256:b39ab3fd0c459316bd2ebae6c0c22d30df36256e543f6bbe181cecb5086b21f4
 verification:
   attestations: []

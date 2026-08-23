@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:a92cd645c3105a5c64c135914bfe1fa0d61cf4535e108cf578a5a331d494797f
     records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
-    records/ohm/generic--unreferenced--water: sha256:03cf0637f002f63c1944c0e737ed79514e28c0471f2bfe42cbc6ae6aa8b83af3
+    records/ohm/generic--unreferenced--water: sha256:5ac5e61baf6a9c9749b12d5a1bbfb5801c9ac90059f13f81c490415acadc0559
 assessment:
   status: curation_required
   assessed_at: '2026-08-21T21:12:29Z'
@@ -82,6 +82,6 @@ assessment:
     note: Current atomic record for code 60.
   scientific_note: The value arithmetic is supported, but three named inputs are missing as atomic records.
     Maintainers must decide whether to restore those inputs or retain a legacy-only derivation.
-  evidence_revision: sha256:addd247d9408ad64420be91fd9f8fcf6fd9ccc066c295cb3f95ef72633803361
+  evidence_revision: sha256:3c51b7c2df698876d121fca34e63c2e67d6c24f1c0cd081a6e024245d8cfadcb
 verification:
   attestations: []
