@@ -4,7 +4,7 @@ target: ohm_coefficients
 name: Concrete roof (Summer and winter mean)
 place: nanjing
 origin: Nanjing
-representativeness: city
+representativeness: site
 source: dou2023
 legacy_id: 50240043
 season_label: Spring/autumn
