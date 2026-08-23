@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/dectr/helsinki-finland--deciduous-street-trees-havu-et-al-2022: sha256:a4c4bccd6e7b906ee40bde8c64cf5f300f337e146d7ee2ad4d0458c30a590c0d
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass: sha256:02b3ebf998c10d4ca984ae3cd4c3ec274a743f0c2246373298fe0ee1eba284d8
-    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:cb9bb406764dc1c0998213cca03fc95f7aa99b597c85d1dc940f785a625d8e1f
+    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
@@ -194,6 +194,6 @@ assessment:
     whether the Zurich sample-data record is the intended park leaf area index and, if it is, record why.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:d65b8ec53974e9161c75a5f36b610f647732cd68c7b4c16bb09426b7805bbb74
+  evidence_revision: sha256:d3024d1d501e27aadcaa4e1b9683982a96d2d3da706ff58442437442258b4a51
 verification:
   attestations: []

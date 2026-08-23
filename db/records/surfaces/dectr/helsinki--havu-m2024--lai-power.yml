@@ -13,5 +13,5 @@ parameters:
       growth_lai: 0.04
       growth_gdd: 0.002
       senescence_lai: -1.5
-      senescence_sdd: 0.0015
+      senescence_sdd: 0.0005
     lai_type: 1
