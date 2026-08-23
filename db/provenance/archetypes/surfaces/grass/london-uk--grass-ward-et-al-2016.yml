@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--drainage: sha256:6118063cc988242608915b697783090437b0a53e2072f46929b258c7870e82c1
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
-    records/surfaces/grass/se-england--ward2016--lai-power: sha256:5091df307ce694d3ef291c190ea2462f9aa48af74e721edf5815c35df0008258
+    records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:24af2470369792884bf2a1e183dacf24e45be1b4611aa6a1bb69d14e696f5d5a
     records/surfaces/grass/se-england--ward2016--phenology: sha256:747a1e16496f2453fc5462cde394ca5ad44322b855b7a83b81544bb260cd2aa0
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
@@ -40,10 +40,10 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite's name reads "Grass Ward et al. (2016)", its place reads london and its origin
-        reads London, UK. Nine of the thirteen components declare source ward2016, filling albedo, emissivity,
-        water_storage, leaf_area_index, leaf_growth_power, drainage, max_vegetation_conductance and both
-        ohm positions, so the study in the label supplies most of the assembly. The other four declare
-        ruimy1995 for biogen_co2, jarvi2014 for snow_lim_patch and vegetation_growth, and unreferenced
+        reads London, UK. Eight of the thirteen components declare source ward2016, filling albedo, emissivity,
+        water_storage, leaf_area_index, drainage, max_vegetation_conductance and both ohm positions, so
+        the study in the label supplies most of the assembly. The other five declare ruimy1995 for biogen_co2,
+        jarvi2014 for snow_lim_patch, vegetation_growth and leaf_growth_power, and unreferenced
         for porosity. The name field is identical to that of archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016,
         so the label alone does not distinguish the two entries; the place field and the entry path do.
         Nothing the label claims is contradicted by the assembly.
@@ -214,7 +214,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--lai-power
     role: component
     note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass (SE
-      England)", place se-england, representativeness regional and source ward2016.
+      England)", place se-england, representativeness regional and source jarvi2014.
   - id: component-surfaces-grass-se-england-ward2016-max-conductance
     record: records/surfaces/grass/se-england--ward2016--max-conductance
     role: component
@@ -225,7 +225,7 @@ assessment:
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
       se-england, representativeness regional and source ward2016.
-  scientific_note: 'Read on its own the composite is coherent. Nine of thirteen components declare source
+  scientific_note: 'Read on its own the composite is coherent. Eight of thirteen components declare source
     ward2016 and eight declare place se-england, a region that contains London and shares its koppen class
     Cfb, and the ohm season mapping is right, the summer-labelled code 201 set filling summer_wet and
     summer_dry and the winter-labelled set filling winter_wet and winter_dry. Two questions need a maintainer.
@@ -240,6 +240,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:082a703f67ea69e3c67e55a78df9f8d36821dc1c93149f3272fad38f8057d216
+  evidence_revision: sha256:8ced944e7a0d93e18ce390e7e80c7d726c17307dd2ab58867afa26b5ae52436d
 verification:
   attestations: []
