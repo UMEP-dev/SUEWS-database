@@ -10,7 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
-    records/snow/helsinki--jarvi2014--albedo: sha256:97a3dcd81fb00bb7ccb0f5967af2f61273cdf678fdd887df93881e7648bd7a8e
+    records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:8205138d701d442cbd0193df7d7fc1f9f7bdb6711d1b08924ae4040637c1fa8c
 assessment:
   status: curation_required
@@ -26,10 +26,9 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
-      note: The composite's name reads Snow, its place reads helsinki and its origin reads Helsinki, and
-        both components are Helsinki snow records, so the entry identifies what it assembles. The label
-        on its own does not distinguish it from the two other snow composites, whose names read Not used
-        and No Snow; the place field and the entry path carry that distinction.
+      note: The composite's name reads Snow and both components declare target snow, so the label matches
+        what it assembles. The label on its own does not distinguish it from the two other snow composites,
+        whose names read Not used and No Snow; the place field and the entry path carry that distinction.
     target:
       conclusion: supported
       evidence_ids:
@@ -62,15 +61,21 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
-      note: The composite declares place helsinki and both components declare place helsinki, so a Helsinki
-        snow set is assembled from that city's own rows.
+      note: The composite declares place helsinki. The emissivity component declares helsinki, while the
+        albedo component declares montreal-suburban because that is where Järvi et al. determined 0.18
+        and 0.85. The same article then checks the albedo against Helsinki radiation and uses the parameter
+        set at all model sites, so using the Montreal-derived parameter in its Helsinki configuration is
+        a documented application rather than a claim that it was measured in Helsinki.
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
-      note: The composite declares representativeness city and both components declare representativeness
-        city, so no component stands in above or below the composite's scale.
+      note: The composite declares representativeness city. The emissivity component declares city, while
+        the albedo component now correctly declares site because its values were determined at the single
+        Pr suburban site in Montreal. Järvi et al. apply those values at Helsinki, but the composition
+        still promotes site-derived evidence into a city configuration; a verifier should sign off that
+        use knowingly rather than treating the component as city-scale evidence.
     method:
       conclusion: supported
       evidence_ids:
@@ -98,25 +103,29 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-albedo
     record: records/snow/helsinki--jarvi2014--albedo
     role: component
-    note: Fills the albedo slot. The record declares target snow, name Snow, place helsinki, representativeness
-      city and source jarvi2014, and carries snow_albedo_min and snow_albedo_max.
+    note: Fills the albedo slot. The record declares target snow, name Snow, place montreal-suburban,
+      representativeness site and source jarvi2014, and carries snow_albedo_min and snow_albedo_max. Its
+      stable path and origin retain legacy Helsinki migration text.
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", place
       helsinki, representativeness city and source jarvi2014, and carries narp_emissivity_snow.
-  scientific_note: 'The selection holds up. archetypes/snow/helsinki--snow declares place helsinki, representativeness
-    city and source jarvi2014, and both components declare exactly those three, so a city-scale Helsinki
-    snow set is assembled from that city''s own rows in the study it cites. The mapping holds too: the
+  scientific_note: 'The selection is documented but spans evidence scales. archetypes/snow/helsinki--snow
+    declares place helsinki, representativeness city and source jarvi2014. Its albedo component now correctly
+    declares the Montreal suburban site and site representativeness because that is where Järvi et al.
+    determined 0.18 and 0.85; the paper subsequently checks and applies those values at Helsinki. The mapping holds: the
     albedo slot takes the record carrying snow_albedo_min and snow_albedo_max, the emissivity slot the
     record carrying narp_emissivity_snow, and the assembled fragment shows snow_albedo_min 0.18, snow_albedo_max
     0.85 and narp_emissivity_snow 0.99 arriving from the components with the composite''s own eleven scalars
-    merged over them. Two things a reader should carry forward without acting on them here. The first
+    merged over them. Three things a reader should carry forward without acting on them here. The first
+    is that the albedo''s use in a city configuration promotes site-derived evidence and needs verifier
+    sign-off at the composition layer. The second
     is that the eleven scalars the composite asserts have no record behind them, so nothing in the database
-    can yet review them. The second: records/snow/helsinki--jarvi2014--emissivity is named "Snow (sample
+    can yet review them. The third: records/snow/helsinki--jarvi2014--emissivity is named "Snow (sample
     data)", and whether a value migrated from a sample run belongs in the database is a question for that
     record''s own evidence review. It is the only snow emissivity record in the database, so every snow
     composite rests on it.'
-  evidence_revision: sha256:0f0ea3ffeab185e88bfad36a65126828fe46e1aa4cde31422e987a0e12454948
+  evidence_revision: sha256:8f0df5802df9f855c1f6f985ad988f897f96911018231bf93f72a5a1656757dc
 verification:
   attestations: []
