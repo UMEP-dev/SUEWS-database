@@ -1,0 +1,106 @@
+provenance_record: records/surfaces/evetr/london--havu-m2024--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
+dependency_revisions:
+  sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T17:03:22Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - havu-archive
+      note: The surface category is correct, but the name "EvergreenTree - Helsinki, Zurich, Beijing"
+        spans three cities while the inspected Havu archive rows are Helsinki configurations. Whether
+        the multi-city label reflects other migration inputs remains a curation question separate from
+        the source correction.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - havu-archive
+      note: Järvi et al. publish the values for coniferous trees and the Havu archive stores the tuple
+        in evergreen-tree rows, matching land_cover.evetr.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - havu-archive
+      note: Järvi et al. (2011) Table 2 gives conifer storage 1.3 mm, D0 0.013 and b 1.71, with Eq. 18
+        defining the exponential drainage form. Havu's archived evergreen rows 841–844 carry WetThreshold
+        1.3, DrainageEq 3, DrainageCoef1 0.013 and DrainageCoef2 1.71, exactly matching the record.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - havu-archive
+      note: Järvi et al. (2011) is the parameter publication. The Havu archive is retained as compilation
+        evidence showing where the later configuration reused the tuple.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - havu-archive
+      note: The record declares London, but the inspected Havu rows are labelled Helsinki forest, street
+        and park configurations, while the record name also lists Zurich and Beijing. The source correction
+        does not settle which application place or places this migrated record should declare.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      - havu-archive
+      note: The record declares city, but Järvi et al. publish a literature parameter and Havu's archive
+        shows configuration reuse rather than a city-wide determination. The correct application scope
+        should be settled with the place question.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Literature accurately describes transcription of an earlier published parameter tuple.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - havu-archive
+      note: One evergreen drainage record holds the storage threshold, drainage equation selector and
+        two coefficients that travel together in the archived SUEWS vegetation rows.
+  evidence:
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2a, model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives conifer storage Si 1.3 mm, maximum drainage rate D0 0.013 and coefficient b 1.71; Eq.
+        18 on p. 224 defines the exponential drainage form for unirrigated vegetation.
+  - id: havu-archive
+    source: havu-m2024
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Input_rcp.zip/Input_rcp/SUEWS_Veg.txt, rows 841–844
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: The Helsinki forest, street and two park evergreen rows each carry WetThreshold 1.3, DrainageEq
+        3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later configuration reuse.
+  scientific_note: 'The parameter lineage is now explicit: Järvi et al. (2011) publishes the conifer
+    storage and drainage tuple, and Havu''s archived model input later reuses it in Helsinki evergreen
+    configurations. No parameter value changed. The remaining curation issue is scope: the stable record
+    declares London, its name lists Helsinki, Zurich and Beijing, and the inspected archive rows are Helsinki
+    applications. That place question remains separate and should not be answered by changing the original
+    citation.'
+  evidence_revision: sha256:771ef4b897f51fcee54c1139951575f5c8281f1d43c311e707100686e030a169
+verification:
+  attestations: []

@@ -11,7 +11,7 @@ dependency_revisions:
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
-    records/surfaces/evetr/london--havu-m2024--drainage: sha256:c8823d8ed14278d8fafdc8416a869a221b91826161fa4c575f26e54dcb96f996
+    records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
     records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
@@ -82,7 +82,8 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       note: 'The drainage slot takes records/surfaces/evetr/london--havu-m2024--drainage, which declares
         place london and origin "London" while its own name reads "EvergreenTree - Helsinki, Zurich, Beijing"
-        and its source field reads havu-m2024. That record fills the drainage slot in exactly the five
+        and its source field reads jarvi2011 with method literature; its evidence sidecar retains the
+        Havu archive as later compilation. That record fills the drainage slot in exactly the five
         evergreen-tree composites placed at the three cities its name lists, so the selection reads as
         deliberate and the declared place as wrong, but nothing in the repository settles which of the
         two is in error, and it should be settled once rather than five times. The rest of the borrowing
@@ -177,7 +178,8 @@ assessment:
     record: records/surfaces/evetr/london--havu-m2024--drainage
     role: component
     note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
-      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads havu-m2024.
+      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads jarvi2011
+      and its method is literature. Havu's archive is retained as later compilation evidence.
   - id: component-surfaces-evetr-zurich-stagakis-s2024-max-conductance
     record: records/surfaces/evetr/zurich--stagakis-s2024--max-conductance
     role: component
@@ -219,10 +221,11 @@ assessment:
     database. The two LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled
     coefficient record across all four OHM positions is consistent with a record that declares no season.
     The one thing a maintainer must settle is the drainage component: records/surfaces/evetr/london--havu-m2024--drainage
-    declares place london while its name reads "EvergreenTree - Helsinki, Zurich, Beijing" and its source
-    is a Helsinki study, and it fills the drainage slot in all five composites placed at the three cities
-    it names. A secondary, smaller point for the record: the label says 2024 while db/sources.yml stores
+    declares place london while its name reads "EvergreenTree - Helsinki, Zurich, Beijing"; Järvi et al.
+    (2011) publishes the parameter while Havu''s archive later applies it in Helsinki. The record fills
+    the drainage slot in all five composites placed at the three cities it names. A secondary, smaller
+    point for the record: the label says 2024 while db/sources.yml stores
     stagakis-s2024 with year 2025.'
-  evidence_revision: sha256:708a3d5b61166aebd7aad6a2a6e3b27b7b2ce4de807c6ce4166b6a70a94c827b
+  evidence_revision: sha256:f416a27eab43fa838a959b369f077dad00cd0a37c81d7383c7b417ca0d8d24f5
 verification:
   attestations: []
