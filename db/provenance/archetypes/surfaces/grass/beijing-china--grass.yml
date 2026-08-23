@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
     records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
-    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:439ba53749c689154a079db02cab6b92f463798e8e7c322da1f56aebe7f93d79
+    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T00:35:20Z'
+  assessed_at: '2026-08-23T09:50:05Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -97,18 +97,18 @@ assessment:
         is not blocked by it, and which of the two fields is authoritative is a question for that record's
         own evidence review.
     representativeness:
-      conclusion: supported
+      conclusion: correction_required
       evidence_ids:
+      - component-surfaces-grass-beijing-zheng-y2023-lai-power
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-se-england-ward2016-lai
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: The composite declares representativeness city. Seven components declare city, three declare
-        regional, records/surfaces/grass/generic--unreferenced--porosity declares generic and the ohm
-        component carries no representativeness field. No component is classed narrower than the composite,
-        so no single-site measurement is being offered as a city typology; the three regional components
-        are classed broader, the direction that does not over-claim on scale. Whether a value typical
-        of SE England applies in Beijing is a question of place, taken above.
+      note: The composite declares representativeness city, but its leaf_growth_power component is now
+        correctly classed site because the coefficients were fitted to one park. A city archetype therefore
+        contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
+        a separate composition-curation decision; the three regional components are broader than the
+        composite and do not create the same over-claim.
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -143,7 +143,7 @@ assessment:
     record: records/surfaces/grass/beijing--zheng-y2023--lai-power
     role: component
     note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass,
-      LaiEq = 0", place beijing, representativeness city and source zheng-y2023.
+      LaiEq = 0", place beijing, representativeness site and source zheng-y2023.
   - id: component-surfaces-grass-beijing-zheng-y2023-max-conductance
     record: records/surfaces/grass/beijing--zheng-y2023--max-conductance
     role: component
@@ -197,10 +197,12 @@ assessment:
     Helsinki and SE England and the ohm slot from an unreferenced generic set named "Short grass [30]".
     A reader should treat the composite as the phenology and conductance parameters zheng-y2023 fitted
     for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
-    component''s own place is declared on its record, so the transfer is visible rather than hidden. One
-    field-level inconsistency is worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
+    component''s own place is declared on its record, so the transfer is visible rather than hidden. The
+    leaf_growth_power component is a one-park site fit inside this city-classed composite, which now requires
+    explicit composition curation rather than being treated as city-wide evidence. One field-level inconsistency
+    is also worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
     field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:0e6a78abc78fd8c287e165d002a7bfbd94547f2f3b1f60a3e466d1493bbed490
+  evidence_revision: sha256:44c3a888ffd74eb5c0ebfa60e5010a66a7385aeabb03b770e9041c000373a37d
 verification:
   attestations: []
