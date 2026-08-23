@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
-    records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:a322f663d830aa91b2254b89301688372d7c8c26a294eceb77e629081160a2ad
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
@@ -38,9 +38,10 @@ assessment:
       - component-surfaces-grass-helsinki-havu-m2024-max-conductance
       - component-surfaces-grass-helsinki-havu-m2024-biogen-co2
       note: The composite's name reads "Grass (Havu et al 2024)", its place reads helsinki and its origin
-        reads Helsinki, Finland. Five of the twelve components declare source havu-m2024, filling leaf_area_index,
-        leaf_growth_power, drainage, max_vegetation_conductance and biogen_co2, and those five are exactly
-        the slots in which this composite differs from its neighbours, so the study named in the label
+        reads Helsinki, Finland. Four of the twelve components declare source havu-m2024, filling leaf_area_index,
+        leaf_growth_power, max_vegetation_conductance and biogen_co2. The drainage component declares
+        jarvi2011 but is present in Havu's archived configuration. Those five slots are exactly the ones
+        in which this composite differs from its neighbours, so the study named in the label
         is the one that gives the entry its identity. The remaining slots declare other sources, vargo2013
         for albedo, ward2016 for emissivity, jarvi2011 for water_storage, jarvi2014 for snow_lim_patch and vegetation_growth,
         and unreferenced for porosity and ohm; the label names the study the configuration follows rather
@@ -95,8 +96,9 @@ assessment:
         porosity declares place generic and the ohm component carries no place
         field. The two unused Helsinki drainage records, records/surfaces/grass/helsinki--jarvi2014--drainage
         and records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated, come from a different
-        study, so taking havu-m2024's own drainage record keeps the composite within the study it is named
-        for. One component has to be recorded without being settled here. records/surfaces/grass/london--havu-m2024--drainage
+        study, so taking the drainage record compiled in Havu's archive keeps the composite within the
+        configuration it is named for while crediting Järvi et al. for the parameter. One component has
+        to be recorded without being settled here. records/surfaces/grass/london--havu-m2024--drainage
         declares place london and origin London while its name reads "Grass - Helsinki, Zurich, Beijing".
         Under the declared place it is a London value standing in for Helsinki; under its own name it
         is the set havu-m2024 intended for Helsinki among others. The selection is defensible for the
@@ -181,8 +183,9 @@ assessment:
     record: records/surfaces/grass/london--havu-m2024--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass - Helsinki,
-      Zurich, Beijing", place london, representativeness city and source havu-m2024. The declared place
-      and the name disagree, which is recorded under the place finding.
+      Zurich, Beijing", place london, representativeness city, source jarvi2011 and method literature.
+      Havu's archive is retained as later compilation evidence; the declared place and name disagree,
+      which is recorded under the place finding.
   - id: component-surfaces-grass-se-england-havu-m2024-lai
     record: records/surfaces/grass/se-england--havu-m2024--lai
     role: component
@@ -200,19 +203,21 @@ assessment:
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
       se-england, representativeness regional and source jarvi2011.
   scientific_note: 'The selection holds up and the label is honest about it. Seven of the twelve components
-    declare place helsinki and five declare source havu-m2024, and the five havu-m2024 slots are precisely
-    those in which this composite differs from its neighbours, so the entry is what its name says: the
+    declare place helsinki and four declare source havu-m2024. Those four plus the Järvi-sourced drainage
+    record present in Havu''s archive are precisely the five slots in which this composite differs from
+    its neighbours, so the entry is what its name says: the
     Helsinki grass configuration of that study, with its Havu leaf-area record now correctly placed in
     Helsinki, resting on SE England values for emissivity and water storage, on vargo2013 for albedo,
     on jarvi2014 for the snowpack limit and phenology,
     and on unreferenced generic sets for porosity and the ohm coefficients. Three Helsinki grass records
     go unused here, the two jarvi2014 drainage records and the mixed-low-vegetation biogenic CO2 record
-    that separates this entry from its low-vegetation sibling; taking havu-m2024''s own drainage record
-    rather than a jarvi2014 one keeps the composite within the study it cites. Two things a reader should
+    that separates this entry from its low-vegetation sibling; taking the drainage record compiled in
+    Havu''s archive rather than a jarvi2014 one keeps the composite within the study configuration while
+    crediting the original Järvi source. Two things a reader should
     carry forward without acting on them here: records/surfaces/grass/london--havu-m2024--drainage declares
     place london while its name reads "Grass - Helsinki, Zurich, Beijing", which its own evidence review
     must settle; and this entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry.'
-  evidence_revision: sha256:5fc835188b5ca3de2fbd3be03fdf101ebc210689b15115050a1aba51be603fe5
+  evidence_revision: sha256:aaf33c6470f8879292bda7587922694f30f44123955559990d9bf9dd0f00df22
 verification:
   attestations: []
