@@ -5,7 +5,8 @@ name: Evergreen Tree
 place: zurich
 origin: Zurich
 representativeness: city
-source: stagakis-s2024
+source: jarvi2011
+method: literature
 legacy_id: 33240009
 parameters:
   max_conductance: 7.4
