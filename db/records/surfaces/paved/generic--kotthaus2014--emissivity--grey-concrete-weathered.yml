@@ -2,9 +2,9 @@ record: records/surfaces/paved/generic--kotthaus2014--emissivity--grey-concrete-
 schema_version: '2026.5'
 target: land_cover.paved
 name: Grey Concrete, Weathered
-place: generic
+place: london
 origin: Generic
-representativeness: generic
+representativeness: site
 source: kotthaus2014
 legacy_id: 40241252
 parameters:
