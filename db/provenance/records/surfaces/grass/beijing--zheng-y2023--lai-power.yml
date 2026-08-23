@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:f97c533944fa1ee50906c94c1a6120e21c1caf9b6f864689afdffe453ec434d7
 assessment:
   status: agent_assessed
@@ -136,6 +136,6 @@ assessment:
     uses one park''s satellite LAI series and a 1 km domain and the paper calls the parameters site-specific,
     this grass record is now classified at site scale. The identical deciduous and evergreen sibling
     tuples are intentional; their representativeness is tracked separately in issues 325 and 324.'
-  evidence_revision: sha256:3e4fb0844dc2af32b55dcd29f4fe34a46ba03a23510dc5ddb2759b5d7375fb6c
+  evidence_revision: sha256:bc5cc5f6f38c990227ffb9701b71e9cdb6999fb51a9d2bcf67ade7e66292e6ea
 verification:
   attestations: []

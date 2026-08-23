@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
 assessment:
   status: agent_assessed
@@ -135,6 +135,6 @@ assessment:
     corrected. What remains is that the record claims city representativeness for coefficients fitted
     to one park''s satellite LAI series and applied to a 1 km circle. The three identical sibling records
     are intentional, not duplicates, and any correction has to move all three together.'
-  evidence_revision: sha256:cf67a1282bf37460344317612253bdd3dd126a399f082612d5e333f3e06dc7ee
+  evidence_revision: sha256:1c1c559e22b8b870f92f8a4abeb48537a09aa428263554c707c76c5be9a52860
 verification:
   attestations: []
