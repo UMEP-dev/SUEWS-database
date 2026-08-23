@@ -5,7 +5,7 @@ record_revision: sha256:209276bde9cf9c01cd74a271739e3fca77a8493b1088f840681e726d
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
-    wang2008: sha256:d4f910f5ee0cc8977916481ec3fa1ee48b52cbfacc7c2b956b7f0197302f485a
+    wang2008: sha256:6f050c3ad1c06931c9796cee3ece4be6b608ccdddd4250166c3e28550ff799f5
   places:
     nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
   records: {}
@@ -89,6 +89,6 @@ assessment:
   scientific_note: The abstract establishes a fitted Wang parameter study and the later Dou compilation
     matches the stored winter tuple. The original full text is still required to verify the exact coefficient
     row, its locator, and the single-roof representativeness finding already tracked by issue 336.
-  evidence_revision: sha256:133c938ffa5db9079b0c6e4d1be7616c3beafe74ea063fa26750c63e353be5a6
+  evidence_revision: sha256:ab3a60c10d8acf41af79ccec5e4c8156eab58b3518b49635dbc9ad854c4bb3a4
 verification:
   attestations: []
