@@ -5,7 +5,8 @@ name: Grass - Helsinki, Zurich, Beijing
 place: london
 origin: London
 representativeness: city
-source: havu-m2024
+source: jarvi2011
+method: literature
 legacy_id: 45240063
 parameters:
   storage_drain_params:

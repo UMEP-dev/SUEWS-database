@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
-    records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
@@ -173,8 +173,9 @@ assessment:
     record: records/surfaces/grass/london--havu-m2024--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass - Helsinki,
-      Zurich, Beijing", place london, representativeness city and source havu-m2024. The declared place
-      and the name disagree, which is recorded under the place finding.
+      Zurich, Beijing", place london, representativeness city, source jarvi2011 and method literature.
+      Havu's archive is retained as later compilation evidence; the declared place and name disagree,
+      which is recorded under the place finding.
   - id: component-surfaces-grass-se-england-ward2016-emissivity
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
@@ -203,6 +204,6 @@ assessment:
     is also worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
     field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:4e69ef048e810c20cc277802931afb3fb975d015aa61a7c747dfafde86a91720
+  evidence_revision: sha256:42236ef3645cc0381035c95efe07f42f62600f6bd716e1b28c31fbd81ea6df2e
 verification:
   attestations: []
