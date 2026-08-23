@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
     records/surfaces/paved/se-england--ward2016--drainage: sha256:a2f4f8fcc956087c93b6b6838c874faf3c04200b083d449d8fc4711f57d85ce1
-    records/surfaces/paved/se-england--ward2016--water-storage: sha256:e772c7df24dcf40490aa7f9437326307c5cd01699b2ec780a69851845a56edf6
+    records/surfaces/paved/se-england--ward2016--water-storage: sha256:c0c01a66787193a97ce81a7f1451d3f1427dad1c3794f22259d63f734525f030
     records/surfaces/paved/swindon--ward2013--drainage: sha256:8a4650f59817b6a758211381f77098e5d601d111a1c705fb099437336dde3fd1
     records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
 assessment:
@@ -39,7 +39,7 @@ assessment:
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite's name reads 'Suburban residential, Ward et al. (2016)', its place reads swindon
         and its origin reads 'Swindon, UK'. The label names both the typology and the study the selection
-        follows, and five of the eight components declare source ward2016, so the label identifies what
+        follows, and four of the eight components declare source ward2016, so the label identifies what
         the entry actually assembles.
     target:
       conclusion: supported
@@ -166,7 +166,7 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.paved, name Paved, place
-      se-england, representativeness regional and source ward2016, and carries store_min and store_max
+      se-england, representativeness regional and source jarvi2011, and carries store_min and store_max
       under storage_drain_params.
   - id: component-surfaces-paved-se-england--ward2016--drainage
     record: records/surfaces/paved/se-england--ward2016--drainage
@@ -200,10 +200,10 @@ assessment:
       name 'Code 851 x Multiplier for winter [8512]', season_label Winter and source ward2016, carries
       a1, a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The selection follows the study the entry is named for. archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
-    declares place swindon and representativeness city, and five of its eight components declare source
-    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; the albedo and
-    water-storage slots take the se-england rows from that study, while drainage takes the Ward et al.
-    (2018) SE England row, all classed regional and
+    declares place swindon and representativeness city, and four of its eight components declare source
+    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; albedo takes the
+    se-england row from that study, water storage takes the Järvi et al. (2011) row, and drainage takes
+    the Ward et al. (2018) SE England row, all classed regional and
     applied down to the town, which is the sound direction for a class difference. The season mapping
     is right, the Summer-labelled OHM record filling the two summer positions and the Winter-labelled
     one the two winter positions, and neither record carries a wetness label, so nothing is asserted by
@@ -217,6 +217,6 @@ assessment:
     only paved snowpack-limit record there is, and construction takes a record named Placeholder that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:06124b97b6ea7eab4cc8d5d7cd98233d8ff7cb4ef67d3037ada0b2f2343e8983
+  evidence_revision: sha256:f6cce425da9a6c236b3b05d7c70595d65b506d4b092a59c28b6adec147217182
 verification:
   attestations: []
