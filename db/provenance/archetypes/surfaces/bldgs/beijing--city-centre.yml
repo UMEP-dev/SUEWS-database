@@ -14,10 +14,10 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
-    records/surfaces/bldgs/shanghai--ao2016--albedo: sha256:14aced17ff06c35fab80fef5b59922d5275a3e65ccd219010e05473f424350af
+    records/surfaces/bldgs/shanghai--ao2016--albedo: sha256:c801beda0f1759df289c23fbf3252cfd0066e634033a756e7427e0b724f6b56a
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-23T13:20:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -81,7 +81,7 @@ assessment:
         layers of this archetype rest is a sample configuration rather than any surveyed Chinese stock,
         which is the suspect-name class the repository checks leave for human adjudication.'
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-bldgs-shanghai-ao2016-albedo
       - component-surfaces-bldgs-helsinki-jarvi2014-emissivity
@@ -90,10 +90,11 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
-      note: The composite is classed city. Six of the seven components are classed city and the seventh,
-        records/constructions/uk--lindberg-f2020--central-london-sample-run, is classed regional. A regional
-        row standing in a city composite is a broadening rather than an over-reach, so the component classes
-        fit the scale the composite claims.
+      note: The composite is classed city. Five of the seven components are classed city and
+        records/constructions/uk--lindberg-f2020--central-london-sample-run is classed regional, but
+        records/surfaces/bldgs/shanghai--ao2016--albedo is site evidence from a Shanghai central business
+        district. Extending that site value to a Beijing city composite is an unsupported extrapolation
+        that needs curation.
     method:
       conclusion: supported
       note: An assembly of existing records into slots; the composite produces no value of its own.
@@ -121,7 +122,7 @@ assessment:
     record: records/surfaces/bldgs/shanghai--ao2016--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.bldgs, name 'CBD roofs', place shanghai,
-      representativeness city and source ao2016.
+      representativeness site, urban_setting central_business_district and source ao2016.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -156,8 +157,10 @@ assessment:
       zheng-y2023, and carries no season_label.
   scientific_note: 'The assembly is structurally complete and every slot takes a record declared for it,
     so in form the composition is sound. Its weakness is the provenance of place. The composite claims
-    a Beijing city centre, yet only the albedo, from Shanghai, and the OHM coefficients, from Beijing,
-    are Chinese; emissivity, water storage, drainage and the snowpack limit are Helsinki rows, and the
+    a Beijing city centre, yet only the albedo, from a site in a Shanghai central business district, and
+    the OHM coefficients, from Beijing, are Chinese. No composition source supports transferring the
+    site-scale Shanghai albedo to city-scale Beijing. Emissivity, water storage, drainage and the snowpack
+    limit are Helsinki rows, and the
     construction is records/constructions/uk--lindberg-f2020--central-london-sample-run, a UK record named
     ''Central London [sample run]'' built entirely from sample-run materials. Part of that is forced:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim is the only buildings snowpack_limit record in
@@ -169,6 +172,6 @@ assessment:
     across much of Asia, the Caribbean and Oceania. A maintainer should settle the emissivity selection
     and the standing of the sample-run construction once, for the family, rather than archetype by archetype.
     This review does not revisit any component value.'
-  evidence_revision: sha256:beebdb4f4feb356f798edfce1fea7c477ef2d8ff25a90461b63a5a160852e0af
+  evidence_revision: sha256:6ef069995ec6f4252327c12739a61a90b2936be2c3cfd2b673d605438e399bf1
 verification:
   attestations: []
