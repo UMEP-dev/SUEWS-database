@@ -1,7 +1,7 @@
 provenance_record: archetypes/regions/western-europe
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:f05e55c8c016b839db7bd94cc838f3344a51bc9429eab0cc597053acc1da837c
+record_revision: sha256:9a2ef380b297bab809feb40cb3cd68513c462a111158d17b1429b4a3adafe0a1
 dependency_revisions:
   sources: {}
   places: {}
@@ -11,6 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016: sha256:87c22ea834c9dbf28895706d6c362823f8ea7d47bda01b0dd320d0ddfae6ff5d
     archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016: sha256:ee9703069152b5adb93085f1e95de0f01bdbfe625312ebbc79cdfcf28202b64f
     archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016: sha256:46595186be7c871dc2a9c2e67cccf006e6d38ccf218c755f32584834118dcbb8
+    archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016: sha256:81734ed14e16afdb5267323ae1fefc0c9e6c928f24838ccae7c146975eb05a87
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
@@ -22,7 +23,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-23T08:22:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -41,6 +42,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -62,6 +64,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -83,13 +86,9 @@ assessment:
         attaches_to irrigation.wuprofm_24hr. Swapping the two will not repair it, because loridan2011
         carries only a working_day series and lindberg2013 only a holiday series, so the four water-use
         cells are stitched from two half-records and no rearrangement of these two entries fills all four
-        with a series derived for the field it lands in. A second mismatch sits in the land cover. land_cover.grass
-        takes archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016, which declares target
-        land_cover.evetr, and that same archetype also fills land_cover.evetr, so the grass slot receives
-        an evergreen-tree archetype and the composite has fourteen distinct components where every other
-        region default has fifteen. archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016 exists
-        in the database; which land_cover.grass archetype belongs in the slot is a curation decision,
-        but an archetype declaring target land_cover.evetr does not.'
+        with a series derived for the field it lands in. The land-cover slots are target-compatible:
+        land_cover.grass takes archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016 and land_cover.evetr
+        takes archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016.'
     values:
       conclusion: curation_required
       evidence_ids:
@@ -102,6 +101,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -135,6 +135,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -148,8 +149,8 @@ assessment:
         come from two different cities in two different regions. Only one other region default does that,
         archetypes/regions/eastern-europe, which takes paving from london and buildings from zurich; the
         remaining twenty take both from the same city. The bsoil and dectr archetypes and the anthropogenic_emissions
-        record carry place london, the evetr archetype that also fills grass and the water archetype carry
-        place swindon, and the soil record carries place se-england, all country united-kingdom and assigned
+        record carry place london, the grass, evetr and water archetypes carry place swindon, and the soil
+        record carries place se-england, all country united-kingdom and assigned
         to northern-europe; the snow archetype and the snow-clearing profile carry place helsinki. records/irrigation/vancouver--unreferenced
         carries place vancouver, which places.yml gives country canada and the country archetypes assign
         to archetypes/regions/north-america, and both water-use profiles carry place los-angeles, country
@@ -169,6 +170,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -176,7 +178,7 @@ assessment:
       - component-records-profiles-water-use-automatic-los-angeles-lindberg2013-old-code-12
       note: 'The composite declares no representativeness of its own and stands as the default for the
         11 countries whose country archetypes carry region_ref archetypes/regions/western-europe, so it
-        operates at regional scale. Of its 14 distinct components, 12 are classed city, records/surfaces/common/se-england--ward2016--soil
+        operates at regional scale. Of its 15 distinct components, 13 are classed city, records/surfaces/common/se-england--ward2016--soil
         is classed regional and records/conductance/generic--ward2016 is classed generic. Every land_cover
         slot and the snow slot is therefore filled by a single-city archetype presented, with nothing
         in the entry saying so, as the value a whole region inherits. The choice is not forced: the database
@@ -197,6 +199,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -217,6 +220,7 @@ assessment:
       - component-archetypes-surfaces-bldgs-helsinki-city-centre
       - component-archetypes-surfaces-bsoil-london-uk-central-london-ward-et-al-2016
       - component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
+      - component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
       - component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
       - component-archetypes-surfaces-water-swindon-uk-water
       - component-records-profiles-snow-removal-helsinki-jarvi2014-snow-removed-daytime
@@ -275,8 +279,13 @@ assessment:
   - id: component-archetypes-surfaces-evetr-swindon-uk-evergreen-tree-ward-et-al-2016
     record: archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016
     role: component
-    note: Fills land_cover.grass, land_cover.evetr. The entry declares target land_cover.evetr, place
-      swindon and representativeness city.
+    note: Fills land_cover.evetr. The entry declares target land_cover.evetr, place swindon and representativeness
+      city.
+  - id: component-archetypes-surfaces-grass-swindon-uk-grass-ward-et-al-2016
+    record: archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016
+    role: component
+    note: Fills land_cover.grass. The entry declares target land_cover.grass, place swindon and representativeness
+      city.
   - id: component-archetypes-surfaces-dectr-london-uk-deciduous-tree-ward-et-al-2016
     record: archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
     role: component
@@ -304,20 +313,16 @@ assessment:
     note: Fills profiles.water_use_manual.holiday, profiles.water_use_automatic.holiday. The entry declares
       target profile.water-use-automatic, attaches_to irrigation.wuprofa_24hr, place los-angeles and representativeness
       city.
-  scientific_note: 'Western Europe is the region default that most needs looking at, and it does not resemble
-    its neighbours. Its grass slot takes archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016,
-    an archetype declaring target land_cover.evetr, which also fills the evetr slot, so the composite
-    has fourteen distinct components where every other region default has fifteen and the grass surface
-    of a Western European site is an evergreen tree. archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016
-    exists, so material is not the obstacle. The places are mixed too: paving from Zurich, which is the
-    only component the database places inside this region, buildings from Helsinki, bare soil and deciduous
-    trees from London, evergreen trees and water from Swindon, soil from SE England, snow from Helsinki,
+  scientific_note: 'Western Europe still has several curation questions after its land-cover slots are
+    made target-compatible. The places are mixed: paving from Zurich, which is the only component the
+    database places inside this region, buildings from Helsinki, bare soil and deciduous trees from London,
+    grass, evergreen trees and water from Swindon, soil from SE England, snow from Helsinki,
     irrigation from Vancouver and water use from Los Angeles. Paving and buildings from two different
     cities in two different regions is done by only one other region default, archetypes/regions/eastern-europe.
     On top of that sit the crossed water-use slots common to all 22 region defaults, which cannot be repaired
-    by exchanging the two records because each holds only one day-type, twelve single-city components
+    by exchanging the two records because each holds only one day-type, thirteen single-city components
     carrying a regional default, and two base temperatures declared on the composite with no recorded
-    origin. The grass slot has a clear correction; the rest needs a curator.'
-  evidence_revision: sha256:451ed23276b5533dd23345df97916995e8fc42c7abf651c0bc645386bbf1dd01
+    origin. These remaining questions need a curator.'
+  evidence_revision: sha256:4cdd56cabe0fb6f560a2f667d743b7fb91380ea9137354faa5affdc369fd704e
 verification:
   attestations: []

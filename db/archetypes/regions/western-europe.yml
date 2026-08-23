@@ -14,7 +14,7 @@ uses:
     paved: archetypes/surfaces/paved/zurich--city-centre
     bldgs: archetypes/surfaces/bldgs/helsinki--city-centre
     bsoil: archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
-    grass: archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016
+    grass: archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016
     evetr: archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016
     dectr: archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
     water: archetypes/surfaces/water/swindon-uk--water
