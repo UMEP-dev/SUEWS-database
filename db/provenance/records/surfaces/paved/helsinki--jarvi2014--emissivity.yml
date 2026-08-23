@@ -31,6 +31,8 @@ assessment:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/184
       note: The record now stores emis 0.91, which is what Table 4a gives in its Pav column. It previously
         stored 0.95, the figure published for the Bldg column, and its paired record held the reverse,
         so the two surfaces carried each other's emissivity. Column identity was verified by character
@@ -114,6 +116,6 @@ assessment:
     table cannot be trusted for it. What remains open is provenance rather than value: the Table 4 caption
     makes every unfootnoted cell an inherited value, so the citation names a compiler, and the record
     still claims city representativeness for a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:31becf5655c0a4e848e35022dcf91d01de33b730d9d0d210400eb48ce1fb0a24
+  evidence_revision: sha256:dedae2d5e08604c07d169cee04a735512e229b361390c3acc2d2fede50a24592
 verification:
   attestations: []
