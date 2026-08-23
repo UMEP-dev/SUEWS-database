@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:0d7470f187d3cadd07967123ce16a1749deb8db98c813d6957e8991cc04dbf61
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:abcd41e00f910cd0b92cd3ef4fb36ac068fe5bc362e3ee7fc005b3f2fff36e60
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T09:56:50Z'
@@ -179,7 +179,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and is the store_min and store_max entry of every deciduous-tree
+      regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   scientific_note: 'The Beijing-specific content of this typology is real but partial. Four slots take
     Beijing records: the leaf area index from ward2013 and the leaf growth power, maximum conductance
@@ -196,6 +196,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:5c4d9fe9b851db0a7e78bc313fbf6e76a39d48b5c2ddf01556970703c9c3b1e1
+  evidence_revision: sha256:60811bc0083da5f4d533c254d3e8c978476fa987a20d659a64a4480074a725c0
 verification:
   attestations: []
