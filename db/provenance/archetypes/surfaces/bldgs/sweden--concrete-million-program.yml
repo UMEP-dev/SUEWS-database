@@ -12,7 +12,7 @@ dependency_revisions:
     records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s: sha256:caa258b9c5e1ef9259b94087ee62662d79b3d5debe460970006b80264690fe55
     records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
@@ -176,6 +176,6 @@ assessment:
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:7336c49f569042045b0b8b86f806ba4f5e295183887227a2361682a01eb62efc
+  evidence_revision: sha256:8c7de7d9da2aa34b2d12cc2fe1b0eebf56f85872d025004211672f11cc995083
 verification:
   attestations: []

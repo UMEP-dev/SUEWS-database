@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
     records/ohm/beijing--zheng-y2023--paved: sha256:38e916ccd944e9bcf64e33064d843bfcada25cb908e38ad5f0c3d066c7748f41
-    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:fb4daff1044bc8a4062ef5f9f0bf63f37f43310fa8adea47d405ee27f23407bf
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
@@ -193,6 +193,6 @@ assessment:
     for those records'' own evidence reviews. The construction reference changes no exported number in
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment.'
-  evidence_revision: sha256:316653e3c5f808de1ce3886607deb5563e6f581a84b21c8c8c592e79194d8a20
+  evidence_revision: sha256:2515e8625f955d696f15cc613089fe4afeb232bd2b47f0601e4adfce0feaa43a
 verification:
   attestations: []

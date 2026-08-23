@@ -12,7 +12,7 @@ dependency_revisions:
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:40de5fbe382affc13a60d2f3032a051a6843b57783b7fe63b86abf44b6186943
     records/ohm/beijing--zheng-y2023--buildings: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
@@ -175,6 +175,6 @@ assessment:
     and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
     a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:fc9075edc695bc4565e7bd8da5016fe67106f1e316fed0408dc8ec1071a3ba61
+  evidence_revision: sha256:22ce5aec999da1c3504c78ce6f44e423ec92e5aa8e9bf29f7ba4c0ce33d9ce85
 verification:
   attestations: []

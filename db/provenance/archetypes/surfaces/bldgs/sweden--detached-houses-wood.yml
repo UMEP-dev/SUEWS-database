@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:000c13e033d2b29f992ab88eb8024d63d226e67eb9728981ed3f3522b431aa22
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
 assessment:
@@ -164,6 +164,6 @@ assessment:
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:c8f5a8c53b3db0a4c4487e978d8936ba40190bf9f99beb8a9093b126c20ccd6a
+  evidence_revision: sha256:3934a9784850b170e56d2f83d5918076176333af9185ffa6a0a73f302f7dae16
 verification:
   attestations: []
