@@ -6,7 +6,8 @@ profile_type: Commercial
 name: Ao et al.
 place: shanghai
 origin: Shanghai, China
-representativeness: city
+representativeness: site
+urban_setting: central_business_district
 source: ao2018
 legacy_id:
 - 60240944
