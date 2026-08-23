@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/bldgs/lodz--offerle2005--thermal-layers
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b574d032947c8d785ca95f73d880869bec0dbe923a2585dcd860e84551deed86
+record_revision: sha256:9ddb92f7db5d3154a6eede9eaccc214c0b5a8547fbbd0e2f224aa4fa985ae91d
 dependency_revisions:
   sources:
     offerle2005: sha256:1c21aebf8238fd7804f23e47e7b1c1910e687165ae0f188bea6a433ffc64e348
@@ -34,6 +34,8 @@ assessment:
         values match Table III after converting MJ m-3 K-1 to J m-3 K-1. The source
         does not establish legacy Internal_albedo 0.2 or the three Internal_CH values
         of 0.001.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/358
     source:
       conclusion: curation_required
       evidence_ids:
@@ -42,6 +44,8 @@ assessment:
         Offerle et al. supports the active thermal-layer values and several legacy
         building attributes, but it does not support every value retained in the
         legacy mapping.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/358
     place:
       conclusion: supported
       evidence_ids:
@@ -112,6 +116,6 @@ assessment:
     Offerle et al. conclusively supports city_centre and the active thermal-layer
     values. Human curation is still required for legacy Internal_albedo and the
     three Internal_CH fields, so this assessment is not eligible for sign-off.
-  evidence_revision: sha256:efa4e35f47c90cfd63df27907f4ec621197138548a38c17fff13001dda60d914
+  evidence_revision: sha256:8316006b3173f402f08f3bc7910ee8e0ef2207530641a6085acbe4c77370047b
 verification:
   attestations: []
