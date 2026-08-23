@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--grass: sha256:4ebfbd49050b5db101aa6872dd70aee1675d45f8e60f2384304fab1ee19cb7c2
     records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
-    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:a397fe05d296e50fa8192fe43e9a6f9f068eea35f11bb00b27c8f959b2287628
+    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:439ba53749c689154a079db02cab6b92f463798e8e7c322da1f56aebe7f93d79
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
@@ -201,6 +201,6 @@ assessment:
     field-level inconsistency is worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
     field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:14fb81b5f53bd95bd3aa35ce6947d9bd641b18ea9ef938859bdf6645d432c8c2
+  evidence_revision: sha256:8394e53ec0db8e063aef52bb02b13475c09dacbd412930a0ea60071f77a2fd35
 verification:
   attestations: []
