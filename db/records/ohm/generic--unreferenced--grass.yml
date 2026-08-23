@@ -2,7 +2,8 @@ record: records/ohm/generic--unreferenced--grass
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Short grass [30]
-source: unreferenced
+source: grimmond1991b
+method: fitted
 legacy_id: 50240009
 parameters:
   a1: 0.32
