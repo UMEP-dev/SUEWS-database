@@ -5,11 +5,11 @@ name: Paved
 place: swindon
 origin: Swindon
 representativeness: site
-source: ward2013
+source: ward2018
 legacy_id: 45240004
 parameters:
   storage_drain_params:
     drain_eq: 3
-    drain_coef_1: 0.013
-    drain_coef_2: 1.71
+    drain_coef_1: 10
+    drain_coef_2: 3
   wet_threshold: 0.6
