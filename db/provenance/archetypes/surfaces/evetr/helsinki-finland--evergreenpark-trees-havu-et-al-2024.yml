@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
     records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -163,7 +163,7 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree"; its source field reads jarvi2011.
   - id: component-surfaces-evetr-se-england-ward2016-lai
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
@@ -222,6 +222,6 @@ assessment:
     to be settled: records/surfaces/evetr/london--havu-m2024--drainage declares place london while its
     name reads "EvergreenTree - Helsinki, Zurich, Beijing", and it fills the drainage slot in all five
     composites placed at the three cities it names.'
-  evidence_revision: sha256:277d40bd5d83d1d8bd03770fff041abe43f36180645c822bfe5bc437d7ef6cc7
+  evidence_revision: sha256:27c0e5356dd01793ccde1a0a83ebe08ee0150d1cbbde149c84ed85b171d0e436
 verification:
   attestations: []

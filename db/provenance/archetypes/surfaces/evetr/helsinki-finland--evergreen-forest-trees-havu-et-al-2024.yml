@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
     records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -161,7 +161,7 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree"; its source field reads jarvi2011.
   - id: component-surfaces-evetr-se-england-ward2016-lai
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
@@ -220,6 +220,6 @@ assessment:
     the drainage slot in all five composites placed at the three cities its name lists. Either the record''s
     place is wrong or five composites are drawing drainage from London; the entries do not say which,
     and the answer belongs with the record''s own evidence review.'
-  evidence_revision: sha256:1b5ba8f14d1799719cbeda1f881e787a3959ee6cc78f3b3b9808bee0a64c4a12
+  evidence_revision: sha256:42a0f0140995816841f796e123077cb60ccd34916a1de1b1a78b7daab64a9489
 verification:
   attestations: []

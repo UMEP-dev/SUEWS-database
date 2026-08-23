@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
     records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
     records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:22be802025570597b0bf08133ce21f305566ec717cb06d28a1736fbecf800b49
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:99be61e00e48fb13fd4644cf04b3c6b593b6f11fe3bdd4731be660bbc66c2c04
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -37,8 +37,8 @@ assessment:
       - component-surfaces-evetr-se-england-ward2016-lai
       - component-ohm-generic-ward2016-all-vegetation
       note: 'The composite is named "Evergreen Tree Ward et al. (2016)" and declares place swindon with
-        origin "Swindon, UK". Eight of its thirteen components declare source ward2016: albedo, emissivity,
-        water_storage, leaf_area_index, drainage and max_vegetation_conductance, plus
+        origin "Swindon, UK". Seven of its thirteen components declare source ward2016: albedo, emissivity,
+        leaf_area_index, drainage and max_vegetation_conductance, plus
         both OHM records. The label identifies what the composite assembles, but it is not unique to it:
         archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016 carries the same name, and
         the place field is the only thing telling the two apart. That is treated under identity.'
@@ -85,7 +85,7 @@ assessment:
       note: The composite claims swindon, and eight components carry place se-england; db/places.yml records
         se-england as a subnational place in united-kingdom and swindon as a united-kingdom place, and
         schema/origins_map.yml resolves the legacy origin strings "SE England" and "UK, SE England" to
-        that slug with representativeness regional. Six of those eight rows declare source ward2016,
+        that slug with representativeness regional. Five of those eight rows declare source ward2016,
         the same source the composite's label names, so substituting a regional row for a city one stays
         inside one study rather than importing another site's values. snow_lim_patch takes a Helsinki
         row because records/surfaces/evetr/helsinki--jarvi2014--snow-lim is the only evergreen-tree snow
@@ -181,7 +181,7 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
     note: Fills water_storage. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree"; its source field reads jarvi2011.
   - id: component-surfaces-evetr-se-england-ward2016-lai
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
@@ -236,7 +236,7 @@ assessment:
       named "Code 201 x Multiplier for winter [2012]"; its source field reads ward2016, it declares season_label
       Winter and it declares no place or representativeness.
   scientific_note: 'This composite is the most internally consistent of the evergreen-tree set on everything
-    except two points. Eight of its thirteen components declare source ward2016, its two OHM records carry
+    except two points. Seven of its thirteen components declare source ward2016, its two OHM records carry
     season_label Summer and Winter and are mapped to exactly those positions, and its two LAI components
     agree on lai_type 1. The first point is the phenology: vegetation_growth takes the Helsinki record
     when records/surfaces/evetr/se-england--ward2016--phenology, from the composite''s own region and
@@ -247,6 +247,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:b3148b7a9203496a9fe1feb3aad218d4e637e8d2ab84a27bbd255b0ca79a601f
+  evidence_revision: sha256:ace8a89fe2daafc957e2c151fc19b44f1110030e7f5a8a1c328311908ad45dc7
 verification:
   attestations: []
