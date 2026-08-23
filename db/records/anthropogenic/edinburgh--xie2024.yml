@@ -1,7 +1,7 @@
 record: records/anthropogenic/edinburgh--xie2024
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Low-rise flats with air source heat pumps operated in whole buildings
+name: Low-rise flats with air source heat pumps operated in occupied rooms only
 place: edinburgh
 origin: Edinburgh
 representativeness: city
