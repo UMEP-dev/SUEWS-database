@@ -1,0 +1,124 @@
+provenance_record: records/constructions/uk--lindberg-f2020--central-london-sample-run
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
+dependency_revisions:
+  sources:
+    lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-23T17:22:52Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - lindberg-london
+      - estm-801
+      note: Central London is supported, but the bracketed "sample run" marker identifies a separate
+        curation question about whether demonstration material belongs in the published database. This
+        scope correction does not remove or reinterpret that marker.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/257
+    target:
+      conclusion: supported
+      evidence_ids:
+      - lindberg-table-2
+      - estm-801
+      note: Both the article and historical ESTM row describe building roof, wall and internal thermal
+        construction properties, matching the construction target.
+    values:
+      conclusion: correction_required
+      evidence_ids:
+      - lindberg-table-2
+      - estm-801
+      note: The article publishes aggregate thermal conductivity, heat capacity, and material classes,
+        but not the stored layer thicknesses. Historical code 801 contains a different layer stack, and
+        issue 255 identifies a conductivity copied into a thickness field during migration. This scope-only
+        correction does not change those values.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/255
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - lindberg-table-2
+      - estm-801
+      note: Lindberg et al. document the London ESTM construction classes, and the historical SUEWS ESTM
+        registry supplies the code-801 implementation context, but neither directly supports the exact
+        stored five-layer stack. The source relationship must be reassessed with the value correction.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/255
+    place:
+      conclusion: supported
+      evidence_ids:
+      - lindberg-london
+      - estm-801
+      note: The record now declares London. The article models a 21.5 km by 21.4 km London domain and
+        identifies its building classes as London; historical code 801 is labelled "GLA Urban fabric
+        >80", place London, origin GLA. The stable path and origin retain legacy UK migration text.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - lindberg-london
+      - estm-801
+      note: City matches a construction class applied across the London/GLA urban domain. The evidence
+        does not support the former UK-regional generalisation.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - lindberg-table-2
+      - estm-801
+      note: The record declares no method, and the available evidence does not document the migration
+        step that converted aggregate ESTM properties and code 801 into the present material-layer representation.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - estm-801
+      note: Historical code 801 establishes a distinct high-density GLA construction class, but the sample-run
+        identity and exact layer transformation remain for separate curation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/257
+  evidence:
+  - id: lindberg-london
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: section
+      label: Section 4.1, Sites and meteorological forcing data
+      page: 273
+      url: https://doi.org/10.1007/s00704-020-03189-1
+      note: Defines the London model domain as 21.5 km by 21.4 km and describes the three city applications.
+  - id: lindberg-table-2
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, ESTM surface material properties
+      page: 274, 275
+      url: https://doi.org/10.1007/s00704-020-03189-1
+      note: Labels the relevant building classes with "(L)" for London and publishes their roof, wall
+        and internal aggregate properties and material classes, but no layer thicknesses.
+  - id: estm-801
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Historical SUEWS_ESTMCoefficients.txt, code 801
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/ESTM_input/SUEWS_ESTMCoefficients.txt
+      note: Labels code 801 "GLA Urban fabric >80", place London and origin GLA, and provides the historical
+        ESTM layer values from which this migration record descends.
+  scientific_note: 'The former UK-regional scope is not supported. Lindberg et al. apply ESTM to a London
+    city domain, and historical code 801 is explicitly a GLA/London class. The record now declares London
+    and city while retaining its stable UK path and origin. No construction value changed. This assessment
+    deliberately leaves two different questions open: issue #257 asks whether a sample-run entry belongs
+    in the curated database, and issue #255 tracks the exact migration error in the present material-layer
+    representation.'
+  evidence_revision: sha256:84972687f5085f91b57d7bf616aab0fc87ae24060b66debc2ebd47187ba5755c
+verification:
+  attestations: []

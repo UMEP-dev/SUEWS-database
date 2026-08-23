@@ -2,9 +2,9 @@ record: records/constructions/uk--lindberg-f2020--central-london-sample-run
 schema_version: '2026.5'
 target: construction
 name: Central London [sample run]
-place: uk
+place: london
 origin: UK
-representativeness: regional
+representativeness: city
 source: lindberg-f2020
 legacy_id: 37240894
 parameters:
