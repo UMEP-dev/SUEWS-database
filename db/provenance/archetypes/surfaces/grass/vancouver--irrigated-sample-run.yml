@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/vancouver--jarvi2011--lai-power: sha256:2a1846d268a74f46b702f40e8f445e613d9297702519758c48c946b6d80725da
     records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:3863938b8d60625a4771afe401617b6de9631f1785ef90283141b1a91c2689a5
 assessment:
@@ -190,7 +190,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   - id: component-surfaces-grass-vancouver-jarvi2011-lai-power
     record: records/surfaces/grass/vancouver--jarvi2011--lai-power
     role: component
@@ -216,6 +216,6 @@ assessment:
     local, so the choice between two transplants is a maintainer''s and not a correction. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:590db8be26905977e3131cc20020f2e4e65dd53420b1a3e13c4ae12cbea641a4
+  evidence_revision: sha256:e45204ec7f062701a0a6d6796ebe85518c0830c5a34e21cee4e2999a59d4b973
 verification:
   attestations: []

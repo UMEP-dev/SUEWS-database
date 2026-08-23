@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:24af2470369792884bf2a1e183dacf24e45be1b4611aa6a1bb69d14e696f5d5a
     records/surfaces/grass/se-england--ward2016--phenology: sha256:747a1e16496f2453fc5462cde394ca5ad44322b855b7a83b81544bb260cd2aa0
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:40:13Z'
@@ -40,8 +40,8 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite's name reads "Grass Ward et al. (2016)", its place reads london and its origin
-        reads London, UK. Eight of the thirteen components declare source ward2016, filling albedo, emissivity,
-        water_storage, leaf_area_index, drainage, max_vegetation_conductance and both ohm positions, so
+        reads London, UK. Seven of the thirteen components declare source ward2016, filling albedo, emissivity,
+        leaf_area_index, drainage, max_vegetation_conductance and both ohm positions, so
         the study in the label supplies most of the assembly. The other five declare ruimy1995 for biogen_co2,
         jarvi2014 for snow_lim_patch, vegetation_growth and leaf_growth_power, and unreferenced
         for porosity. The name field is identical to that of archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016,
@@ -224,14 +224,14 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
-  scientific_note: 'Read on its own the composite is coherent. Eight of thirteen components declare source
+      se-england, representativeness regional and source jarvi2011.
+  scientific_note: 'Read on its own the composite is coherent. Seven of thirteen components declare source
     ward2016 and eight declare place se-england, a region that contains London and shares its koppen class
     Cfb, and the ohm season mapping is right, the summer-labelled code 201 set filling summer_wet and
     summer_dry and the winter-labelled set filling winter_wet and winter_dry. Two questions need a maintainer.
     The first is the vegetation_growth slot, which takes records/surfaces/grass/helsinki--jarvi2014--phenology
     although records/surfaces/grass/se-england--ward2016--phenology exists with the same target, place,
-    representativeness and source as the seven ward2016 surface components in the set and referenced by
+    representativeness and source as the six ward2016 surface components in the set and referenced by
     no archetype at all; the snow_lim_patch slot beside it is forced, the Helsinki record being the only
     grass record carrying snowpack_limit, but the phenology slot is not. The second is that this entry
     and archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016 carry byte-identical uses blocks and
@@ -240,6 +240,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:8ced944e7a0d93e18ce390e7e80c7d726c17307dd2ab58867afa26b5ae52436d
+  evidence_revision: sha256:b8894f006624678dac203e387747e35c19883535240e751486d0c48470be6dea
 verification:
   attestations: []

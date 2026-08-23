@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/london--havu-m2024--drainage: sha256:f3b9050915e3833f58059dcdc3a32b76d873338d643e9c1e1f7f7aa2d59701b1
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:66dd7df750cecac39b15326ec9d48863cab7e5d5b6e76ad4b161bb8de5b5b4d2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:3ed46cb24f33981399e78c9c71ce13de23ca625e52bed1ef8e21ff1f2fc6809f
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:36:42Z'
@@ -42,7 +42,7 @@ assessment:
         leaf_growth_power, drainage, max_vegetation_conductance and biogen_co2, and those five are exactly
         the slots in which this composite differs from its neighbours, so the study named in the label
         is the one that gives the entry its identity. The remaining slots declare other sources, vargo2013
-        for albedo, ward2016 for emissivity and water_storage, jarvi2014 for snow_lim_patch and vegetation_growth,
+        for albedo, ward2016 for emissivity, jarvi2011 for water_storage, jarvi2014 for snow_lim_patch and vegetation_growth,
         and unreferenced for porosity and ohm; the label names the study the configuration follows rather
         than the source of every component.
     target:
@@ -197,7 +197,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      se-england, representativeness regional and source jarvi2011.
   scientific_note: 'The selection holds up and the label is honest about it. Six of the twelve components
     declare place helsinki and five declare source havu-m2024, and the five havu-m2024 slots are precisely
     those in which this composite differs from its neighbours, so the entry is what its name says: the
@@ -211,6 +211,6 @@ assessment:
     place london while its name reads "Grass - Helsinki, Zurich, Beijing", which its own evidence review
     must settle; and this entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry.'
-  evidence_revision: sha256:eb8ee0f912a052260d64842db18292e76dd104fbefd0507377f902342ec95144
+  evidence_revision: sha256:f9229e97e59f469664eda24cba1268dc57c02467f777e2264f5d873e3c6983d8
 verification:
   attestations: []
