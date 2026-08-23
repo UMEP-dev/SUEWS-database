@@ -2,9 +2,9 @@ record: records/surfaces/paved/generic--kotthaus2014--emissivity
 schema_version: '2026.5'
 target: land_cover.paved
 name: Grey/ochre Cement, Weathered
-place: generic
+place: london
 origin: Generic
-representativeness: generic
+representativeness: site
 source: kotthaus2014
 legacy_id: 40241249
 parameters:
