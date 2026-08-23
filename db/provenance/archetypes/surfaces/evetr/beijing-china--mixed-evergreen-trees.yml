@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
     records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
-    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:6c9acaecdd482bfe013e3267ce25956987eee2ab96ce8298fb0e045d29ea9944
+    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:f97c533944fa1ee50906c94c1a6120e21c1caf9b6f864689afdffe453ec434d7
     records/surfaces/evetr/beijing--zheng-y2023--max-conductance: sha256:6145a6acf68b5e07dbed85748d776d8c56e986d78e5a4bf1f8feff0dc52bb6b0
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
@@ -214,6 +214,6 @@ assessment:
     the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
     values.'
-  evidence_revision: sha256:e93605308cb92721a0a64713c2f78d27c23408f6573cfa7c7a079742f509d428
+  evidence_revision: sha256:10a599d9be4d6857eaad2d38bab5d05f47a04edfd8c20ef0d5befe9858fd723d
 verification:
   attestations: []

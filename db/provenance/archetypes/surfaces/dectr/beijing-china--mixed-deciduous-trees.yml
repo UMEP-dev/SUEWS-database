@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
     records/surfaces/dectr/beijing--ward2013--lai: sha256:d5d2ef70d811d9818242eab411c58eb00a162ed5793eefbad327005a5215e0d0
-    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:74e7af5c49ae87f389683f298e37b7c08cc93ab7cd21217c9db1e43079e869a8
+    records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
@@ -192,6 +192,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:b77a363bb4e7b98cf1e56a33fecf7642e4828d18f7b28f28857d1a9458a22ede
+  evidence_revision: sha256:6c4d3329dc91187412f4d18b38a60db86a306ba4552ce40df6579b5e5cd29c9c
 verification:
   attestations: []

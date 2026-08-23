@@ -1,15 +1,15 @@
 provenance_record: records/surfaces/dectr/beijing--zheng-y2023--lai-power
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:74e7af5c49ae87f389683f298e37b7c08cc93ab7cd21217c9db1e43079e869a8
+record_revision: sha256:2619f06fa9b720d1f78f23974460ffb9f567341ff05506152cf78c5ba58f1b7a
 dependency_revisions:
   sources:
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:6c9acaecdd482bfe013e3267ce25956987eee2ab96ce8298fb0e045d29ea9944
-    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:a397fe05d296e50fa8192fe43e9a6f9f068eea35f11bb00b27c8f959b2287628
+    records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:f97c533944fa1ee50906c94c1a6120e21c1caf9b6f864689afdffe453ec434d7
+    records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:439ba53749c689154a079db02cab6b92f463798e8e7c322da1f56aebe7f93d79
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:00:44Z'
@@ -32,17 +32,14 @@ assessment:
       - zheng-model-archive
       note: Veg code 992 is the deciduous row of the modelled Beijing grid.
     values:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-parameter-publication
       - zheng-model-archive
-      note: 'Three of the four coefficients match the source exactly: Table 3 gives w1,GDD = -1.42, w2,GDD
-        = 0.00258 and w1,SDD = 2.0 for the LAI and gs_LAI cases, and the record stores those. The fourth
-        does not. The record stores senescence_sdd = 0.001, while Table 3 gives w2,SDD = 0.0001 for those
-        cases and 0.0015 for the base case, and the archived Veg code 992 gives LeafOffPower2 = 0.0001.
-        The stored value matches neither case and is an order of magnitude above the optimised one.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/323
+      note: All four coefficients now match the source exactly. Table 3 gives w1,GDD = -1.42, w2,GDD =
+        0.00258, w1,SDD = 2.0 and w2,SDD = 0.0001 for the LAI and gs_LAI cases, and the archived Veg row
+        carries LeafOffPower2 = 0.0001. The stored senescence_sdd was 0.001, which matched neither that
+        case nor the base case, and was corrected against both the article and the released model input.
     source:
       conclusion: supported
       evidence_ids:
@@ -133,11 +130,11 @@ assessment:
         flux footprint; no city-wide domain is modelled.
   scientific_note: 'The optimised LAI coefficients are genuinely Zheng et al.''s own: Appendix A sets
     out the CMA-ES fit and Table 3 publishes the result, so the source attribution and the method are
-    sound. Two things are not. The stored senescence_sdd is 0.001 where both the article and the released
-    model input give 0.0001, an order of magnitude, and the value matches neither the optimised case nor
-    the base case. And the record claims city representativeness for coefficients fitted to one park''s
-    satellite LAI series and applied to a 1 km circle. The three identical sibling records are intentional,
-    not duplicates, and any correction has to move all three together.'
-  evidence_revision: sha256:4a70d8ce75f5c65f1a5e4a5d8a61f4b62b0e5004248eabf91c8daa2e9fe502a6
+    sound. The stored senescence_sdd was 0.001 where both the article and the released model input give
+    0.0001, an order of magnitude, matching neither the optimised case nor the base case; it has been
+    corrected. What remains is that the record claims city representativeness for coefficients fitted
+    to one park''s satellite LAI series and applied to a 1 km circle. The three identical sibling records
+    are intentional, not duplicates, and any correction has to move all three together.'
+  evidence_revision: sha256:218aa5d7d0b96d7ccca17fb4a16bff6966b593bcec5b0d789b8e22e77ae62f89
 verification:
   attestations: []
