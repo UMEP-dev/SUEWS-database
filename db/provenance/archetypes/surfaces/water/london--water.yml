@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/water/london--unreferenced--water-state: sha256:eaeaf470443607e11dd96e45033816a6def8e033a5aa33bb5bd896c0d4549af3
     records/surfaces/water/london--ward2016--water-state: sha256:49c0ffc6a35518913d4c27b37707b3f13a87ef2609c88dbc713509a72257510d
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
-    records/surfaces/water/se-england--ward2016--drainage: sha256:50243a0f4aa99662fe874f299507ad110bbff4a2b15274426ae1526ec4d1eeec
+    records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
     records/surfaces/water/se-england--ward2016--emissivity: sha256:0e92987a8a4a6791f83b566de53a5774b912e2121ff3cdd2669662655bdfce42
     records/surfaces/water/se-england--ward2016--water-storage: sha256:feb52bb520718ad7bd88170804ad7984a319000e843d327ca37e8320b7785acc
 assessment:
@@ -169,7 +169,7 @@ assessment:
     record: records/surfaces/water/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.water, name Water, place se-england,
-      representativeness regional and source ward2016, and carries wet_threshold alone; it holds DrainageEq,
+      representativeness regional and source ward2018, and carries wet_threshold alone; it holds DrainageEq,
       DrainageCoef1 and DrainageCoef2 in its legacy block as -999, so the slot delivers a wetness threshold
       and no drainage equation.
   - id: component-ohm-generic--ward2016--water
@@ -185,8 +185,8 @@ assessment:
       name 'Code 60 x Multiplier for winter [602]', season_label Winter and source ward2016, carries a1,
       a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The assembly is coherent and its one problem is a matter of scale, not of place. archetypes/surfaces/water/london--water
-    declares place london and takes its albedo, emissivity and drainage from ward2016 se-england rows,
-    water storage from the ward2018 se-england row, and its state_limit from London''s own
+    declares place london and takes its albedo and emissivity from ward2016 se-england rows, water storage
+    and drainage from ward2018 se-england rows, and its state_limit from London''s own
     row. The mapping is right throughout: the drainage slot supplies wet_threshold and no drainage equation
     because the component holds DrainageEq, DrainageCoef1 and DrainageCoef2 in legacy as -999, and the
     Summer-labelled and Winter-labelled OHM records fill their own seasons. The finding is that records/surfaces/water/london--ward2016--water-state
@@ -198,6 +198,6 @@ assessment:
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:fe6196bcfab007a021bbbb35acc2a801c00eb5f2937f35e77e60355e41f09adc
+  evidence_revision: sha256:1c4ddac28a9ea56bff4447a6df42f2224d769f5684f43b7d1ff6855b1ab75262
 verification:
   attestations: []
