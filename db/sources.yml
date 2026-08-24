@@ -600,6 +600,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2020a/SUEWS_NonVeg.txt
     year: 2020
+  umep-dev2025-database:
+    author: UMEP-dev
+    journal: GitHub
+    title: 'SUEWS database pre-migration workbook: database.xlsx'
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+    year: 2025
   unreferenced:
     legacy_ids:
     - 90240000

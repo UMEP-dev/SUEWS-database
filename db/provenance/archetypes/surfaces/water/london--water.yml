@@ -11,7 +11,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--water: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:9ef3c1ebaf3b579d3ad75ba398c9b4f165f7b43adb4c525b899e1724d84c167a
     records/surfaces/water/helsinki--jarvi2014--water-state: sha256:25f3dd1e885c1ce5706a7edf885c9c22a0cc049010aa44a24e79a4af5f00c68e
-    records/surfaces/water/london--unreferenced--water-state: sha256:eaeaf470443607e11dd96e45033816a6def8e033a5aa33bb5bd896c0d4549af3
+    records/surfaces/water/london--unreferenced--water-state: sha256:d5d8d0e1697ae1ff5d09de3f0f9ba7a6fe9e11f39cbb74405d3c1343fa76699f
     records/surfaces/water/london--ward2016--water-state: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
     records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
@@ -107,10 +107,11 @@ assessment:
         stands in for a city-scale water default and the composite claims wider applicability than the
         component supports. The three se-england components declare regional and the emissivity record
         declares generic, each broader than the composite and therefore a downscaling rather than an
-        over-claim; the two OHM records declare no representativeness. The database holds two other city-class
-        water-state records, records/surfaces/water/london--unreferenced--water-state,
-        which is named 'Small Fountain' and declares source unreferenced, and records/surfaces/water/helsinki--jarvi2014--water-state,
-        which is another city's. Neither is obviously the better value for a London water surface, so
+        over-claim; the two OHM records declare no representativeness. The database holds two other water-state
+        records. records/surfaces/water/london--unreferenced--water-state is an archived London small-fountain
+        configuration with no representativeness claim, source unreferenced and method assumed;
+        records/surfaces/water/helsinki--jarvi2014--water-state is another city's city-class archived configuration.
+        Neither is obviously the better value for a London water surface, so
         this review cannot settle whether the site-class Thames row should stay or the class on the composite
         should change; a maintainer has to decide.
     method:
@@ -196,10 +197,11 @@ assessment:
     publishes a state_limit derived for one river. That is the direction of class mismatch that matters,
     because the composite claims more than its component does, unlike the se-england rows, which claim
     more than the composite and are simply applied down. Re-pointing the slot is not an obvious improvement:
-    the only other London water-state record is named ''Small Fountain'' and declares source unreferenced,
+    the only other London water-state record is an archived small-fountain configuration with no representativeness
+    claim, source unreferenced and method assumed,
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:90b699ff4eaf4609e3309d3c4b4bd2ed34e760f208bef6bdf470388cc055fcbd
+  evidence_revision: sha256:d855621c141f5878091f34e012227164cff65b7643338541884a57e1bd4229c4
 verification:
   attestations: []
