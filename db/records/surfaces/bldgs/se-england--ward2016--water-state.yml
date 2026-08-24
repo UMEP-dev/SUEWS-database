@@ -5,7 +5,8 @@ name: Buildings
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id: 42240042
 parameters:
   state_limit: 0.25
