@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
@@ -76,7 +76,7 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       note: 'The composite claims place beijing, registered in db/places.yml with Koppen class Dwa, but
         only three of its twelve components carry that place. Two carry place helsinki, registered Dfb;
-        three carry place london, registered Cfb; one carries place se-england, two are generic; and the
+        two carry place london, registered Cfb; one carries place se-england, three are generic; and the
         OHM record carries no place at all. Two of the Helsinki imports are conditioned on climate rather than on species:
         records/surfaces/dectr/helsinki--jarvi2014--snow-lim supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology
         supplies the growing- and senescing-degree-day thresholds, both set for a cold-climate Nordic
@@ -91,13 +91,14 @@ assessment:
       - component-surfaces-dectr-beijing-zheng-y2023-lai-power
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       note: The composite claims representativeness city, but its leaf_growth_power component is now
         correctly classed site because the coefficients were fitted to one park. A city archetype therefore
         contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
         a separate composition-curation decision. The regional water-storage record is broader than
-        the composite and the generic literature albedo is broader still, so neither creates the same
-        over-claim; the OHM record declares no class.
+        the composite and the generic albedo and porosity records are broader still, so none creates the
+        same over-claim; the OHM record declares no class.
     method:
       conclusion: supported
       evidence_ids:
@@ -172,9 +173,9 @@ assessment:
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
-    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
-      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
-      to all eight deciduous-tree composites.
+    note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
+      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
@@ -202,6 +203,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:c6f00a26106cbb36882e695a439025f40ab0af040bffe79f3e694176ae136082
+  evidence_revision: sha256:6b012556778056c5c1384ae2d243060e496789104cf3e6e2f9bb12220f82dbb6
 verification:
   attestations: []

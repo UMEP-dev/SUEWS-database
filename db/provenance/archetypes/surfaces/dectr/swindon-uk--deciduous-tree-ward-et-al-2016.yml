@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
     records/surfaces/dectr/se-england--ward2016--drainage: sha256:ee68ecf5fb01f073e0366ef5f1f701e7ffdce65ce5a83e382f8aa85677f3fbf9
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
@@ -78,9 +78,8 @@ assessment:
       - component-surfaces-dectr-swindon-ward2016-emissivity
       note: The composite claims place swindon, registered in db/places.yml with Köppen class Cfb, and
         the emissivity component is the one record placed there. Seven carry place se-england, which db/places.yml
-        marks subnational and which contains Swindon, so the Ward set sits comfortably. Three do not.
-        The porosity slot takes a London record, which is a neighbouring Cfb city and a mild import. The
-        vegetation_growth slot takes records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature
+        marks subnational and which contains Swindon, so the Ward set sits comfortably; the generic porosity
+        record likewise does not overreach. Two do not. The vegetation_growth slot takes records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature
         5, base_temperature_senescence 10) although records/surfaces/dectr/se-england--ward2016--phenology
         exists with the composite's own source and region (base_temperature 6, base_temperature_senescence
         11) and is referenced by no archetype in the database; schema/parameter_groups.yml classes those
@@ -94,13 +93,13 @@ assessment:
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-albedo
       - component-surfaces-dectr-swindon-ward2016-emissivity
+      - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
       note: The composite claims representativeness city. Seven components are classed regional, the SE
-        England Ward 2016 set and the Ruimy biogenic record; four are classed city, the Swindon emissivity,
-        the London porosity and the two Helsinki records; and the two OHM records declare no class. A
-        regional value is offered as typical of a wider area and so covers a city, and no component claims
-        a narrower scale than the composite does.
+        England Ward 2016 set and the Ruimy biogenic record; three are classed city, the Swindon emissivity
+        and the two Helsinki records; porosity is generic; and the two OHM records declare no class. Regional
+        and generic values cover a city, and no component claims a narrower scale than the composite does.
     method:
       conclusion: supported
       evidence_ids:
@@ -161,9 +160,9 @@ assessment:
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
-    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
-      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
-      to all eight deciduous-tree composites.
+    note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
+      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-se-england-ward2016-albedo
     record: records/surfaces/dectr/se-england--ward2016--albedo
     role: component
@@ -215,6 +214,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology and the
     snow limit, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:ac2ec9baacd9aebbb28a65cf07528b5a45e7139e35d9efa6fa5e2fb8337737b0
+  evidence_revision: sha256:632597b94271ab8e6fa3277f805439a985fbfe67a5dcdae4b67657f19ee39741
 verification:
   attestations: []
