@@ -1,0 +1,116 @@
+provenance_record: records/anthropogenic/swindon--ward2016
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2a2122aa50c647d0ff16b5ce52907c31da5e945067b41dd55924e01a15c62bae
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T17:05:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/103
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      - release-code-551
+      note: Ward et al. identify Sw as a suburban residential site, and the release registry labels
+        code 551 as the Swindon fit.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      note: Equation 5 and Table 3 define the temperature-dependent anthropogenic heat coefficients
+        represented by the record's qf_a, qf_b and qf_c fields.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      - release-code-551
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/103
+      note: Table 3 prints the Sw weekday tuple as 0.1446, 0, 0.0037 and the weekend tuple as
+        0.1330, 0, 0.0038. Historical code 551 preserves the underlying fit at greater precision,
+        including weekend qf_a 0.1329150; the migrated record consistently stores four decimal
+        places and therefore retains 0.1329 rather than replacing it with the publication's printed
+        0.1330. No active value is changed.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      - release-code-551
+      note: Ward et al. publish and describe the fitted coefficients. The v2016a coefficient registry
+        is later implementation and precision-preservation evidence, not a replacement parameter source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      - release-code-551
+      note: The coefficients are fitted to the Swindon suburban site and code 551 is explicitly
+        labelled Swindon fit.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - ward-qf-fit
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/713
+      note: Ward et al. derive the coefficients for the single suburban Sw study site. That supports
+        site reach, not the record's current city-wide representativeness; issue 713 isolates the
+        scope correction from this issue's value-precision decision.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      note: Section 4.3 explicitly says the UK-site coefficients were derived by fitting the Kc and
+        Sw data, and Table 3 distinguishes those fitted columns from literature values.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-qf-fit
+      - release-code-551
+      note: Historical code 551 contains the same Swindon fit and explains the record's stable legacy
+        identity. Retaining the four-decimal migrated values preserves that identity.
+  evidence:
+  - id: ward-qf-fit
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 4.3, Equation 5
+      page: 11, 12
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Defines the anthropogenic heat model and states that separate weekday and weekend
+        coefficients were fitted to the Kc and Sw data after removing cooling-degree dependence.
+    - kind: table
+      label: Table 3, Sw weekday and weekend columns
+      page: 12
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Prints Sw qf_a as 0.1446 and 0.1330, qf_b as zero, and qf_c as 0.0037 and 0.0038.
+  - id: release-code-551
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_AnthropogenicHeat.txt, code 551
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_AnthropogenicHeat.txt#L5
+      note: Preserves the Swindon fit as 0.1445807, 0, 0.0037491 on weekdays and 0.1329150,
+        0, 0.0037537 on weekends, establishing why the four-decimal migrated weekend value is 0.1329.
+  scientific_note: Ward et al. publish the Swindon anthropogenic-heat fit at Table 3 precision, while
+    the pinned v2016a coefficient registry preserves the underlying coefficients at seven decimal
+    places. The record's 0.1329 is the consistent four-decimal representation of release value
+    0.1329150; replacing it with the table's printed 0.1330 would discard stable migration precision.
+    The record now declares the source-established fitted method. No parameter value, source, place,
+    target, legacy ID, origin or stable path changed.
+  evidence_revision: sha256:a039a6f401cceb05d4a53b420a37111d6957451f8caa28f482236f8192499a6f
+verification:
+  attestations: []
