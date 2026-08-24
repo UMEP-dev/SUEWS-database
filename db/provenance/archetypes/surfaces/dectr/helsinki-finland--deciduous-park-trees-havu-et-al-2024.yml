@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -70,9 +70,11 @@ assessment:
       - component-surfaces-dectr-london-ward2016-emissivity
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: The composite claims place helsinki, and six of its twelve components carry that place, including
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: The composite claims place helsinki, and five of its twelve components carry that place, including
         both climate-conditioned ones, the snowpack limit and the four degree-day thresholds. Three carry
-        place london, one carries place se-england and the OHM record carries no place. The exception
+        place london, one carries place se-england, one carries place zurich, the albedo record is generic
+        and the OHM record carries no place. The exception
         that needs a decision is the leaf_area_index slot, which takes records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c,
         placed at zurich and named "Deciduous Tree (sample data) c". The database holds no Helsinki deciduous-tree
         leaf-area-index record, so that slot has to import from somewhere, but this import is a third
@@ -86,9 +88,10 @@ assessment:
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Ten components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional and the OHM record declares no class. A regional value covers a city, so no
-        component claims a narrower scale than the composite does.
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: The composite claims representativeness city. Nine components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional, the albedo record is generic and the OHM record declares no class. Regional
+        and generic values cover a city, so no component claims a narrower scale than the composite does.
     method:
       conclusion: supported
       evidence_ids:
@@ -149,8 +152,8 @@ assessment:
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Deciduous Forest" and carries source vargo2013.
+    note: Fills albedo. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous Forest", carries source vargo2013 and declares method literature.
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
@@ -195,6 +198,6 @@ assessment:
     whether the Zurich sample-data record is the intended park leaf area index and, if it is, record why.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:8ff4d3eeaf966711b5580bc89bd7e03f36ff19c6c4e34f7e80021c77e9b5b9cb
+  evidence_revision: sha256:4c5dc66c525e0a73cace1124493a1b3c69df9bbd133738b48376fe3bdd5e509f
 verification:
   attestations: []

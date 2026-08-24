@@ -2,10 +2,11 @@ record: records/surfaces/dectr/helsinki--vargo2013--albedo
 schema_version: '2026.5'
 target: land_cover.dectr
 name: Deciduous Forest
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
+representativeness: generic
 source: vargo2013
+method: literature
 legacy_id: 41240027
 parameters:
   alb_min: 0.16

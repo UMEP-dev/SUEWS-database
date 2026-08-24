@@ -11,7 +11,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -78,8 +78,9 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       note: 'The composite claims place zurich, registered in db/places.yml with Köppen class Cfb, and
         four of its twelve components carry that place: the leaf area index, the leaf growth power, the
-        maximum conductance and the biogenic CO2 set. Three carry place helsinki, registered Dfb; three
-        carry place london; one carries place se-england; and the OHM record carries no place. Two of
+        maximum conductance and the biogenic CO2 set. Two carry place helsinki, registered Dfb; three
+        carry place london; one carries place se-england, the albedo record is generic; and the OHM record
+        carries no place. Two of
         the Helsinki imports are conditioned on climate rather than on species: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
         supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology supplies the
         growing- and senescing-degree-day thresholds, both set for a Nordic city and carried here into
@@ -91,10 +92,11 @@ assessment:
       conclusion: supported
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Ten components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional and the OHM record declares no class. A regional value is offered as typical
-        of a wider area and so covers a city, and no component claims a narrower scale than the composite
+      note: The composite claims representativeness city. Nine components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional, the albedo record is generic and the OHM record declares no class. Regional
+        and generic values cover a city, and no component claims a narrower scale than the composite
         does.
     method:
       conclusion: supported
@@ -140,8 +142,8 @@ assessment:
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Deciduous Forest" and carries source vargo2013.
+    note: Fills albedo. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous Forest", carries source vargo2013 and declares method literature.
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
@@ -191,8 +193,9 @@ assessment:
       and representativeness city. It carries source breuer2003 and method literature.
   scientific_note: 'The Zurich-specific content is the configuration and application context rather than
     a single common parameter source. Leaf growth power and the biogenic CO2 set come from stagakis-s2024
-    records placed at Zurich; maximum conductance is a Breuer 2003 literature value applied there; and
-    the leaf area index is a Zurich record too, though it comes from jarvi2011
+    records placed at Zurich; maximum conductance is a Breuer 2003 literature value applied there; albedo
+    is a generic Vargo literature constant; and the leaf area index is a Zurich record too, though it
+    comes from jarvi2011
     and its own name calls it sample data. The LAI pair agrees on lai.lai_type 1, the targets are right
     and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
@@ -202,6 +205,6 @@ assessment:
     Zurich while its place field says London. Neither question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:28e5eb3b45f41178eecb2e2f0292465057d20adf6812e9316d2114ce00004951
+  evidence_revision: sha256:40d921262f9e790ead12e9550ded2264fc2343da82453e323a6db850fd8e7f03
 verification:
   attestations: []
