@@ -571,6 +571,13 @@ sources:
     title: Estimation of Atmospheric Boundary Layer Parameters for Diffusion Applications
     type: journalArticle
     year: 1985
+  umep-dev2016a:
+    author: UMEP-dev
+    journal: GitHub
+    title: 'SUEWS v2016a release workbook: SUEWS_SiteInfo18_Lo.xlsm'
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+    year: 2016
   unreferenced:
     legacy_ids:
     - 90240000
