@@ -1,0 +1,136 @@
+provenance_record: records/surfaces/evetr/se-england--ward2016--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
+dependency_revisions:
+  sources:
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records:
+    records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
+    records/surfaces/evetr/shanghai--ao2018--lai: sha256:3b0c17fee9014f3faa752b2acfe9aa4f48119af9a3b5a1c90d5cabd3fe687e0e
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T07:30:10Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      - ward-phenology
+      note: Evergreen Tree follows Järvi's coniferous-tree SUEWS category, but the SE England qualifier
+        is later application context rather than the scope of the published bounds.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Järvi et al. publish the two bounds for the coniferous-tree SUEWS vegetation category represented
+        by land_cover.evetr.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - jarvi2014-table-4
+      - breuer-table-7
+      note: Järvi et al. (2011) Table 2 publishes LAImin 4 and LAImax 5.1 for coniferous trees. Järvi et
+        al. (2014) Table 4 repeats the pair. Breuer Table 7 supplies the 5.1 coniferous-forest median but
+        not the lower bound 4.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - jarvi2014-table-4
+      - breuer-table-7
+      - ward-phenology
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/147
+      note: Järvi et al. (2011) are the earliest located direct publisher of the complete 4/5.1 record.
+        Järvi et al. (2014) explicitly reuse the earlier source set, while Ward et al. evaluate seasonal
+        timing without publishing these bounds as a new SE England fit.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      - ward-phenology
+      note: Järvi Table 2 publishes general SUEWS model parameters, not an SE England determination.
+        Ward establishes the UK application context but does not establish the bounds as regional evidence.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      - ward-phenology
+      note: The values are literature/default bounds reused in later applications. Calling the stable
+        migration record regional SE England evidence is not established by the sources.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The record transcribes a published SUEWS parameter pair.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      related_records:
+      - records/surfaces/evetr/beijing--ward2016--lai
+      - records/surfaces/evetr/shanghai--ao2018--lai
+      note: The Shanghai record carries the same lai_type and bounds under another source, while the
+        Beijing sample record carries the same bounds with a different lai_type. Whether the stable SE
+        England path is a quoted default or distinct regional evidence requires curation; this source
+        correction neither merges nor deletes any record.
+  evidence:
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, model parameter values by surface type and general run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes LAImax,con 5.1 and LAImin,con 4; footnote c traces the maximum to Breuer et al.
+        (2003), while the table directly publishes the complete pair used by SUEWS.
+  - id: breuer-table-7
+    source: breuer2003
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 7, parameter values for land covers in global temperate ecosystems
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Publishes median LAI 5.1 for coniferous forest; it does not publish the lower bound 4.
+  - id: jarvi2014-table-4
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4, parameters used in SUEWS by surface
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Repeats LAImax,everg 5.1 and LAImin,everg 4.0 and states that values use Järvi et al. (2011)
+        sources unless otherwise indicated.
+  - id: ward-phenology
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Sect. 4.1, seasonal cycle of vegetation phenology
+      page: 7
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Evaluates the timing of the modelled seasonal LAI cycle from site photographs and adjusts
+        degree-day temperatures, but does not publish 4/5.1 as newly fitted SE England bounds.
+  scientific_note: 'The complete LAI pair is sourced to Järvi et al. (2011), not to Breuer alone: Breuer
+    supports the maximum 5.1 but not the minimum 4. Järvi et al. (2014) repeat both values, and Ward et
+    al. evaluate phenological timing without republishing the bounds. The stable path, name, place and
+    regional class are retained as migration/application identity and remain curation-required because
+    overlapping migrated records exist.'
+  evidence_revision: sha256:298bf850333dd6cee81d44eec178ba988fde2839dc24dbafa81fa88609a29803
+verification:
+  attestations: []

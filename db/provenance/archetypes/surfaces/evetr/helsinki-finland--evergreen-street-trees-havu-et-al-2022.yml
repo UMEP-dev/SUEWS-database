@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
-    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
@@ -177,7 +177,8 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree (SE England)"; it carries source jarvi2011 and declares
+      method literature.
   - id: component-surfaces-evetr-helsinki-havu-m2024-lai-power
     record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
     role: component
@@ -232,6 +233,6 @@ assessment:
     which declares place london while its name reads "EvergreenTree - Helsinki, Zurich, Beijing" and it
     fills that slot in all five composites placed at the three cities it names. Neither question touches
     a component's values, and both are cheaper to settle once for the class than composite by composite.
-  evidence_revision: sha256:a6d8e409e1cd8c391e192ac092334271b9ff4b6d2eb3a5f0069965b16b0a0b6f
+  evidence_revision: sha256:200ef7e3786f2d24b4cbdd4e1e46fee02ecf88e1fecd0719a71c016584b168a7
 verification:
   attestations: []

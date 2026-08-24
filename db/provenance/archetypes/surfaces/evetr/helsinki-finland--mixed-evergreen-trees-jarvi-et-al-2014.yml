@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:26563d2be0d8d4f4324a5fe89df25c8191a9051856bdbf6b0ec774d4f93d0e5a
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
-    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
     records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
 assessment:
@@ -164,7 +164,8 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree (SE England)"; it carries source jarvi2011 and declares
+      method literature.
   - id: component-surfaces-evetr-helsinki-havu-m2024-lai-power
     record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
     role: component
@@ -224,6 +225,6 @@ assessment:
     and the maximum conductance row, which is openly classed generic rather than passed off as a Helsinki
     value. The questions are all about selection and mapping, so they can be settled inside the composite
     without touching any record.'
-  evidence_revision: sha256:401d1a26bc1e85ab6211d8018ed331ee3b0ee69ed345aa3164d47441d09e4fdc
+  evidence_revision: sha256:b04f1c9fc64a84991c8a2d47c1446094ab9c9213af0ee9af1456e626353f80b8
 verification:
   attestations: []
