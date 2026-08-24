@@ -59,12 +59,16 @@ assessment:
       evidence_ids:
       - stagakis-zurich-suews-lawn
       note: The study applies the SUEWS lawn parameters to four public parks in Zurich, Switzerland.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/357
     representativeness:
       conclusion: supported
       evidence_ids:
       - stagakis-zurich-suews-lawn
       note: The same parameter set is used across four Zurich parks, and the study scales their lawn simulations
         to a central 2 km by 2 km city domain under an explicit representativeness assumption.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/357
     method:
       conclusion: supported
       evidence_ids:
@@ -140,6 +144,6 @@ assessment:
     publication. The pre-migration row remains compilation evidence, and source_legacy_ref 90240064
     preserves its former Ao link without presenting that link as scientific support. No value, stable path,
     origin, place, representativeness or legacy ID changes.
-  evidence_revision: sha256:076b8a2d447533fc85f529c232e9d8694ff5218c9a74d3d9fc927fac9b3ded63
+  evidence_revision: sha256:083f6df46f8f1d7a2b90fb7f6789446f370101675e31bb5fb72706f1fe7c7928
 verification:
   attestations: []
