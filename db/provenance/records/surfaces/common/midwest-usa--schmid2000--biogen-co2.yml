@@ -12,7 +12,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-25T00:45:00Z'
+  assessed_at: '2026-08-24T23:30:48Z'
   assessor:
     kind: agent
     name: provenance-audit
