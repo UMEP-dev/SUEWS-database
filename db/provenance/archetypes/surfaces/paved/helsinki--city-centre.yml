@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
-    records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
+    records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:43:17Z'
@@ -82,8 +82,7 @@ assessment:
       - component-ohm-generic--unreferenced--paved
       note: The composite declares place helsinki. The albedo, emissivity, water_storage and snow_lim_patch
         slots take records declaring place helsinki, so four of the seven components are the city's own
-        rows. The drainage slot takes records/surfaces/paved/london--jarvi2011--drainage, place london;
-        the construction slot takes a record with place generic; records/ohm/generic--unreferenced--paved
+        rows. The drainage and construction slots take records with place generic; records/ohm/generic--unreferenced--paved
         declares no place at all. That borrowing is forced. The database holds three paved drainage records,
         records/surfaces/paved/london--jarvi2011--drainage, records/surfaces/paved/se-england--ward2016--drainage
         and records/surfaces/paved/swindon--ward2013--drainage, and none carries place helsinki; no paved
@@ -99,9 +98,9 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The four Helsinki components and records/surfaces/paved/london--jarvi2011--drainage
-        all declare city; records/constructions/generic--lindberg-f2020--placeholder declares generic,
-        which is broader rather than narrower, and records/ohm/generic--unreferenced--paved declares no
+      note: The composite declares representativeness city. The four Helsinki components declare city;
+        the drainage and construction records declare generic, which is broader rather than narrower,
+        and records/ohm/generic--unreferenced--paved declares no
         representativeness at all. No component is classed below the composite's scale.
     method:
       conclusion: supported
@@ -158,8 +157,8 @@ assessment:
   - id: component-surfaces-paved-london--jarvi2011--drainage
     record: records/surfaces/paved/london--jarvi2011--drainage
     role: component
-    note: Fills the drainage slot. The record declares target land_cover.paved, name 'Paved [sample run]',
-      place london, representativeness city and source jarvi2011, and carries drain_eq, drain_coef_1,
+    note: Fills the drainage slot. The record declares target land_cover.paved, name Paved,
+      place generic, representativeness generic and source jarvi2011, and carries drain_eq, drain_coef_1,
       drain_coef_2 and wet_threshold.
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
@@ -192,9 +191,8 @@ assessment:
     and neither asserts a parameter of its own, so a reader choosing between a Helsinki city centre and
     a Helsinki Kumpula paved surface is choosing between two labels over one set of numbers. archetypes/surfaces/paved/zurich--city-centre
     carries the same seven components again under a Zurich label, so whatever is decided here bears on
-    that entry too. Two component labels a reader should carry forward without acting on them here: the
-    drainage record is named ''Paved [sample run]'' and the OHM record declares source unreferenced, both
-    questions for those records'' own evidence reviews rather than for the assembly.'
-  evidence_revision: sha256:fb1dcc1258fc2c3878ff6b36a9e94f3e8446a7b4b0ba7db56da2ac1044c43f62
+    that entry too. The drainage record is now documented as generic literature evidence; the OHM record
+    still declares source unreferenced, a question for that record''s own evidence review rather than for the assembly.'
+  evidence_revision: sha256:5d80ddecbaadad7f23cf60c5d0832d195b98f06df8333b6768a37f158924012d
 verification:
   attestations: []
