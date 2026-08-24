@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016: sha256:87c22ea834c9dbf28895706d6c362823f8ea7d47bda01b0dd320d0ddfae6ff5d
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
     records/ohm/generic--ward2016--bare-soil: sha256:52071f05f8e52e73f651b4897f20aa3cbf7c36f02ca91b4556d456477dcc3d16
-    records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:3e0ed22815f2df9ba07ef0b78a5176140ea52e750644a4ed55322f92c6296393
+    records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:71d99f8b507c5f2a47663d322aa15ed1a2ca3d4ccbed4664a81b1239efa521dc
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:2cbc1a83b31231fd6bb5092852a2b878cfb59618bb9d9cebf5f4e6dc74805d7c
@@ -217,6 +217,6 @@ assessment:
     the same place: the exported surface evidence is regional and covers both towns; the London construction
     mismatch is non-exporting but remains a composition-provenance defect. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:2d2da0305bb2b5eefd2e90f8d6741024e474ee0ac63c70f45027116406d1f3eb
+  evidence_revision: sha256:4425d4f0ce2ae45c28642af6926e39c791376b7920e872bbf2c36dd0f833c029
 verification:
   attestations: []
