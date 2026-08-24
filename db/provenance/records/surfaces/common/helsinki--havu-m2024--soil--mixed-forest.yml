@@ -1,0 +1,111 @@
+provenance_record: records/surfaces/common/helsinki--havu-m2024--soil--mixed-forest
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:40e709ca7c5bbed121a78af3a2a54d821ddb58cac807825e47f2a4af814b8e14
+dependency_revisions:
+  sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:28:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/235
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      note: Mixed forest identifies the one archived soil-code configuration reused by both the deciduous-
+        and evergreen-forest surface rows; it does not claim that the paper publishes a mixed-forest soil value.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      - havu-table-b1
+      note: The tuple consists of soil properties stored as the shared common soil input for the two Helsinki
+        forest land-cover surfaces.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      - havu-table-b1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/235
+      note: The archived executable input stores soil code 71 as depth 1000 mm, capacity 312 mm,
+        conductivity 0.0005 and density 1.16 and assigns it to both forest types. Havu Table B.1 instead
+        publishes separate 1 m deciduous and evergreen capacities of 0.31 and 0.29 m, so the retained
+        312 mm tuple is supported only as the exact configuration value, not as a published mixed-forest parameter.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      - havu-table-b1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/235
+      note: The citable Zenodo dataset is the direct source for the exact executable tuple. The journal
+        article is retained separately as validation evidence because it publishes distinct deciduous and
+        evergreen capacities rather than the archived 312 mm shared value.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      - havu-table-b1
+      note: Both the publication and archived surface rows identify Helsinki as the application place.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      note: City describes the archived Helsinki model configuration, in which the shared soil code is
+        assigned to both forest surface classes across the city model; it is configuration reach, not observational reach.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      - havu-table-b1
+      note: Literature records direct transcription of the citable archived dataset. The database neither
+        averages the paper values nor attributes the configuration tuple to a new fit or measurement.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - archived-helsinki-soil
+      note: The stable path, Helsinki origin, legacy ID, name and exact tuple retain the migrated shared-soil
+        identity without collapsing it into either of the distinct published forest parameter rows.
+  evidence:
+  - id: archived-helsinki-soil
+    source: havu-m2024-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 71
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Stores 1000, 312, 0.0005 and 1.16 as the executable Helsinki forest soil tuple.
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 831 and 841
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Assigns SoilTypeCode 71 to both the Helsinki deciduous-forest and evergreen-forest rows.
+  - id: havu-table-b1
+    source: havu-m2024
+    role: validation
+    locators:
+    - kind: table
+      label: Table B.1, deciduous-forest and evergreen-forest soil rows
+      page: '11'
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      note: Publishes 1.0 m depth for both forest types but separate SWCmax values of 0.31 and 0.29 m;
+        it does not publish a mixed-forest 0.312 m capacity.
+  scientific_note: The citable archived dataset and the paper are not interchangeable evidence. The archive
+    directly supplies the complete executable tuple and proves that one 312 mm soil code was run for both
+    Helsinki forest types; Table B.1 publishes distinct deciduous and evergreen capacities. This record
+    therefore preserves the exact archived tuple with the dataset as its parameter source and makes the
+    publication distinction visible. No value, stable path, name or legacy identity is changed.
+  evidence_revision: sha256:2768535096f90c107da316ef75f1dc709e6f538cb3b7ad4903501953eb100e59
+verification:
+  attestations: []
