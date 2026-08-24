@@ -5,6 +5,7 @@ record_revision: sha256:cdec0b7e038fc5455eeb31e8d7a96295a13838707bfeb8d7a22755ce
 dependency_revisions:
   sources:
     havu2022: sha256:a3279510f3c601e95ee46e1d391eb4efa617df1244f2d3a07eeded647d789be9
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
@@ -12,7 +13,7 @@ dependency_revisions:
     records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:00:44Z'
+  assessed_at: '2026-08-24T18:54:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -74,16 +75,17 @@ assessment:
       note: A reused parameter row rather than an independent determination; the production method belongs
         to the study that characterised the Viikki soil.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - zheng-model-archive
-      note: The four stored parameters and the whole legacy block are identical to records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees.
-        Whether the database keeps a separate application record, aliases it, or merges the two is a maintainer
-        decision.
+      - havu-archived-street-selection
+      note: Zheng's archive carries the code-72 tuple as Viikki street trees and selects it for Beijing
+        vegetation rows 991-993, while the Havu archive selects its matching code-72 tuple for the distinct
+        Helsinki street-tree rows 832 and 842. The stable paths and legacy IDs retain those separate
+        configuration lineages; keeping both records documents intentional reuse rather than two independent
+        parameter determinations.
       related_records:
       - records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/333
   evidence:
   - id: havu-viikki-soil
     source: havu2022
@@ -122,6 +124,19 @@ assessment:
       url: https://doi.org/10.5281/zenodo.8012194
       note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
         Beijing grid, so those rows are the ones the published runs used.
+  - id: havu-archived-street-selection
+    source: havu-m2024-data
+    role: validation
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 72
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Stores the matching executable tuple 1000, 141, 0.0005, 1.16 and 10 as the Helsinki Viikki
+        street-tree soil.
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 832 and 842
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Assigns SoilTypeCode 72 to the distinct Helsinki deciduous- and evergreen-street-tree surface rows.
   - id: zheng-article
     source: zheng-y2023
     role: compilation
@@ -147,8 +162,11 @@ assessment:
     publish the 1 m / 0.141 m pair for two Viikki street-tree sites, which settles the active name, Helsinki
     place and site representativeness. The complete row''s provenance is not settled: Zheng carries three
     other SUEWS properties that Havu does not publish, so the one-source record schema cannot credit Havu
-    without over-attributing those values. The row also remains byte-identical to records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees;
-    issue 333 separately tracks whether both records should exist.'
-  evidence_revision: sha256:7815d0787471f5c5fc03c249b0181612ea6ca7d628381d48020388a222cfd204
+    without over-attributing those values. The exact duplicate is intentional configuration reuse, not
+    a second parameter determination: the Zheng archive applies code 72 in the Beijing model, while the
+    Havu archive selects the matching code-72 tuple for its distinct Helsinki street-tree surfaces. Retaining
+    both stable records preserves those separate configuration lineages while the related-record link makes
+    their shared tuple explicit. No path, origin, legacy lineage or value is changed.'
+  evidence_revision: sha256:48729741bf5b6dfff9e3671153f3bce17544012efbefea2866d4fe294a72f2f2
 verification:
   attestations: []
