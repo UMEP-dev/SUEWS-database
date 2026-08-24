@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
-    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
@@ -167,7 +167,8 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree (SE England)"; it carries source jarvi2011 and declares
+      method literature.
   - id: component-surfaces-evetr-helsinki-havu-m2024-lai-power
     record: records/surfaces/evetr/helsinki--havu-m2024--lai-power
     role: component
@@ -214,7 +215,7 @@ assessment:
   scientific_note: 'This is a well-formed Helsinki composite. The slots that carry the typology, leaf
     growth power, maximum conductance and biogenic CO2, all take Helsinki rows sourced to havu-m2024,
     the biogenic CO2 record is the one named for forest, and the four slots with no Helsinki row available
-    fall back to SE England regional rows from Ward et al. The two LAI components agree on lai_type 1,
+    fall back to two SE England regional rows from Ward et al. and two from Järvi et al. The two LAI components agree on lai_type 1,
     the slot set is complete, and one unlabelled coefficient record fills all four OHM positions, which
     its own lack of a season_label permits. The single thing a maintainer must settle is the drainage
     component: records/surfaces/evetr/london--havu-m2024--drainage declares place london while its name
@@ -223,6 +224,6 @@ assessment:
     at the three cities its name lists. Either the record''s
     place is wrong or five composites are drawing drainage from London; the entries do not say which,
     and the answer belongs with the record''s own evidence review.'
-  evidence_revision: sha256:347bafc8440ac9aec8a5832beacade9ccf4697536f52b975536db1f11566a907
+  evidence_revision: sha256:d34bc3ad7d147087902d110f5890ea732477ce6451b2b365368b18aa3463f594
 verification:
   attestations: []

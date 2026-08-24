@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--drainage: sha256:960f0096f02dc5c845859db5cdee3cb8ce2a79abee8e9ff6c37eb81498f32bd8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
-    records/surfaces/evetr/se-england--ward2016--lai: sha256:56d8e30db1c594b1c949bdd989127ae5c849dd2a371dff29f85d74b4a2813aaf
+    records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
     records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:55e0cb9863f351fe6802a49505a0f764f0daf8be82f87be43946949751a772d9
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
@@ -186,7 +186,8 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree (SE England)"; its source field reads jarvi2014.
+      regional, and is named "Evergreen Tree (SE England)"; it carries source jarvi2011 and declares
+      method literature.
   - id: component-surfaces-evetr-se-england-ward2016-lai-power
     record: records/surfaces/evetr/se-england--ward2016--lai-power
     role: component
@@ -248,6 +249,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:6788cd9cda3894e09f7163fae85952bf1c3ac37f19b95c14bade02968131c3d3
+  evidence_revision: sha256:eff8e6727f8954f2870d7ea7d56ec80ea52127b2261ed9f350576733a71870c6
 verification:
   attestations: []

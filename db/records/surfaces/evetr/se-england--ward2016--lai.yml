@@ -5,7 +5,8 @@ name: Evergreen Tree (SE England)
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: jarvi2011
+method: literature
 legacy_id: 31240044
 parameters:
   lai:
