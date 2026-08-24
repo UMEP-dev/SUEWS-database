@@ -4,10 +4,11 @@ target: profile.energy-use
 attaches_to: anthropogenic_emissions.heat.ahprof_24hr
 profile_type: Energy use
 name: Energy Use
-place: se-england
+place: vancouver
 origin: SE England, United Kingdom
-representativeness: city
-source: ward2016
+representativeness: site
+source: jarvi2011
+method: literature
 legacy_id:
 - 60240951
 - 60240952
