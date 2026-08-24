@@ -16,7 +16,7 @@ dependency_revisions:
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
     records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
-    records/irrigation/vancouver--unreferenced: sha256:35694223ee516c2c565a807c26353f8fefcee006e64f10797166b392286cf173
+    records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
     records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
@@ -243,8 +243,9 @@ assessment:
   - id: component-records-irrigation-vancouver-unreferenced
     record: records/irrigation/vancouver--unreferenced
     role: component
-    note: Fills irrigation. The entry declares target irrigation, place vancouver and representativeness
-      city.
+    note: Fills irrigation. The entry declares target irrigation, place vancouver, representativeness
+      city, source unreferenced and method assumed; its evidence review identifies an archived Vancouver
+      application configuration.
   - id: component-records-surfaces-common-se-england-ward2016-soil
     record: records/surfaces/common/se-england--ward2016--soil
     role: component
@@ -324,6 +325,6 @@ assessment:
     components standing for a region and two unsourced base temperatures declared on the composite itself,
     the file needs a curator to confirm or replace the Zurich selection rather than any change to the
     components'' values.'
-  evidence_revision: sha256:366645ff4c0aaeced6776d39fd2ec8448d5d34cf8b68c2d0a5559c2523429332
+  evidence_revision: sha256:2dbf007d4023dd5d0555a61b1e8b69b8e3b6042d9498cc223e1065cb4df2983d
 verification:
   attestations: []
