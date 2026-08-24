@@ -3,9 +3,10 @@ schema_version: '2026.5'
 target: conductance
 name: Default Jarvi et al. (2011) gsModel=1
 place: generic
-origin: Unspecified
+origin: Vancouver and Los Angeles
 representativeness: generic
 source: jarvi2011
+method: fitted
 legacy_id: 44240001
 parameters:
   g_max: 16.4764

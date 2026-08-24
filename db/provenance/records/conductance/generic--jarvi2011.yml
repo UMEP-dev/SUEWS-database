@@ -1,0 +1,134 @@
+provenance_record: records/conductance/generic--jarvi2011
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:08196b05cfa87712dd27d2dcf54f710ca3d01333f7d76c522c65056c760e40c6
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T14:38:32Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/302
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      - suews2016a-default-compilation
+      note: Järvi et al. publish the conductance fit used for the base run, and the release workbook
+        labels the exact row Default and Jarvi et al. (2011).
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      - suews2016a-default-compilation
+      note: Equation 15 defines the integrated surface-conductance parameterisation, and the workbook
+        preserves the corresponding values on the SUEWS_Conductance sheet.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      - suews2016a-default-compilation
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/302
+      note: Tables 2 and 5 publish G1-G6 at rounded precision and Table 2 publishes TH, TL, S1, S2 and
+        Kmax exactly. The pinned v2016a workbook row publishes the complete stored tuple, including
+        the exact four-decimal G1-G6 values, without requiring a value change.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      - suews2016a-default-compilation
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/302
+      note: Järvi et al. (2011) remains the original fit publication and parameter source. The separate
+        UMEP-dev source records the later release workbook as an exact default compilation, rather than
+        attributing its extra decimal places to the article.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      note: Five datasets from Vancouver and Los Angeles were pooled expressly to generalise the fitted
+        values for urban environments. Generic is therefore the parameter's intended application place,
+        while origin now records the two cities that supplied the observations.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      note: The article presents the pooled all-dataset median as a general urban parameter set and uses
+        it in the SUEWS base run, supporting generic rather than a single-site evidence scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-conductance-fit
+      note: Section 3.2 fits G1-G6 by non-linear least-squares regression within 100 bootstrap subsets,
+        and Section 4.2 selects their median coefficients for the all-dataset base run.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - suews2016a-default-compilation
+      note: Stable path and legacy ID 44240001 preserve the migrated default conductance row; no other
+        current conductance record repeats this exact value set.
+  evidence:
+  - id: jarvi2011-conductance-fit
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(b), general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the base-run values G1 16.48, G2 566.1, G3 0.216, G4 3.36, G5 11.07,
+        G6 0.018, TH 40, TL 0, S1 0.45, S2 15 and Kmax 1200.
+    - kind: section
+      label: Section 3.2, Parameter estimation
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Describes the 100-subset bootstrap and non-linear least-squares fit to five Vancouver and
+        Los Angeles datasets, undertaken to generalise the coefficients for urban environments.
+    - kind: table
+      label: Table 5(b), all-data 50% row
+      page: 227
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives N 760 and the selected median coefficients G1 16.48, G2 566.1, G3 0.216, G4 3.36,
+        G5 11.07 and G6 0.018 at the article's printed precision.
+    - kind: section
+      label: Section 4.2, Surface conductance
+      page: 228
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that the final base-run coefficients are the median values from the 100 bootstrap
+        subsets and describes them as the general all-dataset set.
+    note: This is the original publication of the fitted conductance parameter set. It supports the fit,
+      method, pooled Vancouver and Los Angeles origin and article-precision values, but does not print
+      the extra decimal places preserved by the later release workbook.
+  - id: suews2016a-default-compilation
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Conductance, row 3, cells A3:O3
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: 'The static cells contain A3 code 100; B3:L3 values 16.4764, 566.0923, 0.2163, 3.3649,
+        11.0764, 0.0176, 40, 0, 0.45, 15 and 1200; N3 Default; and O3 Jarvi et al. (2011). The downloaded
+        workbook bytes have SHA-256 e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.'
+    note: The authoritative v2016a release artifact republishes the Järvi fit as SUEWS default code 100
+      and preserves the exact decimals carried by this database record.
+  scientific_note: 'The exact values have two distinct provenance roles. Järvi et al. (2011) is the
+    original fit publication: Table 5(b) reports the pooled five-dataset 50th-percentile G1-G6 set at
+    printed precision, while Sections 3.2 and 4.2 document its non-linear least-squares and bootstrap
+    derivation. The later SUEWS v2016a workbook is the exact default compilation: SUEWS_Conductance row
+    3 labels code 100 as Default and Jarvi et al. (2011), while B3:L3 retain the complete eleven-value
+    tuple. The stored numbers are unchanged; origin is corrected from Unspecified to Vancouver and Los
+    Angeles, and method is recorded as fitted.'
+  evidence_revision: sha256:39ec823636aa00b830f12c20780bd773176335ac8a0a8ed5f09bb718827bc09c
+verification:
+  attestations: []
