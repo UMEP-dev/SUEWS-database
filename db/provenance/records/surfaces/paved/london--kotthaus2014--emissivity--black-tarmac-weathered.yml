@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:f6c68a4e2f7b20ae6ed752734959502e502d2a95a4ce4bc0ef3b4ebbd19dd7bf
+record_revision: sha256:64f07d81043f89c2ae816161ea5115c9830cac4040c0d26823e32193fddff436
 dependency_revisions:
   sources:
     kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
@@ -10,7 +10,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T12:18:00Z'
+  assessed_at: '2026-08-24T12:22:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -51,6 +51,14 @@ assessment:
       - https://github.com/UMEP-dev/SUEWS-database/issues/248
       note: The value is an unweighted mean of three selected physical specimens, so site is the supported
         scope; the spectral library does not establish a London-wide sampling design.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/571
+      note: Table C.1 identifies A008-A010 as physical tarmac specimens, so their grouped mean describes
+        an explicitly defined specimen group at material scale.
     method:
       conclusion: supported
       evidence_ids:
@@ -82,7 +90,8 @@ assessment:
     - {id: a010, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
   scientific_note: Kotthaus et al. publish three measured emissivities, not the stored mean. The mean remains
     unchanged and is represented as an internal calculation over explicitly located source-table inputs;
-    its supported reach is the selected London specimen group, not the city as a whole.
-  evidence_revision: sha256:6ac4ed933e55a9393ba10b87c814f8620f8bdc15a2c9a9e74a408b763da8bcbd
+    its supported reach is the selected London specimen group, not the city as a whole, and its applicable
+    scale is the defined material-specimen group rather than a city or land-cover aggregate.
+  evidence_revision: sha256:5782129f1e410349ad5a192c2b79c6e1e39a8ce35f40c37ea52e3cfabeab0b24
 verification:
   attestations: []
