@@ -579,6 +579,13 @@ sources:
     title: Estimation of Atmospheric Boundary Layer Parameters for Diffusion Applications
     type: journalArticle
     year: 1985
+  umep-dev2016-soil-table:
+    author: UMEP-dev
+    journal: GitHub
+    title: 'SUEWS soil input table introduction: SUEWS_Soil.txt'
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/blob/2af365ae6e6296147f19cad7964cd0222e7dfec1/InputTable/SUEWS_Soil.txt
+    year: 2016
   umep-dev2016a:
     author: UMEP-dev
     journal: GitHub

@@ -1,8 +1,9 @@
 record: records/surfaces/common/generic--unreferenced--soil
 schema_version: '2026.5'
 target: land_cover.common
-name: sand [51]
+name: Archived SUEWS sand-soil configuration (code 51)
 source: unreferenced
+method: assumed
 legacy_id: 22240054
 parameters:
   soil_depth: 333
