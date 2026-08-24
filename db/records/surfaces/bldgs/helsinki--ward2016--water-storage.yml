@@ -2,10 +2,13 @@ record: records/surfaces/bldgs/helsinki--ward2016--water-storage
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Building
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
-source: ward2016
+representativeness: generic
+applicable_scale: land_cover
+source: jarvi2011
+method: literature
+source_legacy_ref: 90240002
 legacy_id: 43240005
 parameters:
   storage_drain_params:

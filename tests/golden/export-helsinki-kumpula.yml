@@ -17,15 +17,15 @@ storage_drain_params:
   store_min:
     value: 0.25
     ref:
-      ID: ward2016
-      DOI: 10.1016/j.uclim.2016.05.001
-      desc: helsinki, city
+      ID: jarvi2011
+      DOI: 10.1016/j.jhydrol.2011.10.001
+      desc: generic, generic, land_cover
   store_max:
     value: 0.25
     ref:
-      ID: ward2016
-      DOI: 10.1016/j.uclim.2016.05.001
-      desc: helsinki, city
+      ID: jarvi2011
+      DOI: 10.1016/j.jhydrol.2011.10.001
+      desc: generic, generic, land_cover
   drain_eq:
     value: 3
     ref:

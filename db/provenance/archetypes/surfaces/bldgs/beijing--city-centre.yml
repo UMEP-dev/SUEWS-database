@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/shanghai--ao2016--albedo: sha256:c801beda0f1759df289c23fbf3252cfd0066e634033a756e7427e0b724f6b56a
     records/surfaces/bldgs/shanghai--ao2016--emissivity: sha256:48ceb6512fb2a01a59c0e05dad02d9dbf1f5077ec3bce8f02f4d785de1af13ad
 assessment:
@@ -73,9 +73,9 @@ assessment:
       - records/surfaces/bldgs/shanghai--ao2016--emissivity
       note: 'The composite claims place beijing, whose registry entry reads country china and koppen Dwa.
         Only two of the seven components are in China: records/surfaces/bldgs/shanghai--ao2016--albedo,
-        place shanghai, and records/ohm/beijing--zheng-y2023--buildings, place beijing. The emissivity,
-        water storage and snowpack limit slots take Helsinki records, place helsinki, country finland,
-        koppen Dfb; drainage takes a generic building-class record; and the construction slot takes
+        place shanghai, and records/ohm/beijing--zheng-y2023--buildings, place beijing. The emissivity
+        and snowpack limit slots take Helsinki records, place helsinki, country finland,
+        koppen Dfb; water storage and drainage take generic building-class records; and the construction slot takes
         records/constructions/uk--lindberg-f2020--central-london-sample-run,
         place london, whose own name reads ''Central London [sample run]'' and whose mapped roof and wall
         materials carry the sample-run marker; its third roof layer has no proven material reference. Two questions follow
@@ -135,8 +135,9 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
-    note: Fills water_storage. The record declares target land_cover.bldgs, name 'Building', place helsinki
-      and representativeness city.
+    note: Fills water_storage. The stable Helsinki-path record declares target land_cover.bldgs, name Building,
+      place generic, representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its Helsinki origin preserves migration/application lineage; the value is published as a generic Building parameter.
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
@@ -164,8 +165,8 @@ assessment:
     so in form the composition is sound. Its weakness is the provenance of place. The composite claims
     a Beijing city centre, yet only the albedo, from a site in a Shanghai central business district, and
     the OHM coefficients, from Beijing, are Chinese. No composition source supports transferring the
-    site-scale Shanghai albedo to city-scale Beijing. Emissivity, water storage and the snowpack limit
-    are Helsinki rows, drainage is a generic building-class row, and the
+    site-scale Shanghai albedo to city-scale Beijing. Emissivity and the snowpack limit
+    are Helsinki rows, water storage and drainage are generic building-class rows, and the
     construction is records/constructions/uk--lindberg-f2020--central-london-sample-run, a London record named
     ''Central London [sample run]'' whose mapped layers use sample-run materials; roof layer three has
     no proven material record. Part of that is forced:
@@ -174,11 +175,11 @@ assessment:
     forced. records/surfaces/bldgs/shanghai--ao2016--emissivity sits unused in the database, from the
     same study, site scale and Shanghai CBD setting as the albedo row this composite already takes, while the emissivity slot reaches
     to Helsinki. The stakes run wider than one archetype, because six region archetypes take this city-scale
-    composite as their buildings default, so a London sample-run construction, three Helsinki rows and
-    a generic drainage row are inherited
+    composite as their buildings default, so a London sample-run construction, two Helsinki rows and
+    generic water-storage and drainage rows are inherited
     across much of Asia, the Caribbean and Oceania. A maintainer should settle the emissivity selection
     and the standing of the sample-run construction once, for the family, rather than archetype by archetype.
     This review does not revisit any component value.'
-  evidence_revision: sha256:e29890c710c522fc4df030d765b5c14b824d10abe9d8bd51ee3384e52c2330c2
+  evidence_revision: sha256:6c47812123249a3c06eac82e479be3caac468ceb8d915792074f615bd922e15a
 verification:
   attestations: []

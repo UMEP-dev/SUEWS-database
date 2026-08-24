@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
 assessment:
   status: curation_required
@@ -71,9 +71,9 @@ assessment:
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite claims place sweden and only the construction is Swedish, declaring place gothenburg.
         The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, named ''Central London''
-        and declaring place london; emissivity, water storage, the snow limit and all four ohm positions
-        take records declaring place helsinki, which db/places.yml resolves to country finland; and drainage
-        is generic.
+        and declaring place london; emissivity, the snow limit and all four ohm positions
+        take records declaring place helsinki, which db/places.yml resolves to country finland; and water storage
+        and drainage are generic.
         For the Helsinki slots the database offers no Swedish alternative. For the albedo it does: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
         and records/surfaces/bldgs/gothenburg--oke1987--albedo are the two Gothenburg albedo rows, named
         ''Wood '' and ''Industry, dark roofs'', and neither describes a rendered or stone facade. The
@@ -90,8 +90,8 @@ assessment:
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional and not one of its seven components carries
         that class. The construction declares representativeness city for place gothenburg; the albedo,
-        emissivity, water storage, snow limit and ohm components also declare representativeness city;
-        and drainage is generic. A country-scale Swedish default therefore rests mostly on city rows.
+        emissivity, snow limit and ohm components also declare representativeness city;
+        and water storage and drainage are generic. A country-scale Swedish default therefore rests mostly on city rows.
     method:
       conclusion: supported
       evidence_ids:
@@ -134,8 +134,9 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
-    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills water_storage. The stable Helsinki-path record declares target land_cover.bldgs, name Building,
+      place generic, representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its Helsinki origin preserves migration/application lineage; the value is published as a generic Building parameter.
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
@@ -171,6 +172,6 @@ assessment:
     its siblings either, which is consistent with a later addition. Whether the duplication is intended,
     and which of the two should change, is a curation decision; nothing here calls for a component value
     to change, and the components'' own values remain subject to their evidence assessments.'
-  evidence_revision: sha256:81312ab605d99d63407fd6e5d8827a363b9ae186490698fcf2448627c0ad02f7
+  evidence_revision: sha256:4d9916e491d6f2ec4dcf7339f933403862f4f9e117c38d5efc5535d2ff88f9fc
 verification:
   attestations: []

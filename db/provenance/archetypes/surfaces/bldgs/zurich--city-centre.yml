@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
 assessment:
   status: curation_required
@@ -74,8 +74,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
       note: 'The composite claims place zurich, which db/places.yml resolves to country switzerland. Not
-        one component carries a Swiss place. The albedo declares place london; emissivity, water storage
-        and the snow limit declare place helsinki; drainage is generic; the construction declares place london and
+        one component carries a Swiss place. The albedo declares place london; emissivity and the snow limit
+        declare place helsinki; water storage and drainage are generic; the construction declares place london and
         is named ''Central London [sample run]''; and all four ohm positions take records/ohm/beijing--zheng-y2023--buildings,
         place beijing. Substitution is unavoidable because the database holds no Swiss building record,
         but the ohm choice was not forced: twenty records under records/ohm carry buildings in their path,
@@ -94,8 +94,8 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
-      note: The composite declares representativeness city. Six components declare representativeness
-        city and drainage is generic. Nothing is stretched past its stated reach; the difficulty with these components is where they
+      note: The composite declares representativeness city. Five components declare representativeness
+        city and water storage and drainage are generic. Nothing is stretched past its stated reach; the difficulty with these components is where they
         are from, not how far they claim to travel.
     method:
       conclusion: supported
@@ -138,8 +138,9 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
-    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills water_storage. The stable Helsinki-path record declares target land_cover.bldgs, name Building,
+      place generic, representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its Helsinki origin preserves migration/application lineage; the value is published as a generic Building parameter.
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
@@ -170,7 +171,7 @@ assessment:
     note: A generic calculated rooftop average available as an alternative building OHM record; it is
       not selected by this Zurich composite.
   scientific_note: 'Zurich''s city centre is assembled without a single Swiss component. Its albedo is
-    a London row, its emissivity, water storage and snow limit are Helsinki rows, drainage is generic, its construction
+    a London row, its emissivity and snow limit are Helsinki rows, water storage and drainage are generic, its construction
     is a London record named ''Central London [sample run]'', and all four OHM positions take
     a Beijing roof-average row. Some substitution is unavoidable, because the database holds no Swiss
     building record at all, but the particular substitutions were not forced: twenty building OHM records
@@ -182,6 +183,6 @@ assessment:
     and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
     a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:9a5ecb4145b9c58e2c7e5c703fd54fe9db627b96e5929b01be54a3ae4418c0bf
+  evidence_revision: sha256:0aea70d410f2d2bb8bf0234f682de27eb86f94693ea300826b10329a66f1065f
 verification:
   attestations: []
