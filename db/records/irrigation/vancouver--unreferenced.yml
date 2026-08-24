@@ -1,11 +1,12 @@
 record: records/irrigation/vancouver--unreferenced
 schema_version: '2026.5'
 target: irrigation
-name: Irrigation
+name: Archived Vancouver irrigation configuration
 place: vancouver
 origin: Vancouver
 representativeness: city
 source: unreferenced
+method: assumed
 legacy_id: 61240005
 parameters:
   ie_start: 152

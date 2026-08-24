@@ -1,0 +1,151 @@
+provenance_record: records/irrigation/vancouver--unreferenced
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:13:52Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/268
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      note: Archived Vancouver irrigation configuration identifies the retained application row without
+        presenting its mixed controls and compatibility coefficients as one published parameter tuple.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/268
+    target:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      note: The original workbook stores the row in Irrigation and the pinned release preserves it as
+        SUEWS_Irrigation code 1, matching the irrigation target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      - jarvi2011-irrigation
+      note: The exact active controls and non-exported legacy coefficients are preserved from workbook
+        row 61240005 and release code 1. Järvi et al. (2011) instead publishes Vancouver irrigation periods
+        of 121-243 and Vs87 faut 0.01; its fitted coefficients match the retained legacy values only at
+        the publication's rounded precision. No value is changed or reassigned to the article.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      - jarvi2011-irrigation
+      note: Unreferenced is correct for this mixed archived tuple. Legacy Ref 99240099 is itself the
+        unreferenced placeholder, so it does not warrant a redundant source_legacy_ref and cannot make
+        Järvi et al. (2011) the record source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/268
+    place:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      note: Vancouver is the explicit origin of workbook row 61240005. It records the intended application
+        identity, not a claim that every control was measured across Vancouver.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      note: City limits the catalogue entry to its labelled Vancouver application scope. It does not
+        assert that the complete configuration is empirically representative or transferable.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      - jarvi2011-irrigation
+      note: Assumed classifies the active exported controls as a retained application configuration.
+        The fitted Eq. 5 coefficients remain only in the non-exported legacy compatibility block and are
+        documented separately rather than used to label the mixed record as fitted or literature.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/268
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-irrigation-row
+      - release-irrigation-row
+      note: Legacy ID 61240005, Vancouver origin and the exact release code-1 tuple establish this archived
+        configuration identity. The stable path, origin and legacy ID remain unchanged.
+  evidence:
+  - id: legacy-irrigation-row
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Original database.xlsx Irrigation row 61240005
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/irrigation.yml#L38-L66
+      note: The original workbook at commit 053c004^ stores Vancouver, active controls 152-243, 0, 0.2
+        and all-one daily permissions, the six compatibility coefficients, and Ref 99240099. The linked
+        pre-migration YAML is its row-for-row public transcript.
+  - id: release-irrigation-row
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a release workbook, SUEWS_Irrigation code 1
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The pinned workbook row exactly preserves the complete tuple from row 61240005 as code 1.
+    - kind: dataset
+      label: Fixed v2016a SUEWS_Irrigation code 1 transcript
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2016a/SUEWS_Irrigation.txt#L3
+      note: The text fixture independently exposes the same exact code-1 tuple for line-level review.
+  - id: jarvi2011-irrigation
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: equation
+      label: Equation 5, external irrigation model
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines automatic and manual irrigation using faut and site-specific fitted coefficients.
+    - kind: table
+      label: Table 2, general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes rounded coefficients -84.54, 9.96, 3.67, -25.36, 3.00 and 1.10, consistent with
+        the release coefficients only at the shown precision.
+    - kind: table
+      label: Table 4, Vancouver site characteristics
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives all four Vancouver irrigation periods as 121-243 and Vs87 faut 0.01, not the release
+        row's 152-243 and 0.2.
+    - kind: section
+      label: Section 4.3, external water use
+      page: 228
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that the automatic coefficients were fitted with Vs87 faut 0.01 and the manual
+        coefficients were set to 0.30 times the automatic coefficients.
+  scientific_note: >-
+    The complete row is fully traceable as an archived Vancouver application configuration, but it is
+    not the tuple published by Järvi et al. (2011). The original database workbook and pinned v2016a
+    release both preserve start day 152, end day 243, faut 0.2, daily all-one controls and the six legacy
+    coefficients. The paper publishes start day 121 for all Vancouver sites and faut 0.01 for Vs87; it
+    reports the fitted coefficients at lower precision and describes the manual coefficients as 0.30 of
+    the automatic values. Because the active exported controls are release configuration choices and the
+    fitted values are retained only as non-exported compatibility metadata, the record remains
+    unreferenced and is classified as assumed. Ref 99240099 is an unreferenced placeholder, not a source
+    lineage identifier. No value, stable path, origin or legacy ID is changed.
+  evidence_revision: sha256:98f1bf924e1f69033ebcc1e8d701358dc25f0c569382947171f964dd767acc8f
+verification:
+  attestations: []
