@@ -5,7 +5,8 @@ name: 'Black tarmac, weathered '
 place: london
 origin: London
 representativeness: city
-source: kotthaus2014
+source: unreferenced
+method: calculated
 legacy_id: 40241248
 parameters:
   emis: 0.9533333333333333
