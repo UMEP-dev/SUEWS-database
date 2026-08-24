@@ -1,0 +1,97 @@
+provenance_record: records/materials/generic--eppelbaum2014--granite
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c887d11ed73335546058b7702ec99f41f075f036280efc8bf4d485442f1b0b64
+dependency_revisions:
+  sources:
+    eppelbaum2014: sha256:6ff9a5579a2808310838dc8996c38f09098c2563dddec90b233987934ec83597
+  places: {}
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T16:04:19Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/385
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: Granite is the material row named in Table 2.5.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: Thermal conductivity is a material property, but the other stored fields require separate provenance.
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: Table 2.5 supports only thermal_conductivity 2.68 W/(m K), reported as the mean of 383
+        compiled samples. The book does not publish albedo 0.35, emissivity 0.96, specific_heat 1900,
+        or density 2650 as this record's values, so the tuple cannot be accepted as a whole.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/386
+      - https://github.com/UMEP-dev/SUEWS-database/issues/387
+      - https://github.com/UMEP-dev/SUEWS-database/issues/388
+      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: Eppelbaum et al. are the exact-value publication for the conductivity field but do not
+        support the other four fields. The single record-level source cannot make all five attributions true.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/386
+      - https://github.com/UMEP-dev/SUEWS-database/issues/387
+      - https://github.com/UMEP-dev/SUEWS-database/issues/388
+      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: Literature adoption describes the supported conductivity, which is itself a compiled mean;
+        the production method of the remaining tuple is unresolved.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/386
+      - https://github.com/UMEP-dev/SUEWS-database/issues/387
+      - https://github.com/UMEP-dev/SUEWS-database/issues/388
+      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - eppelbaum-conductivity
+      note: The stable record remains the migrated generic granite material tuple; this assessment
+        documents mixed support without splitting or renaming that identity.
+  evidence:
+  - id: eppelbaum-conductivity
+    source: eppelbaum2014
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2.5, Granite row
+      page: 104
+      url: https://doi.org/10.1007/978-3-642-34023-9_2
+      note: Reports N = 383 and average heat conductivity 2.68 W/(m K). The table is compiled from
+        the earlier datasets identified in its footnote; it is not presented as a new Eppelbaum measurement.
+  attempted_sources:
+  - source: eppelbaum2014
+    attempted_at: '2026-08-24T16:04:19Z'
+    outcome: not_found
+    note: The complete 757-page monograph was close-read. It contains no matching granite albedo or
+      emissivity table, no specific heat 1900, and no stated generic density 2650.
+  scientific_note: 'Issue #385 is settled without changing the record: Eppelbaum et al. Table 2.5 is
+    the exact publication of thermal_conductivity 2.68 as a mean compiled from 383 samples, so the
+    provenance role is literature rather than a new measurement. This does not validate the five-field
+    tuple. Issues #386-#389 remain explicit source and curation blockers for the other four fields, and
+    no value, source key, stable path or record identity has changed.'
+  evidence_revision: sha256:9d2617166b1d1bf1f57680f3901f5e38f6352e27f5b9429ee97d3424a50d0fae
+verification:
+  attestations: []
