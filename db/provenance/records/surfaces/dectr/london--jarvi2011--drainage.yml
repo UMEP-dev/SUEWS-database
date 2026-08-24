@@ -1,0 +1,122 @@
+provenance_record: records/surfaces/dectr/london--jarvi2011--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:0d44c78e8bbc720e82e4c4ba789d4c6fc0c7d3c63e8ebd0503ec9b3540d66bfc
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T16:25:33Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/306
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      - suews2016a-london-application
+      note: Järvi et al. identify the surface category as Decid. trees, while the later release
+        workbook labels the matching row DecTr. The active name removes the unsupported sample-run
+        qualifier without changing the stable path or legacy identity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      note: Table 2(a) publishes the values by SUEWS surface type, including Decid. trees.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      - suews2016a-london-application
+      note: The Decid. trees column gives an upper storage threshold of 0.8 mm, maximum drainage
+        rate 0.013 mm and coefficient 1.71. Section 2.5 assigns unirrigated vegetation the
+        exponential drainage equation, matching the stored equation choice and coefficients. The
+        later London release row repeats the complete stored tuple unchanged.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      - suews2016a-london-application
+      note: Järvi et al. publish the complete stored deciduous-tree drainage tuple. The v2016a
+        workbook is later application and migration-lineage evidence, not a London measurement or fit.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      - suews2016a-london-application
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/306
+      note: Järvi et al. present the values by generic surface type, not as London observations.
+        London is retained only in origin and the stable path because the later release workbook
+        applies the tuple in its London DecTr row.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      note: Generic scope reflects a literature parameter set offered for the SUEWS deciduous-tree
+        class, without a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      note: Table 2(a) defines the tuple for the Decid. trees land-cover class rather than for a
+        whole neighbourhood, an individual plant, or a material specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      note: Section 2.5 states that the maximum drainage rates and coefficients are taken from the
+        literature, and Table 2(a) footnotes the values to earlier publications.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-deciduous-drainage
+      - suews2016a-london-application
+      note: The stable path, origin London and legacy ID preserve the migrated row identity. The
+        v2016a SUEWS_Veg London DecTr row repeats the exact values and equation selector.
+  evidence:
+  - id: jarvi-deciduous-drainage
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Decid. trees column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 0.3–0.8 mm, D0,i = 0.013 mm and b = 1.71 for deciduous trees.
+        The stored wet threshold is the published upper limit.
+    - kind: section
+      label: Section 2.5, Equations 18 and 19
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Assigns the exponential drainage form to unirrigated vegetation and states that the
+        maximum rates and coefficients are taken from the literature in Table 2.
+  - id: suews2016a-london-application
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg, London DecTr row 11, cells A11:AF11
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The row labels the surface DecTr and origin London and repeats wet threshold 0.8,
+        drainage equation 2, D0 0.013 and b 1.71. The workbook bytes have SHA-256
+        e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.
+    note: The release artifact preserves the London application and migrated-row identity; it does
+      not make the generic literature tuple a London measurement.
+  scientific_note: Järvi et al. publish this tuple as a generic SUEWS deciduous-tree land-cover
+    parameter set assembled from literature. The later v2016a workbook applies the unchanged tuple
+    in its London DecTr row. London therefore remains as stable-path and origin lineage, while active
+    place and representativeness describe the generic evidence. No parameter, target, source, legacy
+    identity, origin or record path has changed.
+  evidence_revision: sha256:781b1cb594c38e761834dc3882a89aa96e41c59f2fe6195f83d996a3d58ed8a0
+verification:
+  attestations: []
