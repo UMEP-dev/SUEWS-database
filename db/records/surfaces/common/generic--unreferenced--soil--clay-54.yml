@@ -1,8 +1,9 @@
 record: records/surfaces/common/generic--unreferenced--soil--clay-54
 schema_version: '2026.5'
 target: land_cover.common
-name: clay [54]
+name: Archived SUEWS clay-soil configuration (code 54)
 source: unreferenced
+method: assumed
 legacy_id: 22240057
 parameters:
   soil_depth: 250
