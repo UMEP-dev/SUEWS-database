@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:26563d2be0d8d4f4324a5fe89df25c8191a9051856bdbf6b0ec774d4f93d0e5a
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
-    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
     records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
@@ -156,8 +156,8 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills emissivity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Evergreen trees"; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-evetr-se-england-ward2016-water-storage
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
@@ -229,6 +229,6 @@ assessment:
     a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
     value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
     should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
-  evidence_revision: sha256:2329e5e78c46530a66e7cbf66eb5ef710999150a57a8a4a257e09d0438c422fb
+  evidence_revision: sha256:ea0ab4991075d8dbc84a4c4c0b48a607c48bf5cb1f73b78fbb1f30f4d53d08b7
 verification:
   attestations: []

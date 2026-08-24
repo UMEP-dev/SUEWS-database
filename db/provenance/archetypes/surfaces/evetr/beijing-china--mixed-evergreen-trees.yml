@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
-    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
@@ -148,8 +148,8 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills emissivity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Evergreen trees"; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-evetr-se-england-ward2016-water-storage
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
@@ -217,6 +217,6 @@ assessment:
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
     values. The leaf_growth_power component is a one-park site fit inside this city-classed composite,
     so its scale also needs explicit composition curation.'
-  evidence_revision: sha256:599021001f54a30a37986a8b83f9791af8dc62a8be14b07077aadfdd3e02a389
+  evidence_revision: sha256:0e5ac64046a6610a53e6b3d9c12f6b13cbf4a3b8835a844c6155aad621005f9c
 verification:
   attestations: []

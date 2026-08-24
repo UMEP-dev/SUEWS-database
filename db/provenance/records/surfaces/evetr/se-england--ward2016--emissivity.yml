@@ -1,0 +1,116 @@
+provenance_record: records/surfaces/evetr/se-england--ward2016--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:57:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      note: Järvi et al. (2011) labels the corresponding model surface Conif. Trees; Evergreen trees is
+        the database label for that SUEWS surface class.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      note: Table 2 assigns the emissivity to the coniferous-tree surface column, matching the
+        land_cover.evetr target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: Järvi et al. (2011) publishes the exact emissivity 0.98. Oke (1987), which that cell cites,
+        gives a coniferous-forest range of 0.97 to 0.99, so it supports the range but does not by itself
+        identify the exact 0.98 selection.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - oke1987-table1-1
+      - ward2016-table2
+      note: Järvi et al. (2011) is the earliest checked source that states the exact stored value. Oke
+        (1987) is its stated upstream basis but publishes only a range; Ward et al. (2016) later repeats
+        the exact value and points back to Järvi et al. (2011).
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: Both sources present the value as a surface-type parameter or typical natural-material
+        property, not as a measurement from SE England; generic is the supported active place scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: The evidence is a general model parameter table backed by a typical-property range, not a
+        regional survey. Generic is therefore the supported representativeness.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      note: The record adopts an exact value from the published model parameter table, so literature is
+        the applicable method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-table2
+      note: The stable SE England legacy path and origin preserve migration lineage, while active source
+        and scope fields now describe the exact parameter publication and its generic applicability.
+  evidence:
+  - id: jarvi2011-table2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Conif. Trees, emissivity row
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the exact coniferous-tree emissivity 0.98 and marks the cell with footnote f to Oke
+        (1987).
+  - id: oke1987-table1-1
+    source: oke1987
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1.1, Radiative properties of natural materials
+      page: 12
+      note: Gives coniferous forests an emissivity range of 0.97 to 0.99 and collectively cites Sellers
+        (1965), List (1966), Paterson (1969), and Monteith (1973); it does not identify a source per cell.
+  - id: ward2016-table2
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, Evergreen trees, emissivity row
+      page: 8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Repeats 0.98 and attributes the cell to Järvi et al. (2011), rather than originating the value.
+  scientific_note: >-
+    Ward et al. (2016) is a later compilation for this value. Järvi et al. (2011) is the earliest checked
+    publication that states the exact 0.98 model parameter. Its footnote leads to Oke (1987), whose
+    original table supports a generic coniferous-forest interval of 0.97 to 0.99 but not the exact
+    midpoint selection. The record therefore cites Järvi et al. (2011) as parameter source and records
+    Oke (1987) as the upstream compilation. Its value, stable path and historical origin remain unchanged;
+    active place and representativeness are generic.
+  evidence_revision: sha256:6500b8e645d4f140cb4ec99373d40302422836a31ec036f0dd153ac14bab9084
+verification:
+  attestations: []
