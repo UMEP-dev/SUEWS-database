@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
     records/surfaces/grass/se-england--ward2016--drainage: sha256:7f99c4f4340fa9f3555d3fac9b09bced3e4ad59a1468210ffd0d05cb8abe7fcd
-    records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
+    records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:3788ddb2685a492f5e0bd94ffae79f012da2bbff15c3c57cc3e151fd62772fd9
@@ -204,7 +204,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      generic and representativeness generic; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-grass-se-england-ward2016-lai
     record: records/surfaces/grass/se-england--ward2016--lai
     role: component
@@ -242,6 +242,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:370aec32cd716a27460911f9ac6a804cf42fce5f8c7d105af3d09dec08068bb9
+  evidence_revision: sha256:7e250b61132728e734eceff7f4f6ebf42cf18dacf4c4e46433bceff27eb5e404
 verification:
   attestations: []

@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:a322f663d830aa91b2254b89301688372d7c8c26a294eceb77e629081160a2ad
-    records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
+    records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:7d1cc1897bf26bf1d29a68b2dbc392cdd1ecb6e5bca6e59bb9e246329325ac55
 assessment:
@@ -197,7 +197,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      generic and representativeness generic; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-grass-se-england-ward2016-water-storage
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
@@ -221,6 +221,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:5ca00deb5bc83d9db55dcec82261783850b38199faa22cbeef3a95e88c852671
+  evidence_revision: sha256:706fac911f58d4b252345bd23940c67020f585e5b8f09723335b97182bbe9032
 verification:
   attestations: []
