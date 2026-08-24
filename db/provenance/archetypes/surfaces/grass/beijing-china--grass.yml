@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
-    records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
+    records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:fe389781a76fde33a90c8205df294018f56a1f3b49232dd4f30d5742c70a72bb
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
@@ -20,8 +20,8 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
-  status: agent_assessed
-  assessed_at: '2026-08-23T09:50:05Z'
+  status: curation_required
+  assessed_at: '2026-08-24T17:10:04Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -37,8 +37,9 @@ assessment:
       note: The composite's name reads Grass, its place reads beijing and its origin reads Beijing, China,
         so the label together with the entry path identifies a grass surface for Beijing. The label on
         its own is the barest of the nine grass composites, the other eight naming a study or a qualifier,
-        so the place field and the path carry the distinction. Three components declare place beijing
-        and source zheng-y2023, and they are every Beijing grass record the database holds.
+        so the place field and the path carry the distinction. Two components declare place beijing and
+        source zheng-y2023; the third Zheng-sourced component is now correctly scoped to its Espoo evidence
+        site while retaining its stable Beijing path.
     target:
       conclusion: supported
       evidence_ids: &id001
@@ -83,27 +84,30 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-london-havu-m2024-drainage
       note: The composite declares place beijing, which db/places.yml gives as lat 39.9, lon 116.41, koppen
-        Dwa. Three of the twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
-        and biogen_co2, and no unused Beijing grass record exists for any remaining slot. Two declare
+        Dwa. Two of the twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance;
+        biogen_co2 declares place espoo for its fitted lawn evidence, and no unused Beijing grass record
+        exists for any remaining slot. Two declare
         place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and one declares place
         se-england (koppen Cfb, subnational), filling water_storage; drainage, albedo, emissivity,
         leaf_area_index and porosity declare place generic; and the ohm component carries
-        no place field. Nine of twelve slots
+        no place field. Ten of twelve slots
         are therefore filled from outside China because the database offers nothing closer, which is a
         transparent transfer rather than a defect. The drainage component is a generic grass parameter
         published by Järvi et al.; its Havu archive locator records later reuse rather than a Beijing fit.
     representativeness:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-grass-beijing-zheng-y2023-lai-power
+      - component-surfaces-grass-beijing-zheng-y2023-biogen-co2
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-se-england-ward2016-lai
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
       note: The composite declares representativeness city, but its leaf_growth_power component is now
-        correctly classed site because the coefficients were fitted to one park. A city archetype therefore
-        contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
+        correctly classed site because the coefficients were fitted to one park, and its biogenic CO2
+        component is site evidence from one Espoo lawn. A city archetype therefore contains two narrower
+        site-only fits. Whether to retain them knowingly or narrow the composite is
         a separate composition-curation decision; the regional water-storage component and the five
         generic components are broader than the composite and do not create the same over-claim.
     method:
@@ -134,8 +138,9 @@ assessment:
   - id: component-surfaces-grass-beijing-zheng-y2023-biogen-co2
     record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
     role: component
-    note: Fills the biogen_co2 slot. The record declares target land_cover.grass, name "Grass", place
-      beijing, representativeness city and source zheng-y2023.
+    note: Fills the biogen_co2 slot. The stable Beijing-path record declares target land_cover.grass,
+      name "Grass", place espoo, representativeness site and source zheng-y2023; Zheng fitted beta to
+      the Espoo lawn and compiled the mixed tuple for the Beijing application.
   - id: component-surfaces-grass-beijing-zheng-y2023-lai-power
     record: records/surfaces/grass/beijing--zheng-y2023--lai-power
     role: component
@@ -188,16 +193,18 @@ assessment:
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
       se-england, representativeness regional and source jarvi2011.
   scientific_note: 'The mapping is sound and the selection is defensible, but the entry is only in part
-    a Beijing set. Three of its twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
-    and biogen_co2 from zheng-y2023, and those three are every Beijing grass record the database holds,
-    so the other nine slots had no local option to take. The radiative and hydrological slots come from
+    a Beijing set. Two of its twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance
+    from zheng-y2023. The Zheng-sourced biogen_co2 component retains its stable Beijing path but is now
+    correctly scoped to the Espoo lawn where beta was fitted, so the other ten slots have no Beijing evidence.
+    The radiative and hydrological slots come from
     generic literature, Helsinki, London and SE England, and the ohm slot from an unreferenced generic set named "Short grass [30]".
     A reader should treat the composite as the phenology and conductance parameters zheng-y2023 fitted
     for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
     component''s own place is declared on its record, so the transfer is visible rather than hidden. The
-    leaf_growth_power component is a one-park site fit inside this city-classed composite, which now requires
-    explicit composition curation rather than being treated as city-wide evidence. The drainage component
+    leaf_growth_power component is a one-park site fit and the biogenic CO2 component is one-lawn site
+    evidence inside this city-classed composite, which requires explicit composition curation rather
+    than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:ec05d32621228b2c505ce67fbb5e4e8b76f44a2a251a85dc18613a63c6bffc96
+  evidence_revision: sha256:8e189359f7017ddb758f9372f3d287db71815e145411e2adf9c130d0b2156f85
 verification:
   attestations: []

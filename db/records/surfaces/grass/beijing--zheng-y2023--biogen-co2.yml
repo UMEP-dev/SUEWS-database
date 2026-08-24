@@ -2,9 +2,9 @@ record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass
-place: beijing
+place: espoo
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 30240001
 parameters:
