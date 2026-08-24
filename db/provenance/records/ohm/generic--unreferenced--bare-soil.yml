@@ -1,70 +1,119 @@
 provenance_record: records/ohm/generic--unreferenced--bare-soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b37026a5c1a00f7d215bad003c5df5cab863a446a8e21a04015dee9c7ccd4265
+record_revision: sha256:f8686ed8a4d8aa609c0dae7e03b7f4a9e8ab1aa866f18e10c7f7330192581d03
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
   places: {}
   records:
     records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:6f02f0df1ee3ca99918b9642356f2c6a494a9ade9e73770a3f85f4a6cf8ab20d
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:05:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/283
+  method: calculated
   findings:
     name:
-      conclusion: curation_required
-      note: The sample-run label requires a retention or renaming decision.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+      conclusion: supported
+      evidence_ids:
+      - release-code55
+      note: The fixed v2016a table identifies legacy code 55 as the bare-soil average of codes 50-53
+        and carries the sample-run display label preserved by this migrated record.
     target:
       conclusion: supported
-      note: The result is structurally an OHM coefficient set.
-    values:
-      conclusion: unresolved
       evidence_ids:
-      - bare-soil-compilation
-      note: The a1 and a3 means are reproducible from the published table, but the stored a2 = 0.335 is
-        not the direct mean of the table's displayed rounded values (0.3325). The absent legacy atomic
-        rows may explain the difference and must not be guessed.
+      - release-code55
+      - grimmond-table-4
+      note: All four inputs and the code-55 output are OHM coefficient triplets for the bare-soil surface
+        category.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - release-code55
+      - grimmond-table-4
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+      note: The fixed v2016a artifact publishes the exact output tuple 0.355, 0.335 and -35.275. The
+        displayed input rows reproduce a1 and a3 exactly; their displayed a2 mean is 0.3325 rather than
+        0.335, so the stored a2 is supported as the preserved code-55 release value, not as newly
+        recomputed precision.
     source:
-      conclusion: not_applicable
+      conclusion: supported
+      evidence_ids:
+      - release-code55
+      - grimmond-table-4
+      note: Unreferenced is correct because the record is an internally compiled output. Grimmond and
+        Oke provide the input table, while the SUEWS release artifact, not a parameter publication,
+        provides the exact code-55 tuple.
     place:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - bare-soil-50-related
-      note: Codes 51, 52 and 53 are absent as current atomic inputs.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+      - release-code55
+      - grimmond-table-4
+      note: Calculated distinguishes this compiled average from a measured or fitted parameter set.
+        The sidecar records all four inputs and the visible a2 discrepancy rather than manufacturing
+        absent atomic records or silently changing the release value.
     identity:
-      conclusion: curation_required
-      note: The sample-run record is a recoverable calculation but its retention is a curation choice.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/283
+      conclusion: supported
+      evidence_ids:
+      - release-code55
+      note: The stable path, name, legacy ID and tuple preserve the distinct v2016a code-55 configuration
+        row. Retaining the sample-run wording records migration lineage and does not present it as literature
+        evidence.
   evidence:
-  - id: bare-soil-compilation
-    source: grimmond1999
+  - id: release-code55
+    source: umep-dev2016a
     role: compilation
     locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, codes 50-55
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L15-L20
+      note: Preserves codes 50-53, labels code 55 as their average, and stores the exact code-55 output
+        0.355, 0.335 and -35.275.
+  - id: grimmond-table-4
+    source: grimmond1999
+    role: input_data
+    locators:
     - kind: table
-      label: Table 4, four bare-soil rows
-      page: 932
-      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-  - id: bare-soil-50-related
+      label: Table 4, four bare-soil OHM rows
+      page: '932'
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
+      note: Compiles the four input triplets represented by legacy codes 50-53.
+  - id: code50-input
     record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
-    role: related
-    note: Only code 50 currently exists as an atomic input.
-  scientific_note: The calculation is not fully reproducible within the current database, one displayed-source
-    rounding does not settle a2, and the sample-run identity needs a maintainer decision.
-  evidence_revision: sha256:b66ecde13dab5e8e842abaf7bdb2e39eb026412063d1f5389fea0fba17b4d065
+    role: input
+    note: Current atomic record for legacy code 50, with values 0.38, 0.56 and -27.3.
+  derivation:
+    kind: arithmetic_mean
+    expression: 'For each component: (code50 + code51 + code52 + code53) / 4; the fixed release retains
+      code55 a2 = 0.335 although its displayed inputs yield 0.3325.'
+    description: The displayed inputs yield a1 0.355 and a3 -35.275 exactly. The a2 discrepancy is
+      preserved and made explicit rather than resolved by changing either a source input or the release output.
+    external_inputs:
+    - {id: code51-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.33}
+    - {id: code52-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.35}
+    - {id: code53-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.36}
+    - {id: code51-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.07}
+    - {id: code52-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.43}
+    - {id: code53-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.27}
+    - {id: code51-a3, evidence_id: grimmond-table-4, parameter: a3, value: -34.9}
+    - {id: code52-a3, evidence_id: grimmond-table-4, parameter: a3, value: -36.5}
+    - {id: code53-a3, evidence_id: grimmond-table-4, parameter: a3, value: -42.4}
+  scientific_note: The fixed SUEWS artifact is authoritative for the migrated code-55 output and identity;
+    Grimmond and Oke are input-data evidence, not the publication of that exact output. Codes 51-53 are
+    represented as external derivation inputs rather than artificial database records. The visible a2
+    inputs average to 0.3325, so the retained 0.335 is explicitly a historical release value whose extra
+    0.0025 is not reconstructed from the displayed rows.
+  evidence_revision: sha256:df00cf1005eb586c46dbdb6b8f78cdb53a36b5dc1f9284096b5a414d7be37d2b
 verification:
   attestations: []
