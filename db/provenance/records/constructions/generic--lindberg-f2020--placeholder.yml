@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete: sha256:66b778b1f976eb5eb41d41b73b6b672aef00d6f57dcd337a25660673a898d908
+    records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete: sha256:43026c77b088dc8dd41682ee04d2044020657a73f7bec6b54ba55d63e6db53ea
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T18:41:34Z'
@@ -95,15 +95,15 @@ assessment:
   - id: outer-roof-material-36243784
     record: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
     role: related
-    note: This material record preserves legacy ID 36243784, the exact identifier selected for both
-      layer-one links in pre-migration construction row 37240000.
+    note: This archived code-801 roof-layer fixture preserves legacy ID 36243784, the exact identifier
+      selected for both layer-one links in pre-migration construction row 37240000.
   scientific_note: >-
     This record is retained in the catalogue solely as an archived internal construction fixture, not as
     a recommended or evidence-backed physical assembly. Both roof[0] and wall[0] intentionally continue
-    to reference the same outer-roof sample material at 0.1 m because pinned row 37240000 stores that exact
+    to reference the same archived code-801 roof-layer fixture at 0.1 m because pinned row 37240000 stores that exact
     pair; the separately available outer-wall material is not substituted without evidence. The stable
     path, Placeholder origin, legacy ID, material links, layer thicknesses and insulation indices preserve
     configuration lineage. The active display name makes the non-physical catalogue role explicit.
-  evidence_revision: sha256:0ca8a1d0f67f7819082f359a892411862a7454008979406e903ce97a7f9a0fca
+  evidence_revision: sha256:a4feca2bd77953777728c1f6e1c38c94f2b0bf6503adbb5f833ddfa174aa1bf8
 verification:
   attestations: []

@@ -1,8 +1,10 @@
 record: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
 schema_version: '2026.5'
 target: material
-name: Outer roof [sample run] ceramic tiles | slate shingles |concrete
-source: lindberg-f2020
+name: Archived code-801 roof-layer fixture
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240057
 legacy_id: 36243784
 category: Generic
 display_colour: Generic
