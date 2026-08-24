@@ -38,6 +38,8 @@ assessment:
       conclusion: supported
       evidence_ids:
       - sun2017-table-1a
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/203
       note: Sun et al. (2017) introduce AnOHM and publish the exact sensitivity-distribution means.
     place:
       conclusion: supported
@@ -76,6 +78,6 @@ assessment:
     based on Stull (1988), rather than as a Helsinki paved-surface fit. The stable path and migration origin
     remain unchanged, while place and representativeness are corrected to generic so the record does
     not imply local evidence.
-  evidence_revision: sha256:8b76cde7bfd196a15284e26ce42a5bcc02f54fbf613bae676744743c9e23aed7
+  evidence_revision: sha256:f0280156abca84d5b092324066c65831675c05416eca0c3d9eef7bc1faf0817d
 verification:
   attestations: []
