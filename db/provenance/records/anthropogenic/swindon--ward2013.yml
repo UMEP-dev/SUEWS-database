@@ -1,26 +1,29 @@
 provenance_record: records/anthropogenic/swindon--ward2013
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:32a7f584e23851ccdda122b911d13e97b72d4e0229c96e1772e785dcce533ef3
+record_revision: sha256:aceb9a82882d13eb85a23be33df2e690c7ebba78b486dbb9bb869e4d45da92fb
 dependency_revisions:
   sources:
     ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:35:00Z'
+  assessed_at: '2026-08-24T22:35:33Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
   findings:
     name:
-      conclusion: curation_required
-      note: The record is named Unclear, which identifies nothing. The article publishes no label for
-        this parameter set, and the set itself spans two unrelated kinds of quantity, so a maintainer
-        has to decide what the record is before it can be named.
+      conclusion: supported
+      evidence_ids:
+      - migration-combined-row
+      note: The neutral name identifies this as the retained Swindon configuration row and makes explicit
+        that it combines anthropogenic heat and CO2 fields. It does not claim that one publication created
+        or supports every field.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/378
     target:
@@ -145,7 +148,21 @@ assessment:
       page: 4661
       url: https://doi.org/10.5194/acp-13-4645-2013
       note: The inventory is explicitly a first-order estimate for the study area and discusses the coarseness of its spatial scale.
-  scientific_note: 'This record holds two different things. Its metabolic and vehicle emission factors
+  - id: migration-combined-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: database.xlsx, AnthropogenicEmission row, legacy ID 53240551
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: The pre-migration row identifies Swindon and stores the heat coefficients, CO2 configuration,
+        model selector and legacy fields together. It establishes the retained configuration identity,
+        not scientific support for every field.
+  scientific_note: 'The record now has a neutral configuration name grounded in the exact pre-migration
+    row: it identifies the retained Swindon artifact and its combined heat-and-CO2 scope without presenting
+    one paper as the source of the whole tuple. This resolves the user-facing name problem in issue #378
+    while leaving the field-level source, value, method and identity questions in issue #377 open. This
+    record holds two different things. Its metabolic and vehicle emission factors
     really are in Ward et al., in Appendix A, and can be pointed to line by line; but the article presents
     them as literature values borrowed from Sailor and Lu and from Moriwaki and Kanda for a first-order
     Swindon inventory, so Ward et al. is their compiler, not their source. The qf_a, qf_b and qf_c coefficients
@@ -155,6 +172,6 @@ assessment:
     source-established suburban urban setting from site representativeness
     over the 500 m study area; that scope correction resolves issue #379 without resolving the source,
     value, method and identity blockers tracked separately.'
-  evidence_revision: sha256:810859114624eb35640e43517219424c07f477d18e8e9f67d019cc1f34d68128
+  evidence_revision: sha256:f870000c32552bd4fdf7ca6b93b20ecfe629b396a546059dc4734d9c2083d805
 verification:
   attestations: []
