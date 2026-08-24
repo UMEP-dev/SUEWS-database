@@ -1,0 +1,118 @@
+provenance_record: records/surfaces/grass/se-england--ward2016--max-conductance
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:3788ddb2685a492f5e0bd94ffae79f012da2bbff15c3c57cc3e151fd62772fd9
+dependency_revisions:
+  sources:
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records:
+    records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass: sha256:52df218984bdbac8ebf80f20543dd973e9ce379af614e7560761eeecaeb35eb2
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T07:23:30Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - breuer-table-7
+      - jarvi-table-2
+      - ward-context
+      note: Grass follows Järvi's mapping of the Breuer herbs, forbs and grasses category, but the SE
+        England qualifier is application context rather than the scope of the published statistic.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      - jarvi-table-2
+      note: Järvi maps the grass maximum conductance to the SUEWS grass surface category.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: Breuer et al. (2003) Table 7 publishes maximum stomatal conductance of 33.1 mm s-1 for herbs,
+        forbs and grasses, exactly matching the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      - jarvi-table-2
+      - ward-context
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/150
+      note: Breuer et al. directly publish the exact maximum. Järvi et al. later compile 33.1 into the
+        SUEWS vegetation table, while Ward et al. apply the configuration without republishing the parameter.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - breuer-table-7
+      - ward-context
+      note: Breuer reports a global temperate vegetation statistic, not an SE England determination.
+        The stable place retains later application context and still needs curation.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - breuer-table-7
+      - ward-context
+      note: The parameter is a literature maximum compiled across temperate herbs, forbs and grasses.
+        Calling the migrated application record regional SE England evidence is not established by the source.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The record transcribes a summary statistic published in earlier literature.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - breuer-table-7
+      - jarvi-table-2
+      related_records:
+      - records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass
+      note: The related generic record carries the same value and source. Whether this stable SE England
+        application path should remain as a separate quoted-default record is a curation decision; this
+        source correction neither deletes nor merges it.
+  evidence:
+  - id: breuer-table-7
+    source: breuer2003
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 7, parameter values for land covers in global temperate ecosystems
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Publishes maximum stomatal conductance gs of 33.1 mm s-1 for herbs, forbs and grasses.
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Republishes gi,max 33.1 mm s-1 for unirrigated grass and attributes the vegetation parameter
+        lineage to Breuer et al. (2003).
+  - id: ward-context
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3.2, model setup and parameters
+      page: 6
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Establishes the later two-site UK application context but does not publish the 33.1 conductance.
+  scientific_note: 'The citation defect is settled without changing the value: Breuer et al. (2003)
+    publishes the exact 33.1 mm s-1 maximum for herbs, forbs and grasses, and Järvi et al. later compile
+    it for unirrigated grass in SUEWS; Ward et al. do not publish it. The stable SE England path, name,
+    place and regional class are retained as migration/application identity rather than being treated
+    as Breuer evidence. Human curation is still required because an equivalent generic Breuer record exists.'
+  evidence_revision: sha256:e3d7d7298b8ec4fda29de653deef901d79bfb0a3a95599f17250875185bd7f2f
+verification:
+  attestations: []
