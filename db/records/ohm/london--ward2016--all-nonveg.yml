@@ -1,11 +1,12 @@
 record: records/ohm/london--ward2016--all-nonveg
 schema_version: '2026.5'
 target: ohm_coefficients
-name: NEW Impervious (average). This is the average of Codes 801, 802, 901, 902, 910. [851]
-place: london
+name: Paved surface composite [851]
+place: generic
 origin: London
-representativeness: city
+representativeness: generic
 source: ward2016
+method: literature
 legacy_id: 50240015
 parameters:
   a1: 0.676

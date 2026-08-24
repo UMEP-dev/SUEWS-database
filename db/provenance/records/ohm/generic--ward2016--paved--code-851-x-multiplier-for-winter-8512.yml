@@ -7,7 +7,7 @@ dependency_revisions:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records:
-    records/ohm/london--ward2016--all-nonveg: sha256:fbe3e67ce075182e9c7a658432a274bc376f037b3704c658c9e245378fc067b5
+    records/ohm/london--ward2016--all-nonveg: sha256:7b8c3b219884f3aecf783465cd7587989f9751f56e66ba6a7233e1c8f00fac54
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:13:31Z'
@@ -87,11 +87,11 @@ assessment:
   - id: base-code-851
     record: records/ohm/london--ward2016--all-nonveg
     role: related
-    note: Preserves the pre-adjustment code 851 triplet used by Ward's seasonal calculation; its London/all-nonvegetated
-      identity is separately tracked by issue 63.
+    note: Supplies the generic paved pre-adjustment code 851 triplet used by Ward's seasonal calculation;
+      its stable path retains the legacy migration identity.
   scientific_note: Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
     seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
     the coefficients but are not their observation input.
-  evidence_revision: sha256:ae6da2074a5b105ad8176321b68899843e432f81bb772c37c5df27c44f63a361
+  evidence_revision: sha256:1e4738950fee0969a4c33b0ebacaa8d4fe769718e8dcb6e7de66e0f51894e25a
 verification:
   attestations: []
