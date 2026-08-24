@@ -7,7 +7,9 @@ name: '[old code: 11]'
 place: los-angeles
 origin: Los Angeles, United States of America
 representativeness: city
-source: loridan2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240005
 legacy_id:
 - 60240000
 parameters:

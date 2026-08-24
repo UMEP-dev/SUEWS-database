@@ -30,7 +30,7 @@ dependency_revisions:
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
-    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
+    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:c0bb96e1d5e7c83f9d9eb7513b781b46553aa1b5e1c34db4d05d421bc8e3c7cd
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
 assessment:
   status: curation_required
@@ -327,6 +327,6 @@ assessment:
     Dfb, while archetypes/snow/suews--no-snow exists with target snow and is referenced by none of them,
     though it carries no melt parameters at all and its legacy block holds -999 throughout. The components''
     own values remain subject to their evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:83e8521ac964fa0a0341b3d2d2b9d94fcd3629df47255db9f4620ae893f8d9e2
+  evidence_revision: sha256:eac001867affb89598fe6a02b90dfcc15629c3a48af0fd8d095fb2d8e426cdb1
 verification:
   attestations: []
