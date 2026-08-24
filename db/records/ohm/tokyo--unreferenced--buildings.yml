@@ -3,7 +3,7 @@ schema_version: '2026.5'
 target: ohm_coefficients
 name: Canyon (E-W), Japan [10]
 place: kyoto
-origin: Tokyo
+origin: Kyoto
 representativeness: site
 source: grimmond1999
 method: fitted
