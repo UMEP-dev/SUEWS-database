@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024: sha256:5d701b680f6c6762e9c9a877b540063da3ced7523ade8c3a3429cb77fa56e535
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
-    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation: sha256:b49b78b6fc69a49c09929d0f2a1662c258eb6b5bf73ea6f04f327fc0558d4f3b
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
     records/surfaces/grass/helsinki--havu-m2024--max-conductance: sha256:6df14291eededff1bdb72916a54bf805872885ad1932b600823102b164fe480b
@@ -135,8 +135,9 @@ assessment:
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
-    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
-      generic, representativeness generic and source unreferenced.
+    note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
+      parameter and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-havu-m2024-biogen-co2-mixed-low-vegetation
     record: records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation
     role: component
@@ -198,6 +199,6 @@ assessment:
     retain legacy SE England text, and the label sits correctly on a land_cover.grass target because grass
     is the only low-vegetation tile in the land-cover set. The drainage component is now explicitly generic
     literature evidence, with the archived Helsinki reuse recorded in its own sidecar.'
-  evidence_revision: sha256:cb142a64b18b18424505e04d707c607ef799a2cf93e406cca200f30e1b5cb675
+  evidence_revision: sha256:04470c3eb90e1b23e71df245641c4caebd45b2e2e0542f2c14b75d5e0e469eda
 verification:
   attestations: []

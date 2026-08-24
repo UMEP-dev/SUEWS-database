@@ -1,0 +1,67 @@
+provenance_record: records/surfaces/grass/generic--unreferenced--porosity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
+dependency_revisions:
+  sources: {}
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:06:19Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/296
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: Dummy value is the exact name of the migrated grass compatibility row and makes clear that
+        the entry is not a scientific grass-porosity estimate.
+    target:
+      conclusion: supported
+      note: The pinned pre-migration row declares Surface Grass, and grass composites select this record
+        in their porosity slot.
+    values:
+      conclusion: not_applicable
+      note: The record supplies no active parameter. Its empty parameters mapping and preserved legacy
+        PorosityMin and PorosityMax sentinels of -999 exactly match the pre-migration compatibility row;
+        the sentinels are lineage metadata rather than model-ready values.
+    source:
+      conclusion: supported
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/296
+      note: Unreferenced is correct because the row is a configuration adapter and does not claim that
+        a publication measured, fitted or recommended a grass porosity value.
+    place:
+      conclusion: supported
+      note: Generic is appropriate for a structural compatibility entry that carries no location-specific
+        scientific value.
+    representativeness:
+      conclusion: supported
+      note: Generic records the absence of any geographic evidence-reach claim for this configuration
+        adapter.
+    method:
+      conclusion: supported
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/296
+      note: Assumed identifies an intentionally empty compatibility slot, not a measurement, fit, literature
+        adoption or calculation.
+    identity:
+      conclusion: supported
+      note: Stable record path, name, origin, legacy ID 34240011, dangling legacy reference 90241000
+        and both -999 sentinels preserve the exact grass row and distinguish it from the corresponding
+        evergreen-tree dummy row.
+  evidence: []
+  scientific_note: 'This is a SUEWS configuration adapter, not a parameter evidence record. The pinned
+    pre-migration database row at https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/porosity.yml#L30-L36
+    names legacy ID 34240011 "Dummy value", declares Surface Grass, states that porosity is used only
+    for deciduous trees, and stores only -999 sentinels. The stable record therefore remains unreferenced,
+    contributes no active parameter, and is explicitly classified as assumed so neither the adapter nor
+    its sentinels are presented as literature values.'
+  evidence_revision: sha256:8a57f4590f408c32da3d38fe8a81b9a434bb1b07bb96a153885757be41f29031
+verification:
+  attestations: []

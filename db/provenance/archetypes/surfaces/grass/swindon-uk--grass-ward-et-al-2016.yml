@@ -11,7 +11,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
-    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
@@ -178,8 +178,9 @@ assessment:
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
-    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
-      generic, representativeness generic and source unreferenced.
+    note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
+      parameter and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
@@ -243,6 +244,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:04e53b9df35d03776ff4a52fca61375de387ad37ec6d2dfca20e57d620c6259e
+  evidence_revision: sha256:53eefe7be06f20913526b9533d63b111abece1a10cee6f08379219c4dd44a960
 verification:
   attestations: []

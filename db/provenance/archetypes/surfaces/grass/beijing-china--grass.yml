@@ -11,7 +11,7 @@ dependency_revisions:
     records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:fe389781a76fde33a90c8205df294018f56a1f3b49232dd4f30d5742c70a72bb
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
-    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
@@ -154,8 +154,9 @@ assessment:
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
-    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
-      generic, representativeness generic and source unreferenced.
+    note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
+      parameter and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
@@ -205,6 +206,6 @@ assessment:
     evidence inside this city-classed composite, which requires explicit composition curation rather
     than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:8e189359f7017ddb758f9372f3d287db71815e145411e2adf9c130d0b2156f85
+  evidence_revision: sha256:7f7ba9cdfd87741cd9f3d8efc13574c717f1d4293ee17b740cf4169f565e2805
 verification:
   attestations: []
