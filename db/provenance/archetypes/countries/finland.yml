@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:acfa8ee5eaf45f6eb5bb02ab0befbccdf9543c1dae0caf227dc8a7831505c23a
-    records/profiles/human-activity/helsinki--jarvi2019--human-activity: sha256:c88e9484f0b7be760a5f82e95a93c1dba3f58d39d73a3940a9a93d41e0de0e35
+    records/profiles/human-activity/helsinki--jarvi2019--human-activity: sha256:600c9b2c4af4eb28de5d2ec2ddb00c9e23330292d0208d61396833b73a203d5b
     records/profiles/population/helsinki--jarvi2019--population-profile: sha256:b4cabe91d07f67f9d26b53383a61b0cb01e1f13d8e1a913eab334baca2368437
     records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:b2b5c4d2c1b79f0495cb13e71b848346aae327e86c8fc018570ae4594d8a239e
 assessment:
@@ -80,7 +80,8 @@ assessment:
     record: records/profiles/human-activity/helsinki--jarvi2019--human-activity
     role: component
     note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
-      place helsinki and representativeness city.
+      place helsinki and representativeness city; its exact profile source is the associated Zenodo data
+      repository.
   - id: component-population-helsinki-jarvi2019-population-profile
     record: records/profiles/population/helsinki--jarvi2019--population-profile
     role: component
@@ -96,6 +97,6 @@ assessment:
     for a country-scale value. Each slot takes a component declared for the field that slot fills, so
     the mapping itself is sound. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:8ae065908b5fb67fef23369fd6b4409431394f8591c341c4f60a1e6c167c5e5d
+  evidence_revision: sha256:7e0ba994c362c31d75e76a8b901d8519fe84811903a2c96876faddfae1bb79a1
 verification:
   attestations: []

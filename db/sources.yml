@@ -308,6 +308,14 @@ sources:
       in Helsinki
     type: journalArticle
     year: 2019
+  jarvi2019-data:
+    author: Järvi, Leena; Havu, Minttu; Kolari, Pasi; Riikonen, Anu; Grimmond, Sue
+    doi: 10.5281/zenodo.2572472
+    journal: Zenodo
+    title: Data used in manuscript Spatial modelling of local-scale biogenic and anthropogenic
+      carbon dioxide emissions in Helsinki
+    type: dataRepository
+    year: 2019
   jarvis1976:
     author: Jarvis, P. G.
     doi: 10.1098/rstb.1976.0035
