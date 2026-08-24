@@ -1,11 +1,13 @@
 record: records/snow/se-england--ward2016--albedo
 schema_version: '2026.5'
 target: snow
-name: Snow (not used in Ward et al. 2016)
+name: Archived SE England snow-albedo configuration
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240002
 legacy_id: 41240048
 parameters:
   snow_albedo_min: 0.18

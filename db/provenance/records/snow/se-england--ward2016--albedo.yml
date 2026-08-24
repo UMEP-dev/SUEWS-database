@@ -1,0 +1,132 @@
+provenance_record: records/snow/se-england--ward2016--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2ed6bafe1e4c20f4c28ddf54679ffb2a62c49e29ac4850eec312d43878158324
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:12:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/107
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      - release-snow-rows
+      note: Archived SE England snow-albedo configuration identifies the preserved migration row without
+        implying that Ward et al. (2016) used or determined the values.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/107
+    target:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      - release-snow-rows
+      note: The two stored fields are the minimum and fresh-snow albedo limits used by the SUEWS snow target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      - release-snow-rows
+      - jarvi-different-pair
+      note: The exact 0.18 and 0.80 pair is supported as a preserved historical configuration. The 2016a
+        input contains the same pair in its Swindon, London and default rows. Järvi et al. (2014) instead
+        publish 0.18 and 0.85, so that publication is not transferred to this pair.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      - ward-no-snow
+      - jarvi-different-pair
+      note: Unreferenced is correct because Ward et al. (2016) did not use snow physics and do not publish
+        this pair, while Järvi et al. (2014) publish a different maximum. source_legacy_ref 90240002 preserves
+        the former database link without exporting Ward as the parameter publication.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/107
+    place:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      note: SE England is retained as the archived row's application identity. It is not presented as the
+        site where the albedo limits were empirically determined.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      note: Regional describes the intended scope of the archived SE England configuration, not the reach
+        of an empirical snow-albedo study.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      - release-snow-rows
+      note: Assumed records retention of an exact historical configuration whose scientific derivation is
+        not supplied by the migration row or release artifact.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/107
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-41240048
+      note: Legacy ID 41240048 and the pre-migration name explicitly saying the values were not used in
+        Ward et al. (2016) establish a distinct archived configuration identity. The stable path and origin
+        remain unchanged for traceability.
+  evidence:
+  - id: legacy-row-41240048
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Albedo row 41240048
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/albedo.yml#L142-L148
+      note: Stores Snow, the name Snow (not used in Ward et al. 2016), origin SE England, minimum 0.18,
+        maximum 0.80 and Ref 90240002.
+  - id: release-snow-rows
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_Snow.txt historical input rows
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Snow.txt
+      note: Rows 550, 660 and 999 all preserve AlbedoMin 0.18 and AlbedoMax 0.80. The file labels 550
+        Swindon and 660 London, while providing no derivation for the pair.
+  - id: ward-no-snow
+    source: ward2016
+    role: validation
+    locators:
+    - kind: text
+      label: Model setup and evaluation
+      page: 6, 8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: The study does not use snow physics and does not publish a 0.18 and 0.80 snow-albedo pair.
+  - id: jarvi-different-pair
+    source: jarvi2014
+    role: validation
+    locators:
+    - kind: table
+      label: Table 4b, overall-area snow parameters
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Publishes minimum snow albedo 0.18 and maximum snow albedo 0.85, not the stored 0.80 maximum.
+  scientific_note: >-
+    This record remains solely as an archived SE England application configuration. The exact 0.18/0.80
+    pair is preserved in both the pre-migration catalogue and historical v2016a inputs, but neither artifact
+    gives its scientific derivation. Ward et al. (2016) did not use snow physics, and Järvi et al. (2014)
+    publish a different 0.18/0.85 pair. Source unreferenced prevents false attribution; method assumed and
+    the archived name state the record's actual role; source_legacy_ref 90240002 preserves the historical
+    catalogue link. No value, stable path, origin or legacy ID changes.
+  evidence_revision: sha256:6a48af46f118e5097c3979ec1d68f4e5065a4a6721d08590859d681a7f4d5a7d
+verification:
+  attestations: []
