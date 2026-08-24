@@ -2,10 +2,9 @@ record: records/irrigation/zurich--stagakis-s2024
 schema_version: '2026.5'
 target: irrigation
 name: No Irrigation
-place: zurich
 origin: Zurich
-representativeness: city
-source: stagakis-s2024
+source: unreferenced
+method: assumed
 legacy_id: 61240051
 parameters:
   ie_start: 1
