@@ -2,7 +2,8 @@ record: records/materials/generic--bellucco2017--air
 schema_version: '2026.5'
 target: material
 name: Air
-source: bellucco2017
+source: unreferenced
+method: assumed
 legacy_id: 36248155
 category: Insulation
 display_colour: Generic

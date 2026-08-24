@@ -1,0 +1,65 @@
+provenance_record: records/materials/generic--bellucco2017--air
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d006e729f0852efaded4568284c66b6b9e0ef1dcb4a2ec31a6d83c8d58f10875
+dependency_revisions:
+  sources:
+    bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T13:53:39Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: The immutable legacy Spartacus Material row 36248155 names this configuration material Air.
+    target:
+      conclusion: supported
+      note: The legacy row stores thermal conductivity, specific heat and density as material properties,
+        matching the material target.
+    values:
+      conclusion: supported
+      note: The workbook-derived legacy row 36248155 stores thermal conductivity 0.025, specific heat
+        1005 and density 1.225 exactly; the values are preserved unchanged.
+    source:
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/408
+      note: Bellucco et al. publish no air-material properties. No parameter publication was found, so
+        source unreferenced honestly preserves the legacy configuration without manufacturing a citation.
+    place:
+      conclusion: not_applicable
+      note: The legacy material row declares no place.
+    representativeness:
+      conclusion: not_applicable
+      note: The legacy material row declares no evidence-reach claim.
+    method:
+      conclusion: supported
+      note: Assumed is appropriate for a model material default preserved from an exact legacy row when
+        no publication states or derives the complete parameter tuple.
+    identity:
+      conclusion: supported
+      note: Legacy row 36248155 uniquely identifies the unchanged Air tuple. The stable record path retains
+        its historical citation slug even though that attribution is removed.
+  evidence: []
+  attempted_sources:
+  - source: bellucco2017
+    attempted_at: '2026-08-24T13:53:39Z'
+    outcome: not_found
+    note: The complete 13-page accepted-version PDF was close-read. Its 11 article pages concern biogenic
+      CO2 light-response curves and contain none of 0.025, 1005 or 1.225 and no material-property table.
+  scientific_note: 'This is a legacy configuration default, not a Bellucco et al. literature parameter.
+    The immutable workbook-derived row at https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L229-L238
+    records the exact complete tuple. Independently, the STEBBS implementation at https://github.com/UMEP-dev/SUEWS/blob/ad1b4929afb321dcc531f95d88bfe6ceb24a0c7c/src/suews/src/suews_phys_stebbs.f95#L2528-L2533
+    hard-codes 1.225 and 1005 as indoor-air defaults, without citing Bellucco; no implementation lineage
+    for 0.025 was located. The values remain unchanged as an explicit assumption while the false publication
+    attribution is removed.'
+  evidence_revision: sha256:9e9c058a834ea90aa6cd35860eeed7c5136689619ec7e47e5c1e096fcf071b00
+verification:
+  attestations: []
