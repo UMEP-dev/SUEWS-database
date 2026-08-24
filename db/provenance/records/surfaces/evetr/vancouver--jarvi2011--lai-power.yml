@@ -1,0 +1,87 @@
+provenance_record: records/surfaces/evetr/vancouver--jarvi2011--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ed466e03cd750aba67bd92cd437a3b0f96a2b157548c8457a98d4a6f9e1dd24f
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:45:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: The name identifies the evergreen-tree instance of the paper's dynamic LAI equation selected
+        by lai_type 0.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: Equation 4 defines daily LAI change for each vegetation surface type, including evergreen trees.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: Equation 4 uses LAI to the power 0.03 and a 5 x 10^-4 degree-day multiplier in both the growth
+        and senescence branches, exactly matching all four stored coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: Järvi et al. directly publish the complete dynamic LAI equation and do not attribute these
+        exact exponents or multipliers to an earlier source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: Generic is appropriate because the equation is defined for every vegetation type in SUEWS;
+        Vancouver is one evaluation location, not the origin of the coefficients.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: The paper presents a general model method rather than a Vancouver observation or city fit.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: The database transcribes a published model equation, so literature is the supported record-level
+        method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-lai-equation
+      note: The record contains one complete equation-0 coefficient set for the evergreen-tree target;
+        identical coefficients for other vegetation targets reflect the equation's general definition.
+  evidence:
+  - id: jarvi-lai-equation
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 2.2, Leaf area index
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+    - kind: equation
+      label: Equation 4, dynamic daily LAI response to GDD and SDD
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines both branches for every vegetation type i using LAI exponent 0.03 and multiplier 5
+        x 10^-4; no Vancouver-specific derivation is stated.
+  scientific_note: The active place and representativeness now describe the generic SUEWS equation directly
+    published by Järvi et al. The stable Vancouver path and origin preserve migration and evaluation context;
+    the equation coefficients, target, source and legacy identity remain unchanged.
+  evidence_revision: sha256:bf15dfb897d717eef2425c0cbdca721fa28dcbb56cf4984bc90e3427bcb0a49a
+verification:
+  attestations: []
