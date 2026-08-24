@@ -1,7 +1,7 @@
 record: records/snow/helsinki--jarvi2014--emissivity
 schema_version: '2026.5'
 target: snow
-name: Snow (sample data)
+name: Snow emissivity
 origin: Helsinki
 representativeness: generic
 source: jarvi2011

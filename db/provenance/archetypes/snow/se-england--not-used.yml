@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
-    records/snow/helsinki--jarvi2014--emissivity: sha256:10f521707db6ef8a2e876b5fbd5c77927badc597cab6e4259c1025f92e962fae
+    records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
     records/snow/se-england--ward2016--albedo: sha256:983db6c590ff1f2e1ac61b3c6c10b27012ab8aab8393f39c1fffb4442e6e2f23
 assessment:
   status: curation_required
@@ -117,7 +117,7 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", no place,
+    note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
   scientific_note: 'The mapping is internally consistent, in that the albedo slot takes the record carrying
@@ -137,6 +137,6 @@ assessment:
     all three fields and is referenced by no archetype at all. The choice is not free either way: no SE
     England snow emissivity record exists, but the remaining emissivity is now correctly identified as
     generic rather than Helsinki evidence. A maintainer should settle the albedo selection knowingly.'
-  evidence_revision: sha256:ba5c5ede220bbbd9073954de932a2983e5d2129632a1047c883986e7b8d1bf04
+  evidence_revision: sha256:bdc444dbabc590e1444e5d9aec215d38582ea73f9f7ff03049097aa77e39a552
 verification:
   attestations: []

@@ -1,7 +1,7 @@
 provenance_record: records/snow/helsinki--jarvi2014--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:10f521707db6ef8a2e876b5fbd5c77927badc597cab6e4259c1025f92e962fae
+record_revision: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 dependency_revisions:
   sources:
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
@@ -9,21 +9,20 @@ dependency_revisions:
   places: {}
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T11:24:42Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The record is named Snow (sample data). Nothing in the article describes this value as sample
-        data, and a name that marks a value as a test fixture while the database serves it as evidence
-        is a curation problem in its own right, the more so because this is the only snow emissivity record
-        in the database.
+      - jarvi2011-table-2b
+      note: Snow emissivity describes the parameter directly. Järvi et al. (2011) Table 2b labels
+        epsilon_snow as effective surface emissivity for snow and publishes it as 0.99.
     target:
       conclusion: supported
       evidence_ids:
@@ -63,11 +62,12 @@ assessment:
       note: Literature records an inherited published input. Järvi et al. (2011) is the parameter source
         and Järvi et al. (2014) explicitly carries it forward.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
+      - jarvi2011-table-2b
       - jarvi-table-4b
-      note: This is the only snow emissivity record in the database, so every snow composite depends on
-        it, and it is named as sample data. That combination needs a decision.
+      note: This is a published SUEWS snow emissivity input, not a test fixture. Järvi et al. (2011)
+        publishes the value directly and Järvi et al. (2014) carries it forward in its model configuration.
   evidence:
   - id: jarvi2011-table-2b
     source: jarvi2011
@@ -101,14 +101,11 @@ assessment:
       url: https://doi.org/10.5194/gmd-7-1691-2014
       note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
         below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  scientific_note: 'The value is exactly what Järvi et al. (2011) Table 2b publishes as a general model-run
-    input, and Järvi et al. (2014) Table 4b republishes it while pointing unfootnoted inputs back to the
-    earlier paper. That supports a generic, placeless literature record rather than Helsinki city evidence.
-    The remaining difficulty is the name: this record
-    calls itself sample data, nothing in the article supports that description, and it is the only snow
-    emissivity the database has, so every snow composite rests on a row labelled as a test artefact. Either
-    the label is wrong and should go, or it is right and the record should not be serving composites.
-    That is a maintainer''s call, not an audit''s.'
-  evidence_revision: sha256:a821dfee1ec01134f6b1f05e09700ce35ed8ed8d2142434ed3f2fbbce3488626
+  scientific_note: 'Järvi et al. (2011) Table 2b directly publishes epsilon_snow 0.99 as a general model-run
+    input. Järvi et al. (2014) Table 4b republishes epsilon_s 0.99 and points unfootnoted inputs back to
+    the earlier paper. The record therefore represents a generic, placeless literature parameter. Its
+    stable path and origin retain legacy Helsinki migration text, while the name now identifies the
+    published parameter rather than describing it as sample data.'
+  evidence_revision: sha256:732389fd03919b0c2dcb65757ea5e468b184acd2306961704592566afd706cc0
 verification:
   attestations: []

@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
-    records/snow/helsinki--jarvi2014--emissivity: sha256:10f521707db6ef8a2e876b5fbd5c77927badc597cab6e4259c1025f92e962fae
+    records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:26:59Z'
@@ -111,7 +111,7 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", no place,
+    note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
   scientific_note: 'The selection is documented but spans evidence scales. archetypes/snow/helsinki--snow
@@ -124,12 +124,10 @@ assessment:
     the composite''s own eleven scalars
     merged over them. Three things a reader should carry forward without acting on them here. The first
     is that the albedo''s use in a city configuration promotes site-derived evidence and needs verifier
-    sign-off at the composition layer. The second
-    is that the eleven scalars the composite asserts have no record behind them, so nothing in the database
-    can yet review them. The third: records/snow/helsinki--jarvi2014--emissivity is named "Snow (sample
-    data)", and whether a value migrated from a sample run belongs in the database is a question for that
-    record''s own evidence review. It is the only snow emissivity record in the database, so every snow
-    composite rests on it.'
-  evidence_revision: sha256:19cc7724ce4e50052571e02c2f7a3a46b85278e330703b0ee3fbcd3d1b4168fe
+    sign-off at the composition layer. The second is that the eleven scalars the composite asserts have
+    no record behind them, so nothing in the database can yet review them. The emissivity component is
+    the database''s only snow emissivity record, and its own evidence review establishes it as a generic
+    literature parameter.'
+  evidence_revision: sha256:bdbe7cdfb7d72142c79ad797aeddd73cc313c10dcb9963612fe9428a009a087f
 verification:
   attestations: []

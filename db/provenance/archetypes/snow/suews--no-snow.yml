@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
-    records/snow/helsinki--jarvi2014--emissivity: sha256:10f521707db6ef8a2e876b5fbd5c77927badc597cab6e4259c1025f92e962fae
+    records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:26:59Z'
@@ -107,7 +107,7 @@ assessment:
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target snow, name "Snow (sample data)", no place,
+    note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
   scientific_note: 'archetypes/snow/suews--no-snow is a generic, unreferenced entry whose legacy block
@@ -125,6 +125,6 @@ assessment:
     does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
     the uses block should not be here at all. A maintainer with the model''s requirements to hand can
     settle all three findings in one decision.'
-  evidence_revision: sha256:df5be1e5807245e5c571566b721fcbe272477e8522edac72e6173cea83879bc0
+  evidence_revision: sha256:a789862a8be35c7fead571fafac4a0e02bd8440982584eeef8cb176565c6a439
 verification:
   attestations: []
