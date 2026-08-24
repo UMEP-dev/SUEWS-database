@@ -1,0 +1,131 @@
+provenance_record: records/anthropogenic/london--unreferenced--sample-run
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:919d4ad41015920c72749206be8c63f320ab5a4277f79e4e8481ff4ddc7779df
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:08:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/264
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      note: Archived London anthropogenic configuration identifies the retained release/migration row
+        without presenting it as a coherent London parameter determination or disposable test data.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/264
+    target:
+      conclusion: supported
+      evidence_ids:
+      - release-row
+      note: The row stores the coupled anthropogenic heat and CO2 configuration fields used by the
+        anthropogenic_emissions target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      - jarvi-vancouver-heat
+      note: The exact combined tuple is supported as a preserved v2016a configuration row. Järvi et al.
+        independently document the Vancouver Vs87 heat-model form and rounded 0.308/0.00986/0.0102
+        coefficients, but they do not publish this later heat-plus-CO2 row as a London determination.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      - jarvi-vancouver-heat
+      note: Unreferenced is correct because no single publication states or derives the complete stored
+        configuration. The pre-migration Ref 90240000 is itself the registry's unreferenced placeholder,
+        so no publication link is manufactured.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/264
+    place:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      note: London is retained as the archived row's application/configuration identity. It does not claim
+        that the inherited Vancouver heat coefficients or generic release defaults were determined in London.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      note: City describes the intended reach of the archived London configuration, not empirical evidence
+        reach for every inherited field in the mixed row.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      - jarvi-vancouver-heat
+      note: Assumed marks retention of the complete application configuration. It deliberately does not
+        claim that every heat and CO2 field shares one measured, fitted or literature production method.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/264
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-row-53245511
+      - release-row
+      note: Legacy ID 53245511 and the exact release row establish a distinct archived configuration
+        identity. The stable path and London origin remain for traceability while the new name makes its
+        catalogue role explicit.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/264
+  evidence:
+  - id: legacy-row-53245511
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration AnthropogenicEmission row 53245511
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/anthropogenic_emission.yml#L149-L183
+      note: Names the row sample run, sets Origin London, stores the complete migrated heat and CO2 tuple,
+        and carries Ref 90240000, the unreferenced placeholder source ID.
+  - id: release-row
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_AnthropogenicHeat.txt sample input row
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_AnthropogenicHeat.txt
+      note: Preserves the same mixed heat and release-default configuration in the historical sample input.
+  - id: jarvi-vancouver-heat
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: table
+      label: Table 2(b), anthropogenic heat input
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes rounded a0 0.308, a1 0.00986 and a2 0.0102 values for the heat model.
+    - kind: section
+      label: Section 4.1 and Table 3, Vancouver Vs87 application
+      page: 227, 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Identifies the QF evaluation and diurnal profile as Vancouver Vs87 evidence, not London evidence.
+  scientific_note: >-
+    This record remains solely as an archived London application configuration. The exact release tuple is
+    retained for stable-path and migration traceability, but it combines a Vancouver heat-model lineage
+    with later generic heat and CO2 configuration fields and has no single parameter publication. Source
+    unreferenced, method assumed and the descriptive archived name prevent the row from reading as a London
+    city evidence determination while avoiding guessed citations, value changes or an unsupported split.
+  evidence_revision: sha256:31d3434086bd20923263a2d88102190a900b9372a008ff4cb9d96c90b3db8b89
+verification:
+  attestations: []
