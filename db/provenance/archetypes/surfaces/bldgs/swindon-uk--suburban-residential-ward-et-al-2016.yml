@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016: sha256:64b267270f8833ad255e7f62f7931a80042575d1d8d8abae58660a9297b691ef
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
-    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
+    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:016ceb6a34b9f9542130d9656ceec37ae74f6029ca327881f3e2f3713d51a898
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:870dfa98f10b10faf624b0e0f327c14e135d31dfc1af8e344557594086dc13f1
@@ -180,6 +180,6 @@ assessment:
     a roof form, which is a maintainer''s decision and not one this review should make on resemblance.
     Nothing here requires a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:e48ddc223ad73c4077d468d1ab7646f54bd3130abb162d4c2cdc07f4aaca614b
+  evidence_revision: sha256:018543046f3b79e46fd16b41d8e8194ab3ead6a998bf8b01a693d5a5de959ff6
 verification:
   attestations: []

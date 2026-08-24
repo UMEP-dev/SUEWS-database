@@ -2,6 +2,7 @@ record: records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-wint
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Code 798 x Multiplier for winter [7982]
+applicable_scale: land_cover
 source: ward2016
 legacy_id: 50240026
 season_label: Winter
