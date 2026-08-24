@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:fccfab58530d5cf876446bd4e7687587a95ecedabf1361fc661e37fed1a4e77c
+record_revision: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Paved, so the tuple describes the paved land-cover class
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -93,6 +100,6 @@ assessment:
     seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
     the coefficients but are not their observation input. The final name token is now corrected to 8511
     while the stable record path remains unchanged.
-  evidence_revision: sha256:3a61b3f6b8948b68c2d87ab7fbd303594e35881dde60e5d20031e970dd452bbb
+  evidence_revision: sha256:15e0a844be0ef22fedd9bf1107a389cd625889ae895110423cd1e84ab598af10
 verification:
   attestations: []
