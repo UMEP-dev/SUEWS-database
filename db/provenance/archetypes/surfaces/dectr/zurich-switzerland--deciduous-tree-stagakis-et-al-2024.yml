@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
-    records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
+    records/surfaces/dectr/zurich--jarvi2011--lai: sha256:669ffe9b3871af7ee48bb73c4a54443b4ce339d868e3ce7eed447eb90e789fe2
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
     records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:97f58953282d688f623209f9f891f115d668b8e69fdec1793060b057b191cbd6
@@ -43,10 +43,10 @@ assessment:
         Constantin L., Järvi L., Havu M., Chen J., Emberger S. and Kulmala L., "Intercomparison of biogenic
         CO2 flux models in four urban parks in the city of Zurich", Biogeosciences, with year 2025 and
         doi 10.5194/bg-22-2133-2025, so the year in the label and the year in the registry disagree. Which
-        of the two moves is a bibliographic question this review cannot settle without reading the publication,
-        and it should not be guessed. The label also covers only two of the four Zurich slots: the leaf_area_index
-        component is records/surfaces/dectr/zurich--jarvi2011--lai, named "Deciduous Tree (sample data)
-        a" and sourced jarvi2011, while the maximum conductance is sourced breuer2003.'
+        of the two moves remains a label-curation question. The label also covers only two of the four
+        Zurich slots: the leaf_area_index component is records/surfaces/dectr/zurich--jarvi2011--lai,
+        an archived unreferenced sample whose 0/4.8 range differs from the 0.66/4.8 Trees range in
+        Stagakis Supplement Table S3, while the maximum conductance is sourced breuer2003.'
     target:
       conclusion: supported
       evidence_ids:
@@ -112,7 +112,7 @@ assessment:
         and every one of those slots is filled. No other archetype under db/archetypes/surfaces/dectr
         carries place zurich, and this is the only one of the eight to take the three stagakis-s2024 records,
         so it is not a duplicate of any sibling. db/records/surfaces/dectr holds three Zurich jarvi2011
-        leaf-area-index records; this composite takes records/surfaces/dectr/zurich--jarvi2011--lai while
+        leaf-area-index records; this composite takes the archived sample-A record while
         the Helsinki park-trees composite takes the one suffixed deciduous-tree-sample-data-c, and the
         one suffixed deciduous-tree-sample-data-b is used by no deciduous-tree composite. scripts/export_record.py
         also recognises a water_state slot and db/records/surfaces/dectr holds records/surfaces/dectr/se-england--ward2016--water-state,
@@ -170,9 +170,9 @@ assessment:
     record: records/surfaces/dectr/zurich--jarvi2011--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place zurich and representativeness
-      city. It is named "Deciduous Tree (sample data) a", carries source jarvi2011 rather than the stagakis-s2024
-      the composite's label names, and declares lai.lai_type 1; it is one of three Zurich jarvi2011 leaf-area-index
-      records in db/records/surfaces/dectr.
+      city. It is an archived sample-A configuration with source unreferenced and method assumed; legacy
+      Ref 90240054 is retained only as source_legacy_ref. Its 0/4.8 range differs from Stagakis Supplement
+      Table S3 Trees 0.66/4.8, and it declares lai.lai_type 1.
   - id: component-surfaces-dectr-zurich-stagakis-s2024-biogen-co2
     record: records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
     role: component
@@ -194,17 +194,16 @@ assessment:
   scientific_note: 'The Zurich-specific content is the configuration and application context rather than
     a single common parameter source. Leaf growth power and the biogenic CO2 set come from stagakis-s2024
     records placed at Zurich; maximum conductance is a Breuer 2003 literature value applied there; albedo
-    is a generic Vargo literature constant; and the leaf area index is a Zurich record too, though it
-    comes from jarvi2011
-    and its own name calls it sample data. The LAI pair agrees on lai.lai_type 1, the targets are right
+    is a generic Vargo literature constant; and the leaf area index is a Zurich-labelled archived sample
+    with source unreferenced rather than a Stagakis parameter. The LAI pair agrees on lai.lai_type 1, the targets are right
     and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
-    nothing in the repository says which is correct. And the snowpack limit and the four degree-day thresholds
+    the composite label still says 2024. And the snowpack limit and the four degree-day thresholds
     are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
     makes. Drainage is now explicit generic literature evidence. Neither remaining question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them. The corrected biogen_co2 component has three values directly
     supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:cb0b52f514730d624ddc56e4b14168371812c87f45f011f6b5bdcfd2832e7452
+  evidence_revision: sha256:8d467358020b59f839eb8e5a628c919d057d1c99b541f332bacf1bbf5d02625e
 verification:
   attestations: []
