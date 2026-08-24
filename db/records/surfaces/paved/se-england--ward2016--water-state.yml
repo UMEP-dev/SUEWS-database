@@ -5,7 +5,8 @@ name: Paved
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id: 42240041
 parameters:
   state_limit: 0.48
