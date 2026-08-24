@@ -5,7 +5,8 @@ name: London (River Thames), UK
 place: london
 origin: London (River Thames), UK
 representativeness: site
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id: 42240057
 parameters:
   state_limit: 30000

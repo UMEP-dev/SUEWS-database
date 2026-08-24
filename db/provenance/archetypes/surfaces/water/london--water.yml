@@ -12,7 +12,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:cd821b62fb09214c78474d8b45e9d6a6ea58618ebc7b93eb75b656e069274c52
     records/surfaces/water/helsinki--jarvi2014--water-state: sha256:9b248f01d4984717fecfce09ae30b5fe7d728bd0563f50e44194366345b565b6
     records/surfaces/water/london--unreferenced--water-state: sha256:eaeaf470443607e11dd96e45033816a6def8e033a5aa33bb5bd896c0d4549af3
-    records/surfaces/water/london--ward2016--water-state: sha256:49c0ffc6a35518913d4c27b37707b3f13a87ef2609c88dbc713509a72257510d
+    records/surfaces/water/london--ward2016--water-state: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
     records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
     records/surfaces/water/se-england--ward2016--emissivity: sha256:0e92987a8a4a6791f83b566de53a5774b912e2121ff3cdd2669662655bdfce42
@@ -164,7 +164,8 @@ assessment:
     record: records/surfaces/water/london--ward2016--water-state
     role: component
     note: Fills the water_state slot. The record declares target land_cover.water, name 'London (River
-      Thames), UK', place london, representativeness site and source ward2016, and carries state_limit.
+      Thames), UK', place london, representativeness site, source unreferenced and method assumed, and
+      carries state_limit.
   - id: component-surfaces-water-se-england--ward2016--drainage
     record: records/surfaces/water/se-england--ward2016--drainage
     role: component
@@ -198,6 +199,6 @@ assessment:
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:1c4ddac28a9ea56bff4447a6df42f2224d769f5684f43b7d1ff6855b1ab75262
+  evidence_revision: sha256:d65cf437f70f3ec9f16db732aa302899675009e118659405c90c720938a839a0
 verification:
   attestations: []

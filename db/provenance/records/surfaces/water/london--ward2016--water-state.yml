@@ -1,0 +1,71 @@
+provenance_record: records/surfaces/water/london--ward2016--water-state
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T07:02:59Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: The historical V2016a water row labels the entry London (River Thames), UK, matching the
+        preserved name and legacy identity.
+    target:
+      conclusion: supported
+      note: StateLimit is a water-surface state parameter, matching the land_cover.water target.
+    values:
+      conclusion: supported
+      note: The fixed V2016a London water row stores StateLimit 30000 exactly. The separate legacy WaterDepth
+        cell is 20000 and remains preserved without being treated as the current parameter.
+    source:
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/130
+      note: No publication was found that states or derives 30000. The value is an explicit legacy configuration
+        assumption, so source unreferenced is honest and avoids attributing it to Ward et al.
+    place:
+      conclusion: supported
+      note: The V2016a entry and its London configuration identify the River Thames in London.
+    representativeness:
+      conclusion: supported
+      note: Site is appropriate for a value attached to one named river rather than to every water surface
+        across London.
+    method:
+      conclusion: supported
+      note: The V2016a manual advises using a substantial generic state limit for rivers, while the London
+        configuration chooses 30000. This is an application assumption rather than a measured or fitted
+        parameter.
+    identity:
+      conclusion: supported
+      note: Legacy row 42240057 uniquely preserves the London River Thames configuration entry and its
+        distinction between StateLimit 30000 and WaterDepth 20000.
+  evidence: []
+  attempted_sources:
+  - source: ward2016
+    attempted_at: '2026-08-24T07:02:59Z'
+    outcome: not_found
+    note: The full article does not publish 30000 or derive a River Thames state-limit parameter.
+  - description: SUEWS V2016a Manual
+    attempted_at: '2026-08-24T07:02:59Z'
+    outcome: incomplete
+    note: The manual gives generic guidance to use a substantial river state limit and an example of
+      20000, but it does not publish the exact London value 30000.
+  scientific_note: 'The exact value is configuration evidence, not a literature parameter. The fixed
+    V2016a row at https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Water.txt#L5
+    stores StateLimit 30000 for London (River Thames), UK. Ward et al. do not publish that value. The
+    record therefore remains a stable migration entry but now declares source unreferenced and method
+    assumed rather than assigning the configuration choice to the application paper.'
+  evidence_revision: sha256:53118f1b3356f316949e1380717a8855744423685ce7b04225bdd8244428774f
+verification:
+  attestations: []
