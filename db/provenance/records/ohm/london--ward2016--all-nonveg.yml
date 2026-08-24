@@ -1,7 +1,7 @@
 provenance_record: records/ohm/london--ward2016--all-nonveg
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:7b8c3b219884f3aecf783465cd7587989f9751f56e66ba6a7233e1c8f00fac54
+record_revision: sha256:9ec59ecad1ca91c6d952029599dae1ba9d02f52e7187408322d31e0acd7afde1
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -55,6 +55,12 @@ assessment:
       - ward-two-site-application
       note: Ward presents code 851 as a generic paved-surface literature composite used at two distinct
         sites, so generic representativeness matches the evidence.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-code-851
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this tuple for Paved, so it is a land-cover input before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -100,9 +106,10 @@ assessment:
     note: The same surface coefficient scheme is applied at both sites; this is application and validation
       evidence.
   scientific_note: Ward et al. publish code 851 as a paved-surface composite compiled from concrete and
-    asphalt studies and use the same surface coefficients in the London and Swindon evaluations. The active
-    name, place and representativeness now describe that generic literature evidence. The stable path and
-    origin retain the legacy London/all-nonvegetated migration lineage, and the values remain unchanged.
-  evidence_revision: sha256:323a0c91630f7b54e76b0c96896e6c54076b5ddcabc11545b5731292f0f274f3
+    asphalt studies and use it as a land-cover input before surface-fraction aggregation in the London and
+    Swindon evaluations. The active name, place and representativeness describe that generic literature
+    evidence. The stable path and origin retain the legacy London/all-nonvegetated migration lineage, and
+    the values remain unchanged.
+  evidence_revision: sha256:ed31b2976202d76cc89dbc8c861e33d46ae85770df3c654fa66343bd7683f8ec
 verification:
   attestations: []

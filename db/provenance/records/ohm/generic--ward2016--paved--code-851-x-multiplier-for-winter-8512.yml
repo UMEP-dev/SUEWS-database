@@ -7,7 +7,7 @@ dependency_revisions:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records:
-    records/ohm/london--ward2016--all-nonveg: sha256:7b8c3b219884f3aecf783465cd7587989f9751f56e66ba6a7233e1c8f00fac54
+    records/ohm/london--ward2016--all-nonveg: sha256:9ec59ecad1ca91c6d952029599dae1ba9d02f52e7187408322d31e0acd7afde1
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:13:31Z'
@@ -99,6 +99,6 @@ assessment:
   scientific_note: Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
     seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
     the coefficients but are not their observation input.
-  evidence_revision: sha256:20581e22f8781417f49cdf40f338a0489c8247cc6b0d7a298a36a3ed7c295cb0
+  evidence_revision: sha256:dfef038a2489877d3262e2039a710cb9c8c671f2cc329aed986126ebe7ad3b61
 verification:
   attestations: []
