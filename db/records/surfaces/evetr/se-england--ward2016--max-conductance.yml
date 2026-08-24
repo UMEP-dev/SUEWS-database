@@ -5,7 +5,8 @@ name: Evergreen Tree (SE England)
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: breuer2003
+method: literature
 legacy_id: 33240046
 parameters:
   max_conductance: 7.4
