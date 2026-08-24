@@ -34,15 +34,15 @@ assessment:
       note: Both the article and historical ESTM row describe building roof, wall and internal thermal
         construction properties, matching the construction target.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - lindberg-table-2
       - estm-801
-      note: Historical code 801 now supports the three roof thicknesses 0.05, 0.15 and 0.12 m and the
+      note: Historical code 801 supports the three roof thicknesses 0.05, 0.15 and 0.12 m and the
         three wall thicknesses 0.087, 0.0497 and 0.0497 m. Material references are retained only where
-        the pinned conductivity and pre-migration material mapping agree. The third roof layer has no
-        material reference because no material record represents its k 0.05 W m-1 K-1 and rhoCp 290000
-        J m-3 K-1 without inventing a specific-heat/density split.
+        the pinned conductivity and pre-migration material mapping agree. The third roof layer correctly
+        carries only its supported thickness because no material record represents its k 0.05 W m-1 K-1
+        and rhoCp 290000 J m-3 K-1 without inventing a specific-heat/density split.
     source:
       conclusion: curation_required
       evidence_ids:
@@ -129,6 +129,6 @@ assessment:
     but cannot store historical per-layer conductivity and volumetric heat capacity directly; because
     roof layer three has no proven material record, only its 0.12 m thickness is retained. Issue #257
     remains the separate identity decision.'
-  evidence_revision: sha256:c705e1c82b9d5b9cf799efd8cb8cd4acb687d6de83c5e646120c6ee5b6da8955
+  evidence_revision: sha256:cd1dd0b83ccca5a6cf6b697e89c56f9a3ad53a4e521346e124b2f97c8a84d70e
 verification:
   attestations: []
