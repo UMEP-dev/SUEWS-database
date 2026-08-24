@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
     records/surfaces/water/se-england--ward2016--emissivity: sha256:0e92987a8a4a6791f83b566de53a5774b912e2121ff3cdd2669662655bdfce42
     records/surfaces/water/se-england--ward2016--water-storage: sha256:feb52bb520718ad7bd88170804ad7984a319000e843d327ca37e8320b7785acc
-    records/surfaces/water/swindon--ward2016--water-state: sha256:8d2991c261d366ce21c4b224a76336f6318ae0ef5d3512b3d160d6a2a1f9b880
+    records/surfaces/water/swindon--ward2016--water-state: sha256:341ab479d4f14db8cc46eded061580593d60c8631e6d143e5eafc8a77ea8b9f5
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:43:17Z'
@@ -153,7 +153,8 @@ assessment:
     record: records/surfaces/water/swindon--ward2016--water-state
     role: component
     note: Fills the water_state slot. The record declares target land_cover.water, name 'Swindon, UK (not
-      used)', place swindon, representativeness city and source ward2016, and carries state_limit.
+      used)', place swindon, representativeness city, source unreferenced and method assumed, and carries
+      state_limit.
   - id: component-surfaces-water-se-england--ward2016--drainage
     record: records/surfaces/water/se-england--ward2016--drainage
     role: component
@@ -185,7 +186,7 @@ assessment:
     ''Swindon, UK (not used)'', so the state_limit this entry publishes comes from a row the migration
     marked as unused in the study it cites. Whether such a value belongs in the database at all is a question
     for that record''s own evidence review. As a selection it is beyond argument, because it is the only
-    Swindon water-state record there is and it agrees with the composite on place, class and source.'
-  evidence_revision: sha256:db329499e905c3919d18b05fd722d66aa929267a0c67cb8cf9214d143ba0ce88
+    Swindon water-state record there is and it agrees with the composite on place and class.'
+  evidence_revision: sha256:591e9dbb9853ccad1566283beb6ed7e82368d24b63c5685599366dc598335092
 verification:
   attestations: []

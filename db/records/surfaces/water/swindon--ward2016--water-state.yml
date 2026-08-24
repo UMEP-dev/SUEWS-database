@@ -5,7 +5,8 @@ name: Swindon, UK (not used)
 place: swindon
 origin: Swindon, UK (not used)
 representativeness: city
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id: 42240047
 parameters:
   state_limit: 1000
