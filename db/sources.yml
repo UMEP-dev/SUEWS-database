@@ -404,6 +404,13 @@ sources:
     title: Impact of city changes and weather on anthropogenic heat flux in Europe 1995–2015
     type: journalArticle
     year: 2013
+  liu2013:
+    author: Liu, Hongya; Cao, Liang
+    journal: Journal of Applied Meteorological Science
+    title: The Relationship Between Power Load and Meteorological Factors with Refined Power Load Forecast in Shanghai
+    type: journalArticle
+    url: https://html.rhhz.net/yyqxxb/html/20130408.htm
+    year: 2013
   loridan2011:
     author: Loridan, Thomas; Grimmond, C. S. B.; Offerle, B.; Young, Duick; Smith, Thomas;
       Järvi, Leena; Lindberg, Fredrik
@@ -496,6 +503,20 @@ sources:
       weather
     type: journalArticle
     year: 2006
+  sailor2011:
+    author: Sailor, David J.
+    doi: 10.1002/joc.2106
+    journal: International Journal of Climatology
+    title: A review of methods for estimating anthropogenic heat and moisture emissions in the urban environment
+    type: journalArticle
+    year: 2011
+  shanghai-statistics2016:
+    author: Shanghai Municipal Statistics Bureau
+    journal: China Statistics Press
+    title: Shanghai Statistical Yearbook 2016
+    type: book
+    url: https://tjj.sh.gov.cn/tjnj/tjnj2016.htm
+    year: 2016
   schmid2000:
     author: Schmid, Hans; Grimmond, C. Susan B.; Cropley, Ford; Offerle, B.; Su, Hong-Bing
     doi: 10.1016/S0168-1923(00)00140-4
@@ -624,6 +645,20 @@ sources:
     title: Field measurements on energy balance of an urban canyon in the summer season
     type: journalArticle
     year: 1991
+  yu2016:
+    author: Yu, Jia; Wen, Jiahong
+    doi: 10.1007/s13753-016-0111-8
+    journal: International Journal of Disaster Risk Science
+    title: Multi-criteria Satisfaction Assessment of the Spatial Distribution of Urban Emergency Shelters Based on High-Precision Population Estimation
+    type: journalArticle
+    year: 2016
+  zhong2017:
+    author: Zhong, Weijing; Wang, De; Xie, Dongcan; Yan, Longxu
+    doi: 10.11821/dlyj201705013
+    journal: Geographical Research
+    title: Dynamic characteristics of Shanghai's population distribution using cell phone signaling data
+    type: journalArticle
+    year: 2017
   zheng-y2023:
     author: Zheng Y., Havu M., Liu H., Cheng X., Wen Y., Lee H.S., Ahongshangbam J. and Järvi
       L.

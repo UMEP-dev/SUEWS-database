@@ -1,0 +1,185 @@
+provenance_record: records/profiles/energy-use/shanghai--ao2018--ao-et-al
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:f1ee578b76cd887436a47abbf4f3ffefd8d1a9b06c8724e8febf4435a53c4520
+dependency_revisions:
+  sources:
+    ao2018: sha256:88b3c9ee4a7ea161d9dd66a37c999cfa83ed334130ac44f34357ae62a09efc7d
+    liu2013: sha256:cb5484b50cbeeb5c658e03163daa3b81db6388233a4f1b5731e5a805e90865de
+    sailor2011: sha256:464fa325c37295d1db668001a34cb53617b0d1ac5599129b34068e9ecdb9bead
+    shanghai-statistics2016: sha256:037658bb83820a8a258c5d38d2d93418d439149c535c47481423930970f9e16a
+    yu2016: sha256:a9cdcbd74d6fd45b31ee71e703299a90353747afabb28da4a91a15c97667115f
+    zhong2017: sha256:f0d749699f0a195a671dba96187b5c165d1236c4366b9430e433dd9422baec64
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T13:10:49Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/347
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: The display name identifies the publication that derived the XJH building-heat profiles.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: Figure 3a identifies the profiles as building anthropogenic heat flux, matching the energy-use
+        profile attached to anthropogenic heat.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: Ao et al. Figure 3a and section 3.1 establish the three scaled weekday, weekend and holiday
+        profile shapes and their reported max:min ratios. The paper does not print the normalized two-decimal
+        arrays; the versioned legacy rows preserve all 72 exact compiled values and cite Ao et al. through
+        reference 90240064. No value is changed.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      - liu-electricity-input
+      - sailor-industry-input
+      - shanghai-energy-input
+      - yu-population-input
+      - zhong-population-input
+      note: Ao et al. is the publication that derives and presents the profiles, so it remains the parameter
+        source. The other publications supply electricity, industry and population inputs and are recorded
+        separately rather than being credited with the final vectors.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: Section 2.2 and Figure 3a identify the final profiles with the XJH site in Shanghai.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: The city electricity profile is scaled by XJH industry and dynamic-population assumptions;
+        Figure 3a labels the result as the XJH site profile.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: The paper describes XJH as a dense central business district dominated by office and residential
+        buildings.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      - liu-electricity-input
+      - sailor-industry-input
+      - shanghai-energy-input
+      - yu-population-input
+      - zhong-population-input
+      note: The database adopts Ao et al.'s published, source-side derivation and does not recompute the
+        vectors from atomic database records or fully enumerated source-table inputs. Under the record
+        vocabulary this is literature, while the evidence roles retain the calculation's distinct input
+        lineage.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-profile-publication
+      note: Legacy rows 60240944, 60240945 and 60240946 are respectively Weekday, Weekend and Holiday
+        entries named Ao et al.; migration maps them to working_day, holiday and public_holiday in this
+        single profile record.
+  evidence:
+  - id: ao-profile-publication
+    source: ao2018
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 2.2, Estimation of anthropogenic heat flux QF
+      page: 1986
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: States that weekday, weekend and holiday building profiles are based on city electricity and
+        scaled by Shanghai's electricity fraction, XJH industry fraction and dynamic population density.
+    - kind: figure
+      label: Figure 3a, XJH building anthropogenic heat profiles, scale 2
+      page: 1987
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Presents the weekday, weekend and holiday curves after accounting for dynamic population density.
+    - kind: section
+      label: Section 3.1, Anthropogenic heat fluxes
+      page: 1989
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Describes each curve's hourly shape and gives scale-2 max:min ratios of 4.7, 3.2 and 3.4 before
+        two-decimal profile rounding.
+    - kind: dataset
+      label: Historical database rows 60240944-60240946
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L28994-L29086
+      note: Preserves the exact two-decimal vectors, day types and Ref 90240064 that resolves to Ao et
+        al.; this is compilation lineage, not a second derivation source.
+  - id: liu-electricity-input
+    source: liu2013
+    role: input_data
+    locators:
+    - kind: section
+      label: Introduction and Section 1, Shanghai power-load characteristics
+      page: 455-457
+      url: https://html.rhhz.net/yyqxxb/html/20130408.htm
+      note: Uses Shanghai Electric Power Company 15-minute load data for 2004-2008 and separates working
+        from non-working days, including holiday effects.
+  - id: sailor-industry-input
+    source: sailor2011
+    role: input_data
+    locators:
+    - kind: section
+      label: Section 2.2, Industry
+      page: 191
+      url: https://doi.org/10.1002/joc.2106
+      note: States that industrial energy use is relatively weather-insensitive and has a more uniform
+        diurnal and seasonal distribution; Ao et al. use this as their uniform industrial-load assumption.
+  - id: shanghai-energy-input
+    source: shanghai-statistics2016
+    role: input_data
+    locators:
+    - kind: table
+      label: Chapter 6 Table 6.1, energy consumption in main years
+      url: https://tjj.sh.gov.cn/tjnj/2016tjnj/C0601.htm
+      note: Official rows give total and industrial energy and electricity consumption for 2005-2009;
+        Ao et al. reproduce these in Table A1 and use them for the approximately 14% electricity fraction
+        and XJH industry scaling.
+  - id: yu-population-input
+    source: yu2016
+    role: input_data
+    locators:
+    - kind: section
+      label: Section 3.1.2, Population Data, and Figure 4
+      page: 419
+      url: https://doi.org/10.1007/s13753-016-0111-8
+      note: Finds Jing'an daytime population 39.2% above nighttime overall and 147.7% above nighttime
+        in its busiest subdistrict, one basis for Ao et al.'s XJH dynamic-population scaling.
+  - id: zhong-population-input
+    source: zhong2017
+    role: input_data
+    locators:
+    - kind: section
+      label: Section 3.1, population time dynamics
+      page: 975-976
+      url: https://doi.org/10.11821/dlyj201705013
+      note: Shows population moving into central Shanghai from 0600 to 1000, remaining concentrated until
+        1800, then returning outward.
+    - kind: figure
+      label: Figure 7, central-city daytime-to-nighttime population ratio
+      page: 979
+      url: https://doi.org/10.11821/dlyj201705013
+      note: Maps central-city neighborhood daytime-to-nighttime ratios, supporting the approximately 1.5
+        ratio adopted by Ao et al.
+  scientific_note: This record is an adoption of Ao et al.'s XJH scale-2 building-heat profiles. Ao et
+    al. calculated those curves from city electricity data, energy and industry fractions, a uniform industrial-load
+    assumption and dynamic population evidence; the database did not repeat that calculation from atomic
+    inputs. Keeping source ao2018 and method literature therefore credits the derivation publication,
+    while the sidecar separates every located input-data role. The paper supplies the derivation and plotted
+    curves, and the immutable legacy rows supply the exact two-decimal compilation lineage.
+  evidence_revision: sha256:c2c868e42984b433aba7da4af48497e7a0aa40e1b2ddc078fa644445873f4aab
+verification:
+  attestations: []
