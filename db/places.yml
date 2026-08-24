@@ -297,6 +297,11 @@ places:
     kind: country
     name: Eritrea
     region: Africa
+  espoo:
+    name: Espoo
+    lat: 60.187783
+    lon: 24.832458
+    country: finland
   estonia:
     kind: country
     name: Estonia

@@ -1,16 +1,17 @@
 provenance_record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
+record_revision: sha256:fe389781a76fde33a90c8205df294018f56a1f3b49232dd4f30d5742c70a72bb
 dependency_revisions:
   sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
-    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+    espoo: sha256:8422350b58a339e581f10636e9338efc11ddaee9b84c668f2f5b328371d0c1e9
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:00:44Z'
+  assessed_at: '2026-08-24T17:10:04Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -31,49 +32,49 @@ assessment:
       evidence_ids:
       - zheng-model-archive
       - zheng-article
+      - jarvi-grass-respiration
       note: Code 33 of SUEWS_BiogenCO2.txt carries alpha 0.031, beta 5.4973, resp_a 2.1, resp_b 0.06 and
         min_respi 0.6, which is the record exactly, and Veg code 993 points at it. Appendix D reports
         the fitted median Fpho,max = 5.497 +/- 0.110, so the archive carries one digit more than the article
-        publishes; Table 2 gives ai = 2.1 and bi = 0.06 and rounds Fpho,max to 5.5; Eq. (15) states the
-        0.6 minimum. The stored alpha appears only in the archive, and the quarantined theta of -999 matches
-        the archive's empty column.
+        publishes. Järvi Table A1 gives grass a = 2.1 and b = 0.06 for Torni and Eq. 11 documents the
+        0.6 minimum; Zheng Table 2 adopts those respiration values and rounds Fpho,max to 5.5. The stored
+        alpha appears only in the archive, and the quarantined theta of -999 matches the archive's empty
+        column.
     source:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
       - zheng-article
       - zheng-model-archive
-      note: The roles are mixed. Zheng et al. fitted beta themselves, which Appendix D sets out in full,
-        so for that parameter they are the parameter publication. Table 2 credits ai and bi to Havu et
-        al. (2022a) and Jarvi et al. (2019), and the archive comments the row as modified from Ossinlampi,
-        Kumpula grassland. One source key currently carries both roles.
+      - jarvi-grass-respiration
+      note: The roles are mixed. Zheng et al. publish the Espoo beta fit and compile the Beijing input,
+        while Järvi et al. publish the adopted Kumpula grass respiration terms and Finnish respiration
+        floor. Alpha is recoverable only from the archived compilation. The schema has one source field,
+        so replacing zheng-y2023 with jarvi2019 would misattribute beta and hide the compilation role.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/331
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-article
       - zheng-model-archive
-      note: Appendix D locates the eddy covariance lawn at 60 deg 11' 16.02" N, 24 deg 49' 56.85" E, in
-        Espoo, Finland, and states that the fitted Fpho,max is the value used for grass and lawn in the
-        Beijing simulation. Sect. 4.5.1 calls the same site Helsinki, which is an inconsistency inside
-        the article; either way it is not Beijing. Beijing is the application location.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/331
+      note: The active place is now Espoo. Appendix D locates the 0.7 ha eddy-covariance lawn at 60 deg
+        11 min 16.02 sec N, 24 deg 49 min 56.85 sec E in Espoo and states that its fitted Fpho,max is then
+        used in Beijing. The stable Beijing path and origin retain that application lineage.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - zheng-domain
-      note: 'City representativeness for Beijing is unsupported: the parameters are Finnish in origin
-        and the Beijing run covers a 1 km circle around the IAP tower rather than the city.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/331
+      - zheng-article
+      note: Site is the supported scope because Appendix D fits the grass parameter to observations from
+        one 0.7 ha urban lawn; it supplies no city-wide evidence for either Espoo or Beijing.
     method:
       conclusion: curation_required
       evidence_ids:
       - zheng-article
       - zheng-model-archive
+      - jarvi-grass-respiration
       note: beta is a nonlinear least-squares fit with bootstrapping described in Appendix D, while ai
-        and bi are inherited literature values, so no single method describes the row.
+        and bi and the respiration floor are inherited literature values and alpha is archive-only, so
+        no single method describes the row.
     identity:
       conclusion: supported
       evidence_ids:
@@ -129,12 +130,29 @@ assessment:
       url: https://doi.org/10.5194/gmd-16-4551-2023
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
-  scientific_note: The values are confirmed twice, in the released input and in Appendix D. What the record
-    misstates is where they come from. Appendix D is unambiguous that the photosynthesis parameter was
-    fitted to an urban lawn in Espoo, Finland, and says in as many words that this value is then used
-    for grass and lawn in the Beijing simulation; the respiration parameters are inherited Helsinki values.
-    Presenting the row as Beijing city evidence is not supportable, and the row also mixes a fit that
-    is genuinely Zheng et al.'s with parameters that are not.
-  evidence_revision: sha256:39154a243f64a1eee6d2adf82cf8f380c6566b5e375147166e66ed19a64d9009
+  - id: jarvi-grass-respiration
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table A1, grass respiration parameters for Torni
+      page: 15
+      url: https://doi.org/10.1029/2018JD029576
+      note: Publishes agrass = 2.1 +/- 0.8 and bgrass = 0.06 +/- 0.03 for the Torni/Kumpula Helsinki
+        application adopted by Zheng.
+    - kind: equation
+      label: Eq. 11 and accompanying text
+      page: 5
+      url: https://doi.org/10.1029/2018JD029576
+      note: Sets the 0.6 umol m-2 s-1 floor from winter soil-chamber measurements in a boreal forest
+        in central Finland.
+  scientific_note: >-
+    The active place and scope now identify the Espoo lawn where Zheng et al. fitted beta, rather than
+    the Beijing application. The stable Beijing path, origin lineage, target, values, source and legacy
+    identity remain unchanged. The tuple is still mixed: Zheng et al. publish the Espoo beta fit and
+    compile the row; Järvi et al. publish the adopted Kumpula grass respiration terms and Finnish floor;
+    and alpha is only present in the archive. The one-source and one-method fields cannot express those
+    roles without overclaiming, so source and method remain curation required.
+  evidence_revision: sha256:7a515aebc5eb729e5edfda9af205ef9f6aa72e9a0253f09997b08c171fcf8b06
 verification:
   attestations: []
