@@ -8,7 +8,7 @@ dependency_revisions:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records:
     archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016: sha256:38f3ce959a62e50c9416b30e99bd539fae7779db6e41cd23672cbb7b02c3ceee
-    records/ohm/generic--ward2016--all-vegetation: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+    records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
@@ -223,6 +223,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:8c4c32f4f889cecb8ab1e5b1d95a11906a0fdbc0c32cd0f51e9e6223ac5d1100
+  evidence_revision: sha256:181745f679b013fff42fb72d8531fbefb7a7c16cae21d44b5a8dd3b861da7cea
 verification:
   attestations: []
