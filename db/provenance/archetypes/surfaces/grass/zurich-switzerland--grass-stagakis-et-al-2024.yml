@@ -8,7 +8,7 @@ dependency_revisions:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
-    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
@@ -140,8 +140,9 @@ assessment:
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
-    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
-      generic, representativeness generic and source unreferenced.
+    note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
+      parameter and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
@@ -206,6 +207,6 @@ assessment:
     declares place zurich while db/sources.yml titles ao2018 an evaluation at a dense urban site in Shanghai,
     which that record''s own evidence review must settle. The drainage component is openly generic literature
     evidence rather than a Zurich observation.'
-  evidence_revision: sha256:1e99255afe1fdb0e48140662cc954b52bde56802ee87796d7c7ed115f20c5842
+  evidence_revision: sha256:ac93289fecbe9b3a252e68d46ae9bf4305c23bef70964d9a72bcd31075e103dd
 verification:
   attestations: []

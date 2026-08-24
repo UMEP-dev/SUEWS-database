@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
-    records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
+    records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:7680a5acbbbed647249e2446c6b8d79c4c1f905657620f1d21b61e9b6b2d447a
@@ -146,8 +146,9 @@ assessment:
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
-    note: Fills the porosity slot. The record declares target land_cover.grass, name "Dummy value", place
-      generic, representativeness generic and source unreferenced.
+    note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
+      parameter and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
@@ -216,6 +217,6 @@ assessment:
     local, so the choice between two transplants is a maintainer''s and not a correction. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:83cc90a709cca873581c377fa5c909a20107f8bbd2139ba4514020a5f6bec11d
+  evidence_revision: sha256:bae2a1ef3eab9887108280a6529401ac15b30bcf6c2dbb9136e9f0596e431b62
 verification:
   attestations: []
