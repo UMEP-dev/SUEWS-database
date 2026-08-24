@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
-    records/surfaces/evetr/se-england--ward2016--drainage: sha256:960f0096f02dc5c845859db5cdee3cb8ce2a79abee8e9ff6c37eb81498f32bd8
+    records/surfaces/evetr/se-england--ward2016--drainage: sha256:cbbab44c97e62642c99a85c37c48e987f33612ee05d0bd721f21d99165d086d0
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
@@ -37,9 +37,8 @@ assessment:
       - component-surfaces-evetr-se-england-ward2016-lai
       - component-ohm-generic-ward2016-all-vegetation
       note: 'The composite is named "Evergreen Tree Ward et al. (2016)" and declares place london with
-        origin "London, UK". Six of its thirteen components declare source ward2016: albedo, emissivity,
-        leaf_growth_power and drainage, plus
-        both OHM records. The label identifies what the composite assembles, but it is not unique to it:
+        origin "London, UK". Five of its thirteen components declare source ward2016: albedo, emissivity,
+        leaf_growth_power and both OHM records. The label identifies what the composite assembles, but it is not unique to it:
         archetypes/surfaces/evetr/swindon-uk--evergreen-tree-ward-et-al-2016 carries the same name, and
         the place field is the only thing telling the two apart. That is treated under identity.'
     target:
@@ -197,7 +196,7 @@ assessment:
     record: records/surfaces/evetr/se-england--ward2016--drainage
     role: component
     note: Fills drainage. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree"; its source field reads ward2016.
+      regional, and is named "Evergreen Tree"; its source field reads ward2018 and its method is literature.
   - id: component-surfaces-evetr-se-england-ward2016-max-conductance
     record: records/surfaces/evetr/se-england--ward2016--max-conductance
     role: component
@@ -249,6 +248,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:eff8e6727f8954f2870d7ea7d56ec80ea52127b2261ed9f350576733a71870c6
+  evidence_revision: sha256:bd33d09b5ec7ccabe03ee0d622598990b6f50f4f6a7163a4bdcb187271c3aab3
 verification:
   attestations: []
