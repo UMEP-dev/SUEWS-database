@@ -1,7 +1,7 @@
 record: records/surfaces/grass/helsinki--vargo2013--albedo
 schema_version: '2026.5'
 target: land_cover.grass
-name: Unirrigated Grass
+name: Grassland/herbaceous
 place: helsinki
 origin: Helsinki
 representativeness: city

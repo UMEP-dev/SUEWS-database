@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
-    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
+    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:d3ce02674018133038f7aac7a2367787540366a2627965e866353d4825eea874
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:a322f663d830aa91b2254b89301688372d7c8c26a294eceb77e629081160a2ad
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
@@ -43,11 +43,11 @@ assessment:
         path slug convention requires. Three of the twelve components declare source jarvi2014, filling
         drainage, snow_lim_patch and vegetation_growth, and three more declare source havu-m2024, filling
         leaf_area_index, leaf_growth_power and biogen_co2, so the study in the label supplies a quarter
-        of the assembly rather than most of it. The unirrigated qualifier is carried consistently by three
+        of the assembly rather than most of it. The unirrigated qualifier is carried consistently by two
         components: records/surfaces/grass/helsinki--jarvi2014--drainage is named "Grass, unirrigated",
         records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass is named "Unirrigated
-        Grass", and the albedo record records/surfaces/grass/helsinki--vargo2013--albedo is named "Unirrigated
-        Grass" too, so the label matches the assembly more closely here than in the irrigated sibling.'
+        Grass". The albedo record is named "Grassland/herbaceous" and makes no irrigation claim, so it
+        is neutral rather than additional support for the qualifier.'
     target:
       conclusion: curation_required
       evidence_ids: &id001
@@ -186,7 +186,7 @@ assessment:
   - id: component-surfaces-grass-helsinki-vargo2013-albedo
     record: records/surfaces/grass/helsinki--vargo2013--albedo
     role: component
-    note: Fills the albedo slot. The record declares target land_cover.grass, name "Unirrigated Grass",
+    note: Fills the albedo slot. The record declares target land_cover.grass, name "Grassland/herbaceous",
       place helsinki, representativeness city and source vargo2013.
   - id: component-surfaces-grass-se-england-havu-m2024-lai
     record: records/surfaces/grass/se-england--havu-m2024--lai
@@ -212,8 +212,8 @@ assessment:
       vancouver--jarvi2011 while its declared place is generic and its declared source is breuer2003,
       which is recorded under the place finding.
   scientific_note: 'The assembly is coherent as an unirrigated Helsinki grass surface, and the unirrigated
-    qualifier is carried consistently by the drainage, conductance and albedo components, whose names
-    all state it. Seven of twelve components declare place helsinki and the two SE England slots fill
+    qualifier is carried by the drainage and conductance components; the Vargo albedo component is an
+    irrigation-neutral grassland class. Seven of twelve components declare place helsinki and the two SE England slots fill
     emissivity and water_storage. Two matters are for other reviews rather than this one: the
     conductance component''s path reads vancouver--jarvi2011 while the record declares place generic and
     source breuer2003, which its own evidence review must settle, and it is classed generic where the
@@ -223,6 +223,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its irrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:f3d9730626a9498aeb9c71e4014b52ddce81013caa7a9acaecfbdd3185c6f2bb
+  evidence_revision: sha256:85d339de5660582212cadf6bbcd3edd66e8d28bacd8ff631ee7d015dad8e5c27
 verification:
   attestations: []
