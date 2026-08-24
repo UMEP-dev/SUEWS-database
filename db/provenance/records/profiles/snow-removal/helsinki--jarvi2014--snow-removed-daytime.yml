@@ -9,7 +9,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
-    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:6faf655037c29fec22a19f4c91ba67b65c0f8cf9571f3e711177213022429baa
+    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
 assessment:
   status: unresolved
   assessed_at: '2026-08-23T02:15:00Z'
@@ -97,6 +97,6 @@ assessment:
     limit of 40 mm on buildings and 100 mm on pavement, applied uniformly across the sites because nothing
     better was available. There is no diurnal profile in it. The all-zero sibling is now explicitly
     unreferenced; this citation does not support either Helsinki switching pattern.'
-  evidence_revision: sha256:d079471bbbb13c8afb9fb6fb681f7ad16d7e60c5630eb3efaa1bf49237a02fd1
+  evidence_revision: sha256:acffa668f8db1ddf6194c0c2bfd2115d085c6462047eda7b61dbd3ca811f2c21
 verification:
   attestations: []
