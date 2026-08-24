@@ -1,7 +1,7 @@
 record: records/conductance/generic--ward2016
 schema_version: '2026.5'
 target: conductance
-name: Updated Ward  et al. (2016) gsModel=2 [sample run]
+name: Ward et al. (2016) generic surface conductance parameterisation (gsModel=2)
 place: generic
 origin: Unspecified
 representativeness: generic
