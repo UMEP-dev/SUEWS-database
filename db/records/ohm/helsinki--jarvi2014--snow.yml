@@ -6,6 +6,7 @@ place: montreal-suburban
 origin: Helsinki
 representativeness: site
 source: jarvi2014
+method: literature
 legacy_id: 50240016
 parameters:
   a1: 0.25

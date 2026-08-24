@@ -10,7 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
-    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
+    records/ohm/helsinki--jarvi2014--snow: sha256:d02111df6d36ea7b5bb1571b6cd6f06b1be0c898d4478bf67d5ba194d9db75e8
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
     records/snow/se-england--ward2016--albedo: sha256:983db6c590ff1f2e1ac61b3c6c10b27012ab8aab8393f39c1fffb4442e6e2f23
@@ -154,6 +154,6 @@ assessment:
     all three fields and is referenced by no archetype at all. The choice is not free either way: no SE
     England snow emissivity record exists, but the remaining emissivity is now correctly identified as
     generic rather than Helsinki evidence. A maintainer should settle the albedo selection knowingly.'
-  evidence_revision: sha256:c103d8acf390fa17f1d9f8189ebbccd28c3b70a821ee59b4e24b53d5b59e1bc5
+  evidence_revision: sha256:d8b5e69506351cf0ab57c3d8b3713014c3fd7d58b66b87eadc984518430da9f9
 verification:
   attestations: []
