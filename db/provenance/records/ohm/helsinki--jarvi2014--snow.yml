@@ -1,12 +1,12 @@
 provenance_record: records/ohm/helsinki--jarvi2014--snow
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:df8317f37ffc9c6bc3d015fb6b91f5f8da5e1486f657fdd592efed276b82114b
+record_revision: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    montreal-suburban: sha256:b10fe91ea2fb9cde2b197a0f807398c66c48abd4ead58d6314cb73eae75078c8
   records: {}
 assessment:
   status: curation_required
@@ -34,21 +34,20 @@ assessment:
       evidence_ids:
       - snow-parameter-publication
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - snow-parameter-publication
-      note: a2 and a3 were optimized at the Pr suburban site in Montreal, while the completed set was
-        applied across sites; the paper does not support a uniquely Helsinki observation place.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/70
+      note: The record declares montreal-suburban. Section 2.2.2 and Table 1 identify Pr as the suburban
+        Montreal site in the Pierrefonds–Roxboro borough at 45.501 N, 73.811 W. Section 3.1.2 states
+        that a2 and a3 were optimized there. The stable path and origin retain the legacy Helsinki migration
+        text; Helsinki is one of the sites where the completed set was later applied.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - snow-parameter-publication
-      note: Maintainers must choose between the Montreal fitting-site meaning and the authors' overall
-        multi-site intended application.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/70
+      note: Site representativeness is the honest evidence envelope because the observational optimization
+        of a2 and a3 used the single Pr site. Applying the completed set at all sites describes how far
+        the evidence travelled, not a broader place or observational scale.
     method:
       conclusion: curation_required
       evidence_ids:
@@ -77,9 +76,19 @@ assessment:
       page: 1700-1701
       url: https://gmd.copernicus.org/articles/7/1691/2014/gmd-7-1691-2014.pdf
       note: Lists the final snow OHM triplet and optimization context.
-  scientific_note: The publication and exact values are supported. Human curation is required because
-    the tuple combines coefficient-specific methods and its stored Helsinki/city envelope collapses a
-    Montreal fit with an overall multi-site application.
-  evidence_revision: sha256:5d90400e39e4171264685fc55e64fa28654d57f80667c066f6157eb44f1e85fc
+    - kind: table
+      label: Table 1 and Section 2.2.2, Montreal site characteristics
+      page: 1696
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Identifies Pr as the Pierrefonds–Roxboro suburban site in Montreal and locates it at 45.501
+        N, 73.811 W.
+  scientific_note: The publication and exact values are supported. The record now declares the Pr suburban
+    site in Montreal and site representativeness because that is where a2 and a3 were optimized against
+    observed sensible heat. The place-neutral a1 assumption does not support a different location, and
+    the completed triplet's later use at all sites describes evidence travel rather than origin. Human
+    curation is still required under issue 71 because the tuple combines coefficient-specific methods.
+    The a1 coefficient is assumed from shallow-water and heat-capacity relationships, whereas a2 and
+    a3 are fitted.
+  evidence_revision: sha256:f33c5e51dab5e8df796b4365202639dfbd17989c11bdca0af886295ddf7dabe3
 verification:
   attestations: []

@@ -9,6 +9,7 @@ dependency_revisions:
   records:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
+    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
@@ -60,10 +61,12 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: The composite declares place generic, which db/places.yml holds as the bare entry Generic
         with no coordinates, country or Koppen class. Its albedo component declares montreal-suburban
         and its emissivity component declares no place, so one component matches the generic scope while
-        the other remains site-specific. No snow record in the database
+        the other remains site-specific. Its four legacy OHM condition fields also point to a triplet
+        fitted at the Montreal Pr site. No snow record in the database
         declares a generic place, the only three being the two Helsinki records and records/snow/se-england--ward2016--albedo,
         so this cannot be closed by re-selection and turns on the decision recorded under name.
     representativeness:
@@ -71,9 +74,11 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: The composite declares representativeness generic, the broadest class the format offers. Its
         emissivity component also declares generic, while its albedo component declares site and therefore
-        stands in below the default's claimed scale.
+        stands in below the default's claimed scale. The OHM record referenced by all four legacy condition
+        fields likewise declares site.
         No snow record classed generic exists, and the only one classed regional, records/snow/se-england--ward2016--albedo,
         carries albedo alone, so as with place the gap cannot be closed by re-selection.
     method:
@@ -110,6 +115,12 @@ assessment:
     note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
+  - id: legacy-ohm-helsinki--jarvi2014--snow
+    record: records/ohm/helsinki--jarvi2014--snow
+    role: related
+    note: All four legacy OHM condition fields point to legacy ID 50240016. The stable record declares
+      target ohm_coefficients, place montreal-suburban, representativeness site and source jarvi2014,
+      and carries a1 0.25, a2 0.6 and a3 -30. Its path and origin retain legacy Helsinki migration text.
   scientific_note: 'archetypes/snow/suews--no-snow is a generic, unreferenced entry whose legacy block
     disables snow by setting eleven scalars to -999, and it selects the same two components as the other
     two snow composites. Because it declares no parameters block of its own, what it assembles is those
@@ -117,7 +128,8 @@ assessment:
     0.99; the albedo is referenced to jarvi2014 and described as montreal-suburban, site, while the emissivity
     is referenced to jarvi2011 and described as generic, and the -999 sentinels never leave the legacy block. An entry named
     No Snow, placed generic and classed generic, therefore resolves under the modern schema to specific-place
-    snow optical properties alone. Two things
+    snow optical properties alone. Its four legacy OHM condition fields additionally point to the Montreal-site
+    triplet under legacy ID 50240016, but that binding does not enter the modern fragment. Two things
     follow, neither of them settled by the files. The database holds no snow record with a generic place
     or a generic class, so the place and class gaps cannot be closed by choosing different components.
     And whether a configuration running with the snow module off still needs snow_albedo_min, snow_albedo_max
@@ -125,6 +137,6 @@ assessment:
     does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
     the uses block should not be here at all. A maintainer with the model''s requirements to hand can
     settle all three findings in one decision.'
-  evidence_revision: sha256:a789862a8be35c7fead571fafac4a0e02bd8440982584eeef8cb176565c6a439
+  evidence_revision: sha256:f3d626c8e30a40c596309e126f35afc6c44d474e304ae1801de42355b94603c0
 verification:
   attestations: []

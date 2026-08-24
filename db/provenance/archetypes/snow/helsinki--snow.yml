@@ -10,6 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
+    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
@@ -44,13 +45,16 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: 'The composite asserts eleven parameters of its own, from radiation_melt_factor 0.0016 to
         temperature_rain_snow_threshold 2.2. None is a field either component supplies, so the assembly
         overrides no component value. Whether jarvi2014 supports the eleven is not settled here and cannot
         be settled by any assessment that currently exists: docs/FORMAT.md requires a value a composite
         introduces to be represented and evidence-reviewed as a record first, and these eleven appear
         nowhere under db/records/. Until they do, a composition review cannot call them supported, and
-        this review does not.'
+        this review does not. Separately, all four legacy OHM condition fields point to ID 50240016,
+        represented by records/ohm/helsinki--jarvi2014--snow; that binding stays in the legacy block and
+        does not enter the assembled fragment.'
     source:
       conclusion: not_applicable
       note: The composite claims no composition rationale. Its source field, jarvi2014, attributes the
@@ -63,21 +67,25 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: The composite declares place helsinki. The emissivity component is placeless because Järvi
         et al. (2011) publishes 0.99 as a general model input, while the albedo component declares montreal-suburban
         because that is where Järvi et al. (2014) determined 0.18 and 0.85. The later article applies both
-        at Helsinki, so the assembly is a documented Helsinki configuration rather than a claim that each
-        component was measured there.
+        at Helsinki. The legacy OHM fields likewise point to a triplet fitted at the Montreal Pr site
+        and subsequently applied at all sites, so the assembly is a documented Helsinki configuration
+        rather than a claim that each input was measured there.
     representativeness:
       conclusion: curation_required
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: The composite declares representativeness city. The emissivity component declares generic,
         while the albedo component declares site because its values were determined at the single Pr suburban
-        site in Montreal. Järvi et al. apply those values at Helsinki, but the composition
-        still promotes site-derived evidence into a city configuration; a verifier should sign off that
-        use knowingly rather than treating the component as city-scale evidence.
+        site in Montreal. The legacy OHM record also declares site because a2 and a3 were optimized at
+        Pr. Järvi et al. apply those values at Helsinki, but the composition still promotes site-derived
+        evidence into a city configuration; a verifier should sign off that use knowingly rather than
+        treating the inputs as city-scale evidence.
     method:
       conclusion: supported
       evidence_ids:
@@ -114,6 +122,12 @@ assessment:
     note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
+  - id: legacy-ohm-helsinki--jarvi2014--snow
+    record: records/ohm/helsinki--jarvi2014--snow
+    role: related
+    note: All four legacy OHM condition fields point to legacy ID 50240016. The stable record declares
+      target ohm_coefficients, place montreal-suburban, representativeness site and source jarvi2014,
+      and carries a1 0.25, a2 0.6 and a3 -30. Its path and origin retain legacy Helsinki migration text.
   scientific_note: 'The selection is documented but spans evidence scales. archetypes/snow/helsinki--snow
     declares place helsinki, representativeness city and source jarvi2014. Its albedo component now correctly
     declares the Montreal suburban site and site representativeness because that is where Järvi et al.
@@ -124,10 +138,11 @@ assessment:
     the composite''s own eleven scalars
     merged over them. Three things a reader should carry forward without acting on them here. The first
     is that the albedo''s use in a city configuration promotes site-derived evidence and needs verifier
-    sign-off at the composition layer. The second is that the eleven scalars the composite asserts have
+    sign-off at the composition layer; the same applies to the Montreal-site OHM record referenced by
+    all four legacy condition fields. The second is that the eleven scalars the composite asserts have
     no record behind them, so nothing in the database can yet review them. The emissivity component is
     the database''s only snow emissivity record, and its own evidence review establishes it as a generic
     literature parameter.'
-  evidence_revision: sha256:bdbe7cdfb7d72142c79ad797aeddd73cc313c10dcb9963612fe9428a009a087f
+  evidence_revision: sha256:db5c9e3d9aa471c989ffcb19e6df9d4e2154f5f23ae9aa34b8448f882c7903ab
 verification:
   attestations: []
