@@ -8,10 +8,10 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
+    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
 assessment:
   status: unresolved
-  assessed_at: '2026-08-23T01:50:00Z'
+  assessed_at: '2026-08-24T16:57:56Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -64,8 +64,9 @@ assessment:
       evidence_ids:
       - stagakis-parameter-table
       - stagakis-tree-classes
-      note: Two Zurich tree records exist under a citation that has one Trees column. Whether the split
-        should survive, and what each half should cite, is a maintainer decision.
+      note: Two Zurich tree records exist under a citation that has one Trees column. The related deciduous
+        record now carries the published Trees values while this evergreen record still does not. Whether
+        the split should survive remains a maintainer decision.
       related_records:
       - records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
   evidence:
@@ -108,10 +109,10 @@ assessment:
     29.2138 for the photosynthesis maximum, 0.78 against 2.88 and 0.08 against 0.06 for the respiration
     coefficients. The remaining three stored values are not in the publication at all. The citation is
     not merely thin here, it points the wrong way. One observation is worth passing on as a lead rather
-    than a finding, because this audit has not verified it at its own source: the stored beta values,
-    together with alpha 0.031 and theta 0.723, are the shape of a Helsinki parameter set rather than anything
+    than a finding, because this audit has not verified it at its own source: this record''s stored beta,
+    together with alpha 0.031 and theta 0.723, has the shape of a Helsinki parameter set rather than anything
     in this Zurich study, and the resemblance is close enough to be worth checking against the Helsinki
     records already in this database. Where 2.88 comes from is not apparent from any source read here.'
-  evidence_revision: sha256:a25e32484e255172ce2ee4d00d62acd90b30d4eaac29a02958546b0e4ca1c8e2
+  evidence_revision: sha256:d08ce3d02349bb2ee42511f6234de2cd8cc989ad6e9b6325214a47adaca2dc22
 verification:
   attestations: []

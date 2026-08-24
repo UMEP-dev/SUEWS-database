@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
-    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
+    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
     records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:97f58953282d688f623209f9f891f115d668b8e69fdec1793060b057b191cbd6
 assessment:
@@ -177,7 +177,9 @@ assessment:
     record: records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
     role: component
     note: Fills biogen_co2. The record declares target land_cover.dectr, place zurich and representativeness
-      city. It is named "Deciduous trees" and carries source stagakis-s2024.
+      city. It is named "Deciduous trees" and carries source stagakis-s2024. Supplement Table S3 supports
+      beta_bio_co2 8.3, resp_a 0.78 and resp_b 0.08; alpha_bio_co2, theta_bio_co2 and min_res_bioco2
+      remain unresolved in the component evidence review.
   - id: component-surfaces-dectr-zurich-stagakis-s2024-lai-power
     record: records/surfaces/dectr/zurich--stagakis-s2024--lai-power
     role: component
@@ -201,7 +203,8 @@ assessment:
     are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
     makes. Drainage is now explicit generic literature evidence. Neither remaining question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
-    this review does not revisit them.'
-  evidence_revision: sha256:67e5600cc7a71cab00232c6eb1f16f9a234f70636e9053c344f93c24f9eb38a7
+    this review does not revisit them. The corrected biogen_co2 component has three values directly
+    supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
+  evidence_revision: sha256:b3ac311a7ba3122acc50296fa21a6f035bc904c9455837ae8d97d3b61eb00f5f
 verification:
   attestations: []

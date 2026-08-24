@@ -9,10 +9,10 @@ source: stagakis-s2024
 legacy_id: 30240101
 parameters:
   alpha_bio_co2: 0.031
-  beta_bio_co2: 27.0892
+  beta_bio_co2: 8.3
   theta_bio_co2: 0.723
-  resp_a: 2.88
-  resp_b: 0.06
+  resp_a: 0.78
+  resp_b: 0.08
   min_res_bioco2: 0.6
 legacy:
   alpha_enh: -999
