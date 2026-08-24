@@ -1,12 +1,13 @@
 provenance_record: records/ohm/beijing--zheng-y2023--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:38e916ccd944e9bcf64e33064d843bfcada25cb908e38ad5f0c3d066c7748f41
+record_revision: sha256:0923789bdbfbccbe2b34135aa696c1d5b8572639de054d620da166686fefe03d
 dependency_revisions:
   sources:
+    anandakumar1999: sha256:8f9ce76ac029430efa0a79dc9766624272a672b02ff9733493d71f91201f828f
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
-    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+    alland: sha256:46467c5ee95bf1aaae2fdc452faa432eb36dc687a917e210732870d30fb4007f
   records: {}
 assessment:
   status: curation_required
@@ -38,17 +39,17 @@ assessment:
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/327
     place:
-      conclusion: correction_required
-      note: Beijing is the model-application location, while the underlying asphalt observations were
-        made at Alland, Austria, as recorded in issue 329.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/329
+      conclusion: supported
+      evidence_ids:
+      - anandakumar-asphalt-site
+      note: Alland is the observation location of the single asphalt-road station underlying the AN99
+        coefficients; Beijing remains the later model-application origin recorded on the stable path.
     representativeness:
-      conclusion: correction_required
-      note: The tuple is not a city-scale Beijing determination; it is an internally weighted reuse of
-        coefficients from a single asphalt-road study.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/329
+      conclusion: supported
+      evidence_ids:
+      - anandakumar-asphalt-site
+      note: The underlying coefficients come from one micrometeorological station over an unused part
+        of an 8 m-wide asphalt road, so site scale is the supported scope.
     method:
       conclusion: curation_required
       note: Historical SUEWS documentation identifies the tuple as an internal weighted calculation, but
@@ -60,6 +61,20 @@ assessment:
       conclusion: supported
       note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
   evidence:
+  - id: anandakumar-asphalt-site
+    source: anandakumar1999
+    role: input_data
+    locators:
+    - kind: section
+      label: Section 2.1, Data
+      page: 3912
+      url: https://doi.org/10.1016/S1352-2310(99)00133-8
+    - kind: table
+      label: Table 1, daily asphalt coefficients
+      page: 3917
+      url: https://doi.org/10.1016/S1352-2310(99)00133-8
+    note: The source locates the one-year asphalt observations at a single road station in Alland and
+      publishes the daily coefficient inputs, but not the exact annual weighted tuple stored here.
   - id: zheng-paved-application
     source: zheng-y2023
     role: compilation
@@ -85,9 +100,9 @@ assessment:
     note: The final model archive contains 0.805, -0.193, -9.39 as code 904 and traces it to the paved
       surface used in the Beijing runs.
   scientific_note: The exact tuple is recoverable as a Beijing model input, but Zheng et al. are a later
-    application/compilation rather than its parameter publication. Source, observation place, representativeness,
-    and the internal weighted calculation require the existing record-specific curation in issues 327
-    and 329.
-  evidence_revision: sha256:b8a5f2cb784f372252e0a8f1f1d7e37ca83d1e666564f84c474c8c6fe3d2334b
+    application/compilation rather than its parameter publication. Anandakumar fixes the observation
+    scope at one asphalt-road station in Alland. The exact annual weighting, calculation credit and direct
+    source still require the separate record-specific curation in issue 327.
+  evidence_revision: sha256:1a2cd32b19665d1824d79cf9bc66f9decb2e9e3e23c1fc5f774842051f4cfb0c
 verification:
   attestations: []

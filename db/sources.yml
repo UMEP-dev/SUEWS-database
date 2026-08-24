@@ -10,6 +10,13 @@ sources:
     title: 'Global to city scale urban anthropogenic heat flux: model and variability'
     type: journalArticle
     year: 2011
+  anandakumar1999:
+    author: Anandakumar, K.
+    doi: 10.1016/S1352-2310(99)00133-8
+    journal: Atmospheric Environment
+    title: A study on the partition of net radiation into heat fluxes on a dry asphalt surface
+    type: journalArticle
+    year: 1999
   ao2016:
     author: Ao, X., C. S. B. Grimmond, D. Liu, Z. Han, P. Hu, Y. Wang, X. Zhen, and J. Tan
     doi: 10.1175/JAMC-D-16-0082.1

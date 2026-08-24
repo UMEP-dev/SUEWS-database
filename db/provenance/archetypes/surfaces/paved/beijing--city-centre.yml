@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
-    records/ohm/beijing--zheng-y2023--paved: sha256:38e916ccd944e9bcf64e33064d843bfcada25cb908e38ad5f0c3d066c7748f41
+    records/ohm/beijing--zheng-y2023--paved: sha256:0923789bdbfbccbe2b34135aa696c1d5b8572639de054d620da166686fefe03d
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
@@ -81,8 +81,9 @@ assessment:
       - component-ohm-beijing--zheng-y2023--paved
       related_records:
       - records/surfaces/paved/shanghai--ao2016--emissivity
-      note: 'The composite declares place beijing and only records/ohm/beijing--zheng-y2023--paved carries
-        that place. The albedo slot takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
+      note: 'The composite declares place beijing, but none of its components carries that place. The
+        OHM slot takes records/ohm/beijing--zheng-y2023--paved, site evidence from Alland; the albedo slot
+        takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
         the emissivity, water_storage and snow_lim_patch slots take records with place helsinki; the drainage
         slot takes records/surfaces/paved/london--jarvi2011--drainage, place london; the construction
         slot takes a record with place generic. Most of that borrowing is forced, because the database
@@ -102,10 +103,10 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-beijing--zheng-y2023--paved
-      note: The composite declares representativeness city. Five components declare city and records/constructions/generic--lindberg-f2020--placeholder
-        declares generic, but records/surfaces/paved/shanghai--ao2016--albedo is site evidence from a Shanghai
-        central business district. Extending that site value to a Beijing city composite is an unsupported
-        extrapolation that needs curation.
+      note: The composite declares representativeness city. Four components declare city and records/constructions/generic--lindberg-f2020--placeholder
+        declares generic, but the albedo is site evidence from a Shanghai central business district and
+        the OHM tuple is site evidence from one road in Alland. Extending either site value to a Beijing
+        city composite is an unsupported extrapolation that needs curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -175,10 +176,11 @@ assessment:
     record: records/ohm/beijing--zheng-y2023--paved
     role: component
     note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
-      declares target ohm_coefficients, name 'An99 weighted average (all year)', place beijing, representativeness
-      city and source zheng-y2023, carries a1, a2 and a3, and declares no season_label.
-  scientific_note: 'archetypes/surfaces/paved/beijing--city-centre is a Beijing typology whose only Beijing
-    content is its storage heat coefficients. records/ohm/beijing--zheng-y2023--paved fills all four season
+      declares target ohm_coefficients, name 'An99 weighted average (all year)', place alland, representativeness
+      site and source zheng-y2023, carries a1, a2 and a3, and declares no season_label.
+  scientific_note: 'archetypes/surfaces/paved/beijing--city-centre is a Beijing typology with no component
+    measured or fitted in Beijing. records/ohm/beijing--zheng-y2023--paved supplies site-scale Alland evidence
+    to all four season
     and wetness positions, and since it declares no season_label and is named ''An99 weighted average
     (all year)'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
     albedo from a site in a Shanghai central business district, emissivity, water storage and snowpack
@@ -196,6 +198,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:4fc0b28f63bff03f8ddd6bcd90eb48592b680ce9c655c7c03513a95062e5cbb1
+  evidence_revision: sha256:4da3dff18f33628bb3ca20ebaab804c3b360891e8a3d48261cfadaef1fd4861d
 verification:
   attestations: []
