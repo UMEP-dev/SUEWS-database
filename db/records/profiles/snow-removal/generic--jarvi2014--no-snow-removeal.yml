@@ -4,7 +4,8 @@ target: profile.snow-removal
 attaches_to: snow.snow_profile_24hr
 profile_type: Snow removal
 name: No snow removal
-source: jarvi2014
+source: unreferenced
+method: assumed
 legacy_id:
 - 60240009
 parameters:
