@@ -1,71 +1,55 @@
 provenance_record: records/irrigation/zurich--stagakis-s2024
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:14add6e6b73d0d2eb249d50503b01a331a08b5ab777a434cdd1def5140807f60
+record_revision: sha256:08f3ef319d16ccfbc542e9d35e42b8a4dd66a9d599b05a30cdd7070f5e8fde5b
 dependency_revisions:
   sources:
     stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
-  places:
-    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  places: {}
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T01:50:00Z'
+  status: curation_required
+  assessed_at: '2026-08-24T12:56:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: assumed
   findings:
     name:
-      conclusion: curation_required
-      evidence_ids:
-      - stagakis-suews-section
-      note: No Irrigation describes a switched-off configuration rather than a measured property. The
-        article never states whether irrigation was enabled, so the name asserts something the source
-        does not.
+      conclusion: supported
+      note: No Irrigation accurately describes the all-zero switching configuration without attributing
+        it to a publication or city.
     target:
       conclusion: supported
       evidence_ids:
       - stagakis-suews-section
       note: The stored fields are SUEWS irrigation settings, which is the irrigation target.
     values:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-suews-section
-      - stagakis-parameter-table
-      note: The article mentions irrigation once, as one of the submodels SUEWS contains, and gives no
-        irrigation setting. Table S3 has no irrigation row. Nothing published shows the day-of-year window
-        of 1 to 366, the zero automatic fraction, or the all-zero watering days and fractions.
+      conclusion: supported
+      note: The full-year window, zero automatic fraction, and all-zero daily switches consistently encode
+        the explicit no-irrigation assumption; they are not presented as measured or published settings.
     source:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-suews-section
-      note: The cited study cannot be shown to establish these settings. It is plausible that irrigation
-        was simply left off for the park simulations, but plausibility is not evidence and this audit
-        will not record it as one.
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/223
+      note: The article and supplement publish no irrigation schedule. Source unreferenced is the honest
+        declaration for an explicit model configuration assumption.
     place:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-scope
-      note: Nothing published ties an irrigation configuration to Zurich.
+      conclusion: not_applicable
+      note: The assumption declares no evidence place; origin Zurich preserves migration lineage.
     representativeness:
-      conclusion: correction_required
-      evidence_ids:
-      - stagakis-scope
-      note: City representativeness would in any case overstate a four-park study, and a whole-city irrigation
-        claim least of all follows from park simulations.
+      conclusion: not_applicable
+      note: A switched-off configuration with no parameter publication carries no geographic evidence-reach claim.
     method:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-suews-section
-      note: A model configuration rather than a determined value; which it is cannot be settled from the
-        publication.
+      conclusion: supported
+      note: Assumed is appropriate for a model switch with no parameter publication.
     identity:
       conclusion: curation_required
-      evidence_ids:
-      - stagakis-suews-section
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/423
       note: Whether a switched-off irrigation configuration should be a citable database record at all,
-        as opposed to a model default, is a maintainer decision.
+        rather than a model default or fixture, remains a repository curation decision.
   evidence:
   - id: stagakis-suews-section
     source: stagakis-s2024
@@ -102,12 +86,9 @@ assessment:
       note: The study covers four urban parks in the city of Zurich and evaluates the models against in
         situ measurements made in those parks; it is park-scale, not a city-wide determination.
   scientific_note: 'This record encodes a decision rather than a measurement: irrigation off, every day,
-    all year. The cited study says nothing about it. Section 2.3.3 lists irrigation among the SUEWS submodels
-    and moves on, and the supplement''s parameter table has no irrigation row. The configuration may well
-    be exactly what the authors ran, and for four Zurich parks it would be unsurprising, but the publication
-    does not record it, so the record is asserting on the authors'' behalf. Beyond the sourcing, there
-    is a design question worth a maintainer''s attention: a row that turns a submodel off is not the same
-    kind of thing as a parameter derived from evidence, and giving it a citation implies it is.'
-  evidence_revision: sha256:0d0e09837901c0a10855d254bdede8a6dbab003a520457c6b1663d2b755032f2
+    all year. Stagakis et al. list irrigation only as a SUEWS submodel and publish no schedule in the article,
+    supplement or parameter table. The values remain unchanged as an explicit assumption; the paper attribution
+    and unsupported Zurich/city evidence scope are removed while origin preserves migration lineage.'
+  evidence_revision: sha256:675ca1c6e752dc692cc86f0dafdde25443dfa42d2187a154b53dcecc76540ad8
 verification:
   attestations: []
