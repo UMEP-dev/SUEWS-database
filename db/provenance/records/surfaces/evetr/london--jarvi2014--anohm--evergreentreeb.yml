@@ -59,11 +59,13 @@ assessment:
       - jarvi-anohm-absent
       note: With no source established, the production method is open.
     identity:
-      conclusion: curation_required
-      evidence_ids:
-      - jarvi-anohm-absent
-      note: A second record with the same surface, place and citation holds the identical triple, so one
-        of them is a duplicate or the two need distinguishing.
+      conclusion: supported
+      note: 'Pinned SUEWS 2017a SUEWS_Veg rows 661 and 700 are separate full configurations: their Code
+        fields differ and all four OHMCode fields select 200 versus 201, while both carry the same AnOHM
+        subset, 1000000/1.2/4. The migration preserves those source-row identities separately as legacy
+        ID 51240007, EvergreenTreeA, and legacy ID 51240010, EvergreenTreeB. Identical extracted AnOHM
+        values therefore do not collapse the stable records. See https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/docs/source/inputs/tables/SUEWS_SiteInfo/sample-table/SUEWS_Veg.txt#L10
+        and https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/docs/source/inputs/tables/SUEWS_SiteInfo/sample-table/SUEWS_Veg.txt#L13.'
       related_records:
       - records/surfaces/evetr/london--jarvi2014--anohm
   evidence:
@@ -96,8 +98,10 @@ assessment:
     Helsinki and Montreal, and London is mentioned only in a web address and a reference list entry. This
     audit does not name a replacement source, because doing so on the strength of the scheme''s name would
     be exactly the inference this database forbids. What is needed is the publication that introduced
-    AnOHM and published these coefficients. A duplicate under the same surface, place and citation also
-    has to be resolved.'
-  evidence_revision: sha256:eb02f2d0fcf154d6962a6085f9c9305f74a86a9358725bf4df10b3d435a8fe8f
+    AnOHM and published these coefficients. The duplicate-valued counterpart remains a separate stable
+    identity because SUEWS 2017a rows 661 and 700 select different OHM families, 200 and 201, while reusing
+    the same AnOHM subset; the migration preserves them as legacy IDs 51240007 and 51240010. That identity
+    decision does not settle the source, value, place, representativeness or method blockers above.'
+  evidence_revision: sha256:73ea4a8f369e2158fb8c5bb91d34e431584f2270d5b9c17ad47476c8243f7e7e
 verification:
   attestations: []
