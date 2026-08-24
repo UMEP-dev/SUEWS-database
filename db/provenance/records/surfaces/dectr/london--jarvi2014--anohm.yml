@@ -11,11 +11,12 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2014--anohm--dectree: sha256:d00726573a24fb284dc5499d4979dd6b6d3e2902de57d489083e75dcedaa8774
 assessment:
   status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-08-24T19:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/210
   findings:
     name:
       conclusion: supported
@@ -59,13 +60,16 @@ assessment:
       - jarvi-anohm-absent
       note: With no source established, the production method is open.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: A second record with the same surface, place and citation holds the identical triple, so one
-        of them is a duplicate or the two need distinguishing.
+      - release-row-lineage
+      note: SUEWS 2017a vegetation rows 662 and 701 are distinct complete configuration rows whose AnOHM
+        subset is intentionally identical. The stable paths and legacy IDs retain those two release-row
+        identities without claiming two independent determinations of the thermal tuple.
       related_records:
       - records/surfaces/dectr/london--jarvi2014--anohm--dectree
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/210
   evidence:
   - id: jarvi-anohm-absent
     source: jarvi2014
@@ -90,14 +94,20 @@ assessment:
         in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
         are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
         address and in a publisher''s address in the reference list.'
+  - id: release-row-lineage
+    record: records/surfaces/dectr/london--jarvi2014--anohm--dectree
+    role: related
+    note: SUEWS 2017a SUEWS_Veg.txt rows 662 and 701 are distinct DecTr configuration rows. They differ
+      in other columns while both store rhoCp 1000000, k 1.2 and Ch 4; see the pinned release table at
+      https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/docs/source/inputs/tables/SUEWS_SiteInfo/sample-table/SUEWS_Veg.txt#L11-L14.
   scientific_note: 'The citation is simply wrong for this record. AnOHM does not appear in Järvi et al.
     (2014) at all, and the article publishes no material thermal properties of any kind; its storage heat
     comes from the objective hysteresis model. The place is wrong too: the study''s five sites are in
     Helsinki and Montreal, and London is mentioned only in a web address and a reference list entry. This
     audit does not name a replacement source, because doing so on the strength of the scheme''s name would
-    be exactly the inference this database forbids. What is needed is the publication that introduced
-    AnOHM and published these coefficients. A duplicate under the same surface, place and citation also
-    has to be resolved.'
-  evidence_revision: sha256:7b7cfffeb017d3f1ec55558df3b6f1a868bb6661424a66ae12c507bfefd5c317
+    be exactly the inference this database forbids. What is still needed is the publication that introduced
+    AnOHM and published these coefficients. The apparent duplicate is separately settled as two preserved
+    release-row identities that reuse one AnOHM subset.'
+  evidence_revision: sha256:60a80dd0a081bf20ee1d0a3019e667882f6bd360cb3b5e0c19f2f28800296832
 verification:
   attestations: []
