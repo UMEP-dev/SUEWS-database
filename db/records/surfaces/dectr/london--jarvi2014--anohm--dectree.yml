@@ -2,10 +2,12 @@ record: records/surfaces/dectr/london--jarvi2014--anohm--dectree
 schema_version: '2026.5'
 target: land_cover.dectr
 name: DecTree
-place: london
+place: generic
 origin: London
-representativeness: city
-source: jarvi2014
+representativeness: generic
+applicable_scale: land_cover
+source: unreferenced
+method: assumed
 legacy_id: 51240011
 parameters:
   rho_cp_anohm: 1000000
