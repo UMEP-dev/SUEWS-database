@@ -1,7 +1,7 @@
 record: records/anthropogenic/swindon--ward2013
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Unclear
+name: Archived Swindon combined anthropogenic-emission configuration
 place: swindon
 origin: Swindon
 representativeness: site
