@@ -1,11 +1,12 @@
 record: records/constructions/sweden--unreferenced--industrial
 schema_version: '2026.5'
 target: construction
-name: Industrial
+name: Archived Swedish industrial construction configuration
 place: sweden
 origin: Sweden
 representativeness: regional
 source: unreferenced
+method: assumed
 legacy_id: 37240892
 parameters:
   roof:

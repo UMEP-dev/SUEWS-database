@@ -1,0 +1,119 @@
+provenance_record: records/constructions/sweden--unreferenced--industrial
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a152fa4156d6472d5a5542877f171c17168b646649b143e84c9b83a672a9d85d
+dependency_revisions:
+  sources:
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:27:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/266
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Archived Swedish industrial construction configuration identifies the retained catalogue
+        assembly without presenting it as a published or physically validated construction recommendation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/266
+    target:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Spartacus Surface row 37240892 stores roof and wall layer lists plus insulation-layer indices,
+        matching the construction target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: The initial workbook and its pinned migration transcript preserve all six material links,
+        thicknesses 0.01/0.05/0.01 m for the roof and 0.01/0.08/0.01 m for the wall, and insulation index
+        6 for both. These facts support configuration identity only; component-material citations do not
+        establish why the complete assembly was selected.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Unreferenced is correct because no source supports the complete assembly. Ref 99240099 is
+        the unreferenced placeholder, so it does not warrant a source_legacy_ref. The pinned workbook is
+        compilation evidence for the archived configuration, not a parameter source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/266
+    place:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Sweden is the explicit origin of workbook row 37240892. It identifies the intended application
+        configuration, not a documented measurement site for the layer assembly.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Regional limits the catalogue entry to its labelled Swedish application scope. It does not
+        assert that the complete assembly is empirically representative of Swedish industrial buildings.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Assumed records the layer selection, thicknesses and insulation indices as retained
+        configuration choices because no measurement, fit, calculation or literature derivation of the
+        complete tuple was found.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/266
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - initial-workbook-row-37240892
+      note: Legacy ID 37240892, Sweden origin, Industrial label and the exact two layer stacks establish
+        a stable archived configuration identity from the repository's initial workbook through the
+        migration. The stable path, origin and legacy ID remain unchanged.
+  evidence:
+  - id: initial-workbook-row-37240892
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Initial database.xlsx, Spartacus Surface row 37240892
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: The repository's root workbook (SHA-256 50dfc15322115651f672fed86df1fdcc7dc8b13a58b7ced9b2e270b388aee6d3)
+        stores Sweden, Buildings, Industrial, all six material IDs and thicknesses, insulation index 6
+        for roof and wall, and placeholder Ref 99240099.
+    - kind: dataset
+      label: Pre-migration Spartacus Surface row 37240892
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml#L225-L251
+      note: The pinned row-for-row YAML transcript exposes the complete workbook assembly for line-level
+        review immediately before record migration.
+  attempted_sources:
+  - description: UMEP-dev SUEWS release and sample artifacts
+    attempted_at: '2026-08-24T21:27:31Z'
+    outcome: not_found
+    note: No second release or sample artifact containing legacy ID 37240892 or the complete six-material
+      tuple was located. The archived identity therefore rests on the initial database workbook and its
+      deterministic migration transcript.
+  - description: Component material citations
+    attempted_at: '2026-08-24T21:27:31Z'
+    outcome: incomplete
+    note: Some selected material records carry their own property citations, but none supports the
+      industrial roof/wall selection, thicknesses, insulation indices and Swedish scope as one assembly.
+  scientific_note: >-
+    This record is retained solely as an archived internal Swedish industrial construction configuration,
+    not as a recommended or evidence-backed physical assembly. The repository's initial database.xlsx
+    contains the complete row before migration, and commit 053c004 preserves a field-for-field text
+    transcript; the Swedish industry archetype continues to select the migrated record. No independent
+    release/sample copy or publication for the complete assembly was found, and the component materials'
+    citations cannot be composed into assembly provenance. Source therefore remains unreferenced and the
+    configuration is classified as assumed. Placeholder Ref 99240099 is not promoted into source lineage.
+    No material link, thickness, insulation index, stable path, origin or legacy ID is changed.
+  evidence_revision: sha256:e29d6a837330dcc41a21807c5bae713cca8b5bd03114711397887700abfceb5c
+verification:
+  attestations: []
