@@ -670,11 +670,35 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                         f"{label}: component evidence not used by composite {extra}"
                     )
         derivations[declared] = input_records
-        derivation_kind = assessment.get("derivation", {}).get("kind")
-        if derivation_kind in {"arithmetic_mean", "weighted_mean"}:
-            if len(input_records) < 2:
+        derivation = assessment.get("derivation", {})
+        derivation_kind = derivation.get("kind")
+        external_input_ids = set()
+        for external_input in derivation.get("external_inputs", []):
+            input_id = external_input.get("id")
+            if input_id in external_input_ids:
                 errors.append(
-                    f"{label}: {derivation_kind} requires two distinct input records"
+                    f"{label}: duplicate external derivation input {input_id!r}"
+                )
+            external_input_ids.add(input_id)
+            evidence_id = external_input.get("evidence_id")
+            evidence_item = evidence_by_id.get(evidence_id)
+            if evidence_item is None:
+                errors.append(
+                    f"{label}: external input {input_id!r} references unknown "
+                    f"evidence id {evidence_id!r}"
+                )
+            elif (
+                evidence_item.get("source") is None
+                or evidence_item.get("role") != "input_data"
+            ):
+                errors.append(
+                    f"{label}: external input {input_id!r} must reference "
+                    "source evidence with role 'input_data'"
+                )
+        if derivation_kind in {"arithmetic_mean", "weighted_mean"}:
+            if len(input_records) + len(external_input_ids) < 2:
+                errors.append(
+                    f"{label}: {derivation_kind} requires two distinct inputs"
                 )
 
         findings = assessment.get("findings", {})

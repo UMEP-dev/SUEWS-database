@@ -528,7 +528,91 @@ class ProvenanceSemanticTests(unittest.TestCase):
             duplicate_mean
         )
         errors = check_provenance(records, {}, {}, {a_key: duplicate_mean})
-        self.assertTrue(any("two distinct input records" in e for e in errors))
+        self.assertTrue(any("two distinct inputs" in e for e in errors))
+
+    def test_source_table_inputs_can_drive_a_calculated_derivation(self):
+        key = "records/ohm/external-mean"
+        record = calculated_record(key)
+        records = {key: record}
+        sidecar = calculated_sidecar(
+            record, [], records, kind="arithmetic_mean"
+        )
+        sidecar["dependency_revisions"]["sources"]["paper1999"] = (
+            canonical_revision(SOURCE)
+        )
+        sidecar["assessment"]["evidence"] = [
+            {
+                "id": "source-table",
+                "source": "paper1999",
+                "role": "input_data",
+                "locators": [
+                    {"kind": "table", "label": "Table 1", "page": 3}
+                ],
+            }
+        ]
+        for scope in ("name", "target", "values", "method", "identity"):
+            sidecar["assessment"]["findings"][scope] = {
+                "conclusion": "supported",
+                "evidence_ids": ["source-table"],
+            }
+        sidecar["assessment"]["derivation"] = {
+            "kind": "arithmetic_mean",
+            "expression": "(sample-a + sample-b) / 2",
+            "external_inputs": [
+                {
+                    "id": "sample-a",
+                    "evidence_id": "source-table",
+                    "value": 0.1,
+                },
+                {
+                    "id": "sample-b",
+                    "evidence_id": "source-table",
+                    "value": 0.2,
+                },
+            ],
+        }
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        self.assertEqual(
+            check_provenance(
+                records,
+                {"paper1999": deepcopy(SOURCE)},
+                {},
+                {key: sidecar},
+            ),
+            [],
+        )
+        self.assertTrue(signoff_eligible(sidecar, record))
+
+        duplicate = deepcopy(sidecar)
+        duplicate["assessment"]["derivation"]["external_inputs"][1]["id"] = (
+            "sample-a"
+        )
+        duplicate["assessment"]["evidence_revision"] = evidence_revision(
+            duplicate
+        )
+        errors = check_provenance(
+            records, {"paper1999": deepcopy(SOURCE)}, {}, {key: duplicate}
+        )
+        self.assertTrue(
+            any("duplicate external derivation input" in error for error in errors),
+            errors,
+        )
+
+        wrong_role = deepcopy(sidecar)
+        wrong_role["assessment"]["evidence"][0]["role"] = "compilation"
+        wrong_role["assessment"]["evidence_revision"] = evidence_revision(
+            wrong_role
+        )
+        errors = check_provenance(
+            records, {"paper1999": deepcopy(SOURCE)}, {}, {key: wrong_role}
+        )
+        self.assertTrue(
+            any(
+                "must reference source evidence with role 'input_data'" in error
+                for error in errors
+            ),
+            errors,
+        )
 
     def test_external_method_cannot_claim_internal_derivation(self):
         sidecar = fixture_sidecar()
