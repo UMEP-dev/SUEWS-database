@@ -146,13 +146,19 @@ properties:
                     - weighted_mean
                     - scaled
                     - other
-            evidence:
-              contains:
-                allOf:
-                  - $ref: '#/$defs/record_evidence'
-                  - properties:
-                      role:
-                        const: input
+          anyOf:
+            - properties:
+                evidence:
+                  contains:
+                    allOf:
+                      - $ref: '#/$defs/record_evidence'
+                      - properties:
+                          role:
+                            const: input
+            - properties:
+                derivation:
+                  required:
+                    - external_inputs
       - if:
           required:
             - method
@@ -187,15 +193,9 @@ properties:
                     - arithmetic_mean
                     - weighted_mean
         then:
-          properties:
-            evidence:
-              contains:
-                allOf:
-                  - $ref: '#/$defs/record_evidence'
-                  - properties:
-                      role:
-                        const: input
-              minContains: 2
+          description: >-
+            The checker requires at least two distinct inputs across database
+            record evidence and source-tabulated external inputs.
       - if:
           properties:
             status:
@@ -780,6 +780,12 @@ $defs:
       expression:
         type: string
         minLength: 1
+      external_inputs:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/external_input'
     allOf:
       - if:
           properties:
@@ -807,6 +813,34 @@ $defs:
                 - description
             - required:
                 - expression
+  external_input:
+    type: object
+    additionalProperties: false
+    required:
+      - id
+      - evidence_id
+      - value
+    properties:
+      id:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+        description: Stable identifier for the row, sample or stated value.
+      evidence_id:
+        type: string
+        pattern: ^[a-z0-9][a-z0-9-]*$
+        description: Source-evidence item whose locator contains this value.
+      parameter:
+        type: string
+        minLength: 1
+        description: Optional target parameter path when a derivation covers several fields.
+      value:
+        type: number
+      unit:
+        type: string
+        minLength: 1
+      note:
+        type: string
+        minLength: 1
   attestation_event:
     type: object
     additionalProperties: false

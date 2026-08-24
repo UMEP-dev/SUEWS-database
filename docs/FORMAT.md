@@ -152,7 +152,7 @@ The method vocabulary extends the optional record field to:
 | `measured` | The stored value is a direct reported measurement. |
 | `fitted` | The stored value was fitted to observations or another dataset. |
 | `literature` | The stored value was adopted from a publication without a new fit. |
-| `calculated` | The stored value was calculated from other database records. |
+| `calculated` | The stored value was calculated from database records or explicitly located source-table inputs. |
 | `assumed` | The stored value is an explicit assumption or default. |
 | `assembled` | A composite selects and maps independently reviewed records. |
 
@@ -196,8 +196,9 @@ publication, and document the calculation or assumption in the sidecar.
 
 An assessment reports a conclusion for each of eight core review scopes:
 `name`, `target`, `values`, `source`, `place`, `representativeness`, `method`,
-and `identity`. When an entry declares `urban_setting`, its assessment also
-reports that scope. The allowed conclusions are `supported`, `contradicted`,
+and `identity`. When an entry declares `urban_setting` or `applicable_scale`,
+its assessment also reports that scope. The allowed conclusions are
+`supported`, `contradicted`,
 `correction_required`, `unresolved`, `source_inaccessible`,
 `curation_required`, and `not_applicable`. Findings may link related records
 and tracking issues. This structure keeps duplicate-record and placement
@@ -205,8 +206,14 @@ problems reviewable instead of burying them in free text.
 
 Calculated records also carry a `derivation`. `arithmetic_mean`,
 `weighted_mean`, `scaled`, and `other` are internal calculations and require
-`method: calculated` plus input-record evidence; means require at least two
-inputs, while weighted means and scaling must record an expression.
+`method: calculated`. Inputs normally point to atomic database records. When a
+source table contains the individual rows but creating model records for them
+would be artificial, `derivation.external_inputs` instead records each row's
+stable ID, numeric value and the `input_data` evidence locator that contains
+it. Means require at least two distinct inputs across both forms; weighted
+means and scaling must record an expression. External inputs are evidence for
+a calculation, not hidden parameter records and not permission to attribute
+the derived result to the publication.
 `regression` is a fitted method and therefore requires
 `method: fitted` plus a publication that states or derives the fitted values.
 The checker detects missing records, self-reference and cycles.
@@ -446,6 +453,26 @@ assessment:
   derivation:
     kind: arithmetic_mean
     expression: (<first-input> + <second-input>) / 2
+```
+
+For a mean of rows printed in a source table but not represented as records:
+
+```yaml
+assessment:
+  status: agent_assessed
+  method: calculated
+  evidence:
+    - id: source-table
+      source: <source-key>
+      role: input_data
+      locators:
+        - {kind: table, label: <table-and-rows>, page: <page>}
+  derivation:
+    kind: arithmetic_mean
+    expression: (sample-a + sample-b) / 2
+    external_inputs:
+      - {id: sample-a, evidence_id: source-table, value: 0.9}
+      - {id: sample-b, evidence_id: source-table, value: 1.0}
 ```
 
 For an explicit assumption with no invented publication:
