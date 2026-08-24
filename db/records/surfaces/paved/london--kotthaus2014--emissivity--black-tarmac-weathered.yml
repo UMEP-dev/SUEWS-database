@@ -5,6 +5,7 @@ name: 'Black tarmac, weathered '
 place: london
 origin: London
 representativeness: site
+applicable_scale: material
 source: unreferenced
 method: calculated
 legacy_id: 40241248
