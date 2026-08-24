@@ -1,0 +1,110 @@
+provenance_record: records/surfaces/dectr/swindon--ward2016--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ce9e14157c1915bb42687e731c8248ab4940dbebbe8f9d84704a9a5fe7051eed
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:35:36Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/177
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: Oke Table 1.1 includes a deciduous, leafed forest surface, matching the record's deciduous-tree
+        identity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: The value is a surface emissivity for leafed deciduous forest and applies to land_cover.dectr.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: Table 1.1 gives emissivity 0.98 for leafed deciduous forest, exactly the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      - jarvi2011-table-2
+      - ward2016-table-2
+      note: Ward 2016 compiles the 0.98 from Järvi 2011; Järvi Table 2 footnote f points to Oke 1987.
+        Oke is the earliest directly checked publication that prints the exact leafed-deciduous 0.98 value.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: Oke Table 1.1 is a table of natural-material radiative properties, not a Swindon measurement;
+        generic is the supported place scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: The table gives a general leafed-deciduous forest value, supporting generic rather than city
+        representativeness.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: The record adopts the tabled literature value without a new fit, so literature is the applicable
+        method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-table-1-1
+      note: The stable legacy path, ID and historical Swindon origin remain intact while the active source
+        and scope now identify the published generic surface value.
+  evidence:
+  - id: oke1987-table-1-1
+    source: oke1987
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1.1, Radiative properties of natural materials
+      page: 12
+      note: The leafed row under deciduous forests gives albedo 0.20 and emissivity 0.98. The table itself
+        cites Sellers (1965), List (1966), Paterson (1969), and Monteith (1973) collectively.
+  - id: jarvi2011-table-2
+    source: jarvi2011
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2(a), model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: The Decid. trees emissivity cell is 0.98 with footnote f; footnote f cites Oke (1987).
+  - id: ward2016-table-2
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, original and adjusted albedo values and emissivity values
+      page: 8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: The DecTr row prints emissivity 0.98, and the table note says Ja11 emissivity values were used
+        for the UK sites where no additional information was available.
+  scientific_note: >-
+    Ward et al. (2016) is a later UK application table, and Järvi et al. (2011) is itself a compilation
+    for this value: its Table 2 footnote f cites Oke (1987). Oke Table 1.1 directly gives 0.98 for leafed
+    deciduous forest, making Oke the earliest checked publication that states the exact value. Oke records
+    Sellers (1965), List (1966), Paterson (1969), and Monteith (1973) as collective table sources, without
+    assigning the leafed-deciduous cell to one of them; that unresolved primary-data chain is documented,
+    not invented. The record therefore cites the directly readable Oke table as literature evidence and
+    has generic active scope; its stable path, historical Swindon origin, legacy ID and value remain unchanged.
+  evidence_revision: sha256:eb16d24d5ae097b23da0b756daebfac6d3f7c93ba8efcdd609c3ba5fc7427922
+verification:
+  attestations: []
