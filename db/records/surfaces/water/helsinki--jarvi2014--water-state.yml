@@ -1,11 +1,13 @@
 record: records/surfaces/water/helsinki--jarvi2014--water-state
 schema_version: '2026.5'
 target: land_cover.water
-name: Helsinki, Järvi et al. (2014)
+name: Archived Helsinki 2 m water-state configuration
 place: helsinki
 origin: Helsinki, Finland
 representativeness: city
-source: jarvi2014
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240015
 legacy_id: 42240000
 parameters:
   state_limit: 2000

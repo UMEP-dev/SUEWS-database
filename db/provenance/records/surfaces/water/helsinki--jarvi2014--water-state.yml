@@ -1,111 +1,141 @@
 provenance_record: records/surfaces/water/helsinki--jarvi2014--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:9b248f01d4984717fecfce09ae30b5fe7d728bd0563f50e44194366345b565b6
+record_revision: sha256:25f3dd1e885c1ce5706a7edf885c9c22a0cc049010aa44a24e79a4af5f00c68e
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:36:11Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/189
+  method: assumed
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record is named Helsinki, Järvi et al. (2014), which restates its place and citation instead
-        of saying what the value is.
+      - legacy-row-42240000
+      - release-water-row
+      note: Archived Helsinki 2 m water-state configuration identifies the retained release row and its
+        model role without presenting Järvi et al. (2014) as the publication of the 2 m limit.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/189
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: A state limit is a land_cover.water property.
+      - state-limit-semantics
+      note: SUEWS defines StateLimit as the upper limit of the open-water surface state, matching the
+        land_cover.water water-state target.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      - jarvi-table-4b
-      note: The stored state_limit of 2000 is in neither part of Table 4. The Water column of Table 4a
-        carries a dash for most rows, and Table 4b has no state limit entry. Nothing in the article publishes
-        the value.
+      - legacy-row-42240000
+      - release-water-row
+      - state-limit-semantics
+      note: The legacy database, the first archived SUEWS input row and the labelled v2017a row all retain
+        StateLimit 2000 mm; v2017a also carries WaterDepth 2000 mm. Model documentation confirms these are
+        a 2 m upper state limit and configured water depth, not a sentinel or a published measurement.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: The cited article cannot be shown to publish this value, and no replacement is named here.
+      - legacy-row-42240000
+      - release-water-row
+      - jarvi2014-table4
+      note: Unreferenced is correct because no publication states or derives the 2 m configuration. Järvi
+        et al. (2014) Table 4 contains no water state limit; source_legacy_ref 90240015 preserves the
+        historical application-paper link without exporting it as parameter provenance.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/189
     place:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Nothing published ties this limit to Helsinki.
+      - legacy-row-42240000
+      - release-water-row
+      note: Helsinki is the explicit identity of the archived release configuration. It records where the
+        row was intended for use, not where a physical 2 m water body was measured.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - legacy-row-42240000
+      - release-water-row
+      note: City limits the catalogue entry to its labelled Helsinki application scope. It does not claim
+        that every Helsinki water body is 2 m deep or that the setting transfers beyond Helsinki.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: With no source established, the production method is open.
+      - release-water-row
+      - state-limit-semantics
+      note: Assumed records a model-configuration choice for an upper state limit and initial water depth;
+        the archive and documentation provide no measurement, fit or calculation for the selected 2000 mm.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/189
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: A record whose name is its own citation, holding a value that citation does not contain, needs
-        a maintainer to decide what it is.
+      - legacy-row-42240000
+      - release-water-row
+      note: Legacy ID 42240000 and the exact code-1000 release lineage establish a distinct archived
+        Helsinki configuration. The stable path and origin remain unchanged.
   evidence:
-  - id: jarvi-table-4a
-    source: jarvi2014
+  - id: legacy-row-42240000
+    source: umep-dev2016a
     role: compilation
     locators:
+    - kind: dataset
+      label: Pre-migration Water State row 42240000
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L20-L27
+      note: Stores Helsinki origin, StateLimit 2000, WaterDepth 2000 and Ref 90240015.
+  - id: release-water-row
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: First archived SUEWS_Water code-1000 row
+      url: https://github.com/UMEP-dev/SUEWS/blob/2af365ae6e6296147f19cad7964cd0222e7dfec1/InputTable/SUEWS_Water.txt
+      note: First introduces the code-1000 row with StateLimit 2000; the change was reverted and the same
+        row was restored in commit d3659012860cb22f8c778e953e474d532cc08ae3.
+    - kind: dataset
+      label: SUEWS v2017a labelled code-1000 row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Water.txt
+      note: Adds WaterDepth 2000 to the row and explicitly labels it Helsinki, Järvi et al. (2014).
+  - id: state-limit-semantics
+    source: umep-dev2016a
+    role: validation
+    locators:
+    - kind: section
+      label: SUEWS input option StateLimit
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/docs/source/inputs/tables/SUEWS_SiteInfo/Input_Options.rst#L3328-L3334
+      note: Defines StateLimit as the maximum water-surface state in millimetres, with WaterDepth required
+        not to exceed it; large bodies use large limits and shallow fountains use small limits.
+    - kind: text
+      label: Open-water state limiting in suews_phys_waterdist.f95
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/src/suews/src/suews_phys_waterdist.f95#L362-L370
+      note: Excess water above StateLimit becomes runoff and the water state is capped at the configured limit.
+  - id: jarvi2014-table4
+    source: jarvi2014
+    role: validation
+    locators:
     - kind: table
-      label: Table 4a, parameters used in SUEWS by surface
+      label: Table 4, SUEWS parameter values
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
-        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
-        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
-        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
-        marks Vargo et al. (2013).'
-  - id: jarvi-table-4b
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 4b, overall area parameter values
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
-        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
-        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
-        area.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: Table 4 is the article's parameter set and it has no water state limit; the Water column
-    is mostly dashes, and Table 4b, which carries the area-wide values, does not list one either. So 2000
-    has no locator in this source. The record's name compounds the problem by naming the citation instead
-    of the quantity, which is how an unsupported value can look documented at a glance.
-  evidence_revision: sha256:0ec423abf73cb3cf4e93138c42f383255c2407ecde75772d91b69effbe8797f3
+      note: The Water column and overall-area table do not publish StateLimit or WaterDepth 2000 mm.
+  scientific_note: >-
+    The 2000 mm pair is fully traceable as an archived SUEWS configuration but not as a published Järvi
+    parameter. Git history first introduces code 1000 with StateLimit 2000, later restores it after a
+    revert, and the v2017a table adds WaterDepth 2000 and the Helsinki/Järvi label. SUEWS documentation
+    and source code establish the quantity as an upper open-water state and configured depth. The database
+    therefore retains the exact row as an assumed Helsinki application configuration, uses unreferenced
+    to avoid false publication attribution, and preserves legacy source ID 90240015 only as lineage. No
+    value, stable path, origin, legacy ID or legacy WaterDepth is changed.
+  evidence_revision: sha256:9c891a34d47dab6dd0c43820d68307bd92b473f66a8fc5216730f55a5b770079
 verification:
   attestations: []

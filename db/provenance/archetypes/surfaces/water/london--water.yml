@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/ohm/generic--ward2016--water: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:9ef3c1ebaf3b579d3ad75ba398c9b4f165f7b43adb4c525b899e1724d84c167a
-    records/surfaces/water/helsinki--jarvi2014--water-state: sha256:9b248f01d4984717fecfce09ae30b5fe7d728bd0563f50e44194366345b565b6
+    records/surfaces/water/helsinki--jarvi2014--water-state: sha256:25f3dd1e885c1ce5706a7edf885c9c22a0cc049010aa44a24e79a4af5f00c68e
     records/surfaces/water/london--unreferenced--water-state: sha256:eaeaf470443607e11dd96e45033816a6def8e033a5aa33bb5bd896c0d4549af3
     records/surfaces/water/london--ward2016--water-state: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
@@ -200,6 +200,6 @@ assessment:
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:3477b73c94e0789f05d8b104ac37b7592065636a603333aaf84d9c5f03dccbec
+  evidence_revision: sha256:90b699ff4eaf4609e3309d3c4b4bd2ed34e760f208bef6bdf470388cc055fcbd
 verification:
   attestations: []
