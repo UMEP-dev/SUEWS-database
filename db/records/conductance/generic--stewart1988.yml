@@ -2,9 +2,9 @@ record: records/conductance/generic--stewart1988
 schema_version: '2026.5'
 target: conductance
 name: Stewart (1988)
-place: generic
-origin: Unspecified
-representativeness: generic
+place: thetford-forest
+origin: Thetford Forest, Norfolk
+representativeness: site
 source: stewart1988
 legacy_id: 44240003
 parameters:
