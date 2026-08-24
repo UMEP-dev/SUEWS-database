@@ -1,7 +1,7 @@
 provenance_record: records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c3b918b41b86abcf3d1ca99478c32e909cbdd5555bc3079adfe820846901a7fa
+record_revision: sha256:3289ffba51076a27e0563e75e2d98e758993d0d447a21003019cb901277addcb
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -18,12 +18,9 @@ assessment:
     version: '1.0'
   findings:
     name:
-      conclusion: correction_required
-      evidence_ids:
-      - jarvi-snow-removal
-      note: The name reads No snow removeal; removal is misspelt. Record paths are identity in this database,
-        so the misspelling is in the path as well and cannot be corrected as a side effect of another
-        change.
+      conclusion: supported
+      note: No snow removal accurately describes the all-zero switching profile. The stable record path
+        retains the historical misspelling because paths are identity in this database.
     target:
       conclusion: supported
       evidence_ids:
@@ -96,8 +93,8 @@ assessment:
   scientific_note: 'Snow removal in this article is a threshold, not a schedule: a snow water equivalent
     limit of 40 mm on buildings and 100 mm on pavement, applied uniformly across the sites because nothing
     better was available. There is no diurnal profile in it. The three records in this family encode switching
-    patterns instead, and the citation does not support any of them. This one also carries a misspelling
-    in its name and therefore in its path, which is identity here and cannot be tidied in passing.'
-  evidence_revision: sha256:0fae4a32662bfbf6f247bfa3e9ac55aeba0abccd63256990d2d9ab5bd969606a
+    patterns instead, and the citation does not support any of them. Its display name is corrected to
+    No snow removal; the stable path retains the historical misspelling because it is record identity.'
+  evidence_revision: sha256:03696663cd8d27e1549423f5f53cadb0caa9901a3144d15afca6f228b077a685
 verification:
   attestations: []
