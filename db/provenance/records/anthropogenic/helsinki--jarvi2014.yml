@@ -1,28 +1,32 @@
 provenance_record: records/anthropogenic/helsinki--jarvi2014
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0d31f8121048deff7ec923d9814c5718c950921bdb1806de20197b10abedcd36
+record_revision: sha256:ddb24ed982c0a8b5d2e68daaf3cbafd9dcf39e8f102d58f17b603595b0c40228
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-08-24T22:42:20Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The record is named Unclear one, which identifies nothing and reads as migration residue rather
-        than a description.
+      - migration-combined-row
+      note: The neutral name identifies the retained Helsinki configuration row and makes explicit that
+        it combines anthropogenic heat and CO2 fields. It does not claim a single scientific source or
+        a finer site identity that the full tuple cannot support.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/191
     target:
       conclusion: supported
       evidence_ids:
@@ -110,7 +114,21 @@ assessment:
         in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
         are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
         address and in a publisher''s address in the reference list.'
-  scientific_note: 'Three of the heat coefficients can be pointed to in Table 4b, and one of those three
+  - id: migration-combined-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: database.xlsx, AnthropogenicEmission row, legacy ID 53240010
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: The pre-migration row identifies Helsinki and stores the heat branches, CO2 configuration,
+        model selector and legacy fields together. It establishes the retained configuration identity,
+        not scientific support for every field.
+  scientific_note: 'The record now has a neutral configuration name grounded in the exact pre-migration
+    row: it identifies the retained Helsinki artifact and its combined heat-and-CO2 scope without claiming
+    a single publication or measurement site for the whole tuple. This resolves issue #191 while leaving
+    the mixed field-level provenance in issue #190 open. Three of the heat coefficients can be pointed
+    to in Table 4b, and one of those three
     raises a question about the article rather than the record: the table prints a1 as 9.9 x 10^3 where
     the stored 0.0099 corresponds to 9.9 x 10^-3. Given a0 of 0.1 and a2 of 0.0102 beside it, the printed
     exponent is almost certainly a typesetting slip, but this audit will not silently correct a published
@@ -118,6 +136,6 @@ assessment:
     heat minima and slopes and the whole CO2 block are not in this article. The related record is now
     identified as Kumpula Ku1 from the later 2019 study, but that does not establish this record''s identity
     or resolve either record''s mixed provenance.'
-  evidence_revision: sha256:f7c062b0303727edfc8b2737a304003e7615aa681efec9186b81472c8aa4a269
+  evidence_revision: sha256:4123e935a7366ad629ec69b149bb1814718a2e1dcbd9954a92574f2090aaa167
 verification:
   attestations: []
