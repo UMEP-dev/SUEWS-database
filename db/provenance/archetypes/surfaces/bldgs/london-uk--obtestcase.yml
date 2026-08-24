@@ -12,7 +12,7 @@ dependency_revisions:
     archetypes/typologies/uk--obtestcase: sha256:faa6384e62528c0e5d612eb7855971b568ada2a1689cf48cfa7876d5aaa2f7cd
     records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks: sha256:7ff26a8c6c84560c8d45efd1963c60fad4a6180551c589a15f4f0cf2464a318f
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
-    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
+    records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
@@ -202,6 +202,6 @@ assessment:
     so a maintainer must. Two smaller matters ride along: the two OHM rows declare neither place nor representativeness,
     and the construction is a UK stock class rather than a Central London one. This review does not revisit
     any component value.'
-  evidence_revision: sha256:504f5ba1863b0434208bbef505ccf6f8e1fafbf2f9e198fae7526002aad2dd8d
+  evidence_revision: sha256:17e0980987450ad74e791d82914b62b5c61fe17db786d9cc9bd5db5994b5d2e6
 verification:
   attestations: []

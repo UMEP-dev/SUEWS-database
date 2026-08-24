@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
+record_revision: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Bldgs, so the tuple describes the building land-cover class
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -93,6 +100,6 @@ assessment:
     rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
     and Swindon runs validate/apply the coefficients but are not their observation input. The separate code
     798 input record now documents its calculated lineage from the three rooftop source-table rows.
-  evidence_revision: sha256:8f8d342d5c443e964d4da7d9b41e897a1007302512c00f7c6af86663205abe9e
+  evidence_revision: sha256:c294bbe890709ab17e6f5e117fbed780591ef18beafa1c243b4fdec693d73492
 verification:
   attestations: []
