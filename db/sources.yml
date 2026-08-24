@@ -231,6 +231,14 @@ sources:
     title: CO2 uptake of urban vegetation in a warming Nordic city
     type: journalArticle
     year: 2024
+  havu-m2024-data:
+    author: Havu, Minttu; Kulmala, Liisa; Lee, Hei Shing; Saranko, Olli; Soininen, Jesse;
+      Ahongshangbam, Joyson; Järvi, Leena
+    doi: 10.5281/zenodo.10572180
+    journal: Zenodo
+    title: Data used in manuscript CO2 uptake of urban vegetation in a warming Nordic city
+    type: dataRepository
+    year: 2024
   hertwig2024a:
     author: Hertwig, D., McGrory, M., Paskin, M., Liu, Y., Lo Piano, S., Llanwarne, H., Smith,
       S. T., & Grimmond, S.
