@@ -2,9 +2,9 @@ record: records/surfaces/dectr/beijing--ward2013--lai
 schema_version: '2026.5'
 target: land_cover.dectr
 name: Deciduous Tree
-place: beijing
+place: generic
 origin: Beijing
-representativeness: city
+representativeness: generic
 source: jarvi2011
 method: literature
 legacy_id: 31240024

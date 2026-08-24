@@ -1,17 +1,17 @@
 provenance_record: records/surfaces/dectr/beijing--ward2013--lai
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:8e1c501369840a65a5d33d7af48c2c1d6a8f6aef7cd6eadd669d0a9b30a4259a
+record_revision: sha256:0e594f9120547c56dbd483b638c381bd1063fe40ad827f0562c3f5d535755f5e
 dependency_revisions:
   sources:
     breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
-    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
+  status: agent_assessed
   assessed_at: '2026-08-23T16:21:53Z'
   assessor:
     kind: agent
@@ -46,24 +46,20 @@ assessment:
         2 footnote c attributes the 5.5 maximum to Breuer et al. (2003), so Breuer is recorded as input
         lineage rather than as this record's direct parameter source.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - jarvi-table-2
       - zheng-compilation
-      note: The parameter pair is published as a deciduous-tree model value, not as a Beijing measurement.
-        The Zheng configuration shows its later use in Beijing but does not turn the underlying literature
-        values into city-specific evidence.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+      note: Generic is appropriate because the parameter pair is published as a deciduous-tree model
+        value, not as a Beijing measurement. The Zheng configuration shows its later use in Beijing
+        but does not change the scope of the underlying literature values.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - jarvi-table-2
       - zheng-compilation
-      note: The sources support a literature parameter set reused in a Beijing application, not a value
-        measured or fitted to represent the city as a whole.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+      note: Generic accurately describes a literature parameter set reused in later applications rather
+        than a value measured or fitted to represent Beijing as a whole.
     method:
       conclusion: supported
       evidence_ids:
@@ -72,15 +68,12 @@ assessment:
       note: The record transcribes published model parameters and their stated literature lineage, so
         literature is the supported method.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - jarvi-table-2
       - zheng-compilation
-      note: The parameter set is identifiable, but whether the stable Beijing-labelled record should remain
-        city-classed or be represented as a generic literature record is the separate decision in issue
-        #381.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/381
+      note: The stable path and origin preserve the Beijing application lineage while the active scope
+        identifies the values as the generic literature parameter set published by Järvi et al.
   evidence:
   - id: jarvi-table-2
     source: jarvi2011
@@ -110,13 +103,12 @@ assessment:
       label: Zheng2022_version2 ModelRuns VegetationSensitivity SUEWS_Veg.txt, row 992
       url: https://doi.org/10.5281/zenodo.8012194
       note: The final Beijing model archive reuses minimum 1, maximum 5.5 and equation type 0.
-  scientific_note: 'The citation problem is settled but the identity problem is not. Järvi et al. (2011)
+  scientific_note: 'Järvi et al. (2011)
     publishes the exact deciduous-tree LAI minimum and maximum, with the 5.5 maximum traced to Breuer
     et al. (2003), and the final Zheng Beijing archive shows the same pair used with equation type 0.
-    Ward et al. (2013) is therefore removed as the parameter source. Neither Järvi nor Breuer establishes
-    the values as Beijing measurements, while Zheng demonstrates application rather than local derivation.
-    Issue #381 remains the place to decide whether this stable Beijing-labelled record should retain
-    city representativeness or be recast as a generic literature parameter set.'
-  evidence_revision: sha256:c57fff44ecf225caa8566c90203aeb018e5ad8c0579a97a010d8420ccb8d4013
+    Neither Järvi nor Breuer establishes the values as Beijing measurements, while Zheng demonstrates
+    application rather than local derivation. The stable path and origin retain that application lineage;
+    the active place and representativeness now describe the generic literature evidence.'
+  evidence_revision: sha256:32fb257f4b648ea0c06b833e525f53c27060c5648b913e6cb8bbac1f13a85851
 verification:
   attestations: []

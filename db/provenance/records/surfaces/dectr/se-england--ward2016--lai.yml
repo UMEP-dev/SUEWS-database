@@ -11,7 +11,7 @@ dependency_revisions:
   places:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records:
-    records/surfaces/dectr/beijing--ward2013--lai: sha256:8e1c501369840a65a5d33d7af48c2c1d6a8f6aef7cd6eadd669d0a9b30a4259a
+    records/surfaces/dectr/beijing--ward2013--lai: sha256:0e594f9120547c56dbd483b638c381bd1063fe40ad827f0562c3f5d535755f5e
     records/surfaces/dectr/shanghai--ao2018--lai: sha256:2dd0de360cffc44f7597c3bb535fef5dbb3124a39a624d388c1a649ea04fc8cd
 assessment:
   status: curation_required
@@ -83,7 +83,8 @@ assessment:
       - records/surfaces/dectr/beijing--ward2013--lai
       - records/surfaces/dectr/shanghai--ao2018--lai
       note: The Shanghai record carries the same lai_type and bounds under another source, while the
-        Beijing record carries the same bounds with a different lai_type. Whether the stable SE England
+        stable Beijing-path record carries the same bounds with a different lai_type and is now correctly
+        classed as generic literature evidence. Whether the stable SE England
         path is a quoted default or distinct regional evidence requires curation; this source correction
         neither merges nor deletes any record.
   evidence:
@@ -131,6 +132,6 @@ assessment:
     al. evaluate phenological timing without republishing the bounds. The stable path, name, place and
     regional class are retained as migration/application identity and remain curation-required because
     overlapping migrated records exist.'
-  evidence_revision: sha256:f8db96d24d0e226aa8960b928152ab74806d371d5919907bfff31ac1828390d5
+  evidence_revision: sha256:fdd8f123056fc0da74d2c8b6b76f5e1dca9b3d2c36008d8edf069040b5fb39c9
 verification:
   attestations: []
