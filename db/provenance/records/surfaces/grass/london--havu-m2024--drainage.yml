@@ -1,17 +1,17 @@
 provenance_record: records/surfaces/grass/london--havu-m2024--drainage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
+record_revision: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
 dependency_revisions:
   sources:
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T17:14:40Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:50:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -19,12 +19,10 @@ assessment:
   method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-archive
-      note: The surface category is correct, but the name "Grass - Helsinki, Zurich, Beijing" spans
-        three cities while the inspected Havu archive rows are Helsinki configurations. Whether the multi-city
-        label reflects other migration inputs remains a curation question separate from the source correction.
+      - jarvi-table-2
+      note: Grass is the source surface category and avoids presenting later application cities as parameter origins.
     target:
       conclusion: supported
       evidence_ids:
@@ -49,20 +47,25 @@ assessment:
       note: Järvi et al. (2011) is the parameter publication. The Havu archive is retained as compilation
         evidence showing where the later configuration reused the tuple.
     place:
-      conclusion: curation_required
-      evidence_ids:
-      - havu-archive
-      note: The record declares London, but the inspected Havu rows are labelled Helsinki lawn and mixed-low-vegetation
-        configurations, while the record name also lists Zurich and Beijing. The source correction does
-        not settle which application place or places this migrated record should declare.
-    representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - jarvi-table-2
-      - havu-archive
-      note: The record declares city, but Järvi et al. publish a literature parameter and Havu's archive
-        shows configuration reuse rather than a city-wide determination. The correct application scope
-        should be settled with the place question.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/233
+      note: Järvi et al. publish a surface-type parameter rather than a city fit, so generic is the supported
+        evidence place; origin London preserves the migrated row's lineage.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/233
+      note: Generic reach reflects a literature parameter reused across cities rather than a city-wide determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Table 2 assigns the tuple to the grass surface type, establishing land-cover-class scale.
     method:
       conclusion: supported
       evidence_ids:
@@ -95,11 +98,10 @@ assessment:
       url: https://doi.org/10.5281/zenodo.10572180
       note: The Helsinki lawn and mixed-low-vegetation grass rows each carry WetThreshold 1.9, DrainageEq
         3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later configuration reuse.
-  scientific_note: 'The parameter lineage is now explicit: Järvi et al. (2011) publishes the grass storage
-    and drainage tuple, and Havu''s archived model input later reuses it in Helsinki grass configurations.
-    No parameter value changed. The remaining curation issue is scope: the stable record declares London,
-    its name lists Helsinki, Zurich and Beijing, and the inspected archive rows are Helsinki applications.
-    That place question remains separate and should not be answered by changing the original citation.'
-  evidence_revision: sha256:a4b8c98ecbd32e21ff1554ba320a7d839e9d2550256338ecc1866b4173d8052d
+  scientific_note: 'Järvi et al. (2011) publishes the generic grass storage and drainage tuple, and Havu''s
+    archived input later reuses it in Helsinki configurations. The stable path and origin preserve migration
+    lineage; the active name and scope now describe the source evidence rather than later application cities.
+    No parameter value changed.'
+  evidence_revision: sha256:017747e249ea3c040a3bafac2defb14c801f6c0d3d53842adf96e99a4dcdfa0f
 verification:
   attestations: []

@@ -1,10 +1,11 @@
 record: records/surfaces/grass/london--havu-m2024--drainage
 schema_version: '2026.5'
 target: land_cover.grass
-name: Grass - Helsinki, Zurich, Beijing
-place: london
+name: Grass
+place: generic
 origin: London
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: jarvi2011
 method: literature
 legacy_id: 45240063

@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
-    records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
@@ -86,17 +86,11 @@ assessment:
         Dwa. Three of the twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
         and biogen_co2, and no unused Beijing grass record exists for any remaining slot. Two declare
         place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and three declare place
-        se-england (koppen Cfb, subnational), filling emissivity, water_storage and leaf_area_index; drainage
-        declares place london; albedo and porosity declare place generic; and the ohm component carries
-        no place field. Nine of twelve slots
+        se-england (koppen Cfb, subnational), filling emissivity, water_storage and leaf_area_index; drainage,
+        albedo and porosity declare place generic; and the ohm component carries no place field. Nine of twelve slots
         are therefore filled from outside China because the database offers nothing closer, which is a
-        transparent transfer rather than a defect. One component has to be recorded without being settled
-        here. records/surfaces/grass/london--havu-m2024--drainage declares place london and origin London
-        while its name reads "Grass - Helsinki, Zurich, Beijing". Under the declared place it is a London
-        value standing in for Beijing; under its own name it is the set havu-m2024 intended for Beijing
-        among others. The selection is defensible for the drainage slot on either reading, so this review
-        is not blocked by it, and which of the two fields is authoritative is a question for that record's
-        own evidence review.
+        transparent transfer rather than a defect. The drainage component is a generic grass parameter
+        published by Järvi et al.; its Havu archive locator records later reuse rather than a Beijing fit.
     representativeness:
       conclusion: correction_required
       evidence_ids:
@@ -174,10 +168,8 @@ assessment:
   - id: component-surfaces-grass-london-havu-m2024-drainage
     record: records/surfaces/grass/london--havu-m2024--drainage
     role: component
-    note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass - Helsinki,
-      Zurich, Beijing", place london, representativeness city, source jarvi2011 and method literature.
-      Havu's archive is retained as later compilation evidence; the declared place and name disagree,
-      which is recorded under the place finding.
+    note: Fills the drainage slot. The record is the generic, land-cover-scale Grass tuple published by
+      Järvi et al.; Havu's archive is retained as later compilation evidence.
   - id: component-surfaces-grass-se-england-ward2016-emissivity
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
@@ -202,10 +194,8 @@ assessment:
     for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
     component''s own place is declared on its record, so the transfer is visible rather than hidden. The
     leaf_growth_power component is a one-park site fit inside this city-classed composite, which now requires
-    explicit composition curation rather than being treated as city-wide evidence. One field-level inconsistency
-    is also worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
-    declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
-    field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:c82d0b7f9e6c19d83a8d5776cdf4457a571f11131b868ca71e9ab37886ca7b74
+    explicit composition curation rather than being treated as city-wide evidence. The drainage component
+    is openly generic literature evidence rather than a Beijing observation.'
+  evidence_revision: sha256:4528de8f699d9fef9e7e929806c9e13f17fb603ea158805b53f64032b59d8975
 verification:
   attestations: []
