@@ -2,10 +2,11 @@ record: records/surfaces/bsoil/helsinki--jarvi2014--anohm
 schema_version: '2026.5'
 target: land_cover.bsoil
 name: BareSoil
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
-source: jarvi2014
+representativeness: generic
+source: sun2017
+method: literature
 legacy_id: 51240006
 parameters:
   rho_cp_anohm: 2000000
