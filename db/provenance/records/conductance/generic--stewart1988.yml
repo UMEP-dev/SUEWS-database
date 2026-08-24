@@ -1,0 +1,100 @@
+provenance_record: records/conductance/generic--stewart1988
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6e37daf841be9ee92ac29122a6fa0413bfe539c96c7c2f72997ffbd961b810d6
+dependency_revisions:
+  sources:
+    stewart1988: sha256:7e4217d5634107c0a6700a14c1159a4bac6831082756b936432b004a49661c00
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T11:45:26Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      note: Stewart (1988) identifies the publication and fitted conductance model represented by this
+        record.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      note: Equations 9-24 define the surface-conductance model and its environmental response functions.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      note: Table 2's all-days non-linear-model row and Eqs. 17-24 reproduce every stored coefficient
+        at the published precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      note: Stewart (1988) is the parameter publication that derives and reports the fitted values.
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/411
+      note: The source fits measurements from Thetford Forest, whereas the record currently declares
+        place generic. The separate scope correction is tracked in issue 411.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/411
+      note: The fitted coefficients come from one forest site and dataset, not generic sampling. Issue
+        411 tracks the representativeness correction without changing the supported coefficients.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - stewart1988-fitted-parameters
+      note: Table 2 states that the parameters were obtained by optimisation against the Thetford Forest
+        measurements; the record is therefore a fitted parameter set.
+    identity:
+      conclusion: supported
+      note: No exact duplicate of this coefficient set occurs in the current conductance-record inventory.
+  evidence:
+  - id: stewart1988-fitted-parameters
+    source: stewart1988
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, non-linear functions, All days row
+      page: 27
+      url: https://doi.org/10.1016/0168-1923(88)90003-2
+      note: Gives K1 23.53, K2 104.4, K3 0.0812, K4 9.44, K5 18.35 and K6 0.0810,
+        matching g_max, g_k, g_q_base, g_q_shape, g_t and g_sm.
+    - kind: equation
+      label: Equations 17-18, radiation response
+      page: 25
+      url: https://doi.org/10.1016/0168-1923(88)90003-2
+      note: Defines the radiation-response form and its 1000 W m-2 reference, matching kmax.
+    - kind: equation
+      label: Equations 20-21, temperature response
+      page: 26
+      url: https://doi.org/10.1016/0168-1923(88)90003-2
+      note: States the low and high temperature limits as 0 and 40 degrees C, matching tl and th.
+    - kind: equation
+      label: Equations 22-24, soil-moisture response
+      page: 26
+      url: https://doi.org/10.1016/0168-1923(88)90003-2
+      note: Gives K10 1.08 and K11 69.7, matching s1 and s2.
+    note: The all-days row was fitted to all measurement hours from 1974, 1975 and 1976 at Thetford
+      Forest.
+  scientific_note: The original article supports the current source and all eleven conductance coefficients.
+    It also establishes that the values are a fitted Thetford Forest parameter set; the separate place
+    and representativeness correction remains tracked in issue 411.
+  evidence_revision: sha256:9fe0a02e55d58dd5fefe48f52408bd68c0bf7f5aee028260821b149a59a85776
+verification:
+  attestations: []
