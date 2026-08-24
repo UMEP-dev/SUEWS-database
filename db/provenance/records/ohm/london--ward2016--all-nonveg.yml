@@ -1,30 +1,29 @@
 provenance_record: records/ohm/london--ward2016--all-nonveg
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:fbe3e67ce075182e9c7a658432a274bc376f037b3704c658c9e245378fc067b5
+record_revision: sha256:7b8c3b219884f3aecf783465cd7587989f9751f56e66ba6a7233e1c8f00fac54
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
+  status: agent_assessed
   assessed_at: '2026-08-21T21:13:31Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-code-851
-      note: The exact code 851 description is a paved/impervious composite, not all non-vegetated surfaces.
-        Correcting the embedded identity without moving or merging the record is a maintainer decision.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+      note: Paved surface composite identifies Ward's exact code 851 average of paved-material inputs
+        without extending it to buildings or all non-vegetated surfaces.
     target:
       conclusion: supported
       evidence_ids:
@@ -43,23 +42,19 @@ assessment:
       note: Ward et al. publish this paved composite and the versioned companion table gives its exact
         values.
     place:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
       - ward-code-851
       - ward-two-site-application
-      note: The coefficient set is compiled from surface-material studies and applied at both London and
-        Swindon; it is not a London observation or London-specific fit.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+      note: Generic is appropriate because the coefficient set is compiled from surface-material studies
+        and applied at both London and Swindon; it is not a London observation or fit.
     representativeness:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
       - ward-code-851
       - ward-two-site-application
-      note: 'City representativeness is not supported: Ward presents code 851 as a generic paved-surface
-        literature composite used at two distinct sites.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+      note: Ward presents code 851 as a generic paved-surface literature composite used at two distinct
+        sites, so generic representativeness matches the evidence.
     method:
       conclusion: supported
       evidence_ids:
@@ -67,13 +62,11 @@ assessment:
       note: The database adopts Ward's published output. Ward's authors calculate code 851 as the arithmetic
         mean of concrete/asphalt codes 801, 802, 901, 902 and 910; it is not a London fit.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-code-851
-      note: The evidence supports a generic paved identity, while the stable path embeds London and all-nonveg.
-        Renaming, moving, aliasing or retaining the migrated identity requires curation.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/63
+      note: The active name and scope identify one generic paved composite. The stable path and origin
+        retain the migration lineage without controlling the evidence identity.
   evidence:
   - id: ward-code-851
     source: ward2016
@@ -106,9 +99,10 @@ assessment:
       url: https://doi.org/10.1016/j.uclim.2016.05.001
     note: The same surface coefficient scheme is applied at both sites; this is application and validation
       evidence.
-  scientific_note: The values and Ward citation are supported. The record nevertheless conflates a generic
-    paved literature composite with a London city/all-nonvegetated identity. Existing issue 63 already
-    captures the required curation decision, so no new issue is needed.
-  evidence_revision: sha256:a9e2ac0dc8a095cfd0cc1e205b491677626a8ba52983bb40b11062539d0a0224
+  scientific_note: Ward et al. publish code 851 as a paved-surface composite compiled from concrete and
+    asphalt studies and use the same surface coefficients in the London and Swindon evaluations. The active
+    name, place and representativeness now describe that generic literature evidence. The stable path and
+    origin retain the legacy London/all-nonvegetated migration lineage, and the values remain unchanged.
+  evidence_revision: sha256:323a0c91630f7b54e76b0c96896e6c54076b5ddcabc11545b5731292f0f274f3
 verification:
   attestations: []
