@@ -1,0 +1,183 @@
+provenance_record: records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c0bb96e1d5e7c83f9d9eb7513b781b46553aa1b5e1c34db4d05d421bc8e3c7cd
+dependency_revisions:
+  sources:
+    grimmond1996: sha256:2a4ddb2340f588c1dd616ea78ab97ebe57bbb5b017f53c29b8cd09ba73d2a00d
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    loridan2011: sha256:987c1a1fbd8650d5c232ee6f6e169c6e654b1862e4e49c673d68bdd473593eb3
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    los-angeles: sha256:b1e861c687efd37fd67ec97c2384fa9afc251a94de61b73e2ba9288bce4fc06f
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T22:34:38Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/369
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - legacy-row-60240000
+      note: The retained old-code name is the stable migration identity shared by the release code and
+        pre-migration row; it does not claim that code 11 is a publication identifier.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof3
+      - release-code-11
+      note: Järvi et al. describe Prof3 as an external-water-use profile, and the release table labels
+        code 11 as a manual Los Angeles water-use profile.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof3
+      - release-code-11
+      note: Table 3 gives San Gabriel Prof3 period shares 0.35, 0.19 and 0.46 and states that water use
+        is constant in each hour of a delineated period. Dividing by 11, 9 and 4 hours and rounding
+        half-up to two decimals produces 0.03, 0.02 and 0.12 at exactly the hours stored by code 11.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof3
+      - grimmond-la-observations
+      - loridan-water-profile-absent
+      - release-code-11
+      - legacy-row-60240000
+      note: Unreferenced is correct for the derived 24-value vector because Järvi et al. publish its three
+        period inputs, not the rounded hourly outputs. Grimmond et al. document the underlying San Gabriel
+        observations but not this vector, while Loridan et al. contain no irrigation profile. The disproved
+        legacy Ref 90240005 is retained as source_legacy_ref without exporting it as parameter provenance.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/369
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-prof3
+      - grimmond-la-observations
+      note: The exact inputs are San Gabriel Prof3, and the original observations are from the San Gabriel
+        lower-tree-cover neighborhood within the Los Angeles metropolitan area. The current Los Angeles
+        registry place is retained pending the separate place adjudication.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/368
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-prof3
+      - grimmond-la-observations
+      note: The evidence is a local-scale San Gabriel neighborhood profile, not a city-wide sample. City
+        remains unchanged in this citation-only repair pending the separate representativeness issue.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/368
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof3
+      - release-code-11
+      note: Calculated records the deterministic conversion of three published period-total fractions
+        into constant hourly fractions with two-decimal half-up rounding.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - legacy-row-60240000
+      note: The pinned release's code 11 vector and Manual LA label match legacy row 60240000 exactly. The
+        stable path, origin, legacy ID and values preserve that migrated identity.
+  evidence:
+  - id: jarvi-prof3
+    source: jarvi2011
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 3(b), Prof3 San Gabriel external-water-use profile
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives period shares 0.35 for 20:00-07:00, 0.19 for 07:00-16:00 and 0.46 for 16:00-20:00,
+        marks Prof3 as San Gabriel data from Grimmond et al. (1996), and states that a constant amount
+        is assumed for each hour within a delineated period.
+  - id: grimmond-la-observations
+    source: grimmond1996
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 3, lower-tree-cover neighborhood weekday irrigation survey
+      page: 50
+      url: https://doi.org/10.3354/cr006045
+      note: Reports San Gabriel weekday response percentages of 39% for 20:00-06:00, 21% for 06:00-10:00
+        and 51% for 16:00-20:00. Normalising 39, 21 and 51 by their sum gives the 0.35, 0.19 and 0.46
+        Prof3 inputs published later by Järvi et al.; it does not print the derived 24-hour vector.
+    - kind: text
+      label: External water use methodology
+      page: 47-50
+      url: https://doi.org/10.3354/cr006045
+      note: Documents questionnaires and bi-monthly billing data for the Arcadia and San Gabriel neighborhoods.
+  - id: loridan-water-profile-absent
+    source: loridan2011
+    role: validation
+    locators:
+    - kind: text
+      label: Complete article
+      page: 190-202
+      url: https://doi.org/10.1175/2010JAMC2474.1
+      note: Develops longwave-radiation and seasonality components of LUMPS and does not publish an irrigation,
+        external-water-use, San Gabriel or code-11 profile.
+  - id: release-code-11
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_Profiles.txt, code 11
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Profiles.txt#L4
+      note: Stores 0.03 at hours 00:00-06:00 and 20:00-23:00, 0.02 at 07:00-15:00 and 0.12 at
+        16:00-19:00, and labels the vector Manual LA Water Use Profile values.
+  - id: legacy-row-60240000
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Profiles row 60240000
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L35-L69
+      note: Preserves the exact vector as a Los Angeles weekday manual-water-use row and records Ref
+        90240005, the disproved Loridan migration link retained as source_legacy_ref.
+  derivation:
+    kind: other
+    description: Convert the three Prof3 period-total fractions to constant hourly fractions and round
+      each result half-up to two decimal places.
+    expression: round_half_up(period_fraction / hours_in_period, 2)
+    external_inputs:
+    - id: prof3-2000-0700
+      evidence_id: jarvi-prof3
+      parameter: working_day hours 1-7 and 21-24
+      value: 0.35
+      note: Eleven-hour period; 0.35 / 11 = 0.031818..., stored as 0.03 per hour.
+    - id: prof3-0700-1600
+      evidence_id: jarvi-prof3
+      parameter: working_day hours 8-16
+      value: 0.19
+      note: Nine-hour period; 0.19 / 9 = 0.021111..., stored as 0.02 per hour.
+    - id: prof3-1600-2000
+      evidence_id: jarvi-prof3
+      parameter: working_day hours 17-20
+      value: 0.46
+      note: Four-hour period; 0.46 / 4 = 0.115, stored as 0.12 per hour.
+  scientific_note: >-
+    The provenance chain has four distinct layers. Grimmond et al. report the underlying San Gabriel
+    lower-tree-cover neighborhood survey and billing observations. Järvi et al. publish the normalised
+    Prof3 period shares and the constant-within-period rule. Half-up conversion of those shares produces
+    the exact 24 hourly values retained here, and the pinned V2016a table is the release compilation of
+    that derived vector. The hourly values sum to 0.99 because each period's per-hour value was rounded
+    separately. Loridan et al. do not publish any layer of this water-use profile, so the record changes
+    from that false active citation to an unreferenced database calculation while preserving Ref 90240005
+    only as historical metadata. Values, stable path, origin, legacy ID, place and representativeness remain
+    unchanged; the latter two stay with issue 368.
+  evidence_revision: sha256:235327f0db704a21f14a6054c24e2942ec8112f707fe9332d21fd88bf7e271bc
+verification:
+  attestations: []

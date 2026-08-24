@@ -30,7 +30,7 @@ dependency_revisions:
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
-    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
+    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:c0bb96e1d5e7c83f9d9eb7513b781b46553aa1b5e1c34db4d05d421bc8e3c7cd
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
 assessment:
   status: curation_required
@@ -349,6 +349,6 @@ assessment:
     rows and the composite's own two base temperatures have no recorded origin. The selection is a placeholder
     and needs a curator's decision; none of this bears on whether the components' own values are right,
     which their evidence assessments settle.
-  evidence_revision: sha256:60a6d0a55e15de8bc85d7d627c16bde296a9bc9aac90c55b68b9b7a5366565a5
+  evidence_revision: sha256:14d9d0092f701a165e5c61ddbd15e46eab6f01f840dd4ff022b38eac074d8e06
 verification:
   attestations: []
