@@ -1,0 +1,172 @@
+provenance_record: records/profiles/energy-use/london--iamarino2012--iamarino--2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:584bb9ebf9e1257b9460cdd2a2fb56cdd0fae13f7b8d3a69dcc28be11110f73c
+dependency_revisions:
+  sources:
+    elexon2015-load-profiles: sha256:61962389d596460eddbd46f72066b1d1cf9a35dc6c0ec40ea3e0eccad5dbf938
+    greaterqf-v3-2: sha256:071112bfc80281ba03519559e841b1e43713a834b724c9672834d74324727829
+    iamarino2012: sha256:613baa56e3b6ff2cdf79e9a6d8b31cd9fa3b060ebaec7350f8c903eaa8e8ecec
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:16:27Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/338
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-residential-rows
+      - iamarino-erc-method
+      note: The stable Iamarino name records the calculation lineage through the paper and the two
+        pre-migration residential rows; it does not claim that the paper prints the final 24-hour vectors.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - iamarino-erc-method
+      - greaterqf-v3-profile
+      note: Iamarino et al. use the ERC domestic unrestricted load profile as the sub-daily building-energy
+        schedule, and the GreaterQF artifact labels the exact input column ElUNr_Wi.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - greaterqf-v3-profile
+      - legacy-residential-rows
+      note: Adjacent pairs of the first 48 ElUNr_Wi values, divided by their total 48.000, reproduce the
+        working-day vector exactly. Independently normalising the following Saturday and Sunday blocks,
+        pairing their half-hours, and taking their equal mean reproduces the holiday vector exactly.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - greaterqf-v3-profile
+      - iamarino-erc-method
+      - elexon-profile-classes
+      - legacy-residential-rows
+      note: The exact 24-hour outputs are a database calculation over GreaterQF input data, not numbers
+        printed by Iamarino et al. The active source is therefore unreferenced; legacy Ref 90240007 is
+        retained separately, while the sidecar records the paper, original Elexon dataset lineage and
+        exact archived calculation artifact without crediting any of them with the derived output.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/338
+    place:
+      conclusion: supported
+      evidence_ids:
+      - iamarino-erc-method
+      - greaterqf-v3-profile
+      note: Both the article and the GreaterQF release identify London as the application domain.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - iamarino-erc-method
+      note: The profile is used throughout the Greater London building-energy calculation, supporting
+        city application scope rather than a single measurement site.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - greaterqf-v3-profile
+      - legacy-residential-rows
+      note: Calculated records the deterministic half-hour pairing, within-day normalisation and equal
+        Saturday-Sunday averaging that converts the archived 48-point inputs to the stored 24-point vectors.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-residential-rows
+      note: Pre-migration rows 60240942 and 60240940 are respectively the London residential weekday and
+        weekend entries named Iamarino; migration combines them as working_day and holiday without changing
+        their order or values.
+  evidence:
+  - id: greaterqf-v3-profile
+    source: greaterqf-v3-2
+    role: input_data
+    locators:
+    - kind: dataset
+      label: GreaterQFV3.2.7z/V3.2/Index2_EnergyHourly.csv, ElUNr_Wi rows 1-144
+      url: https://github.com/Urban-Meteorology-Reading/Urban-Meteorology-Reading.github.io/blob/1d8a6ac6daa322b8ecf358a76b3f226e0de09a23/other%20files/GreaterQFV3.2.7z
+      note: The public-release pointer records archive SHA-256 34ae31d1270068cd7b1ec277eab3e13a8ed0593e17589e0bf614bca5988f442d
+        and size 30,435,425 bytes. The exact retained archive contains V3.2/Index2_EnergyHourly.csv,
+        SHA-256 cbae41035e112e0d32805bf64d6ab9cfa7ae530f901f4ba4b4aaa866f791cde2.
+        Its first, second and third 48-row ElUNr_Wi blocks are weekday, Saturday and Sunday profiles.
+    - kind: dataset
+      label: GreaterQF v3.2 profile selection in Calcs3.py
+      url: https://github.com/UMEP-dev/UMEP/blob/4ff6d0b1d9a9b7197965e5c63ed6b8203f04d1a7/GreaterQF/PythonQF/Calcs3.py#L103-L115
+      note: Selects the weekday, Saturday or Sunday 48-row block and uses the domestic unrestricted
+        column for domestic electricity and gas; UK public holidays are classified as Sundays.
+  - id: iamarino-erc-method
+    source: iamarino2012
+    role: validation
+    locators:
+    - kind: section
+      label: Section 2.1, Buildings, ERC load-reference profiles
+      page: 1758
+      url: https://doi.org/10.1002/joc.2390
+      note: States that 30-minute ERC domestic and industrial load-reference profiles cover weekdays,
+        Saturday and Sunday at five times of year, and that domestic unrestricted electricity supplies
+        the domestic gas profile as well as the sub-daily building-energy schedule.
+    - kind: table
+      label: Table I, ERC/1 Buildings energy load profiles
+      page: 1756
+      url: https://doi.org/10.1002/joc.2390
+      note: Identifies the UK Energy Research Centre data portal as the source used by the model.
+  - id: elexon-profile-classes
+    source: elexon2015-load-profiles
+    role: validation
+    locators:
+    - kind: dataset
+      label: UKERC/CEDA dataset 5af8ae29-86a7-4e8c-9fe4-1e2d99d9fb96
+      url: https://ukerc.rl.ac.uk/cgi-bin/dataDiscover.pl?Action=detail&dataid=5af8ae29-86a7-4e8c-9fe4-1e2d99d9fb96
+      note: The authoritative Elexon dataset defines Profile Class 01 as Domestic Unrestricted and supplies
+        half-hourly weekday, Saturday and Sunday profiles for the five seasons. The currently served rounded
+        version does not numerically replace the exact GreaterQF v3.2 artifact used in this derivation.
+  - id: legacy-residential-rows
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Historical database rows 60240940 and 60240942
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L28839-L28931
+      note: Preserves the exact residential weekend and weekday vectors, the London identity and Ref 90240007
+        that resolves to Iamarino et al.; this is compilation lineage rather than proof that the paper prints
+        the vectors.
+  derivation:
+    kind: other
+    description: Aggregate adjacent half-hours from the GreaterQF winter domestic-unrestricted profiles;
+      normalise each day type separately, and take an equal Saturday-Sunday mean for the holiday profile.
+    expression: working_day[h] = (Wd[2h] + Wd[2h+1]) / sum(Wd); holiday[h] = 0.5 * ((Sat[2h]
+      + Sat[2h+1]) / sum(Sat) + (Sun[2h] + Sun[2h+1]) / sum(Sun)), for h = 0..23.
+    external_inputs:
+    - id: winter-weekday-total
+      evidence_id: greaterqf-v3-profile
+      parameter: ElUNr_Wi weekday block sum
+      value: 48.0
+      note: Sum of the first 48 half-hour values; adjacent pair sums divided by this total are the exact
+        working-day entries.
+    - id: winter-saturday-total
+      evidence_id: greaterqf-v3-profile
+      parameter: ElUNr_Wi Saturday block sum
+      value: 48.002
+      note: Sum of rows 49-96 before within-day normalisation.
+    - id: winter-sunday-total
+      evidence_id: greaterqf-v3-profile
+      parameter: ElUNr_Wi Sunday block sum
+      value: 47.999
+      note: Sum of rows 97-144 before within-day normalisation; GreaterQF applies this profile to Sundays
+        and public holidays.
+  scientific_note: The scientific and numeric lineages are distinct. Iamarino et al. document that the
+    London model uses UKERC domestic-unrestricted reference profiles, while Elexon/UKERC preserve the
+    originating profile-class dataset and definitions. The exact higher-precision half-hour inputs used here
+    survive in the GreaterQF v3.2 public-release archive. The deterministic calculation above reproduces
+    both stored residential vectors, but no located publication prints those final 24 values. The record
+    therefore moves from a misleading paper citation to an explicit unreferenced calculation, preserving
+    Ref 90240007 only as historical metadata. Stable path, name, place, representativeness, values and legacy
+    IDs are unchanged.
+  evidence_revision: sha256:8d8d7d7f1650de5e1c3834083c79499892aad29736c4597b14e4688a8917651b
+verification:
+  attestations: []

@@ -7,7 +7,9 @@ name: Iamarino
 place: london
 origin: London, United Kingdom
 representativeness: city
-source: iamarino2012
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240007
 legacy_id:
 - 60240940
 - 60240942

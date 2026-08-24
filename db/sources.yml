@@ -140,6 +140,13 @@ sources:
     title: A review of flux-profile relationships
     type: journalArticle
     year: 1974
+  elexon2015-load-profiles:
+    author: Elexon Ltd
+    journal: UK Energy Research Centre Energy Data Centre
+    title: Electricity user load profiles by profile class
+    type: dataRepository
+    url: https://ukerc.rl.ac.uk/cgi-bin/dataDiscover.pl?Action=detail&dataid=5af8ae29-86a7-4e8c-9fe4-1e2d99d9fb96
+    year: 2015
   eppelbaum2014:
     author: Eppelbaum, Kutasov and Pilchin
     doi: 10.1007/978-3-642-34023-9
@@ -206,6 +213,13 @@ sources:
       Parameterization Scheme (LUMPS)'
     type: journalArticle
     year: 2002
+  greaterqf-v3-2:
+    author: Urban Meteorology Group, University of Reading
+    journal: GitHub
+    title: 'GreaterQF v3.2 public release archive: Index2_EnergyHourly.csv'
+    type: dataRepository
+    url: https://github.com/Urban-Meteorology-Reading/Urban-Meteorology-Reading.github.io/blob/1d8a6ac6daa322b8ecf358a76b3f226e0de09a23/other%20files/GreaterQFV3.2.7z
+    year: 2018
   halldin1979:
     author: Halldin, S.; Grip, H.; Perttu, K.
     doi: 10.1016/B978-0-444-41844-9.50012-3
