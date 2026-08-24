@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/evetr/helsinki-finland--evergreen-street-trees-havu-et-al-2022: sha256:f09cd2030a94be38383a7fa7ca77904345ca6bfa54260f8dd18fe2e588a73650
     archetypes/surfaces/evetr/helsinki-finland--evergreenpark-trees-havu-et-al-2024: sha256:b78d5d5e4d429f2988a0e09b00e36a1159d69a48d3518fb732ee9bd20b663496
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
-    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
     records/surfaces/evetr/helsinki--havu-m2024--biogen-co2: sha256:6163b08fa8d104900860d42dccffccbad0f22c8cb7fedad04c8adcc8cf971012
     records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
@@ -209,6 +209,6 @@ assessment:
     fall back to SE England regional rows. The two LAI components agree on lai_type 1, the slot set is
     complete, and one unlabelled coefficient record fills all four OHM positions. Drainage is openly
     generic land-cover literature evidence, while its sidecar records Havu''s later Helsinki application.'
-  evidence_revision: sha256:0f8171ed99c25cd13604c602e88e2ff4809c05400822cafbe524ff980f07a07d
+  evidence_revision: sha256:230d079f9f49cc8ff78fa415eda6ebbc7ff13f6adf6dbe39fd90c358cddc0532
 verification:
   attestations: []

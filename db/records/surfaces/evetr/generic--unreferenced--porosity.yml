@@ -6,6 +6,7 @@ place: generic
 origin: Porisity only used for Deciduous Tree. This is a Dummy Variable
 representativeness: generic
 source: unreferenced
+method: assumed
 source_legacy_ref: 90241000
 legacy_id: 34240010
 parameters: {}
