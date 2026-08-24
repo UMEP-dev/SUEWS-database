@@ -1,0 +1,126 @@
+provenance_record: records/irrigation/helsinki--jarvi2019
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:216576d253c90927be3739cccb10eb1d1ffc4725b711e4fbee779a6dd6516a5d
+dependency_revisions:
+  sources:
+    jarvi2017: sha256:0411608374cf880b5e590190bdb02f91d8e20ad9cdaacb845958e7d4b88ca1b3
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:30:17Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      note: The archived rows are labelled Helsinki-Sm01, Helsinki-Sm02 and Helsinki-Sm03,
+        and the record retains the generic Irrigation display name used for this target.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      note: The values are published in SUEWS_Irrigation.txt and therefore belong to the
+        irrigation target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      - published-irrigation-coefficients
+      note: Codes 1-3 in the archived Kumpula input contain the complete stored tuple exactly.
+        Supplementary Table S4 of Järvi et al. (2017) independently prints the same six legacy
+        irrigation coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      note: The Zenodo repository directly publishes the complete configuration row. The associated
+        2019 article links the repository and documents the Kumpula model application, but does not
+        print the atomic irrigation tuple, so the data-repository key is the precise record source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      - kumpula-model-scope
+      note: The selected input is in the Kumpula model-run archive, and the associated article locates
+        Kumpula in Helsinki.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      - kumpula-model-scope
+      note: The Kumpula model run applies the row to the three sectors around the measurement site;
+        the record makes no claim that this configuration was determined city-wide.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      - published-irrigation-coefficients
+      note: The record adopts a published model-input configuration, so literature is the record-level
+        method. This does not imply that the Helsinki study fitted the six inherited coefficients.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-irrigation-archive
+      note: Archive codes 1-3 are byte-for-value identical and differ only in their Helsinki-Sm labels,
+        so one evidence record preserves the scientific value set without triplication.
+  evidence:
+  - id: helsinki-irrigation-archive
+    source: jarvi2019-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip/Input/SUEWS_Irrigation.txt, codes 1-3
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: Each code gives Ie_start 152, Ie_end 243, InternalWaterUse 0, Faut 0, all
+        DayWat and DayWatPer flags 1, and legacy coefficients -19.1853, 2.2195, 0.7836,
+        -5.7556, 0.6658 and 0.2351.
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip/Input/SUEWS_SiteSelect.txt, Kumpula sectors
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: The Kumpula model input selects irrigation codes 1 and 2 for the three sectors;
+        those codes carry identical values.
+  - id: published-irrigation-coefficients
+    source: jarvi2017
+    role: compilation
+    locators:
+    - kind: supplementary
+      label: Supplementary Table S4, overall-area irrigation parameters
+      page: 6
+      url: https://doi.org/10.1038/s41598-017-05733-y
+      note: Prints the exact six coefficients -19.1853, 2.2195, 0.7836, -5.7556,
+        0.6658 and 0.2351 as parameters used in the SUEWS model runs; it does not
+        document their derivation.
+  - id: kumpula-model-scope
+    source: jarvi2019
+    role: validation
+    locators:
+    - kind: table
+      label: Table 1, Kumpula site characteristics
+      page: 8367
+      url: https://doi.org/10.1029/2018JD029576
+    - kind: section
+      label: Sect. 4.1, Model Evaluation in Helsinki
+      page: 8368
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines the Kumpula measurement site and the three 1-km sectors Ku1-Ku3 used
+        for the model evaluation; it does not publish the irrigation row.
+  scientific_note: Järvi et al. (2011) establish the irrigation-model form and fit Vancouver
+    observations, but they do not publish this coefficient tuple. Their Sect. 4.3 reports automatic
+    coefficients -84.54, 9.96 and 3.67, with manual coefficients set to 0.30 times those values.
+    The exact later tuple is first located here in the 2017 supplementary compilation and the archived
+    2016-dated model input; its original derivation remains unlocated. The dataset is nevertheless a
+    direct source for the complete Helsinki application row, so the citation is corrected without
+    crediting the 2011 authors with numbers they did not publish.
+  evidence_revision: sha256:4020c0465888f3cb1149405a6769a5a5352cdc3abca4bc8c8cf05929af45ec32
+verification:
+  attestations: []
