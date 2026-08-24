@@ -5,7 +5,8 @@ name: 'Black/grey asphalt, weathered '
 place: london
 origin: London
 representativeness: city
-source: kotthaus2014
+source: unreferenced
+method: calculated
 legacy_id: 40241247
 parameters:
   emis: 0.9366666666666666
