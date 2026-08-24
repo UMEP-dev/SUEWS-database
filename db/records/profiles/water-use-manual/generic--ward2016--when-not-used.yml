@@ -4,7 +4,8 @@ target: profile.water-use-manual
 attaches_to: irrigation.wuprofm_24hr
 profile_type: Water use (manual)
 name: When not used
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id:
 - 60240014
 parameters: {}
