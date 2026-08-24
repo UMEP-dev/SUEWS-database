@@ -1,0 +1,142 @@
+provenance_record: records/surfaces/common/midwest-usa--schmid2000--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:1cd776cfa672f2782a332068a23f720b8c3fc6822c26945f6739ce3d70399369
+dependency_revisions:
+  sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    schmid2000: sha256:4e02bb5e75791ffd681704c6bbff94768f7bf91d9d7daa9a4f98f817b467130b
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    morgan-monroe-state-forest: sha256:f1b150ced53afa134cd6553b7c2c4e338c9817e48476caa44e5825eda6ae4727
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-25T00:45:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/372
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - schmid-site-and-fits
+      - migration-row-30240008
+      note: Schmid et al. study a mixed secondary-successional broadleaf forest, and the migrated row
+        preserves the name Mixed Hardwood Forest.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - schmid-site-and-fits
+      - migration-row-30240008
+      note: The article derives ecosystem photosynthesis and respiration terms for vegetation, while
+        the migrated row explicitly classifies the tuple as All vegetation, represented by land_cover.common.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - schmid-site-and-fits
+      - jarvi-winter-floor
+      - migration-row-30240008
+      note: Schmid Eq. (5) directly gives resp_a 1.08 and resp_b 0.064. Eq. (6) directly gives the
+        light-saturated maximum beta 35 and the half-saturation constant 590; 35 / 590 = 0.059322,
+        which rounds to stored alpha 0.0593. Järvi Eq. (11) and Appendix B publish the later minimum
+        respiration floor 0.60. The pre-migration row is the exact stored five-value compilation.
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - schmid-site-and-fits
+      - jarvi-winter-floor
+      - migration-row-30240008
+      note: Schmid is the parameter source for alpha, beta, resp_a and resp_b, but does not publish the
+        0.6 floor. Järvi et al. publish that later value from their Southern Finland chamber analysis,
+        and the database workbook is the compilation that combines the roles. The record schema has
+        only one source field, so it cannot express all three without misattribution.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/372
+    place:
+      conclusion: supported
+      evidence_ids:
+      - schmid-site-and-fits
+      note: The paper locates the flux site in Morgan-Monroe State Forest, south-central Indiana, at
+        39 degrees 19 minutes N and 86 degrees 25 minutes W, matching the active place entry.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - schmid-site-and-fits
+      note: The coefficients are fitted to one tower site, so site is the supported evidence reach.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - schmid-site-and-fits
+      - jarvi-winter-floor
+      - migration-row-30240008
+      note: Schmid fits respiration and GEP functions to one site's eddy-covariance observations;
+        alpha is recovered algebraically from Eq. (6), the 0.6 floor is a later statistic from chamber
+        observations, and the workbook compiles them. No single method describes the atomic tuple.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-30240008
+      note: Biogen CO2 row 30240008 preserves the exact name, origin, five active values, three -999
+        legacy sentinels and reference ID 90240042. The stable path and legacy_id retain that identity;
+        the -999 theta, alpha_enh and beta_enh entries are unavailable legacy fields, not sourced
+        scientific values.
+  evidence:
+  - id: schmid-site-and-fits
+    source: schmid2000
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Sect. 2, Site and instrumentation
+      page: 358
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Locates the Morgan-Monroe State Forest tower at 39 degrees 19 minutes N, 86 degrees 25
+        minutes W in an extensive secondary-successional broadleaf forest, with minimum fetch 4 km.
+    - kind: equation
+      label: Eq. (5), ecosystem respiration versus soil temperature
+      page: 369
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Publishes RE = 1.08 exp(0.064 Ts), with flux in micromol m-2 s-1 and Ts in degrees C.
+    - kind: equation
+      label: Eq. (6), gross ecosystem production versus PPFD
+      page: 370
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Publishes GEP = -1.4 + 35 PPFD / (590 + PPFD). Thus beta is 35 and the initial slope
+        of the saturating component is 35 / 590 = 0.059322, rounded to 0.0593.
+  - id: jarvi-winter-floor
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Eq. (11), soil and vegetation respiration
+      page: 8366
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines respiration as max(a_i exp(Tair b_i), 0.6) for each vegetated surface.
+    - kind: section
+      label: Appendix B, Estimating Minimum Soil Respiration
+      page: 8379
+      url: https://doi.org/10.1029/2018JD029576
+      note: Reports a 0.60 +/- 0.07 micromol m-2 s-1 minimum from 1,677 half-hour observations during
+        2009-2012 below -2 degrees C, measured by three automatic soil chambers in a Southern Finland
+        boreal forest. Pumpanen et al. (2015) is cited for chamber methods, not for the 0.60 statistic.
+  - id: migration-row-30240008
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: database.xlsx, Biogen CO2 sheet, row ID 30240008
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: Carries Mixed Hardwood Forest, origin Midwest America, alpha 0.0593, beta 35, resp_a 1.08,
+        resp_b 0.064, min_respi 0.6, three -999 inactive fields and Ref 90240042 in one compiled row.
+  scientific_note: >-
+    The stored values are all traceable, but not to one provenance role. Schmid et al. publish or
+    determine the forest light-response and respiration terms; Järvi et al. later publish the 0.6
+    winter floor from their chamber analysis; and the pre-migration workbook combines them. The
+    current source field truthfully identifies the main parameter paper but cannot represent the
+    later floor and compilation. This remains a schema/curation question, not a missing-source or
+    value-correction question.
+  evidence_revision: sha256:321aeab4d22bf3c39ac8a0bf0284405836032c2c38bef89cea6becdf25b5ee85
+verification:
+  attestations: []
