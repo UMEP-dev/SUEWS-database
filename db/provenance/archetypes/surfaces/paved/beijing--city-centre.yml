@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
     records/surfaces/paved/shanghai--ao2016--albedo: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
-    records/surfaces/paved/shanghai--ao2016--emissivity: sha256:811b9d524fb218ab6fec0bd4d810192ef38750652724637ca91cb194d2b05aa7
+    records/surfaces/paved/shanghai--ao2016--emissivity: sha256:11545d4292418609ee4470ad16f3c310d51f8b47498784dbdc3cc0d7eee02b44
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T14:06:13Z'
@@ -86,12 +86,10 @@ assessment:
         takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
         the emissivity, water_storage and snow_lim_patch slots take records with place helsinki; the drainage
         and construction slots take records with place generic. Most of that borrowing is forced, because the database
-        holds no paved surface record with place beijing. The emissivity slot is not forced: records/surfaces/paved/shanghai--ao2016--emissivity
-        exists with place shanghai, representativeness site, urban_setting central_business_district and
-        source ao2016, the same place, scale, setting and study as the albedo this composite did take,
-        and it is referenced by no archetype at all, while the emissivity slot
-        reaches instead to Helsinki. A maintainer has to decide whether taking half of the Shanghai pair
-        is deliberate or a mis-selection.'
+        holds no paved surface record with place beijing. The related record records/surfaces/paved/shanghai--ao2016--emissivity
+        is now documented as generic Asphalt-road literature evidence from Oke (1987), with Shanghai retained
+        only as its migrated origin. It is not a matched Shanghai CBD pair with the selected albedo and does not
+        settle the Helsinki emissivity selection.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -186,17 +184,14 @@ assessment:
     limit from Helsinki, drainage from London,
     and the construction reference from an archived internal construction fixture. The database holds no paved surface
     record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
-    One selection does not follow from scarcity. The composite took records/surfaces/paved/shanghai--ao2016--albedo,
-    and records/surfaces/paved/shanghai--ao2016--emissivity sits in the database with the same site-scale
-    Shanghai CBD setting and source, referenced by no archetype, while the emissivity slot reaches to Helsinki instead.
-    Either the Shanghai pair was meant to be taken together and half of it was missed, or the Helsinki
-    emissivity was judged the better value for Beijing; the files do not say which, and a maintainer should
-    settle it. The drainage component is now documented as generic literature evidence; the construction
+    The related records/surfaces/paved/shanghai--ao2016--emissivity is no longer a paired Shanghai site record:
+    it is generic Oke (1987) Asphalt-road literature evidence, with Shanghai retained only as migrated origin.
+    It therefore does not settle the selected Helsinki emissivity. The drainage component is now documented as generic literature evidence; the construction
     component is explicitly retained as an archived internal fixture rather than an evidence-backed physical
     assembly. The construction reference changes no exported number in
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:059fa05ad1c56f02eca34da062fc1d91b80f398694890f44d4a1c7fb31988000
+  evidence_revision: sha256:5c7db416ce088bb8baa7f6169c870c5acac57d0d973bf901ab1c49aeb44272bf
 verification:
   attestations: []
