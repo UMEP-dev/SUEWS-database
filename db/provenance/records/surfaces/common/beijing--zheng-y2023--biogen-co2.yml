@@ -1,16 +1,19 @@
 provenance_record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+record_revision: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
 dependency_revisions:
   sources:
+    bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
+    havu2022: sha256:a3279510f3c601e95ee46e1d391eb4efa617df1244f2d3a07eeded647d789be9
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
-    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:00:44Z'
+  assessed_at: '2026-08-24T16:58:31Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -30,48 +33,57 @@ assessment:
     values:
       conclusion: supported
       evidence_ids:
+      - havu-viikki-tree-fit
+      - bellucco-helsinki-light-response
+      - jarvi-finnish-minimum-respiration
       - zheng-model-archive
       - zheng-article
       note: 'Code 26 of SUEWS_BiogenCO2.txt carries alpha 0.031, beta 8.3463, theta 0.723, resp_a 0.78,
         resp_b 0.08 and min_respi 0.6, which is the record exactly, and Veg codes 991 and 992 point at
-        it. The article corroborates part of that: Table 2 gives Fpho,max = 8.4 for trees and ai = 0.78,
-        bi = 0.08, and Eq. (15) states that 0.6 umol m-2 s-1 is the minimum winter respiration. The stored
-        beta carries four decimals where the table rounds to 8.4, and alpha and theta appear only in the
-        archive.'
+        it. Havu Table 2 publishes the exact beta and respiration coefficients for the Viikki Tilia site;
+        Bellucco Table 4 publishes alpha and theta for the Helsinki local model; and Jarvi Eq. 11 documents
+        the 0.6 minimum. Zheng Table 2 rounds beta to 8.4 while corroborating the respiration coefficients.'
     source:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
+      - havu-viikki-tree-fit
+      - bellucco-helsinki-light-response
+      - jarvi-finnish-minimum-respiration
       - zheng-article
       - zheng-model-archive
-      note: Table 2 credits Fpho,max, ai and bi to Havu et al. (2022a) and Jarvi et al. (2019), and the
-        archive comments the row Helsinki - decid Viikki Tilia. Zheng et al. apply the row rather than
-        deriving it.
+      note: No single publication owns the tuple. Havu et al. publish the Viikki Tilia beta and respiration
+        coefficients; Bellucco et al. publish alpha and theta for a different Helsinki EC scope; Jarvi
+        et al. document the Finnish minimum respiration; and Zheng et al. compile the row and apply it
+        in Beijing. The record schema has only one source field, so replacing zheng-y2023 with any one
+        of the parameter sources would hide the other roles.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/330
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
+      - havu-viikki-tree-fit
       - zheng-article
       - zheng-model-archive
-      note: The archive names the row's origin as Viikki Tilia, a Helsinki deciduous site. Beijing is
-        the application location.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/330
+      note: The active place is now Helsinki. Havu et al. locate the Tilia study site in Viikki, Helsinki,
+        and the Zheng archive labels this exact row Helsinki - decid Viikki Tilia. Beijing is retained
+        only in the stable record path and origin lineage as the application that introduced the row.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - zheng-domain
-      note: 'City representativeness for Beijing is unsupported: the parameters are Finnish in origin
-        and the Beijing run covers a 1 km circle around the IAP tower rather than the city.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/330
+      - havu-viikki-tree-fit
+      note: Site is the supported scope because Havu et al. fitted the beta and respiration coefficients
+        for the single Viikki Tilia street-tree site; neither that fit nor the other Finnish inputs establishes
+        city-wide representativeness.
     method:
       conclusion: curation_required
       evidence_ids:
+      - havu-viikki-tree-fit
+      - bellucco-helsinki-light-response
+      - jarvi-finnish-minimum-respiration
       - zheng-article
       - zheng-model-archive
-      note: An inherited fit applied unchanged, so the production method belongs to the study that made
-        it.
+      note: The row combines fitted coefficients, an externally imposed respiration floor, and a later
+        compilation/application. One method label would collapse those distinct production roles.
     identity:
       conclusion: supported
       evidence_ids:
@@ -79,6 +91,41 @@ assessment:
       note: Biogenic code 26 is a distinct row in the archive and the stored tuple is distinct from the
         other Beijing biogenic record in the database.
   evidence:
+  - id: havu-viikki-tree-fit
+    source: havu2022
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Sect. 2.1, Site description
+      page: 2123
+      url: https://doi.org/10.5194/bg-19-2121-2022
+      note: Locates the Tilia street-tree site in Viikki, Helsinki.
+    - kind: table
+      label: Table 2, Tilia site SUEWS parameters
+      page: 2127
+      url: https://doi.org/10.5194/bg-19-2121-2022
+      note: Publishes Fpho,max = 8.3463 and respiration coefficients a = 0.78 and b = 0.08 for the Tilia
+        site.
+  - id: bellucco-helsinki-light-response
+    source: bellucco2017
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Sect. 3.2 and Table 4, Helsinki local model
+      page: 6
+      url: https://doi.org/10.1016/j.agrformet.2016.12.011
+      note: Publishes alpha = 0.031 and theta = 0.723 for the Helsinki botanical-garden wind sector,
+        a different scope from the Viikki Tilia site.
+  - id: jarvi-finnish-minimum-respiration
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Eq. 11 and accompanying text
+      page: 5
+      url: https://doi.org/10.1029/2018JD029576
+      note: Sets the 0.6 umol m-2 s-1 floor from winter soil-chamber measurements in a boreal forest
+        in central Finland, not at the Viikki Tilia site.
   - id: zheng-model-archive
     source: zheng-y2023
     role: compilation
@@ -120,11 +167,14 @@ assessment:
       url: https://doi.org/10.5194/gmd-16-4551-2023
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
-  scientific_note: Every stored number is confirmed, and the article independently corroborates the respiration
-    parameters and the minimum respiration. The problem is the label. The released archive names this
-    row Helsinki - decid Viikki Tilia, Table 2 credits its published components to Havu et al. and Jarvi
-    et al., and alpha and theta are not in the article at all. The record presents a Helsinki lime-tree
-    fit, reused for both Beijing tree surfaces, as Beijing city evidence.
-  evidence_revision: sha256:aaaae0bce0c432aa15771dc81869e810dd803be0722625ccb2f98ba5af4ce537
+  scientific_note: >-
+    The active place and scope now identify the strongest supported evidence location,
+    the Viikki Tilia site in Helsinki, rather than the Beijing application. The stable Beijing path,
+    origin lineage, target, values, source and legacy identity remain unchanged. The tuple is still mixed:
+    Havu et al. publish beta and the respiration coefficients for Viikki; Bellucco et al. publish alpha
+    and theta for another Helsinki EC scope; Jarvi et al. document a central-Finland respiration floor;
+    and Zheng et al. compile and apply the row. The one-source and one-method fields cannot express those
+    roles without overclaiming, so source and method remain curation required.
+  evidence_revision: sha256:28fbd45527f4ca137416b780671db81f9a85246a11039cdcd34718e435b6e435
 verification:
   attestations: []
