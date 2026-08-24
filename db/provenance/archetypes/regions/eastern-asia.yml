@@ -20,7 +20,7 @@ dependency_revisions:
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
     records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
     records/irrigation/vancouver--unreferenced: sha256:35694223ee516c2c565a807c26353f8fefcee006e64f10797166b392286cf173
-    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
     records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
@@ -273,7 +273,8 @@ assessment:
     record: records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
     role: component
     note: Fills profiles.snow_clearing. The entry declares target profile.snow-removal, attaches_to snow.snow_profile_24hr,
-      place helsinki and representativeness city.
+      place helsinki, representativeness city, source unreferenced and method assumed; its evidence review
+      identifies an archived Helsinki application schedule.
   - id: component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
     record: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
     role: component
@@ -314,6 +315,6 @@ assessment:
     referenced by none of them, though it carries no melt parameters and its legacy block holds -999 throughout.
     The components'' own values remain subject to their evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:cfb0cb523827bbb97c7844c0747769921796b9735603449e1789c5474c4df02f
+  evidence_revision: sha256:0693d69ab6691e2c524c8e46b555c634ba1afd0274d2c4d96347ab73ccc30fd7
 verification:
   attestations: []

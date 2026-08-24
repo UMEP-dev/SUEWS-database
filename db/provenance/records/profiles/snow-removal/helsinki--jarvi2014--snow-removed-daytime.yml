@@ -1,102 +1,131 @@
 provenance_record: records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+record_revision: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
-  records:
-    records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
-    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
+  records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:58:38Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/197
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: Snow removed daytime describes the stored 24-hour pattern.
+      - legacy-profile-rows
+      note: Archived Helsinki daytime snow-removal schedule identifies the retained weekday and weekend
+        configuration without presenting Järvi et al. (2014) as the publication of either hourly series.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/197
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: A 24-hour snow-removal profile is a profile.snow-removal record.
+      - legacy-profile-rows
+      - release-profile-code-1
+      note: The legacy workbook classifies both rows as Snow removal profiles, and the archived SUEWS
+        profile table preserves the weekday series under the label Helsinki Snow removal.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: The article publishes no diurnal snow-removal profile. Snow removal enters its model through
-        a snow water equivalent limit, 40 mm for buildings and 100 mm for pavement in Table 4a, and the
-        text says the same values were used at all sites for want of further information. The stored hourly
-        pattern has no locator here.
+      - legacy-profile-rows
+      - release-profile-code-1
+      note: Profiles rows 60240006 and 60240007 preserve the exact weekday 06:00-17:00 and weekend
+        07:00-17:00 switching schedules. The v2016a and v2017a SUEWS profile tables independently
+        preserve the weekday vector as code 1; no value is changed.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: The cited article cannot be shown to publish this profile, and no replacement is named here.
+      - legacy-profile-rows
+      - release-profile-code-1
+      - jarvi2014-snow-clearing
+      note: Unreferenced is correct because the schedules are traceable to an archived application
+        configuration, while Järvi et al. (2014) does not publish either hourly series. source_legacy_ref
+        90240015 preserves the historical application-paper link without exporting it as parameter provenance.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/197
     place:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Nothing published ties this pattern to a place, and one of the three records in this family
-        carries no place at all.
+      - legacy-profile-rows
+      - release-profile-code-1
+      note: Helsinki is explicitly recorded on both workbook rows and in the archived SUEWS label. It
+        identifies the intended application configuration, not a measured citywide clearing timetable.
     representativeness:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Representativeness cannot be assessed while the provenance is unknown.
+      - legacy-profile-rows
+      - release-profile-code-1
+      note: City limits the catalogue entry to its labelled Helsinki application scope. It does not claim
+        empirical representativeness across Helsinki or transferability to another city.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: A model configuration rather than a determined value, as far as can be told.
+      - legacy-profile-rows
+      - release-profile-code-1
+      - jarvi2014-snow-clearing
+      note: Assumed records two configured on/off schedules. The archive and article provide no
+        measurement, fit or calculation that produced the selected hours.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/197
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-snow-removal
-      note: 'The all-zero, all-one and daytime patterns read as model configuration options rather than
-        as evidence, and whether they belong in the database as citable records is a maintainer decision.
-        The all-zero pattern is now explicitly unreferenced; this article still publishes neither of the
-        two Helsinki schedules.'
-      related_records:
-      - records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
-      - records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
+      - legacy-profile-rows
+      - release-profile-code-1
+      note: Legacy IDs 60240006 and 60240007 map exactly to the weekday and weekend rows under one
+        Helsinki Snow removed daytime identity. The stable path and origin remain unchanged.
   evidence:
-  - id: jarvi-snow-removal
-    source: jarvi2014
+  - id: legacy-profile-rows
+    source: umep-dev2016a
     role: compilation
+    locators:
+    - kind: dataset
+      label: Original database.xlsx Profiles rows 60240006 and 60240007
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L133-L194
+      note: The original workbook at commit 053c004^ stores weekday hours 06:00-17:00 and weekend hours
+        07:00-17:00, with Helsinki, Finland, Snow removed daytime and Ref 90240015 on both rows. The linked
+        pre-migration YAML is the row-for-row public transcript preserved by commit 053c004.
+  - id: release-profile-code-1
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a profile code 1
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2016a/SUEWS_Profiles.txt
+      note: Code 1 preserves the exact weekday vector and labels it Helsinki Snow removal.
+    - kind: dataset
+      label: SUEWS v2017a profile code 1
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2017a/SUEWS_Profiles.txt
+      note: Code 1 again preserves the weekday vector and Helsinki Snow removal label. Neither release
+        table carries a distinct weekend row, so the original workbook remains the evidence for that row.
+  - id: jarvi2014-snow-clearing
+    source: jarvi2014
+    role: validation
     locators:
     - kind: section
-      label: Sect. 3.2 and Appendix C, snow transport limit
-      page: 1700
+      label: Sect. 2.1.2, snow transport
+      page: 1695
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Snow removal enters the model through SWE,Lim, a limit of the snow water equivalent for snow
-        removal, given in Table 4a as 40 mm for buildings and 100 mm for pavement. The article says the
-        same values were used at all sites because no additional information was available. It publishes
-        no diurnal profile of snow removal.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'Snow removal in this article is a threshold, not a schedule: a snow water equivalent
-    limit of 40 mm on buildings and 100 mm on pavement, applied uniformly across the sites because nothing
-    better was available. There is no diurnal profile in it. The all-zero sibling is now explicitly
-    unreferenced; this citation does not support either Helsinki switching pattern.'
-  evidence_revision: sha256:acffa668f8db1ddf6194c0c2bfd2115d085c6462047eda7b61dbd3ca811f2c21
+      note: Describes transport above a snow-water-equivalent limit at the next site-specific clearing
+        time and notes that clearing practices are neighbourhood-specific; it publishes no 24-hour schedule.
+  scientific_note: >-
+    The complete two-row configuration is recoverable from the original database workbook: weekday
+    clearing is active from 06:00 through 17:00 and weekend clearing from 07:00 through 17:00. Archived
+    v2016a and v2017a SUEWS profile tables corroborate the weekday vector and Helsinki label. Järvi et al.
+    (2014) explains the threshold-triggered, site-specific clearing process but does not publish either
+    schedule. The database therefore retains the exact pair as an assumed Helsinki application
+    configuration, uses unreferenced to avoid false publication attribution, and preserves legacy source
+    ID 90240015 only as lineage. No value, stable path, origin or legacy ID is changed.
+  evidence_revision: sha256:9a23bb96fbc5a663cfd287f7a6d99e485a9b001aad4d8e4260df44aadc10a38c
 verification:
   attestations: []

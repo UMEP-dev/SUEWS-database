@@ -8,7 +8,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
-    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T10:20:00Z'
@@ -46,8 +46,9 @@ assessment:
       note: Assumed is appropriate for a model switching profile with no parameter publication.
     identity:
       conclusion: curation_required
-      note: 'The all-zero, all-one and daytime patterns read as model configuration options rather than
-        as evidence, and whether they belong in the database as citable records is a maintainer decision.'
+      note: This all-zero assumption remains a separate curation decision. The related daytime record is
+        now retained as an archived Helsinki configuration on the evidence of its exact workbook rows;
+        that recovery does not establish the identity of this all-zero record.
       related_records:
       - records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
       - records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
@@ -69,6 +70,6 @@ assessment:
     a Helsinki daytime snow-removal row. This unchanged all-zero record is therefore an explicit model
     configuration assumption: source unreferenced and method assumed. Its display name is corrected to
     No snow removal; the stable path retains the historical misspelling because it is record identity.'
-  evidence_revision: sha256:3dfd84b319fadf2cbd52e14533ec1529086aa4d0771ce3b295009e61e7439373
+  evidence_revision: sha256:e0563dc7b29ebef0b266d4589e3f4337709b7f88503a45371a02a9661c256442
 verification:
   attestations: []
