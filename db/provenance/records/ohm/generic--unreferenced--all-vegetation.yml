@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
-    records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
+    records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:12:29Z'
@@ -64,6 +64,6 @@ assessment:
     description: The component-wise means are 0.215, 0.325 and -19.85, exactly matching the stored triplet.
   scientific_note: This is an internally calculated record. It correctly remains unreferenced and identifies
     both current database inputs instead of manufacturing an external parameter publication.
-  evidence_revision: sha256:e766727a93d1335e5675605e764c1595d5be8d3ce57b528aac2057d74341aea5
+  evidence_revision: sha256:78f3dad42f91ecddd4edc923cd8c2dc71532ec9145a1d84c01395e2db31a1efb
 verification:
   attestations: []

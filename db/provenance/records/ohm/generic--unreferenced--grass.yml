@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--grass
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
+record_revision: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -40,6 +40,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - later-compilation
+      note: Section 7a treats the listed coefficients as belonging to individual surface types
+        that are weighted by their area fractions to obtain site coefficients, and Table 4 lists
+        Short grass as one such surface-cover type; the triplet therefore describes a land-cover
+        input before site aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -63,13 +71,18 @@ assessment:
     source: grimmond1999
     role: compilation
     locators:
+    - kind: section
+      label: Section 7a, Application of OHM
+      page: 931
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
     - kind: table
       label: Table 4, Short grass
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
   scientific_note: Grimmond et al. (1991) is the canonical parameter publication; Doll et al. supplied
-    the underlying observations. The sidecar preserves the role distinction without attributing the
-    fitted coefficients to Doll et al.
-  evidence_revision: sha256:6293f7384903138e0f9b28fa6ae65526c3a51206a792f2b498671768d6d1568a
+    the underlying observations. Grimmond and Oke (1999) later describe the triplet as a short-grass
+    surface-cover input that is area-weighted during site aggregation. The sidecar preserves the role
+    distinction without attributing the fitted coefficients to Doll et al.
+  evidence_revision: sha256:9ffa91a1558240e5497119d752a2c70ef1553e2c183d6a98b4a6236100b1d1d9
 verification:
   attestations: []
