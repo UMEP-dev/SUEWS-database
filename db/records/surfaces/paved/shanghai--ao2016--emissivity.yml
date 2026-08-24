@@ -1,12 +1,14 @@
 record: records/surfaces/paved/shanghai--ao2016--emissivity
 schema_version: '2026.5'
 target: land_cover.paved
-name: Paved
-place: shanghai
+name: Asphalt roads
+place: generic
 origin: Shanghai
-representativeness: site
-urban_setting: central_business_district
-source: ao2016
+representativeness: generic
+applicable_scale: land_cover
+source: oke1987
+method: literature
+source_legacy_ref: 90240065
 legacy_id: 40241259
 parameters:
   emis: 0.95

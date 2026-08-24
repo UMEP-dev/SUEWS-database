@@ -1,0 +1,98 @@
+provenance_record: records/surfaces/paved/shanghai--ao2016--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:11545d4292418609ee4470ad16f3c310d51f8b47498784dbdc3cc0d7eee02b44
+dependency_revisions:
+  sources:
+    ao2016: sha256:b1ca07de6a9fb83ab41c961da2415c13cf396f9cc4618134dc3f0015918e493f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T22:00:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: Asphalt roads is the exact Oke Table 8.2 surface category for the stored emissivity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: Asphalt road surface emissivity belongs to the SUEWS paved land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: Oke Table 8.2 gives emissivity 0.95 for Roads—Asphalt, exactly matching the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      - ao2016-paved-compilation
+      note: Oke is the earliest directly checked publication that prints the exact Asphalt-road value. Ao et al.
+        later reuse it in their Shanghai SUEWS parameter table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: Oke's general urban-materials table is not a Shanghai observation, so generic is the supported place scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: The table offers a general Asphalt-road material value, supporting generic rather than site scope.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: The table's road-surface value applies to a paved SUEWS land-cover class, not to the complete Xujiahui neighbourhood.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      note: The record adopts the tabled literature value without a new Shanghai measurement or fit.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - oke1987-asphalt-roads
+      - ao2016-paved-compilation
+      note: The stable path, Shanghai origin and legacy ID retain the migrated Ao application-row identity; the name
+        now states Oke's exact Asphalt-road category and does not recast it as a Shanghai determination.
+  evidence:
+  - id: oke1987-asphalt-roads
+    source: oke1987
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 8.2, Roads—Asphalt
+      page: 281
+      note: Gives Asphalt-road albedo 0.05–0.20 and emissivity 0.95. The table lists Threlkeld (1962),
+        Sellers (1965), van Straaten (1967), Oke (1974) and Arnfield (1982) collectively, without assigning
+        this cell to an individual earlier source.
+  - id: ao2016-paved-compilation
+    source: ao2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, Paved column, epsilon_i
+      page: 2463
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      note: Gives Paved epsilon_i = 0.95 with superscript a; the table caption identifies a as Oke (1987).
+        The table is used for the Xujiahui 500 m and 80 m source areas, so it is a later Shanghai application.
+  scientific_note: 'Oke (1987) Table 8.2 directly gives 0.95 for Roads—Asphalt. Its listed earlier sources
+    are collective, not cell-specific, so no earlier work can be claimed as the exact source without further evidence.
+    Ao et al. (2016) Table 2 reuses this value for the Paved SUEWS column in a Xujiahui model application.
+    The record therefore cites Oke as literature evidence with generic scope; Shanghai remains only the historical
+    origin and Ao reference of legacy row 40241259. The stable path, origin, legacy ID and value remain unchanged.'
+  evidence_revision: sha256:401d722bcb0da50925064b8421b14a45efff42cfadb593a103bb364df26e9a4f
+verification:
+  attestations: []
