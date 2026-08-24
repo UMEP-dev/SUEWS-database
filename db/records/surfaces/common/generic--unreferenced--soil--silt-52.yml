@@ -1,8 +1,9 @@
 record: records/surfaces/common/generic--unreferenced--soil--silt-52
 schema_version: '2026.5'
 target: land_cover.common
-name: silt [52]
+name: Archived SUEWS silt-soil configuration (code 52)
 source: unreferenced
+method: assumed
 legacy_id: 22240055
 parameters:
   soil_depth: 300

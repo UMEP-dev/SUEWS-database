@@ -1,0 +1,146 @@
+provenance_record: records/surfaces/common/generic--unreferenced--soil--silt-52
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c3bed6e19e2a8d4f5a250f5337e4c63b1381dc1f63d2c85f99967bb4c7a16fb8
+dependency_revisions:
+  sources:
+    umep-dev2016-soil-table: sha256:be8fa09e312463e24fe37f3548001bfcb15af4e4d5f8d5070f69cd315eed3226
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T22:00:50Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/293
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      note: Archived SUEWS silt-soil configuration (code 52) identifies the retained table row without
+        presenting its tuple as a measured or published generic silt determination.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/293
+    target:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      note: The SUEWS Soil table defines depth, store capacity and saturated hydraulic conductivity for
+        the common subsurface soil configuration used below non-water land-cover surfaces.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      - migration-soil-row-22240055
+      note: The original table, pinned v2016a artifacts and pre-migration workbook all store soil depth
+        300 mm, store capacity 150 mm, saturated hydraulic conductivity 0.01 mm s-1 and legacy infiltration
+        rate 15 mm h-1. They support exact configuration retention, not a scientific parameter attribution.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      - migration-soil-row-22240055
+      note: Unreferenced is correct because neither the original nor release table cites a publication for
+        row 52, and migration row 22240055 carries Ref 90240000, the database's unreferenced placeholder.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/293
+    place:
+      conclusion: not_applicable
+      evidence_ids:
+      - migration-soil-row-22240055
+      note: The original and release rows specify a soil class rather than a site, and the migration row
+        has no Origin. The stable generic identity therefore carries no place claim.
+    representativeness:
+      conclusion: not_applicable
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      note: Code 52 is an archived configurable soil class, not evidence that the tuple is empirically
+        representative of silt at site, city, regional or generic scale.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      note: Assumed is the honest method for an exact release configuration whose measurement, calculation,
+        fit and scientific source are undocumented.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/293
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - introduced-soil-row-52
+      - release-soil-row-52
+      - migration-soil-row-22240055
+      note: SUEWS code 52 and migration legacy ID 22240055 uniquely connect the silt label and exact tuple
+        across the original table, v2016a release artifacts and the current stable record path.
+  evidence:
+  - id: introduced-soil-row-52
+    source: umep-dev2016-soil-table
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Soil.txt row 52, introduced 21 April 2016
+      url: https://github.com/UMEP-dev/SUEWS/blob/2af365ae6e6296147f19cad7964cd0222e7dfec1/InputTable/SUEWS_Soil.txt#L7
+      note: The first repository version of the table stores 52, 300, 150, 0.01, -999, 15 and labels the
+        row silt. It gives no publication citation for the tuple.
+  - id: release-soil-row-52
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a release workbook, SUEWS_Soil sheet, row 7
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The pinned release workbook stores the same code 52 tuple and silt label. Its SHA-256 is
+        e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.
+    - kind: dataset
+      label: Fixed v2016a SUEWS_Soil.txt row 7
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Soil.txt#L7
+      note: The fixed release-format table independently exposes the same exact tuple and silt label in
+        a human-readable pinned artifact, with no citation attached to row 52.
+  - id: migration-soil-row-22240055
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Soil sheet, row 3 (legacy ID 22240055)
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: The workbook preserves name silt [52], no Origin, the exact 300/150/0.01/15 tuple and Ref
+        90240000. Its SHA-256 is 50dfc15322115651f672fed86df1fdcc7dc8b13a58b7ced9b2e270b388aee6d3.
+    - kind: dataset
+      label: Generated Soil YAML entry 22240055
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/soil.yml#L35-L47
+      note: The generated migration artifact preserves the workbook row exactly, including placeholder
+        Ref 90240000.
+  attempted_sources:
+  - description: SUEWS official Soil input documentation and field schema
+    attempted_at: '2026-08-24T22:00:50Z'
+    outcome: incomplete
+    note: The documentation defines SoilDepth, SoilStoreCap, SatHydraulicCond and InfiltrationRate and
+      their units, but gives no publication or derivation for the code 52 tuple.
+  - description: SUEWS repository history before and around the first SUEWS_Soil.txt commit
+    attempted_at: '2026-08-24T22:00:50Z'
+    outcome: not_found
+    note: The exact row first appears when the table is introduced at commit 2af365a, is reverted two
+      minutes later with the rest of that import, and has no earlier repository artifact or cited origin.
+  scientific_note: >-
+    The exact tuple is release and migration evidence, not a literature parameter. It is already present
+    as the uncited silt row when SUEWS_Soil.txt is introduced on 21 April 2016 and persists in the pinned
+    v2016a workbook and fixed legacy input. The later migration row retains generic placeholder Ref 90240000.
+    Official SUEWS documentation explains the fields but does not source these values. A generic soil
+    textbook would establish only plausibility or a broad range, not the provenance of this exact tuple.
+    The record therefore preserves every value, the stable path, absent origin and legacy ID, retains
+    source unreferenced, records method assumed and uses an archived configuration name.
+  evidence_revision: sha256:6b935d4e0e55ecd046fbd6cace5353b2a1e8c21980dd9885ff312be216a815a8
+verification:
+  attestations: []
