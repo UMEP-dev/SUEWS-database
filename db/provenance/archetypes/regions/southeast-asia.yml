@@ -21,7 +21,7 @@ dependency_revisions:
     records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
-    records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
+    records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:b7d5ffcd70f91fb2da6575afe853e78afdcb73f55cf19ea2cb2fb2a09d7da104
     records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:8ba38723efa8cd3b285e30c4b0ae1d8a2a5f4b2c8d59ce5311e34df4bf745063
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
 assessment:
@@ -333,6 +333,6 @@ assessment:
     series and lindberg2013 only a holiday series the four cells cannot be put right by swapping them.
     The single-city representativeness and the two unsourced base temperatures round out a file that needs
     curation of its selection rather than correction of any value.
-  evidence_revision: sha256:215591c574a034e0ef5f59a5c558869b81d633c38077757fee7804c1a760866c
+  evidence_revision: sha256:5f2b83e1c2c13a9ff773a57bb61e150609abdc8f2ad268a3f3cdb5048b6a6ba0
 verification:
   attestations: []

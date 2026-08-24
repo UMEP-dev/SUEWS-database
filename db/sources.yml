@@ -180,6 +180,14 @@ sources:
     title: An objective urban heat storage model and its comparison with other schemes
     type: journalArticle
     year: 1991
+  grimmond1996:
+    author: Grimmond, C. S. B.; Souch, C.; Hubble, M. D.
+    doi: 10.3354/cr006045
+    journal: Climate Research
+    title: Influence of tree cover on summertime surface energy balance fluxes, San Gabriel Valley,
+      Los Angeles
+    type: journalArticle
+    year: 1996
   grimmond1999:
     author: Grimmond, C. S. B.; Oke, T. R.
     doi: 10.1175/1520-0450(1999)038<0922:HSIUAL>2.0.CO;2
