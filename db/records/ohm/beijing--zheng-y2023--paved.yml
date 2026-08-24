@@ -2,9 +2,9 @@ record: records/ohm/beijing--zheng-y2023--paved
 schema_version: '2026.5'
 target: ohm_coefficients
 name: An99 weighted average (all year)
-place: beijing
+place: alland
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 50240044
 parameters:

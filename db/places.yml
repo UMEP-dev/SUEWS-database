@@ -20,6 +20,11 @@ places:
     kind: country
     name: Algeria
     region: Africa
+  alland:
+    name: Alland
+    lat: 48.1
+    lon: 16.15
+    country: austria
   american-samoa:
     kind: country
     name: American Samoa
