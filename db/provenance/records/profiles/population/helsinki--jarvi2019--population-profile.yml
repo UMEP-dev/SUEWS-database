@@ -1,0 +1,104 @@
+provenance_record: records/profiles/population/helsinki--jarvi2019--population-profile
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b51df3c36cf6ad91bb335c253981794154347dfe2f2f11925a8e33f779c7734c
+dependency_revisions:
+  sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:40:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      note: The archive labels both selected rows Helsinki Population.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: The archive label and paper identify the schedule as the population profile, distinct from
+        the human-activity and traffic profiles.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      note: Archive rows 801 and 802 supply the exact weekday and weekend values for source hours 0 through
+        23, mapped in order to database keys 1 through 24.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: The Zenodo data repository directly publishes the exact configuration rows; the associated
+        article explains the dynamic population and profile role.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: Both the archive rows and associated study identify the profile as Helsinki input.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: The profile is used with Helsinki building-level population and commuting data aggregated
+        across the spatial city model, supporting city rather than site scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: The database adopts the published configuration schedule, so literature is the record-level
+        method; the paper documents how daytime population is calculated and scaled.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-population-rows
+      - population-profile-role
+      note: The selected rows are explicitly population and the record attaches to popprof_24hr, keeping
+        this profile distinct from Helsinki human-activity rows 55771 and 55772.
+  evidence:
+  - id: helsinki-population-rows
+    source: jarvi2019-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_Profiles.txt, rows 801 and 802
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: Rows 801 and 802 are labelled Helsinki Population, Weekday and Weekend, with columns explicitly
+        headed 0 through 23.
+  - id: population-profile-role
+    source: jarvi2019
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 1, weekday and weekend diurnal profiles
+      page: 8369
+      url: https://doi.org/10.1029/2018JD029576
+    - kind: section
+      label: Dynamic daytime population and profile timing
+      page: 8368
+      url: https://doi.org/10.1029/2018JD029576
+      note: Describes building-level population data, work-trip movement and the population profile HP,d;
+        it distinguishes HP,d from activity HA,d and traffic HT,d.
+  scientific_note: The migrated record previously contained the Helsinki human-activity rows 55771 and
+    55772 under a population identity. The values now match Helsinki Population rows 801 and 802. The
+    source columns 0 through 23 map directly and in order to database profile keys 1 through 24. The exact
+    configuration dataset is the active source, while the paper documents the population role and scaling.
+  evidence_revision: sha256:79943a92ce4b335205dbe5fc6c81165d25d09f0a1d3bd5d7cd889f9198ca981b
+verification:
+  attestations: []
