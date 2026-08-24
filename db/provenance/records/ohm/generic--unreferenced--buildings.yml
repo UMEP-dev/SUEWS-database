@@ -1,68 +1,146 @@
 provenance_record: records/ohm/generic--unreferenced--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:834a83a5520402fd7d33d10832209d9238ab89e0d40471eeeb3ae0ae926139c2
+record_revision: sha256:f373e9fb5425a870ac8f6a7f413484340f7bd5d7044751c77a6de6d414ab5db7
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:37:09Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/284
+  method: calculated
   findings:
     name:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - roof-compilation
-      note: The three named roof studies are identifiable, but the name's Grimmond 1992 claim was not
-        established.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+      - rooftop-input-table
+      - ward-building-mean
+      note: Both publications describe a rooftop or building-surface average; neither supports the removed
+        claim that this exact tuple was published in Grimmond et al. (1992).
     target:
       conclusion: supported
-      note: The result is structurally an OHM coefficient set.
+      evidence_ids:
+      - rooftop-input-table
+      - ward-building-mean
+      note: Both sources identify a1, a2 and a3 as OHM coefficients.
     values:
       conclusion: supported
       evidence_ids:
-      - roof-compilation
-      note: The rounded component-wise mean of 0.17/0.10/-17.0, 0.44/0.57/-28.9 and 0.82/0.34/-55.7 is
-        0.477/0.337/-33.87.
+      - rooftop-input-table
+      - ward-building-mean
+      note: The component-wise mean of 0.17/0.10/-17.0, 0.44/0.57/-28.9 and 0.82/0.34/-55.7 is
+        0.476666.../0.336666.../-33.866666..., which gives the stored 0.477/0.337/-33.87 after rounding.
     source:
       conclusion: not_applicable
+      note: This is an internal calculation from source-table inputs. Keeping source unreferenced avoids
+        attributing the higher-precision calculated tuple to either publication.
     place:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
-    method:
-      conclusion: curation_required
+    applicable_scale:
+      conclusion: supported
       evidence_ids:
-      - roof-compilation
-      note: None of the three roof inputs exists as a current atomic record, so the mean cannot be encoded
-        as a derivation.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+      - rooftop-input-table
+      note: Grimmond and Oke group all three inputs under the physical surface category Rooftop.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - rooftop-input-table
+      - ward-building-mean
+      note: Grimmond and Oke state that coefficients within each surface category are averaged, and Ward
+        et al. explicitly say that the building coefficients use the mean of values from three sites.
     identity:
-      conclusion: curation_required
-      note: Maintainers must decide whether to restore the atomic roofs or retain a legacy-only compilation.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/284
+      conclusion: supported
+      evidence_ids:
+      - ward-building-mean
+      note: The versioned SUEWS v2016a table identifies the unchanged tuple as legacy code 798.
   evidence:
-  - id: roof-compilation
+  - id: rooftop-input-table
     source: grimmond1999
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 4, Rooftop rows for Vancouver, Uppsala and Kyoto
+      page: 932
+      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+    note: The table gives the three exact parameter-labelled input rows, and the surrounding text states
+      that coefficients within each surface category are averaged.
+  - id: ward-building-mean
+    source: ward2016
     role: compilation
     locators:
     - kind: table
-      label: Table 4, Rooftop rows
-      page: 932
-      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-  scientific_note: The arithmetic is recoverable from the later compilation, but the exact production
-    artifact, input-record lineage and asserted Grimmond 1992 identity require curation.
-  evidence_revision: sha256:b8322be6ae57258da62037062e03c924a111dc74af1b24c027dd17a0818f515a
+      label: Table 4, Bldgs row before adjustment for seasonal variation
+      page: 13
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: section
+      label: Section 4.4, mean of values from three sites for building surfaces
+      page: 14
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, code 798
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L47-L51
+    note: The article publishes the rounded building mean and describes its three-site calculation; the
+      versioned companion table preserves the exact legacy tuple and code.
+  derivation:
+    kind: arithmetic_mean
+    expression: 'a1 = (yap-vancouver-a1 + taesler-uppsala-a1 + yoshida-kyoto-a1) / 3; a2 = (yap-vancouver-a2 + taesler-uppsala-a2 + yoshida-kyoto-a2) / 3; a3 = (yap-vancouver-a3 + taesler-uppsala-a3 + yoshida-kyoto-a3) / 3'
+    external_inputs:
+    - id: yap-vancouver-a1
+      evidence_id: rooftop-input-table
+      parameter: a1
+      value: 0.17
+    - id: yap-vancouver-a2
+      evidence_id: rooftop-input-table
+      parameter: a2
+      value: 0.10
+      unit: h
+    - id: yap-vancouver-a3
+      evidence_id: rooftop-input-table
+      parameter: a3
+      value: -17.0
+      unit: W m-2
+    - id: taesler-uppsala-a1
+      evidence_id: rooftop-input-table
+      parameter: a1
+      value: 0.44
+    - id: taesler-uppsala-a2
+      evidence_id: rooftop-input-table
+      parameter: a2
+      value: 0.57
+      unit: h
+    - id: taesler-uppsala-a3
+      evidence_id: rooftop-input-table
+      parameter: a3
+      value: -28.9
+      unit: W m-2
+    - id: yoshida-kyoto-a1
+      evidence_id: rooftop-input-table
+      parameter: a1
+      value: 0.82
+    - id: yoshida-kyoto-a2
+      evidence_id: rooftop-input-table
+      parameter: a2
+      value: 0.34
+      unit: h
+    - id: yoshida-kyoto-a3
+      evidence_id: rooftop-input-table
+      parameter: a3
+      value: -55.7
+      unit: W m-2
+  scientific_note: The stable legacy code 798 record is a component-wise arithmetic mean of three rooftop
+    rows, not a parameter tuple published by Grimmond et al. (1992). The source remains unreferenced because
+    the exact stored precision is calculated; the sidecar records the source-table inputs without creating
+    artificial atomic model records.
+  evidence_revision: sha256:8f755af19f1928be7d930d543d7450d2878816924459dbf4cfc9a2e6d4aadb8a
 verification:
   attestations: []

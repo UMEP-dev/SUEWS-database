@@ -11,6 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/helsinki--kumpula: sha256:840ed0940807f2a6dcd4916c72f1f56e65337fc9d0fd1fadeb1f021b52ac852c
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
     records/ohm/beijing--zheng-y2023--buildings: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
+    records/ohm/generic--unreferenced--buildings: sha256:f373e9fb5425a870ac8f6a7f413484340f7bd5d7044751c77a6de6d414ab5db7
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -18,7 +19,7 @@ dependency_revisions:
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-24T12:37:09Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -45,6 +46,7 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
+      - related-generic-rooftop-average
       note: 'The composite''s own target, land_cover.bldgs, is right for a building-surface typology,
         and every slot takes a component declared for it: the albedo, emissivity, water_storage, drainage
         and snow_lim_patch slots each take a record declaring target land_cover.bldgs, the construction
@@ -77,11 +79,11 @@ assessment:
         is named ''Central London [sample run]''; and all four ohm positions take records/ohm/beijing--zheng-y2023--buildings,
         place beijing. Substitution is unavoidable because the database holds no Swiss building record,
         but the ohm choice was not forced: twenty records under records/ohm carry buildings in their path,
-        among them records/ohm/helsinki--jarvi2014--buildings, records/ohm/generic--unreferenced--buildings,
-        the two seasonal records/ohm/generic--ward2016--buildings rows and eight records/ohm/london--xie2024--buildings
-        rows. A Zurich typology assembled from London, Helsinki and Beijing records, with
-        a Beijing row taken over every European alternative and no reason recorded, is something only
-        a maintainer can settle.'
+        among them records/ohm/helsinki--jarvi2014--buildings, the calculated rooftop average at
+        records/ohm/generic--unreferenced--buildings, the two seasonal records/ohm/generic--ward2016--buildings
+        rows and eight records/ohm/london--xie2024--buildings rows. A Zurich typology assembled from London,
+        Helsinki and Beijing records, with a Beijing row taken over every European alternative and no
+        reason recorded, is something only a maintainer can settle.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -161,6 +163,11 @@ assessment:
     note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
       'Original roof average ', declares target ohm_coefficients, place beijing and representativeness
       city, and declares no season_label.
+  - id: related-generic-rooftop-average
+    record: records/ohm/generic--unreferenced--buildings
+    role: related
+    note: A generic calculated rooftop average available as an alternative building OHM record; it is
+      not selected by this Zurich composite.
   scientific_note: 'Zurich''s city centre is assembled without a single Swiss component. Its albedo is
     a London row, its emissivity, water storage, drainage and snow limit are Helsinki rows, its construction
     is a London record named ''Central London [sample run]'', and all four OHM positions take
@@ -174,6 +181,6 @@ assessment:
     and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
     a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:bea1b66650679441a0146cfa6595cb25dacc825bad66c3ca894bd3ee9296897b
+  evidence_revision: sha256:c3c22f5246feb043b308847941b0571e052fbe6751aba8811874d80dd2b8f41e
 verification:
   attestations: []

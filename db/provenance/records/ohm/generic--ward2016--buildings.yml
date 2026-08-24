@@ -7,10 +7,10 @@ dependency_revisions:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records:
-    records/ohm/generic--unreferenced--buildings: sha256:834a83a5520402fd7d33d10832209d9238ab89e0d40471eeeb3ae0ae926139c2
+    records/ohm/generic--unreferenced--buildings: sha256:f373e9fb5425a870ac8f6a7f413484340f7bd5d7044751c77a6de6d414ab5db7
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-21T21:13:31Z'
+  assessed_at: '2026-08-24T12:37:09Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -88,11 +88,11 @@ assessment:
     record: records/ohm/generic--unreferenced--buildings
     role: related
     note: Preserves the pre-adjustment code 798 coefficient set used by Ward's seasonal calculation; its
-      deeper compiled-input lineage is separately tracked by issue 284.
+      evidence sidecar now records the component-wise mean of the three rooftop inputs.
   scientific_note: Ward et al. compile the pre-adjustment building coefficients as a mean of three study
     rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
-    and Swindon runs validate/apply the coefficients but are not their observation input. Issue 284 concerns
-    the deeper lineage of the separate code 798 input record, not the exact publication of this output.
-  evidence_revision: sha256:fd9f2916df77cbf8b83b69f06e29f857e0c33c559f950b7733c7640168b9a1e4
+    and Swindon runs validate/apply the coefficients but are not their observation input. The separate code
+    798 input record now documents its calculated lineage from the three rooftop source-table rows.
+  evidence_revision: sha256:c8743d291f9926cc62619ba2a2a5665c0f9a5975bf69fb0170278ca174a85ef9
 verification:
   attestations: []
