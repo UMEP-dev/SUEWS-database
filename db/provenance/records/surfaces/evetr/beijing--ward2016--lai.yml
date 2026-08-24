@@ -1,0 +1,115 @@
+provenance_record: records/surfaces/evetr/beijing--ward2016--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:4f2da50cd4b7f932be9f7abe2ce849b8836c0ed568ca4169cc520d10828c9715
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T17:27:04Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Coniferous trees normalizes the surface label used by Järvi et al. for the SUEWS category;
+        the former sample-data qualifier had no support in the publication.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Järvi et al. publish the bounds for the coniferous-tree surface represented by land_cover.evetr.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Table 2 publishes LAImax,con = 5.1 and LAImin,con = 4 and presents the original dynamic LAI
+        option represented by lai_type 0; the stored values are unchanged.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - ward-uk-sites
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/113
+      note: Järvi et al. directly publish the complete parameter set. Ward et al. evaluate SUEWS only
+        at London and Swindon and do not publish these bounds as Ward or Beijing evidence.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - ward-uk-sites
+      note: Generic is the supported active place because Järvi Table 2 presents model parameters by
+        surface type rather than a Beijing determination, while Ward studies only two UK sites.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Generic is the supported evidence scope for a literature/default parameter set tabulated by
+        land-cover category, not measured for one city or site.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The bounds apply to the coniferous-tree land-cover category in the SUEWS parameter table.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The record transcribes a published parameter set without fitting or calculation in this database.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The stable Beijing path, origin and legacy ID retain migration lineage, while the active evidence
+        fields now identify the generic Järvi literature set. Its lai_type 0 distinguishes it from the
+        later type-1 records carrying the same rounded bounds.
+  evidence:
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Sect. 2.2, Leaf area index
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines the original dynamic SUEWS LAI response represented by lai_type 0.
+    - kind: table
+      label: Table 2, model parameter values by surface type and general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes LAImax,con = 5.1 and LAImin,con = 4 for the coniferous-tree category.
+  - id: ward-uk-sites
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Sect. 3.1, Description of sites
+      page: 4
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Defines the evaluation domain as central London and suburban Swindon; Beijing is not a study
+        site.
+    - kind: section
+      label: Sect. 4.1, Seasonal cycle of vegetation phenology
+      page: 7
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Evaluates LAI timing and changes degree-day temperatures but does not publish 4/5.1 as Ward
+        bounds.
+  scientific_note: >-
+    Järvi et al. are the direct publication source for the unchanged coniferous-tree LAI values and original
+    LAI equation. Ward et al. later evaluate phenology at London and Swindon but supply neither Beijing
+    evidence nor a new 4/5.1 fit. The active fields now describe a generic land-cover literature default;
+    the stable Beijing path, origin and legacy ID remain solely as migration lineage.
+  evidence_revision: sha256:389641e607d6397cca11a7cbd583e56a16bcdaad0edd08d482b30f227e442e4b
+verification:
+  attestations: []
