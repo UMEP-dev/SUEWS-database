@@ -13,7 +13,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
-    records/constructions/sweden--unreferenced--industrial: sha256:1f1f229ed5f3aebc8ac5602c8640030c414c92faa9c070d3070013efed705701
+    records/constructions/sweden--unreferenced--industrial: sha256:a152fa4156d6472d5a5542877f171c17168b646649b143e84c9b83a672a9d85d
     records/ohm/generic--jarvi2014--buildings: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
     records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:3192a50d224ef0dd9060543e3f2ce0f58e4008e3705075f757d4c72b15d4ed65
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
@@ -35,9 +35,10 @@ assessment:
       - component-constructions-sweden-unreferenced-industrial
       - component-surfaces-bldgs-gothenburg-oke1987-albedo
       note: The composite is named Industry. The construction it selects, records/constructions/sweden--unreferenced--industrial,
-        is named Industrial and declares place sweden, and the albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo,
-        named 'Industry, dark roofs'. Both slots that carry the typology's identity name the same building
-        class the composite does.
+        is named 'Archived Swedish industrial construction configuration' and declares place sweden,
+        and the albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo, named 'Industry,
+        dark roofs'. Both slots that carry the typology's identity name the same building class the
+        composite does.
     target:
       conclusion: supported
       evidence_ids:
@@ -148,8 +149,9 @@ assessment:
   - id: component-constructions-sweden-unreferenced-industrial
     record: records/constructions/sweden--unreferenced--industrial
     role: component
-    note: Fills construction. The record is named Industrial, declares target construction, place sweden
-      and representativeness regional.
+    note: Fills construction. The record is named 'Archived Swedish industrial construction configuration',
+      declares target construction, place sweden, representativeness regional, source unreferenced and
+      method assumed; its evidence review identifies an archived internal assembly.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
@@ -174,6 +176,6 @@ assessment:
     than something this review can settle. The same is true of the composite''s declared
     regional reach, which no component except the construction supports. Neither question requires a component
     value to change; both live in the composite.'
-  evidence_revision: sha256:eacba4bc6da21b89814d58faeed4b32a0e37a6b36bc8802edc7b47cff1215af3
+  evidence_revision: sha256:62398328cc8f50ca3d5043911302096b61a04b17e2ea6ea02957d773fe1968d8
 verification:
   attestations: []
