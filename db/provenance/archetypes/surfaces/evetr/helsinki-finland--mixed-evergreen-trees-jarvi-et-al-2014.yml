@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
-    records/surfaces/evetr/london--jarvi2011--drainage: sha256:26563d2be0d8d4f4324a5fe89df25c8191a9051856bdbf6b0ec774d4f93d0e5a
+    records/surfaces/evetr/london--jarvi2011--drainage: sha256:fa50f1584a2e5f7624a500f1d6d30383bfec6f54eeac147de6ef4720862384ca
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
@@ -75,32 +75,28 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - component-surfaces-evetr-london-jarvi2011-drainage
       - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
       - component-surfaces-evetr-se-england-ward2016-albedo
       note: 'The composite claims helsinki, and four slots take Helsinki rows: leaf_growth_power, biogen_co2,
         snow_lim_patch and vegetation_growth. drainage takes records/surfaces/evetr/london--jarvi2011--drainage,
-        which declares place london and origin "London" and is named "EvergreenTree [sample run]". max_vegetation_conductance
-        takes records/surfaces/evetr/vancouver--jarvi2011--max-conductance, which declares place generic
-        and origin "Vancouver" and whose source field reads breuer2003, so it is offered as a generic
-        value rather than a Vancouver one. albedo, emissivity, water_storage and leaf_area_index take
-        se-england rows. The drainage selection is the one to settle: whether a Helsinki composite should
-        draw its drainage from a London row that the database itself labels a sample run is a maintainer''s
-        decision, particularly when records/surfaces/evetr/london--havu-m2024--drainage, the row the other
-        Helsinki composites use, exists.'
+        which now correctly declares place generic, representativeness generic and applicable_scale land_cover;
+        its retained London origin records later application rather than parameter location. max_vegetation_conductance
+        also takes a generic record. albedo, water_storage and leaf_area_index take se-england regional
+        rows, while emissivity is generic. Every place-specific or generic land-cover component can therefore
+        travel to the declared Helsinki city application; the separate OHM-selection question is recorded
+        under target.'
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - component-surfaces-evetr-london-jarvi2011-drainage
-      note: 'The composite declares representativeness city. The Helsinki rows are classed city, the SE
-        England rows regional, which is the ordinary direction of travel, and max_vegetation_conductance
-        and porosity are classed generic, the class this database uses for a value offered without a place.
-        drainage does not fit: records/surfaces/evetr/london--jarvi2011--drainage declares representativeness
-        city while its own name reads "EvergreenTree [sample run]", which the quality pass in scripts/check_db.py
-        reports as a suspect name. A published composite should not rest its drainage parameterisation
-        on a row the database labels a sample run until someone has decided that it is the intended value.'
+      note: 'The composite declares representativeness city. The Helsinki rows are classed city; albedo,
+        water_storage and leaf_area_index are regional; and emissivity, drainage, max_vegetation_conductance
+        and porosity are generic. Those land-cover components match or exceed the reach of the city composite;
+        the corrected drainage row is a generic literature tuple applicable to the evergreen-tree land-cover
+        class.'
     method:
       conclusion: supported
       evidence_ids:
@@ -174,8 +170,8 @@ assessment:
   - id: component-surfaces-evetr-london-jarvi2011-drainage
     record: records/surfaces/evetr/london--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
-      city, and is named "EvergreenTree [sample run]"; its source field reads jarvi2011.
+    note: Fills drainage. The record declares target land_cover.evetr, place generic, representativeness
+      generic and applicable_scale land_cover, and is named "Evergreen Tree"; its source field reads jarvi2011.
   - id: component-surfaces-evetr-vancouver-jarvi2011-max-conductance
     record: records/surfaces/evetr/vancouver--jarvi2011--max-conductance
     role: component
@@ -214,17 +210,17 @@ assessment:
       and is named "Vegetation (average). [200] This is the average of Codes 20, 30, 50, 51, 52, 53, 60
       (i.e. includes soil and water)."; its source field reads unreferenced, it carries no season_label
       and it declares no place or representativeness.
-  scientific_note: 'Three things in this composite need a maintainer, and none of them is a component''s
-    value. The OHM mapping is asymmetric: summer_wet takes a mixed-forest coefficient set and the other
-    three positions take a vegetation average whose own name says it includes soil and water, while neither
+  scientific_note: 'Two things in this composite need a maintainer, and neither is a component''s value.
+    The OHM mapping is asymmetric: summer_wet takes a mixed-forest coefficient set and the other three
+    positions take a vegetation average whose own name says it includes soil and water, while neither
     record declares a season or a wetness state, so nothing justifies splitting the summer pair and joining
-    the winter one. The drainage slot takes a London row named "EvergreenTree [sample run]" when the row
-    the three sibling Helsinki composites use is available. And the label cites Järvi et al. (2014) while
-    two of the thirteen components declare that source and the biogenic CO2 component is named for street
-    trees. What is sound is the slot set, which is complete, the LAI pair, which agrees on lai_type 1,
-    and the maximum conductance row, which is openly classed generic rather than passed off as a Helsinki
-    value. The questions are all about selection and mapping, so they can be settled inside the composite
-    without touching any record.'
-  evidence_revision: sha256:4ccb37f80a0a0b647533a627c95468729269189595bcaeed2f4cb976971a7858
+    the winter one. And the label cites Järvi et al. (2014) while three of the thirteen components declare
+    that source and the biogenic CO2 component is named for street trees. The drainage selection no longer
+    creates a place or scale problem: its component is now correctly classified as a generic Järvi et al.
+    literature tuple applicable to the evergreen-tree land-cover class, while its London origin preserves
+    later application history. What is sound is the slot set, which is complete, the LAI pair, which agrees
+    on lai_type 1, and the generic drainage and maximum-conductance rows. The remaining questions are about
+    selection and mapping, so they can be settled inside the composite without touching any record.'
+  evidence_revision: sha256:47677ec273ee4cde476ce32efdc012b9d035d2538285c98d9a15e92fe1997204
 verification:
   attestations: []

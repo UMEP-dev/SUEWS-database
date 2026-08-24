@@ -1,0 +1,120 @@
+provenance_record: records/surfaces/evetr/london--jarvi2011--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:fa50f1584a2e5f7624a500f1d6d30383bfec6f54eeac147de6ef4720862384ca
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T16:28:14Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/307
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      - suews2016a-london-evergreen
+      note: The article's "Conif. Trees" header and the workbook's compressed "EveTr" token identify
+        the surface class but do not prescribe an unspaced display spelling. "Evergreen Tree" is the
+        normalized human-readable name, with the unsupported sample-run qualifier removed.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      note: Table 2(a) publishes the values by SUEWS surface type, including Conif. Trees.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      note: The Conif. Trees column gives storage capacity 1.3 mm, maximum drainage rate 0.013 mm,
+        and drainage coefficient 1.71. Equation 18 assigns unirrigated vegetation the exponential
+        drainage form, matching the stored equation choice and coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      - suews2016a-london-evergreen
+      note: Järvi et al. publish the complete evergreen drainage tuple; the pinned v2016a workbook
+        later republishes it in the London evergreen row and is application and identity evidence,
+        not the parameter source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      - suews2016a-london-evergreen
+      note: The values are presented by generic surface type, not as London observations. London is
+        the later workbook application retained as origin and in the stable record path.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      note: Generic scope reflects a literature parameter set offered for the SUEWS coniferous-tree
+        class without a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      note: Table 2(a) defines the tuple for the coniferous-tree land-cover class rather than for a
+        whole neighbourhood, an individual tree, or a plant tissue specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      note: Section 2.5 says the maximum drainage rates and coefficients are taken from the literature,
+        and Table 2(a) footnotes the individual values to earlier publications.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-evergreen-drainage
+      - suews2016a-london-evergreen
+      note: The record contains the one coniferous-tree drainage tuple published in Table 2(a); its
+        stable path, London origin, legacy ID, target, source, and values preserve the migrated row identity.
+  evidence:
+  - id: jarvi-evergreen-drainage
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Conif. Trees column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 1.3 mm, D0,i = 0.013 mm and b = 1.71 for coniferous trees. The footnotes
+        identify these as literature values rather than a fit to an evaluation city.
+    - kind: section
+      label: Section 2.5, Equations 18 and 19
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Equation 18 assigns the exponential drainage function to unirrigated vegetation, while
+        Equation 19 assigns the power-law form to paved surfaces, roofs and irrigated vegetation; the
+        paragraph below states that the maximum rates and coefficients come from literature.
+    note: This is the parameter publication. It supports the exact stored tuple, literature method,
+      generic place and land-cover applicability; it does not make London the evidence location.
+  - id: suews2016a-london-evergreen
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg, London evergreen row 10
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The pinned release workbook carries the evergreen tuple under the compressed "EveTr" surface
+        token in its London application row. The downloaded workbook bytes have SHA-256 e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.
+    note: This is later application and migrated-row identity evidence. It explains the retained London
+      origin, stable path and legacy identity but is not evidence that the parameter was determined in London.
+  scientific_note: Järvi et al. publish this tuple as a generic SUEWS coniferous-tree land-cover parameter
+    set. The v2016a workbook later carries it in the London evergreen application row. That later compilation
+    explains the stable London path, origin and legacy identity but does not turn the tuple into London city
+    evidence. The active display name is normalized to "Evergreen Tree"; the stored values, source, target,
+    legacy ID and origin are unchanged.
+  evidence_revision: sha256:2842b184f830cd48869bd15d9216d675b0d20595a7b190c234b75a020f6df5e1
+verification:
+  attestations: []
