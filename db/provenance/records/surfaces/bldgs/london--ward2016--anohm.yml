@@ -1,0 +1,120 @@
+provenance_record: records/surfaces/bldgs/london--ward2016--anohm
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ceaf577c70e1f490df2d888d3ee6ec39a9aee723b570612976282e68d4c64272
+dependency_revisions:
+  sources:
+    sun2017: sha256:db4668370c905c4555d8a11e7f6aa6aa9888e1bc4016442b1267287ad9e7fd9c
+    umep-dev2020a: sha256:681563eb7ebb33db0e132c8c05df0351cb5d00a8a87a84c2dff5005bf59b3f41
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T17:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/114
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      note: Building identifies the Bldgs surface row, and retaining the sample-run qualifier makes
+        explicit that this is a preserved configuration assumption rather than a published calibration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      note: Both the sample table and Sun et al. organise AnOHM thermal properties by SUEWS surface
+        class, including buildings.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/114
+      note: The v2020a legacy sample row stores rho_cp 6000000, k 1.3 and Ch 6 exactly. Sun et al.'s
+        published London calibration is instead 2.4e6, 2.8 and 4.3, so the stored tuple is supported
+        only as the preserved sample-table assumption, not as a scientific fit.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/114
+      note: Unreferenced is correct because Ward et al. use OHM and predate AnOHM, while the AnOHM
+        publication gives a different London tuple. The later release table is configuration lineage,
+        not a parameter publication.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/114
+      note: Generic is the active evidence place because no publication determines this tuple at a
+        study location. London remains in the stable path and origin as the sample row's application label.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      note: Generic marks an explicit configuration assumption without a supported geographic fit;
+        city would falsely present the tuple as London observational evidence.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      note: The tuple is stored on the Bldgs surface row and describes the building land-cover class,
+        not a whole-neighbourhood aggregate or one construction material.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      note: Assumed accurately records a sample configuration tuple whose production is not documented
+        and which differs from the published London calibration.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-building-sample
+      - sun-london-calibration
+      note: The stable path, London origin, legacy ID, target, name and values preserve the sample row;
+        correcting its active source and scope prevents that lineage from being mistaken for Ward or
+        Sun parameter evidence.
+  evidence:
+  - id: release-building-sample
+    source: umep-dev2020a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_NonVeg.txt, code 662 Bldgs London row
+      url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2020a/SUEWS_NonVeg.txt#L9
+      note: Stores AnOHM rho_cp 6000000, k 1.3 and Ch 6 on the London building sample row without
+        an AnOHM parameter citation.
+  - id: sun-london-calibration
+    source: sun2017
+    role: validation
+    locators:
+    - kind: table
+      label: Table 3, London calibration
+      page: 2883
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes London AnOHM Cp 2.4 MJ m-3 K-1, k 2.8 W m-1 K-1 and Ch 4.3, demonstrating
+        that the sample tuple is not the published London calibration.
+  scientific_note: The exact 6000000/1.3/6 tuple is preserved in the SUEWS v2020a legacy sample
+    table, but Ward et al. predate AnOHM and Sun et al.'s London calibration is 2.4e6/2.8/4.3. This
+    record is therefore an explicit generic land-cover assumption with source unreferenced. The sample-run
+    label and stable London path/origin preserve configuration lineage; no parameter value, target or
+    legacy ID changed.
+  evidence_revision: sha256:15a463412abfb45338b7df380950e093b74cec5c62bd260a9d16ed3f4d83dfa7
+verification:
+  attestations: []

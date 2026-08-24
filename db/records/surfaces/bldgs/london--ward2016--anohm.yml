@@ -2,10 +2,12 @@ record: records/surfaces/bldgs/london--ward2016--anohm
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Building [sample run]
-place: london
+place: generic
 origin: London
-representativeness: city
-source: ward2016
+representativeness: generic
+applicable_scale: land_cover
+source: unreferenced
+method: assumed
 legacy_id: 51240005
 parameters:
   rho_cp_anohm: 6000000
