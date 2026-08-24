@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     tokyo: sha256:3d523cca260989e582e52ba0a6a870d7fb57da2dc517dd16fc5fda94d5e9fde5
   records:
-    records/ohm/tokyo--unreferenced--buildings: sha256:ec0fc796c11bdbc911ea52a77c973e1af162e37a9bc303357f6f254fed65949e
+    records/ohm/tokyo--unreferenced--buildings: sha256:c73f86e56833977d1582eddd1a8ad5940595d6c3f971fe8448806c59439d4d9c
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T19:08:00Z'
@@ -110,7 +110,8 @@ assessment:
   scientific_note: This Ref-null row is retained as a distinct raw migration identity, not treated as
     a second scientific determination and not automatically credited with the verified Kyoto source chain
     of the related code-[10] row. Its own source, place, representativeness and production method remain
-    unresolved under issue 738. The building-archetype attachment question remains issue 19.
-  evidence_revision: sha256:7cbf630ae1b79f24f4621ffc4f37ba3d5892342ded554620ede3c08cba67af3b
+    unresolved under issue 738. Any future building-archetype attachment would require a separate
+    composition review.
+  evidence_revision: sha256:b95f0055beb19bb82dc0dd31548db83312896fcc87b2ab7ab6a053986a13db81
 verification:
   attestations: []

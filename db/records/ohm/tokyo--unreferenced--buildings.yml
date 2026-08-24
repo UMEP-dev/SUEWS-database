@@ -5,6 +5,7 @@ name: Canyon (E-W), Japan [10]
 place: kyoto
 origin: Kyoto
 representativeness: site
+applicable_scale: facet
 source: grimmond1999
 method: fitted
 legacy_id: 50240012
