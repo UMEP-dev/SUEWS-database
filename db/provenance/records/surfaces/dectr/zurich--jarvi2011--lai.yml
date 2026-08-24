@@ -1,0 +1,140 @@
+provenance_record: records/surfaces/dectr/zurich--jarvi2011--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:669ffe9b3871af7ee48bb73c4a54443b4ce339d868e3ce7eed447eb90e789fe2
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T22:04:11Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/299
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      note: Archived Zurich deciduous-tree LAI sample A identifies the retained catalogue sample without
+        presenting it as a Järvi et al. publication or a Stagakis et al. parameter set.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/299
+    target:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      note: The migration row explicitly stores LAIEq, LAIMin and LAIMax for the Deciduous Tree surface,
+        matching the land_cover.dectr LAI target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      - jarvi-table-2
+      - stagakis-table-s3
+      note: The workbook preserves lai_type 1, lai_min 0 and lai_max 4.8 exactly. This establishes the
+        archived sample configuration only. Järvi et al. and the Zurich Stagakis supplement publish
+        different ranges, so neither is used as parameter evidence for this tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      - jarvi-table-2
+      - stagakis-table-s3
+      note: Source unreferenced is required because neither checked publication contains the exact tuple.
+        Legacy Ref 90240054 is retained only as source_legacy_ref to expose the historical Järvi link,
+        not as an active scientific citation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/299
+    place:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      - stagakis-table-s3
+      note: Zurich is retained as the migration row's application identity. Järvi et al. studies Los
+        Angeles and Vancouver; the later Zurich publication does not reproduce this exact sample tuple.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      note: City describes the Zurich-labelled application configuration only. It does not claim that
+        the undocumented sample is empirically representative of Zurich deciduous trees.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      note: Assumed is the honest method because no measurement, calculation or fit producing the exact
+        0/4.8 range was found.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/299
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-31240021
+      note: Legacy ID 31240021, the sample-A label, Zurich origin, exact tuple and historical Ref 90240054
+        connect the workbook row to the stable current record path. No value, origin or legacy identity is
+        changed.
+  evidence:
+  - id: archived-row-31240021
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Initial database.xlsx, Leaf Area Index row 31240021
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: The workbook stores Deciduous Tree (sample data) a, Zurich, LAIEq 1, LAIMin 0, LAIMax 4.8
+        and Ref 90240054.
+    - kind: dataset
+      label: Pre-migration Leaf Area Index row 31240021
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/leaf_area_index.yml#L41-L49
+      note: The pinned generated transcript exposes the same row field for field immediately before
+        record migration.
+    note: The artifacts establish exact archived configuration identity, not scientific provenance.
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: table
+      label: Table 2 and Section 2.2
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: The paper studies Los Angeles and Vancouver and gives a different general deciduous LAI range;
+        it does not publish a Zurich 0/4.8 tuple.
+  - id: stagakis-table-s3
+    source: stagakis-s2024
+    role: validation
+    locators:
+    - kind: table
+      label: Supplement Table S3, Trees
+      page: 3
+      url: https://doi.org/10.5194/bg-22-2133-2025-supplement
+      note: The Zurich SUEWS configuration publishes LAImax 4.8 and LAImin 0.66 for Trees, not the archived
+        sample's 0/4.8 range. The checked open-access manifestation has SHA-256
+        6cfc1ccfe36fb94eafc51c26e9b05c725faa6ed191e899890cca33399cc5b330.
+  attempted_sources:
+  - source: jarvi2011
+    attempted_at: '2026-08-24T22:04:11Z'
+    outcome: not_found
+    note: Full text checked; it neither studies Zurich nor publishes the exact 0/4.8 range.
+  - source: stagakis-s2024
+    attempted_at: '2026-08-24T22:04:11Z'
+    outcome: incomplete
+    note: The supplement is Zurich-specific and shares the 4.8 maximum, but its tree minimum is 0.66 rather
+      than 0; it therefore cannot be substituted for the archived tuple.
+  scientific_note: >-
+    This is an archived Zurich-labelled sample configuration, not a literature-backed deciduous-tree LAI
+    range. The pre-migration workbook is the exact evidence for its retained identity. Järvi et al. (2011)
+    does not study Zurich and does not publish 0/4.8. Stagakis et al. (2025) Supplement Table S3 is
+    Zurich-specific but publishes 0.66/4.8 for SUEWS Trees. The record therefore preserves every value,
+    place, origin, stable path and legacy ID, changes the active source to unreferenced, records method
+    assumed, and preserves the old Järvi reference only as source_legacy_ref.
+  evidence_revision: sha256:304b04359dd61945e44cd5e5d092460b476aaa0e4ac58b09105bb53bcdba0a17
+verification:
+  attestations: []
