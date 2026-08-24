@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
-    records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
+    records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/zurich--ao2018--lai: sha256:735a419cb34ba6a3f3a68167fe4f5565a75df55b5312359477334550a0f20d1d
@@ -90,20 +90,16 @@ assessment:
         Cfb. Four of the twelve components declare place zurich, filling leaf_area_index, leaf_growth_power,
         max_vegetation_conductance and biogen_co2, and they are every Zurich grass record the database
         holds. Two declare place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and
-        two declare place se-england (koppen Cfb), filling emissivity and water_storage; drainage declares
-        place london; albedo and porosity declare place generic; and the ohm component carries no place
+        two declare place se-england (koppen Cfb), filling emissivity and water_storage; drainage, albedo
+        and porosity declare place generic; and the ohm component carries no place
         field. One component deserves a
         note that this review does not settle: records/surfaces/grass/zurich--ao2018--lai declares place
         zurich and origin Zurich, while db/sources.yml titles ao2018 "Evaluation of the Surface Urban
         Energy and Water balance Scheme (SUEWS) at a dense urban site in Shanghai: Sensitivity to anthropogenic
         heat and irrigation". The declared place is what this composite rests on and it fits, and it is
         the only Zurich leaf-area record in the database; whether the placement is right belongs to that
-        record''s own evidence review. One component has to be recorded without being settled here. records/surfaces/grass/london--havu-m2024--drainage
-        declares place london and origin London while its name reads "Grass - Helsinki, Zurich, Beijing".
-        Under the declared place it is a London value standing in for Zurich; under its own name it is
-        the set havu-m2024 intended for Zurich among others. The selection is defensible for the drainage
-        slot on either reading, so this review is not blocked by it, and which of the two fields is authoritative
-        is a question for that record''s own evidence review.'
+        record''s own evidence review. The drainage component is a generic grass parameter published by
+        Järvi et al.; its Havu archive locator records later reuse rather than a Zurich fit.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -164,10 +160,8 @@ assessment:
   - id: component-surfaces-grass-london-havu-m2024-drainage
     record: records/surfaces/grass/london--havu-m2024--drainage
     role: component
-    note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass - Helsinki,
-      Zurich, Beijing", place london, representativeness city, source jarvi2011 and method literature.
-      Havu's archive is retained as later compilation evidence; the declared place and name disagree,
-      which is recorded under the place finding.
+    note: Fills the drainage slot. The record is the generic, land-cover-scale Grass tuple published by
+      Järvi et al.; Havu's archive is retained as later compilation evidence.
   - id: component-surfaces-grass-se-england-ward2016-emissivity
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
@@ -204,15 +198,14 @@ assessment:
     the study the label names; maximum conductance is the Havu et al. literature value and leaf area index
     retains its Ao et al. source. Together they fill the four slots that distinguish the entry
     from its neighbours. The rest are transparent transfers: a generic literature albedo, the snowpack
-    limit and phenology from Helsinki, drainage from London, emissivity and water storage from SE England,
+    limit and phenology from Helsinki, generic literature drainage, emissivity and water storage from SE England,
     porosity from an unreferenced dummy record
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Three observations belong to
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
     and the source key read 2024, which is a source registry matter. records/surfaces/grass/zurich--ao2018--lai
     declares place zurich while db/sources.yml titles ao2018 an evaluation at a dense urban site in Shanghai,
-    which that record''s own evidence review must settle. And records/surfaces/grass/london--havu-m2024--drainage
-    declares place london while its name reads "Grass - Helsinki, Zurich, Beijing"; the drainage selection
-    is defensible under either reading, so this review is not blocked by it.'
-  evidence_revision: sha256:bf508701907a913c6e73643a135105375e3de97c9323d3015732265400a3db33
+    which that record''s own evidence review must settle. The drainage component is openly generic literature
+    evidence rather than a Zurich observation.'
+  evidence_revision: sha256:399dcfd68029f3cb035f682e6437cf1881505e3cc17250aa76ed634460721bc9
 verification:
   attestations: []
