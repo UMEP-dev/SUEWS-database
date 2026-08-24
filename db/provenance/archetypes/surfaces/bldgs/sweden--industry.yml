@@ -14,7 +14,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/sweden--unreferenced--industrial: sha256:1f1f229ed5f3aebc8ac5602c8640030c414c92faa9c070d3070013efed705701
-    records/ohm/generic--jarvi2014--buildings: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+    records/ohm/generic--jarvi2014--buildings: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
     records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:3192a50d224ef0dd9060543e3f2ce0f58e4008e3705075f757d4c72b15d4ed65
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -95,9 +95,8 @@ assessment:
       note: The composite declares representativeness regional. The construction is the only component
         of that class. Emissivity, water storage, the snow limit and the albedo declare representativeness
         city, drainage is generic, and records/ohm/generic--jarvi2014--buildings declares no representativeness
-        at all while naming itself 'Original roof average (inlcudes two not recommended - Meyn 2001 and
-        old Meyn 2001 coefficients) [799] [sample run]'. A country-scale default therefore rests on four
-        city rows and one row whose reach is undeclared and which flags itself as a sample run.
+        at all while naming itself 'Archived code-799 roof average'. A country-scale default therefore
+        rests on four city rows and one archived legacy row whose reach is undeclared.
     method:
       conclusion: supported
       evidence_ids:
@@ -160,21 +159,20 @@ assessment:
     record: records/ohm/generic--jarvi2014--buildings
     role: component
     note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
-      'Original roof average (inlcudes two not recommended - Meyn 2001 and old Meyn 2001 coefficients)
-      [799] [sample run]', declares target ohm_coefficients, and declares no place, no representativeness
-      and no season_label.
+      'Archived code-799 roof average', declares target ohm_coefficients, and declares no place, no
+      representativeness and no season_label.
   scientific_note: 'The two slots that make this an industrial typology are well chosen and Swedish: the
     construction is records/constructions/sweden--unreferenced--industrial, place sweden, and the albedo
     is a Gothenburg row named ''Industry, dark roofs''. Emissivity, water storage and the snow limit come
     from Helsinki, which the record set forces, since the database holds no Swedish row for those building
     properties; drainage is generic. What deserves a maintainer''s attention is the coefficient slot.
-    All four ohm positions take records/ohm/generic--jarvi2014--buildings, a record that declares neither
-    place nor representativeness and whose own name ends ''[799] [sample run]'', where every other Swedish
-    building composite takes records/ohm/helsinki--jarvi2014--buildings. A country-scale default resting
-    on a self-declared sample run, and diverging from its siblings for no recorded reason, is a curation
-    decision rather than something this review can settle. The same is true of the composite''s declared
+    All four ohm positions take records/ohm/generic--jarvi2014--buildings, an archived code-799 record
+    that declares neither place nor representativeness, where every other Swedish building composite
+    takes records/ohm/helsinki--jarvi2014--buildings. A country-scale default resting on that placeless
+    legacy row, and diverging from its siblings for no recorded reason, is a curation decision rather
+    than something this review can settle. The same is true of the composite''s declared
     regional reach, which no component except the construction supports. Neither question requires a component
     value to change; both live in the composite.'
-  evidence_revision: sha256:9329ea3160cc49a0abb26a228ed31bb35bff9f5bb11d0b87cbe966404566eccd
+  evidence_revision: sha256:dc16d786137ba70aff9678d1faddc2d1b793139802dbbeecfceba1b56fbf41c3
 verification:
   attestations: []
