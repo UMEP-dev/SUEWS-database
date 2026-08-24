@@ -1,7 +1,7 @@
 provenance_record: records/irrigation/beijing--zheng-y2023
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:a1dfe38b67ba6ce4704d0c3bafea6d0280e3c10a7b6964c6081c831cbf2797f8
+record_revision: sha256:109c284d1d4d3fad9318b88dc2b07b4724652fefa1b3a8d70b9ee504b11732ed
 dependency_revisions:
   sources:
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
@@ -9,12 +9,14 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T00:00:44Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:14:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/328
+  method: assumed
   findings:
     name:
       conclusion: supported
@@ -38,40 +40,43 @@ assessment:
         of 1 on every day, which is the record exactly. Supplement Table S3 gives the same six coefficients
         rounded to -19.19, 2.22, 0.78, -5.76, 0.67 and 0.24.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-supplement
       - zheng-model-archive
-      note: Supplement Table S3 heads the block as overall model parameter values used in model runs in
-        Beijing following Kokkonen et al. (2019), so Zheng et al. apply the six irrigation coefficients
-        rather than deriving them, and the article body contains no irrigation section at all. The dates
-        and day flags, by contrast, are established only by the released Beijing input. One source key
-        currently carries both halves.
+      note: Unreferenced is correct for the complete mixed configuration. Zheng et al. apply the six
+        inherited irrigation coefficients rather than deriving them, while their released input supplies
+        the Beijing-specific schedule and flags. source_legacy_ref 90240067 preserves the application-paper
+        link without exporting Zheng as the parameter publication.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/328
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - zheng-supplement
-      note: Beijing is where the row was applied. The inherited coefficients are not Beijing determinations,
-        so whether this record should carry Beijing as its place is a curation decision.
+      - zheng-model-archive
+      - zheng-domain
+      note: Beijing identifies the archived application configuration and released model grid. It does
+        not claim that the inherited empirical coefficients were independently determined there.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/328
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-domain
-      note: The record claims city representativeness, but Sect. 3 states that the modelled area is a
-        1 km circle around the IAP tower.
+      note: Site matches the 1 km model domain around the IAP tower. The source does not establish a
+        Beijing-wide irrigation configuration.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/328
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - zheng-supplement
       - zheng-model-archive
-      note: The row mixes coefficients fitted in earlier work with a schedule that exists only as model
-        configuration, so no single production method describes it.
+      note: Assumed describes retention of the complete released application configuration. It deliberately
+        does not claim that the inherited coefficients and the Beijing schedule share one empirical
+        production method.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/328
     identity:
       conclusion: supported
       evidence_ids:
@@ -113,14 +118,14 @@ assessment:
       url: https://doi.org/10.5194/gmd-16-4551-2023
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
-  scientific_note: 'Every stored number is confirmed against the released Beijing model input, so nothing
-    here is unverifiable. The difficulty is that one record carries two different kinds of provenance.
-    The six empirical irrigation coefficients are inherited: the supplement presents them as overall parameters
-    following Kokkonen et al. (2019), rounded, and the article never discusses irrigation. The start and
-    end days, the automatic fraction and the day flags exist only in the released input. Attributing the
-    whole row to Zheng et al. credits them with coefficients they did not derive; attributing it elsewhere
-    loses the schedule. A maintainer needs to decide whether to split the record or to record the two
-    roles separately.'
-  evidence_revision: sha256:a95f0e3a3e9cbc3f07af6bbf0334f1951735564bf3de79864e457b3d3b620dfc
+  scientific_note: >-
+    Every stored number is confirmed against the released Beijing model input. The row is retained as one
+    archived application configuration because its schedule and flags belong with the exact code selected
+    by the model, while its empirical coefficients are inherited overall SUEWS parameters rather than a
+    Beijing fit. Source unreferenced prevents false attribution to Zheng et al.; method assumed describes
+    the complete configuration choice; source_legacy_ref 90240067 preserves the application link. Beijing
+    and site identify the released 1 km IAP-tower domain, not city-wide evidence. No value, stable path,
+    origin, legacy ID or legacy coefficient is changed.
+  evidence_revision: sha256:b5cd86ce2c0da39e9ec026d2be990d349f62fdf194b8a37485ad982ce2c50390
 verification:
   attestations: []
