@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:5bbbf7c05e6c4a8eb09a20308c3e4a04c1442c9809c5ec1e186ddf4f7b742710
+    records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T02:15:00Z'
@@ -71,8 +71,8 @@ assessment:
       conclusion: curation_required
       evidence_ids:
       - jarvi-table-4b
-      note: A second record, Unclear two, carries a different set under the same citation and place. Which
-        site each belongs to is not recorded, and Table 4b publishes only one area-wide set.
+      note: The related record is now named Kumpula Ku1 sector from Järvi et al. (2019), but it still has
+        a mixed Järvi 2014/2019 source and unresolved values. This record's distinct identity remains open.
       related_records:
       - records/anthropogenic/helsinki--jarvi2014--unclear-two
   evidence:
@@ -115,9 +115,9 @@ assessment:
     the stored 0.0099 corresponds to 9.9 x 10^-3. Given a0 of 0.1 and a2 of 0.0102 beside it, the printed
     exponent is almost certainly a typesetting slip, but this audit will not silently correct a published
     figure, so the discrepancy is recorded. The larger problem is the rest of the record. The anthropogenic
-    heat minima and slopes and the whole CO2 block are not in this article, and a record named Unclear
-    one, paired with another named Unclear two under the same citation and place, cannot say which of
-    the study''s five sites it describes.'
-  evidence_revision: sha256:3f42fa179e060b6a0647c6d7991444d4e60147b29c62f8ade2fac6c3e2dab51f
+    heat minima and slopes and the whole CO2 block are not in this article. The related record is now
+    identified as Kumpula Ku1 from the later 2019 study, but that does not establish this record''s identity
+    or resolve either record''s mixed provenance.'
+  evidence_revision: sha256:f7c062b0303727edfc8b2737a304003e7615aa681efec9186b81472c8aa4a269
 verification:
   attestations: []
