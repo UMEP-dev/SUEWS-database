@@ -1,7 +1,7 @@
 provenance_record: records/anthropogenic/swindon--ward2016
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2a2122aa50c647d0ff16b5ce52907c31da5e945067b41dd55924e01a15c62bae
+record_revision: sha256:c34de50a660565c8eec58877e7c444d8a4e054aa444cbebaaf0ef5240c86bf75
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -11,7 +11,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T17:05:00Z'
+  assessed_at: '2026-08-24T17:08:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -59,14 +59,13 @@ assessment:
       note: The coefficients are fitted to the Swindon suburban site and code 551 is explicitly
         labelled Swindon fit.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - ward-qf-fit
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/713
       note: Ward et al. derive the coefficients for the single suburban Sw study site. That supports
-        site reach, not the record's current city-wide representativeness; issue 713 isolates the
-        scope correction from this issue's value-precision decision.
+        the record's site reach without asserting city-wide Swindon representativeness.
     method:
       conclusion: supported
       evidence_ids:
@@ -109,8 +108,8 @@ assessment:
     the pinned v2016a coefficient registry preserves the underlying coefficients at seven decimal
     places. The record's 0.1329 is the consistent four-decimal representation of release value
     0.1329150; replacing it with the table's printed 0.1330 would discard stable migration precision.
-    The record now declares the source-established fitted method. No parameter value, source, place,
-    target, legacy ID, origin or stable path changed.
-  evidence_revision: sha256:a039a6f401cceb05d4a53b420a37111d6957451f8caa28f482236f8192499a6f
+    The record now declares the source-established fitted method and site representativeness. No
+    parameter value, source, place, target, legacy ID, origin or stable path changed.
+  evidence_revision: sha256:c1114612608033e55369c02123a81cf6184c0a2c0d51ac76916fadbc1d40abd5
 verification:
   attestations: []
