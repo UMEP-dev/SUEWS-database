@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--water
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:54f647fb817653ffa815e6b313db4c96433db6413f538ec5097c965a0aa36ef3
+record_revision: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Water, so the tuple describes the water land-cover class before
+        neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -91,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment water coefficients from Souch et al. (1998),
     then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
     runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:3d9ceada7ae70ba7fceb694c209e62dc06e003317b14205824867c4466f3db5d
+  evidence_revision: sha256:39b1f9ddddc7df9fe617ad14302e336bc599ba7ca78ca34cdf8216f6dea1dfdb
 verification:
   attestations: []
