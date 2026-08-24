@@ -3,13 +3,15 @@ review_type: evidence
 provenance_format_version: '1.0'
 record_revision: sha256:a79e66403e98a94a6ba8c0bac10090d761850909303d2fa40b417035a078ef66
 dependency_revisions:
-  sources: {}
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2018a-fixture: sha256:70fc9c6e4e5025618cc8b36d10f90b7e1c0d9e7adeae89413885b915c940136b
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T21:30:00Z'
+  assessed_at: '2026-08-24T21:20:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -19,55 +21,93 @@ assessment:
   findings:
     name:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
+      - legacy-row-52240021
       note: Archived SUEWS 2018a water test fixture accurately identifies the retained legacy-format
         fixture row without presenting it as a physical water parameterization.
     target:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
       note: The fixture labels code 813 !water, matching the land_cover.water target.
     values:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
+      - legacy-row-52240021
       note: The pinned legacy-format fixture code 813 stores four exact 1.1 m thickness, 0.602 conductivity
         and 4170000 volumetric heat-capacity triplets. These are configuration values, not measured water layers.
     source:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
+      - legacy-row-52240021
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/297
       note: Unreferenced is correct. No publication states or derives the selected four-layer tuple, and
         dangling legacy Ref 90240027 cannot be made into evidence.
     place:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
       note: The fixture's !water other row names no geographic study location, so generic is the supported place scope.
     representativeness:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
       note: Generic records a preserved configuration artifact without asserting site, city or regional evidence.
     applicable_scale:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
       note: Code 813 is a SUEWS water surface row, so its configuration applies to the water land-cover class.
     method:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
+      - legacy-row-52240021
       note: Assumed accurately records a retained test-fixture choice whose production is not documented as
         measured, fitted, calculated or literature-derived.
     identity:
       conclusion: supported
+      evidence_ids:
+      - fixture-code-813
+      - legacy-row-52240021
       note: Legacy ID 52240021 and the exact four triplets establish the preserved fixture identity; stable
         path and Unknown origin remain unchanged.
-  evidence: []
+  evidence:
+  - id: fixture-code-813
+    source: umep-dev2018a-fixture
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Legacy-format 2018a SUEWS_ESTMCoefficients.txt, code 813
+      url: https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/test/fixtures/legacy_format/2018a/Input/SUEWS_ESTMCoefficients.txt#L15
+      note: Labels code 813 water other and stores four identical 1.1 m, 0.602 W m-1 K-1 and
+        4170000 J m-3 K-1 layer triplets.
+  - id: legacy-row-52240021
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240021
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L65-L120
+      note: Preserves the same four-layer tuple, generic Water identity and dangling Ref 90240027.
   attempted_sources:
   - description: SUEWS v2018a release input table, code 813
     url: https://github.com/UMEP-dev/SUEWS/blob/c7ae7df44f4d0385e995ae43fdb00fad32f61046/ReleaseRepo/InputTables/2018a/SUEWS_ESTMCoefficients.txt#L29
-    attempted_at: '2026-08-24T21:30:00Z'
+    attempted_at: '2026-08-24T21:20:00Z'
     outcome: incomplete
     note: The released v2018a code-813 row instead uses thicknesses 0.1, 0.3, 0.5 and 0.7 m and
       heat capacity 4172476, so it cannot support the retained four 1.1 m fixture values.
   scientific_note: >-
-    The exact tuple is configuration evidence, not a published water-layer parameterization. SUEWS code
-    813 at https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/test/fixtures/legacy_format/2018a/Input/SUEWS_ESTMCoefficients.txt#L15
-    stores four 1.1/0.602/4170000 water-layer triplets under !water other. It is an archived legacy-format
+    The exact tuple is configuration evidence, not a published water-layer parameterization. The pinned
+    legacy-format fixture stores four 1.1/0.602/4170000 water-layer triplets under !water other. It is an archived legacy-format
     test fixture: the tagged SUEWS v2018a release input row has different thicknesses and heat capacity.
-    Pre-migration database row 52240021 stores the same tuple and dangling Ref 90240027 at
-    https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L65-L120.
+    Pre-migration database row 52240021 stores the same tuple and dangling Ref 90240027.
     The record therefore retains the exact fixture with source unreferenced, method assumed and
     source_legacy_ref 90240027; no value, stable path, origin or legacy ID changes.
-  evidence_revision: sha256:5a106ea6ab70c6646b067fe848757d67dde339e3cb4a421343e94f9a52bb8d3d
+  evidence_revision: sha256:791386f271fa500a463ab842f22982e3fb4fd626f2b0eb651a7de204cf813f24
 verification:
   attestations: []

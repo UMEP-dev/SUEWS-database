@@ -586,6 +586,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
     year: 2016
+  umep-dev2018a-fixture:
+    author: UMEP-dev
+    journal: GitHub
+    title: 'SUEWS v2018a legacy-format test fixture: SUEWS_ESTMCoefficients.txt'
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/test/fixtures/legacy_format/2018a/Input/SUEWS_ESTMCoefficients.txt
+    year: 2018
   umep-dev2020a:
     author: UMEP-dev
     journal: GitHub
