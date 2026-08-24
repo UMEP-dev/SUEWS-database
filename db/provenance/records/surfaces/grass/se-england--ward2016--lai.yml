@@ -1,0 +1,129 @@
+provenance_record: records/surfaces/grass/se-england--ward2016--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:50:19Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward2016-one-grass-surface
+      note: Ward et al. (2016) documents the v2016a consolidation of irrigated and non-irrigated grass
+        into one grass surface, so the plain Grass label matches the active SUEWS land-cover class.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-one-grass-surface
+      note: Järvi et al. (2011) publishes the LAI bounds as grass surface-type parameters, and Ward et
+        al. (2016) documents the later single grass land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-phenology-evaluation
+      note: Järvi et al. (2011) publishes the exact grass LAI minimum 1.6 and maximum 5.9. Ward et al.
+        (2016) later evaluates the active daily LAI phenology at the two UK sites; it does not originate
+        replacement bounds.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-phenology-evaluation
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/112
+      note: Järvi et al. (2011) is the checked publication that states the exact stored bounds. Ward et
+        al. (2016) is later UK application and phenology-evaluation evidence, not the parameter source
+        for a London-specific fit.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-phenology-evaluation
+      note: The exact bounds are published as shared model parameters rather than observations from SE
+        England. Ward et al. (2016) applies and evaluates the phenology in London and Swindon but does not
+        establish a UK origin for the bounds, so generic is the supported active evidence scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-phenology-evaluation
+      note: The evidence supports reusable model defaults subsequently applied at two UK sites, not a
+        regional survey or London fit; generic therefore states how far the bounds travel without
+        converting migration origin into scientific provenance.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-one-grass-surface
+      note: Both papers assign the parameters to the SUEWS grass surface class, which is a sub-grid
+        land-cover class rather than a whole-neighborhood aggregate, facet or material specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      note: The record adopts exact values from a published model parameter table without fitting or
+        recalculating them, so literature is the applicable method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      - ward2016-phenology-evaluation
+      note: The stable SE England path, origin and legacy ID preserve migration lineage. The corrected
+        name, source and generic scope describe the active evidence without presenting the bounds as a
+        London-specific record.
+  evidence:
+  - id: jarvi2011-table2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(b), LAImax,grass and LAImin,grass rows
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the exact grass LAI maximum 5.9 and minimum 1.6 among the general model run
+        parameters.
+  - id: ward2016-one-grass-surface
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Section 2, Model developments
+      page: 4
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Documents that SUEWS_v2016a combines the former irrigated and non-irrigated grass types into
+        one grass surface, with irrigation represented separately.
+  - id: ward2016-phenology-evaluation
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Section 4.1, Seasonal cycle of vegetation phenology
+      page: 7
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Evaluates the daily LAI seasonal cycle using vegetation photographs from Swindon and London;
+        it reports reasonable timing overall but full leaf-out slightly too early and suddenly, without
+        publishing new grass LAI minimum or maximum bounds.
+  scientific_note: >-
+    Järvi et al. (2011) Table 2 is the checked publication for the exact 1.6 and 5.9 grass LAI bounds.
+    Ward et al. (2016) later applies the model at London and Swindon, documents the single v2016a grass
+    surface, and evaluates UK phenology; it does not make the unchanged bounds a London fit. The active
+    evidence fields are therefore generic and literature-based, while the stable path, SE England origin
+    and legacy ID retain the record's migration history.
+  evidence_revision: sha256:cb81aa6cea0265a8ac5231346aa07e2f2f914a830cd8d71c0f634b5de4763077
+verification:
+  attestations: []
