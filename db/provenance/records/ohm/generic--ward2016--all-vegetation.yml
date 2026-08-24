@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--all-vegetation
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0319f8780a4d8bb8f6fad339232476573b760922cf68545d46017e673818cc42
+record_revision: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists the shared tuple for EveTr, DecTr and Grass, so this summer tuple describes
+        vegetation land-cover classes before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -91,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment vegetation coefficients from earlier studies,
     then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
     runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:02c9aecc1be161c3febf835ffeaf849a1a78142844dff26f7635a2d83df794fc
+  evidence_revision: sha256:d54abb69d0765e17251404e4267a4f216c726aebb4df5d41549465eb1d48dce2
 verification:
   attestations: []
