@@ -1,7 +1,7 @@
 record: records/surfaces/dectr/helsinki--vargo2013--albedo
 schema_version: '2026.5'
 target: land_cover.dectr
-name: Mixed Deciduous Tree
+name: Deciduous Forest
 place: helsinki
 origin: Helsinki
 representativeness: city

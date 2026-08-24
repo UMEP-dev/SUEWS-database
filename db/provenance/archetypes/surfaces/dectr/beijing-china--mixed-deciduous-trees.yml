@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:886a194cf2b63a37dd1136a29556831187323d81e836c10076a3a3f5da76ff65
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -39,8 +39,8 @@ assessment:
       note: The composite is named "Mixed Deciduous Trees", its origin reads "Beijing, China" and its
         place is beijing, and the four Beijing-placed components that make it a Beijing typology are the
         leaf area index, the leaf growth power, the maximum conductance and the biogenic CO2 set. The
-        mixed qualifier is carried by the components' own names, "Mixed Deciduous Tree" on the albedo
-        record and "Mixed trees" on the biogenic CO2 record. Alone among the eight deciduous-tree composites
+        albedo component is named "Deciduous Forest"; only the biogenic CO2 component carries the
+        mixed qualifier in its name, "Mixed trees". Alone among the eight deciduous-tree composites
         this label names no study, so it claims nothing about authorship that the components could contradict.
     target:
       conclusion: supported
@@ -157,7 +157,7 @@ assessment:
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Mixed Deciduous Tree" and carries source vargo2013.
+      city. It is named "Deciduous Forest" and carries source vargo2013.
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
@@ -197,6 +197,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:4248a4f206a8db13fb3a90201b1214605bf2cb124b1c54738300b1bc38a0351c
+  evidence_revision: sha256:c5e16bf1e86dafea21e49796cc0bcbb22d415758535453a3b660ca490df97716
 verification:
   attestations: []
