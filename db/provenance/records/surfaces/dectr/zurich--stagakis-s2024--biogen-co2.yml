@@ -8,10 +8,10 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:401ea9e3db67da8d86c7e41c91005fdec27653f0e3660e109ae1e8267cfd72bb
+    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:b4cf93795fc296ca4d635cab2d8b61d56ac7c8556465a6379d751907ce9fc77a
 assessment:
   status: unresolved
-  assessed_at: '2026-08-24T16:57:56Z'
+  assessed_at: '2026-08-24T17:03:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -65,8 +65,9 @@ assessment:
       evidence_ids:
       - stagakis-parameter-table
       - stagakis-tree-classes
-      note: Two Zurich tree records exist under a citation that has one Trees column. Whether the split
-        should survive, and what each half should cite, is a maintainer decision.
+      note: Two Zurich tree records exist under a citation that has one Trees column. Both records now
+        carry the published Trees values, but whether the deciduous-evergreen split should survive remains
+        a maintainer decision.
       related_records:
       - records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
   evidence:
@@ -109,6 +110,6 @@ assessment:
     publication: alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2 0.6 remain unsupported by
     this citation. Nor does it settle whether one published Trees class should remain represented by
     separate deciduous and evergreen records. Those provenance and identity questions remain open.'
-  evidence_revision: sha256:5f79a2bf779c4eb8be2e1a07f722cde9c6fae94833280b29542bd355434d6e31
+  evidence_revision: sha256:2d4601c4324febc2cc5937bd365a85a4a0d6dae9cfafdb9de2174c7e82964eeb
 verification:
   attestations: []
