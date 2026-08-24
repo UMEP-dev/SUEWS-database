@@ -1,0 +1,81 @@
+provenance_record: records/surfaces/grass/helsinki--vargo2013--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
+dependency_revisions:
+  sources:
+    vargo2013: sha256:4655286815df54d2d66660ace8773d6a101e378d0978611a3e9bfb7b7904b2e6
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T09:45:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: Grassland/herbaceous is the land-cover subclass attached to albedo 0.19 in Vargo et al. Table 1.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: The cited value is the albedo assigned to a grassland/herbaceous land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: Vargo et al. Table 1 gives Grassland/herbaceous an albedo of 0.19, exactly matching both stored bounds.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/365
+      - https://github.com/UMEP-dev/SUEWS-database/issues/366
+      note: Vargo et al. is the publication that states the stored 0.19 value and identifies it as a WRF-equivalent land-cover constant.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: Generic is appropriate because the value is a WRF-equivalent land-cover constant; the paper studies Atlanta, Philadelphia and Phoenix and provides no Helsinki determination.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: Generic accurately describes a model land-cover constant that is not tied to a Helsinki site or city.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: The parameter is taken from a published model-parameter table, so literature is the supported method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - vargo-grassland-albedo
+      note: The record contains one grassland/herbaceous albedo value corresponding to one table entry.
+  evidence:
+  - id: vargo-grassland-albedo
+    source: vargo2013
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1, land-cover classes and WRF-equivalent constants
+      page: 247
+      url: https://doi.org/10.1016/j.jenvman.2012.10.007
+      note: The Grassland/herbaceous row gives albedo 0.19 and makes no irrigation distinction.
+    - kind: section
+      label: Section 2, Material and methods
+      page: 245
+      url: https://doi.org/10.1016/j.jenvman.2012.10.007
+      note: Defines the three metropolitan study regions as Atlanta, Philadelphia and Phoenix; Helsinki is not a study region.
+  scientific_note: The stable path and origin preserve the legacy Helsinki import lineage, but Vargo et al. does not publish a Helsinki observation or application. Its Table 1 supplies 0.19 as the WRF-equivalent albedo constant for grassland/herbaceous land cover without an irrigation classification. The active place, representativeness and method therefore describe generic literature evidence while the stable path remains unchanged.
+  evidence_revision: sha256:a24dd106d8a47300545e8379971966cc5cdc6c80eae8393b600b69f6bc227f4b
+verification:
+  attestations: []

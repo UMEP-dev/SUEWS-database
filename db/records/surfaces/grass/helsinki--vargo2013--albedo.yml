@@ -2,10 +2,11 @@ record: records/surfaces/grass/helsinki--vargo2013--albedo
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grassland/herbaceous
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
+representativeness: generic
 source: vargo2013
+method: literature
 legacy_id: 41240029
 parameters:
   alb_min: 0.19
