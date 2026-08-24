@@ -1,0 +1,176 @@
+provenance_record: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b7d5ffcd70f91fb2da6575afe853e78afdcb73f55cf19ea2cb2fb2a09d7da104
+dependency_revisions:
+  sources:
+    grimmond1996: sha256:2a4ddb2340f588c1dd616ea78ab97ebe57bbb5b017f53c29b8cd09ba73d2a00d
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    lindberg2013: sha256:0fa50e2875aee03c653a4c03944b28f87b96579b83e1880fb356365f845ad402
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    los-angeles: sha256:b1e861c687efd37fd67ec97c2384fa9afc251a94de61b73e2ba9288bce4fc06f
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:52:30Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/367
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-code-12
+      - legacy-row-60240001
+      note: The retained old-code name is the stable migration identity shared by the release code and
+        pre-migration row; it does not claim that code 12 is a publication identifier.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof2
+      - release-code-12
+      note: Järvi et al. describe Prof2 as an external-water-use profile, and the release table labels
+        code 12 as an automatic Los Angeles water-use profile.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof2
+      - release-code-12
+      note: Table 3 gives Arcadia Prof2 period shares 0.40, 0.40 and 0.20 and states that water use is
+        constant in each hour of a delineated period. Dividing by 11, 9 and 4 hours and rounding to two
+        decimals produces 0.04, 0.04 and 0.05 at exactly the hours stored by code 12.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof2
+      - grimmond-la-observations
+      - lindberg-water-profile-absent
+      - release-code-12
+      - legacy-row-60240001
+      note: Unreferenced is correct for the derived 24-value vector because Järvi et al. publish its three
+        period inputs, not the rounded hourly outputs. Grimmond et al. document the underlying Los Angeles
+        water-use observations but not the shares, while Lindberg et al. contain no irrigation profile.
+        source_legacy_ref 90240006 preserves the disproved migration link without exporting it as parameter
+        provenance.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/367
+    place:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-prof2
+      - grimmond-la-observations
+      note: The exact inputs are Arcadia Prof2, and the original observations are from an Arcadia neighborhood
+        within the Los Angeles metropolitan area. The current Los Angeles registry place is retained pending
+        the separate place adjudication.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/370
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - jarvi-prof2
+      - grimmond-la-observations
+      note: The evidence is a local-scale Arcadia neighborhood profile, not a city-wide sample. City remains
+        unchanged in this citation-only repair pending the separate representativeness issue.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/370
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof2
+      - release-code-12
+      note: Calculated records the deterministic conversion of three published period-total fractions
+        into constant hourly fractions with two-decimal rounding.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-code-12
+      - legacy-row-60240001
+      note: The pinned release's code 12 vector and Automatic LA label match legacy row 60240001 exactly.
+        The stable path, origin, legacy ID and values preserve that migrated identity.
+  evidence:
+  - id: jarvi-prof2
+    source: jarvi2011
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 3(b), Prof2 Arcadia external-water-use profile
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives period shares 0.40 for 20:00-07:00, 0.40 for 07:00-16:00 and 0.20 for 16:00-20:00,
+        marks Prof2 as Arcadia data from Grimmond et al. (1996), and states that a constant amount is
+        assumed for each hour within a delineated period.
+  - id: grimmond-la-observations
+    source: grimmond1996
+    role: input_data
+    locators:
+    - kind: text
+      label: External water use methodology and complete article
+      page: 47-57
+      url: https://doi.org/10.3354/cr006045
+      note: Documents questionnaires and bi-monthly billing data for the Arcadia and San Gabriel neighborhoods,
+        but publishes neither the three Prof2 period shares nor a 24-hour automatic-irrigation vector.
+  - id: lindberg-water-profile-absent
+    source: lindberg2013
+    role: validation
+    locators:
+    - kind: text
+      label: Complete article
+      page: 1-15
+      url: https://doi.org/10.1016/j.uclim.2013.03.002
+      note: Studies European anthropogenic heat flux with LUCY. It does not discuss irrigation, Los Angeles
+        water use or this automatic-water-use profile.
+  - id: release-code-12
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_Profiles.txt, code 12
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Profiles.txt#L5
+      note: Stores 0.04 at hours 00:00-15:00 and 20:00-23:00, 0.05 at 16:00-19:00, and labels
+        the vector Automatic LA Water Use Profile values.
+  - id: legacy-row-60240001
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Profiles row 60240001
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L71-L101
+      note: Preserves the exact vector as a Los Angeles weekend automatic-water-use row and records Ref
+        90240006, the disproved Lindberg migration link retained as source_legacy_ref.
+  derivation:
+    kind: other
+    description: Convert the three Prof2 period-total fractions to constant hourly fractions and round
+      each result to two decimal places.
+    expression: round(period_fraction / hours_in_period, 2)
+    external_inputs:
+    - id: prof2-2000-0700
+      evidence_id: jarvi-prof2
+      parameter: holiday hours 1-7 and 21-24
+      value: 0.40
+      note: Eleven-hour period; 0.40 / 11 = 0.03636..., stored as 0.04 per hour.
+    - id: prof2-0700-1600
+      evidence_id: jarvi-prof2
+      parameter: holiday hours 8-16
+      value: 0.40
+      note: Nine-hour period; 0.40 / 9 = 0.04444..., stored as 0.04 per hour.
+    - id: prof2-1600-2000
+      evidence_id: jarvi-prof2
+      parameter: holiday hours 17-20
+      value: 0.20
+      note: Four-hour period; 0.20 / 4 = 0.05, stored as 0.05 per hour.
+  scientific_note: >-
+    Close-reading Table 3 resolves the relationship that the issue initially left open: its caption
+    requires a constant hourly amount within each delineated period, and dividing the Arcadia Prof2
+    shares by their period lengths produces the exact code 12 vector. The record therefore changes from
+    a false Lindberg citation to an unreferenced database calculation over published inputs. The original
+    Grimmond study establishes the observation lineage but does not print the shares, so it is not credited
+    with the derived output. Values, stable path, origin, legacy ID, place and representativeness remain
+    unchanged; the latter two stay with issue 370.
+  evidence_revision: sha256:6a83961271ae8ac268cbde92d52fd18aeda55506fdfe75acbf7b2680db83609a
+verification:
+  attestations: []
