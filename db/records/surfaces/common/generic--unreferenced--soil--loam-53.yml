@@ -1,8 +1,9 @@
 record: records/surfaces/common/generic--unreferenced--soil--loam-53
 schema_version: '2026.5'
 target: land_cover.common
-name: loam [53]
+name: Archived SUEWS loam-soil configuration (code 53)
 source: unreferenced
+method: assumed
 legacy_id: 22240056
 parameters:
   soil_depth: 300
