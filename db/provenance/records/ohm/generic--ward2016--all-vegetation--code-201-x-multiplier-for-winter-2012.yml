@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
+record_revision: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        Table 4 lists one shared tuple for EveTr, DecTr and Grass, and Section 4.4 rescales that
+        surface-type tuple for winter, so this winter tuple describes vegetation land-cover classes
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -91,6 +99,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment vegetation coefficients from earlier studies,
     then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
     runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:e63bf4d6b44d860456ffa630595fe7ae1ad84c7afa7afd7ba589c9a51c6bf5ac
+  evidence_revision: sha256:9f313b75541829d0e1ac4b5d656b119e03bb0efb7896abc06aa6212863571ead
 verification:
   attestations: []
