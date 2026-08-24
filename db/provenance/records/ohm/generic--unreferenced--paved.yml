@@ -1,69 +1,132 @@
 provenance_record: records/ohm/generic--unreferenced--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
+record_revision: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
 dependency_revisions:
   sources:
+    grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
   places: {}
-  records:
-    records/ohm/generic--unreferenced--paved--asphalt-902: sha256:b5478d15edca4d1165d4fe29606f5e869694284659e8fe44145530f95d2abc20
+  records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T17:46:25Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/287
+  method: calculated
   findings:
     name:
       conclusion: supported
-      note: The name explicitly describes the intended seven-code arithmetic mean.
+      evidence_ids:
+      - suews-v2016a-table
+      note: The pinned SUEWS v2016a table identifies the tuple as code 800 and names all seven input codes.
     target:
       conclusion: supported
-      note: The result is structurally an OHM coefficient set.
-    values:
-      conclusion: curation_required
       evidence_ids:
-      - paved-compilation
-      - asphalt-related
-      note: The release tuple is an exact seven-row average, but the current database lacks the input
-        rows and one historical input differs from the corresponding Doll concrete value in the checked
-        publication. The stored average must not be changed until that lineage is adjudicated.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/287
+      - suews-v2016a-table
+      - grimmond-table-4
+      note: The release table and publication both identify a1, a2 and a3 as OHM coefficients for paved
+        or impervious surfaces.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - suews-v2016a-table
+      - doll-concrete-original
+      - grimmond-table-4
+      note: Using the seven release inputs exactly as recorded, including code 801 a2 = 0.10 h, gives
+        component means 0.718571..., 0.194285... and -36.6, which round to the stored 0.719, 0.194 and
+        -36.6. Grimmond et al. (1991) and Grimmond and Oke (1999) instead publish 0.48 h for the Doll
+        concrete a2 input. Replacing 0.10 with 0.48 would give a2 = 0.248571..., not the stable code-800
+        release value; this assessment therefore documents, but does not silently correct, that discrepancy.
     source:
       conclusion: not_applicable
+      note: This is an internal release-table calculation. Keeping source unreferenced avoids attributing
+        the calculated code-800 tuple to publications that state only some of its inputs.
     place:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - asphalt-related
-      note: Only code 902 currently exists as an atomic input; the other six inputs are absent.
+      - suews-v2016a-table
+      - grimmond-table-4
+      note: The release table explicitly defines code 800 as the average of codes 801, 802, 901, 902,
+        903, 905 and 906, while Grimmond and Oke state that coefficients within each physical surface
+        category are averaged.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/287
     identity:
       conclusion: supported
-      note: The legacy name and ID consistently identify the impervious average.
+      evidence_ids:
+      - suews-v2016a-table
+      note: The stored tuple, descriptive name and stable migrated identity match legacy code 800.
   evidence:
-  - id: paved-compilation
-    source: grimmond1999
-    role: compilation
+  - id: suews-v2016a-table
+    source: umep-dev2016a
+    role: input_data
+    locators:
+    - kind: supplementary
+      label: SUEWS v2016a SUEWS_OHMCoefficients.txt, codes 800, 801, 802, 901, 902, 903, 905 and 906
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_OHMCoefficients.txt#L53-L60
+      note: The pinned release table preserves the seven exact input triplets and the rounded code-800
+        arithmetic mean.
+  - id: doll-concrete-original
+    source: grimmond1991b
+    role: validation
     locators:
     - kind: table
-      label: Table 4, Paved/Impervious rows
-      page: 932
-      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-  - id: asphalt-related
-    record: records/ohm/generic--unreferenced--paved--asphalt-902
-    role: related
-    note: The only named code currently represented as an atomic record.
-  scientific_note: The historical release arithmetic is not a safe basis for a canonical value change
-    while six atomic inputs are missing and one component value is disputed. Maintainer curation is required.
-  evidence_revision: sha256:e013baa84ed68a3d374fa458ad14f7abaf38de79da0c352e97b4d323751a293f
+      label: Table 1(a), Paved — Concrete — Doll et al. (1985)
+      page: '314'
+      url: https://doi.org/10.1016/0957-1272(91)90003-W
+      note: Reports the Doll concrete triplet as 0.81, 0.48 h and -79.9 W m-2, exposing the historical
+        code-801 a2 discrepancy without determining when the release value became 0.10 h.
+  - id: grimmond-table-4
+    source: grimmond1999
+    role: validation
+    locators:
+    - kind: table
+      label: Table 4, Paved/Impervious rows and averaging method
+      page: '932'
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
+      note: Repeats the first five release input rows except that the Doll concrete a2 is 0.48 h, and
+        states that coefficients within each physical surface category are averaged. The seasonal
+        Anandakumar rows used as codes 905 and 906 are preserved only by the pinned release table.
+  derivation:
+    kind: arithmetic_mean
+    expression: round_componentwise((code801 + code802 + code901 + code902 + code903 + code905 + code906) / 7,
+      [3, 3, 1] decimal places)
+    external_inputs:
+    - {id: code801-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.81}
+    - {id: code801-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.10, unit: h, note: 'The checked publications give 0.48 h for this Doll concrete input; 0.10 h is retained solely as the release-table value used by code 800.'}
+    - {id: code801-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -79.9, unit: W m-2}
+    - {id: code802-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.85}
+    - {id: code802-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.32, unit: h}
+    - {id: code802-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -28.5, unit: W m-2}
+    - {id: code901-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.36}
+    - {id: code901-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.23, unit: h}
+    - {id: code901-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -19.3, unit: W m-2}
+    - {id: code902-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.64}
+    - {id: code902-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.32, unit: h}
+    - {id: code902-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -43.6, unit: W m-2}
+    - {id: code903-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.82}
+    - {id: code903-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.68, unit: h}
+    - {id: code903-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -20.1, unit: W m-2}
+    - {id: code905-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.72}
+    - {id: code905-a2, evidence_id: suews-v2016a-table, parameter: a2, value: 0.54, unit: h}
+    - {id: code905-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -40.2, unit: W m-2}
+    - {id: code906-a1, evidence_id: suews-v2016a-table, parameter: a1, value: 0.83}
+    - {id: code906-a2, evidence_id: suews-v2016a-table, parameter: a2, value: -0.83, unit: h}
+    - {id: code906-a3, evidence_id: suews-v2016a-table, parameter: a3, value: -24.6, unit: W m-2}
+  scientific_note: Legacy code 800 is the component-wise arithmetic mean of seven release-table rows.
+    Its stored values are preserved exactly. The release's code 801 uses a2 = 0.10 h, whereas both checked
+    publications give 0.48 h for the corresponding Doll concrete row; using the publication value would
+    change the mean. This sidecar makes that discrepancy visible while preserving the stable release
+    lineage rather than silently altering a long-standing model input.
+  evidence_revision: sha256:6ac6ed0f247a59b0deb320c3d251303b5a33653fab40101397646f4ebb224f4f
 verification:
   attestations: []

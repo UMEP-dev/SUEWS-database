@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
-    records/ohm/generic--unreferenced--paved: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
+    records/ohm/generic--unreferenced--paved: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
     records/surfaces/paved/generic--kotthaus2014--emissivity--grey-white-concrete-new: sha256:72fd71762b4c7055a5bac38f4ba5f0e5b28acc87f01829ecab4c1f4e0c123f8c
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
@@ -198,6 +198,6 @@ assessment:
     records under records/constructions/ do not bear on this, because the construction slot contributes
     nothing to a paved surface fragment. The drainage record is now documented as generic literature
     evidence; the unreferenced source on the OHM record remains a question for that record''s own evidence review.'
-  evidence_revision: sha256:3ae6175f24982c3cae20ff3672283a3d2c738f29dba1a7d329a07d5a15ef1d32
+  evidence_revision: sha256:871773367b5871a26e0af6b4a99fabf12a2e6848d056cfb3912cd2ea410ef50a
 verification:
   attestations: []

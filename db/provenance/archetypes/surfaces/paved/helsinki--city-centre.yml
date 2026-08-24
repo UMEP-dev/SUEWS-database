@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/paved/helsinki--kumpula: sha256:9da1346d28ae822bf40091a56cb17317f84d050b281d4d5937600adecfca454f
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
-    records/ohm/generic--unreferenced--paved: sha256:c96f4e705fa2105582df4d5271845070fb17f3d334720ea429c8f68443b014cb
+    records/ohm/generic--unreferenced--paved: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
@@ -193,6 +193,6 @@ assessment:
     carries the same seven components again under a Zurich label, so whatever is decided here bears on
     that entry too. The drainage record is now documented as generic literature evidence; the OHM record
     still declares source unreferenced, a question for that record''s own evidence review rather than for the assembly.'
-  evidence_revision: sha256:5d80ddecbaadad7f23cf60c5d0832d195b98f06df8333b6768a37f158924012d
+  evidence_revision: sha256:2fcae6eeb5616426221be1b2e599d3221db5cbaf2ff92f6b5413ddcee5efd1f6
 verification:
   attestations: []
