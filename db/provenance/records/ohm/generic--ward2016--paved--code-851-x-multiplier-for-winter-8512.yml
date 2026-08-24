@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:63daa10ccdd4d9e4a7cade85b2aa3e00d9714e0d7a2ec32e94c7a6f6c5e464fd
+record_revision: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Paved, so the tuple describes the paved land-cover class
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -92,6 +99,6 @@ assessment:
   scientific_note: Ward et al. compile code 851 from concrete and asphalt literature rows, then calculate
     seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon runs validate/apply
     the coefficients but are not their observation input.
-  evidence_revision: sha256:1e4738950fee0969a4c33b0ebacaa8d4fe769718e8dcb6e7de66e0f51894e25a
+  evidence_revision: sha256:20581e22f8781417f49cdf40f338a0489c8247cc6b0d7a298a36a3ed7c295cb0
 verification:
   attestations: []
