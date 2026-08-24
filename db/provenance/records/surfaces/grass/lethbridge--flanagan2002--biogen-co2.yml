@@ -1,0 +1,165 @@
+provenance_record: records/surfaces/grass/lethbridge--flanagan2002--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7680a5acbbbed647249e2446c6b8d79c4c1f905657620f1d21b61e9b6b2d447a
+dependency_revisions:
+  sources:
+    flanagan2002: sha256:4e179a1d835a361c7c3221b09354322a73c940af8c5edab2b915297a3f512636
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    schmid2000: sha256:4e02bb5e75791ffd681704c6bbff94768f7bf91d9d7daa9a4f98f817b467130b
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    lethbridge: sha256:3bed11afe329d1ecebdb199366936df6665b26683d0149dea97202c176ad5499
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T23:30:48Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/371
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - flanagan-light-response
+      - migration-row-30240009
+      note: Flanagan et al. identify the ecosystem as a northern temperate grassland, and the migrated
+        row preserves the concise name Temperate grassland.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - flanagan-light-response
+      - migration-row-30240009
+      note: Flanagan fits grassland GPP light responses, and the migrated row explicitly classifies the
+        tuple as Grass, represented by land_cover.grass.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - flanagan-light-response
+      - schmid-respiration
+      - jarvi-winter-floor
+      - migration-row-30240009
+      note: Flanagan publishes annual alpha values 0.0254, 0.018 and 0.018 and annual Amax values 27.5,
+        12.9 and 8.6. Their arithmetic means are 0.0204667 and 16.333, which round to stored 0.0205
+        and 16.3, although neither the article nor archive documents who chose that aggregation.
+        Schmid Eq. (5) supplies resp_a 1.08 and resp_b 0.064; Järvi Eq. (11) and Appendix B supply
+        the later minimum respiration floor 0.60. The migration row is the exact five-value compilation.
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - flanagan-light-response
+      - schmid-respiration
+      - jarvi-winter-floor
+      - migration-row-30240009
+      note: Flanagan supplies the three annual light-response fits underlying alpha and beta, not the
+        stored means. Schmid publishes the respiration coefficients, Järvi et al. publish the later
+        floor, and the database workbook combines them. The record schema has one source field, so it
+        cannot express the input, calculation, borrowed-parameter and compilation roles together.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/371
+    place:
+      conclusion: supported
+      evidence_ids:
+      - flanagan-site
+      note: The article locates the 64 ha study site approximately 1.5 km west of Lethbridge city limits
+        at 49 degrees 43 minutes N and 112 degrees 56 minutes W. The place key identifies the associated
+        city; its registry coordinates are a city locator rather than the tower coordinate.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - flanagan-site
+      note: The parameters are fitted to observations from one 64 ha prairie site, so site is the
+        supported evidence reach.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - flanagan-light-response
+      - schmid-respiration
+      - jarvi-winter-floor
+      - migration-row-30240009
+      note: Flanagan uses nonlinear least squares for three annual light-response fits, the stored pair
+        equals rounded arithmetic means not published as such, Schmid fits the borrowed respiration
+        relationship, the 0.6 floor is a later chamber statistic, and the workbook compiles the tuple.
+        No single method describes the atomic row.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-30240009
+      note: Biogen CO2 row 30240009 preserves the exact name, origin, five active values, three -999
+        legacy sentinels and reference ID 90240046. The stable path and legacy_id retain that identity;
+        the -999 theta, alpha_enh and beta_enh entries are unavailable legacy fields, not sourced
+        scientific values.
+  evidence:
+  - id: flanagan-site
+    source: flanagan2002
+    role: validation
+    locators:
+    - kind: section
+      label: Materials and methods, Study site description
+      page: 600
+      url: https://doi.org/10.1046/j.1365-2486.2002.00491.x
+      note: Describes a 64 ha moist-mixed grassland approximately 1.5 km west of Lethbridge city limits
+        at 49 degrees 43 minutes N, 112 degrees 56 minutes W, with a flat prairie fetch.
+  - id: flanagan-light-response
+    source: flanagan2002
+    role: input_data
+    locators:
+    - kind: equation
+      label: Eq. (5), rectangular-hyperbola GPP light response
+      page: 603
+      url: https://doi.org/10.1046/j.1365-2486.2002.00491.x
+      note: Defines alpha as apparent quantum yield and Amax as maximum GPP, fitted by nonlinear least
+        squares separately for a 14-day peak-activity period in each year.
+    - kind: figure
+      label: Fig. 6, annual peak light-response fits for 1998, 1999 and 2000
+      page: 608
+      url: https://doi.org/10.1046/j.1365-2486.2002.00491.x
+      note: Publishes alpha 0.0254, 0.018 and 0.018 and Amax 27.5, 12.9 and 8.6. Their rounded arithmetic
+        means equal the stored alpha 0.0205 and beta 16.3; the paper does not publish those means.
+  - id: schmid-respiration
+    source: schmid2000
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Eq. (5), ecosystem respiration versus soil temperature
+      page: 369
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Publishes RE = 1.08 exp(0.064 Ts), the exact resp_a and resp_b mechanically reused in this
+        grassland compilation even though Schmid's observations are from a hardwood-forest site.
+  - id: jarvi-winter-floor
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Eq. (11), soil and vegetation respiration
+      page: 8366
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines respiration as max(a_i exp(Tair b_i), 0.6) for each vegetated surface.
+    - kind: section
+      label: Appendix B, Estimating Minimum Soil Respiration
+      page: 8379
+      url: https://doi.org/10.1029/2018JD029576
+      note: Reports a 0.60 +/- 0.07 micromol m-2 s-1 minimum from 1,677 half-hour observations during
+        2009-2012 below -2 degrees C, measured by three automatic soil chambers in a Southern Finland
+        boreal forest. Pumpanen et al. (2015) is cited for chamber methods, not for the 0.60 statistic.
+  - id: migration-row-30240009
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: database.xlsx, Biogen CO2 sheet, row ID 30240009
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: Carries Temperate grassland, origin Lethbridge, Alberta, Canada, alpha 0.0205, beta 16.3,
+        resp_a 1.08, resp_b 0.064, min_respi 0.6, three -999 inactive fields and Ref 90240046 in one row.
+  scientific_note: >-
+    Every active value now has a traceable evidence role, but the tuple is not one publication's result.
+    The Flanagan light-response pair is an undocumented rounded aggregation of three annual fits; the
+    respiration coefficients are borrowed from Schmid's hardwood forest; the 0.6 winter floor is later
+    evidence published by Järvi et al.; and the pre-migration workbook is the compilation. The current
+    source field identifies the grassland input paper but cannot express the calculation and borrowed
+    parameters. This remains a schema/curation question, not a missing-source or value-correction question.
+  evidence_revision: sha256:5b2cdc6019635a02da55db759f6f7b9f3c53fe532e9ce18d39f2e30ff456d7ba
+verification:
+  attestations: []
