@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/ohm/generic--jarvi2014--buildings: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+    records/ohm/generic--jarvi2014--buildings: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T19:22:00Z'
@@ -122,6 +122,6 @@ assessment:
     Beijing application identity with source unreferenced and method assumed; source_legacy_ref 90240067
     preserves the application-paper link. The related generic record remains responsible for the unresolved
     original roof-average derivation under issue 65. No value, stable path, origin or legacy ID is changed.
-  evidence_revision: sha256:43bbf9e7238b11950fdd38a5dc9ea8358c7d48b2ef617de4e4f60ada738b2db1
+  evidence_revision: sha256:f1988a5f6c63c98650b37eeb25621fba90330beb3a0b08dccdf0c3494befba0a
 verification:
   attestations: []

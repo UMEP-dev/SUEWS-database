@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--jarvi2014--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
+record_revision: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -18,9 +18,10 @@ assessment:
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
   findings:
     name:
-      conclusion: curation_required
-      note: The name describes a compiled roof average and marks it as a sample run. Retention, renaming
-        or replacement is a maintainer decision because the record is in active use.
+      conclusion: supported
+      note: Archived code-799 roof average identifies the retained legacy configuration without claiming
+        that the unresolved tuple was published by Meyn, independently determined, or merely disposable
+        sample data.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/67
     target:
@@ -66,9 +67,10 @@ assessment:
       the Zheng archive establishes selection, not a second parameter determination.
   scientific_note: >-
     The exact values can be located in a later model-input table, but the stored Järvi
-    2014 citation, compiled-average production lineage and sample-run retention remain unresolved under
-    issues 65 and 67. The duplicate identity is settled separately: this generic code and its Beijing
-    application reuse remain distinct stable records without claiming two determinations.
-  evidence_revision: sha256:86c66116f3328f7f4ed87cead8fbce2098ef170734d8410a163c56bc82fdd271
+    2014 citation and compiled-average production lineage remain unresolved under issue 65. Retention
+    and the non-misleading display name were settled under issue 67 because the stable code-799 record
+    is selected by the Swedish industry composite. The generic code and its Beijing application reuse
+    remain distinct stable records without claiming two determinations.
+  evidence_revision: sha256:bafc7ba645d15b20179dd82c032ddb28e42385f001286df31911c9a64cad639e
 verification:
   attestations: []
