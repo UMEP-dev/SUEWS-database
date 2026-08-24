@@ -1,0 +1,93 @@
+provenance_record: records/profiles/water-use-manual/generic--ward2016--when-not-used
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7c935c02f1f5c08f31b6d3a67aaafe804e0c4180c3e26b9abda1f6b8e3957a5d
+dependency_revisions:
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:14:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/182
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      note: When not used is the migrated display identity for an explicit disabled profile whose legacy
+        cells are all -999 sentinels.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-irrigation-disabled
+      note: The migrated row is typed as Water use (manual) and attaches to the SUEWS 24-hour manual
+        water-use slot; Ward et al. confirm that irrigation was set to zero in the application.
+    values:
+      conclusion: not_applicable
+      evidence_ids:
+      - release-not-used-profile
+      note: The record deliberately contains no active parameters. Its 24 legacy -999 cells are preserved
+        sentinels, not numerical manual-water-use inputs.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-irrigation-disabled
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/182
+      note: Unreferenced is correct because this is a configuration adapter rather than a published
+        parameter profile. Ward et al. provide application/validation context only.
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-irrigation-disabled
+      note: Assumed records the deliberate choice to disable the optional profile; no measurement,
+        fitting, literature transfer or calculation produced an active value.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      note: The stable path, target, attachment, profile type, name, legacy ID and sentinel cells preserve
+        the distinct pre-migration configuration row without promoting the sentinels to active data.
+  evidence:
+  - id: release-not-used-profile
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_Profiles.txt, code 999 Not used row
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Profiles.txt#L24
+      note: Stores 24 -999 sentinel cells for the explicit Not used profile.
+    - kind: dataset
+      label: Pre-migration profiles.yml, row 60240014
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L288-L318
+      note: Types the migrated row as Water use (manual), names it When not used, and preserves the 24 sentinels.
+  - id: ward-irrigation-disabled
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Section 3.2, irrigation set to zero
+      page: '6'
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Establishes application context for disabling irrigation, not a parameter source for the empty profile.
+  scientific_note: This record is a retained configuration adapter for an optional SUEWS profile. It
+    exports no active parameter and claims no literature value. The v2016a and pre-migration artifacts
+    prove its disabled identity; Ward et al. only confirm why irrigation was disabled in that application.
+  evidence_revision: sha256:b98340915a46c58a7a20bc25e942946b1b0bdd9cfe2980d0d5472695af7a714d
+verification:
+  attestations: []
