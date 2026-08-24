@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/evetr/beijing--zheng-y2023--max-conductance
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:6145a6acf68b5e07dbed85748d776d8c56e986d78e5a4bf1f8feff0dc52bb6b0
+record_revision: sha256:e5e11d17f2310b8bece516fa99d0705e9896f2dff31043831b2b1d56c1981469
 dependency_revisions:
   sources:
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
@@ -9,12 +9,13 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T00:00:44Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T19:39:56Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -45,14 +46,13 @@ assessment:
       - zheng-parameter-publication
       note: Pinus tabuliformis is tabulated as a Beijing species in Table E1.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - zheng-parameter-publication
-      note: Appendix E ties its city-representative claim to averaging across species, and the deciduous
-        and grass entries are averages of four and three species. The evergreen entry is a single species,
-        and Table E1 note b says the figure was obtained by dividing a maximum canopy conductance by G1
-        = 3.5. Whether a single-species converted value should carry city representativeness is a maintainer
-        decision, not something the paper settles.
+      - zheng-model-archive
+      note: Site representativeness matches the one-species Pinus tabuliformis value, which Table E1
+        rescales by G1. Appendix E makes its city-wide claim for averages over different species, while
+        archive code 991 shows only that this site-scale evidence was applied to the Beijing model grid.
     method:
       conclusion: supported
       evidence_ids:
@@ -100,11 +100,11 @@ assessment:
       note: Assigns Code_EveTr 991, Code_DecTr 992, Code_Grass 993 and IrrigationCode 5 to the modelled
         Beijing grid, so those rows are the ones the published runs used.
   scientific_note: 'The stored value is exactly what Zheng et al. publish and exactly what their released
-    runs used, so the number itself is settled. What is not settled is the city label: Appendix E earns
-    that label by averaging over species, and the evergreen entry has only one species, converted from
-    a canopy-scale measurement by dividing by G1. The deciduous and grass records in the same group are
-    averages and are assessed as supported. A maintainer should decide whether this record keeps city
-    representativeness, narrows it, or is annotated as single-species.'
-  evidence_revision: sha256:4b68be49b31f37c69139299fee676f224c83d32ffd5d552cfa19b44eb5cc8ec3
+    runs used, so the number, source, place, origin and legacy lineage remain unchanged. Appendix E says
+    the city-wide purpose is achieved by averaging different species; only the deciduous and grass entries
+    are such averages. The evergreen entry is one Pinus tabuliformis value, converted by G1, so its
+    evidence reach is site. Code 991''s assignment to the Beijing grid documents model application, not
+    a broader observation reach.'
+  evidence_revision: sha256:314b77fb0964de4a4190d3f02b328900ebf272a3f678db82f84c812812384d3e
 verification:
   attestations: []

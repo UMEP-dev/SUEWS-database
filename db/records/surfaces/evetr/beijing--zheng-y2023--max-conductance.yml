@@ -4,7 +4,7 @@ target: land_cover.evetr
 name: Evergreen Tree
 place: beijing
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 33240006
 parameters:
