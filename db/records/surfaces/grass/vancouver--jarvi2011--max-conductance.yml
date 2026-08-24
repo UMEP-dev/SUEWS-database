@@ -2,10 +2,11 @@ record: records/surfaces/grass/vancouver--jarvi2011--max-conductance
 schema_version: '2026.5'
 target: land_cover.grass
 name: Irrigated Grass
-place: vancouver
+place: generic
 origin: Vancouver
-representativeness: city
+representativeness: generic
 source: jarvi2011
+method: literature
 legacy_id: 33240001
 parameters:
   max_conductance: 40

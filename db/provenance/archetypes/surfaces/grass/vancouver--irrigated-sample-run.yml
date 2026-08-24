@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/vancouver--jarvi2011--lai-power: sha256:2a1846d268a74f46b702f40e8f445e613d9297702519758c48c946b6d80725da
-    records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:3863938b8d60625a4771afe401617b6de9631f1785ef90283141b1a91c2689a5
+    records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:7d1cc1897bf26bf1d29a68b2dbc392cdd1ecb6e5bca6e59bb9e246329325ac55
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:41:54Z'
@@ -88,10 +88,9 @@ assessment:
       related_records:
       - records/surfaces/common/se-england--ruimy1995--biogen-co2
       note: 'The composite declares place vancouver, which db/places.yml gives as lat 49.28, lon -123.12,
-        koppen Cfb. Two components declare place vancouver, filling leaf_growth_power and max_vegetation_conductance,
-        and they are the only grass records in the database declaring that place; a third file whose path
-        begins vancouver--jarvi2011, records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass,
-        declares place generic and is not used here. Three declare place se-england, filling albedo, emissivity
+        koppen Cfb. One component declares place vancouver, filling leaf_growth_power. The two conductance
+        files whose paths begin vancouver--jarvi2011 declare place generic; the irrigated one is used here
+        and the unirrigated one is not. Three declare place se-england, filling albedo, emissivity
         and water_storage, three declare place helsinki, filling leaf_area_index, snow_lim_patch and vegetation_growth,
         one declares place london, filling drainage, porosity declares place generic and the ohm component
         carries no place field. The slot that needs settling is biogen_co2. It takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
@@ -109,8 +108,8 @@ assessment:
       - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
       - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: 'The composite declares representativeness city. Six components declare city, three declare
-        regional, records/surfaces/grass/generic--unreferenced--porosity declares generic, and one declares
+      note: 'The composite declares representativeness city. Five components declare city, three declare
+        regional, porosity and max_vegetation_conductance declare generic, and one declares
         site; the ohm component carries no representativeness field. The site-classed component is records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
         and it is the only component in any of the nine grass composites classed narrower than the composite
         carrying it. A single-site flux measurement inside a city typology is exactly what the representativeness
@@ -201,13 +200,13 @@ assessment:
     record: records/surfaces/grass/vancouver--jarvi2011--max-conductance
     role: component
     note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
-      "Irrigated Grass", place vancouver, representativeness city and source jarvi2011.
+      "Irrigated Grass", place generic, representativeness generic and source jarvi2011, with method literature.
   scientific_note: 'The entry is a demonstration configuration and says so: its name reads "Irrigated
     [sample run]" and the drainage slot takes records/surfaces/grass/london--jarvi2011--drainage, named
     "Grass [sample run]". The mapping itself is sound, every slot receiving a component declared for it
-    and the ohm slot taking the grass-specific "Short grass [30]" set. Two of the twelve components declare
-    place vancouver, the jarvi2011 leaf_growth_power and max_vegetation_conductance records, and they
-    are the only grass records in the database declaring that place; three come from SE England, three
+    and the ohm slot taking the grass-specific "Short grass [30]" set. One of the twelve components declares
+    place vancouver, the jarvi2011 leaf_growth_power record; max_vegetation_conductance is a generic
+    Järvi literature parameter whose stable path retains Vancouver. Three come from SE England, three
     from Helsinki, one from London and one from Lethbridge, and the last two are a generic dummy and an unreferenced
     coefficient set. Two things need a maintainer. The biogen_co2 slot takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
     a site-classed temperate grassland record from a semi-arid prairie location (koppen BSk) filling a
@@ -217,6 +216,6 @@ assessment:
     local, so the choice between two transplants is a maintainer''s and not a correction. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:262c811000927b2bb4b11c21a2813c77d8feb077fb0a1610ce56cac791d6a569
+  evidence_revision: sha256:6fdff361c56d25053b44bb1239a4cc08011b033f6cd0a1e804e8a293c9775725
 verification:
   attestations: []
