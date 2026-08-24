@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
-    records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
+    records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c: sha256:7187d0b8fdfec1e01e5e371ae8f240d25ac731c1439e4e708c8a80ddef5bcfdb
 assessment:
@@ -195,6 +195,6 @@ assessment:
     whether the Zurich sample-data record is the intended park leaf area index and, if it is, record why.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:fdd984e432f00078503557774b1ad385b033c1896b56e24c5a5cf02a435d7cdc
+  evidence_revision: sha256:7d01f006a6eb32b742910ef530d7018f5d6f10309f0a2fd37d79f567f86ef6c6
 verification:
   attestations: []
