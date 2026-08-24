@@ -1,0 +1,70 @@
+provenance_record: records/surfaces/evetr/generic--unreferenced--porosity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
+dependency_revisions:
+  sources: {}
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: The immutable legacy porosity row 34240010 is explicitly named Dummy value; the stable display
+        name preserves that configuration identity.
+    target:
+      conclusion: supported
+      note: The legacy row assigns the compatibility slot to Evergreen Tree, matching the land_cover.evetr
+        target even though the slot supplies no active parameter.
+    values:
+      conclusion: supported
+      note: The record intentionally has an empty active parameters mapping. Its preserved -999 legacy sentinels
+        mark porosity as unused for evergreen trees and are not exported as parameter values.
+    source:
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/295
+      note: The adapter makes no literature-value claim. Source unreferenced is the honest declaration for
+        a compatibility row whose only numeric content is inactive legacy sentinels.
+    place:
+      conclusion: not_applicable
+      note: The compatibility adapter is generic and has no observational place.
+    representativeness:
+      conclusion: supported
+      note: Generic correctly describes a configuration adapter that is not evidence for a site, city or region.
+    applicable_scale:
+      conclusion: not_applicable
+      note: The empty adapter supplies no active parameter whose application scale could be asserted.
+    method:
+      conclusion: supported
+      note: Assumed is appropriate for a retained configuration compatibility slot with no active parameter
+        and no publication-derived value.
+    identity:
+      conclusion: supported
+      note: Stable path, name, target, legacy ID 34240010, origin note, dangling legacy reference and -999
+        sentinels preserve the exact migrated row identity without presenting the sentinels as evidence values.
+  evidence: []
+  attempted_sources:
+  - description: Immutable pre-migration porosity row 34240010
+    url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/porosity.yml#L23-L29
+    attempted_at: '2026-08-24T18:15:00Z'
+    outcome: incomplete
+    note: The pinned row establishes the exact compatibility lineage, name, target, sentinels, legacy ID
+      and statement that porosity is used only for deciduous trees. It is repository lineage rather than
+      a parameter publication and therefore cannot support a literature source.
+  scientific_note: 'The immutable pre-migration row at https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/porosity.yml#L23-L29
+    records an Evergreen Tree Dummy value with PorosityMin and PorosityMax both -999 and says porosity is
+    used only for deciduous trees. This stable record is retained as an empty compatibility/configuration
+    adapter: its parameters mapping remains empty, the sentinels remain only under legacy, source stays
+    unreferenced, and method assumed records that no measured, fitted or literature value is claimed.'
+  evidence_revision: sha256:a5699bfd8a1b9ebc9abbbd9f858dd1398a083dfa502dab1b59dda788659e0d03
+verification:
+  attestations: []

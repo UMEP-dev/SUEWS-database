@@ -8,7 +8,7 @@ dependency_revisions:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
-    records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
+    records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
@@ -215,6 +215,6 @@ assessment:
     source-registry point remains: the label says 2024 while db/sources.yml stores stagakis-s2024 with
     year 2025. The corrected biogen_co2 component has three values directly supported by Supplement
     Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:486483d521445423058c6f27c4b56c2821d149e07cd6db465795099f225e70d1
+  evidence_revision: sha256:fe95e974231567db749b356e76cb8478c7bb065c162e9a825ae395bba623a3b4
 verification:
   attestations: []
