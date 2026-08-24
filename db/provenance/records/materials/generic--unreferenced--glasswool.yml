@@ -1,0 +1,72 @@
+provenance_record: records/materials/generic--unreferenced--glasswool
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:be205ca214f9f42bd2059a389699c6e6c44f98c3d9062c9e54121a31a7780b58
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:03:54Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/271
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: Table 6 names the material Glasswool exactly.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: Table 6 reports the three stored thermophysical material properties in their database units.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: The Glasswool row reports thermal conductivity 0.040 W/(m K), specific heat 670 J/(kg K),
+        and density 200 kg/m3, exactly the complete active tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: The official IES System Material Database table publishes every active value; the legacy
+        Ref 99240099 was explicitly a missing-reference placeholder and is replaced by this source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/271
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: Literature adoption is appropriate because the record takes an existing System Material Database row.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glasswool
+      note: Stable record path, name, legacy ID and all parameter values are preserved.
+  evidence:
+  - id: ies-table6-glasswool
+    source: ies2011-apache-tables
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 6, System Material Database, Insulating Materials, Glasswool row
+      page: 16
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Reports conductivity 0.040 W/(m K), specific heat 670 J/(kg K), and density 200 kg/m3.
+  scientific_note: The historical workbook row and the IES table have an exact name-and-value match;
+    this record has no optical fields, so the source supports the complete active parameter tuple.
+  evidence_revision: sha256:a31050fa1db55902f98da6adee91def36c9129195a462d76d386a2cfb83f9194
+verification:
+  attestations: []

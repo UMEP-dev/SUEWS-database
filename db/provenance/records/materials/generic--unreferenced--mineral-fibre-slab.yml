@@ -1,0 +1,72 @@
+provenance_record: records/materials/generic--unreferenced--mineral-fibre-slab
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7b1897473cb08a766b9ab538bc7c4d74c47a4d8c56c12e9b214b86d11c6a4215
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:03:54Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/276
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: Table 6 names the material Mineral Fibre Slab; the record's parentheses do not change its identity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: Table 6 reports the three stored thermophysical material properties in their database units.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: The Mineral Fibre Slab row reports thermal conductivity 0.035 W/(m K), specific heat 1000 J/(kg K),
+        and density 30 kg/m3, exactly the complete active tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: The official IES System Material Database table publishes every active value; the legacy
+        Ref 99240099 was explicitly a missing-reference placeholder and is replaced by this source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/276
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: Literature adoption is appropriate because the record takes an existing System Material Database row.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-mineral-fibre-slab
+      note: Stable record path, name, legacy ID and all parameter values are preserved.
+  evidence:
+  - id: ies-table6-mineral-fibre-slab
+    source: ies2011-apache-tables
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 6, System Material Database, Insulating Materials, Mineral Fibre Slab row
+      page: 15
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Reports conductivity 0.035 W/(m K), specific heat 1000 J/(kg K), and density 30 kg/m3.
+  scientific_note: The historical workbook row and the IES table have an exact name-and-value match;
+    this record has no optical fields, so the source supports the complete active parameter tuple.
+  evidence_revision: sha256:663744049a57e8b5dc4c9c3c53acc09d57df19e55d8bdde71c4d7c78f50cb144
+verification:
+  attestations: []

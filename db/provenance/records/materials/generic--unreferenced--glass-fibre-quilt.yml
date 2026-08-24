@@ -1,0 +1,72 @@
+provenance_record: records/materials/generic--unreferenced--glass-fibre-quilt
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:38dd837d71f309d93e1db5c4cb7b6befa3c3ee272b2e9729edf80c444fef2f66
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:03:54Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/273
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: Table 6 names the material Glass-Fibre Quilt exactly.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: Table 6 reports the three stored thermophysical material properties in their database units.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: The Glass-Fibre Quilt row reports thermal conductivity 0.040 W/(m K), specific heat 840 J/(kg K),
+        and density 12 kg/m3, exactly the complete active tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: The official IES System Material Database table publishes every active value; the legacy
+        Ref 99240099 was explicitly a missing-reference placeholder and is replaced by this source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/273
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: Literature adoption is appropriate because the record takes an existing System Material Database row.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ies-table6-glass-fibre-quilt
+      note: Stable record path, name, legacy ID and all parameter values are preserved.
+  evidence:
+  - id: ies-table6-glass-fibre-quilt
+    source: ies2011-apache-tables
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 6, System Material Database, Insulating Materials, Glass-Fibre Quilt row
+      page: 15
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Reports conductivity 0.040 W/(m K), specific heat 840 J/(kg K), and density 12 kg/m3.
+  scientific_note: The historical workbook row and the IES table have an exact name-and-value match;
+    this record has no optical fields, so the source supports the complete active parameter tuple.
+  evidence_revision: sha256:b73be245fa958711de7821393f6cfce53df7d65eb45038ad86350666a01bb89b
+verification:
+  attestations: []

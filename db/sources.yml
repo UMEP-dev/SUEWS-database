@@ -284,6 +284,13 @@ sources:
     title: 'High-resolution (space, time) anthropogenic heat emissions: London 1970–2025'
     type: journalArticle
     year: 2012
+  ies2011-apache-tables:
+    author: Integrated Environmental Solutions Limited
+    journal: Integrated Environmental Solutions Limited
+    title: 'Apache-Tables User Guide: IES Virtual Environment 6.4'
+    type: Guideline
+    url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+    year: 2011
   jarvi2011:
     author: Järvi, L., Grimmond, C. S. B., & Christen, A.
     doi: 10.1016/j.jhydrol.2011.10.001
