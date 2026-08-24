@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--drainage: sha256:cbbab44c97e62642c99a85c37c48e987f33612ee05d0bd721f21d99165d086d0
-    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
     records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:55e0cb9863f351fe6802a49505a0f764f0daf8be82f87be43946949751a772d9
@@ -174,8 +174,8 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills emissivity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Evergreen trees"; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-evetr-se-england-ward2016-water-storage
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
@@ -248,6 +248,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:5da50a7de7c4ab69f30fbf3383db6350e8635afed944400bf8084d928708dba9
+  evidence_revision: sha256:f2d1769aee4dc0adaa63f0bbdea884a5a5c0ca56dd3051b4749dc4c518dbc832
 verification:
   attestations: []

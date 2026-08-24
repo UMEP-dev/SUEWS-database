@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
-    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:9ef7ee10e269a1d0acb81fae2d43744200ed64c52a1f40bf973db5b961d3f5f4
+    records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
     records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:401ea9e3db67da8d86c7e41c91005fdec27653f0e3660e109ae1e8267cfd72bb
@@ -157,8 +157,8 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills emissivity. The record declares target land_cover.evetr, place generic and representativeness
+      generic, and is named "Evergreen trees"; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-evetr-se-england-ward2016-water-storage
     record: records/surfaces/evetr/se-england--ward2016--water-storage
     role: component
@@ -227,6 +227,6 @@ assessment:
     the drainage slot in all five composites placed at the three cities it names. A secondary, smaller
     point for the record: the label says 2024 while db/sources.yml stores
     stagakis-s2024 with year 2025.'
-  evidence_revision: sha256:bb20e9a68b1e161639bf4a0016763c5c2465d193bfa950e3f573dcc92b566248
+  evidence_revision: sha256:d62f944b1a196eab7af4c5da5741a3a7c8aa8ca2e045f0fc86883d6c96f1e1f3
 verification:
   attestations: []
