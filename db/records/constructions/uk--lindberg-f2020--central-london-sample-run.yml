@@ -5,7 +5,9 @@ name: Central London [sample run]
 place: london
 origin: UK
 representativeness: city
-source: lindberg-f2020
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240057
 legacy_id: 37240894
 parameters:
   roof:
