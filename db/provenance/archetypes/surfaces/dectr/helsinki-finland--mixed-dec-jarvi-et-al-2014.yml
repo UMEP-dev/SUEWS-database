@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
-    records/surfaces/dectr/london--jarvi2011--drainage: sha256:c00e3155911cfadebf62e1c2b6fc5a8fa98a9999fb54df070e12d627be8041f8
+    records/surfaces/dectr/london--jarvi2011--drainage: sha256:0d44c78e8bbc720e82e4c4ba789d4c6fc0c7d3c63e8ebd0503ec9b3540d66bfc
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
@@ -82,13 +82,12 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-porosity
       note: 'The composite claims place helsinki, and four of its twelve components carry that place,
         including both climate-conditioned ones: the snowpack limit and the four degree-day thresholds
-        are Helsinki records. Two carry place london, two carry place se-england, one is generic for
-        conductance, the albedo and porosity records are also generic and the OHM record carries no place. The leaf_area_index
-        import is forced, since db/records/surfaces/dectr
-        holds leaf-area-index records placed at beijing, se-england, shanghai and zurich and none placed
-        at helsinki. The drainage component is placed at london and named "Deciduous Tree [sample run]",
-        so the slot rests on a record its own name presents as a sample run; that is a matter for that
-        record''s evidence review, not for the place claim made here.'
+        are Helsinki records. One component carries place london, two carry place se-england, and four
+        are generic: conductance, albedo, drainage and porosity. The OHM record carries no place. The
+        leaf_area_index import is forced, since db/records/surfaces/dectr holds leaf-area-index records
+        placed at beijing, se-england, shanghai and zurich and none placed at helsinki. The drainage
+        component is now correctly classed as the generic Järvi literature tuple; its stable London path
+        and origin preserve application lineage rather than claiming London evidence.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -96,8 +95,8 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
-      note: The composite claims representativeness city. Six components are classed city, two regional
-        and three generic; those broader regional and generic values do not over-claim a city scale. The
+      note: The composite claims representativeness city. Five components are classed city, two regional
+        and four generic; those broader regional and generic values do not over-claim a city scale. The
         remaining OHM component declares no representativeness, carries source unreferenced and states
         in its own name that it averages codes including soil and water. A maintainer should decide whether
         that unclassified component is acceptable in a city composite or replace it.
@@ -164,9 +163,10 @@ assessment:
   - id: component-surfaces-dectr-london-jarvi2011-drainage
     record: records/surfaces/dectr/london--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
-      city. It is named "Deciduous Tree [sample run]" and carries source jarvi2011; its own name marks
-      it as a sample run, and it declares storage_drain_params.drain_eq 2.
+    note: Fills drainage. The record declares target land_cover.dectr, place generic, representativeness
+      generic and applicable_scale land_cover. It is named "Deciduous Tree", carries source jarvi2011,
+      declares method literature and uses storage_drain_params.drain_eq 2. Its stable London path and
+      origin retain release-application lineage without presenting the values as London evidence.
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
@@ -212,6 +212,6 @@ assessment:
     from the entries and are not faults in the stored values. A maintainer should read the two Helsinki
     typologies against their publications together, since a swap in one implies the other. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:d54512ccb3a081eddb21a0a80e7c198fa89207e43d79475e6be1740fc363e310
+  evidence_revision: sha256:3a84b71eb167d4af75e63caa5729d860606e8fd293486774eb7fc3c179612e61
 verification:
   attestations: []
