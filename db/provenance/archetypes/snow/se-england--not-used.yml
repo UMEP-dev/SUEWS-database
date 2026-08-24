@@ -10,6 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
+    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
     records/snow/se-england--ward2016--albedo: sha256:983db6c590ff1f2e1ac61b3c6c10b27012ab8aab8393f39c1fffb4442e6e2f23
@@ -43,10 +44,13 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       note: The composite asserts eleven parameters of its own, from radiation_melt_factor 0.001 to temperature_rain_snow_threshold
         2.2. None of them is a field either component supplies, so the assembly overrides no component
         value. Whether ward2016 supports those eleven scalars belongs to the composite's own evidence
-        assessment.
+        assessment. Separately, all four legacy OHM condition fields point to ID 50240016, represented
+        by records/ohm/helsinki--jarvi2014--snow; that binding stays in the legacy block and does not
+        enter the assembled fragment.
     source:
       conclusion: not_applicable
       note: 'The composite claims no composition rationale. Its source field, ward2016, attributes the
@@ -59,11 +63,13 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       related_records:
       - records/snow/se-england--ward2016--albedo
       note: The composite declares place se-england. Its albedo component declares montreal-suburban and
         its emissivity component is placeless, so an SE England snow set publishes one value pair from
-        a Montreal site and one generic inherited input. The database holds records/snow/se-england--ward2016--albedo,
+        a Montreal site and one generic inherited input. Its legacy OHM fields also point to a triplet
+        fitted at the Montreal Pr site and subsequently applied across sites. The database holds records/snow/se-england--ward2016--albedo,
         which declares place se-england, representativeness regional and source ward2016, the composite's
         own three fields, carries snow_albedo_min and snow_albedo_max, and is referenced by no archetype;
         it would fill the albedo slot. There is no SE England snow emissivity record, and records/snow/helsinki--jarvi2014--emissivity
@@ -76,10 +82,13 @@ assessment:
       evidence_ids:
       - component-snow-helsinki-jarvi2014-albedo
       - component-snow-helsinki-jarvi2014-emissivity
+      - legacy-ohm-helsinki--jarvi2014--snow
       related_records:
       - records/snow/se-england--ward2016--albedo
       note: The composite declares representativeness regional. The albedo component declares site, below
-        the composite's scale, while the emissivity component declares generic, above it. The unused
+        the composite's scale, while the emissivity component declares generic, above it. The OHM record
+        referenced by the legacy condition fields also declares site, below the composite's
+        regional scale. The unused
         records/snow/se-england--ward2016--albedo is classed regional, so for the albedo slot the class
         gap and the place gap would close together, while the emissivity slot has no regional snow record
         to take. This rides on the decision recorded under place rather than being a separate defect.
@@ -120,6 +129,12 @@ assessment:
     note: Fills the emissivity slot. The record declares target snow, name Snow emissivity, no place,
       representativeness generic, source jarvi2011 and method literature, and carries narp_emissivity_snow.
       Its stable path and origin retain legacy Helsinki migration text.
+  - id: legacy-ohm-helsinki--jarvi2014--snow
+    record: records/ohm/helsinki--jarvi2014--snow
+    role: related
+    note: All four legacy OHM condition fields point to legacy ID 50240016. The stable record declares
+      target ohm_coefficients, place montreal-suburban, representativeness site and source jarvi2014,
+      and carries a1 0.25, a2 0.6 and a3 -30. Its path and origin retain legacy Helsinki migration text.
   scientific_note: 'The mapping is internally consistent, in that the albedo slot takes the record carrying
     snow_albedo_min and snow_albedo_max, the emissivity slot the record carrying narp_emissivity_snow,
     and both components declare target snow. The selection does not match what the composite claims about
@@ -128,7 +143,9 @@ assessment:
     and a generic, placeless emissivity component sourced to jarvi2011. The assembled fragment shows the split plainly:
     snow_albedo_min 0.18 and snow_albedo_max 0.85 arrive under ID jarvi2014 described as montreal-suburban,
     site, narp_emissivity_snow 0.99 arrives under jarvi2011 described as generic, while the
-    eleven scalars the composite asserts arrive under ID ward2016 described as se-england, regional. Two
+    eleven scalars the composite asserts arrive under ID ward2016 described as se-england, regional. A
+    separate legacy binding does not enter that assembled fragment: all four OHM condition fields point
+    to the same Montreal-site triplet under legacy ID 50240016. Two
     readings fit and the files do not decide between them. The first is that the arrangement is deliberate:
     the composite is named Not used, and records/snow/se-england--ward2016--albedo, which matches the
     composite on place, class and source, is named "Snow (not used in Ward et al. 2016)", so the whole
@@ -137,6 +154,6 @@ assessment:
     all three fields and is referenced by no archetype at all. The choice is not free either way: no SE
     England snow emissivity record exists, but the remaining emissivity is now correctly identified as
     generic rather than Helsinki evidence. A maintainer should settle the albedo selection knowingly.'
-  evidence_revision: sha256:bdc444dbabc590e1444e5d9aec215d38582ea73f9f7ff03049097aa77e39a552
+  evidence_revision: sha256:c103d8acf390fa17f1d9f8189ebbccd28c3b70a821ee59b4e24b53d5b59e1bc5
 verification:
   attestations: []
