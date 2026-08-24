@@ -30,7 +30,7 @@ dependency_revisions:
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
-    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:c0bb96e1d5e7c83f9d9eb7513b781b46553aa1b5e1c34db4d05d421bc8e3c7cd
+    records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:27deca8b84bf809f30707514810234510db421579488a635190e0a695736c8d5
     records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
 assessment:
   status: curation_required
@@ -326,6 +326,6 @@ assessment:
     referenced by none of them, though it carries no melt parameters and its legacy block holds -999 throughout.
     The components'' own values remain subject to their evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:0560b825971efd6d011bc49f98b46a215fe9c5e3d976092e7debe4a15ce8b2d8
+  evidence_revision: sha256:99656c4eace8f8deeb7bca2188431b18cb7765fe8b371f2b4991185c5d860d64
 verification:
   attestations: []

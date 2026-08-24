@@ -4,9 +4,9 @@ target: profile.water-use-manual
 attaches_to: irrigation.wuprofm_24hr
 profile_type: Water use (manual)
 name: '[old code: 11]'
-place: los-angeles
+place: san-gabriel
 origin: Los Angeles, United States of America
-representativeness: city
+representativeness: site
 source: unreferenced
 method: calculated
 source_legacy_ref: 90240005

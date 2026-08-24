@@ -869,6 +869,9 @@ places:
     kind: country
     name: Saint Vincent
     region: North America
+  san-gabriel:
+    name: San Gabriel
+    country: united-states-of-america
   san-marino:
     kind: country
     name: San Marino

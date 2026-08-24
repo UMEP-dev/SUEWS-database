@@ -1,7 +1,7 @@
 provenance_record: records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c0bb96e1d5e7c83f9d9eb7513b781b46553aa1b5e1c34db4d05d421bc8e3c7cd
+record_revision: sha256:27deca8b84bf809f30707514810234510db421579488a635190e0a695736c8d5
 dependency_revisions:
   sources:
     grimmond1996: sha256:2a4ddb2340f588c1dd616ea78ab97ebe57bbb5b017f53c29b8cd09ba73d2a00d
@@ -10,16 +10,16 @@ dependency_revisions:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
-    los-angeles: sha256:b1e861c687efd37fd67ec97c2384fa9afc251a94de61b73e2ba9288bce4fc06f
+    san-gabriel: sha256:3b39e50ae36dc5c915797e95141135e64b05137fc8863d920f58a9aba79afb44
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T22:34:38Z'
+  assessed_at: '2026-08-24T22:46:11Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/369
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/368
   method: calculated
   findings:
     name:
@@ -59,22 +59,22 @@ assessment:
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/369
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - jarvi-prof3
       - grimmond-la-observations
-      note: The exact inputs are San Gabriel Prof3, and the original observations are from the San Gabriel
-        lower-tree-cover neighborhood within the Los Angeles metropolitan area. The current Los Angeles
-        registry place is retained pending the separate place adjudication.
+      note: Järvi et al. explicitly label Prof3 as San Gabriel, and Grimmond et al. locate the underlying
+        lower-tree-cover neighborhood and measurement tower in the city of San Gabriel. The San Gabriel
+        place is therefore the exact study location rather than the broader Los Angeles application context.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/368
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - jarvi-prof3
       - grimmond-la-observations
-      note: The evidence is a local-scale San Gabriel neighborhood profile, not a city-wide sample. City
-        remains unchanged in this citation-only repair pending the separate representativeness issue.
+      note: Site records the single lower-tree-cover San Gabriel neighborhood sampled around one tower;
+        neither publication establishes city-wide sampling for Prof3.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/368
     method:
@@ -115,10 +115,11 @@ assessment:
         and 51% for 16:00-20:00. Normalising 39, 21 and 51 by their sum gives the 0.35, 0.19 and 0.46
         Prof3 inputs published later by Järvi et al.; it does not print the derived 24-hour vector.
     - kind: text
-      label: External water use methodology
-      page: 47-50
+      label: Study-site selection, external-water-use methodology and meteorological measurements
+      page: 46-50
       url: https://doi.org/10.3354/cr006045
-      note: Documents questionnaires and bi-monthly billing data for the Arcadia and San Gabriel neighborhoods.
+      note: Identifies the lower-tree-cover neighborhood as the city of San Gabriel, places its tower in
+        the San Gabriel Water District works yard, and documents questionnaires and bi-monthly billing data.
   - id: loridan-water-profile-absent
     source: loridan2011
     role: validation
@@ -174,10 +175,11 @@ assessment:
     Prof3 period shares and the constant-within-period rule. Half-up conversion of those shares produces
     the exact 24 hourly values retained here, and the pinned V2016a table is the release compilation of
     that derived vector. The hourly values sum to 0.99 because each period's per-hour value was rounded
-    separately. Loridan et al. do not publish any layer of this water-use profile, so the record changes
-    from that false active citation to an unreferenced database calculation while preserving Ref 90240005
-    only as historical metadata. Values, stable path, origin, legacy ID, place and representativeness remain
-    unchanged; the latter two stay with issue 368.
-  evidence_revision: sha256:235327f0db704a21f14a6054c24e2942ec8112f707fe9332d21fd88bf7e271bc
+    separately. Loridan et al. do not publish any layer of this water-use profile, so the record remains
+    an unreferenced database calculation while preserving Ref 90240005 only as historical metadata. Table
+    3's explicit Prof3 label and Grimmond et al.'s original site description correct the active place from
+    Los Angeles to San Gabriel and narrow representativeness from city to site. Values, stable path, origin
+    and legacy ID remain unchanged. No coordinates or Koppen class are inferred for the new place.
+  evidence_revision: sha256:1dd874a881fda30aceb0145e0993d011db0b63cf8ef66f6be3c6ae8e0321540a
 verification:
   attestations: []
