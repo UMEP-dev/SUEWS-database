@@ -1,11 +1,13 @@
 record: records/surfaces/grass/se-england--ward2016--lai
 schema_version: '2026.5'
 target: land_cover.grass
-name: Grass (London)
-place: se-england
+name: Grass
+place: generic
 origin: SE England
-representativeness: regional
-source: ward2016
+representativeness: generic
+applicable_scale: land_cover
+method: literature
+source: jarvi2011
 legacy_id: 31240046
 parameters:
   lai:

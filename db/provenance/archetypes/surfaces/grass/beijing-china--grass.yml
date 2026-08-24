@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
-    records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
+    records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: agent_assessed
@@ -85,9 +85,10 @@ assessment:
       note: The composite declares place beijing, which db/places.yml gives as lat 39.9, lon 116.41, koppen
         Dwa. Three of the twelve components declare place beijing, filling leaf_growth_power, max_vegetation_conductance
         and biogen_co2, and no unused Beijing grass record exists for any remaining slot. Two declare
-        place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and three declare place
-        se-england (koppen Cfb, subnational), filling emissivity, water_storage and leaf_area_index; drainage,
-        albedo and porosity declare place generic; and the ohm component carries no place field. Nine of twelve slots
+        place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and one declares place
+        se-england (koppen Cfb, subnational), filling water_storage; drainage, albedo, emissivity,
+        leaf_area_index and porosity declare place generic; and the ohm component carries
+        no place field. Nine of twelve slots
         are therefore filled from outside China because the database offers nothing closer, which is a
         transparent transfer rather than a defect. The drainage component is a generic grass parameter
         published by Järvi et al.; its Havu archive locator records later reuse rather than a Beijing fit.
@@ -103,8 +104,8 @@ assessment:
       note: The composite declares representativeness city, but its leaf_growth_power component is now
         correctly classed site because the coefficients were fitted to one park. A city archetype therefore
         contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
-        a separate composition-curation decision; the three regional and two generic components are
-        broader than the composite and do not create the same over-claim.
+        a separate composition-curation decision; the regional water-storage component and the five
+        generic components are broader than the composite and do not create the same over-claim.
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -178,8 +179,9 @@ assessment:
   - id: component-surfaces-grass-se-england-ward2016-lai
     record: records/surfaces/grass/se-england--ward2016--lai
     role: component
-    note: Fills the leaf_area_index slot. The record declares target land_cover.grass, name "Grass (London)",
-      place se-england, representativeness regional and source ward2016.
+    note: Fills the leaf_area_index slot. The stable migration path retains SE England, while the record
+      declares target land_cover.grass, name "Grass", place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2011 and method literature.
   - id: component-surfaces-grass-se-england-ward2016-water-storage
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
@@ -196,6 +198,6 @@ assessment:
     leaf_growth_power component is a one-park site fit inside this city-classed composite, which now requires
     explicit composition curation rather than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:4528de8f699d9fef9e7e929806c9e13f17fb603ea158805b53f64032b59d8975
+  evidence_revision: sha256:442e05ac7024f6fb9713d9c083c4b78d17e2c7c8292b18064d69868194848714
 verification:
   attestations: []

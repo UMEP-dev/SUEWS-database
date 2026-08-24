@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
     records/surfaces/grass/se-england--ward2016--drainage: sha256:7f99c4f4340fa9f3555d3fac9b09bced3e4ad59a1468210ffd0d05cb8abe7fcd
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
-    records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
+    records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:3788ddb2685a492f5e0bd94ffae79f012da2bbff15c3c57cc3e151fd62772fd9
     records/surfaces/grass/se-england--ward2016--phenology: sha256:747a1e16496f2453fc5462cde394ca5ad44322b855b7a83b81544bb260cd2aa0
@@ -40,10 +40,11 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite's name reads "Grass Ward et al. (2016)", its place reads swindon and its origin
-        reads Swindon, UK. Five of the thirteen components declare source ward2016, filling albedo, emissivity,
-        leaf_area_index and both ohm positions. The other eight declare ward2018 for drainage, breuer2003 for
-        max_vegetation_conductance, ruimy1995 for biogen_co2, jarvi2014 for snow_lim_patch,
-        vegetation_growth and leaf_growth_power, jarvi2011 for water_storage, and unreferenced for porosity.
+        reads Swindon, UK. Three of the thirteen components declare source ward2016, filling albedo and
+        both ohm positions. The other ten use independently declared sources; ward2018 for drainage,
+        breuer2003 for max_vegetation_conductance, ruimy1995 for biogen_co2, jarvi2014 for snow_lim_patch,
+        vegetation_growth and leaf_growth_power, jarvi2011 for emissivity, leaf_area_index and
+        water_storage, and unreferenced for porosity.
         The name field is identical to that of archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016,
         so the label alone does not distinguish the two entries; the place field and the entry path do.
         Nothing the label claims is contradicted by the assembly.
@@ -99,15 +100,15 @@ assessment:
       related_records:
       - records/surfaces/grass/se-england--ward2016--phenology
       note: The composite declares place swindon, which db/places.yml gives as lat 51.56, lon -1.78, koppen
-        Cfb. Eight of the thirteen components declare place se-england, which db/places.yml gives as lat
+        Cfb. Six of the thirteen components declare place se-england, which db/places.yml gives as lat
         51.2, lon -0.8, koppen Cfb and subnational true, a region containing Swindon and sharing its koppen
-        class; porosity declares place generic and the two ohm components carry no place field. The remaining
+        class; porosity, emissivity and leaf_area_index declare place generic, and the two ohm components
+        carry no place field. The remaining
         two slots, snow_lim_patch and vegetation_growth, take Helsinki records (koppen Dfb). For snow_lim_patch
         that is forced, because records/surfaces/grass/helsinki--jarvi2014--snow-lim is the only grass
         record in the database carrying snowpack_limit. For vegetation_growth it is not. records/surfaces/grass/se-england--ward2016--phenology
         exists, declaring target land_cover.grass, place se-england, representativeness regional and source
-        ward2016, which is the same set of declarations the seven ward2016 surface components in this
-        composite carry, and no archetype in the database references it, while all nine grass composites
+        ward2016. No archetype in the database references it, while all nine grass composites
         take the Helsinki phenology record instead. The two records hold different values, so exchanging
         them changes a model input and this review does not propose it; a maintainer should decide whether
         Helsinki phenology inside a Ward et al. (2016) SE England composite is deliberate or an artefact
@@ -119,12 +120,12 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-lai
       - component-surfaces-grass-helsinki-jarvi2014-phenology
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: 'The composite declares representativeness city. Eight components declare regional, two declare
-        city, being the Helsinki snow_lim_patch and vegetation_growth records, porosity declares generic
-        and the two ohm components carry no representativeness field. No component is classed narrower
-        than the composite, so nothing site-specific is offered as a city typology. The observation runs
-        the other way here: every substantive component is an SE England regional record, so a city entry
-        is assembled entirely from regional values and carries nothing specific to Swindon, which is what
+      note: 'The composite declares representativeness city. Six components declare regional, two declare
+        city, being the Helsinki snow_lim_patch and vegetation_growth records, porosity, emissivity and
+        leaf_area_index declare generic, and the two ohm components carry no representativeness field.
+        No component is classed narrower than the composite, so nothing site-specific is offered as a
+        city typology. The two city archetypes use the same shared component set and carry nothing specific
+        to Swindon, which is what
         makes it indistinguishable from archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016; that
         is taken under identity.'
     method:
@@ -146,8 +147,8 @@ assessment:
         slots. The entry is not unique: archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016 carries
         a byte-identical uses block and the identical name field, "Grass Ward et al. (2016)", differing
         from this entry only in archetype path, place, origin and legacy_id, this one declaring legacy_id
-        24240025. Because every substantive component is an se-england regional record, neither entry
-        holds anything specific to its city, so the two published typologies are the same values presented
+        24240025. Because the entries select the same components, neither holds anything specific to its
+        city, so the two published typologies are the same values presented
         twice. The same pair of cities repeats this in three other surfaces: archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
         and archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016, archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016
         and archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016, and archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016
@@ -208,8 +209,9 @@ assessment:
   - id: component-surfaces-grass-se-england-ward2016-lai
     record: records/surfaces/grass/se-england--ward2016--lai
     role: component
-    note: Fills the leaf_area_index slot. The record declares target land_cover.grass, name "Grass (London)",
-      place se-england, representativeness regional and source ward2016.
+    note: Fills the leaf_area_index slot. The stable migration path retains SE England, while the record
+      declares target land_cover.grass, name "Grass", place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2011 and method literature.
   - id: component-surfaces-grass-se-england-ward2016-lai-power
     record: records/surfaces/grass/se-england--ward2016--lai-power
     role: component
@@ -226,22 +228,21 @@ assessment:
     role: component
     note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
       se-england, representativeness regional and source jarvi2011.
-  scientific_note: 'Read on its own the composite is coherent. Six of thirteen components declare source
-    ward2016; maximum conductance is a Breuer et al. literature value applied through an SE England record.
-    Eight components declare place se-england, a region that contains Swindon and shares its koppen
+  scientific_note: 'Read on its own the composite is coherent. Three of thirteen components declare source
+    ward2016; maximum conductance is a Breuer et al. literature value applied through an SE England record,
+    while emissivity, leaf_area_index and water_storage cite Järvi et al. (2011). Six components declare
+    place se-england, a region that contains Swindon and shares its koppen
     class Cfb, and the ohm season mapping is right, the summer-labelled code 201 set filling summer_wet
     and summer_dry and the winter-labelled set filling winter_wet and winter_dry. Two questions need a
     maintainer. The first is the vegetation_growth slot, which takes records/surfaces/grass/helsinki--jarvi2014--phenology
-    although records/surfaces/grass/se-england--ward2016--phenology exists with the same target, place,
-    representativeness and source as the four ward2016 surface components in the set and referenced by
-    no archetype at all; the snow_lim_patch slot beside it is forced, the Helsinki record being the only
+    although records/surfaces/grass/se-england--ward2016--phenology is an available regional record
+    referenced by no archetype at all; the snow_lim_patch slot beside it is forced, the Helsinki record being the only
     grass record carrying snowpack_limit, but the phenology slot is not. The second is that this entry
     and archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016 carry byte-identical uses blocks and
-    the identical name field, and since every substantive component is an SE England regional record,
-    neither holds anything specific to its city. The same duplication runs through the bsoil, dectr and
+    the identical name field and no city-specific component. The same duplication runs through the bsoil, dectr and
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:7e250b61132728e734eceff7f4f6ebf42cf18dacf4c4e46433bceff27eb5e404
+  evidence_revision: sha256:d8283ab6a79e3ff204a2412cd313d3bedcf74bbaba3a524cf2c61f0dee574fa8
 verification:
   attestations: []
