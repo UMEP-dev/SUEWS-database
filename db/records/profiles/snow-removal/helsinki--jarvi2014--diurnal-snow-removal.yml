@@ -3,11 +3,10 @@ schema_version: '2026.5'
 target: profile.snow-removal
 attaches_to: snow.snow_profile_24hr
 profile_type: Snow removal
-name: Diurnal snow removal
-place: helsinki
+name: Arbitrary (constant all day)
 origin: Helsinki, Finland
-representativeness: city
-source: jarvi2014
+source: unreferenced
+method: assumed
 legacy_id:
 - 60240015
 parameters:

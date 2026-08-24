@@ -1,102 +1,75 @@
 provenance_record: records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:6faf655037c29fec22a19f4c91ba67b65c0f8cf9571f3e711177213022429baa
+record_revision: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
-  places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  places: {}
   records:
     records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: curation_required
+  assessed_at: '2026-08-24T12:45:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: assumed
   findings:
     name:
       conclusion: supported
-      evidence_ids:
-      - jarvi-snow-removal
-      note: Diurnal snow removal describes the stored 24-hour pattern.
+      note: The fixed SUEWS 2017b profile row labels the all-one switch as Arbitrary (constant all day),
+        which is the supported display identity for this preserved configuration.
     target:
       conclusion: supported
-      evidence_ids:
-      - jarvi-snow-removal
-      note: A 24-hour snow-removal profile is a profile.snow-removal record.
+      note: A 24-hour snow-removal switching profile belongs under profile.snow-removal.
     values:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-snow-removal
-      note: The article publishes no diurnal snow-removal profile. Snow removal enters its model through
-        a snow water equivalent limit, 40 mm for buildings and 100 mm for pavement in Table 4a, and the
-        text says the same values were used at all sites for want of further information. The stored hourly
-        pattern has no locator here.
+      conclusion: supported
+      note: Twenty-four ones exactly reproduce the fixed SUEWS 2017b arbitrary constant profile; they are
+        represented as a configuration assumption rather than a measured diurnal schedule.
     source:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-snow-removal
-      note: The cited article cannot be shown to publish this profile, and no replacement is named here.
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/196
+      note: Järvi et al. (2014) publishes snow-removal thresholds but no hourly profile. Source unreferenced
+        is the honest declaration for this release-preserved assumption.
     place:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-sites
-      note: Nothing published ties this pattern to a place, and one of the three records in this family
-        carries no place at all.
+      conclusion: not_applicable
+      note: The fixed arbitrary profile is not tied to Helsinki; the stable path and origin retain migration lineage.
     representativeness:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-sites
-      note: Representativeness cannot be assessed while the provenance is unknown.
+      conclusion: not_applicable
+      note: An arbitrary configuration switch carries no geographic evidence-reach claim.
     method:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-snow-removal
-      note: A model configuration rather than a determined value, as far as can be told.
+      conclusion: supported
+      note: Assumed is appropriate for an arbitrary constant model switch with no parameter publication.
     identity:
       conclusion: curation_required
-      evidence_ids:
-      - jarvi-snow-removal
-      note: 'The all-zero, all-one and daytime patterns read as model configuration options rather than
-        as evidence, and whether they belong in the database as citable records is a maintainer decision.
-        The all-zero pattern is now explicitly unreferenced; this article still publishes neither of the
-        two Helsinki schedules.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/423
+      note: The all-zero, all-one and daytime patterns are model configuration options. Whether such fixtures
+        remain citable evidence records is a repository curation decision separate from correcting this citation.
       related_records:
       - records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
       - records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
-  evidence:
-  - id: jarvi-snow-removal
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: section
-      label: Sect. 3.2 and Appendix C, snow transport limit
-      page: 1700
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Snow removal enters the model through SWE,Lim, a limit of the snow water equivalent for snow
-        removal, given in Table 4a as 40 mm for buildings and 100 mm for pavement. The article says the
-        same values were used at all sites because no additional information was available. It publishes
-        no diurnal profile of snow removal.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'Snow removal in this article is a threshold, not a schedule: a snow water equivalent
-    limit of 40 mm on buildings and 100 mm on pavement, applied uniformly across the sites because nothing
-    better was available. There is no diurnal profile in it. The all-zero sibling is now explicitly
-    unreferenced; this citation does not support either Helsinki switching pattern.'
-  evidence_revision: sha256:d5709a0f82a496d256276261a45b127c9a56614d8a609a9154a361f74a970f1c
+  evidence: []
+  attempted_sources:
+  - source: jarvi2014
+    attempted_at: '2026-08-24T12:45:00Z'
+    outcome: not_found
+    note: The article specifies snow-water-equivalent removal limits but does not state or derive an all-one
+      24-hour switching profile.
+  - description: SUEWS 2017b SUEWS_Profiles.txt, row 90000
+    url: https://github.com/UMEP-dev/SUEWS/blob/9b7ed6b1c0217a54dc461ea9932321ba940df29c/ReleaseRepo/Input/SUEWS_Profiles.txt#L15
+    attempted_at: '2026-08-24T12:45:00Z'
+    outcome: incomplete
+    note: The fixed release row exactly preserves the all-one vector and labels it arbitrary, but it is a
+      configuration artifact rather than a parameter publication.
+  scientific_note: Järvi et al. (2014) models removal through snow-water-equivalent thresholds, not an hourly
+    schedule. The fixed SUEWS 2017b release preserves this exact vector as row 90000, Arbitrary (constant all
+    day). The values remain unchanged as an explicit assumption; unsupported Helsinki/city evidence scope
+    and the paper attribution are removed while the stable path and origin preserve migration lineage.
+  evidence_revision: sha256:b6c2416b0b913a6bfdafa228aa25ec892fbda0cdf75cff80a851e43d679b0023
 verification:
   attestations: []

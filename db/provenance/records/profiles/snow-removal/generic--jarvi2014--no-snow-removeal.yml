@@ -7,7 +7,7 @@ dependency_revisions:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places: {}
   records:
-    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:6faf655037c29fec22a19f4c91ba67b65c0f8cf9571f3e711177213022429baa
+    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
 assessment:
   status: curation_required
@@ -69,6 +69,6 @@ assessment:
     a Helsinki daytime snow-removal row. This unchanged all-zero record is therefore an explicit model
     configuration assumption: source unreferenced and method assumed. Its display name is corrected to
     No snow removal; the stable path retains the historical misspelling because it is record identity.'
-  evidence_revision: sha256:bf35e0f6a9413439bae96d9af80e36a753931ddd6381526cd9d0ae356ff07f88
+  evidence_revision: sha256:3dfd84b319fadf2cbd52e14533ec1529086aa4d0771ce3b295009e61e7439373
 verification:
   attestations: []
