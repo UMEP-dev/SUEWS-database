@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
-    records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
+    records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:43:17Z'
@@ -86,7 +86,7 @@ assessment:
       note: 'The composite declares place zurich, which db/places.yml records as Zurich, Koppen Cfb, country
         switzerland. Not one of its seven components declares that place. The albedo, emissivity, water_storage
         and snow_lim_patch slots take Helsinki records, which db/places.yml records as Koppen Dfb; the
-        drainage slot takes records/surfaces/paved/london--jarvi2011--drainage, place london; the construction
+        drainage slot takes records/surfaces/paved/london--jarvi2011--drainage, place generic; the construction
         record declares place generic and records/ohm/generic--unreferenced--paved declares no place.
         The database holds Zurich records elsewhere, under records/surfaces/evetr/, records/surfaces/grass/,
         records/surfaces/dectr/, records/surfaces/common/ and records/irrigation/, but none for land_cover.paved,
@@ -106,8 +106,8 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The four Helsinki components and records/surfaces/paved/london--jarvi2011--drainage
-        all declare city, records/constructions/generic--lindberg-f2020--placeholder declares generic
+      note: The composite declares representativeness city. The four Helsinki components declare city;
+        the drainage and construction records declare generic,
         and records/ohm/generic--unreferenced--paved declares no representativeness. No component is classed
         below the composite's scale, so the class fit is sound even though the places are not.
     method:
@@ -164,8 +164,8 @@ assessment:
   - id: component-surfaces-paved-london--jarvi2011--drainage
     record: records/surfaces/paved/london--jarvi2011--drainage
     role: component
-    note: Fills the drainage slot. The record declares target land_cover.paved, name 'Paved [sample run]',
-      place london, representativeness city and source jarvi2011, and carries drain_eq, drain_coef_1,
+    note: Fills the drainage slot. The record declares target land_cover.paved, name Paved,
+      place generic, representativeness generic and source jarvi2011, and carries drain_eq, drain_coef_1,
       drain_coef_2 and wet_threshold.
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
@@ -189,7 +189,7 @@ assessment:
       no place, no representativeness and no season_label.
   scientific_note: 'archetypes/surfaces/paved/zurich--city-centre is a Zurich typology with no Zurich
     content. Its albedo, emissivity, water storage and snowpack limit come from Helsinki, its drainage
-    from a London record named ''Paved [sample run]'', its construction from a record named Placeholder
+    from a generic literature record, its construction from a record named Placeholder
     and its four OHM positions from a generic row whose source field reads unreferenced. Scarcity explains
     part of that, since the database holds no paved surface record for Zurich at all, and its Zurich records
     sit under vegetation, soil and irrigation instead. Scarcity does not explain the shape of the result.
@@ -201,6 +201,6 @@ assessment:
     row may simply have inherited its neighbours'' references during migration. A maintainer should settle
     it, and should settle it together with the duplication between the two Helsinki entries, because the
     same seven components carry all three.'
-  evidence_revision: sha256:5a81d7b34154384af43fb0dc9b5d421729730d611bf541597992fc6f6f98e527
+  evidence_revision: sha256:6790186496d697b14ff85b326d14d5368cede410d6ccbf1ecbf1d20061725100
 verification:
   attestations: []

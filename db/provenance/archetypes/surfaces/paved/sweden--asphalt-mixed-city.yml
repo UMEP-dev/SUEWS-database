@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
-    records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
+    records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T00:43:17Z'
@@ -83,7 +83,7 @@ assessment:
         database holds no paved surface record and no OHM record for Sweden. The albedo, water_storage
         and snow_lim_patch slots take Helsinki records, the emissivity slot takes records/surfaces/paved/generic--kotthaus2014--emissivity--grey-white-concrete-new
         with place london, the drainage slot takes records/surfaces/paved/london--jarvi2011--drainage
-        with place london, and records/ohm/generic--unreferenced--paved declares no place. The Swedish
+        with place generic, and records/ohm/generic--unreferenced--paved declares no place. The Swedish
         records the database does hold are four building-fabric records under records/constructions/ and
         the two LUCY profile records; the construction slot takes the generic placeholder instead, as
         every one of the seven paved archetypes does, and that slot contributes no exported value because
@@ -100,12 +100,12 @@ assessment:
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
       note: 'The composite declares representativeness regional, the class this database uses for country-scale
-        and subnational entries. Four of its components declare city: records/surfaces/paved/helsinki--jarvi2014--albedo,
-        records/surfaces/paved/helsinki--jarvi2014--water-storage, records/surfaces/paved/helsinki--jarvi2014--snow-lim
-        and records/surfaces/paved/london--jarvi2011--drainage. One declares site, one declares generic,
+        and subnational entries. Three of its components declare city: records/surfaces/paved/helsinki--jarvi2014--albedo,
+        records/surfaces/paved/helsinki--jarvi2014--water-storage and records/surfaces/paved/helsinki--jarvi2014--snow-lim.
+        One component declares site, the drainage and construction records declare generic,
         and records/ohm/generic--unreferenced--paved
         declares no representativeness at all. A country default therefore publishes three Helsinki values
-        and two London values as though they were representative of Sweden. Nothing in the database closes
+        and one London value as though they were representative of Sweden, alongside generic defaults. Nothing in the database closes
         the gap, since no Swedish paved record of any class exists, so a maintainer has to decide whether
         the entry keeps the regional class, is reclassified, or is withdrawn.'
     method:
@@ -160,8 +160,8 @@ assessment:
   - id: component-surfaces-paved-london--jarvi2011--drainage
     record: records/surfaces/paved/london--jarvi2011--drainage
     role: component
-    note: Fills the drainage slot. The record declares target land_cover.paved, name 'Paved [sample run]',
-      place london, representativeness city and source jarvi2011, and carries drain_eq, drain_coef_1,
+    note: Fills the drainage slot. The record declares target land_cover.paved, name Paved,
+      place generic, representativeness generic and source jarvi2011, and carries drain_eq, drain_coef_1,
       drain_coef_2 and wet_threshold.
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
@@ -185,7 +185,7 @@ assessment:
       no place, no representativeness and no season_label.
   scientific_note: 'This is a country-scale default assembled almost entirely from one city''s rows. archetypes/surfaces/paved/sweden--asphalt-mixed-city
     declares place sweden and representativeness regional, and then takes its albedo, water storage and
-    snowpack limit from Helsinki, its drainage from a London record named ''Paved [sample run]'', its
+    snowpack limit from Helsinki, its drainage from a generic literature record, its
     emissivity from a London/site spectral-library row for grey and white concrete, and its four OHM positions
     from a generic row whose source field reads unreferenced. The place side of that is not a defect:
     the database holds no Swedish paved record of any kind, so borrowing is forced, and borrowing across
@@ -196,8 +196,8 @@ assessment:
     about the entry rather than about its components: keep the regional class and say what justifies it,
     reclassify the entry to the scale its evidence actually supports, or withdraw it. The Swedish building-fabric
     records under records/constructions/ do not bear on this, because the construction slot contributes
-    nothing to a paved surface fragment. The ''sample run'' label on the drainage record and the unreferenced
-    source on the OHM record are questions for those records'' own evidence reviews.'
-  evidence_revision: sha256:bea68875159dbd493f4573aa63586d270501e054074aaeea73f899a7685e231c
+    nothing to a paved surface fragment. The drainage record is now documented as generic literature
+    evidence; the unreferenced source on the OHM record remains a question for that record''s own evidence review.'
+  evidence_revision: sha256:3ae6175f24982c3cae20ff3672283a3d2c738f29dba1a7d329a07d5a15ef1d32
 verification:
   attestations: []

@@ -1,0 +1,116 @@
+provenance_record: records/surfaces/paved/london--jarvi2011--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T16:27:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/308
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      note: Paved identifies the surface type in Järvi Table 2(a); the sample-run suffix described
+        only the later London workbook row and is not part of the active parameter identity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      note: Järvi defines the storage threshold and drainage formulation for the paved surface type.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      note: Table 2(a) gives paved Si 0.48 mm, D0 10 and b 3; Equation 19 defines the paved/nonvegetated
+        power-law drainage, and the v2016a London row stores selector 3 with the same complete tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      note: Järvi et al. are the immediate publication of the complete physical tuple. The release
+        workbook is later application/compilation evidence and does not replace the parameter source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/308
+      note: Järvi presents one literature parameter set by surface type and evaluates it outside London;
+        the v2016a workbook later reuses it in London. Generic is therefore the evidence place, while
+        origin London preserves the migrated workbook lineage.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/308
+      note: Generic reach describes a literature default reused across model applications, not a
+        London city-wide measurement or fit.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      note: Table 2(a) is explicitly organised by surface type and assigns the tuple to Pavement, so
+        it describes the paved land-cover class rather than a whole-neighbourhood aggregate.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      note: Literature accurately describes adoption of a published model-input tuple; this record
+        performs no new measurement, fit or calculation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-paved-parameters
+      - release-london-row
+      note: The stable path, origin, source, legacy ID, target and values retain the migrated v2016a
+        row identity while the active fields now describe its scientific evidence.
+  evidence:
+  - id: jarvi-paved-parameters
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Pavement column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes pavement storage capacity Si 0.48 mm, D0 10 and b 3 as model parameters by surface type.
+    - kind: equation
+      label: Equation 19, paved surface, roofs and irrigated vegetation drainage
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines the power-law drainage form used for paved surfaces and states that D0 and b come from the literature.
+  - id: release-london-row
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_SiteInfo18_Lo.xlsm, SUEWS_NonVeg sheet, London paved row 8
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: Stores DrainageEq 3, DrainageCoef1 10, DrainageCoef2 3 and WetThreshold 0.48 in the
+        later London sample configuration, confirming application without making London the parameter origin.
+  scientific_note: 'Järvi et al. publish a paved-surface literature parameter set and evaluate SUEWS
+    in Vancouver and Los Angeles. The v2016a workbook later reuses the same complete tuple in a London
+    sample row. The record is therefore an active generic land-cover literature default; London remains
+    only as stable-path and origin lineage. No parameter value, source key, target or legacy ID changed.'
+  evidence_revision: sha256:cd7a5aed6b86d07c3e08b36c2b3327414a6dfaabc0221d96d9e269e20f177e22
+verification:
+  attestations: []
