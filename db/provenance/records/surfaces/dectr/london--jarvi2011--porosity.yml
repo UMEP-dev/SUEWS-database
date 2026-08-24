@@ -1,0 +1,80 @@
+provenance_record: records/surfaces/dectr/london--jarvi2011--porosity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:37:35Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: The fixed implementation labels both bounds as deciduous-tree porosity, matching the preserved
+        Deciduous Tree name.
+    target:
+      conclusion: supported
+      note: The implementation assigns PorMin_dec and PorMax_dec specifically for DecTr and DecidSurf,
+        matching the land_cover.dectr target.
+    values:
+      conclusion: supported
+      note: SUEWS 2016a hard-codes PorMin_dec as 0.2 and PorMax_dec as 0.6 exactly.
+    source:
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/301
+      note: Järvi et al. describe porosity varying with deciduous-tree LAI but do not state either bound.
+        No parameter publication is claimed for these implementation assumptions, so source unreferenced
+        is the honest declaration.
+    place:
+      conclusion: supported
+      note: The hard-coded bounds are applied by the implementation without a site or city condition,
+        so generic is supported. Origin London remains only as legacy migration history.
+    representativeness:
+      conclusion: supported
+      note: Generic matches fixed model defaults that are not derived for one observational site, city
+        or region.
+    applicable_scale:
+      conclusion: supported
+      note: The implementation assigns both bounds to the DecTr/DecidSurf land-cover class, supporting
+        land_cover rather than a whole-neighbourhood, facet or material scale.
+    method:
+      conclusion: supported
+      note: The exact values are hard-coded model defaults with no located scientific derivation, so assumed
+        is appropriate.
+    identity:
+      conclusion: supported
+      note: Stable path, legacy ID 34240002, values and origin London preserve the migrated row's identity
+        while separating migration history from evidence scope.
+  evidence: []
+  attempted_sources:
+  - source: jarvi2011
+    attempted_at: '2026-08-24T12:37:35Z'
+    outcome: not_found
+    note: Section 2.4.1 states only that tree porosity varies with deciduous-tree LAI and cites Grimmond
+      and Oke (1999); it does not publish 0.2 or 0.6 or identify a London parameterisation.
+  - description: SUEWS 2016a fixed implementation, SUEWS_translate.f95 lines 158-166
+    url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_translate.f95#L158-L166
+    attempted_at: '2026-08-24T12:37:35Z'
+    outcome: incomplete
+    note: The pinned source code establishes the exact hard-coded bounds and their deciduous-tree land-cover
+      semantics, but it is implementation evidence rather than a parameter publication and gives no scientific
+      derivation.
+  scientific_note: 'Järvi et al. (2011), Section 2.4.1, PDF page 222, say only that tree porosity varies
+    with deciduous-tree LAI and cite Grimmond and Oke (1999b); they publish neither bound. The fixed SUEWS
+    2016a implementation at https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_translate.f95#L158-L166
+    instead hard-codes PorMin_dec = 0.2 and PorMax_dec = 0.6 for DecTr. The unchanged values are therefore
+    represented as generic land-cover implementation assumptions: source unreferenced and method assumed.
+    Stable path, legacy ID and origin London retain the migration identity without claiming London evidence.'
+  evidence_revision: sha256:926d5785db46518c816d46dca31873dd51a9d47865de8e9caf4c9c09afcc288f
+verification:
+  attestations: []

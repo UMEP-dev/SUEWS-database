@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--jarvi2011--drainage: sha256:c00e3155911cfadebf62e1c2b6fc5a8fa98a9999fb54df070e12d627be8041f8
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
@@ -79,10 +79,11 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-lai
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-london-jarvi2011-porosity
       note: 'The composite claims place helsinki, and four of its twelve components carry that place,
         including both climate-conditioned ones: the snowpack limit and the four degree-day thresholds
-        are Helsinki records. Three carry place london, two carry place se-england, one is generic for
-        conductance, the albedo record is also generic and the OHM record carries no place. The leaf_area_index
+        are Helsinki records. Two carry place london, two carry place se-england, one is generic for
+        conductance, the albedo and porosity records are also generic and the OHM record carries no place. The leaf_area_index
         import is forced, since db/records/surfaces/dectr
         holds leaf-area-index records placed at beijing, se-england, shanghai and zurich and none placed
         at helsinki. The drainage component is placed at london and named "Deciduous Tree [sample run]",
@@ -93,9 +94,10 @@ assessment:
       evidence_ids:
       - component-surfaces-dectr-vancouver-jarvi2011-max-conductance
       - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
-      note: The composite claims representativeness city. Seven components are classed city, two regional
-        and two generic; those broader regional and generic values do not over-claim a city scale. The
+      note: The composite claims representativeness city. Six components are classed city, two regional
+        and three generic; those broader regional and generic values do not over-claim a city scale. The
         remaining OHM component declares no representativeness, carries source unreferenced and states
         in its own name that it averages codes including soil and water. A maintainer should decide whether
         that unclassified component is acceptable in a city composite or replace it.
@@ -168,9 +170,9 @@ assessment:
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
-    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
-      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
-      to all eight deciduous-tree composites.
+    note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
+      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
@@ -201,15 +203,15 @@ assessment:
     placed at helsinki, so the place claim holds. Everything that describes the canopy comes from elsewhere.
     The leaf growth power and the biogenic CO2 set are havu-m2024 records, the maximum conductance is
     a breuer2003 literature value classed generic, the albedo is a generic Vargo literature constant,
-    and the four storage-heat positions take
+    porosity is a generic implementation assumption, and the four storage-heat positions take
     an unreferenced average that its own name says includes soil and water. Two of those choices bear
     directly on what the composite claims to be: the unreferenced OHM average has no representativeness,
     and the mixed-deciduous typology takes the biogenic record named for street trees while the street-trees
-    typology takes the one named for trees plus grass. The generic conductance and albedo are broader
+    typology takes the one named for trees plus grass. The generic conductance, albedo and porosity are broader
     than a city and do not create a scale contradiction. The unresolved component choices cannot be settled
     from the entries and are not faults in the stored values. A maintainer should read the two Helsinki
     typologies against their publications together, since a swap in one implies the other. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:701191d4b8c8b14d310222d4a13589112141e276975a98ca358cd1b94651b984
+  evidence_revision: sha256:d54512ccb3a081eddb21a0a80e7c198fa89207e43d79475e6be1740fc363e310
 verification:
   attestations: []

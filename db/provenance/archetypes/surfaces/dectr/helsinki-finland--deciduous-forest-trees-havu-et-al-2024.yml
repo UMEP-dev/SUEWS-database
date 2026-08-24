@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
@@ -78,9 +78,9 @@ assessment:
       note: 'The composite claims place helsinki, and five of its twelve components carry that place, including
         both of the climate-conditioned ones: the snowpack limit and the four degree-day thresholds are
         Helsinki records, so nothing about the Nordic winter or the Nordic growing season has been imported.
-        Three components carry place london (emissivity, drainage, porosity), two carry place se-england
-        (water storage and leaf area index), the albedo record is generic and the OHM record carries no
-        place. The leaf_area_index import
+        Two components carry place london (emissivity and drainage), two carry place se-england (water
+        storage and leaf area index), the albedo and porosity records are generic and the OHM record carries
+        no place. The leaf_area_index import
         is forced: db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
         shanghai and zurich and none placed at helsinki, so that slot cannot be filled from the composite''s
         own city.'
@@ -90,11 +90,12 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-se-england-ward2016-lai
       - component-surfaces-dectr-helsinki-vargo2013-albedo
+      - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Eight components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+      note: The composite claims representativeness city. Seven components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
         and records/surfaces/dectr/se-england--ward2016--lai are classed regional, the albedo record is
-        generic and the OHM record declares no class. Regional and generic values cover a city; no component
-        claims a narrower scale than the composite does.
+        generic, the porosity record is generic and the OHM record declares no class. Regional and generic
+        values cover a city; no component claims a narrower scale than the composite does.
     method:
       conclusion: supported
       evidence_ids:
@@ -168,9 +169,9 @@ assessment:
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
-    note: Fills porosity. The record declares target land_cover.dectr, place london and representativeness
-      city. It carries source jarvi2011 and supplies porosity_min_deciduous and porosity_max_deciduous
-      to all eight deciduous-tree composites.
+    note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
+      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
@@ -193,12 +194,12 @@ assessment:
     records placed at Helsinki, two of them named for a forest in their own right. The two climate-conditioned
     slots, the snowpack limit and the degree-day thresholds, are Helsinki records as well, so the composite
     does not move a Nordic winter or a Nordic growing season anywhere. The non-Helsinki inputs are the
-    radiative, hydrological and canopy-structure slots from London and SE England, a generic Vargo albedo
-    and one generic storage-heat set. The leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
+    radiative and hydrological slots from London and SE England, a generic Vargo albedo, generic implementation
+    porosity and one generic storage-heat set. The leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
     leaf-area-index record at all. The two LAI records agree on lai.lai_type 1, so the slot pair does
     not mix equations. What is missing is only the written rationale for the imports, which no composite
     in this family carries and which the format expects a composition sidecar to supply. The components'
     values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:a97f50ab299b40ed0ca469c950246931c353ffe2b8a4be5a1f9bf76083012b8f
+  evidence_revision: sha256:d29add32af7989e054f36d8831433cbbf91183bb1b33c06dc0f36cbe8ff647a6
 verification:
   attestations: []
