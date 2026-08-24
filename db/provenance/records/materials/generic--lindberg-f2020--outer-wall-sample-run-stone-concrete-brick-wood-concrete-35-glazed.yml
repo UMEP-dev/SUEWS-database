@@ -1,0 +1,127 @@
+provenance_record: records/materials/generic--lindberg-f2020--outer-wall-sample-run-stone-concrete-brick-wood-concrete-35-glazed
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:167e8dbbdc6856a66138f7e193e72c000bd332ebfbe248870852624f91556dc3
+dependency_revisions:
+  sources:
+    lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
+  places: {}
+  records:
+    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T20:02:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/252
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      note: Archived code-801 wall-layer fixture identifies the retained release-layer configuration
+        without presenting it as one physical material or a verbatim Lindberg Table 2 value.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/252
+    target:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      note: The migrated row represents one material-layer reference selected by a construction record,
+        matching the material target even though its values are retained as configuration fields rather
+        than a source-published material specimen.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      - lindberg-table-2
+      note: The exact four-value tuple is supported only as preserved migration/configuration lineage.
+        Historical code 801 confirms wall-layer-one conductivity 0.760645 and volumetric heat capacity
+        1.046908363 MJ m-3 K-1. The migrated material row stores 1050 under specific_heat without density,
+        so it cannot honestly represent that volumetric quantity as a physical material property; the
+        optical values are not published by Lindberg Table 2.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      - lindberg-table-2
+      note: Unreferenced is correct because no publication states or derives this exact atomic four-value
+        material tuple. source_legacy_ref 90240057 preserves the Lindberg registry link recorded during
+        migration without exporting the article as the tuple's parameter source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/252
+    place:
+      conclusion: not_applicable
+      note: The generic fixture row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The fixture makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      note: Assumed marks the exact retained layer mapping as a configuration choice, not a measured,
+        fitted, calculated or verbatim literature material.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/252
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - estm-code-801
+      - central-london-configuration
+      note: Legacy ID 36243787 preserves a distinct material-registry row selected as wall layer one in
+        the retained Central London code-801 configuration. Its stable identity remains while the display
+        and provenance make its non-physical catalogue role explicit.
+  evidence:
+  - id: legacy-material-row
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36243787
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L59-L68
+      note: Names the row Outer wall [sample run], stores 0.5, 0.95, 0.760645 and 1050, leaves density
+        null, and carries Ref 90240057. This proves configuration lineage, not a publication claim.
+  - id: estm-code-801
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Historical SUEWS_ESTMCoefficients.txt, code 801 wall layer one
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/ESTM_input/SUEWS_ESTMCoefficients.txt#L10
+      note: Stores thickness 0.087 m, conductivity 0.760645 W m-1 K-1 and volumetric heat capacity
+        1046908.363 J m-3 K-1 for wall layer one of GLA Urban fabric >80. It does not publish an atomic
+        material with the migrated optical values or a specific-heat/density split.
+  - id: lindberg-table-2
+    source: lindberg-f2020
+    role: validation
+    locators:
+    - kind: table
+      label: Table 2, ESTM surface material properties
+      page: 274, 275
+      url: https://doi.org/10.1007/s00704-020-03189-1
+      note: Publishes six distinct London wall-class conductivity/volumetric-heat-capacity pairs and their
+        component material classes, not the historical code-801 layer-one tuple as one atomic material.
+  - id: central-london-configuration
+    record: records/constructions/uk--lindberg-f2020--central-london-sample-run
+    role: related
+    note: Selects this record as wall layer one of the retained Central London sample configuration.
+  scientific_note: >-
+    This record remains solely as an archived code-801 wall-layer fixture. Its stable path and exact legacy
+    values preserve the Central London construction record, but it is not presented as a physical material
+    published by Lindberg et al. Historical code 801 supplies k 0.760645 and rhoCp 1046908.363 for one wall
+    layer, while the migrated row stores 1050 under specific_heat with no density and adds optical values
+    absent from Table 2. Source unreferenced, method assumed and the archived display name make the boundary
+    explicit without guessing a density, changing values or rewriting downstream construction identity.
+  evidence_revision: sha256:801b6673c3d2139f8cde64ad98c7225b9e5005abc9953e30eee3296db2fb0e30
+verification:
+  attestations: []
