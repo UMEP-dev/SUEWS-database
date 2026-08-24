@@ -15,13 +15,13 @@ dependency_revisions:
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
-    records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
+    records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T10:03:00Z'
+  assessed_at: '2026-08-24T15:01:54Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -72,23 +72,17 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
-      note: 'The drainage slot takes records/surfaces/evetr/london--havu-m2024--drainage, which declares
-        place london and origin "London" while its own name reads "EvergreenTree - Helsinki, Zurich, Beijing"
-        and its source field reads jarvi2011 with method literature; its evidence sidecar retains the
-        Havu archive as later compilation. That record fills the drainage slot in exactly the five
-        evergreen-tree composites placed at the three cities its name lists, so the selection reads as
-        deliberate and the declared place as wrong, but nothing in the repository settles which of the
-        two is in error, and it should be settled once rather than five times. The rest of the borrowing
-        is ordinary and forced: albedo, emissivity and water_storage take se-england rows because the
-        database holds no Beijing radiative or storage record for evergreen trees, records/surfaces/evetr/helsinki--jarvi2014--snow-lim
-        is the only evergreen-tree snow limit in the database, so that borrow is forced, and vegetation_growth
-        takes a Helsinki record because no Beijing phenology record exists.'
+      note: 'The composite declares place beijing. Four components declare Beijing, while the generic
+        land-cover drainage tuple is openly a literature default rather than a Beijing fit. Albedo, emissivity
+        and water storage take SE England rows because no Beijing alternatives exist; the Helsinki snow
+        limit is the only evergreen-tree snow limit in the database, and no Beijing phenology record exists.
+        These transfers are explicit and do not misstate the drainage evidence as local.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -168,9 +162,9 @@ assessment:
   - id: component-surfaces-evetr-london-havu-m2024-drainage
     record: records/surfaces/evetr/london--havu-m2024--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
-      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads jarvi2011
-      and its method is literature. Havu's archive is retained as later compilation evidence.
+    note: Fills drainage. The record is the generic, land-cover-scale EvergreenTree literature tuple
+      compiled by Järvi et al.; its sidecar separates the original storage summary and drainage fit from
+      Havu's later Helsinki application.
   - id: component-surfaces-evetr-beijing-zheng-y2023-max-conductance
     record: records/surfaces/evetr/beijing--zheng-y2023--max-conductance
     role: component
@@ -206,17 +200,15 @@ assessment:
   scientific_note: 'Where Beijing evidence exists this composite uses it: leaf area index, leaf growth
     power, maximum conductance and biogenic CO2 all come from rows placed at beijing, three of them sourced
     to zheng-y2023, and the radiative, storage, snow and phenology slots borrow from SE England and Helsinki
-    because the database holds no Beijing rows for them. Two selections need a maintainer rather than
-    an agent. The leaf area index comes from records/surfaces/evetr/beijing--ward2016--lai, a row named
+    because the database holds no Beijing rows for them. One selection still needs a maintainer rather
+    than an agent: leaf area index comes from records/surfaces/evetr/beijing--ward2016--lai, a row named
     "Evergreen Tree (sample data)" that nonetheless supplies the lai_min and lai_max the model will run
-    on, and the drainage comes from records/surfaces/evetr/london--havu-m2024--drainage, whose place field
-    says london while its name says "EvergreenTree - Helsinki, Zurich, Beijing". The drainage record fills
-    that slot in all five of the composites placed at the three cities it names, so its place should be
-    settled once for the class. Everything else in the assembly is coherent: the slot set is complete,
+    on. The drainage component is now correctly explicit as generic land-cover literature evidence, with
+    Havu''s Helsinki configuration recorded only as later application. Everything else in the assembly is coherent: the slot set is complete,
     the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
     values. The leaf_growth_power component is a one-park site fit inside this city-classed composite,
     so its scale also needs explicit composition curation.'
-  evidence_revision: sha256:0e5ac64046a6610a53e6b3d9c12f6b13cbf4a3b8835a844c6155aad621005f9c
+  evidence_revision: sha256:14842f6989e19cd5373d22524e3cb7efa128e7bca6bdcb985c7a76cfe96eebd8
 verification:
   attestations: []

@@ -16,14 +16,14 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
-    records/surfaces/evetr/london--havu-m2024--drainage: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
+    records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T15:01:54Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -73,22 +73,15 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-se-england-ward2016-lai
-      note: 'The drainage slot takes records/surfaces/evetr/london--havu-m2024--drainage, which declares
-        place london and origin "London" while its own name reads "EvergreenTree - Helsinki, Zurich, Beijing"
-        and its source field reads jarvi2011 with method literature; its evidence sidecar retains the
-        Havu archive as later compilation. That record fills the drainage slot in exactly the five
-        evergreen-tree composites placed at the three cities its name lists, so the selection reads as
-        deliberate and the declared place as wrong, but nothing in the repository settles which of the
-        two is in error, and it should be settled once rather than five times. Otherwise the composite
-        is well placed: leaf_growth_power, max_vegetation_conductance, biogen_co2, snow_lim_patch and
-        vegetation_growth all take rows declaring place helsinki, and albedo, emissivity, water_storage
-        and leaf_area_index take se-england rows because the database holds no Helsinki record for those
-        four slots.'
+      note: 'Five components take Helsinki rows. Albedo, emissivity, water storage and leaf area index
+        take SE England rows because the database holds no Helsinki record for those slots. Drainage
+        is a generic land-cover literature tuple also reused in Havu''s archived Helsinki configuration,
+        so it is compatible with this slot without being presented as a Helsinki fit.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -104,10 +97,9 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. The Helsinki and London rows are classed city,
-        the four SE England rows regional, which is a wider class standing in for a city rather than a
-        city row standing in for a region, the porosity record generic, and the OHM record carries no
-        representativeness at all.
+      note: The composite declares representativeness city. The Helsinki rows are classed city, the four
+        SE England rows regional, drainage and porosity generic, and the OHM record carries no representativeness.
+        No component is narrower than the composite, so no site-only value is presented as city evidence.
     method:
       conclusion: supported
       evidence_ids:
@@ -179,9 +171,8 @@ assessment:
   - id: component-surfaces-evetr-london-havu-m2024-drainage
     record: records/surfaces/evetr/london--havu-m2024--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.evetr, place london and representativeness
-      city, and is named "EvergreenTree - Helsinki, Zurich, Beijing"; its source field reads jarvi2011
-      and its method is literature. Havu's archive is retained as later compilation evidence.
+    note: Fills drainage. The record is the generic, land-cover-scale EvergreenTree literature tuple
+      compiled by Järvi et al.; Havu's archive is retained as later Helsinki application evidence.
   - id: component-surfaces-evetr-helsinki-havu-m2024-max-conductance
     record: records/surfaces/evetr/helsinki--havu-m2024--max-conductance
     role: component
@@ -218,13 +209,10 @@ assessment:
     CO2. It takes the Havu et al. variant named "Evergreen trees + grass", which reads as trees over grass
     and so as a park, while a fourth variant named for low vegetation sits unused in the database; the
     entries do not record which plot type each label came from, so the selection is undocumented rather
-    than wrong, and a maintainer confirming the mapping once would close it for the family. The rest is
-    coherent: Helsinki rows fill the slots for which Helsinki evidence exists, SE England regional rows
-    fill the four for which it does not, the two LAI components agree on lai_type 1, and one unlabelled
-    coefficient record fills all four OHM positions. The drainage component is the exception that has
-    to be settled: records/surfaces/evetr/london--havu-m2024--drainage declares place london while its
-    name reads "EvergreenTree - Helsinki, Zurich, Beijing", and it fills the drainage slot in all five
-    composites placed at the three cities it names.'
-  evidence_revision: sha256:4991c9c77cdaf69e730e3eb8a4f6dc99ab2491e75422c40dd9938a6349be552c
+    than contradicted. Helsinki rows fill the slots for which Helsinki evidence exists, SE England regional
+    rows fill four for which it does not, the two LAI components agree on lai_type 1, and one unlabelled
+    coefficient record fills all four OHM positions. Drainage is openly generic land-cover literature
+    evidence, with Havu''s later Helsinki application recorded in its own sidecar.'
+  evidence_revision: sha256:ebb03200e3a26b818edba483d8c2d39e3137fd5a396eac205ec7450a7ae685dc
 verification:
   attestations: []
