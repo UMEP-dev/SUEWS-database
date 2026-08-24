@@ -29,9 +29,7 @@ MIXED = (
     "mixed-forest-20-mccaughey-1985"
 )
 KYOTO = "records/ohm/tokyo--unreferenced--buildings"
-KYOTO_REF_NULL = (
-    "records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan"
-)
+CURATION = "records/ohm/generic--jarvi2014--buildings"
 COMPOSITE = "archetypes/surfaces/evetr/tropics--broad-leaf"
 
 
@@ -77,11 +75,11 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertNotIn("Possible duplicate", kyoto)
         self.assertIn("class=\"signoff\"", kyoto)
 
-        ref_null = self.render(KYOTO_REF_NULL)
-        self.assertIn("Curation required", ref_null)
-        self.assertIn("Related record", ref_null)
-        self.assertNotIn("Possible duplicate", ref_null)
-        self.assertNotIn("class=\"signoff\"", ref_null)
+        curation = self.render(CURATION)
+        self.assertIn("Curation required", curation)
+        self.assertIn("Related record", curation)
+        self.assertNotIn("Possible duplicate", curation)
+        self.assertNotIn("class=\"signoff\"", curation)
 
     def test_remaining_review_states_are_explicit(self):
         self.assertEqual(provenance_state(None, self.policy), "unaudited")

@@ -1,87 +1,97 @@
 provenance_record: records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
+record_revision: sha256:77230eeb04fd0414e221d412d17545aa1b3b837f19fed9fac8dd3fac6286877f
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
     yoshida1991: sha256:fcc27d46008f732a089f68bb8ebce7e2b52fdf2e13611266a26002313a7b479e
   places:
     tokyo: sha256:3d523cca260989e582e52ba0a6a870d7fb57da2dc517dd16fc5fda94d5e9fde5
   records:
     records/ohm/tokyo--unreferenced--buildings: sha256:c73f86e56833977d1582eddd1a8ad5940595d6c3f971fe8448806c59439d4d9c
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T19:08:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:42:07Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/738
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - legacy-row-pair
-      note: Canyon (E-W), Japan is the verbatim label of pre-migration row 50240017; it is retained as
-        migration identity, not treated as proof of the row's scientific source or location.
+      - archived-row-50240017
+      note: Archived Tokyo E-W canyon configuration identifies the retained catalogue row without
+        presenting it as a second published or independently fitted OHM determination.
     target:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - parameter-publication
-      note: ohm_coefficients is structurally valid, but the intended building-archetype attachment is
-        a separate assembly choice and neither duplicate has a backlink.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/19
+      - archived-row-50240017
+      note: The archived row explicitly stores the three OHM coefficients under the Buildings surface.
+        Any future archetype attachment remains a separate composition question.
     values:
       conclusion: supported
       evidence_ids:
-      - legacy-row-pair
+      - archived-row-50240017
       note: Pre-migration row 50240017 directly stores 0.71, 0.04 and -39.7. This supports configuration
         lineage only; the matching published tuple belongs to the separately identified code-[10] row.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - legacy-row-pair
+      - archived-row-50240017
       - parameter-publication
-      note: Grimmond and Oke publish the matching tuple for the related code-[10] row, but this row's
-        Ref-null state does not authorize transferring that citation. Its own source remains unknown.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/738
+      note: Source unreferenced is required. The archived row has Ref null, and numeric equality does not
+        authorize transferring the Grimmond and Oke citation from the distinct code-[10] row. The pinned
+        repository artifact is compilation evidence for configuration identity, not a scientific source.
     place:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - legacy-row-pair
+      - archived-row-50240017
       - input-observations
-      note: The related code-[10] observations are from Kyoto, while this row says Tokyo and has no source
-        reference. Matching values and a generic Japan label do not settle which place belongs to row 50240017.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/738
+      note: Tokyo is retained solely as the row's explicit historical application label. It is not asserted
+        as an observation or fitting site; the related code-[10] observations are independently located
+        in Kyoto.
     representativeness:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - legacy-row-pair
-      note: Evidence reach cannot be assigned until this Ref-null row's own source and place are recovered.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/738
+      - archived-row-50240017
+      note: City describes the retained Tokyo-labelled application configuration only. It does not claim
+        city-wide empirical support or extend the Kyoto evidence to Tokyo.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - legacy-row-pair
-      note: The pre-migration row records no production method, and the fitted method of the related
-        evidence-backed row cannot be transferred by numeric equality alone.
+      - archived-row-50240017
+      note: Assumed is the honest classification because the Ref-null row preserves a configuration choice
+        without a documented calculation or independent fit. The fitted method of the related code-[10]
+        row is not transferred.
     identity:
       conclusion: supported
       evidence_ids:
+      - archived-row-50240017
       - legacy-row-pair
-      note: Stable path, legacy ID 50240017, missing code marker and Ref-null state preserve this as a
-        distinct unresolved migration row. Retention does not claim a second scientific determination
-        and does not transfer the verified Kyoto citation from the related code-[10] row.
+      note: Stable path, legacy ID 50240017, Tokyo origin, missing code marker and Ref-null state preserve
+        this as a distinct archived migration row. Retention does not claim a second scientific
+        determination and does not transfer the verified Kyoto citation from the related code-[10] row.
       related_records:
       - records/ohm/tokyo--unreferenced--buildings
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/738
   evidence:
+  - id: archived-row-50240017
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration OHM row 50240017
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/ohm.yml#L159-L168
+      note: The pinned migration transcript stores Buildings, Canyon (E-W), Japan, Tokyo origin, the
+        exact coefficient tuple, and Ref null as a distinct row.
+    note: This artifact establishes the retained configuration identity only; it is not a publication
+      of an independent Tokyo OHM fit.
   - id: input-observations
     source: yoshida1991
     role: validation
@@ -107,11 +117,11 @@ assessment:
     role: related
     note: Pre-migration row 50240012 carries the same tuple but includes code [10] and Ref 99240099,
       while this row 50240017 omits the code and stores Ref null; see https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/ohm.yml#L117-L170.
-  scientific_note: This Ref-null row is retained as a distinct raw migration identity, not treated as
-    a second scientific determination and not automatically credited with the verified Kyoto source chain
-    of the related code-[10] row. Its own source, place, representativeness and production method remain
-    unresolved under issue 738. Any future building-archetype attachment would require a separate
-    composition review.
-  evidence_revision: sha256:b95f0055beb19bb82dc0dd31548db83312896fcc87b2ab7ab6a053986a13db81
+  scientific_note: This Ref-null row is retained as a distinct archived Tokyo-labelled configuration,
+    not treated as a second scientific determination and not credited with the verified Kyoto source chain
+    of the related code-[10] row. Its stable path, origin, values and legacy ID remain unchanged. The
+    repository transcript establishes migration identity only; source remains unreferenced and method is
+    assumed. Any future building-archetype attachment requires a separate composition review.
+  evidence_revision: sha256:c74a9453c017012ce765d5ad117fae4699ff3bb3b1a5385d178fca9778c789a8
 verification:
   attestations: []

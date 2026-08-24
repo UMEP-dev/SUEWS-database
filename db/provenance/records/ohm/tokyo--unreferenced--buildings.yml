@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     kyoto: sha256:7b0f034fb43f3eadc4e833fd7b3d25adc9252eb1c910e7d4a9e96155502ffc96
   records:
-    records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
+    records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:77230eeb04fd0414e221d412d17545aa1b3b837f19fed9fac8dd3fac6286877f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T19:24:00Z'
@@ -76,12 +76,13 @@ assessment:
       note: >-
         Stable path, legacy ID 50240012, name code [10], populated legacy reference and the
         verified Kyoto source chain preserve this as the evidence-backed row. The separate
-        Ref-null row remains a distinct unresolved migration identity rather than being deleted,
-        aliased, or credited with this source by value matching alone.
+        Ref-null row remains a distinct archived configuration with source unreferenced and method
+        assumed, rather than being deleted, aliased, or credited with this source by value matching alone.
       related_records:
         - records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
       issue_urls:
         - https://github.com/UMEP-dev/SUEWS-database/issues/12
+        - https://github.com/UMEP-dev/SUEWS-database/issues/738
   evidence:
     - id: input-observations
       source: yoshida1991
@@ -112,17 +113,18 @@ assessment:
       role: related
       note: >-
         Pre-migration row 50240017 carries the same target and coefficient triplet but omits
-        code [10] and stores Ref null, unlike this row 50240012 with Ref 99240099. The pair is
-        visible at https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/ohm.yml#L117-L170.
+        code [10] and stores Ref null, unlike this row 50240012 with Ref 99240099. It is retained
+        as an archived unreferenced configuration. The pair is visible at
+        https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/ohm.yml#L117-L170.
   scientific_note: >-
     Yoshida et al. (1991) supplies the Kyoto canyon observations but no OHM coefficients.
     Grimmond and Oke (1999) publishes the stored fitted triplet. The corrected origin, resolved
     place and site-specific representativeness now all identify Kyoto while the stable path
     deliberately remains unchanged. The evidence-backed coefficient set applies to the canyon
     physical component (facet), not directly to a SUEWS land-cover class. The related Ref-null row
-    is retained only as a separate unresolved migration identity under issue 738. No source
-    identifies which current building archetype should attach this record, so any such attachment
-    remains a separate composition decision.
-  evidence_revision: sha256:774829a89d11a85e8b30adc19375638bbb7c4cde6b1db814e738e4b713e5a4df
+    is retained only as a separate archived configuration with source unreferenced and method assumed.
+    No source identifies which current building archetype should attach this record, so any such
+    attachment remains a separate composition decision.
+  evidence_revision: sha256:9d92c88e66da30c07fd425eb46e203c6ba3a54b9ae9ede7b926c0debd4868fbf
 verification:
   attestations: []
