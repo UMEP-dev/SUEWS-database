@@ -1,11 +1,12 @@
 record: records/anthropogenic/new-york--unreferenced
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Sailor et al.
+name: Archived New York anthropogenic configuration
 place: new-york
 origin: New York
 representativeness: city
 source: unreferenced
+method: assumed
 legacy_id: 53240771
 parameters:
   context:
