@@ -2,9 +2,9 @@ record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
 schema_version: '2026.5'
 target: land_cover.common
 name: Mixed trees
-place: beijing
+place: helsinki
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 30240000
 parameters:

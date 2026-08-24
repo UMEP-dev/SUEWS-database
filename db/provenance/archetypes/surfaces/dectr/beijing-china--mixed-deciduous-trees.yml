@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
-    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
     records/surfaces/dectr/beijing--ward2013--lai: sha256:0e594f9120547c56dbd483b638c381bd1063fe40ad827f0562c3f5d535755f5e
     records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
   status: curation_required
-  assessed_at: '2026-08-24T15:19:59Z'
+  assessed_at: '2026-08-24T16:58:31Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -37,9 +37,9 @@ assessment:
       - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       note: The composite is named "Mixed Deciduous Trees", its origin reads "Beijing, China" and its
-        place is beijing. Three Beijing-placed components make it a Beijing typology, namely the leaf growth
-        power, the maximum conductance and the biogenic CO2 set. The leaf area index is a generic literature
-        input used by the Beijing configuration. The
+        place is beijing. Two components retain Beijing evidence, namely leaf growth power and maximum
+        conductance, while the biogenic CO2 set is now correctly scoped to its Viikki, Helsinki evidence
+        site. The leaf area index is a generic literature input used by the Beijing configuration. The
         albedo component is named "Deciduous Forest"; only the biogenic CO2 component carries the
         mixed qualifier in its name, "Mixed trees". Alone among the eight deciduous-tree composites
         this label names no study, so it claims nothing about authorship that the components could contradict.
@@ -74,10 +74,12 @@ assessment:
       - component-surfaces-dectr-london-ward2016-emissivity
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       note: 'The composite claims place beijing, registered in db/places.yml with Koppen class Dwa, but
-        only three of its twelve components carry that place. Two carry place helsinki, registered Dfb;
+        only two of its twelve components carry that place. Three carry place helsinki, registered Dfb;
         one carries place london, registered Cfb; one carries place se-england, four are generic; and the
-        OHM record carries no place at all. Two of the Helsinki imports are conditioned on climate rather than on species:
+        OHM record carries no place at all. The newly explicit Helsinki component is the Viikki Tilia
+        biogenic fit applied by Zheng in Beijing. Two other Helsinki imports are conditioned on climate rather than on species:
         records/surfaces/dectr/helsinki--jarvi2014--snow-lim supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology
         supplies the growing- and senescing-degree-day thresholds, both set for a cold-climate Nordic
         city and carried here into a monsoon-influenced continental one. Drainage is now correctly declared
@@ -91,9 +93,11 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       note: The composite claims representativeness city, but its leaf_growth_power component is now
-        correctly classed site because the coefficients were fitted to one park. A city archetype therefore
-        contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
+        correctly classed site because the coefficients were fitted to one park, and its biogenic CO2
+        component is site evidence from Viikki. A city archetype therefore contains two narrower site-only
+        fits. Whether to retain them knowingly or narrow the composite is
         a separate composition-curation decision. The regional water-storage record is broader than
         the composite and the generic drainage, albedo and porosity records are broader still, so none creates the
         same over-claim; the OHM record declares no class.
@@ -124,9 +128,10 @@ assessment:
   - id: component-surfaces-common-beijing-zheng-y2023-biogen-co2
     record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place beijing and representativeness
-      city. It is named "Mixed trees" and carries source zheng-y2023; docs/FORMAT.md defines land_cover.common
-      as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
+    note: Fills biogen_co2. The stable Beijing-path record declares target land_cover.common, place helsinki
+      and representativeness site. Its values are the mixed Finnish tuple compiled by Zheng for Beijing;
+      docs/FORMAT.md defines land_cover.common as the surface-agnostic target, so it is admissible in a
+      deciduous-tree composite.
   - id: component-surfaces-dectr-beijing-ward2013-lai
     record: records/surfaces/dectr/beijing--ward2013--lai
     role: component
@@ -184,14 +189,15 @@ assessment:
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
       regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
-  scientific_note: 'The Beijing-specific content of this typology is real but partial. Three slots take
-    Beijing records: the leaf growth power, maximum conductance and biogenic CO2 set from zheng-y2023,
-    whose registered title in db/sources.yml is about simulating heat and CO2 fluxes in Beijing. The
+  scientific_note: 'The Beijing-specific content of this typology is real but partial. Two slots take
+    Beijing evidence: leaf growth power and maximum conductance from zheng-y2023. The biogenic CO2 slot
+    retains its stable Beijing path and Zheng source but is now correctly scoped to the Viikki, Helsinki
+    site where its strongest local fit was produced. The
     leaf area index is a generic literature input from jarvi2011. The LAI pair is internally consistent,
     both records declaring lai.lai_type
     0, and the targets and the OHM mapping are sound. The leaf_growth_power component is a one-park site
-    fit inside this city-classed composite, which now requires explicit composition curation. The remaining
-    nine slots are imports, and two of
+    fit inside this city-classed composite, which now requires explicit composition curation. The biogenic
+    site transfer creates the same explicit scale question. Of the other imports, two
     them matter more than the rest: the snowpack limit and the four degree-day thresholds both come from
     Helsinki, a Dfb city, into a composite placed at Beijing, a Dwa city, and both quantities describe
     when snow accumulates and when leaves appear and fall rather than what a deciduous tree is. Drainage
@@ -200,6 +206,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:edd7e0206aa4688ddf353d63413c10e623caa95d3d3dbfcfe4d38b6a7818acbb
+  evidence_revision: sha256:826ddb837b8f14b524718868d844110d4d5868b73de46ca63778b93f06f0e8d7
 verification:
   attestations: []

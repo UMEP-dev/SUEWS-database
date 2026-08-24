@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
-    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:e91340b00fc82db2bf09bd60c9fc472abaea70ce553937178216809dd6eb6be6
+    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
     records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
     records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:499ec6a2d278839b2eb1aa2c6361d80992e53aa74718b4c55c16a8e050f41b79
     records/surfaces/evetr/beijing--zheng-y2023--max-conductance: sha256:6145a6acf68b5e07dbed85748d776d8c56e986d78e5a4bf1f8feff0dc52bb6b0
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
 assessment:
   status: curation_required
-  assessed_at: '2026-08-24T15:01:54Z'
+  assessed_at: '2026-08-24T16:58:31Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -35,10 +35,11 @@ assessment:
       - component-surfaces-evetr-beijing-zheng-y2023-max-conductance
       - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       note: 'The composite is named "Mixed Evergreen Trees" and declares place beijing with origin "Beijing,
-        China". What distinguishes it from the other evergreen-tree composites is a group of Beijing rows:
-        leaf_area_index, leaf_growth_power, max_vegetation_conductance and biogen_co2 all take records
-        declaring place beijing, the last three sourced to zheng-y2023, and the biogenic CO2 record is
-        itself named "Mixed trees". The label identifies what the composite assembles.'
+        China". What distinguishes it from the other evergreen-tree composites is a group assembled for
+        Beijing: leaf_area_index, leaf_growth_power and max_vegetation_conductance take Beijing records,
+        while biogen_co2 takes the stable Beijing-path row now correctly scoped to its Viikki, Helsinki
+        evidence site. The latter three carry source zheng-y2023, and the biogenic CO2 record is itself
+        named "Mixed trees". The label identifies what the composite assembles.'
     target:
       conclusion: supported
       evidence_ids:
@@ -78,19 +79,23 @@ assessment:
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
-      note: 'The composite declares place beijing. Four components declare Beijing, while the generic
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
+      note: 'The composite declares place beijing. Three components declare Beijing, while the generic
         land-cover drainage tuple is openly a literature default rather than a Beijing fit. Albedo, emissivity
         and water storage take SE England rows because no Beijing alternatives exist; the Helsinki snow
-        limit is the only evergreen-tree snow limit in the database, and no Beijing phenology record exists.
-        These transfers are explicit and do not misstate the drainage evidence as local.'
+        limit is the only evergreen-tree snow limit in the database, no Beijing phenology record exists,
+        and the biogenic CO2 component is site evidence from Viikki, Helsinki. These transfers are explicit
+        and do not misstate their evidence as local.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-beijing-ward2016-lai
       - component-surfaces-evetr-beijing-zheng-y2023-lai-power
+      - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       note: 'The composite declares representativeness city. Its leaf_growth_power component is now correctly
-        classed site because the coefficients were fitted to one park, so retaining it in a city archetype
-        requires an explicit composition decision. A second issue remains in leaf_area_index: it takes
+        classed site because the coefficients were fitted to one park, and its biogenic CO2 component is
+        site evidence from Viikki. Retaining either in a city archetype requires an explicit composition
+        decision. A further issue remains in leaf_area_index: it takes
         records/surfaces/evetr/beijing--ward2016--lai, which declares place beijing and representativeness
         city but is named "Evergreen Tree (sample data)" and is reported by the quality pass as a suspect
         name. The SE England records are regional and therefore broader than the composite; porosity is
@@ -178,8 +183,9 @@ assessment:
   - id: component-surfaces-common-beijing-zheng-y2023-biogen-co2
     record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place beijing and representativeness
-      city, and is named "Mixed trees"; its source field reads zheng-y2023.
+    note: Fills biogen_co2. The stable Beijing-path record declares target land_cover.common, place helsinki
+      and representativeness site. It is named "Mixed trees" and its source field remains zheng-y2023
+      because Zheng compiled the mixed Finnish tuple for the Beijing application.
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
@@ -198,17 +204,19 @@ assessment:
       grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
       representativeness.
   scientific_note: 'Where Beijing evidence exists this composite uses it: leaf area index, leaf growth
-    power, maximum conductance and biogenic CO2 all come from rows placed at beijing, three of them sourced
-    to zheng-y2023, and the radiative, storage, snow and phenology slots borrow from SE England and Helsinki
-    because the database holds no Beijing rows for them. One selection still needs a maintainer rather
+    power and maximum conductance come from rows placed at beijing, two of them sourced to zheng-y2023.
+    Biogenic CO2 retains its stable Beijing path and Zheng source but is now correctly scoped to its Viikki,
+    Helsinki site evidence. The radiative, storage, snow and phenology slots borrow from SE England and
+    Helsinki because the database holds no Beijing rows for them. One selection still needs a maintainer rather
     than an agent: leaf area index comes from records/surfaces/evetr/beijing--ward2016--lai, a row named
     "Evergreen Tree (sample data)" that nonetheless supplies the lai_min and lai_max the model will run
     on. The drainage component is now correctly explicit as generic land-cover literature evidence, with
     Havu''s Helsinki configuration recorded only as later application. Everything else in the assembly is coherent: the slot set is complete,
     the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
-    values. The leaf_growth_power component is a one-park site fit inside this city-classed composite,
-    so its scale also needs explicit composition curation.'
-  evidence_revision: sha256:14842f6989e19cd5373d22524e3cb7efa128e7bca6bdcb985c7a76cfe96eebd8
+    values. The leaf_growth_power component is a one-park site fit and the biogenic CO2 component is a
+    Viikki site compilation inside this city-classed composite, so their scale needs explicit composition
+    curation.'
+  evidence_revision: sha256:aa58c41df93704487bf08040555321377555a66ca83b3bd0e73d8a05d65b483f
 verification:
   attestations: []
