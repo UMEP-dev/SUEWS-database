@@ -1,7 +1,9 @@
 record: records/ohm/generic--unreferenced--buildings
 schema_version: '2026.5'
 target: ohm_coefficients
-name: Rooftop average (of Taesler, Yap and Yoshida, as in Grimmond et al. 1992) [798]
+name: Rooftop average [798]
+applicable_scale: facet
+method: calculated
 source: unreferenced
 legacy_id: 50240023
 parameters:
