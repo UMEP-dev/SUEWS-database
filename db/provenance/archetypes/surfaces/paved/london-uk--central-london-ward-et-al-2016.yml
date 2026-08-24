@@ -8,7 +8,7 @@ dependency_revisions:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records:
     archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016: sha256:66e4bfd8c26d222b3dbddea8505e91872e65174da784d5d1de91fef53ec7d41a
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:ff506cabb2dc02ddf2b9fe043709a35d3e89eac0d7ce78341ac6c10497064ddf
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
@@ -169,7 +169,7 @@ assessment:
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: component
-    note: Fills the construction slot. The record declares target construction, name Placeholder, place
+    note: Fills the construction slot. The record declares target construction, name Archived internal construction fixture, place
       generic, representativeness generic, source unreferenced and method assumed, and carries roof and wall layer lists
       with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
       slot out of the surface fragment, so this reference contributes no exported value.
@@ -202,11 +202,12 @@ assessment:
     one labelled Winter fills the two winter positions, and since neither record carries a wetness label
     the wet and dry positions within a season taking the same coefficients contradicts nothing. Two slots
     leave the ward2016 set. snow_lim_patch takes the Helsinki record because it is the only paved snowpack-limit
-    record in the database, and construction takes a record named Placeholder, which changes no exported
+    record in the database, and construction takes an archived internal construction fixture, which changes no exported
     number because scripts/export_record.py keeps the construction slot out of the surface fragment. Neither
     is a selection error. Together with the water-storage and drainage source corrections, four component slots therefore
-    do not declare ward2016. The components'' own values, and the ''sample run'' and Placeholder labels some
-    of them carry, remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:d2b67337ab72c33085fc9d17c17de7504fbcdae00af595fe85feefc3537bff3e
+    do not declare ward2016. The fixture identity is explicit rather than a physical construction claim;
+    the other components'' own values and any ''sample run'' labels remain subject to their own evidence
+    assessments, which this review does not revisit.'
+  evidence_revision: sha256:ca02677c7470de72bdad277420da5a3e5eb87ccf41472c2961ec9bdc13d86d1c
 verification:
   attestations: []

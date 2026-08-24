@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/paved/helsinki--kumpula: sha256:9da1346d28ae822bf40091a56cb17317f84d050b281d4d5937600adecfca454f
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:ff506cabb2dc02ddf2b9fe043709a35d3e89eac0d7ce78341ac6c10497064ddf
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/generic--unreferenced--paved: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
@@ -163,7 +163,7 @@ assessment:
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: component
-    note: Fills the construction slot. The record declares target construction, name Placeholder, place
+    note: Fills the construction slot. The record declares target construction, name Archived internal construction fixture, place
       generic, representativeness generic, source unreferenced and method assumed, and carries roof and wall layer lists
       with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
       slot out of the surface fragment, so this reference contributes no exported value.
@@ -193,6 +193,6 @@ assessment:
     carries the same seven components again under a Zurich label, so whatever is decided here bears on
     that entry too. The drainage record is now documented as generic literature evidence; the OHM record
     still declares source unreferenced, a question for that record''s own evidence review rather than for the assembly.'
-  evidence_revision: sha256:03fe9ab21b6a29f50db386db75e44f8ced954c7ba82437337fe287c8914391cd
+  evidence_revision: sha256:bb44b08987ea1b7d6c35fd49b33e6d7a6cab7557b3ec932c3c6f71fecbf99662
 verification:
   attestations: []
