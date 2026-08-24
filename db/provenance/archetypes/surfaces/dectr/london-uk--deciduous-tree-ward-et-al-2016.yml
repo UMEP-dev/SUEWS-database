@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
-    records/surfaces/dectr/se-england--ward2016--drainage: sha256:9b2f37239f370169ddda58ca87fff27142039666d9d870073ab26688bac6f2cb
+    records/surfaces/dectr/se-england--ward2016--drainage: sha256:ee68ecf5fb01f073e0366ef5f1f701e7ffdce65ce5a83e382f8aa85677f3fbf9
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:4ef25b84129165ceb5be3ac8945325d577e8859546e202bf4675b1d806eec80f
@@ -40,7 +40,7 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-max-conductance
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and five of its thirteen components
+      note: 'The composite is named "Deciduous Tree Ward et al. (2016)" and four of its thirteen components
         declare source ward2016, registered in db/sources.yml as Ward, H. C.; Kotthaus, S.; Järvi, L.;
         Grimmond, C. S. B., 2016, "Surface Urban Energy and Water Balance Scheme (SUEWS): Development
         and evaluation at two UK sites", Urban Climate. The label names the study rather than the city,
@@ -177,7 +177,7 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--drainage
     role: component
     note: Fills drainage. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It carries source ward2016 and declares storage_drain_params.drain_eq 2.
+      regional. It carries source ward2018, method literature and storage_drain_params.drain_eq 2.
   - id: component-surfaces-dectr-se-england-ward2016-lai
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
@@ -208,7 +208,7 @@ assessment:
     note: Fills emissivity. The record declares target land_cover.dectr, place swindon and representativeness
       city. It is named "Deciduous trees" and carries source ward2016; its place is a different city from
       the one the composite claims.
-  scientific_note: Five of the thirteen components come from Ward et al. 2016, the study the label names,
+  scientific_note: Four of the thirteen components come from Ward et al. 2016, the study the label names,
     while seven components are placed at se-england, which contains London; maximum conductance is a Breuer
     literature value applied there; the two LAI records agree on lai.lai_type
     1; and the OHM mapping is the best in this family, with the summer record in both summer positions
@@ -222,6 +222,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:fd1a0633041e11a1097cb5c0b2dcbbabbb8f6967bbe363a6d93a35cb00b44239
+  evidence_revision: sha256:cda00c6627ec3e4ecdad2da90c32e6a2f66d64b37ace6fb3c0fc16bff7759c6a
 verification:
   attestations: []
