@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:cb5fd2090c28c17b90ad23574e3245f236607a739eec32602cb1c74bcbe272b4
+record_revision: sha256:dd41cc1b253e83f29fe5d2ff442d6853f4c1563853fda5285fc58bd913f11fd2
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -12,76 +12,97 @@ dependency_revisions:
     records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
     records/ohm/generic--unreferenced--water: sha256:5ac5e61baf6a9c9749b12d5a1bbfb5801c9ac90059f13f81c490415acadc0559
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:28:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: calculated
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - surface-coefficient-compilation
+      - grimmond-table-4
+      note: The name preserves legacy code 200 and states the seven component surface codes exactly.
     target:
       conclusion: supported
-      note: The result is structurally an OHM coefficient set.
+      evidence_ids:
+      - grimmond-table-4
+      note: Every input is a published OHM coefficient triplet and the result remains an OHM coefficient set.
     values:
       conclusion: supported
       evidence_ids:
-      - surface-coefficient-compilation
-      note: The component-wise mean of Table 4 codes 20, 30, 50, 51, 52, 53 and 60 rounds to 0.336, 0.313
-        and -31.4.
+      - grimmond-table-4
+      note: The component-wise means are 0.335714..., 0.312857... and -31.414285..., which round to
+        the stored 0.336, 0.313 and -31.4.
     source:
-      conclusion: not_applicable
+      conclusion: supported
+      evidence_ids:
+      - grimmond-table-4
+      note: Grimmond and Oke publish the seven inputs but not their code-200 mean; source unreferenced avoids
+        attributing the database calculation to the paper while retaining the input-data locator.
     place:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - mixed-forest-related
-      - short-grass-related
-      - bare-soil-related
-      - water-related
-      note: The stated arithmetic mean is recoverable, but codes 51, 52 and 53 have no current atomic
-        records, so the calculation cannot be represented as a complete database derivation.
+      - grimmond-table-4
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/280
+      note: The legacy V2016a coefficient table explicitly defines code 200 as the arithmetic mean of codes
+        20, 30, 50, 51, 52, 53 and 60; four current records and three external table rows represent every input.
     identity:
       conclusion: supported
       evidence_ids:
-      - surface-coefficient-compilation
+      - grimmond-table-4
+      note: The stored tuple and descriptive name match legacy code 200 unambiguously.
   evidence:
-  - id: surface-coefficient-compilation
+  - id: grimmond-table-4
     source: grimmond1999
-    role: compilation
+    role: input_data
     locators:
     - kind: table
-      label: Table 4, Greenspace/Open rows
-      page: 932
-      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-      note: Lists the seven component surface rows whose rounded arithmetic mean is stored.
-  - id: mixed-forest-related
+      label: Table 4, Greenspace/Open rows corresponding to legacy codes 20, 30, 50, 51, 52, 53 and 60
+      page: '932'
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
+      note: Lists the seven OHM input triplets; the V2016a SUEWS coefficient table identifies their
+        component-wise mean as legacy code 200.
+  - id: code20-input
     record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
-    role: related
-    note: Current atomic record for code 20.
-  - id: short-grass-related
+    role: input
+    note: Current atomic record for legacy code 20.
+  - id: code30-input
     record: records/ohm/generic--unreferenced--grass
-    role: related
-    note: Current atomic record for code 30.
-  - id: bare-soil-related
+    role: input
+    note: Current atomic record for legacy code 30.
+  - id: code50-input
     record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
-    role: related
-    note: Current atomic record for code 50.
-  - id: water-related
+    role: input
+    note: Current atomic record for legacy code 50.
+  - id: code60-input
     record: records/ohm/generic--unreferenced--water
-    role: related
-    note: Current atomic record for code 60.
-  scientific_note: The value arithmetic is supported, but three named inputs are missing as atomic records.
-    Maintainers must decide whether to restore those inputs or retain a legacy-only derivation.
-  evidence_revision: sha256:0fde1607f0b15dd97433069ee84e59b9bae1a74a08286ce75804666ba09b00e3
+    role: input
+    note: Current atomic record for legacy code 60.
+  derivation:
+    kind: arithmetic_mean
+    expression: round_componentwise((code20 + code30 + code50 + code51 + code52 + code53 + code60) / 7,
+      [3, 3, 1] decimal places)
+    external_inputs:
+    - {id: code51-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.33}
+    - {id: code52-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.35}
+    - {id: code53-a1, evidence_id: grimmond-table-4, parameter: a1, value: 0.36}
+    - {id: code51-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.07}
+    - {id: code52-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.43}
+    - {id: code53-a2, evidence_id: grimmond-table-4, parameter: a2, value: 0.27}
+    - {id: code51-a3, evidence_id: grimmond-table-4, parameter: a3, value: -34.9}
+    - {id: code52-a3, evidence_id: grimmond-table-4, parameter: a3, value: -36.5}
+    - {id: code53-a3, evidence_id: grimmond-table-4, parameter: a3, value: -42.4}
+  scientific_note: Grimmond and Oke publish the seven component triplets, while legacy SUEWS code 200 is
+    their internally calculated, component-wise rounded mean. Current atomic records preserve codes 20, 30,
+    50 and 60; external table inputs preserve codes 51-53. No parameter value has changed.
+  evidence_revision: sha256:0456a2e5d047b597555c9fa933e1bd4a5f38a34e4c533a75cc653792c70329c0
 verification:
   attestations: []

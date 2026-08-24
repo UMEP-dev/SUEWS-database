@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/grass/helsinki-finland--unirrigated-grass-jarvi-et-al-2014: sha256:fa311ef89032729e95317d5d4ba67fae9ea28f81401ddecf085a5acf2d09a901
     ? records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
-    : sha256:cb5fd2090c28c17b90ad23574e3245f236607a739eec32602cb1c74bcbe272b4
+    : sha256:dd41cc1b253e83f29fe5d2ff442d6853f4c1563853fda5285fc58bd913f11fd2
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
@@ -221,6 +221,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:706fac911f58d4b252345bd23940c67020f585e5b8f09723335b97182bbe9032
+  evidence_revision: sha256:d93265ba9f0be9d678124fc52f3dd1429a281fca2565535ef692d3d48aa04c58
 verification:
   attestations: []
