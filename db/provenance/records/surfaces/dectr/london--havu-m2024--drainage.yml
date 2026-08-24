@@ -1,91 +1,170 @@
 provenance_record: records/surfaces/dectr/london--havu-m2024--drainage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
+record_revision: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
 dependency_revisions:
   sources:
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    calder1986: sha256:d73a30e09ebfe24406af5f530d5fb2172f7f967d12a68fbb110fcd7ec9260fdc
+    grimmond1986: sha256:53075317bc44388b62880d5e3b599e2f23d0e5024a6811ab83bc8ee426b16fb6
+    grimmond1991a: sha256:e9541b04691b7ea8c632e4abe57f82c8575556f4bf7c7f8f5ba32569fd1f6310
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T17:09:40Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T15:19:59Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/231
   method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-archive
-      note: The surface category is correct, but the name "Deciduous Tree - Helsinki, Zurich, Beijing"
-        spans three cities while the inspected Havu archive rows are Helsinki configurations. Whether
-        the multi-city label reflects other migration inputs remains a curation question separate from
-        the source correction.
+      - jarvi-table-2
+      note: Deciduous Tree identifies the SUEWS surface class without presenting later application cities
+        as parameter origins.
     target:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. publish the values for deciduous trees and the Havu archive stores the tuple
-        in deciduous-tree rows, matching land_cover.dectr.
+      note: Breuer's storage summary is specifically deciduous, while Grimmond and Oke explicitly transfer
+        the Calder-Wright drainage fit to the deciduous urban-model surface. Järvi and Havu retain that
+        deciduous assignment, matching land_cover.dectr without assuming the conifer classification applies.
     values:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. (2011) Table 2 gives deciduous storage 0.3–0.8 mm, D0 0.013 and b 1.71, with
-        Eq. 18 defining the exponential drainage form. Havu's archived deciduous rows 831–834 carry WetThreshold
-        0.8, DrainageEq 3, DrainageCoef1 0.013 and DrainageCoef2 1.71, exactly matching the record.
+      note: Breuer et al. report 0.8 mm as the median of 30 deciduous-forest interception capacities.
+        Calder and Wright fit D = 0.013(exp(1.71 C) - 1) to Sitka-spruce measurements; Grimmond and Oke
+        then explicitly assign D0 0.013 and b 1.71 to deciduous vegetation and state 0.8 mm for in-leaf
+        deciduous trees. Järvi assemble the exact stored upper-limit tuple, and Havu reproduce it unchanged.
     source:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. (2011) is the parameter publication. The Havu archive is retained as compilation
-        evidence showing where the later configuration reused the tuple.
+      note: Järvi et al. are the immediate publication of the complete SUEWS tuple carried by the record's
+        single source field. The evidence list keeps the original deciduous storage summary, original
+        conifer drainage fit, explicit urban-model transfer to deciduous vegetation, and Havu application
+        distinct. Järvi's b-row footnote to Grimmond et al. (1986) is unsupported by that full text.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-archive
-      note: The record declares London, but the inspected Havu rows are labelled Helsinki forest, street
-        and park configurations, while the record name also lists Zurich and Beijing. The source correction
-        does not settle which application place or places this migrated record should declare.
-    representativeness:
-      conclusion: curation_required
-      evidence_ids:
+      - breuer-table-7
+      - grimmond-oke-adoption
       - jarvi-table-2
-      - havu-archive
-      note: The record declares city, but Järvi et al. publish a literature parameter and Havu's archive
-        shows configuration reuse rather than a city-wide determination. The correct application scope
-        should be settled with the place question.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/231
+      note: The active tuple is a literature default assembled for the deciduous surface class rather
+        than a London, Helsinki, Zurich or Beijing determination, so generic is the supported evidence
+        place. Origin London preserves the migrated row lineage.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
+      - jarvi-table-2
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/231
+      note: Generic reach describes a compiled literature default reused across cities, not a city-wide
+        determination. The sidecar exposes that the drainage coefficients were fitted to Sitka spruce
+        and later assigned to deciduous vegetation instead of presenting them as deciduous measurements.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - grimmond-oke-adoption
+      - jarvi-table-2
+      note: The publications assign the tuple to the deciduous-tree surface type, establishing land-cover-class
+        scale rather than neighborhood, facet or material scale.
     method:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
-      note: Literature accurately describes transcription of an earlier published parameter tuple.
+      note: Literature accurately describes adoption of previously published storage and drainage values;
+        this record performs no new fit.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi-table-2
       - havu-archive
-      note: One deciduous drainage record holds the upper storage threshold, drainage equation selector
-        and two coefficients that travel together in the archived SUEWS vegetation rows.
+      note: The stable path, origin, target, source, legacy ID and all four values preserve the migrated
+        record identity while the active name and scope now describe the evidence rather than applications.
   evidence:
+  - id: breuer-table-7
+    source: breuer2003
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 7, deciduous forest interception capacity
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Reports Ic = 0.8 mm as the median of 30 deciduous-forest values; this is the exact upper
+        storage value carried by the record, not a London or Havu measurement.
+  - id: calder-wright-fit
+    source: calder1986
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Accepted manuscript Appendix 1, abstract and Eqs. 9 and 13
+      url: https://nora.nerc.ac.uk/id/eprint/13072/1/N013072CR.pdf
+      note: Fits D = 0.013(exp(1.71 C) - 1) mm h-1 to Sitka-spruce canopy-storage measurements. This
+        is the original source of both coefficients, not a deciduous measurement; the later deciduous
+        assignment is located separately.
+  - id: grimmond-oke-adoption
+    source: grimmond1991a
+    role: compilation
+    locators:
+    - kind: section
+      label: Sections 3.6 and 3.7, Drainage and Storage Capacity
+      page: 1744
+      url: https://doi.org/10.1029/91WR00557
+      note: Defines the exponential vegetation drainage equation, points its coefficients upstream to
+        Calder and Wright, and describes storage capacity as literature-based and seasonally variable
+        for deciduous vegetation.
+    - kind: table
+      label: Table 2 and following storage-capacity text, Deciduous column
+      page: 1745
+      url: https://doi.org/10.1029/91WR00557
+      note: Assigns D0 = 0.013 and b = 1.71 to deciduous vegetation and states 0.3 mm when leafless and
+        0.8 mm when in leaf, explicitly establishing the stored upper value and cross-surface coefficient transfer.
   - id: jarvi-table-2
     source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, model parameter values by surface type
+      label: Table 2(a), Deciduous Trees column
       page: 223
       url: https://doi.org/10.1016/j.jhydrol.2011.10.001
-      note: Gives deciduous-tree storage Si 0.3–0.8 mm, maximum drainage rate D0 0.013 and coefficient
-        b 1.71; Eq. 18 on p. 224 defines the exponential drainage form for unirrigated vegetation.
+      note: Compiles Si = 0.3-0.8 mm, D0 = 0.013 and b = 1.71 for deciduous trees. Its storage footnote
+        points to Breuer and its D0 footnote to Grimmond and Oke (1991), but the b-row footnote to Grimmond
+        et al. (1986) is contradicted by that paper's full text; Calder and Wright fitted b with D0.
+    - kind: equation
+      label: Equation 18, unirrigated vegetation drainage
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines the exponential drainage form used by the equation selector and states that maximum
+        rates and coefficients come from the literature.
   - id: havu-archive
     source: havu-m2024
     role: compilation
@@ -94,13 +173,20 @@ assessment:
       label: Input_rcp.zip/Input_rcp/SUEWS_Veg.txt, rows 831–834
       url: https://doi.org/10.5281/zenodo.10572180
       note: The Helsinki forest, street and two park deciduous rows each carry WetThreshold 0.8, DrainageEq
-        3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later configuration reuse.
-  scientific_note: 'The parameter lineage is now explicit: Järvi et al. (2011) publishes the deciduous-tree
-    storage and drainage tuple, and Havu''s archived model input later reuses it in Helsinki deciduous
-    configurations. No parameter value changed. The remaining curation issue is scope: the stable record
-    declares London, its name lists Helsinki, Zurich and Beijing, and the inspected archive rows are Helsinki
-    applications. That place question remains separate and should not be answered by changing the original
-    citation.'
-  evidence_revision: sha256:09a867bb4f2004c4371a33ba563febb03d42246efebf99be8bc93bc616d7220c
+        3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later Helsinki application rather
+        than original parameter derivation.
+  attempted_sources:
+  - source: grimmond1986
+    attempted_at: '2026-08-24T15:19:59Z'
+    outcome: not_found
+    note: The complete paper was close-read because Järvi Table 2 footnotes the b row to it. It contains
+      neither 1.71 nor 0.013, does not define the exponential drainage function, and is not the coefficient source.
+  scientific_note: 'The active record is a generic deciduous-tree literature tuple. Breuer et al. provide
+    the 0.8 mm deciduous median. Calder and Wright originally fit D0 = 0.013 and b = 1.71 to Sitka-spruce
+    canopy data; Grimmond and Oke explicitly transfer those coefficients to deciduous vegetation and
+    define 0.8 mm as the in-leaf storage capacity. Järvi compile the complete deciduous SUEWS tuple, and
+    Havu later apply it in Helsinki. Järvi''s b-row footnote to Grimmond et al. (1986) is unsupported.
+    The stable path and origin retain migration lineage; no value, source key, target or legacy identity changed.'
+  evidence_revision: sha256:8460b2e53d0a24bdab8f7aaf24d05e116ef8c166b39565590ee70b2b8c953d40
 verification:
   attestations: []

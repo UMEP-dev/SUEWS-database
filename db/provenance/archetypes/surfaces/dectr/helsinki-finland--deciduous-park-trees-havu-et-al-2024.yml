@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
-    records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
@@ -24,7 +24,7 @@ dependency_revisions:
     records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c: sha256:7187d0b8fdfec1e01e5e371ae8f240d25ac731c1439e4e708c8a80ddef5bcfdb
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-24T15:19:59Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -72,9 +72,9 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       note: The composite claims place helsinki, and five of its twelve components carry that place, including
-        both climate-conditioned ones, the snowpack limit and the four degree-day thresholds. Two carry
-        place london, one carries place se-england, one carries place zurich, the albedo and porosity records
-        are generic and the OHM record carries no place. The exception
+        both climate-conditioned ones, the snowpack limit and the four degree-day thresholds. One carries
+        place london, one carries place se-england, one carries place zurich, drainage, albedo and porosity
+        are generic, and the OHM record carries no place. The exception
         that needs a decision is the leaf_area_index slot, which takes records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c,
         placed at zurich and named "Deciduous Tree (sample data) c". The database holds no Helsinki deciduous-tree
         leaf-area-index record, so that slot has to import from somewhere, but this import is a third
@@ -90,8 +90,8 @@ assessment:
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: The composite claims representativeness city. Eight components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional, the albedo and porosity records are generic and the OHM record declares no
+      note: The composite claims representativeness city. Seven components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional, drainage, albedo and porosity are generic and the OHM record declares no
         class. Regional and generic values cover a city, so no component claims a narrower scale than
         the composite does.
     method:
@@ -159,10 +159,8 @@ assessment:
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
-      city, source jarvi2011 and method literature. Its own name reads "Deciduous Tree - Helsinki, Zurich,
-      Beijing", which names three cities its place field does not; Havu's archive is retained as later
-      compilation evidence.
+    note: Fills drainage. The record is the generic, land-cover-scale Deciduous Tree literature tuple
+      compiled by Järvi et al.; Havu's archive is retained as later Helsinki application evidence.
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
@@ -200,6 +198,6 @@ assessment:
     whether the Zurich sample-data record is the intended park leaf area index and, if it is, record why.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:77ad9081c092da87dbe86ffb6c971e00d0955d17d49cd810bf309c1c4ebc174d
+  evidence_revision: sha256:2ad1d9c559a3c9299c5dad6f51aa705b4b10af039455c2900e673af866855259
 verification:
   attestations: []

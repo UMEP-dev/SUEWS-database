@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
-    records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
+    records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
@@ -22,7 +22,7 @@ dependency_revisions:
     records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:97f58953282d688f623209f9f891f115d668b8e69fdec1793060b057b191cbd6
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-24T15:19:59Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -78,16 +78,15 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       note: 'The composite claims place zurich, registered in db/places.yml with Köppen class Cfb, and
         four of its twelve components carry that place: the leaf area index, the leaf growth power, the
-        maximum conductance and the biogenic CO2 set. Two carry place helsinki, registered Dfb; two carry
-        place london; one carries place se-england, the albedo and porosity records are generic; and the
+        maximum conductance and the biogenic CO2 set. Two carry place helsinki, registered Dfb; one carries
+        place london; one carries place se-england, drainage, albedo and porosity are generic; and the
         OHM record carries no place. Two of
         the Helsinki imports are conditioned on climate rather than on species: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
         supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology supplies the
         growing- and senescing-degree-day thresholds, both set for a Nordic city and carried here into
-        a temperate one. The drainage component records/surfaces/dectr/london--havu-m2024--drainage declares
-        place london while its own name reads "Deciduous Tree - Helsinki, Zurich, Beijing", so whether
-        that slot applies to Zurich cannot be read off the field that is supposed to say so. A maintainer
-        should record why the Nordic snow limit and phenology stand for Zurich, or replace them.'
+        a temperate one. Drainage is a generic land-cover literature tuple and creates no London-to-Zurich
+        transfer. A maintainer should still record why the Nordic snow limit and phenology stand for Zurich,
+        or replace them.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -95,8 +94,8 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Eight components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional, the albedo and porosity records are generic and the OHM record declares no
+      note: The composite claims representativeness city. Seven components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+        is classed regional, drainage, albedo and porosity are generic and the OHM record declares no
         class. Regional and generic values cover a city, and no component claims a narrower scale than
         the composite does.
     method:
@@ -148,10 +147,8 @@ assessment:
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.dectr, place london and representativeness
-      city, source jarvi2011 and method literature. Its own name reads "Deciduous Tree - Helsinki, Zurich,
-      Beijing", which names three cities its place field does not; Havu's archive is retained as later
-      compilation evidence.
+    note: Fills drainage. The record is the generic, land-cover-scale Deciduous Tree literature tuple
+      compiled by Järvi et al.; Havu's archive is retained as later application evidence.
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
@@ -202,10 +199,9 @@ assessment:
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
     nothing in the repository says which is correct. And the snowpack limit and the four degree-day thresholds
     are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
-    makes and the one a reader is least able to check, since the drainage record''s own name mentions
-    Zurich while its place field says London. Neither question touches a stored value; both are composition
+    makes. Drainage is now explicit generic literature evidence. Neither remaining question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:c064ab9f87d14e2077faf1c89f61491ea7d2d31797cea54f4b2d8f5459e1c3bf
+  evidence_revision: sha256:67e5600cc7a71cab00232c6eb1f16f9a234f70636e9053c344f93c24f9eb38a7
 verification:
   attestations: []
