@@ -10,8 +10,8 @@ publish issues, or create human sign-offs.
 
 The runner keeps the two review layers separate:
 
-- `evidence` covers all 840 atomic entries under `db/records/`;
-- `composition` covers all 319 curated entries under `db/archetypes/`.
+- `evidence` covers all 848 atomic entries under `db/records/`;
+- `composition` covers all 317 curated entries under `db/archetypes/`.
 
 Check the current coverage without writing anything:
 

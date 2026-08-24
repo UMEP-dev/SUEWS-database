@@ -7,7 +7,6 @@ dependency_revisions:
   places:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records:
-    archetypes/surfaces/bldgs/london-uk--obtestcase: sha256:3764d0a48ab628914a5ef4a2525467ff15cab9149223ca72e789529750617cba
     archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016: sha256:2039a17a1d0ffda50e3cd2a5adcfc986116b35ec882841566a8fb57bc0f09dc4
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
@@ -129,13 +128,12 @@ assessment:
       - component-ohm-generic-ward2016-buildings-summer
       - component-ohm-generic-ward2016-buildings-winter
       related_records:
-      - archetypes/surfaces/bldgs/london-uk--obtestcase
       - archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
       note: Eight distinct components fill the seven slots a buildings archetype carries, with the four
-        ohm slots split by season across two records. No other archetype carries an identical uses block,
-        but two are close. archetypes/surfaces/bldgs/london-uk--obtestcase shares seven of the eight references
-        and differs only in the construction slot, and archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016
-        differs only in taking the Swindon albedo and emissivity rows in place of the London ones.
+        ohm slots split by season across two records. No other surviving archetype carries an identical
+        uses block. archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016 is close
+        but differs by taking the Swindon albedo and emissivity rows in place of the London ones. The
+        former OBTESTCASE surface was retired with its sole typology consumer under issue 58.
   evidence:
   - id: component-surfaces-bldgs-london-ward2016-albedo
     record: records/surfaces/bldgs/london--ward2016--albedo
@@ -199,6 +197,6 @@ assessment:
     America. The snowpack limit reaching to Helsinki is a third-order concern by comparison, and it is
     forced, since no other buildings snowpack_limit record exists. This review does not revisit any component
     value.'
-  evidence_revision: sha256:f4e31b7393473c8f1dd462c7a7ff037927918a5828444a42869371dd347e4a1f
+  evidence_revision: sha256:dafab5a793c1f260f8d7805c9184f342fdbb6fa8836401717023d6987f46c91b
 verification:
   attestations: []
