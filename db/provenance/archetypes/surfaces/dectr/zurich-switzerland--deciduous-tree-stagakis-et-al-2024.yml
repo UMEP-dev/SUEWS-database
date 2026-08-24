@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
-    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
@@ -160,8 +160,8 @@ assessment:
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.dectr, place london and representativeness
-      city. It is named "Deciduous trees" and carries source ward2016.
+    note: Fills emissivity. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous trees", carries source oke1987 and declares method literature.
   - id: component-surfaces-dectr-se-england-ward2016-water-storage
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
@@ -205,6 +205,6 @@ assessment:
     Zurich while its place field says London. Neither question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:40d921262f9e790ead12e9550ded2264fc2343da82453e323a6db850fd8e7f03
+  evidence_revision: sha256:db2fe154fcaddd2c01983bfbf7315544153223e9f51f331f9c97e376f80802e5
 verification:
   attestations: []

@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
-    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
@@ -180,8 +180,8 @@ assessment:
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
-    note: Fills emissivity. The record declares target land_cover.dectr, place london and representativeness
-      city. It is named "Deciduous trees" and carries source ward2016.
+    note: Fills emissivity. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous trees", carries source oke1987 and declares method literature.
   - id: component-surfaces-dectr-se-england-ward2016-lai
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
@@ -207,6 +207,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:43fad1f7233f6c2461818743f3279847a2a4aa8e91f23713ba33a0dad3b6888f
+  evidence_revision: sha256:870dd094b08da0ea405a5210f332a859ebe58c8f852e339fd1a339dd9cc315e8
 verification:
   attestations: []
