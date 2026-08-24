@@ -2,6 +2,7 @@ record: records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winte
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Code 55 x Mulitplier for winter [552]
+applicable_scale: land_cover
 source: ward2016
 legacy_id: 50240019
 season_label: Winter
