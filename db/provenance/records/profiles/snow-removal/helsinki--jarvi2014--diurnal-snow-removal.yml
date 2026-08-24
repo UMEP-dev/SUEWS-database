@@ -8,7 +8,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
-    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
+    records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T12:45:00Z'
@@ -48,8 +48,9 @@ assessment:
       conclusion: curation_required
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/423
-      note: The all-zero, all-one and daytime patterns are model configuration options. Whether such fixtures
-        remain citable evidence records is a repository curation decision separate from correcting this citation.
+      note: Whether this arbitrary all-one fixture remains a citable record is a repository curation decision.
+        The related daytime record is now retained separately as an archived Helsinki configuration on
+        the evidence of its exact workbook rows.
       related_records:
       - records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
       - records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime
@@ -70,6 +71,6 @@ assessment:
     schedule. The fixed SUEWS 2017b release preserves this exact vector as row 90000, Arbitrary (constant all
     day). The values remain unchanged as an explicit assumption; unsupported Helsinki/city evidence scope
     and the paper attribution are removed while the stable path and origin preserve migration lineage.
-  evidence_revision: sha256:b6c2416b0b913a6bfdafa228aa25ec892fbda0cdf75cff80a851e43d679b0023
+  evidence_revision: sha256:b57cb1949a51f4dfcc9523ecc80d8204c10058768c6d2a273911c4fd6a964042
 verification:
   attestations: []
