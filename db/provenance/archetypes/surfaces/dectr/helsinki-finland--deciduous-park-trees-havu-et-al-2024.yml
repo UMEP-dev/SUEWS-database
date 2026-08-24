@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
-    records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c: sha256:7187d0b8fdfec1e01e5e371ae8f240d25ac731c1439e4e708c8a80ddef5bcfdb
+    records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c: sha256:8f77086793cbc5ac6fd0ad512f392306d90ac4c51cc088a9667c93bdbde66f57
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T15:19:59Z'
@@ -75,10 +75,10 @@ assessment:
         both climate-conditioned ones, the snowpack limit and the four degree-day thresholds. One carries
         place london, one carries place se-england, one carries place zurich, drainage, albedo and porosity
         are generic, and the OHM record carries no place. The exception
-        that needs a decision is the leaf_area_index slot, which takes records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c,
-        placed at zurich and named "Deciduous Tree (sample data) c". The database holds no Helsinki deciduous-tree
+        that needs a decision is the leaf_area_index slot, which takes an archived Zurich sample with
+        source unreferenced and method assumed. The database holds no Helsinki deciduous-tree
         leaf-area-index record, so that slot has to import from somewhere, but this import is a third
-        city's record whose own name marks it as sample data, while its two Havu 2024 siblings import
+        city's configuration without scientific provenance, while its two Havu 2024 siblings import
         records/surfaces/dectr/se-england--ward2016--lai instead. Which import belongs in a Helsinki park
         typology is a curation decision the entries do not settle.
       related_records:
@@ -182,22 +182,22 @@ assessment:
     record: records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place zurich and representativeness
-      city. It is named "Deciduous Tree (sample data) c", carries source jarvi2011 and declares lai.lai_type
-      1; it is one of three Zurich jarvi2011 leaf-area-index records in db/records/surfaces/dectr, and
-      its own name marks it as sample data.
+      city. It is an archived sample-C configuration with source unreferenced and method assumed; legacy
+      Ref 90240054 is retained only as source_legacy_ref. Its 1/4.8 range differs from Stagakis Supplement
+      Table S3 Trees 0.66/4.8, and it declares lai.lai_type 1.
   scientific_note: The park typology is coherent in its vegetation slots. Its leaf growth power, maximum
     conductance and biogenic CO2 set all come from havu-m2024 records placed at Helsinki, and the biogenic
     record is named for deciduous trees plus grass, which is what a park canopy is. The climate-conditioned
     slots are Helsinki records, so nothing about the Nordic winter or growing season has been moved. One
-    slot does not fit that pattern. The leaf area index is taken from records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c,
-    a Zurich record whose own name calls it sample data, where the two sibling Havu 2024 composites take
+    slot does not fit that pattern. The leaf area index is taken from an archived Zurich sample with
+    source unreferenced and method assumed, where the two sibling Havu 2024 composites take
     the SE England Ward 2016 record. Since the database holds no Helsinki leaf-area-index record for deciduous
     trees, some import was necessary; what is not settled is why this one. It also matters more here than
     it would elsewhere, because the leaf_area_index slot is the only thing distinguishing this composite
     from the street-trees composite, which shares its other eleven components. A maintainer should decide
-    whether the Zurich sample-data record is the intended park leaf area index and, if it is, record why.
+    whether the archived Zurich sample is the intended park leaf area index and, if it is, record why.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:9786864c8e5f2549ac72b78969e2b75dc9e27be2ed4ff64fe13142eed07db18f
+  evidence_revision: sha256:c19336cf6bdabfd961b9983c198c5745bcda7878b48419c0bd222c81b3265bce
 verification:
   attestations: []
