@@ -5,7 +5,8 @@ name: Grass
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: unreferenced
+method: assumed
 legacy_id: 42240046
 parameters:
   state_limit: 1.9
