@@ -2,7 +2,8 @@ record: records/materials/generic--unreferenced--glass-fibre-quilt
 schema_version: '2026.5'
 target: material
 name: Glass-Fibre Quilt
-source: unreferenced
+source: ies2011-apache-tables
+method: literature
 legacy_id: 36248167
 category: Insulation
 display_colour: Generic

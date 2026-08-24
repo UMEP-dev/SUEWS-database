@@ -2,7 +2,8 @@ record: records/materials/generic--unreferenced--mineral-fibre-slab
 schema_version: '2026.5'
 target: material
 name: Mineral Fibre (Slab)
-source: unreferenced
+source: ies2011-apache-tables
+method: literature
 legacy_id: 36248168
 category: Insulation
 display_colour: Generic
