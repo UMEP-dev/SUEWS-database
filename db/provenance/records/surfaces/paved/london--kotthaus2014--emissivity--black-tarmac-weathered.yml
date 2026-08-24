@@ -1,0 +1,87 @@
+provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:11d91f338cf81045b16cccd7874925f96283e62c5e2921ed31d3a53320c3ee2c
+dependency_revisions:
+  sources:
+    kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The name identifies the weathered black-tarmac specimen group A008-A010.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: All three inputs are tarmac specimens, matching land_cover.paved.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The stored value is exactly the unweighted mean of 0.95, 0.95 and 0.96.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The mean is a database calculation not printed by Kotthaus et al.; source unreferenced avoids
+        crediting the publication with the derived value while the three located table rows preserve its evidence.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The three specimens belong to the London Urban Micromet data Archive material collection.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - kotthaus-table-c1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/248
+      note: The selected specimens are not a probabilistic London-wide sample; geographic reach is handled
+        separately in issue 248.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The record is the component-wise arithmetic mean of three source-tabulated inputs.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/247
+      note: The exact arithmetic and shared material description identify A008-A010 as the inputs.
+  evidence:
+  - id: kotthaus-table-c1
+    source: kotthaus2014
+    role: input_data
+    locators:
+    - kind: table
+      label: Appendix C, Table C.1, specimens A008-A010
+      page: '210-211'
+      url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
+      note: Lists the three weathered black-tarmac specimens and their individual emissivities.
+  derivation:
+    kind: arithmetic_mean
+    expression: (A008 + A009 + A010) / 3
+    external_inputs:
+    - {id: a008, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.95}
+    - {id: a009, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.95}
+    - {id: a010, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
+  scientific_note: Kotthaus et al. publish three measured emissivities, not the stored mean. The mean remains
+    unchanged but is now represented as an internal calculation over explicitly located source-table inputs.
+  evidence_revision: sha256:37b9e5c3aea452108294b464253ffd7eae079f24d69da3c0bfd3e95b250959cd
+verification:
+  attestations: []
