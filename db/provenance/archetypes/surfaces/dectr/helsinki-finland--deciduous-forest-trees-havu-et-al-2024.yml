@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
-    records/surfaces/dectr/se-england--ward2016--lai: sha256:b8a5bd9625684d26381abdd39b12db72476aeaa05944cefa9bbdb7022246bdaf
+    records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
 assessment:
   status: agent_assessed
@@ -177,8 +177,8 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It is named "Deciduous Tree (SE England)", carries source ward2016 and declares lai.lai_type
-      1.
+      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2011, declares method
+      literature and has lai.lai_type 1.
   - id: component-surfaces-dectr-se-england-ward2016-water-storage
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
@@ -196,6 +196,6 @@ assessment:
     not mix equations. What is missing is only the written rationale for the imports, which no composite
     in this family carries and which the format expects a composition sidecar to supply. The components'
     values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:56e0f496aa6a061176d170ecc2ff0d29f9d8657f2c81ae477fbf2363520ea3a5
+  evidence_revision: sha256:dbe8e1d1797572cd2e9b2dcd737165a8c7dbe38add4922f8c26857108c7aa3c9
 verification:
   attestations: []
