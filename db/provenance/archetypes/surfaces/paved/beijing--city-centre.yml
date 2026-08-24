@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:9a36556adac996e359a80623d9d50fe7bb30688318de3409c96741d6f10264bf
     records/surfaces/paved/shanghai--ao2016--albedo: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
-    records/surfaces/paved/shanghai--ao2016--emissivity: sha256:b245af73d687ed5a54efc1e1fe35ba0dd522efbcdee8608ebef1096332c8038e
+    records/surfaces/paved/shanghai--ao2016--emissivity: sha256:811b9d524fb218ab6fec0bd4d810192ef38750652724637ca91cb194d2b05aa7
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T14:06:13Z'
@@ -87,8 +87,9 @@ assessment:
         slot takes records/surfaces/paved/london--jarvi2011--drainage, place london; the construction
         slot takes a record with place generic. Most of that borrowing is forced, because the database
         holds no paved surface record with place beijing. The emissivity slot is not forced: records/surfaces/paved/shanghai--ao2016--emissivity
-        exists with place shanghai and source ao2016, the same place and the same study as the albedo
-        this composite did take, and it is referenced by no archetype at all, while the emissivity slot
+        exists with place shanghai, representativeness site, urban_setting central_business_district and
+        source ao2016, the same place, scale, setting and study as the albedo this composite did take,
+        and it is referenced by no archetype at all, while the emissivity slot
         reaches instead to Helsinki. A maintainer has to decide whether taking half of the Shanghai pair
         is deliberate or a mis-selection.'
     representativeness:
@@ -185,8 +186,8 @@ assessment:
     and the construction reference from a record named Placeholder. The database holds no paved surface
     record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
     One selection does not follow from scarcity. The composite took records/surfaces/paved/shanghai--ao2016--albedo,
-    and records/surfaces/paved/shanghai--ao2016--emissivity sits in the database with the same place and
-    the same source, referenced by no archetype, while the emissivity slot reaches to Helsinki instead.
+    and records/surfaces/paved/shanghai--ao2016--emissivity sits in the database with the same site-scale
+    Shanghai CBD setting and source, referenced by no archetype, while the emissivity slot reaches to Helsinki instead.
     Either the Shanghai pair was meant to be taken together and half of it was missed, or the Helsinki
     emissivity was judged the better value for Beijing; the files do not say which, and a maintainer should
     settle it. Two labels a reader should carry forward without acting on them here: the drainage component
@@ -195,6 +196,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:a21fc7f7db4aa40ea7d0c35e9cb773305f4e6888a375c11848fd233109884d23
+  evidence_revision: sha256:4fc0b28f63bff03f8ddd6bcd90eb48592b680ce9c655c7c03513a95062e5cbb1
 verification:
   attestations: []
