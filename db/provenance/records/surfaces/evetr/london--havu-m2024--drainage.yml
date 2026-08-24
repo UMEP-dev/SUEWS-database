@@ -1,91 +1,168 @@
 provenance_record: records/surfaces/evetr/london--havu-m2024--drainage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d239d051f3b03b5d811acf3f0e9b31a8bd410f57ca5a44d874faa61e645b1916
+record_revision: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
 dependency_revisions:
   sources:
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    calder1986: sha256:d73a30e09ebfe24406af5f530d5fb2172f7f967d12a68fbb110fcd7ec9260fdc
+    grimmond1986: sha256:53075317bc44388b62880d5e3b599e2f23d0e5024a6811ab83bc8ee426b16fb6
+    grimmond1991a: sha256:e9541b04691b7ea8c632e4abe57f82c8575556f4bf7c7f8f5ba32569fd1f6310
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T17:03:22Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T15:01:54Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/229
   method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-archive
-      note: The surface category is correct, but the name "EvergreenTree - Helsinki, Zurich, Beijing"
-        spans three cities while the inspected Havu archive rows are Helsinki configurations. Whether
-        the multi-city label reflects other migration inputs remains a curation question separate from
-        the source correction.
+      - jarvi-table-2
+      note: EvergreenTree identifies the coniferous-tree SUEWS surface class without presenting later
+        application cities as parameter origins.
     target:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. publish the values for coniferous trees and the Havu archive stores the tuple
-        in evergreen-tree rows, matching land_cover.evetr.
+      note: The storage summary is for coniferous forest, the fitted drainage function is for Sitka
+        spruce, and the later SUEWS publications assign the tuple to the coniferous-tree surface class,
+        matching land_cover.evetr.
     values:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. (2011) Table 2 gives conifer storage 1.3 mm, D0 0.013 and b 1.71, with Eq. 18
-        defining the exponential drainage form. Havu's archived evergreen rows 841–844 carry WetThreshold
-        1.3, DrainageEq 3, DrainageCoef1 0.013 and DrainageCoef2 1.71, exactly matching the record.
+      note: Breuer et al. report 1.3 mm as the median of 74 coniferous-forest interception capacities.
+        Calder and Wright fit D = 0.013(exp(1.71 C) - 1) to Sitka-spruce canopy measurements. Grimmond
+        and Oke adopt D0 0.013 and b 1.71 for coniferous vegetation, Järvi et al. assemble the exact stored
+        tuple, and Havu's archived evergreen rows reproduce it unchanged.
     source:
       conclusion: supported
       evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
       - jarvi-table-2
       - havu-archive
-      note: Järvi et al. (2011) is the parameter publication. The Havu archive is retained as compilation
-        evidence showing where the later configuration reused the tuple.
+      note: Järvi et al. are the immediate publication of the complete SUEWS tuple carried by the record's
+        single source field. The evidence list preserves the separate original storage summary and drainage
+        fit, the urban-model adoption, and Havu's later application. Järvi's footnote attributing b to
+        Grimmond et al. (1986) is not supported by that full text; Calder and Wright are the fitted-coefficient
+        source.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-archive
-      note: The record declares London, but the inspected Havu rows are labelled Helsinki forest, street
-        and park configurations, while the record name also lists Zurich and Beijing. The source correction
-        does not settle which application place or places this migrated record should declare.
-    representativeness:
-      conclusion: curation_required
-      evidence_ids:
+      - breuer-table-7
       - jarvi-table-2
-      - havu-archive
-      note: The record declares city, but Järvi et al. publish a literature parameter and Havu's archive
-        shows configuration reuse rather than a city-wide determination. The correct application scope
-        should be settled with the place question.
-    method:
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/229
+      note: The active tuple is a literature default assembled for a surface class rather than a London,
+        Helsinki, Zurich or Beijing determination, so generic is the supported evidence place. Origin
+        London preserves the migrated row's lineage.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
+      - jarvi-table-2
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/229
+      note: Generic reach describes a compiled literature default reused across cities, not a city-wide
+        determination. The sidecar retains that the drainage coefficients ultimately came from a fitted
+        Sitka-spruce study rather than treating Järvi or Havu as new measurements.
+    applicable_scale:
       conclusion: supported
       evidence_ids:
       - jarvi-table-2
-      note: Literature accurately describes transcription of an earlier published parameter tuple.
+      note: Järvi et al. assign the tuple to the coniferous-tree surface type, establishing land-cover-class
+        scale rather than neighborhood, facet or material scale.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      - calder-wright-fit
+      - grimmond-oke-adoption
+      - jarvi-table-2
+      note: Literature accurately describes adoption of previously published storage and drainage values;
+        this record performs no new fit.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi-table-2
       - havu-archive
-      note: One evergreen drainage record holds the storage threshold, drainage equation selector and
-        two coefficients that travel together in the archived SUEWS vegetation rows.
+      note: The stable path, origin, target, source, legacy ID and all four values preserve the migrated
+        record identity while the active name and scope now describe the evidence rather than later applications.
   evidence:
+  - id: breuer-table-7
+    source: breuer2003
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 7, coniferous forest interception capacity
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Reports Ic = 1.3 mm as the median of 74 coniferous-forest values in the temperate literature
+        review; this is the original summary underlying Si, not a London or Havu measurement.
+  - id: calder-wright-fit
+    source: calder1986
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Accepted manuscript Appendix 1, abstract and Eqs. 9 and 13
+      url: https://nora.nerc.ac.uk/id/eprint/13072/1/N013072CR.pdf
+      note: Fits the modified Rutter function D = 0.013(exp(1.71 C) - 1) mm h-1 to canopy-storage
+        measurements at Sitka-spruce sites in Wales and Scotland; this is the original source of both
+        drainage coefficients.
+  - id: grimmond-oke-adoption
+    source: grimmond1991a
+    role: compilation
+    locators:
+    - kind: section
+      label: Section 3.6, Drainage
+      page: 1744
+      url: https://doi.org/10.1029/91WR00557
+      note: Defines the exponential vegetation drainage equation and says its coefficients are taken
+        from Calder and Wright; the reference year is printed as 1985 although the registered paper was
+        published in 1986.
+    - kind: table
+      label: Table 2, Coniferous column
+      page: 1745
+      url: https://doi.org/10.1029/91WR00557
+      note: Adopts D0 = 0.013 and b = 1.71 for coniferous vegetation in the Vancouver 1987 base run.
   - id: jarvi-table-2
     source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, model parameter values by surface type
+      label: Table 2(a), Coniferous Trees column
       page: 223
       url: https://doi.org/10.1016/j.jhydrol.2011.10.001
-      note: Gives conifer storage Si 1.3 mm, maximum drainage rate D0 0.013 and coefficient b 1.71; Eq.
-        18 on p. 224 defines the exponential drainage form for unirrigated vegetation.
+      note: Compiles the complete stored tuple Si = 1.3 mm, D0 = 0.013 and b = 1.71. Its footnotes correctly
+        point Si to Breuer and D0 to Grimmond and Oke (1991), but the b-row footnote to Grimmond et al.
+        (1986) is contradicted by that paper's full text; Calder and Wright fitted b together with D0.
+    - kind: equation
+      label: Equation 18, unirrigated vegetation drainage
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines the exponential drainage form used by the stored equation selector and states that
+        maximum rates and coefficients come from the literature.
   - id: havu-archive
     source: havu-m2024
     role: compilation
@@ -94,13 +171,21 @@ assessment:
       label: Input_rcp.zip/Input_rcp/SUEWS_Veg.txt, rows 841–844
       url: https://doi.org/10.5281/zenodo.10572180
       note: The Helsinki forest, street and two park evergreen rows each carry WetThreshold 1.3, DrainageEq
-        3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later configuration reuse.
-  scientific_note: 'The parameter lineage is now explicit: Järvi et al. (2011) publishes the conifer
-    storage and drainage tuple, and Havu''s archived model input later reuses it in Helsinki evergreen
-    configurations. No parameter value changed. The remaining curation issue is scope: the stable record
-    declares London, its name lists Helsinki, Zurich and Beijing, and the inspected archive rows are Helsinki
-    applications. That place question remains separate and should not be answered by changing the original
-    citation.'
-  evidence_revision: sha256:771ef4b897f51fcee54c1139951575f5c8281f1d43c311e707100686e030a169
+        3, DrainageCoef1 0.013 and DrainageCoef2 1.71, demonstrating later Helsinki application rather
+        than original parameter derivation.
+  attempted_sources:
+  - source: grimmond1986
+    attempted_at: '2026-08-24T15:01:54Z'
+    outcome: not_found
+    note: The complete paper was close-read because Järvi Table 2 footnotes the b row to it. It contains
+      neither 1.71 nor 0.013, does not define the exponential drainage function, and therefore is not
+      the coefficient source.
+  scientific_note: 'The active record is a generic coniferous-tree literature tuple: Breuer et al. provide
+    the 1.3 mm median storage capacity, Calder and Wright originally fit D0 = 0.013 and b = 1.71 to Sitka-spruce
+    canopy data, Grimmond and Oke adopt those coefficients into the urban model, Järvi et al. compile the
+    complete SUEWS tuple, and Havu''s archive later applies it in Helsinki configurations. Järvi''s b-row
+    footnote to Grimmond et al. (1986) is not supported by that paper. The stable path and origin retain
+    migration lineage; no value, source key, target or legacy identity changed.'
+  evidence_revision: sha256:88ce04d30de619855944554cba241670106f7f165af5cb8144a1fa44e27340e4
 verification:
   attestations: []
