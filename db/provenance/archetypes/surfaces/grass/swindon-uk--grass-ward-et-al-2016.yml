@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
-    records/surfaces/grass/se-england--ward2016--drainage: sha256:6118063cc988242608915b697783090437b0a53e2072f46929b258c7870e82c1
+    records/surfaces/grass/se-england--ward2016--drainage: sha256:7f99c4f4340fa9f3555d3fac9b09bced3e4ad59a1468210ffd0d05cb8abe7fcd
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
@@ -40,8 +40,8 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite's name reads "Grass Ward et al. (2016)", its place reads swindon and its origin
-        reads Swindon, UK. Six of the thirteen components declare source ward2016, filling albedo, emissivity,
-        leaf_area_index, drainage and both ohm positions. The other seven declare breuer2003 for
+        reads Swindon, UK. Five of the thirteen components declare source ward2016, filling albedo, emissivity,
+        leaf_area_index and both ohm positions. The other eight declare ward2018 for drainage, breuer2003 for
         max_vegetation_conductance, ruimy1995 for biogen_co2, jarvi2014 for snow_lim_patch,
         vegetation_growth and leaf_growth_power, jarvi2011 for water_storage, and unreferenced for porosity.
         The name field is identical to that of archetypes/surfaces/grass/london-uk--grass-ward-et-al-2016,
@@ -199,7 +199,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--drainage
     role: component
     note: Fills the drainage slot. The record declares target land_cover.grass, name "Grass", place se-england,
-      representativeness regional and source ward2016.
+      representativeness regional, source ward2018 and method literature.
   - id: component-surfaces-grass-se-england-ward2016-emissivity
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
@@ -242,6 +242,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:31cc9c7897c2730317e3c2156284f76942ffa7321a59f57ee35a265b5fc66d16
+  evidence_revision: sha256:370aec32cd716a27460911f9ac6a804cf42fce5f8c7d105af3d09dec08068bb9
 verification:
   attestations: []
