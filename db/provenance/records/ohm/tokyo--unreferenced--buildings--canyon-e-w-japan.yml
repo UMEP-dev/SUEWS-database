@@ -110,7 +110,8 @@ assessment:
   scientific_note: This Ref-null row is retained as a distinct raw migration identity, not treated as
     a second scientific determination and not automatically credited with the verified Kyoto source chain
     of the related code-[10] row. Its own source, place, representativeness and production method remain
-    unresolved under issue 738. The building-archetype attachment question remains issue 19.
-  evidence_revision: sha256:9116da1f82ab0150025226430988787be88e8dcbdd428ca998be4ac6ff6291aa
+    unresolved under issue 738. Any future building-archetype attachment would require a separate
+    composition review.
+  evidence_revision: sha256:b95f0055beb19bb82dc0dd31548db83312896fcc87b2ab7ab6a053986a13db81
 verification:
   attestations: []
