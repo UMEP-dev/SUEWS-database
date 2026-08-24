@@ -8,7 +8,7 @@ dependency_revisions:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records:
     archetypes/surfaces/water/london--water: sha256:26bee01af7f979fdbcd0d361bbd9429287b50197965ec45e3c69583dd040b3c6
-    records/ohm/generic--ward2016--water: sha256:54f647fb817653ffa815e6b313db4c96433db6413f538ec5097c965a0aa36ef3
+    records/ohm/generic--ward2016--water: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:cd821b62fb09214c78474d8b45e9d6a6ea58618ebc7b93eb75b656e069274c52
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
     records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
@@ -188,6 +188,6 @@ assessment:
     marked as unused in the study it cites. Whether such a value belongs in the database at all is a question
     for that record''s own evidence review. As a selection it is beyond argument, because it is the only
     Swindon water-state record there is and it agrees with the composite on place and class.'
-  evidence_revision: sha256:f01506949a7c871457d9b9767cb2a00e2c9e0819ebaa85bea205108e8a93a4ff
+  evidence_revision: sha256:23917078dc341389c76fea5624dcd3a2c198ecb7b2407099df8b94cfe7b4616c
 verification:
   attestations: []
