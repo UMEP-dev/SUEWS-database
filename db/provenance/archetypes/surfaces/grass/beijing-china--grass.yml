@@ -7,7 +7,7 @@ dependency_revisions:
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
+    records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:94fa765fbb0f740cb08a2ea5046cdad64f70453315495d95e0eb6692c8567599
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
@@ -198,6 +198,6 @@ assessment:
     leaf_growth_power component is a one-park site fit inside this city-classed composite, which now requires
     explicit composition curation rather than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:442e05ac7024f6fb9713d9c083c4b78d17e2c7c8292b18064d69868194848714
+  evidence_revision: sha256:ec05d32621228b2c505ce67fbb5e4e8b76f44a2a251a85dc18613a63c6bffc96
 verification:
   attestations: []

@@ -8,7 +8,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024: sha256:640c1fffbf7a952ca36154288dfec52e16fe1437e792334d081894d55e4dede7
-    records/ohm/generic--unreferenced--grass: sha256:40862328eb32d98e6555d4f548a5e089fd02ce531b894648b7abac663e1f6373
+    records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/grass/generic--unreferenced--porosity: sha256:0ef56fa64d8b4d0258e3b1ceb4308e260e0952fc2cd3c0b486005c4c31b29e07
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
@@ -204,6 +204,6 @@ assessment:
     crediting the original Järvi source. This entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry;
     the drainage component is now explicitly generic literature evidence with archived Helsinki reuse.'
-  evidence_revision: sha256:7362a31e73509d6e63bc7f8df2a6db28f78c4254f25ae6e27529fe5b317c08d1
+  evidence_revision: sha256:7c1b2a70e86bcc78ee58308e425253acc676aa1637ca95bd47bd59752aa95e34
 verification:
   attestations: []
