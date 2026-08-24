@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/sweden--bjork2002--detached-houses-wood: sha256:2c3d1bfa5a3169888be5d488c1ce13954786464d7f3ebb0f2c919faa87f60a30
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -164,6 +164,6 @@ assessment:
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:3934a9784850b170e56d2f83d5918076176333af9185ffa6a0a73f302f7dae16
+  evidence_revision: sha256:08a7b69d71e39a0dfce0ee5169c64093cb88b192f5a2abe35a38935966d5098b
 verification:
   attestations: []

@@ -1,0 +1,13 @@
+record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Commercial/industrial bitumen roof, mixed wetness, wind 1.1-2.0 m s-1 [705]
+place: vancouver
+origin: Vancouver
+representativeness: site
+source: meyn2009
+method: fitted
+parameters:
+  a1: 0.06
+  a2: 0.28
+  a3: -3

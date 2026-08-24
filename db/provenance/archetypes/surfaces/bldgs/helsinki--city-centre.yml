@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s: sha256:0eb3f4dbad5a047d1ab98fd807df52d1c83cd0a56cac64e80e292ece2558e849
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -158,7 +158,7 @@ assessment:
     role: component
     note: Fills the summer_wet, summer_dry, winter_wet and winter_dry ohm slots. The record declares target
       ohm_coefficients, name 'Roof (own for SMEAR III, Helsinki) [750]', place helsinki, representativeness
-      city and source jarvi2017, and carries no season_label.
+      city, source unreferenced and method calculated, and carries no season_label.
   scientific_note: 'On selection this composite is the strongest of the buildings family. Five of its
     seven components are Helsinki rows, and the two that are not are forced rather than careless: the
     database holds no Finnish buildings albedo record and no Finnish construction record, so a Central
@@ -169,11 +169,11 @@ assessment:
     holds an identical uses block, so the same seven records are published as both a Helsinki city typology
     and a Sweden-wide regional one, and either one of those two claims is wrong or the two entries must
     be reconciled. Two further points a later reader should not have to rediscover. records/ohm/helsinki--jarvi2014--buildings
-    declares source jarvi2017 although its path reads jarvi2014, so the OHM coefficients should not be
-    assumed to share a source with the emissivity and snowpack limit rows, which do declare source jarvi2014;
-    that discrepancy belongs to the evidence assessment of that record. And this city-scale composite
+    is a calculated mean of earlier roof records and therefore uses source unreferenced; its Järvi 2014
+    path remains a stable legacy identity rather than a source claim. The emissivity and snowpack limit
+    rows do declare source jarvi2014. And this city-scale composite
     is the buildings default for two region archetypes, western Europe and northern Europe, which stretches
     one Helsinki city centre across a continent. This review does not revisit any component value.'
-  evidence_revision: sha256:d0453f79e902273f2af81fe894aaba84f517094810c2d190011d6b8e57c339d3
+  evidence_revision: sha256:2a3db594f45a5ef35c4c2e039e16df7fada17bf9f7c637cca5d5dd53445546d4
 verification:
   attestations: []

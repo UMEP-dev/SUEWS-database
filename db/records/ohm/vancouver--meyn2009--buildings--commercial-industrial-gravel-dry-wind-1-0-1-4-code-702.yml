@@ -1,0 +1,13 @@
+record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Commercial/industrial gravel roof, dry, wind 1.0-1.4 m s-1 [702]
+place: vancouver
+origin: Vancouver
+representativeness: site
+source: meyn2009
+method: fitted
+parameters:
+  a1: 0.26
+  a2: 0.89
+  a3: -21
