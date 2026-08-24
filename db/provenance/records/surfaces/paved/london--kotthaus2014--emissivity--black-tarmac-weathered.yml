@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:11d91f338cf81045b16cccd7874925f96283e62c5e2921ed31d3a53320c3ee2c
+record_revision: sha256:f6c68a4e2f7b20ae6ed752734959502e502d2a95a4ce4bc0ef3b4ebbd19dd7bf
 dependency_revisions:
   sources:
     kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
@@ -10,7 +10,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T12:15:00Z'
+  assessed_at: '2026-08-24T12:18:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -44,13 +44,13 @@ assessment:
       - kotthaus-table-c1
       note: The three specimens belong to the London Urban Micromet data Archive material collection.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - kotthaus-table-c1
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/248
-      note: The selected specimens are not a probabilistic London-wide sample; geographic reach is handled
-        separately in issue 248.
+      note: The value is an unweighted mean of three selected physical specimens, so site is the supported
+        scope; the spectral library does not establish a London-wide sampling design.
     method:
       conclusion: supported
       evidence_ids:
@@ -81,7 +81,8 @@ assessment:
     - {id: a009, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.95}
     - {id: a010, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
   scientific_note: Kotthaus et al. publish three measured emissivities, not the stored mean. The mean remains
-    unchanged but is now represented as an internal calculation over explicitly located source-table inputs.
-  evidence_revision: sha256:37b9e5c3aea452108294b464253ffd7eae079f24d69da3c0bfd3e95b250959cd
+    unchanged and is represented as an internal calculation over explicitly located source-table inputs;
+    its supported reach is the selected London specimen group, not the city as a whole.
+  evidence_revision: sha256:6ac4ed933e55a9393ba10b87c814f8620f8bdc15a2c9a9e74a408b763da8bcbd
 verification:
   attestations: []

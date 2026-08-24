@@ -4,7 +4,7 @@ target: land_cover.paved
 name: 'Black tarmac, weathered '
 place: london
 origin: London
-representativeness: city
+representativeness: site
 source: unreferenced
 method: calculated
 legacy_id: 40241248
