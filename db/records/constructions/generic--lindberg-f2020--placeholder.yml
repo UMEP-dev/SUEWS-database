@@ -5,7 +5,8 @@ name: Placeholder
 place: generic
 origin: Placeholder
 representativeness: generic
-source: lindberg-f2020
+source: unreferenced
+method: assumed
 legacy_id: 37240000
 parameters:
   roof:

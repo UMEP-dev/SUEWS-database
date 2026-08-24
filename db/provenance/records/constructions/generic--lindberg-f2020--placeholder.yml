@@ -1,0 +1,110 @@
+provenance_record: records/constructions/generic--lindberg-f2020--placeholder
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ff506cabb2dc02ddf2b9fe043709a35d3e89eac0d7ce78341ac6c10497064ddf
+dependency_revisions:
+  sources:
+    lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records:
+    records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete: sha256:66b778b1f976eb5eb41d41b73b6b672aef00d6f57dcd337a25660673a898d908
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T18:20:49Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/254
+  method: assumed
+  findings:
+    name:
+      conclusion: curation_required
+      evidence_ids:
+      - placeholder-row-37240000
+      note: The pinned pre-migration row is itself named Placeholder. Whether a configuration fixture
+        with that name belongs in the evidence catalogue remains the separate curation decision in issue
+        253; this review does not rename it.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/253
+    target:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      note: Row 37240000 stores roof and wall layer lists with insulation-layer indices, matching the
+        construction target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      - outer-roof-material-36243784
+      note: The pinned row assigns legacy material 36243784 at thickness 0.1 m to both roof layer one
+        and wall layer one, and assigns insulation index 1 to both. The current record preserves those
+        exact fixture links. Their equality is configuration lineage only, not evidence that a physical
+        wall should use a roof material.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      note: Unreferenced is correct for an explicit legacy configuration assumption. The pre-migration
+        row's Ref field establishes registry lineage but is not evidence that Lindberg et al. published
+        this placeholder construction. Any catalogue-level source or identity decision remains in issue
+        253.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/253
+    place:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      note: Generic preserves the placeholder's non-geographic configuration scope; the pinned row names
+        no study place.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      note: Generic is consistent with retaining a configuration fixture without asserting evidence for
+        a site, city or region.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - placeholder-row-37240000
+      note: Assumed marks that these links are deliberately preserved configuration choices rather than
+        measured, fitted, calculated or literature-derived construction properties.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - placeholder-row-37240000
+      - outer-roof-material-36243784
+      note: Legacy ID 37240000 and the exact material/thickness links establish a distinct preserved
+        fixture identity. They do not establish that the fixture should remain in the evidence catalogue;
+        that decision is tracked in issue 253.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/253
+  evidence:
+  - id: placeholder-row-37240000
+    source: lindberg-f2020
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Surface row 37240000
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml#L198-L224
+      note: Names the row Placeholder and stores material 36243784 with thickness 0.1 m for both r1
+        and w1, insulation index 1 for both assemblies, and null remaining layers. Ref 90240057 records
+        migration lineage; it does not turn this fixture into a published construction claim.
+  - id: outer-roof-material-36243784
+    record: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
+    role: related
+    note: This material record preserves legacy ID 36243784, the exact identifier selected for both
+      layer-one links in pre-migration construction row 37240000.
+  scientific_note: >-
+    The exact Placeholder configuration is retained as an explicit legacy assumption. Both roof[0] and
+    wall[0] intentionally continue to reference the same outer-roof sample material at 0.1 m because pinned
+    row 37240000 stores that exact pair; the separately available outer-wall material is not substituted
+    without evidence. This is a fixture identity statement, not a physical construction claim. The stable
+    path, name, origin, legacy ID, material links, layer thicknesses and insulation indices are unchanged.
+    Issue #253 remains the catalogue-level decision about whether this placeholder identity belongs in the
+    evidence database.
+  evidence_revision: sha256:eba0d75b2677d3c5c9658a68b8897903070bc910e9406f8b884852e961dc25c8
+verification:
+  attestations: []
