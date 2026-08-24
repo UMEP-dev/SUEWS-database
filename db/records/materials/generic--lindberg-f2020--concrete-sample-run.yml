@@ -1,8 +1,10 @@
 record: records/materials/generic--lindberg-f2020--concrete-sample-run
 schema_version: '2026.5'
 target: material
-name: Concrete [sample run]
-source: lindberg-f2020
+name: Archived internal concrete fixture
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240057
 legacy_id: 36243786
 category: Generic
 display_colour: Generic
