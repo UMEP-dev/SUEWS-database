@@ -16,6 +16,10 @@ from release_bundle import (  # noqa: E402
     BundleError,
     LICENCE_PATH,
     MANIFEST_PATH,
+    _archive_bytes,
+    _file_entry,
+    _json_bytes,
+    _safe_member_path,
     _zip_info,
     build_bundle,
     decode_data,
@@ -65,6 +69,22 @@ parameters:
             if extra is not None:
                 target.writestr(_zip_info(extra), b"{}\n")
 
+    def _mutate_first_central_field(self, output, offset, width, value):
+        content = bytearray(self.bundle.read_bytes())
+        central = content.index(b"PK\x01\x02")
+        content[central + offset : central + offset + width] = value.to_bytes(
+            width, "little"
+        )
+        output.write_bytes(content)
+
+    def _mutate_first_local_field(self, output, offset, width, value):
+        content = bytearray(self.bundle.read_bytes())
+        local = content.index(b"PK\x03\x04")
+        content[local + offset : local + offset + width] = value.to_bytes(
+            width, "little"
+        )
+        output.write_bytes(content)
+
     def test_build_is_byte_identical_and_verifies_from_a_copy(self):
         second = self.base / "second.zip"
         build_bundle(second, db_dir=self.db, licence_path=self.licence)
@@ -112,6 +132,58 @@ parameters:
             {"$int:1", "1", "$str:$int:1", "$str:$str:key"},
         )
 
+    def test_license_line_endings_do_not_change_archive_bytes(self):
+        self.licence.write_bytes(b"fixture data licence\r\nsecond line\r\n")
+        crlf_bundle = self.base / "crlf.zip"
+        build_bundle(crlf_bundle, db_dir=self.db, licence_path=self.licence)
+        self.licence.write_bytes(b"fixture data licence\nsecond line\n")
+        lf_bundle = self.base / "lf.zip"
+        build_bundle(lf_bundle, db_dir=self.db, licence_path=self.licence)
+        self.assertEqual(crlf_bundle.read_bytes(), lf_bundle.read_bytes())
+        with zipfile.ZipFile(crlf_bundle) as archive:
+            self.assertEqual(
+                archive.read(LICENCE_PATH), b"fixture data licence\nsecond line\n"
+            )
+
+    def test_windows_traversal_and_control_paths_are_rejected(self):
+        for path in (
+            "db\\..\\evil.json",
+            "db/records/evil\\name.json",
+            "db/records/control\nname.json",
+            "db/records/trailing-dot./value.json",
+            "db/CON/value.json",
+        ):
+            with self.subTest(path=path), self.assertRaises(BundleError):
+                _safe_member_path(path)
+
+    def test_portably_normalized_member_collision_fails(self):
+        with zipfile.ZipFile(self.bundle) as source:
+            payloads = {
+                info.filename: source.read(info.filename)
+                for info in source.infolist()
+            }
+        lower_path = "db/records/profiles/example.json"
+        upper_path = "db/records/profiles/EXAMPLE.json"
+        payloads[upper_path] = payloads[lower_path]
+        manifest = json.loads(payloads[MANIFEST_PATH])
+        manifest["files"].append(
+            _file_entry(
+                upper_path,
+                payloads[upper_path],
+                kind="data",
+                source_path="db/records/profiles/EXAMPLE.yml",
+            )
+        )
+        manifest["files"] = [manifest["files"][0]] + sorted(
+            manifest["files"][1:], key=lambda item: item["path"]
+        )
+        payloads[MANIFEST_PATH] = _json_bytes(manifest)
+        names = [MANIFEST_PATH, LICENCE_PATH, upper_path, lower_path]
+        collision = self.base / "normalized-collision.zip"
+        collision.write_bytes(_archive_bytes(names, payloads))
+        with self.assertRaisesRegex(BundleError, "portable normalization"):
+            verify_bundle(collision)
+
     def test_duplicate_yaml_key_fails_instead_of_being_overwritten(self):
         duplicate = self.db / "records/profiles/example.yml"
         duplicate.write_text("values:\n  1: first\n  1: second\n")
@@ -139,6 +211,36 @@ parameters:
         self._rewrite(extra, extra="db/extra.json")
         with self.assertRaisesRegex(BundleError, "archive member mismatch"):
             verify_bundle(extra)
+
+    def test_prefixed_polyglot_bytes_fail(self):
+        prefixed = self.base / "prefixed.zip"
+        prefixed.write_bytes(b"#!/bin/sh\n" + self.bundle.read_bytes())
+        with self.assertRaisesRegex(BundleError, "archive bytes are not canonical"):
+            verify_bundle(prefixed)
+
+    def test_trailing_bytes_fail(self):
+        trailing = self.base / "trailing.zip"
+        trailing.write_bytes(self.bundle.read_bytes() + b"unexpected trailer")
+        with self.assertRaisesRegex(BundleError, "archive bytes are not canonical"):
+            verify_bundle(trailing)
+
+    def test_noncanonical_zip_flags_fail(self):
+        flags = self.base / "flags.zip"
+        self._mutate_first_central_field(flags, 8, 2, 0x0008)
+        with self.assertRaisesRegex(BundleError, "unexpected ZIP flags"):
+            verify_bundle(flags)
+
+    def test_noncanonical_local_header_flags_fail(self):
+        flags = self.base / "local-flags.zip"
+        self._mutate_first_local_field(flags, 6, 2, 0x0008)
+        with self.assertRaisesRegex(BundleError, "archive bytes are not canonical"):
+            verify_bundle(flags)
+
+    def test_noncanonical_external_attributes_fail(self):
+        attributes = self.base / "attributes.zip"
+        self._mutate_first_central_field(attributes, 38, 4, 0)
+        with self.assertRaisesRegex(BundleError, "unexpected ZIP permissions"):
+            verify_bundle(attributes)
 
     def test_manifest_hash_and_size_are_checked(self):
         with zipfile.ZipFile(self.bundle) as source:
@@ -171,6 +273,10 @@ parameters:
 
 
 class RepositoryBundleCoverageTests(unittest.TestCase):
+    def test_data_license_is_pinned_to_lf_in_git(self):
+        attributes = (ROOT / ".gitattributes").read_text().splitlines()
+        self.assertIn("LICENSE text eol=lf", attributes)
+
     def test_every_canonical_yaml_has_exactly_one_json_counterpart(self):
         with tempfile.TemporaryDirectory() as temporary:
             bundle = Path(temporary) / "repository.zip"

@@ -27,13 +27,19 @@ make verify-release-bundle BUNDLE=/tmp/database-copy.zip
 The archive contains, in this fixed order:
 
 1. `manifest.json`;
-2. `LICENSE`, an exact copy of the repository's CC BY 4.0 data licence;
+2. `LICENSE`, an LF-normalized copy of the repository's CC BY 4.0 data licence;
 3. the sorted JSON counterparts of all canonical YAML inputs.
 
 An input such as `db/records/ohm/example.yml` becomes
 `db/records/ohm/example.json`. There is exactly one data member for every
 manifest `source_path`, and its `path` is mechanically obtained by replacing
 `.yml` with `.json`. No other archive members are permitted.
+
+Path components use only ASCII letters, digits, `.`, `_`, and `-`, separated
+by `/`. Backslashes, control characters, trailing dots, and Windows device
+names are forbidden. Paths must also be unique after Unicode compatibility
+normalization and case-folding, preventing two members from collapsing to one
+name on a case-insensitive filesystem.
 
 `manifest.json` declares `bundle_format_version`, the mapping-key encoding,
 and a `files` array. Every file entry records its relative archive `path`,
@@ -58,11 +64,15 @@ re-encodes every JSON file to check that this representation is canonical.
 ZIP members use the stored (uncompressed) method, the timestamp
 `1980-01-01 00:00:00`, regular-file mode `0644`, no comments or extra fields,
 and a fixed order. These choices avoid compressor- and clock-dependent bytes:
-two builds from unchanged inputs are byte-identical.
+two builds from unchanged inputs are byte-identical. The repository also pins
+`LICENSE` to LF line endings, and the builder normalizes its bytes defensively,
+so Windows checkout settings do not change the archive.
 
 ## Verification failures
 
 Verification fails for duplicate, missing, extra, reordered, encrypted, or
 non-canonical members; unexpected ZIP metadata; malformed or unsupported
 manifests; size or SHA-256 mismatches; invalid JSON; duplicate JSON object
-keys; and invalid or non-canonical mapping-key encodings.
+keys; invalid or non-canonical mapping-key encodings; non-portable paths or
+normalized path collisions; and any byte-level ZIP representation other than
+the canonical archive reconstructed from the verified members.

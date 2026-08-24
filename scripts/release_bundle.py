@@ -10,10 +10,12 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import io
 import json
 import re
 import sys
 import tempfile
+import unicodedata
 import zipfile
 from pathlib import Path, PurePosixPath
 
@@ -36,6 +38,12 @@ ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
 ZIP_MODE = 0o100644
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 INTEGER_RE = re.compile(r"^-?(?:0|[1-9][0-9]*)$")
+PORTABLE_COMPONENT_RE = re.compile(r"^[A-Za-z0-9._-]+$")
+WINDOWS_RESERVED_NAMES = {"CON", "PRN", "AUX", "NUL"} | {
+    f"{prefix}{number}"
+    for prefix in ("COM", "LPT")
+    for number in range(1, 10)
+}
 
 
 class BundleError(ValueError):
@@ -209,6 +217,14 @@ def _zip_info(path: str) -> zipfile.ZipInfo:
     return info
 
 
+def _archive_bytes(member_order, payloads) -> bytes:
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for path in member_order:
+            archive.writestr(_zip_info(path), payloads[path])
+    return buffer.getvalue()
+
+
 def _file_entry(path: str, content: bytes, *, kind: str, source_path=None):
     entry = {
         "path": path,
@@ -234,7 +250,9 @@ def build_bundle(
 
     payloads = {}
     entries = []
-    licence = licence_path.read_bytes()
+    licence = licence_path.read_bytes().replace(b"\r\n", b"\n").replace(
+        b"\r", b"\n"
+    )
     payloads[LICENCE_PATH] = licence
     entries.append(_file_entry(LICENCE_PATH, licence, kind="license"))
 
@@ -258,6 +276,7 @@ def build_bundle(
         "files": entries,
         "key_encoding": KEY_ENCODING,
     }
+    _validate_manifest(manifest)
     manifest_content = _json_bytes(manifest)
     member_order = [MANIFEST_PATH, LICENCE_PATH] + sorted(
         path for path in payloads if path != LICENCE_PATH
@@ -265,15 +284,14 @@ def build_bundle(
 
     output = output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
+    payloads[MANIFEST_PATH] = manifest_content
+    archive_content = _archive_bytes(member_order, payloads)
     with tempfile.NamedTemporaryFile(
         dir=output.parent, prefix=f".{output.name}.", delete=False
     ) as temporary:
+        temporary.write(archive_content)
         temporary_path = Path(temporary.name)
     try:
-        with zipfile.ZipFile(temporary_path, "w") as archive:
-            for path in member_order:
-                content = manifest_content if path == MANIFEST_PATH else payloads[path]
-                archive.writestr(_zip_info(path), content)
         temporary_path.replace(output)
     except Exception:
         temporary_path.unlink(missing_ok=True)
@@ -289,7 +307,35 @@ def _safe_member_path(path: object) -> str:
         raise BundleError(f"non-canonical archive path {path!r}")
     if any(part in ("", ".", "..") for part in parsed.parts):
         raise BundleError(f"unsafe archive path {path!r}")
+    has_control = any(
+        ord(character) < 32 or ord(character) == 127 for character in path
+    )
+    if "\\" in path or has_control:
+        raise BundleError(f"non-portable archive path {path!r}")
+    for part in parsed.parts:
+        if not PORTABLE_COMPONENT_RE.fullmatch(part) or part.endswith("."):
+            raise BundleError(f"non-portable archive path {path!r}")
+        windows_stem = part.split(".", 1)[0].upper()
+        if windows_stem in WINDOWS_RESERVED_NAMES:
+            raise BundleError(f"Windows-reserved archive path {path!r}")
     return path
+
+
+def _portable_path_key(path: str) -> str:
+    return unicodedata.normalize("NFKC", path).casefold()
+
+
+def _reject_portable_path_collisions(paths, label: str):
+    seen = {}
+    for path in paths:
+        key = _portable_path_key(path)
+        previous = seen.get(key)
+        if previous is not None and previous != path:
+            raise BundleError(
+                f"{label} paths collide after portable normalization: "
+                f"{previous!r} and {path!r}"
+            )
+        seen[key] = path
 
 
 def _validate_manifest(manifest: object):
@@ -350,6 +396,8 @@ def _validate_manifest(manifest: object):
         raise BundleError("manifest must contain exactly one data license")
     if not any(entry["type"] == "data" for entry in entries):
         raise BundleError("manifest contains no data files")
+    _reject_portable_path_collisions(paths, "manifest")
+    _reject_portable_path_collisions(sources, "canonical source")
     expected_order = [LICENCE_PATH] + sorted(
         entry["path"] for entry in entries if entry["type"] == "data"
     )
@@ -369,14 +417,15 @@ def _validate_zip_info(info: zipfile.ZipInfo):
         raise BundleError(f"{info.filename}: unexpected ZIP permissions")
     if info.extra or info.comment:
         raise BundleError(f"{info.filename}: unexpected ZIP metadata")
-    if info.flag_bits & 0x1:
-        raise BundleError(f"{info.filename}: encrypted entries are not supported")
+    if info.flag_bits != 0:
+        raise BundleError(f"{info.filename}: unexpected ZIP flags")
 
 
 def verify_bundle(bundle: Path) -> dict:
     """Verify an archive using no repository files and return its manifest."""
     try:
-        with zipfile.ZipFile(bundle, "r") as archive:
+        bundle_content = Path(bundle).read_bytes()
+        with zipfile.ZipFile(io.BytesIO(bundle_content), "r") as archive:
             if archive.comment:
                 raise BundleError("the archive has an unexpected comment")
             infos = archive.infolist()
@@ -385,6 +434,9 @@ def verify_bundle(bundle: Path) -> dict:
                 raise BundleError("archive contains duplicate member names")
             if not names or names[0] != MANIFEST_PATH:
                 raise BundleError("manifest.json must be the first archive member")
+            for name in names:
+                _safe_member_path(name)
+            _reject_portable_path_collisions(names, "archive member")
             for info in infos:
                 _validate_zip_info(info)
 
@@ -404,9 +456,11 @@ def verify_bundle(bundle: Path) -> dict:
                     "or non-deterministic order)"
                 )
 
+            payloads = {MANIFEST_PATH: manifest_content}
             for entry in entries:
                 path = entry["path"]
                 content = archive.read(path)
+                payloads[path] = content
                 if len(content) != entry["size"]:
                     raise BundleError(f"{path}: size does not match manifest")
                 if _sha256(content) != entry["sha256"]:
@@ -420,6 +474,8 @@ def verify_bundle(bundle: Path) -> dict:
                         raise BundleError(f"{path}: top-level data must be a mapping")
                     if encode_data(decoded) != encoded:
                         raise BundleError(f"{path}: mapping-key encoding is not canonical")
+            if _archive_bytes(expected_names, payloads) != bundle_content:
+                raise BundleError("archive bytes are not canonical")
             return manifest
     except (OSError, zipfile.BadZipFile, RuntimeError) as exc:
         raise BundleError(f"cannot read bundle {bundle}: {exc}") from exc
