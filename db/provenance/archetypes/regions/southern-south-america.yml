@@ -26,7 +26,7 @@ dependency_revisions:
     archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
-    records/conductance/generic--ward2016: sha256:31163ce562160b68588a87fb4fbc940bc8abbb370c75318c35ba8b1f4cc5a913
+    records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
     records/irrigation/vancouver--unreferenced: sha256:35694223ee516c2c565a807c26353f8fefcee006e64f10797166b392286cf173
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
@@ -348,6 +348,6 @@ assessment:
     carry only one day-type each. Thirteen single-city components and two unsourced base temperatures
     complete the picture. All of this is selection and mapping; the components'' own values are settled
     by their own evidence assessments.'
-  evidence_revision: sha256:c651a19ffee3058819b32ebeacbe7fdd59a9b325a413780f2a351fa33ee92bea
+  evidence_revision: sha256:e26a2c6a82096a957e60159c89ffd48e69ad6820e38838654d3ec5bb5e5c6e68
 verification:
   attestations: []

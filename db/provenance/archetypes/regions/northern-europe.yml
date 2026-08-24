@@ -15,7 +15,7 @@ dependency_revisions:
     archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
-    records/conductance/generic--ward2016: sha256:31163ce562160b68588a87fb4fbc940bc8abbb370c75318c35ba8b1f4cc5a913
+    records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
     records/irrigation/vancouver--unreferenced: sha256:35694223ee516c2c565a807c26353f8fefcee006e64f10797166b392286cf173
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:59d96dc06e019429adec42ae34246c4ef43bda4eaac3b59ce96511683e0895e5
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:c5bb22c7998932dfb6e60e1b4975dfd00e830080e9e431faf0e0dced24b0f93a
@@ -322,6 +322,6 @@ assessment:
     values the composite declares itself have no recorded origin. None of those is a value error, and
     this review does not touch the components' own numbers, but each needs a curator's decision rather
     than an agent's.
-  evidence_revision: sha256:f825b1964a911c793f7dec8763ef33f28281680ee7f98ed386a9fda88bf51993
+  evidence_revision: sha256:f9c362cc0e0f3d247f92934a88bb4854ccde7918d2099522d06346d37755a963
 verification:
   attestations: []
