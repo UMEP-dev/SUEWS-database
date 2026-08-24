@@ -125,12 +125,13 @@ assessment:
         country china carries region_ref archetypes/regions/eastern-asia. This is the only composite in
         this set whose land-cover core is drawn from its own region. The remaining ten are not: london,
         swindon, se-england and helsinki chain to archetypes/regions/northern-europe, vancouver and los-angeles
-        to archetypes/regions/north-america, and generic carries no country field. Two of those ten had
-        an in-region alternative available and were not given it: the soil slot takes records/surfaces/common/se-england--ward2016--soil
-        while records/surfaces/common/beijing--zheng-y2023--soil exists with the same target land_cover.common,
-        and the irrigation slot takes records/irrigation/vancouver--unreferenced while records/irrigation/beijing--zheng-y2023
-        exists with the same target irrigation. A maintainer should decide whether the region default
-        ought to prefer those.'
+        to archetypes/regions/north-america, and generic carries no country field. One of those ten had
+        an in-region alternative available and was not given it: the irrigation slot takes records/irrigation/vancouver--unreferenced
+        while records/irrigation/beijing--zheng-y2023 exists with the same target irrigation. The similarly
+        named records/surfaces/common/beijing--zheng-y2023--soil is not an in-region alternative after
+        evidence review: its active place is Helsinki and its parameters come from two Viikki street-tree
+        sites. A maintainer should decide whether the region default ought to prefer the Beijing irrigation
+        row.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -294,12 +295,13 @@ assessment:
     its own region. The paved, bldgs, grass, evetr and dectr slots all take Beijing archetypes, and beijing
     chains through china to archetypes/regions/eastern-asia, so five of the fifteen components are regionally
     apt in a way that no other entry reviewed here can claim. The selection stops short of where it could
-    have gone. The soil slot takes records/surfaces/common/se-england--ward2016--soil although records/surfaces/common/beijing--zheng-y2023--soil
-    carries the same target land_cover.common, and the irrigation slot takes records/irrigation/vancouver--unreferenced
-    although records/irrigation/beijing--zheng-y2023 carries the same target irrigation; bsoil comes from
-    London, water from Swindon, the anthropogenic set from London and the snow set, its clearing profile
-    and both water-use profiles from Helsinki and Los Angeles. A maintainer should decide whether the
-    two available Beijing rows belong in those slots. Thirteen of the fifteen components declare representativeness
+    have gone for irrigation: that slot takes records/irrigation/vancouver--unreferenced although records/irrigation/beijing--zheng-y2023
+    carries the same target. The soil slot takes records/surfaces/common/se-england--ward2016--soil; despite
+    its stable path, records/surfaces/common/beijing--zheng-y2023--soil is not Beijing evidence but a reused
+    Viikki street-tree row. Bsoil comes from London, water from Swindon, the anthropogenic set from London
+    and the snow set, its clearing profile and both water-use profiles from Helsinki and Los Angeles.
+    A maintainer should decide whether the available Beijing irrigation row belongs in its slot. Thirteen
+    of the fifteen components declare representativeness
     city, so even the in-region ones travel further here than their own declaration allows. Two defects
     need no judgement about the region: the profiles.water_use_manual slot takes its holiday half from
     a record declared attaches_to irrigation.wuprofa_24hr and the profiles.water_use_automatic slot takes
@@ -312,6 +314,6 @@ assessment:
     referenced by none of them, though it carries no melt parameters and its legacy block holds -999 throughout.
     The components'' own values remain subject to their evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:24f3819f945e5cc5fab9257e623dcbb5a6ab419eacd2e1afdd263baa6a843d5b
+  evidence_revision: sha256:d9cd52557406ecceb9a48117248137619d46d75ab46b430c6e72786ea2d7b5f5
 verification:
   attestations: []
