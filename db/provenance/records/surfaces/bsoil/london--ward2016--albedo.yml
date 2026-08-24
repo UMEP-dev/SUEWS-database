@@ -1,0 +1,124 @@
+provenance_record: records/surfaces/bsoil/london--ward2016--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:ff01a426a83b92ab88b11999233874c081ee83726361d435218eb0f6bcc72219
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T17:18:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/110
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      note: BareSoil is the compressed legacy surface token for the BSoil/Bare soil class used in
+        Ward Table 2 and the historical release registry.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      note: Ward Table 2 publishes the value by surface type and identifies BSoil as the non-vegetated
+        bare-soil land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/110
+      note: Table 2 publishes 0.21 as the original bare-soil albedo and 0.18 as the adjusted UK value.
+        The record is the legacy original-value row, so 0.21 is retained. The pinned London application
+        uses 0.18, confirming that this 0.21 row is not the active London-adjusted input.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      note: Ward et al. directly state both the original and adjusted values and explain their use.
+        The release registry is later application evidence for the adjusted London row.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/110
+      note: Generic is the supported active place because 0.21 is the pre-adjustment model default.
+        London had zero bare-soil cover and its pinned release row uses the adjusted 0.18 value; London
+        remains only as stable-path and origin lineage.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/110
+      note: Generic reach describes an original literature/model default that was not fitted to London.
+        City reach would misstate an inert value from a site with zero bare-soil cover.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      note: Table 2 organises albedo by SUEWS surface type, so 0.21 describes the bare-soil land-cover
+        class rather than a neighbourhood bulk albedo or material specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      note: Literature describes retaining the original published model-input value; this record performs
+        no new measurement, fit or calculation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-original-bare-soil
+      - release-adjusted-london
+      note: The stable path, London origin, source, target, legacy ID and 0.21 value preserve the migrated
+        original-value row. The different 0.18 release application is documented rather than collapsed
+        into this identity.
+  evidence:
+  - id: ward-original-bare-soil
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, BSoil row and footnote a
+      page: 8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Publishes original bare-soil albedo 0.21 and adjusted albedo 0.18; the footnote explains
+        that earlier model versions assigned bare soil the non-irrigated-grass albedo.
+    - kind: table
+      label: Table 1, Kc surface-cover fractions
+      page: 5
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Gives the central-London Kc bare-soil fraction as zero, so the original 0.21 value is inert
+        there and cannot be read as a London-derived parameter.
+  - id: release-adjusted-london
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_NonVeg.txt, code 663 London BSoil row
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_NonVeg.txt#L10
+      note: Stores albedo 0.18 for the London bare-soil application, separating the adjusted release
+        row from this migrated 0.21 original-value record.
+  scientific_note: Ward et al. distinguish original bare-soil albedo 0.21 from the adjusted UK value
+    0.18. The central-London site has zero bare-soil fraction, and the pinned v2016a London row stores
+    0.18. The retained 0.21 record is therefore a generic literature/model default, not London city
+    evidence. Its stable London path and origin preserve migration lineage; no parameter value, source,
+    target or legacy ID changed.
+  evidence_revision: sha256:81c320f09a23b2e7c491f6b80f2befd25a04360f5e73963fd4af5d2561513197
+verification:
+  attestations: []
