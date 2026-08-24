@@ -1,0 +1,81 @@
+provenance_record: records/surfaces/water/london--unreferenced--water-state
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d5d8d0e1697ae1ff5d09de3f0f9ba7a6fe9e11f39cbb74405d3c1343fa76699f
+dependency_revisions:
+  sources: {}
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T22:40:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/298
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      note: Archived London small-fountain water-state configuration identifies the retained internal
+        database row without presenting Small Fountain as a measured or published London parameter.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/298
+    target:
+      conclusion: supported
+      note: SUEWS defines StateLimit as the upper limit of an open-water surface state, matching the
+        land_cover.water water-state target.
+    values:
+      conclusion: supported
+      note: The pre-migration workbook and its generated YAML conversion both store StateLimit 15 mm
+        and WaterDepth 10 mm on legacy row 42240002. These values are preserved as an internal configuration;
+        no publication or pinned SUEWS release was found that measures, derives or selects them.
+    source:
+      conclusion: supported
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/298
+      note: Unreferenced is correct because legacy Ref 90240000 is the repository's unreferenced placeholder
+        and no parameter publication or released application row supports the 15/10 configuration.
+    place:
+      conclusion: supported
+      note: London is the Origin stored on the exact pre-migration row. It preserves the internal configuration
+        label and does not claim that the values were measured at a London fountain.
+    representativeness:
+      conclusion: not_applicable
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/298
+      note: The archived row identifies no particular fountain, selection in a London model, or evidence
+        reach. Omitting representativeness avoids presenting an unused internal configuration as a city default.
+    method:
+      conclusion: supported
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/298
+      note: Assumed is the honest method for a configured state cap and water depth whose physical measurement,
+        fit, calculation and release application are all undocumented.
+    identity:
+      conclusion: supported
+      note: Legacy ID 42240002, the London origin, Small Fountain label and exact 15/10 pair uniquely identify
+        the migrated row. It is referenced by no pre-migration type and no current archetype.
+  evidence: []
+  attempted_sources:
+  - description: Pinned SUEWS Water input tables from v2016a through v2025a
+    attempted_at: '2026-08-24T22:40:00Z'
+    outcome: not_found
+    note: The archived release tables contain Helsinki, Swindon and London river configurations, but no
+      Small Fountain row and no StateLimit 15/WaterDepth 10 pair.
+  scientific_note: >-
+    This record is fully traceable as an archived internal database configuration, but not as a parameter
+    publication or a released SUEWS application. The source workbook at commit 746dcd5 stores Water State
+    row 2 as legacy ID 42240002, Water, London, Small Fountain, StateLimit 15, WaterDepth 10 and Ref 90240000;
+    its bytes have SHA-256 50dfc15322115651f672fed86df1fdcc7dc8b13a58b7ced9b2e270b388aee6d3.
+    The generated YAML at commit 053c004 preserves the same row exactly. None of the pinned SUEWS Water
+    tables from v2016a through v2025a contains the row, and no pre-migration type or current archetype selects
+    it. SUEWS documentation establishes StateLimit as a configurable maximum water state rather than evidence
+    of a measured depth. The record therefore keeps the exact value, stable path, London origin, legacy ID
+    and legacy WaterDepth, retains source unreferenced, records method assumed, and removes the unsupported
+    claim that this unused configuration represents London at city scale.
+  evidence_revision: sha256:42d1d0fefcf8c981af7bd3db2d81d74199470dc7edd0910fa589dd30399824d9
+verification:
+  attestations: []

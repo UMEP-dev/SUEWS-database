@@ -1,11 +1,11 @@
 record: records/surfaces/water/london--unreferenced--water-state
 schema_version: '2026.5'
 target: land_cover.water
-name: Small Fountain
+name: Archived London small-fountain water-state configuration
 place: london
 origin: London
-representativeness: city
 source: unreferenced
+method: assumed
 legacy_id: 42240002
 parameters:
   state_limit: 15
