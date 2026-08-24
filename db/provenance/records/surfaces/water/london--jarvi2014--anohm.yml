@@ -1,98 +1,150 @@
 provenance_record: records/surfaces/water/london--jarvi2014--anohm
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:7df3b59677cd74087629280c155ee30c0235f374275caefcef68170eda8a332d
+record_revision: sha256:9bfb13baa778fd9464fb1aac76a6d28172032a93e073a0067b107bae53c7901b
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    sun2017: sha256:db4668370c905c4555d8a11e7f6aa6aa9888e1bc4016442b1267287ad9e7fd9c
+    umep-dev2016-anohm-table-introduction: sha256:bb16ef807c365be842eb42872e2d0993a51de7922bb414ce8b954887cf528e01
+    umep-dev2017a-input-tables: sha256:5b11bb1f3acceb14cafb2d562c22a0edd96b5fd8aef76ff980887b4149c62d08
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:03:46Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/209
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: Water is consistent with the record's land_cover.water target.
+      - v2017a-water-row
+      note: Water preserves the migrated name of the SUEWS water configuration row.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: AnOHM material properties are land_cover.water properties.
+      - v2017a-water-row
+      note: The three AnOHM fields are stored on the Water surface row and therefore belong to land_cover.water.
     values:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: None of the three stored values is in the article. AnOHM is never mentioned in it, and the
-        paper publishes no volumetric heat capacity, thermal conductivity or bulk transfer coefficient
-        for any surface. Its storage heat treatment is the objective hysteresis model, with snow coefficients
-        determined in Sect. 3.1.
+      - v2017a-water-row
+      - earlier-anohm-water-row
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/209
+      note: The v2017a text table stores 4100000, 1.2 and 4 exactly. The earlier AnOHM table and the
+        generator workbook committed with v2017a both store 100000 instead, while Sun et al. publish
+        different generic and London values. The current tuple is therefore supported only as the
+        released text-table assumption, not as a scientific determination.
     source:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
+      - v2017a-water-row
+      - earlier-anohm-water-row
       - jarvi-anohm-absent
-      note: A paper that does not contain the scheme these parameters belong to cannot be their source.
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/209
+      note: Unreferenced is correct. Järvi et al. predate AnOHM, Sun et al. do not publish this exact
+        tuple, and a release table can prove configuration lineage without becoming a scientific
+        parameter source.
     place:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record's place is London. Table 1 lists five sites, three in Helsinki and two in Montreal;
-        London is not one of them and the word appears in the article only in a code-availability address
-        and a publisher's address in the reference list.
-    representativeness:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-sites
-      note: Representativeness cannot be assessed while the provenance is unknown; city scale would overstate
-        this study in any case.
-    method:
-      conclusion: unresolved
-      evidence_ids:
+      - v2017a-water-row
       - jarvi-anohm-absent
-      note: With no source established, the production method is open.
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/209
+      note: Generic is the active evidence place because no publication determines this tuple at a
+        study location. London remains in the stable path and origin as the v2017a application label.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-water-row
+      - jarvi-anohm-absent
+      - published-anohm-values
+      note: Generic scope records an explicit configuration assumption; city would falsely present the
+        tuple as a London observational or fitted result.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-water-row
+      note: The tuple is stored on the Water surface row and applies to that land-cover class rather
+        than a whole-neighbourhood bulk calibration.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-water-row
+      - earlier-anohm-water-row
+      note: Assumed accurately records a sample configuration whose production is undocumented; the
+        companion workbook disagreement rules out treating the text row as a transparent calculation.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: One AnOHM record for this surface under this citation.
+      - v2017a-water-row
+      note: The stable path, London origin, legacy ID, target and values preserve the migrated v2017a
+        water configuration while correcting its evidence claims.
   evidence:
+  - id: v2017a-water-row
+    source: umep-dev2017a-input-tables
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Water.txt, code 661 Water London row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Water.txt#L5
+      note: First repository table located with the exact 4100000/1.2/4 tuple; it labels the complete
+        configuration row Water and London but supplies no parameter citation.
+    - kind: dataset
+      label: InputFiles_SUEWS_v2017a_SiteInfo.xlsm, SUEWS_Water sheet, code 661 row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/InputFiles_SUEWS_v2017a_SiteInfo.xlsm
+      note: The generator workbook committed with the text table stores 100000/1.2/4 for code 661,
+        so it does not document how the released text value 4100000 was produced.
+  - id: earlier-anohm-water-row
+    source: umep-dev2016-anohm-table-introduction
+    role: validation
+    locators:
+    - kind: dataset
+      label: SUEWS_Water.txt, code 661 at the AnOHM-field introduction
+      url: https://github.com/UMEP-dev/SUEWS/blob/d3659012860cb22f8c778e953e474d532cc08ae3/InputTables/SUEWS_Water.txt#L5
+      note: The first non-reverted AnOHM input table stores 100000/1.2/4, demonstrating that the
+        current 4100000 tuple was introduced later by the v2017a text-table update.
   - id: jarvi-anohm-absent
     source: jarvi2014
-    role: compilation
+    role: validation
     locators:
     - kind: text
-      label: Whole-article search for AnOHM and for its parameters
+      label: Whole-article search for AnOHM and its three input parameters
       page: 1691-1711
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: The string AnOHM does not occur anywhere in the article. Storage heat is handled through the
-        objective hysteresis model and, for snow, through coefficients determined in Sect. 3.1; no volumetric
-        heat capacity, thermal conductivity or bulk transfer coefficient is published for any surface.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
+      note: The article does not mention AnOHM or publish volumetric heat capacity, thermal conductivity
+        and bulk transfer coefficient values for water; its study sites are in Helsinki and Montreal.
+  - id: published-anohm-values
+    source: sun2017
+    role: validation
     locators:
     - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'The citation is simply wrong for this record. AnOHM does not appear in Järvi et al.
-    (2014) at all, and the article publishes no material thermal properties of any kind; its storage heat
-    comes from the objective hysteresis model. The place is wrong too: the study''s five sites are in
-    Helsinki and Montreal, and London is mentioned only in a web address and a reference list entry. This
-    audit does not name a replacement source, because doing so on the strength of the scheme''s name would
-    be exactly the inference this database forbids. What is needed is the publication that introduced
-    AnOHM and published these coefficients.'
-  evidence_revision: sha256:2f683d09a19ea0e93b062744cea3612710133ac3f9bec9343c59a4c3b6122184
+      label: Table 1(a), input-parameter sensitivity distributions
+      page: 2880
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes generic means of 2.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4, not the exact stored tuple.
+    - kind: table
+      label: Table 3, UK-Ldn calibration
+      page: 2883
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a
+        separate water tuple of 4.1 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
+  scientific_note: The exact 4100000/1.2/4 tuple first appears in the SUEWS v2017a text table as a
+    London Water configuration, but its companion generator workbook retains 100000/1.2/4. Neither
+    Järvi et al. nor Sun et al. publish the stored tuple. It is retained honestly as an unreferenced,
+    assumed generic land-cover configuration; the stable London path/origin preserves its application lineage.
+  evidence_revision: sha256:e1a4bb5be11567e21e8650414ceda76085b2280e00e22d9f5678ad9f2f283863
 verification:
   attestations: []

@@ -608,6 +608,20 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
     year: 2016
+  umep-dev2016-anohm-table-introduction:
+    author: UMEP-dev
+    journal: GitHub
+    title: SUEWS AnOHM input-table parameter introduction
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/tree/d3659012860cb22f8c778e953e474d532cc08ae3/InputTables
+    year: 2016
+  umep-dev2017a-input-tables:
+    author: UMEP-dev
+    journal: GitHub
+    title: SUEWS v2017a input tables and generator workbook
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/tree/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables
+    year: 2017
   umep-dev2018a-fixture:
     author: UMEP-dev
     journal: GitHub

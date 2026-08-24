@@ -1,107 +1,159 @@
 provenance_record: records/surfaces/evetr/london--jarvi2014--anohm
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:99312f53cc484e5468e209c2d2fd96f4220bbb6d54774a9e1f0a2cbe56ab7b9a
+record_revision: sha256:af6e8ffcfa7ce896299758900a828d199ae7942deb915d78e5928809fe46ed57
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    sun2017: sha256:db4668370c905c4555d8a11e7f6aa6aa9888e1bc4016442b1267287ad9e7fd9c
+    umep-dev2016-anohm-table-introduction: sha256:bb16ef807c365be842eb42872e2d0993a51de7922bb414ce8b954887cf528e01
+    umep-dev2017a-input-tables: sha256:5b11bb1f3acceb14cafb2d562c22a0edd96b5fd8aef76ff980887b4149c62d08
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb: sha256:99326f8e9af73d032f2c4b74e753ae93b559fc2b56e8076d0ed6628fdfbcf368
+    records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb: sha256:7bb58308a7ffb06532ce7475099b51b8e177f351007badf03fea1a6d2952e0b6
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T23:03:46Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/206
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: EvergreenTreeA is consistent with the record's land_cover.evetr target.
+      - v2017a-evetr-row
+      note: EvergreenTreeA preserves the migrated name of the first SUEWS evergreen-tree configuration.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: AnOHM material properties are land_cover.evetr properties.
+      - v2017a-evetr-row
+      note: The three AnOHM fields are stored on the EvergreenTreeA surface row and therefore belong to land_cover.evetr.
     values:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
-      - jarvi-anohm-absent
-      note: None of the three stored values is in the article. AnOHM is never mentioned in it, and the
-        paper publishes no volumetric heat capacity, thermal conductivity or bulk transfer coefficient
-        for any surface. Its storage heat treatment is the objective hysteresis model, with snow coefficients
-        determined in Sect. 3.1.
+      - v2017a-evetr-row
+      - earlier-anohm-evetr-row
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/206
+      note: The v2017a text table stores 1000000, 1.2 and 4 exactly. The earlier AnOHM table and the
+        generator workbook committed with v2017a both store 100000 instead, while Sun et al. publish
+        different generic and London values. The current tuple is therefore supported only as the
+        released text-table assumption, not as a scientific determination.
     source:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
+      - v2017a-evetr-row
+      - earlier-anohm-evetr-row
       - jarvi-anohm-absent
-      note: A paper that does not contain the scheme these parameters belong to cannot be their source.
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/206
+      note: Unreferenced is correct. Järvi et al. predate AnOHM, Sun et al. do not publish this exact
+        tuple, and a release table can prove configuration lineage without becoming a scientific
+        parameter source.
     place:
-      conclusion: contradicted
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record's place is London. Table 1 lists five sites, three in Helsinki and two in Montreal;
-        London is not one of them and the word appears in the article only in a code-availability address
-        and a publisher's address in the reference list.
-    representativeness:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-sites
-      note: Representativeness cannot be assessed while the provenance is unknown; city scale would overstate
-        this study in any case.
-    method:
-      conclusion: unresolved
-      evidence_ids:
+      - v2017a-evetr-row
       - jarvi-anohm-absent
-      note: With no source established, the production method is open.
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/206
+      note: Generic is the active evidence place because no publication determines this tuple at a
+        study location. London remains in the stable path and origin as the v2017a application label.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-evetr-row
+      - jarvi-anohm-absent
+      - published-anohm-values
+      note: Generic scope records an explicit configuration assumption; city would falsely present the
+        tuple as a London observational or fitted result.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-evetr-row
+      note: The tuple is stored on the EvergreenTreeA surface row and applies to that land-cover class rather
+        than a whole-neighbourhood bulk calibration.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-evetr-row
+      - earlier-anohm-evetr-row
+      note: Assumed accurately records a sample configuration whose production is undocumented; the
+        companion workbook disagreement rules out treating the text row as a transparent calculation.
     identity:
       conclusion: supported
-      note: 'Pinned SUEWS 2017a SUEWS_Veg rows 661 and 700 are separate full configurations: their Code
-        fields differ and all four OHMCode fields select 200 versus 201, while both carry the same AnOHM
-        subset, 1000000/1.2/4. The migration preserves those source-row identities separately as legacy
-        ID 51240007, EvergreenTreeA, and legacy ID 51240010, EvergreenTreeB. Identical extracted AnOHM
-        values therefore do not collapse the stable records. See https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/docs/source/inputs/tables/SUEWS_SiteInfo/sample-table/SUEWS_Veg.txt#L10
-        and https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/docs/source/inputs/tables/SUEWS_SiteInfo/sample-table/SUEWS_Veg.txt#L13.'
+      evidence_ids:
+      - v2017a-evetr-row
+      note: Rows 661 and 700 are separate complete configurations with different OHM code families
+        while reusing the same AnOHM subset. The stable path and legacy ID preserve row 661 without
+        claiming that the repeated tuple is a second scientific determination.
       related_records:
       - records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb
   evidence:
+  - id: v2017a-evetr-row
+    source: umep-dev2017a-input-tables
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg.txt, code 661 EvergreenTreeA London row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Veg.txt#L10
+      note: First repository table located with the exact 1000000/1.2/4 tuple; it labels the complete
+        configuration row EveTr and London but supplies no parameter citation.
+    - kind: dataset
+      label: SUEWS_Veg.txt, sibling code 700 EvergreenTreeB London row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Veg.txt#L13
+      note: Reuses the same AnOHM tuple but selects OHM code family 201 rather than the row 661 family 200,
+        establishing a separate full-row configuration identity rather than separate parameter evidence.
+    - kind: dataset
+      label: InputFiles_SUEWS_v2017a_SiteInfo.xlsm, SUEWS_Veg sheet, code 661 row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/InputFiles_SUEWS_v2017a_SiteInfo.xlsm
+      note: The generator workbook committed with the text table stores 100000/1.2/4 for code 661,
+        so it does not document how the released text value 1000000 was produced.
+  - id: earlier-anohm-evetr-row
+    source: umep-dev2016-anohm-table-introduction
+    role: validation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg.txt, code 661 at the AnOHM-field introduction
+      url: https://github.com/UMEP-dev/SUEWS/blob/d3659012860cb22f8c778e953e474d532cc08ae3/InputTables/SUEWS_Veg.txt#L10
+      note: The first non-reverted AnOHM input table stores 100000/1.2/4, demonstrating that the
+        current 1000000 tuple was introduced later by the v2017a text-table update.
   - id: jarvi-anohm-absent
     source: jarvi2014
-    role: compilation
+    role: validation
     locators:
     - kind: text
-      label: Whole-article search for AnOHM and for its parameters
+      label: Whole-article search for AnOHM and its three input parameters
       page: 1691-1711
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: The string AnOHM does not occur anywhere in the article. Storage heat is handled through the
-        objective hysteresis model and, for snow, through coefficients determined in Sect. 3.1; no volumetric
-        heat capacity, thermal conductivity or bulk transfer coefficient is published for any surface.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
+      note: The article does not mention AnOHM or publish volumetric heat capacity, thermal conductivity
+        and bulk transfer coefficient values for evergreen-tree; its study sites are in Helsinki and Montreal.
+  - id: published-anohm-values
+    source: sun2017
+    role: validation
     locators:
     - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'The citation is simply wrong for this record. AnOHM does not appear in Järvi et al.
-    (2014) at all, and the article publishes no material thermal properties of any kind; its storage heat
-    comes from the objective hysteresis model. The place is wrong too: the study''s five sites are in
-    Helsinki and Montreal, and London is mentioned only in a web address and a reference list entry. This
-    audit does not name a replacement source, because doing so on the strength of the scheme''s name would
-    be exactly the inference this database forbids. What is needed is the publication that introduced
-    AnOHM and published these coefficients. The duplicate-valued counterpart remains a separate stable
-    identity because SUEWS 2017a rows 661 and 700 select different OHM families, 200 and 201, while reusing
-    the same AnOHM subset; the migration preserves them as legacy IDs 51240007 and 51240010. That identity
-    decision does not settle the source, value, place, representativeness or method blockers above.'
-  evidence_revision: sha256:98fba622dc449937301198fd1d38137dbbd3bc02477ee9e3d4457de9e9294001
+      label: Table 1(a), input-parameter sensitivity distributions
+      page: 2880
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes generic means of 2.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4, not the exact stored tuple.
+    - kind: table
+      label: Table 3, UK-Ldn calibration
+      page: 2883
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a
+        separate evergreen-tree tuple of 1.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
+  scientific_note: The exact 1000000/1.2/4 tuple first appears in the SUEWS v2017a text table as a
+    London EveTr configuration, but its companion generator workbook retains 100000/1.2/4. Neither
+    Järvi et al. nor Sun et al. publish the stored tuple. It is retained honestly as an unreferenced,
+    assumed generic land-cover configuration; the stable London path/origin preserves its application lineage.
+  evidence_revision: sha256:67f5613539268f751e7c856b8f27d4afcb9c0fb3efb8b319dc75d99ec86d4726
 verification:
   attestations: []
