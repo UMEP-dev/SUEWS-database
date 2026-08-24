@@ -25,17 +25,17 @@ assessment:
       note: The legacy row assigns the compatibility slot to Evergreen Tree, matching the land_cover.evetr
         target even though the slot supplies no active parameter.
     values:
-      conclusion: supported
+      conclusion: not_applicable
       note: The record intentionally has an empty active parameters mapping. Its preserved -999 legacy sentinels
         mark porosity as unused for evergreen trees and are not exported as parameter values.
     source:
-      conclusion: not_applicable
+      conclusion: supported
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/295
       note: The adapter makes no literature-value claim. Source unreferenced is the honest declaration for
         a compatibility row whose only numeric content is inactive legacy sentinels.
     place:
-      conclusion: not_applicable
+      conclusion: supported
       note: The compatibility adapter is generic and has no observational place.
     representativeness:
       conclusion: supported
@@ -52,19 +52,11 @@ assessment:
       note: Stable path, name, target, legacy ID 34240010, origin note, dangling legacy reference and -999
         sentinels preserve the exact migrated row identity without presenting the sentinels as evidence values.
   evidence: []
-  attempted_sources:
-  - description: Immutable pre-migration porosity row 34240010
-    url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/porosity.yml#L23-L29
-    attempted_at: '2026-08-24T18:15:00Z'
-    outcome: incomplete
-    note: The pinned row establishes the exact compatibility lineage, name, target, sentinels, legacy ID
-      and statement that porosity is used only for deciduous trees. It is repository lineage rather than
-      a parameter publication and therefore cannot support a literature source.
   scientific_note: 'The immutable pre-migration row at https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/porosity.yml#L23-L29
     records an Evergreen Tree Dummy value with PorosityMin and PorosityMax both -999 and says porosity is
     used only for deciduous trees. This stable record is retained as an empty compatibility/configuration
     adapter: its parameters mapping remains empty, the sentinels remain only under legacy, source stays
     unreferenced, and method assumed records that no measured, fitted or literature value is claimed.'
-  evidence_revision: sha256:a5699bfd8a1b9ebc9abbbd9f858dd1398a083dfa502dab1b59dda788659e0d03
+  evidence_revision: sha256:4ea056a80d5f7d51e65421dd60aa43c1c1e065ce1184973496e9e3597ad68984
 verification:
   attestations: []
