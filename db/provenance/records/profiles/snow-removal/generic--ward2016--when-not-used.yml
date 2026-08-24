@@ -1,0 +1,93 @@
+provenance_record: records/profiles/snow-removal/generic--ward2016--when-not-used
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:76abd0d3ebc29d96eacebb406c0e8c7ab0352d9aa1476f605dd9c27ee7062fd3
+dependency_revisions:
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:10:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/181
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      note: When not used is the migrated display identity for an explicit disabled profile whose legacy
+        cells are all -999 sentinels.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-snow-disabled
+      note: The migrated row is typed as Snow removal and attaches to the SUEWS 24-hour snow-removal
+        profile slot; Ward et al. confirm that snow processes were not used in the application.
+    values:
+      conclusion: not_applicable
+      evidence_ids:
+      - release-not-used-profile
+      note: The record deliberately contains no active parameters. Its 24 legacy -999 cells are preserved
+        sentinels, not numerical snow-removal inputs.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-snow-disabled
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/181
+      note: Unreferenced is correct because this is a configuration adapter rather than a published
+        parameter set. Ward et al. provide application/validation context only.
+    place:
+      conclusion: not_applicable
+    representativeness:
+      conclusion: not_applicable
+    method:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      - ward-snow-disabled
+      note: Assumed records the deliberate choice to disable the optional profile; no measurement,
+        fitting, literature transfer or calculation produced an active value.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-not-used-profile
+      note: The stable path, target, attachment, profile type, name, legacy ID and sentinel cells preserve
+        the distinct pre-migration configuration row without promoting the sentinels to active data.
+  evidence:
+  - id: release-not-used-profile
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_Profiles.txt, code 999 Not used row
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Profiles.txt#L24
+      note: Stores 24 -999 sentinel cells for the explicit Not used profile.
+    - kind: dataset
+      label: Pre-migration profiles.yml, row 60240013
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L257-L287
+      note: Types the migrated row as Snow removal, names it When not used, and preserves the 24 sentinels.
+  - id: ward-snow-disabled
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Model configuration discussion, snow processes not used
+      page: '8'
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Establishes application context for disabling snow, not a parameter source for the empty profile.
+  scientific_note: This record is a retained configuration adapter for an optional SUEWS profile. It
+    exports no active parameter and claims no literature value. The v2016a and pre-migration artifacts
+    prove its disabled identity; Ward et al. only confirm why snow was disabled in that application.
+  evidence_revision: sha256:6bebfb1dd074e2df65ad25443f9eb542bceac7da69e5969e97086bd70254be2f
+verification:
+  attestations: []
