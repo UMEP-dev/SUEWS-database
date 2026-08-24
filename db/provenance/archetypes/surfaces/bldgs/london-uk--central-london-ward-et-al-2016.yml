@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/london-uk--obtestcase: sha256:3764d0a48ab628914a5ef4a2525467ff15cab9149223ca72e789529750617cba
     archetypes/surfaces/bldgs/swindon-uk--suburban-residential-ward-et-al-2016: sha256:2039a17a1d0ffda50e3cd2a5adcfc986116b35ec882841566a8fb57bc0f09dc4
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
-    records/ohm/generic--ward2016--buildings: sha256:68fa8af89855b717d154431821b0e4199df5aa96c181d3e0b6110c2a978c89c7
+    records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
     records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:006f8ec060296669e9072585fa5bd2af0c724e7524000e9d35e5e7a786890a81
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
@@ -197,6 +197,6 @@ assessment:
     America. The snowpack limit reaching to Helsinki is a third-order concern by comparison, and it is
     forced, since no other buildings snowpack_limit record exists. This review does not revisit any component
     value.'
-  evidence_revision: sha256:b7955f07b4f07557ecb209d65b09b4a5a1ba0a65e2ef8a6407924fc3ae851269
+  evidence_revision: sha256:f3153dbbc0787635229f38c29b6bc7792060eeb3507c3cf9dbf7b437c93629c0
 verification:
   attestations: []

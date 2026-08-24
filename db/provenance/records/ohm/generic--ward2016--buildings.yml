@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:68fa8af89855b717d154431821b0e4199df5aa96c181d3e0b6110c2a978c89c7
+record_revision: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Bldgs, so the tuple describes the building land-cover class
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -93,6 +100,6 @@ assessment:
     rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
     and Swindon runs validate/apply the coefficients but are not their observation input. The separate code
     798 input record now documents its calculated lineage from the three rooftop source-table rows.
-  evidence_revision: sha256:c8743d291f9926cc62619ba2a2a5665c0f9a5975bf69fb0170278ca174a85ef9
+  evidence_revision: sha256:629d37e2484357a316a3c79d40eb7eb4ed9dd503bbe3fc7392c2fbe810c53301
 verification:
   attestations: []
