@@ -45,6 +45,8 @@ make check        # structure, references and coupling rules
 make validate     # + validate every fragment against the supy data model
 make audit-plan   # dry-run coverage for evidence and composition audits
 make export REC=archetypes/surfaces/bldgs/helsinki--kumpula
+make release-bundle
+make verify-release-bundle BUNDLE=/path/to/copied/archive.zip
 ```
 
 `make export` renders any record or archetype as a fragment that pastes
@@ -53,7 +55,8 @@ in supy's native `{value, ref: {ID, DOI}}` form.
 
 `docs/FORMAT.md` specifies the format and how to contribute a value;
 `docs/LAYOUT.md` maps the repository; `docs/PROVENANCE_RUNNER.md` documents the
-deterministic agent-audit and resume workflow.
+deterministic agent-audit and resume workflow; and
+`docs/RELEASE_BUNDLE.md` specifies the reproducible offline JSON archive.
 
 ## What a record knows besides its values
 

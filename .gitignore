@@ -7,3 +7,4 @@ site/
 .image-cache/
 .image-stage/
 provenance-runs/
+dist/
