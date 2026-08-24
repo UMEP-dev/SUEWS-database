@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:ff506cabb2dc02ddf2b9fe043709a35d3e89eac0d7ce78341ac6c10497064ddf
     records/ohm/generic--unreferenced--paved: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
@@ -164,7 +164,7 @@ assessment:
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: component
     note: Fills the construction slot. The record declares target construction, name Placeholder, place
-      generic, representativeness generic and source lindberg-f2020, and carries roof and wall layer lists
+      generic, representativeness generic, source unreferenced and method assumed, and carries roof and wall layer lists
       with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
       slot out of the surface fragment, so this reference contributes no exported value.
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
@@ -193,6 +193,6 @@ assessment:
     the files do not say which. archetypes/surfaces/paved/zurich--city-centre takes the same seven components
     again, so the decision reaches beyond this pair. The drainage record is now documented as generic
     literature evidence; the OHM record still declares source unreferenced, a question for that record''s own evidence review.'
-  evidence_revision: sha256:fe7ba392bcdfce5b81401043a02ead06344b90b5d8483bb114f4a5f995781736
+  evidence_revision: sha256:b69c29508fc085027b4684b57be8bee3d24f1bd717bc4d512dd64159715ef8bf
 verification:
   attestations: []
