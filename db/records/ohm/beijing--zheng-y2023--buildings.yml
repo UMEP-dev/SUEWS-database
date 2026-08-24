@@ -5,7 +5,9 @@ name: 'Original roof average '
 place: beijing
 origin: Beijing
 representativeness: city
-source: zheng-y2023
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240067
 legacy_id: 50240045
 parameters:
   a1: 0.238

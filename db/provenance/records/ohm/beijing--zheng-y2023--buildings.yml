@@ -1,7 +1,7 @@
 provenance_record: records/ohm/beijing--zheng-y2023--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
+record_revision: sha256:4ebd7373c8e5b8c1c08b5786cc227396d9a6407253c7a0d76794e9a22b15fa2c
 dependency_revisions:
   sources:
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
@@ -10,17 +10,21 @@ dependency_revisions:
   records:
     records/ohm/generic--jarvi2014--buildings: sha256:63465ce7ce13a7f6c15735214b1f8481074cc6d6e5b0e6e0c396d2aaedc4f5e7
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:21:09Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T19:22:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/66
+  method: assumed
   findings:
     name:
-      conclusion: curation_required
-      note: The short name reflects legacy OHM code 799, but the publication and supplement do not publish
-        this label; its retained record identity depends on the duplicate decision.
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-model-input
+      note: Original roof average is the archived label of code 799 selected by the Beijing building
+        configuration; it identifies reused configuration lineage rather than an independent Beijing fit.
       related_records:
       - records/ohm/generic--jarvi2014--buildings
       issue_urls:
@@ -34,42 +38,51 @@ assessment:
       evidence_ids:
       - zheng-building-model-input
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - zheng-building-application
       - zheng-building-model-input
-      note: Zheng et al. apply and archive the exact tuple but do not derive it; section 4.3 says the
-        coefficients follow Kokkonen et al. rather than establishing Zheng as parameter source.
+      note: Unreferenced is correct for the exact tuple because Zheng et al. apply and archive code 799
+        but do not derive it; source_legacy_ref 90240067 preserves the migration link to the application
+        paper without presenting it as the parameter publication.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/66
     place:
-      conclusion: curation_required
-      note: Beijing is the model-application location for a reused generic SUEWS coefficient set; whether
-        a place-specific reuse remains a separate record is a maintainer decision.
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-model-input
+      note: Beijing is the model-application location of this retained code-799 selection, not a claim
+        that the coefficients were independently determined in Beijing.
       related_records:
       - records/ohm/generic--jarvi2014--buildings
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/66
     representativeness:
-      conclusion: curation_required
-      note: The exact tuple is applied city-wide in the model but is not an independent Beijing city-scale
-        determination.
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-model-input
+      note: City describes the reach of the archived Beijing model application; it does not describe
+        empirical evidence reach for the still-unresolved original code-799 derivation.
       related_records:
       - records/ohm/generic--jarvi2014--buildings
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/66
     method:
-      conclusion: curation_required
-      note: The available Zheng evidence establishes literature/default reuse, not the production method
-        or original parameter publication for code 799.
+      conclusion: supported
+      evidence_ids:
+      - zheng-building-model-input
+      note: Assumed records the Beijing configuration choice to reuse code 799. It deliberately does not
+        claim to reconstruct the unresolved calculation that originally produced the generic tuple.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/66
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - duplicate-generic-code-799
-      note: The Beijing record exactly duplicates the generic code-799 record; retaining a place-specific
-        reuse, aliasing it, or merging it is a curation decision.
+      - related-generic-code-799
+      - zheng-building-model-input
+      note: The archive selects code 799 for the Beijing building surface, while the generic record
+        preserves the underlying reusable code identity. Keeping both stable paths distinguishes application
+        lineage from the unresolved generic derivation without claiming two parameter determinations.
       related_records:
       - records/ohm/generic--jarvi2014--buildings
       issue_urls:
@@ -99,14 +112,16 @@ assessment:
       url: https://doi.org/10.5281/zenodo.8012194
     note: The final model archive contains 0.238, 0.427, -16.7 as code 799 and traces it to the building
       surface used in the Beijing runs.
-  - id: duplicate-generic-code-799
+  - id: related-generic-code-799
     record: records/ohm/generic--jarvi2014--buildings
-    role: possible_duplicate
-    note: The generic record has the identical three coefficients and identifies legacy code 799.
-  scientific_note: Zheng et al. and their model archive establish that code 799 was reused in Beijing,
-    but do not establish its original parameter publication. The exact duplicate generic record leaves
-    the place-specific identity, source, name, representativeness, and method to curation under existing
-    issue 66.
-  evidence_revision: sha256:01c4d8af6244a61cab71c7d2c4ec1906ffd9aa6d37f49065d88b205b591812d2
+    role: related
+    note: Preserves the same code-799 tuple as a generic legacy identity; its original calculation and
+      source remain separately unresolved under issue 65.
+  scientific_note: The Zheng archive proves that code 799 was selected for the Beijing building surface
+    but does not make Zheng et al. the parameter source. This record is therefore retained as an explicit
+    Beijing application identity with source unreferenced and method assumed; source_legacy_ref 90240067
+    preserves the application-paper link. The related generic record remains responsible for the unresolved
+    original roof-average derivation under issue 65. No value, stable path, origin or legacy ID is changed.
+  evidence_revision: sha256:43bbf9e7238b11950fdd38a5dc9ea8358c7d48b2ef617de4e4f60ada738b2db1
 verification:
   attestations: []
