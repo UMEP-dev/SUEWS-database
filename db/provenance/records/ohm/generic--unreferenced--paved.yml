@@ -43,7 +43,11 @@ assessment:
         concrete a2 input. Replacing 0.10 with 0.48 would give a2 = 0.248571..., not the stable code-800
         release value; this assessment therefore documents, but does not silently correct, that discrepancy.
     source:
-      conclusion: not_applicable
+      conclusion: supported
+      evidence_ids:
+      - suews-v2016a-table
+      - doll-concrete-original
+      - grimmond-table-4
       note: This is an internal release-table calculation. Keeping source unreferenced avoids attributing
         the calculated code-800 tuple to publications that state only some of its inputs.
     place:
@@ -127,6 +131,6 @@ assessment:
     publications give 0.48 h for the corresponding Doll concrete row; using the publication value would
     change the mean. This sidecar makes that discrepancy visible while preserving the stable release
     lineage rather than silently altering a long-standing model input.
-  evidence_revision: sha256:6ac6ed0f247a59b0deb320c3d251303b5a33653fab40101397646f4ebb224f4f
+  evidence_revision: sha256:8ef33fbc3dfb1d26c5776b2297950da8cf3e18f8158eaca8778ab81fef3f94cf
 verification:
   attestations: []
