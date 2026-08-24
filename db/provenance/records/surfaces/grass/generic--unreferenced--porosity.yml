@@ -26,7 +26,7 @@ assessment:
       note: The pinned pre-migration row declares Surface Grass, and grass composites select this record
         in their porosity slot.
     values:
-      conclusion: supported
+      conclusion: not_applicable
       note: The record supplies no active parameter. Its empty parameters mapping and preserved legacy
         PorosityMin and PorosityMax sentinels of -999 exactly match the pre-migration compatibility row;
         the sentinels are lineage metadata rather than model-ready values.
@@ -62,6 +62,6 @@ assessment:
     for deciduous trees, and stores only -999 sentinels. The stable record therefore remains unreferenced,
     contributes no active parameter, and is explicitly classified as assumed so neither the adapter nor
     its sentinels are presented as literature values.'
-  evidence_revision: sha256:3d9a3dba194b3bf0edf08660614866881f3645dcf2341c3fed13bc44a3b5eefb
+  evidence_revision: sha256:8a57f4590f408c32da3d38fe8a81b9a434bb1b07bb96a153885757be41f29031
 verification:
   attestations: []
