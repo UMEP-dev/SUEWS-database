@@ -1,0 +1,102 @@
+provenance_record: records/surfaces/grass/vancouver--jarvi2011--max-conductance
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7d1cc1897bf26bf1d29a68b2dbc392cdd1ecb6e5bca6e59bb9e246329325ac55
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records:
+    records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass: sha256:52df218984bdbac8ebf80f20543dd973e9ce379af614e7560761eeecaeb35eb2
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-24T07:44:11Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Järvi Table 2 labels the parameter column Irrigated grass.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The table publishes maximum vegetation conductance for the SUEWS irrigated-grass surface.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Järvi et al. (2011) Table 2 publishes gi,max 40 mm s-1 for irrigated grass, exactly matching
+        the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/315
+      note: Järvi et al. directly publish the exact parameter. The table gives 40 no upstream source
+        footnote, so no earlier source is attributed here.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - jarvi-measurements
+      note: Table 2 presents 40 as a general surface-type parameter. It explicitly labels the initial
+        soil-store states when they differ between Vancouver and Los Angeles, but attaches no site label
+        to irrigated-grass conductance. Vancouver is a model evaluation location, not evidence that 40
+        was measured or fitted there; generic is the supported database scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      - jarvi-measurements
+      note: The publication presents the value as a model input by surface type without a site-specific
+        derivation, supporting generic rather than city representativeness.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The database record transcribes a parameter directly from the published model table.
+    identity:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      related_records:
+      - records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass
+      note: The stable path and origin retain Vancouver migration context even though the corrected place
+        is generic. The related unirrigated record already uses the same pattern. Renaming or merging
+        stable paths is a separate curation decision.
+  evidence:
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes gi,max 40 mm s-1 in the Irrigated grass column. Unlike explicitly site-specific
+        soil-store initial states in the same table, the conductance row carries no Vancouver or Los Angeles label.
+  - id: jarvi-measurements
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: section
+      label: Sect. 3.1, Measurements
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Identifies Vancouver and Los Angeles as locations used to test SUEWS; it does not state that
+        the irrigated-grass maximum was measured or fitted in Vancouver.
+  scientific_note: 'The place defect is settled without changing the value or stable path. Järvi et al.
+    publish 40 as an irrigated-grass surface parameter and distinguish site-specific inputs elsewhere
+    in the same table. The record is therefore generic evidence whose Vancouver path and origin are retained
+    only as migration identity. The absence of an upstream footnote is recorded without inventing one.'
+  evidence_revision: sha256:d1409c4ffa0443c07ec5932ff88fdbcc3deaa206251202e5068156cfc99a4ca0
+verification:
+  attestations: []
