@@ -59,6 +59,8 @@ file says where things are.
 - `scripts/` — the checking, export and migration tools
   - `provenance_runner.py` — deterministic evidence/composition packet,
     response, resume, candidate and issue-draft workflow
+  - `release_bundle.py` — deterministic JSON archive builder and standard-
+    library-only offline verifier
 - `scripts/legacy/` — the pre-migration spreadsheet toolchain, kept for
   reference
 
@@ -77,6 +79,11 @@ file says where things are.
   thermal-layer positions, pointer resolution and citations
 - `make export REC=<record-path>` — render a record or archetype as a
   model-ready fragment with per-value citations
+- `make release-bundle` — build `dist/suews-database-json.zip` from every
+  canonical YAML file under `db/`
+- `make verify-release-bundle BUNDLE=<archive>` — verify a copied archive's
+  structure, coverage, sizes and hashes without reading `db/` or using the
+  network
 - `scripts/e2e_sample_config.py` — end-to-end proof: exported fragments
   merged into supy's sample configuration load through
   `SUEWSConfig.from_yaml` with citations intact

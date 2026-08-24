@@ -9,7 +9,9 @@ UV := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --no-project python
 UVCHECK := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --no-project python
 UVSUPY := VIRTUAL_ENV= uv run --with "pyyaml==$(PYYAML_VERSION)" --with "jsonschema==$(JSONSCHEMA_VERSION)" --with "rfc8785==$(RFC8785_VERSION)" --with "supy==$(SUPY_VERSION)" --no-project python
 
-.PHONY: help check check-strict check-signoffs test audit-plan validate verify export
+BUNDLE ?= dist/suews-database-json.zip
+
+.PHONY: help check check-strict check-signoffs test audit-plan validate verify export release-bundle verify-release-bundle
 
 help:
 	@echo "check        - structure, references, places/sources and coupling rules"
@@ -20,6 +22,8 @@ help:
 	@echo "validate     - check + validate every fragment against the supy data model"
 	@echo "verify       - reverse-verify the record tree against the pre-migration tables in git history"
 	@echo "export       - usage: make export REC=records/surfaces/grass/helsinki--jarvi2014--phenology"
+	@echo "release-bundle - build the deterministic multi-file JSON archive"
+	@echo "verify-release-bundle - verify BUNDLE=<archive> offline"
 	@echo ""
 	@echo "The legacy spreadsheet toolchain (xlsx/verify/origins/yaml) is retired:"
 	@echo "the last workbook built from the table-format database is a release"
@@ -48,3 +52,9 @@ verify:
 
 export:
 	$(UV) scripts/export_record.py $(REC)
+
+release-bundle:
+	$(UV) scripts/release_bundle.py build --output "$(BUNDLE)"
+
+verify-release-bundle:
+	$(PY) scripts/release_bundle.py verify "$(BUNDLE)"
