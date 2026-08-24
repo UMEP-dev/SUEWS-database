@@ -70,7 +70,8 @@ class SiteProvenanceTests(unittest.TestCase):
 
         kyoto = self.render(KYOTO)
         self.assertIn("Curation required", kyoto)
-        self.assertIn("Possible duplicate", kyoto)
+        self.assertIn("Related record", kyoto)
+        self.assertNotIn("Possible duplicate", kyoto)
         self.assertNotIn("class=\"signoff\"", kyoto)
 
     def test_remaining_review_states_are_explicit(self):

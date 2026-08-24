@@ -9,21 +9,22 @@ dependency_revisions:
   places:
     tokyo: sha256:3d523cca260989e582e52ba0a6a870d7fb57da2dc517dd16fc5fda94d5e9fde5
   records:
-    records/ohm/tokyo--unreferenced--buildings: sha256:742b1a638e538c2f05bbfa836d872a2f086d55323d8894bc3df747c55fd7b136
+    records/ohm/tokyo--unreferenced--buildings: sha256:ec0fc796c11bdbc911ea52a77c973e1af162e37a9bc303357f6f254fed65949e
 assessment:
   status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  assessed_at: '2026-08-24T19:08:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/738
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - input-observations
-      - parameter-publication
+      - legacy-row-pair
+      note: Canyon (E-W), Japan is the verbatim label of pre-migration row 50240017; it is retained as
+        migration identity, not treated as proof of the row's scientific source or location.
     target:
       conclusion: curation_required
       evidence_ids:
@@ -35,68 +36,81 @@ assessment:
     values:
       conclusion: supported
       evidence_ids:
-      - parameter-publication
+      - legacy-row-pair
+      note: Pre-migration row 50240017 directly stores 0.71, 0.04 and -39.7. This supports configuration
+        lineage only; the matching published tuple belongs to the separately identified code-[10] row.
     source:
-      conclusion: correction_required
+      conclusion: unresolved
       evidence_ids:
+      - legacy-row-pair
       - parameter-publication
-      note: Grimmond and Oke (1999), not the observation paper, publishes the fitted tuple.
+      note: Grimmond and Oke publish the matching tuple for the related code-[10] row, but this row's
+        Ref-null state does not authorize transferring that citation. Its own source remains unknown.
       issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/37
+      - https://github.com/UMEP-dev/SUEWS-database/issues/738
     place:
-      conclusion: correction_required
+      conclusion: unresolved
       evidence_ids:
+      - legacy-row-pair
       - input-observations
-      note: The observations were made on Kyoto University main campus, not Tokyo.
+      note: The related code-[10] observations are from Kyoto, while this row says Tokyo and has no source
+        reference. Matching values and a generic Japan label do not settle which place belongs to row 50240017.
       issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+      - https://github.com/UMEP-dev/SUEWS-database/issues/738
     representativeness:
-      conclusion: correction_required
+      conclusion: unresolved
       evidence_ids:
-      - input-observations
-      note: One instrumented canyon supports site, not city, representativeness.
+      - legacy-row-pair
+      note: Evidence reach cannot be assigned until this Ref-null row's own source and place are recovered.
       issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+      - https://github.com/UMEP-dev/SUEWS-database/issues/738
     method:
+      conclusion: unresolved
+      evidence_ids:
+      - legacy-row-pair
+      note: The pre-migration row records no production method, and the fitted method of the related
+        evidence-backed row cannot be transferred by numeric equality alone.
+    identity:
       conclusion: supported
       evidence_ids:
-      - input-observations
-      - parameter-publication
-    identity:
-      conclusion: curation_required
-      evidence_ids:
-      - possible-duplicate
-      note: The two legacy rows carry the same scientific assertion, but sources do not determine which
-        stable record survives or whether one becomes an alias.
+      - legacy-row-pair
+      note: Stable path, legacy ID 50240017, missing code marker and Ref-null state preserve this as a
+        distinct unresolved migration row. Retention does not claim a second scientific determination
+        and does not transfer the verified Kyoto citation from the related code-[10] row.
       related_records:
       - records/ohm/tokyo--unreferenced--buildings
       issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/12
+      - https://github.com/UMEP-dev/SUEWS-database/issues/738
   evidence:
   - id: input-observations
     source: yoshida1991
-    role: input_data
+    role: validation
     locators:
     - kind: section
       label: Sections 2-5 and Figures 3-12
       page: 418-423
       url: https://doi.org/10.1016/0378-7788(90)90016-C
-      note: Reports the Kyoto east-west canyon energy-balance observations but no OHM tuple.
+      note: Reports the Kyoto east-west canyon observations underlying the related code-[10] row, but
+        does not identify Ref-null database row 50240017.
   - id: parameter-publication
     source: grimmond1999
-    role: parameter_source
+    role: validation
     locators:
     - kind: table
       label: Table 4, E-W canyon
       page: 932
       url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
-      note: Publishes 0.71, 0.04 h and -39.7 W m-2 as new coefficients.
-  - id: possible-duplicate
+      note: Publishes 0.71, 0.04 h and -39.7 W m-2 for the E-W canyon, matching this row numerically,
+        but does not identify Ref-null database row 50240017.
+  - id: legacy-row-pair
     record: records/ohm/tokyo--unreferenced--buildings
-    role: possible_duplicate
-    note: Carries the identical target and triplet under the corrected Kyoto/source envelope.
-  scientific_note: The observation and parameter roles are settled, but this second stable record still
-    collapses Tokyo/Kyoto identity, duplicates the corrected row and lacks an assembly attachment.
-  evidence_revision: sha256:be5e51749747c22a62a486bccaaeb8c65c6d5ce5805ec20128eeb52718b9f9f8
+    role: related
+    note: Pre-migration row 50240012 carries the same tuple but includes code [10] and Ref 99240099,
+      while this row 50240017 omits the code and stores Ref null; see https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/ohm.yml#L117-L170.
+  scientific_note: This Ref-null row is retained as a distinct raw migration identity, not treated as
+    a second scientific determination and not automatically credited with the verified Kyoto source chain
+    of the related code-[10] row. Its own source, place, representativeness and production method remain
+    unresolved under issue 738. The building-archetype attachment question remains issue 19.
+  evidence_revision: sha256:7cbf630ae1b79f24f4621ffc4f37ba3d5892342ded554620ede3c08cba67af3b
 verification:
   attestations: []
