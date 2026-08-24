@@ -1,0 +1,154 @@
+provenance_record: records/profiles/water-use-manual/vancouver--unreferenced--old-code-10
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:eb937df4385438015667b917e70e33170116a24decb19b2d426a08fbccb6ec31
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:15:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/289
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof1
+      - release-code-10
+      note: Vancouver Vs87 manual water-use profile identifies the Prof1 source dataset, water-use role
+        and historical release label without treating code 10 as the publication's own identifier.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof1
+      - release-code-10
+      note: Järvi et al. describe Prof1 as an external-water-use diurnal profile, and the release table
+        stores it in the SUEWS manual water-use profile slot.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof1
+      - release-code-10
+      note: Table 3 gives Prof1 period shares 0.15, 0.35 and 0.50 and states that water use is constant
+        in each hour of a delineated period. Dividing each share by its 11, 9 or 4 hours and rounding
+        half-up to two decimals produces 0.01, 0.04 and 0.13, exactly at the hours stored by code 10.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof1
+      - release-code-10
+      - legacy-row-60240012
+      note: Unreferenced is correct for the derived 24-value vector because Järvi et al. publish its three
+        period inputs, not the rounded hourly outputs. The publication is retained as input evidence and
+        the release row independently confirms the exact calculation result.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/289
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-vs87-site
+      note: Vancouver identifies the city containing the Vs87 Sunset measurement site on which Prof1 is based.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-vs87-site
+      note: Site matches the single 21 ha Vs87 Sunset study area. The article does not establish a city-wide
+        sampling design for the profile.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/289
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-prof1
+      - release-code-10
+      note: Calculated records the deterministic conversion of three published period-total fractions
+        into constant hourly fractions with two-decimal half-up rounding.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-code-10
+      - legacy-row-60240012
+      note: The pinned release's code 10 vector and label Vs 1987 match legacy row 60240012 exactly. The
+        stable path, origin and legacy ID preserve that migrated identity.
+  evidence:
+  - id: jarvi-prof1
+    source: jarvi2011
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 3(b), Prof1 Vancouver external-water-use profile
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives period shares 0.15 for 20:00-07:00, 0.35 for 07:00-16:00 and 0.50 for 16:00-20:00,
+        marks the profile as based on Vs87 data, and states that a constant amount is assumed for each
+        hour within a delineated period.
+  - id: jarvi-vs87-site
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: table
+      label: Table 4, Vancouver Sunset 1987 (Vs87)
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Locates Vs87 at the Vancouver Sunset site, gives a 21 ha study area, and selects Ie profile
+        Prof1 for the application.
+  - id: release-code-10
+    source: umep-dev2016a
+    role: validation
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_Profiles.txt, code 10
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Profiles.txt#L3
+      note: Stores hourly values 0.01 at 20:00-06:00, 0.04 at 07:00-15:00 and 0.13 at 16:00-19:00,
+        and labels the vector Vs 1987 Water Use Profile values.
+  - id: legacy-row-60240012
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Profiles row 60240012
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L226-L260
+      note: Preserves the exact vector as a Vancouver weekday manual-water-use row under the unreferenced
+        placeholder Ref 90240000.
+  derivation:
+    kind: other
+    description: Convert the three Prof1 period-total fractions to constant hourly fractions and round
+      each result half-up to two decimal places.
+    expression: round_half_up(period_fraction / hours_in_period, 2)
+    external_inputs:
+    - id: prof1-2000-0700
+      evidence_id: jarvi-prof1
+      parameter: working_day hours 20-23 and 0-6
+      value: 0.15
+      note: Eleven-hour period; 0.15 / 11 = 0.013636..., stored as 0.01 per hour.
+    - id: prof1-0700-1600
+      evidence_id: jarvi-prof1
+      parameter: working_day hours 7-15
+      value: 0.35
+      note: Nine-hour period; 0.35 / 9 = 0.038888..., stored as 0.04 per hour.
+    - id: prof1-1600-2000
+      evidence_id: jarvi-prof1
+      parameter: working_day hours 16-19
+      value: 0.50
+      note: Four-hour period; 0.50 / 4 = 0.125, stored as 0.13 per hour.
+  scientific_note: >-
+    The original issue treated the article's three period shares and the release's 24 hourly values as
+    different representations. Close-reading Table 3 resolves the relationship: the caption explicitly
+    says water use is constant in every hour of each delineated period, and half-up conversion of the
+    published 0.15/0.35/0.50 shares produces the exact code 10 vector. The hourly values sum to 0.99 rather
+    than 1.00 because each period's per-hour value was rounded separately. The record therefore remains
+    unreferenced as a database calculation over published inputs, while the derivation and release artifact
+    make every output reproducible. Vancouver is retained, and representativeness is narrowed from city
+    to the 21 ha Vs87 site. No value, stable path, origin or legacy ID changes.
+  evidence_revision: sha256:c6524107c00983c97511a52c304e6e74990cc584eb3a5a3e02afc94d8c5b8617
+verification:
+  attestations: []

@@ -3,11 +3,12 @@ schema_version: '2026.5'
 target: profile.water-use-manual
 attaches_to: irrigation.wuprofm_24hr
 profile_type: Water use (manual)
-name: '[old code: 10]'
+name: Vancouver Vs87 manual water-use profile
 place: vancouver
 origin: Vancouver, Canada
-representativeness: city
+representativeness: site
 source: unreferenced
+method: calculated
 legacy_id:
 - 60240012
 parameters:
