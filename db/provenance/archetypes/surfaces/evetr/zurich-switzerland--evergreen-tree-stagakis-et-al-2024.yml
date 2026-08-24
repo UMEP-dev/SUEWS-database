@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
-    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:401ea9e3db67da8d86c7e41c91005fdec27653f0e3660e109ae1e8267cfd72bb
+    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:b4cf93795fc296ca4d635cab2d8b61d56ac7c8556465a6379d751907ce9fc77a
     records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
     records/surfaces/evetr/zurich--stagakis-s2024--max-conductance: sha256:070b5ef8c0326d83dfb688d2d7603e2d91351a84f5e62687943777b70d2c51c1
 assessment:
@@ -187,7 +187,9 @@ assessment:
     record: records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
     role: component
     note: Fills biogen_co2. The record declares target land_cover.evetr, place zurich and representativeness
-      city, and is named "Evergreen trees"; its source field reads stagakis-s2024.
+      city, and is named "Evergreen trees"; its source field reads stagakis-s2024. Supplement Table S3
+      supports beta_bio_co2 8.3, resp_a 0.78 and resp_b 0.08; alpha_bio_co2, theta_bio_co2 and min_res_bioco2
+      remain unresolved in the component evidence review.
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
@@ -211,7 +213,8 @@ assessment:
     LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled coefficient
     record across all four OHM positions is consistent with a record that declares no season. A separate
     source-registry point remains: the label says 2024 while db/sources.yml stores stagakis-s2024 with
-    year 2025.'
-  evidence_revision: sha256:88334cfd4faaa1c32c8872d3c8586ddb67542ad994c37da5c68f4df4a8a4d373
+    year 2025. The corrected biogen_co2 component has three values directly supported by Supplement
+    Table S3 and three retained values whose provenance remains unresolved.'
+  evidence_revision: sha256:486483d521445423058c6f27c4b56c2821d149e07cd6db465795099f225e70d1
 verification:
   attestations: []
