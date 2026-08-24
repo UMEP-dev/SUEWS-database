@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
-    records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
+    records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:0a6d970cae02eca7ef207516b8783b9a785d3e10a1ce89480414ef812f30fa25
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
@@ -182,7 +182,7 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source ward2016.
+      generic and representativeness generic; it carries source jarvi2011 and declares method literature.
   - id: component-surfaces-grass-se-england-ward2016-lai
     record: records/surfaces/grass/se-england--ward2016--lai
     role: component
@@ -206,6 +206,6 @@ assessment:
     is also worth carrying forward without acting on it here: records/surfaces/grass/london--havu-m2024--drainage
     declares place london while its name reads "Grass - Helsinki, Zurich, Beijing", and settling which
     field is authoritative belongs to that record''s evidence review, not to this one.'
-  evidence_revision: sha256:73db4d6a02b87e192f4745af4f80f38f2c26889e49888ef580e3ac11eb5629cd
+  evidence_revision: sha256:c82d0b7f9e6c19d83a8d5776cdf4457a571f11131b868ca71e9ab37886ca7b74
 verification:
   attestations: []

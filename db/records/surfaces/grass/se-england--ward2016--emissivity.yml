@@ -2,10 +2,11 @@ record: records/surfaces/grass/se-england--ward2016--emissivity
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass
-place: se-england
+place: generic
 origin: UK, SE England
-representativeness: regional
-source: ward2016
+representativeness: generic
+source: jarvi2011
+method: literature
 legacy_id: 40240046
 parameters:
   emis: 0.93
