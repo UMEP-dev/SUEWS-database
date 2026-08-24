@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--jarvi2011--drainage: sha256:c00e3155911cfadebf62e1c2b6fc5a8fa98a9999fb54df070e12d627be8041f8
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -78,10 +78,12 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-drainage
       - component-surfaces-dectr-se-england-ward2016-lai
       - component-surfaces-dectr-se-england-ward2016-water-storage
-      note: 'The composite claims place helsinki, and five of its twelve components carry that place,
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: 'The composite claims place helsinki, and four of its twelve components carry that place,
         including both climate-conditioned ones: the snowpack limit and the four degree-day thresholds
-        are Helsinki records. Three carry place london, two carry place se-england, one carries place
-        generic and the OHM record carries no place. The leaf_area_index import is forced, since db/records/surfaces/dectr
+        are Helsinki records. Three carry place london, two carry place se-england, one is generic for
+        conductance, the albedo record is also generic and the OHM record carries no place. The leaf_area_index
+        import is forced, since db/records/surfaces/dectr
         holds leaf-area-index records placed at beijing, se-england, shanghai and zurich and none placed
         at helsinki. The drainage component is placed at london and named "Deciduous Tree [sample run]",
         so the slot rests on a record its own name presents as a sample run; that is a matter for that
@@ -90,17 +92,13 @@ assessment:
       conclusion: curation_required
       evidence_ids:
       - component-surfaces-dectr-vancouver-jarvi2011-max-conductance
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-ohm-generic-unreferenced-all-vegetation-vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
-      note: The composite claims representativeness city at Helsinki, but two of its slots rest on entries
-        that make no city claim at all. The max_vegetation_conductance slot takes records/surfaces/dectr/vancouver--jarvi2011--max-conductance,
-        which declares place generic and representativeness generic and whose source is breuer2003, a
-        compilation of plant parameter values for temperate climates; the three sibling Helsinki composites
-        take conductance records placed at helsinki and classed city instead. The four OHM positions take
-        a record that declares neither place nor representativeness, carries source unreferenced and states
-        in its own name that it averages codes including soil and water. A city typology assembled on
-        a generic temperate-climate conductance and an unreferenced vegetation average is a weaker claim
-        than its representativeness field makes, and a maintainer should decide whether to reclassify
-        the composite or reselect those two slots.
+      note: The composite claims representativeness city. Seven components are classed city, two regional
+        and two generic; those broader regional and generic values do not over-claim a city scale. The
+        remaining OHM component declares no representativeness, carries source unreferenced and states
+        in its own name that it averages codes including soil and water. A maintainer should decide whether
+        that unclassified component is acceptable in a city composite or replace it.
       related_records:
       - records/surfaces/dectr/helsinki--havu-m2024--max-conductance
       - records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree
@@ -159,8 +157,8 @@ assessment:
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Deciduous Forest" and carries source vargo2013.
+    note: Fills albedo. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous Forest", carries source vargo2013 and declares method literature.
   - id: component-surfaces-dectr-london-jarvi2011-drainage
     record: records/surfaces/dectr/london--jarvi2011--drainage
     role: component
@@ -202,15 +200,16 @@ assessment:
     limit and the degree-day thresholds, are the two that a Nordic city typology most needs; both are
     placed at helsinki, so the place claim holds. Everything that describes the canopy comes from elsewhere.
     The leaf growth power and the biogenic CO2 set are havu-m2024 records, the maximum conductance is
-    a breuer2003 literature value classed generic with no place, and the four storage-heat positions take
+    a breuer2003 literature value classed generic, the albedo is a generic Vargo literature constant,
+    and the four storage-heat positions take
     an unreferenced average that its own name says includes soil and water. Two of those choices bear
-    directly on what the composite claims to be: a city-classed Helsinki typology resting on a generic
-    temperate-climate conductance where its three siblings take Helsinki conductance records, and a mixed-deciduous
-    typology taking the biogenic record named for street trees while the street-trees typology takes the
-    one named for trees plus grass. Neither can be settled from the entries, and neither is a fault in
-    a component''s value. A maintainer should read the two Helsinki typologies against their publications
-    together, since a swap in one implies the other. The components'' values remain subject to their own
-    evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:b40d6f428546c67d5eccc01d18100c20ad13e5c75bf5adb6ab915768938d4748
+    directly on what the composite claims to be: the unreferenced OHM average has no representativeness,
+    and the mixed-deciduous typology takes the biogenic record named for street trees while the street-trees
+    typology takes the one named for trees plus grass. The generic conductance and albedo are broader
+    than a city and do not create a scale contradiction. The unresolved component choices cannot be settled
+    from the entries and are not faults in the stored values. A maintainer should read the two Helsinki
+    typologies against their publications together, since a swap in one implies the other. The components''
+    values remain subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:62ab518591d8bc1933e088ba2f666ff27854c722aef201849d7c9d9c6717fc07
 verification:
   attestations: []

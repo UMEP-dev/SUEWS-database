@@ -1,0 +1,81 @@
+provenance_record: records/surfaces/dectr/helsinki--vargo2013--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
+dependency_revisions:
+  sources:
+    vargo2013: sha256:4655286815df54d2d66660ace8773d6a101e378d0978611a3e9bfb7b7904b2e6
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T09:24:43Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: Deciduous Forest matches the land-cover subclass attached to albedo 0.16 in Vargo et al. Table 1.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: The cited value is the albedo assigned to a deciduous-forest land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: Vargo et al. Table 1 gives Deciduous forest an albedo of 0.16, exactly matching both stored bounds.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/363
+      - https://github.com/UMEP-dev/SUEWS-database/issues/364
+      note: Vargo et al. is the publication that states the stored 0.16 value and identifies it as a WRF-equivalent land-cover constant.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: Generic is appropriate because the value is a WRF-equivalent land-cover constant; the paper studies Atlanta, Philadelphia and Phoenix and provides no Helsinki determination.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: Generic accurately describes a model land-cover constant that is not tied to a Helsinki site or city.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: The parameter is taken from a published model-parameter table, so literature is the supported method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - vargo-deciduous-forest-albedo
+      note: The record contains one deciduous-forest albedo value corresponding to one table entry.
+  evidence:
+  - id: vargo-deciduous-forest-albedo
+    source: vargo2013
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1, land-cover classes and WRF-equivalent constants
+      page: 247
+      url: https://doi.org/10.1016/j.jenvman.2012.10.007
+      note: The Deciduous forest row gives albedo 0.16; the separate Mixed forest row gives 0.13.
+    - kind: section
+      label: Section 2, Material and methods
+      page: 245
+      url: https://doi.org/10.1016/j.jenvman.2012.10.007
+      note: Defines the three metropolitan study regions as Atlanta, Philadelphia and Phoenix; Helsinki is not a study region.
+  scientific_note: The stable path and origin preserve the legacy Helsinki import lineage, but Vargo et al. does not publish a Helsinki observation or application. Its Table 1 supplies 0.16 as the WRF-equivalent albedo constant for deciduous forest. The active place, representativeness and method therefore describe generic literature evidence while the stable path remains unchanged.
+  evidence_revision: sha256:ce1991dc5accd01ab59dbdf71899133aef6a9070580e4bda4d0698fb900c882b
+verification:
+  attestations: []

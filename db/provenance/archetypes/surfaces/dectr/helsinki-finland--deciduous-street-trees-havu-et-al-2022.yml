@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -83,10 +83,12 @@ assessment:
       - component-surfaces-dectr-london-ward2016-emissivity
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: 'The composite claims place helsinki, and six of its twelve components carry that place, including
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: 'The composite claims place helsinki, and five of its twelve components carry that place, including
         both climate-conditioned ones: the snowpack limit and the four degree-day thresholds are Helsinki
         records. Three carry place london (emissivity, drainage, porosity), two carry place se-england
-        (water storage and leaf area index) and the OHM record carries no place. The leaf_area_index import
+        (water storage and leaf area index), the albedo record is generic and the OHM record carries no
+        place. The leaf_area_index import
         is forced, since db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
         shanghai and zurich and none placed at helsinki.'
     representativeness:
@@ -95,9 +97,11 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-se-england-ward2016-lai
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Nine components are classed city, the two SE
-        England Ward 2016 records are classed regional and the OHM record declares no class. A regional
-        value covers a city, so no component claims a narrower scale than the composite does.
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
+      note: The composite claims representativeness city. Eight components are classed city, the two SE
+        England Ward 2016 records are classed regional, the albedo record is generic and the OHM record
+        declares no class. Regional and generic values cover a city, so no component claims a narrower
+        scale than the composite does.
     method:
       conclusion: supported
       evidence_ids:
@@ -158,8 +162,8 @@ assessment:
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Deciduous Forest" and carries source vargo2013.
+    note: Fills albedo. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous Forest", carries source vargo2013 and declares method literature.
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
@@ -191,8 +195,8 @@ assessment:
       regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
   scientific_note: 'The assembly itself is sound: Helsinki places for the climate-conditioned slots, a
-    consistent LAI equation across the two LAI slots, UK imports only for the radiative, hydrological
-    and canopy-structure slots, and a generic mixed-forest storage-heat set in all four OHM positions.
+    consistent LAI equation across the two LAI slots, UK imports for the hydrological and canopy-structure
+    slots, a generic Vargo albedo, and a generic mixed-forest storage-heat set in all four OHM positions.
     The label is what does not hold up. It cites Havu et al. 2022, and no such key exists in db/sources.yml,
     which carries havu-m2024 alone; all three Havu components here declare that 2024 key. Nothing in the
     repository establishes that a 2022 Havu publication is the source of anything in this composite, and
@@ -203,6 +207,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:b70f0225c2baffc12059ec8c8f7e21062c18ff6f39046acf34849cd7d90b64f2
+  evidence_revision: sha256:43fad1f7233f6c2461818743f3279847a2a4aa8e91f23713ba33a0dad3b6888f
 verification:
   attestations: []

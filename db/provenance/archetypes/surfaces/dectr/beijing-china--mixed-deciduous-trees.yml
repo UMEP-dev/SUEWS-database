@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
-    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:5be67ea34db3949001c9cf7e1422fc41c22d286bb3ac02cfe5027cb9db5a4d09
+    records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:feabe2d0ee766c1bb02dbf6f6a9fa390b17bc6e294ae2a40aeda1a12c85e5a31
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:7b92fcfaf438bb6531ed4a09a67b92a2f5933002d88798d398c2f4350661db0c
     records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
@@ -74,9 +74,9 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-se-england-ward2016-water-storage
       note: 'The composite claims place beijing, registered in db/places.yml with Koppen class Dwa, but
-        only four of its twelve components carry that place. Three carry place helsinki, registered Dfb;
-        three carry place london, registered Cfb; one carries place se-england; and the OHM record carries
-        no place at all. Two of the Helsinki imports are conditioned on climate rather than on species:
+        only four of its twelve components carry that place. Two carry place helsinki, registered Dfb;
+        three carry place london, registered Cfb; one carries place se-england, one is generic; and the
+        OHM record carries no place at all. Two of the Helsinki imports are conditioned on climate rather than on species:
         records/surfaces/dectr/helsinki--jarvi2014--snow-lim supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology
         supplies the growing- and senescing-degree-day thresholds, both set for a cold-climate Nordic
         city and carried here into a monsoon-influenced continental one. The drainage component records/surfaces/dectr/london--havu-m2024--drainage
@@ -89,12 +89,14 @@ assessment:
       evidence_ids:
       - component-surfaces-dectr-beijing-zheng-y2023-lai-power
       - component-surfaces-dectr-se-england-ward2016-water-storage
+      - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       note: The composite claims representativeness city, but its leaf_growth_power component is now
         correctly classed site because the coefficients were fitted to one park. A city archetype therefore
         contains a narrower site-only fit. Whether to retain that knowingly or narrow the composite is
         a separate composition-curation decision. The regional water-storage record is broader than
-        the composite and does not create the same over-claim; the OHM record declares no class.
+        the composite and the generic literature albedo is broader still, so neither creates the same
+        over-claim; the OHM record declares no class.
     method:
       conclusion: supported
       evidence_ids:
@@ -156,8 +158,8 @@ assessment:
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It is named "Deciduous Forest" and carries source vargo2013.
+    note: Fills albedo. The record declares target land_cover.dectr, place generic and representativeness
+      generic. It is named "Deciduous Forest", carries source vargo2013 and declares method literature.
   - id: component-surfaces-dectr-london-havu-m2024-drainage
     record: records/surfaces/dectr/london--havu-m2024--drainage
     role: component
@@ -197,6 +199,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:c5e16bf1e86dafea21e49796cc0bcbb22d415758535453a3b660ca490df97716
+  evidence_revision: sha256:bbb13a2c88a6bd6fc3c37fdb3052ef267d8d9ddd8a033100d862141fd291977e
 verification:
   attestations: []
