@@ -4,7 +4,7 @@ target: anthropogenic_emissions
 name: Suburban residential
 place: swindon
 origin: Swindon, UK
-representativeness: city
+representativeness: site
 source: ward2016
 method: fitted
 legacy_id: 53240040
