@@ -11,11 +11,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T22:00:00Z'
+  assessed_at: '2026-08-24T21:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/343
   method: literature
   findings:
     name:
