@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/helsinki--city-centre: sha256:1be8e36d5862b1bdf5930efa257243fe94077d4abcc5f62e942c65662f779d04
     records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s: sha256:0eb3f4dbad5a047d1ab98fd807df52d1c83cd0a56cac64e80e292ece2558e849
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
-    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
@@ -71,8 +71,9 @@ assessment:
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite claims place sweden and only the construction is Swedish, declaring place gothenburg.
         The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, named ''Central London''
-        and declaring place london, and emissivity, water storage, drainage, the snow limit and all four
-        ohm positions take records declaring place helsinki, which db/places.yml resolves to country finland.
+        and declaring place london; emissivity, water storage, the snow limit and all four ohm positions
+        take records declaring place helsinki, which db/places.yml resolves to country finland; and drainage
+        is generic.
         For the Helsinki slots the database offers no Swedish alternative. For the albedo it does: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
         and records/surfaces/bldgs/gothenburg--oke1987--albedo are the two Gothenburg albedo rows, named
         ''Wood '' and ''Industry, dark roofs'', and neither describes a rendered or stone facade. The
@@ -88,9 +89,9 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional and not one of its seven components carries
-        that class. The construction declares representativeness city for place gothenburg, and the albedo,
-        emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
-        city as well. A country-scale Swedish default therefore rests entirely on city rows.
+        that class. The construction declares representativeness city for place gothenburg; the albedo,
+        emissivity, water storage, snow limit and ohm components also declare representativeness city;
+        and drainage is generic. A country-scale Swedish default therefore rests mostly on city rows.
     method:
       conclusion: supported
       evidence_ids:
@@ -138,8 +139,8 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place generic,
+      representativeness generic and applicable_scale land_cover.
   - id: component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
     record: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s
     role: component
@@ -170,6 +171,6 @@ assessment:
     its siblings either, which is consistent with a later addition. Whether the duplication is intended,
     and which of the two should change, is a curation decision; nothing here calls for a component value
     to change, and the components'' own values remain subject to their evidence assessments.'
-  evidence_revision: sha256:54a3ac1948f995531656e9fd21b9f8136d7d5f253f2075239eae9ad068eb4838
+  evidence_revision: sha256:81312ab605d99d63407fd6e5d8827a363b9ae186490698fcf2448627c0ad02f7
 verification:
   attestations: []

@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s: sha256:0eb3f4dbad5a047d1ab98fd807df52d1c83cd0a56cac64e80e292ece2558e849
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
-    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
@@ -69,9 +69,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite claims place helsinki, whose registry entry reads country finland and koppen
-        Dfb. Five of the seven components are Helsinki rows: the emissivity, water storage, drainage and
-        snowpack limit records and records/ohm/helsinki--jarvi2014--buildings. The two that are not are
-        records/surfaces/bldgs/london--ward2016--albedo, place london, name ''Central London'', and records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
+        Dfb. Four of the seven components are Helsinki rows: the emissivity, water storage and snowpack
+        limit records and records/ohm/helsinki--jarvi2014--buildings. Drainage is a generic building-class
+        record. The other two are records/surfaces/bldgs/london--ward2016--albedo, place london, name
+        ''Central London'', and records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
         place gothenburg, origin ''Gothenburg, Sweden''. Both are transfers the database forces. It holds
         no buildings albedo record placed in Finland, and the only other northern European rows are records/surfaces/bldgs/gothenburg--oke1987--albedo,
         named ''Industry, dark roofs'', and records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
@@ -89,8 +90,9 @@ assessment:
       - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite is classed city and all seven components are classed city, so the component
-        classes fit the scale the composite claims. One point is worth recording for a later reader: records/ohm/helsinki--jarvi2014--buildings
+      note: 'The composite is classed city; six components are classed city and the drainage component
+        is generic, so none is stretched past its stated reach. One point is worth recording for a later
+        reader: records/ohm/helsinki--jarvi2014--buildings
         carries the name ''Roof (own for SMEAR III, Helsinki) [750]'', which names a single measurement
         site rather than the city centre as a whole, and the same row also fills the four ohm slots of
         archetypes/surfaces/bldgs/helsinki--kumpula. One measurement site therefore supplies the roof
@@ -139,8 +141,8 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.bldgs, name 'Building', place helsinki
-      and representativeness city.
+    note: Fills drainage. The record declares target land_cover.bldgs, name 'Building', place generic,
+      representativeness generic and applicable_scale land_cover.
   - id: component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood
     record: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s
     role: component
@@ -159,12 +161,14 @@ assessment:
     note: Fills the summer_wet, summer_dry, winter_wet and winter_dry ohm slots. The record declares target
       ohm_coefficients, name 'Roof (own for SMEAR III, Helsinki) [750]', place helsinki, representativeness
       city, source unreferenced and method calculated, and carries no season_label.
-  scientific_note: 'On selection this composite is the strongest of the buildings family. Five of its
-    seven components are Helsinki rows, and the two that are not are forced rather than careless: the
+  scientific_note: 'On selection this composite is the strongest of the buildings family. Four of its
+    seven components are Helsinki rows, drainage is a generic building-class row, and the two remaining
+    transfers are forced rather than careless: the
     database holds no Finnish buildings albedo record and no Finnish construction record, so a Central
     London albedo and a Gothenburg masonry perimeter block are the closest available stand-ins, and both
-    are declared plainly in the components. Every component is classed city, matching the class the composite
-    itself declares, and the four ohm slots correctly take one record because that record declares no
+    are declared plainly in the components. Six components are classed city and drainage is generic,
+    matching or exceeding the reach the composite claims, and the four ohm slots correctly take one record
+    because that record declares no
     season. What needs a maintainer is identity. archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
     holds an identical uses block, so the same seven records are published as both a Helsinki city typology
     and a Sweden-wide regional one, and either one of those two claims is wrong or the two entries must
@@ -174,6 +178,6 @@ assessment:
     rows do declare source jarvi2014. And this city-scale composite
     is the buildings default for two region archetypes, western Europe and northern Europe, which stretches
     one Helsinki city centre across a continent. This review does not revisit any component value.'
-  evidence_revision: sha256:2a3db594f45a5ef35c4c2e039e16df7fada17bf9f7c637cca5d5dd53445546d4
+  evidence_revision: sha256:143e47aa36add2c2ba7c3c375b246970a7d1ddaec083964da65e1380ca6c42ff
 verification:
   attestations: []

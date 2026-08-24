@@ -1,0 +1,96 @@
+provenance_record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:50:32Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/305
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Building identifies the building-surface column in Table 2(a).
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Table 2(a) publishes the values by SUEWS surface type, including Building.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: The Building column gives storage capacity 0.25 mm, maximum drainage rate 10 mm,
+        and drainage coefficient 3. Section 2.5 assigns roofs the power-law drainage equation,
+        matching the stored equation choice and coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Järvi et al. publish the complete stored building drainage tuple in Table 2(a).
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: The values are presented by generic surface type, not as Helsinki observations. Section
+        3.1 identifies Vancouver and Los Angeles as the evaluation locations.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Generic scope reflects a literature parameter set offered for the SUEWS building class,
+        without a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Table 2(a) defines the tuple for the Building land-cover class rather than for a whole
+        neighbourhood, an individual roof facet, or a material specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: Section 2.5 says the drainage rates and coefficients are taken from the literature, and
+        Table 2(a) footnotes the individual values to earlier publications.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-building-drainage
+      note: The record contains the one building drainage tuple published in Table 2(a); its stable
+        path, origin, legacy ID, target, source, and values preserve the migrated row identity.
+  evidence:
+  - id: jarvi-building-drainage
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Building column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 0.25 mm, D0,i = 10 mm and b = 3 for Building. The footnotes identify
+        these as literature values rather than a fit to an evaluation city.
+    - kind: section
+      label: Section 2.5, interception, infiltration and runoff
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Equations 18 and 19 distinguish the drainage functions by surface type, assign roofs
+        the power-law form, and state that the maximum rates and coefficients come from literature.
+  scientific_note: Järvi et al. publish this tuple as a generic SUEWS building land-cover parameter
+    set. Helsinki is later application and migration context retained in the stable path and origin;
+    it is not the place where the paper determined the values. No parameter, target, source, legacy
+    identity, or origin has changed.
+  evidence_revision: sha256:12b1b9dc5975087f5f4928a880dd50a4ad7a51b3e1ad1d16db1be481ebb015cc
+verification:
+  attestations: []

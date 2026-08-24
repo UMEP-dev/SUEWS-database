@@ -12,7 +12,7 @@ dependency_revisions:
     records/constructions/sweden--bjork2002--detached-houses-wood: sha256:2c3d1bfa5a3169888be5d488c1ce13954786464d7f3ebb0f2c919faa87f60a30
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
-    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
@@ -71,10 +71,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite claims place sweden. Two components are Swedish: the construction declares
-        place sweden and the albedo declares place gothenburg. The other five distinct components, which
-        fill emissivity, water storage, drainage, the snow limit and all four ohm positions, declare place
-        helsinki, which db/places.yml resolves to country finland. The database holds no Swedish record
-        for any of those quantities: of the twenty-one records under records/surfaces/bldgs the only Swedish
+        place sweden and the albedo declares place gothenburg. Four distinct components, filling emissivity,
+        water storage, the snow limit and all four ohm positions, declare place helsinki, which db/places.yml
+        resolves to country finland; drainage is generic. The database holds no Swedish record for the
+        Helsinki-sourced quantities: of the twenty-one records under records/surfaces/bldgs the only Swedish
         ones are the two Gothenburg albedo rows, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
         is the only building snowpack_limit record there is. The substitution is therefore forced by the
         record set rather than chosen carelessly, but a Swedish national default assembled mostly from
@@ -91,9 +91,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional. Only the construction carries that class;
-        the albedo, emissivity, water storage, drainage, snow limit and ohm components all declare representativeness
-        city. Six of the seven components are therefore city rows standing in for a country-scale default,
-        which extends their claimed reach without anything in the composite recording the decision.
+        the albedo, emissivity, water storage, snow limit and ohm components declare representativeness
+        city, while drainage is generic. Five of the seven components are therefore city rows standing
+        in for a country-scale default, which extends their claimed reach without anything in the composite
+        recording the decision.
     method:
       conclusion: supported
       evidence_ids:
@@ -131,8 +132,8 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills drainage. The record is named Building, declares target land_cover.bldgs, place generic,
+      representativeness generic and applicable_scale land_cover.
   - id: component-constructions-sweden-bjork2002-detached-houses-wood
     record: records/constructions/sweden--bjork2002--detached-houses-wood
     role: component
@@ -155,15 +156,15 @@ assessment:
     do not. The construction, records/constructions/sweden--bjork2002--detached-houses-wood, is a Swedish
     regional record whose name matches the composite''s and whose layers are mostly wood, and the albedo
     is a Gothenburg row named ''Wood '', so the two slots that carry the typology''s identity are Swedish
-    and consistent with the label. Emissivity, water storage, drainage, the snow limit and all four OHM
-    positions come from Helsinki records, because the database contains no Swedish record for any of those
-    quantities and only one building snowpack_limit record in total. That substitution is forced rather
+    and consistent with the label. Emissivity, water storage, the snow limit and all four OHM positions
+    come from Helsinki records, because the database contains no Swedish record for those quantities and
+    only one building snowpack_limit record in total; drainage is generic. That substitution is forced rather
     than careless, but it is nowhere stated, and it also leaves a composite declaring representativeness
-    regional resting on six city rows. Both questions live in the composite and can be settled without
+    regional resting on five city rows. Both questions live in the composite and can be settled without
     touching a component value: a maintainer should either record that Nordic cross-border substitution
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:08a7b69d71e39a0dfce0ee5169c64093cb88b192f5a2abe35a38935966d5098b
+  evidence_revision: sha256:9fc9185b5910891dab42aa3ddd48613ea2e62d316eab49da8057649998bf9474
 verification:
   attestations: []
