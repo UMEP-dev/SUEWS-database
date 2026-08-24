@@ -5,7 +5,8 @@ name: Deciduous Tree (SE England)
 place: se-england
 origin: SE England
 representativeness: regional
-source: ward2016
+source: breuer2003
+method: literature
 legacy_id: 33240047
 parameters:
   max_conductance: 11.7
