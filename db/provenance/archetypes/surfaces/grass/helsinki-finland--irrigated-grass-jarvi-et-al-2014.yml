@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated: sha256:cbf99e4d3a6381833c24b4156703e9981c8e01e22c88254090d037869ea681b1
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
-    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
+    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:d3ce02674018133038f7aac7a2367787540366a2627965e866353d4825eea874
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:a322f663d830aa91b2254b89301688372d7c8c26a294eceb77e629081160a2ad
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
@@ -47,10 +47,8 @@ assessment:
         do declare it: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated, named "Grass,
         irrigated", and records/surfaces/grass/vancouver--jarvi2011--max-conductance, named "Irrigated
         Grass". records/surfaces/grass/helsinki--vargo2013--albedo is the only Helsinki grass albedo record
-        in the database, so the albedo slot had no alternative; it is worth noting that it is named "Unirrigated
-        Grass", so this irrigated composite takes an albedo record labelled for the unirrigated case.
-        Since alb_min and alb_max are equal in it, the label is the whole of the tension, and resolving
-        it would require an irrigated-grass albedo record the database does not hold.'
+        in the database, so the albedo slot had no alternative. Its corrected name, "Grassland/herbaceous",
+        makes no irrigation claim and is therefore neutral rather than contradictory within this assembly.'
     target:
       conclusion: curation_required
       evidence_ids: &id001
@@ -185,7 +183,7 @@ assessment:
   - id: component-surfaces-grass-helsinki-vargo2013-albedo
     record: records/surfaces/grass/helsinki--vargo2013--albedo
     role: component
-    note: Fills the albedo slot. The record declares target land_cover.grass, name "Unirrigated Grass",
+    note: Fills the albedo slot. The record declares target land_cover.grass, name "Grassland/herbaceous",
       place helsinki, representativeness city and source vargo2013.
   - id: component-surfaces-grass-se-england-havu-m2024-lai
     record: records/surfaces/grass/se-england--havu-m2024--lai
@@ -214,13 +212,13 @@ assessment:
     because the jarvi2011 pair
     is the only irrigation-differentiated conductance the database holds, and that distinction is what
     the composite exists to carry. The label is looser than the assembly: only three of twelve components
-    declare source jarvi2014, three more declare havu-m2024, and the albedo slot takes a record named
-    "Unirrigated Grass" because it is the only Helsinki grass albedo record there is. What a maintainer
+    declare source jarvi2014, three more declare havu-m2024, and the albedo slot takes the irrigation-neutral
+    Vargo grassland class because it is the only Helsinki-path grass albedo record there is. What a maintainer
     has to settle is the ohm slot. All four season and wetness positions take records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water,
     a set the record itself describes as an average that includes soil and water, while five of the nine
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:b9c69f638bd1c6521aa639c707d54d618ab8995306e7f1c496696431d0c4efe0
+  evidence_revision: sha256:9848ea8ea4fee8ba390fc07e0fc671ee6170670c5c684c7bc96b16a04964db7b
 verification:
   attestations: []

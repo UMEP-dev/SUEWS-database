@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--havu-m2024--max-conductance: sha256:6df14291eededff1bdb72916a54bf805872885ad1932b600823102b164fe480b
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
-    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:4e35592b0cc1bbd8befd85ce9721dcddbd52ad9941a27f42fe2e183d369b5778
+    records/surfaces/grass/helsinki--vargo2013--albedo: sha256:d3ce02674018133038f7aac7a2367787540366a2627965e866353d4825eea874
     records/surfaces/grass/london--havu-m2024--drainage: sha256:0b20a4c7c513a8160dc8e7c85d89a48593ad3b6d7d0ae3e9f6b59a67ae606431
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:a322f663d830aa91b2254b89301688372d7c8c26a294eceb77e629081160a2ad
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:49109b24957a9d3258297021e2e18c5eb7a9b2d79aeb9545a345a623d30d0407
@@ -176,7 +176,7 @@ assessment:
   - id: component-surfaces-grass-helsinki-vargo2013-albedo
     record: records/surfaces/grass/helsinki--vargo2013--albedo
     role: component
-    note: Fills the albedo slot. The record declares target land_cover.grass, name "Unirrigated Grass",
+    note: Fills the albedo slot. The record declares target land_cover.grass, name "Grassland/herbaceous",
       place helsinki, representativeness city and source vargo2013.
   - id: component-surfaces-grass-london-havu-m2024-drainage
     record: records/surfaces/grass/london--havu-m2024--drainage
@@ -212,6 +212,6 @@ assessment:
     forward without acting on it here is records/surfaces/grass/london--havu-m2024--drainage, which declares
     place london while its name reads "Grass - Helsinki, Zurich, Beijing"; that belongs to the record''s
     own evidence review.'
-  evidence_revision: sha256:242feb398d0da3a0ce73c25ad5d64f5eb394441fce99dcfd62be7fe96bb0e637
+  evidence_revision: sha256:ebb9d681f0ac5c71d18ed4a91432744265bbfd80832727c0317c5531fd611595
 verification:
   attestations: []
