@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s: sha256:caa258b9c5e1ef9259b94087ee62662d79b3d5debe460970006b80264690fe55
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
-    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
+    records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
@@ -75,14 +75,16 @@ assessment:
       note: 'The composite claims place sweden, whose registry entry reads kind country. Exactly one of
         the seven components is in Sweden: records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s,
         place sweden. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, place london,
-        and the emissivity, water storage, drainage, snowpack limit and OHM slots all take Helsinki records,
-        place helsinki, country finland. The database does hold two Swedish buildings albedo rows, records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
+        the emissivity, water storage, snowpack limit and OHM slots take Helsinki records, place helsinki,
+        country finland, and drainage takes a generic building-class record. The database does hold two
+        Swedish buildings albedo rows, records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
         named ''Wood '', and records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark
         roofs'', and the other Swedish buildings archetypes do use them; neither describes a concrete-tile
         facade, and nothing in the files records why a Central London city-centre albedo was taken instead.
         Part of the Helsinki borrowing is forced, since records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
-        is the only buildings snowpack_limit record in the database and no Swedish water storage, drainage
-        or emissivity row exists, but the composite as a whole rests on one Swedish record out of seven
+        is the only buildings snowpack_limit record in the database and no Swedish water storage or emissivity
+        row exists. The generic drainage row needs no Swedish substitute, but the composite as a whole
+        rests on one Swedish record out of seven
         while claiming to be a Swedish typology, and a maintainer should decide whether that is a defensible
         national default.'
     representativeness:
@@ -97,9 +99,10 @@ assessment:
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite is classed regional, at the scale of Sweden, and one slot matches that exactly:
         records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s declares place sweden
-        and representativeness regional. The other six components are all classed city, namely records/surfaces/bldgs/london--ward2016--albedo
-        and the five Helsinki rows. A country-scale default whose radiative, water, snow and OHM parameters
-        are all city measurements is the case this review is asked to treat as a finding, and it cannot
+        and representativeness regional. Five components are classed city, namely records/surfaces/bldgs/london--ward2016--albedo
+        and four Helsinki rows; drainage is generic. A country-scale default whose radiative, water, snow
+        and OHM parameters mostly come from city evidence is the case this review is asked to treat as
+        a finding, and it cannot
         be fixed inside the composite. The same pattern runs through the Swedish buildings family, so
         a maintainer should settle it once for the family rather than archetype by archetype.'
     method:
@@ -144,8 +147,8 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
-    note: Fills drainage. The record declares target land_cover.bldgs, name 'Building', place helsinki
-      and representativeness city.
+    note: Fills drainage. The record declares target land_cover.bldgs, name 'Building', place generic,
+      representativeness generic and applicable_scale land_cover.
   - id: component-constructions-sweden-bjork2002-high-rise-million-program
     record: records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s
     role: component
@@ -167,15 +170,16 @@ assessment:
     is a Swedish record, classed regional, named ''High Rise Million Program, mid 1900s'', with concrete
     tiles as its outermost wall layer, so the label, place and scale of the composite all hold for the
     component that actually distinguishes it from its siblings. Everything else is borrowed. Emissivity,
-    water storage, drainage, the snowpack limit and the OHM coefficients are Helsinki city rows, and the
+    water storage, the snowpack limit and the OHM coefficients are Helsinki city rows, drainage is generic,
+    and the
     albedo is records/surfaces/bldgs/london--ward2016--albedo, a Central London city row. Two consequences
-    follow. The composite claims regional but six of its seven components are classed city, so a national
+    follow. The composite claims regional but five of its seven components are classed city, so a national
     default rests on city measurements, which is not correctable inside the composite and needs either
     a narrower class or country-scale rows that do not yet exist. And the albedo selection is the one
     borrowing that was not forced: two Gothenburg rows exist, named ''Wood '' and ''Industry, dark roofs'',
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:f357bab13ff4cd14afbb15ea695031b5779b070caaded0973d10c761d6d391db
+  evidence_revision: sha256:2e7d5e27398afbe29e3071634bcf8354752658da8812c59eff838fd63af515c9
 verification:
   attestations: []
