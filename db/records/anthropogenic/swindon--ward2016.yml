@@ -6,6 +6,7 @@ place: swindon
 origin: Swindon, UK
 representativeness: city
 source: ward2016
+method: fitted
 legacy_id: 53240040
 parameters:
   context:
