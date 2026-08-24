@@ -1,10 +1,10 @@
 record: records/surfaces/common/beijing--zheng-y2023--soil
 schema_version: '2026.5'
 target: land_cover.common
-name: Below mixed vegetation
-place: beijing
+name: Viikki street-tree soil
+place: helsinki
 origin: Beijing
-representativeness: city
+representativeness: site
 source: zheng-y2023
 legacy_id: 22240058
 parameters:

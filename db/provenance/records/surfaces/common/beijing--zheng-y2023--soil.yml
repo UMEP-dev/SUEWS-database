@@ -1,12 +1,13 @@
 provenance_record: records/surfaces/common/beijing--zheng-y2023--soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:ef9620d0faade1fee220ea3616712dd51f0de6d1bf66b9dbdaf87320e7f4a7a6
+record_revision: sha256:cdec0b7e038fc5455eeb31e8d7a96295a13838707bfeb8d7a22755ce5d167e3f
 dependency_revisions:
   sources:
+    havu2022: sha256:a3279510f3c601e95ee46e1d391eb4efa617df1244f2d3a07eeded647d789be9
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
-    beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
 assessment:
@@ -20,9 +21,10 @@ assessment:
     name:
       conclusion: supported
       evidence_ids:
+      - havu-viikki-soil
       - zheng-model-archive
-      note: The archived run assigns soil code 72 to all three vegetated Veg rows, which is what a below-mixed-vegetation
-        label describes.
+      note: Havu et al. derive the distinctive soil depth and storage capacity for their two Viikki street-tree
+        sites, and Zheng's archive labels the complete reused row Viikki, Street trees.
     target:
       conclusion: supported
       evidence_ids:
@@ -31,40 +33,40 @@ assessment:
     values:
       conclusion: supported
       evidence_ids:
+      - havu-viikki-soil
       - zheng-model-archive
       - zheng-article
       note: 'Code 72 of SUEWS_Soil.txt carries SoilDepth 1000, SoilStoreCap 141, SatHydraulicCond 5.00E-04,
         SoilDensity 1.16 and InfiltrationRate 10, which is the record exactly, and the Beijing Veg rows
-        991, 992 and 993 all point at it. Table 2 publishes the 1000 mm tree soil depth. Worth flagging
+        991, 992 and 993 all point at it. Havu et al. publish the 1 m street-tree soil depth and state
+        that the exact 0.141 m storage capacity was calculated from laboratory measurements; Zheng Table
+        2 republishes the 1000 mm tree soil depth. Worth flagging
         for the maintainer: Table 2 lists 349 mm for grass and lawn, while the released run applies the
         1000 mm row to the grass surface as well, so the record follows the archive rather than the table.'
     source:
       conclusion: correction_required
       evidence_ids:
+      - havu-viikki-soil
       - zheng-article
       - zheng-model-archive
-      note: Table 2 credits the tree soil depth to Havu et al. (2022a) and Kokkonen et al. (2019), and
-        the archive comments code 72 as Viikki, Street trees. Zheng et al. reuse the row; the remaining
-        three properties are carried SUEWS values that the article does not publish at all.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+      note: Havu et al. directly publish the Viikki depth and storage capacity, while Zheng's archive is
+        the only located source for the complete five-field row. Changing the single source field to Havu
+        would wrongly attribute the carried hydraulic conductivity, density and infiltration rate to that
+        paper, so the complete lineage remains unresolved under the current schema.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
+      - havu-viikki-soil
       - zheng-model-archive
-      note: The archive labels the row Viikki, Street trees. Viikki is in Helsinki. Beijing is where the
-        row was applied, not where the soil was characterised.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+      note: The original study locates both street-tree sites in Viikki, Helsinki; Beijing is retained
+        as the later application origin on the stable path.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
+      - havu-viikki-soil
       - zheng-model-archive
-      - zheng-domain
-      note: 'City representativeness for Beijing is unsupported twice over: the parameters describe a
-        Helsinki street-tree soil, and the Beijing run covers a 1 km circle.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/332
+      note: The depth and storage capacity were determined for two constructed street-tree sites in Viikki,
+        so site scale is the supported scope rather than either Helsinki-wide or Beijing city evidence.
     method:
       conclusion: curation_required
       evidence_ids:
@@ -83,6 +85,26 @@ assessment:
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/333
   evidence:
+  - id: havu-viikki-soil
+    source: havu2022
+    role: input_data
+    locators:
+    - kind: section
+      label: Sect. 2.1, Site description
+      page: 2123
+      url: https://doi.org/10.5194/bg-19-2121-2022
+      note: Identifies two street-tree study sites in Viikki, Helsinki, and describes their 1 m-deep constructed
+        structural soils.
+    - kind: table
+      label: Table 2, SUEWS street-tree parameters
+      page: 2127
+      url: https://doi.org/10.5194/bg-19-2121-2022
+      note: Gives 1.00 m soil depth and 0.14 m water-storage capacity for both Tilia and Alnus sites; the
+        following paragraph states the unrounded storage capacity as 0.141 m calculated from laboratory
+        measurements.
+    note: This is the earliest located direct publication of the distinctive SUEWS depth and storage-capacity
+      pair; Riikonen et al. (2011) supplied the underlying site and laboratory information rather than
+      publishing this complete SUEWS row.
   - id: zheng-model-archive
     source: zheng-y2023
     role: compilation
@@ -121,12 +143,12 @@ assessment:
       url: https://doi.org/10.5194/gmd-16-4551-2023
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
-  scientific_note: 'The numbers are exactly what the released Beijing run used, and one of them is published
-    in the article, so the values are settled. Their provenance is not. The archive labels the row Viikki,
-    Street trees, which is a Helsinki site, and Table 2 credits the soil depth to Havu et al. and Kokkonen
-    et al. The record presents a reused Helsinki street-tree soil as Beijing city evidence, and it is
-    byte-identical to the Helsinki record already in the database. Two decisions follow, and both are
-    the maintainer''s: how to express the reuse, and whether two records should exist at all.'
-  evidence_revision: sha256:cd753d8d2a4b1714653ec5e07bc93de3e5fb4756a9ca52feea019743cf889ea3
+  scientific_note: 'The numbers are exactly what the released Beijing run used. Havu et al. directly
+    publish the 1 m / 0.141 m pair for two Viikki street-tree sites, which settles the active name, Helsinki
+    place and site representativeness. The complete row''s provenance is not settled: Zheng carries three
+    other SUEWS properties that Havu does not publish, so the one-source record schema cannot credit Havu
+    without over-attributing those values. The row also remains byte-identical to records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees;
+    issue 333 separately tracks whether both records should exist.'
+  evidence_revision: sha256:7815d0787471f5c5fc03c249b0181612ea6ca7d628381d48020388a222cfd204
 verification:
   attestations: []
