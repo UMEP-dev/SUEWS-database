@@ -1,0 +1,104 @@
+provenance_record: records/profiles/human-activity/helsinki--jarvi2019--human-activity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:600c9b2c4af4eb28de5d2ec2ddb00c9e23330292d0208d61396833b73a203d5b
+dependency_revisions:
+  sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      note: The archive labels both selected rows Helsinki Human activity.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: The archive label and paper both identify the schedule as the human-activity profile, distinct
+        from the population and traffic profiles.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      note: Archive rows 55771 and 55772 supply the exact weekday and weekend values for source hours
+        0 through 23, mapped in order to database keys 1 through 24.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: The Zenodo data repository directly publishes the exact configuration rows; the associated
+        article explains their scientific role but does not print all 24 values.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: Both the archive rows and associated study identify the profile as Helsinki input.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: The archive provides one Helsinki activity schedule for the spatial city modelling setup,
+        rather than a schedule fitted to one measurement site.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: The database adopts the published configuration schedule, so literature is the record-level
+        method; the paper describes its timing relative to population movement.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-profile-rows
+      - activity-profile-role
+      note: The selected rows are explicitly human activity and the record attaches to humactivity_24hr,
+        keeping this profile distinct from the Helsinki population rows 801 and 802.
+  evidence:
+  - id: helsinki-profile-rows
+    source: jarvi2019-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_Profiles.txt, rows 55771 and 55772
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: Rows 55771 and 55772 are labelled Helsinki Human activity, Weekday and Weekend, with columns
+        explicitly headed 0 through 23.
+  - id: activity-profile-role
+    source: jarvi2019
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 1, weekday and weekend diurnal profiles
+      page: 8369
+      url: https://doi.org/10.1029/2018JD029576
+    - kind: section
+      label: Human activity and population profile timing
+      page: 8368
+      url: https://doi.org/10.1029/2018JD029576
+      note: Distinguishes activity HA,d from population HP,d and states that activity rises one hour before
+        population movement and remains elevated one hour after people return home.
+  scientific_note: The migrated values previously matched the archive's UK weekday activity row. The
+    working-day values now match Helsinki row 55771; the weekend values already matched Helsinki row 55772.
+    The source columns 0 through 23 map directly and in order to database profile keys 1 through 24. The
+    exact configuration dataset is the active source, while the paper documents the profile role and timing.
+  evidence_revision: sha256:7f9114e0a9777b5324bad6e01d8a74c269011767b7ee21ae3577fe8993c8f4d1
+verification:
+  attestations: []
