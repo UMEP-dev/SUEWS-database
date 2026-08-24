@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/helsinki--city-centre: sha256:1be8e36d5862b1bdf5930efa257243fe94077d4abcc5f62e942c65662f779d04
     archetypes/surfaces/bldgs/zurich--city-centre: sha256:2e1cb90bf7c81027e7134840e09273aba381785ed9c14ddce4c55495d91dcd06
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -152,7 +152,7 @@ assessment:
     role: component
     note: Fills the summer_wet, summer_dry, winter_wet and winter_dry ohm slots. The record declares target
       ohm_coefficients, name 'Roof (own for SMEAR III, Helsinki) [750]', place helsinki, representativeness
-      city and source jarvi2017, and carries no season_label.
+      city, source unreferenced and method calculated, and carries no season_label.
   scientific_note: 'Kumpula is the one archetype in this batch whose OHM selection can be read as deliberate
     rather than borrowed: records/ohm/helsinki--jarvi2014--buildings names a specific measurement site
     in its own name field, ''Roof (own for SMEAR III, Helsinki) [750]'', and Kumpula is a named Helsinki
@@ -167,6 +167,6 @@ assessment:
     construction instead, and no file records why. A maintainer should decide whether Kumpula should take
     a Nordic construction too, or whether the sample-run record should be withdrawn from the archetypes
     altogether. This review does not revisit any component value.'
-  evidence_revision: sha256:8a22c372dd51b87bffc1126c501053ef91f8e04f50a3627aa07e65fd191379a1
+  evidence_revision: sha256:5d58145e18a9ed7302982a089c5c532e44314d9fe365782dca888677f60d2679
 verification:
   attestations: []

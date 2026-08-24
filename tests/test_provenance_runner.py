@@ -170,8 +170,8 @@ class ProvenanceRunnerTests(unittest.TestCase):
         summary = plan_run(
             ["evidence", "composition"], records=records, existing_sidecars={}
         )
-        self.assertEqual(summary["counts"], {"evidence": 840, "composition": 319})
-        self.assertEqual(summary["total"], 1159)
+        self.assertEqual(summary["counts"], {"evidence": 848, "composition": 319})
+        self.assertEqual(summary["total"], 1167)
 
     def test_integer_profile_keys_have_unambiguous_revisions(self):
         self.assertEqual(

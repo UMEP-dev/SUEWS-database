@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood: sha256:f1d978d90a398d73c2afb30ac14aa27c846f79d63416e6938e2f125233c17ef6
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s: sha256:caa258b9c5e1ef9259b94087ee62662d79b3d5debe460970006b80264690fe55
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:ad11d866af77b539f5473fc99f036c9058c52fb1f3db5551fd9ff89ad8578322
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -162,7 +162,7 @@ assessment:
     role: component
     note: Fills the summer_wet, summer_dry, winter_wet and winter_dry ohm slots. The record declares target
       ohm_coefficients, name 'Roof (own for SMEAR III, Helsinki) [750]', place helsinki, representativeness
-      city and source jarvi2017, and carries no season_label.
+      city, source unreferenced and method calculated, and carries no season_label.
   scientific_note: 'The one slot that carries the identity of this typology is right. records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s
     is a Swedish record, classed regional, named ''High Rise Million Program, mid 1900s'', with concrete
     tiles as its outermost wall layer, so the label, place and scale of the composite all hold for the
@@ -176,6 +176,6 @@ assessment:
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:8c7de7d9da2aa34b2d12cc2fe1b0eebf56f85872d025004211672f11cc995083
+  evidence_revision: sha256:f357bab13ff4cd14afbb15ea695031b5779b070caaded0973d10c761d6d391db
 verification:
   attestations: []

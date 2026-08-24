@@ -1,79 +1,169 @@
 provenance_record: records/ohm/helsinki--jarvi2014--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2b48bb475d733ba46d3dde5f150ba1d22b529450b32dae3e800d8631bfc5c2be
+record_revision: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
 dependency_revisions:
   sources:
+    grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
     jarvi2017: sha256:0411608374cf880b5e590190bdb02f91d8e20ad9cdaacb845958e7d4b88ca1b3
+    meyn2009: sha256:06ab5259aa97c44ca95eff15a0e8d9c3f14048ff4d76cd724e209172bbf18748
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
-  records: {}
+  records:
+    records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713: sha256:3730001f108846150f8d9aa8a7c16bd4379419fad81b42eda6ecd53f9e15c937
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705: sha256:1023cbfe149c477cbb3e54473aabf1602b557846100cd3deae75e3f524afb16a
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702: sha256:92f9972ea4d4195f27773e8b06c0a94daaa8cffb02b9b87a8378bedcf0e74241
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-5-2-0-code-703: sha256:4b2467b47e837e9551f381184712e0366f39d42775b45c28b915f613e1b0186a
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701: sha256:744042c7a28a5c2f8a2b281af453c03e793607b6425bd80b82a95158b5b195ae
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-wet-wind-0-9-1-9-code-704: sha256:1f8fc89bd23da520b55dce05b9c2c566c5d751381a5f6c7c36bd7efaceca3c55
+    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707: sha256:e1be61c2a1fd155ec08483be1e1b077b81202e77b05c462afdc006bfa3493b28
+    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-below-1-code-706: sha256:99275f8586da0594b9e56cebec7fe05c080217a7bf91a4e3d5448653b7509fab
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-21T23:50:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T08:06:15Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+  method: calculated
   findings:
     name:
       conclusion: supported
       evidence_ids:
       - jarvi2017-table-s4
-      note: Järvi et al. (2017), Supplementary Table S4, identifies the tuple as Helsinki buildings.
+      note: The stable legacy label identifies the calculated tuple as the roof set used for SMEAR III;
+        Järvi et al. (2017) publish it as the Helsinki buildings row.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi2017-table-s4
-      note: The triplet is structurally an OHM coefficient set.
+      - code-713-input
+      - code-701-input
+      - code-702-input
+      - code-703-input
+      - code-704-input
+      - code-705-input
+      - code-706-input
+      - code-707-input
+      note: Every input and the calculated output are OHM coefficient triplets for roofs/buildings.
     values:
       conclusion: supported
       evidence_ids:
+      - code-713-input
+      - code-701-input
+      - code-702-input
+      - code-703-input
+      - code-704-input
+      - code-705-input
+      - code-706-input
+      - code-707-input
+      - grimmond1991b-table-1a
+      - meyn2009-table-4
       - jarvi2017-table-s4
-      note: Järvi et al. (2017), Supplementary Table S4, states a1 = 0.19, a2 = 0.54 and a3 = -15.125
-        for Helsinki buildings.
+      note: The component-wise equal-weight mean is exactly 0.19, 0.54 and -15.125; Järvi et al. (2017)
+        independently publish the same output tuple for Helsinki buildings.
     source:
-      conclusion: supported
-      evidence_ids:
-      - jarvi2017-table-s4
-      note: The corrected Järvi et al. (2017) source publishes the exact tuple in its supporting information;
-        Järvi et al. (2014) does not state it.
+      conclusion: not_applicable
+      note: This is an internal arithmetic mean and therefore correctly uses source unreferenced. The
+        input records carry their own parameter sources, while Järvi et al. (2017) is later compilation evidence.
     place:
       conclusion: supported
       evidence_ids:
       - jarvi2017-table-s4
-      note: The 2017 table explicitly labels the coefficient row Helsinki.
+      note: Järvi et al. publish the calculated tuple as the Helsinki buildings input.
     representativeness:
       conclusion: supported
       evidence_ids:
       - jarvi2017-table-s4
-      note: The value is presented as the Helsinki site input in the multi-city SUEWS analysis.
+      note: The output is presented as the Helsinki input in a multi-city SUEWS analysis, supporting city
+        application scope without treating the Vancouver inputs as Helsinki measurements.
     method:
-      conclusion: unresolved
-      note: Neither checked publication states whether the Helsinki roof tuple was fitted, calculated,
-        adopted from literature or assumed.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/69
+      conclusion: supported
+      evidence_ids:
+      - code-713-input
+      - code-701-input
+      - code-702-input
+      - code-703-input
+      - code-704-input
+      - code-705-input
+      - code-706-input
+      - code-707-input
+      note: The tuple is reproduced exactly as the component-wise arithmetic mean of the eight recorded inputs.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi2017-table-s4
-      note: The 2017 Helsinki building row uniquely matches the stored triplet.
+      note: The later Helsinki buildings row uniquely matches the stored triplet and its SMEAR III legacy use.
   evidence:
+  - id: code-713-input
+    record: records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713
+    role: input
+    note: Supplies 0.17, 0.10 and -17 from the legacy Vancouver rooftop row.
+  - id: code-701-input
+    record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701
+    role: input
+    note: Supplies 0.30, 0.96 and -24.
+  - id: code-702-input
+    record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702
+    role: input
+    note: Supplies 0.26, 0.89 and -21.
+  - id: code-703-input
+    record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-5-2-0-code-703
+    role: input
+    note: Supplies 0.23, 0.87 and -24.
+  - id: code-704-input
+    record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-wet-wind-0-9-1-9-code-704
+    role: input
+    note: Supplies 0.23, 0.69 and -21.
+  - id: code-705-input
+    record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705
+    role: input
+    note: Supplies 0.06, 0.28 and -3.
+  - id: code-706-input
+    record: records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-below-1-code-706
+    role: input
+    note: Supplies 0.15, 0.28 and -6.
+  - id: code-707-input
+    record: records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707
+    role: input
+    note: Supplies 0.12, 0.25 and -5.
+  - id: grimmond1991b-table-1a
+    source: grimmond1991b
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 1(a), roof (tar and gravel), summer
+      page: 314
+      url: https://doi.org/10.1016/0957-1272(91)90003-W
+    note: Publishes the code 713 coefficient triplet used as one input to the mean.
+  - id: meyn2009-table-4
+    source: meyn2009
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 4, roof objective-hysteresis fits
+      page: 750
+      url: https://doi.org/10.1016/j.enbuild.2009.02.005
+    note: Publishes the code 701-707 coefficient triplets used as the other seven inputs.
   - id: jarvi2017-table-s4
     source: jarvi2017
-    role: parameter_source
+    role: compilation
     locators:
     - kind: table
       label: Supplementary Table S4, Helsinki buildings row
       page: 6
       url: https://pure.mpg.de/rest/items/item_2472559_3/component/file_2472557/content
-    note: The supporting information publishes the exact snow-free Helsinki building triplet used by the
-      database. It does not state how the triplet was produced.
-  scientific_note: The values and Helsinki application are explicit in the accessible 2017 supplement
-    and the canonical source is now aligned with it. The production method remains unresolved; no method
-    is inferred from the record name or from model performance.
-  evidence_revision: sha256:a54eb880abf1193fa308b2367974474f7fa8f680914f73cbdbadf7a17c6f9064
+    note: Publishes the exact calculated output tuple used for Helsinki buildings without documenting its derivation.
+  derivation:
+    kind: arithmetic_mean
+    expression: 'For each of a1, a2 and a3: (code 713 + code 701 + code 702 + code 703 + code 704 + code 705 + code 706 + code 707) / 8.'
+    description: 'The sums are a1 = 1.52, a2 = 4.32 and a3 = -121; dividing each by eight gives 0.19,
+      0.54 and -15.125 exactly. Legacy code 708 is not an input; the historical selection rationale is
+      undocumented, but the accepted eight-row reconstruction is unique and fully reproducible.'
+  scientific_note: 'Leena Järvi confirmed that the SMEAR III roof values were selected from earlier-literature
+    OHM coefficients in the legacy text table rather than fitted to Helsinki observations. Repository-wide
+    subset reconstruction uniquely identifies codes 713 and 701-707 as the equal-weight inputs. Code
+    708 is excluded by the exact arithmetic; why it was not selected was not documented. This uncertainty
+    concerns the historical selection rationale, not the reproducibility of the stored tuple.'
+  evidence_revision: sha256:e314d21527141afa7dd969c87cabe627c653583743dfe85226782a27bedc2d9f
 verification:
   attestations: []

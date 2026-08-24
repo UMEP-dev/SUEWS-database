@@ -1,0 +1,13 @@
+record: records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713
+schema_version: '2026.5'
+target: ohm_coefficients
+name: Roof (tar and gravel, summer) [713]
+place: vancouver
+origin: Vancouver
+representativeness: site
+source: grimmond1991b
+method: fitted
+parameters:
+  a1: 0.17
+  a2: 0.10
+  a3: -17

@@ -408,6 +408,13 @@ sources:
       study
     type: journalArticle
     year: 1985
+  meyn2009:
+    author: Meyn, Stephanie K.; Oke, T. R.
+    doi: 10.1016/j.enbuild.2009.02.005
+    journal: Energy and Buildings
+    title: Heat fluxes through roofs and their relevance to estimates of urban heat storage
+    type: journalArticle
+    year: 2009
   offerle2003:
     author: Offerle, B.; Grimmond, C. S. B.; Oke, T. R.
     doi: 10.1175/1520-0450(2003)042<1157:PONARF>2.0.CO;2
