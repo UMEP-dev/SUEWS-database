@@ -31,25 +31,25 @@ storage_drain_params:
     ref:
       ID: jarvi2011
       DOI: 10.1016/j.jhydrol.2011.10.001
-      desc: helsinki, city
+      desc: generic, generic, land_cover
   drain_coef_1:
     value: 10
     ref:
       ID: jarvi2011
       DOI: 10.1016/j.jhydrol.2011.10.001
-      desc: helsinki, city
+      desc: generic, generic, land_cover
   drain_coef_2:
     value: 3
     ref:
       ID: jarvi2011
       DOI: 10.1016/j.jhydrol.2011.10.001
-      desc: helsinki, city
+      desc: generic, generic, land_cover
 wet_threshold:
   value: 0.25
   ref:
     ID: jarvi2011
     DOI: 10.1016/j.jhydrol.2011.10.001
-    desc: helsinki, city
+    desc: generic, generic, land_cover
 snowpack_limit:
   value: 190
   ref:
