@@ -6,7 +6,8 @@ deployed by CI). The site is a linked graph with a faceted search front end:
 
   index.html                    faceted browser over every entry: filter by
                                 kind, surface, family, place,
-                                representativeness, urban setting and source,
+                                representativeness, applicable scale, urban
+                                setting and source,
                                 plus free
                                 text; result cards show parameter values
                                 inline; filter state lives in the URL hash
@@ -49,7 +50,12 @@ from urllib.parse import quote
 import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from check_db import iter_uses, load_all, load_urban_settings  # noqa: E402
+from check_db import (  # noqa: E402
+    iter_uses,
+    load_all,
+    load_applicable_scales,
+    load_urban_settings,
+)
 from export_record import PlainDumper, assemble  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -60,6 +66,9 @@ DOCS_REF = f"{DOCS}/config-reference"
 
 URBAN_SETTING_LABEL = {
     key: value["label"] for key, value in load_urban_settings().items()
+}
+APPLICABLE_SCALE_LABEL = {
+    key: value["label"] for key, value in load_applicable_scales().items()
 }
 
 
@@ -116,6 +125,7 @@ COMPOSITION_FINDING_LABEL = {
     "source": "Composition rationale",
     "place": "Place applicability",
     "representativeness": "Representativeness",
+    "applicable_scale": "Applicable scale",
     "urban_setting": "Urban setting applicability",
     "method": "Slot and season mapping",
     "identity": "Completeness and uniqueness",
@@ -206,7 +216,8 @@ TYP_LABEL = {
 FACET_TITLE = {
     "kind": "Kind", "surface": "Land cover", "family": "Family",
     "typology": "Typology", "region": "Region", "country": "Country",
-    "city": "City", "rep": "Representativeness", "setting": "Urban setting",
+    "city": "City", "rep": "Representativeness", "scale": "Applicable scale",
+    "setting": "Urban setting",
     "source": "Source",
     "method": "Method", "verification": "Review state",
     "role": "Provenance role", "place": "Place",
@@ -1776,6 +1787,11 @@ def record_page(
         chips.append(chip_link(
             f"{rel}index.html#rep={esc(rec['representativeness'])}",
             rec["representativeness"]))
+    if rec.get("applicable_scale"):
+        scale = rec["applicable_scale"]
+        chips.append(chip_link(
+            f"{rel}index.html#scale={esc(scale)}",
+            APPLICABLE_SCALE_LABEL.get(scale, scale)))
     if rec.get("urban_setting"):
         setting = rec["urban_setting"]
         chips.append(chip_link(
@@ -1812,6 +1828,9 @@ def record_page(
         "Scope",
         esc(rec["representativeness"]) if rec.get("representativeness") else "",
     )
+    if rec.get("applicable_scale"):
+        scale = rec["applicable_scale"]
+        row("Applicable scale", esc(APPLICABLE_SCALE_LABEL.get(scale, scale)))
     if rec.get("urban_setting"):
         setting = rec["urban_setting"]
         row("Urban setting", esc(URBAN_SETTING_LABEL.get(setting, setting)))
@@ -2230,7 +2249,7 @@ in the <a href="index.html">browser</a>, or add coordinates to
 BROWSER_JS = """
 <script>
 const FACETS = ['kind', 'surface', 'family', 'typology', 'region', 'country',
-                'city', 'rep', 'setting', 'source', 'method', 'verification',
+                'city', 'rep', 'scale', 'setting', 'source', 'method', 'verification',
                 'role'];
 // 'place' is a hidden exact-match key: not rendered as a facet group, but
 // honoured from the hash so record-page sibling links and old bookmarks
@@ -2275,6 +2294,7 @@ function displayVal(facet, value) {
   if (facet === 'surface') return LC_LABEL[value] || value;
   if (facet === 'typology') return TYP_LABEL[value] || value;
   if (facet === 'method') return METHOD_LABEL[value] || value;
+  if (facet === 'scale') return SCALE_LABEL[value] || value;
   if (facet === 'setting') return SETTING_LABEL[value] || value;
   if (facet === 'verification') return STATE_LABEL[value] || value;
   if (facet === 'role') return ROLE_LABEL[value] || value;
@@ -2374,7 +2394,8 @@ function render() {
         const src = e.source === 'unreferenced'
           ? '<span class="badge-unref">unreferenced</span>' : e.source;
         const meta = [e.family, TYP_LABEL[e.typology],
-                      e.city || e.country, e.rep, SETTING_LABEL[e.setting],
+                      e.city || e.country, e.rep, SCALE_LABEL[e.scale],
+                      SETTING_LABEL[e.setting],
                       STATE_LABEL[e.verification], METHOD_LABEL[e.method], src]
           .filter(Boolean).join(' · ');
         const kindTag = e.kind === 'typology'
@@ -2755,6 +2776,8 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
             + fgroup("rep", FACET_TITLE["rep"],
                      cap="what a value stands for: one site, a whole city, "
                          "a region, or generic")
+            + fgroup("scale", FACET_TITLE["scale"],
+                     cap="the spatial unit described by the value")
             + fgroup("setting", FACET_TITLE["setting"],
                      cap="source-established intra-urban context")
             + fgroup("verification", FACET_TITLE["verification"], is_open=True)
@@ -2783,6 +2806,7 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
         f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
         f"const METHOD_LABEL = {json.dumps(METHOD_LABEL)};"
+        f"const SCALE_LABEL = {json.dumps(APPLICABLE_SCALE_LABEL)};"
         f"const SETTING_LABEL = {json.dumps(URBAN_SETTING_LABEL)};"
         f"const STATE_LABEL = {json.dumps(PROVENANCE_STATE_LABEL)};"
         f"const ROLE_LABEL = {json.dumps(PROVENANCE_ROLE_LABEL)};"
@@ -2827,6 +2851,8 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
         })
         text = " ".join(str(x).lower() for x in [
             path, rec.get("name"), rec.get("place"), rec.get("origin"),
+            rec.get("applicable_scale"),
+            APPLICABLE_SCALE_LABEL.get(rec.get("applicable_scale")),
             rec.get("urban_setting"),
             URBAN_SETTING_LABEL.get(rec.get("urban_setting")),
             region, country, city,
@@ -2845,6 +2871,7 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             "place": rec.get("place"),
             "region": region, "country": country, "city": city,
             "rep": rec.get("representativeness"),
+            "scale": rec.get("applicable_scale"),
             "setting": rec.get("urban_setting"),
             "source": rec.get("source"), "method": method,
             "review_type": review_type,

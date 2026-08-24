@@ -209,11 +209,12 @@ def signoff_eligible(sidecar, record):
         for finding in findings.values()
     ):
         return False
-    if (
-        record.get("urban_setting") is not None
-        and findings.get("urban_setting", {}).get("conclusion") != "supported"
-    ):
-        return False
+    for scope in ("urban_setting", "applicable_scale"):
+        if (
+            record.get(scope) is not None
+            and findings.get(scope, {}).get("conclusion") != "supported"
+        ):
+            return False
     review_type = _review_type(sidecar)
     required_supported = (
         ("values", "method") if review_type == "evidence" else ("method",)
@@ -677,21 +678,22 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                 )
 
         findings = assessment.get("findings", {})
-        if (
-            record.get("urban_setting") is not None
-            and "urban_setting" not in findings
-        ):
-            errors.append(
-                f"{label}: entry declares urban_setting but assessment has no "
-                "urban_setting finding"
-            )
-        elif (
-            record.get("urban_setting") is not None
-            and findings["urban_setting"].get("conclusion") == "not_applicable"
-        ):
-            errors.append(
-                f"{label}: declared urban_setting cannot be not_applicable"
-            )
+        for optional_scope in ("urban_setting", "applicable_scale"):
+            if (
+                record.get(optional_scope) is not None
+                and optional_scope not in findings
+            ):
+                errors.append(
+                    f"{label}: entry declares {optional_scope} but assessment "
+                    f"has no {optional_scope} finding"
+                )
+            elif (
+                record.get(optional_scope) is not None
+                and findings[optional_scope].get("conclusion") == "not_applicable"
+            ):
+                errors.append(
+                    f"{label}: declared {optional_scope} cannot be not_applicable"
+                )
         for scope, finding in findings.items():
             for evidence_id in finding.get("evidence_ids", []):
                 if evidence_id not in evidence_by_id:

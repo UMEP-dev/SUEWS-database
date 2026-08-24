@@ -315,6 +315,46 @@ class ProvenanceSemanticTests(unittest.TestCase):
             [],
         )
 
+    def test_declared_applicable_scale_requires_a_review_finding(self):
+        record = deepcopy(RECORD)
+        record["applicable_scale"] = "facet"
+        records, sources, places = registries(record)
+        sidecar = fixture_sidecar()
+        sidecar["record_revision"] = canonical_revision(record)
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: sidecar}
+        )
+        self.assertTrue(
+            any("has no applicable_scale finding" in error for error in errors),
+            errors,
+        )
+
+        sidecar["assessment"]["findings"]["applicable_scale"] = {
+            "conclusion": "not_applicable"
+        }
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: sidecar}
+        )
+        self.assertTrue(
+            any("cannot be not_applicable" in error for error in errors), errors
+        )
+        self.assertFalse(signoff_eligible(sidecar, record))
+
+        sidecar["assessment"]["findings"]["applicable_scale"] = {
+            "conclusion": "supported",
+            "evidence_ids": ["parameter-publication"],
+        }
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        self.assertEqual(
+            check_provenance(
+                records, sources, places, {RECORD_KEY: sidecar}
+            ),
+            [],
+        )
+
     def test_blocking_status_must_name_the_optional_setting_finding(self):
         record = deepcopy(RECORD)
         record["urban_setting"] = "city_centre"

@@ -364,6 +364,8 @@ $defs:
         $ref: '#/$defs/finding'
       representativeness:
         $ref: '#/$defs/finding'
+      applicable_scale:
+        $ref: '#/$defs/finding'
       urban_setting:
         $ref: '#/$defs/finding'
       method:
@@ -386,6 +388,8 @@ $defs:
           place:
             $ref: '#/$defs/agent_assessed_finding'
           representativeness:
+            $ref: '#/$defs/agent_assessed_finding'
+          applicable_scale:
             $ref: '#/$defs/agent_assessed_finding'
           urban_setting:
             $ref: '#/$defs/agent_assessed_finding'
@@ -439,6 +443,13 @@ $defs:
                   conclusion:
                     const: unresolved
           - properties:
+              applicable_scale:
+                properties:
+                  conclusion:
+                    const: unresolved
+            required:
+              - applicable_scale
+          - properties:
               urban_setting:
                 properties:
                   conclusion:
@@ -490,6 +501,13 @@ $defs:
                   conclusion:
                     const: source_inaccessible
           - properties:
+              applicable_scale:
+                properties:
+                  conclusion:
+                    const: source_inaccessible
+            required:
+              - applicable_scale
+          - properties:
               urban_setting:
                 properties:
                   conclusion:
@@ -540,6 +558,13 @@ $defs:
                 properties:
                   conclusion:
                     const: curation_required
+          - properties:
+              applicable_scale:
+                properties:
+                  conclusion:
+                    const: curation_required
+            required:
+              - applicable_scale
           - properties:
               urban_setting:
                 properties:
