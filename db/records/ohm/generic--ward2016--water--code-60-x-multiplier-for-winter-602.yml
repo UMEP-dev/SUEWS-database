@@ -2,6 +2,7 @@ record: records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-60
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Code 60 x Multiplier for winter [602]
+applicable_scale: land_cover
 source: ward2016
 legacy_id: 50240022
 season_label: Winter

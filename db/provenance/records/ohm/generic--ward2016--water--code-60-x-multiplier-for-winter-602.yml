@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:cd821b62fb09214c78474d8b45e9d6a6ea58618ebc7b93eb75b656e069274c52
+record_revision: sha256:9ef3c1ebaf3b579d3ad75ba398c9b4f165f7b43adb4c525b899e1724d84c167a
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as Water, so the tuple describes the water land-cover class before
+        neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -91,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment water coefficients from Souch et al. (1998),
     then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
     runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:2aa0b060eb012735175550988382c85cc02e1120ac544fc6156965e779a23605
+  evidence_revision: sha256:5c58c5fd3b6cacacc1d2add0f874498ec222a805c10aeb84d8c7d20ea1af9ca0
 verification:
   attestations: []
