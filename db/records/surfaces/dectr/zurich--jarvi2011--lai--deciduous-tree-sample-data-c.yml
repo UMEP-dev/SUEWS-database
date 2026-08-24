@@ -1,11 +1,13 @@
 record: records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c
 schema_version: '2026.5'
 target: land_cover.dectr
-name: Deciduous Tree (sample data) c
+name: Archived Zurich deciduous-tree LAI sample C
 place: zurich
 origin: Zurich
 representativeness: city
-source: jarvi2011
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240054
 legacy_id: 31240026
 parameters:
   lai:
