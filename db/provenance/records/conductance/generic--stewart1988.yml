@@ -1,12 +1,12 @@
 provenance_record: records/conductance/generic--stewart1988
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:6e37daf841be9ee92ac29122a6fa0413bfe539c96c7c2f72997ffbd961b810d6
+record_revision: sha256:14311c7b7aa128e3af9c97346b59ad5b70e01259cf55ffc1674fc100a4643d2a
 dependency_revisions:
   sources:
     stewart1988: sha256:7e4217d5634107c0a6700a14c1159a4bac6831082756b936432b004a49661c00
   places:
-    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+    thetford-forest: sha256:5e03f2817081ea797c8d05fd1f06962c99aeff7f3177fe85565f4d03302073f5
   records: {}
 assessment:
   status: agent_assessed
@@ -40,21 +40,18 @@ assessment:
       - stewart1988-fitted-parameters
       note: Stewart (1988) is the parameter publication that derives and reports the fitted values.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - stewart1988-fitted-parameters
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/411
-      note: The source fits measurements from Thetford Forest, whereas the record currently declares
-        place generic. The separate scope correction is tracked in issue 411.
+      note: The Site and measurements section places the observations near the centre of Thetford
+        Forest, Norfolk, at 52 degrees 25 minutes N, 0 degrees 40 minutes E and 46 m altitude, matching
+        the record and place registry.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - stewart1988-fitted-parameters
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/411
-      note: The fitted coefficients come from one forest site and dataset, not generic sampling. Issue
-        411 tracks the representativeness correction without changing the supported coefficients.
+      note: The coefficients were fitted to dry-canopy observations from one instrumented Scots pine
+        stand at Thetford Forest, so site is the source-supported evidence scale.
     method:
       conclusion: supported
       evidence_ids:
@@ -69,6 +66,12 @@ assessment:
     source: stewart1988
     role: parameter_source
     locators:
+    - kind: section
+      label: Site and measurements
+      page: 20
+      url: https://doi.org/10.1016/0168-1923(88)90003-2
+      note: Locates the instrumented Scots pine stand near the centre of Thetford Forest, Norfolk,
+        at 52 degrees 25 minutes N, 0 degrees 40 minutes E and 46 m altitude.
     - kind: table
       label: Table 2, non-linear functions, All days row
       page: 27
@@ -93,8 +96,8 @@ assessment:
     note: The all-days row was fitted to all measurement hours from 1974, 1975 and 1976 at Thetford
       Forest.
   scientific_note: The original article supports the current source and all eleven conductance coefficients.
-    It also establishes that the values are a fitted Thetford Forest parameter set; the separate place
-    and representativeness correction remains tracked in issue 411.
-  evidence_revision: sha256:9fe0a02e55d58dd5fefe48f52408bd68c0bf7f5aee028260821b149a59a85776
+    It establishes that the values are a site-scale parameter set fitted to dry-canopy observations
+    from the instrumented Scots pine stand at Thetford Forest, rather than generic pine-forest coefficients.
+  evidence_revision: sha256:572c20b5cde5547965b5725ef478141b51eb33d79c7a4f3a6e81b4856c494ccb
 verification:
   attestations: []
