@@ -1,0 +1,90 @@
+provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:bef813522edf2d34e4bfde17b6315e676d6f0db62129078510e0316a2a7b2f2a
+dependency_revisions:
+  sources:
+    kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T11:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The name identifies the black/grey weathered road-asphalt specimen group A001-A006.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: All six inputs are road-asphalt specimens, matching land_cover.paved.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The stored value is exactly the unweighted mean of 0.96, 0.94, 0.94, 0.94, 0.93 and 0.91.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The mean is a database calculation not printed by Kotthaus et al.; source unreferenced avoids
+        crediting the publication with the derived value while the six located table rows preserve its evidence.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The six specimens belong to the London Urban Micromet data Archive material collection.
+    representativeness:
+      conclusion: correction_required
+      evidence_ids:
+      - kotthaus-table-c1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/246
+      note: The selected specimens are not a probabilistic London-wide sample; geographic reach is handled
+        separately in issue 246.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      note: The record is the component-wise arithmetic mean of six source-tabulated inputs.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - kotthaus-table-c1
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/245
+      note: The exact arithmetic and shared material description identify A001-A006 as the inputs.
+  evidence:
+  - id: kotthaus-table-c1
+    source: kotthaus2014
+    role: input_data
+    locators:
+    - kind: table
+      label: Appendix C, Table C.1, specimens A001-A006
+      page: '210-211'
+      url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
+      note: Lists the six black/grey weathered road-asphalt specimens and their individual emissivities.
+  derivation:
+    kind: arithmetic_mean
+    expression: (A001 + A002 + A003 + A004 + A005 + A006) / 6
+    external_inputs:
+    - {id: a001, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
+    - {id: a002, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
+    - {id: a003, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
+    - {id: a004, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
+    - {id: a005, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.93}
+    - {id: a006, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.91}
+  scientific_note: Kotthaus et al. publish six measured emissivities, not the stored mean. The mean remains
+    unchanged but is now represented as an internal calculation over explicitly located source-table inputs.
+  evidence_revision: sha256:f50cd95c675f0b903e0b82bbb25e09014bfcfa645533f7970492b5e5457e7b9b
+verification:
+  attestations: []
