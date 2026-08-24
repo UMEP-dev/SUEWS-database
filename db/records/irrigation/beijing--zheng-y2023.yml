@@ -4,8 +4,10 @@ target: irrigation
 name: Irrigation
 place: beijing
 origin: Beijing
-representativeness: city
-source: zheng-y2023
+representativeness: site
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240067
 legacy_id: 61240006
 parameters:
   ie_start: 60
