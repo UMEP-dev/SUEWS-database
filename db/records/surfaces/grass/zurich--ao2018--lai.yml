@@ -5,7 +5,9 @@ name: Grass
 place: zurich
 origin: Zurich
 representativeness: city
-source: ao2018
+source: stagakis-s2024
+method: literature
+source_legacy_ref: 90240064
 legacy_id: 31240022
 parameters:
   lai:
