@@ -1,10 +1,10 @@
 record: records/anthropogenic/helsinki--jarvi2014--unclear-two
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Unclear two
+name: Kumpula Ku1 sector
 place: helsinki
 origin: Helsinki
-representativeness: city
+representativeness: site
 source: jarvi2014
 legacy_id: 53240051
 parameters:

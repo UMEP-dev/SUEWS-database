@@ -1,10 +1,11 @@
 provenance_record: records/anthropogenic/helsinki--jarvi2014--unclear-two
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5bbbf7c05e6c4a8eb09a20308c3e4a04c1442c9809c5ec1e186ddf4f7b742710
+record_revision: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
@@ -18,11 +19,12 @@ assessment:
     version: '1.0'
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The record is named Unclear two, which identifies nothing and marks it as the unresolved half
-        of a pair.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: Table 1 identifies the published values as the Ku1 column, and the paper defines Ku1 as the
+        Kumpula northern land-use sector. The active name therefore states the source's site-sector identity.
     target:
       conclusion: supported
       evidence_ids:
@@ -33,40 +35,53 @@ assessment:
       conclusion: unresolved
       evidence_ids:
       - jarvi-table-4b
-      note: The distinguishing values are not in the article. Table 4b publishes one area-wide set with
-        a0 0.1 and a2 0.0102; this record stores qf_a 0.1337 for working days and 0.1153 for holidays
-        and qf_c 0.0149, none of which appears anywhere in the paper. Its vehicle energy factor of 4110000
-        J km-1 and its weekend population factor of 0.68 are likewise absent. Only qf_b 0.0099 lines up,
-        and then only against a printed exponent that does not match.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: Järvi et al. (2019) Table 1 gives the stored qf_a values 0.1337 and 0.1153 and qf_c 0.0149
+        for Ku1, while Appendix C gives a vehicle heat factor of 4.11 x 10^6 J km-1 vehicle-1. However,
+        the 2019 Appendix sets the CDD coefficient to zero, not the stored qf_b 0.0099; the rest of the
+        CO2 block is not established as one published parameter set. The all-record source/value mixture
+        remains unresolved.
     source:
       conclusion: unresolved
       evidence_ids:
       - jarvi-table-4b
-      note: The cited article publishes a single parameter set and this is not it, so the citation cannot
-        stand behind these values; no replacement is named here.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: The record still declares Järvi et al. (2014), whose Table 4b is not this set. Järvi et al.
+        (2019) identifies the Ku1 base and HDD values, but conflicts on qf_b and does not establish the
+        whole CO2 block as one source. Changing the source would require resolving that mixed provenance.
     place:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record's place is Helsinki, but nothing identifies which of the study's sites, if any,
-        these coefficients describe.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: The paper places Ku1 in the Kumpula site within Helsinki. The registry place helsinki is therefore
+        correct, while the display name carries the finer site-sector identity.
     representativeness:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Representativeness cannot be assessed while the provenance is unknown.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: Table 1 reports Ku1 as a Kumpula land-use sector within a 1-km radius of the EC tower, and
+        Appendix C says the coefficients are calculated for sectors within that 1-km circle. This supports
+        site rather than Helsinki-wide representativeness.
     method:
       conclusion: unresolved
       evidence_ids:
       - jarvi-table-4b
-      note: With no source established, the production method is open.
+      - jarvi2019-appendix-c
+      note: Appendix C calculates a0 from an inventory approach and estimates a2 from EC sensible-heat
+        observations, but the stored qf_b is not the Appendix C value and the remaining fields are not
+        established as one production method. The record-level method remains unresolved.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: Two anonymous records under one citation and one place, where the article publishes a single
-        area-wide set. A maintainer has to establish what the second one is before it can be named or
-        cited.
+      - jarvi2019-table-1
+      - jarvi2019-appendix-c
+      note: The stored qf_a and qf_c values match the Ku1 column. Table 1 and Appendix C define that column
+        as the Kumpula northern land-use sector, resolving the active display identity without resolving
+        the source mixture.
       related_records:
       - records/anthropogenic/helsinki--jarvi2014
   evidence:
@@ -94,12 +109,34 @@ assessment:
         in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
         are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
         address and in a publisher''s address in the reference list.'
-  scientific_note: This is the weaker of the pair. Table 4b gives one set of area parameters, and the
-    record's distinguishing figures, qf_a 0.1337 and 0.1153, qf_c 0.0149, a vehicle energy factor of 4110000
-    J km-1 and a weekend population factor of 0.68, are not among them or anywhere else in the article.
-    The study has five sites across two cities, so a second parameter set is not implausible; it is simply
-    not published here. Until someone establishes where it came from, the record is a set of numbers with
-    a citation that does not carry them and a name that admits as much.
-  evidence_revision: sha256:4fcf28e7859c8309289617059e0adb39997e972e0c2777cf45e67ab352851ecd
+  - id: jarvi2019-table-1
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1, site characteristics within 1-km radius circles around the EC measurement towers
+      page: 8367
+      url: https://doi.org/10.1029/2018JD029576
+      note: The Ku1 column gives a0,wd 0.1337, a0,we 0.1153 and a2,d 0.0149. The text identifies Ku1 as
+        the Kumpula northern land-use sector and Table 1 describes the Kumpula 1-km-radius site context.
+  - id: jarvi2019-appendix-c
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: text
+      label: Appendix C, Improved Coefficients for Building Heat Emissions
+      page: 8380
+      url: https://doi.org/10.1029/2018JD029576
+      note: States that the coefficients are revisited for Kumpula and Torni, calculated separately for
+        sectors within 1 km of the EC measurements; CDD is set to zero and HDD is 0.0149. Table C1 gives
+        4.11 x 10^6 J km-1 vehicle-1 for the vehicle heat factor.
+  scientific_note: >-
+    Järvi et al. (2019) identifies this record's distinctive base and HDD coefficients as the Kumpula Ku1
+    sector, a northern land-use sector within the Kumpula EC site's 1-km radius. The record now says that
+    in its display name and declares site representativeness while retaining Helsinki as its registry place.
+    Its source remains Järvi et al. (2014), pending separate resolution of the mixed Järvi 2014/2019
+    parameter set: the 2019 CDD is zero whereas the stored qf_b is 0.0099, and the full CO2 block is not
+    established by either paper as one record-level source.
+  evidence_revision: sha256:4eba8e15a3ccdba81760cde599a2b870a71a10a1d1e58931019d7ff3326f4f79
 verification:
   attestations: []
