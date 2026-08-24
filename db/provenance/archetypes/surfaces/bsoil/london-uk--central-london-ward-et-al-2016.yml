@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016: sha256:33a0ce434fa2443ddceb2008ef2a3e0efeb4ef9429299fcdab7f9511fb68bc74
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
-    records/ohm/generic--ward2016--bare-soil: sha256:4278d15509c998d9cb16bc5745b7ee2c44561f46f6690acc079f5adf38e42552
+    records/ohm/generic--ward2016--bare-soil: sha256:52071f05f8e52e73f651b4897f20aa3cbf7c36f02ca91b4556d456477dcc3d16
     records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:3e0ed22815f2df9ba07ef0b78a5176140ea52e750644a4ed55322f92c6296393
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/london--ward2016--albedo: sha256:456b8022108c75aea359ba598c32137557bac3863f92088342a974d382ccce86
@@ -219,6 +219,6 @@ assessment:
     London [sample run]', a building-fabric entry with roof and wall layers, which sits oddly on a bare-soil
     surface but contributes nothing to the exported fragment, because scripts/export_record.py keeps the
     construction slot out of it.
-  evidence_revision: sha256:aaf2c70f09d0e358074b607e2eae844d26579be7de474cc64a2d765e7d369d09
+  evidence_revision: sha256:c890243d3bb5b80accb2126a6ebd9d341ef71792a7ffb3cc512460be773039e1
 verification:
   attestations: []

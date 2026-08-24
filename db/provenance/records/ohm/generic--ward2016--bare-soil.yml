@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--ward2016--bare-soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:4278d15509c998d9cb16bc5745b7ee2c44561f46f6690acc079f5adf38e42552
+record_revision: sha256:52071f05f8e52e73f651b4897f20aa3cbf7c36f02ca91b4556d456477dcc3d16
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -44,6 +44,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-seasonal-parameterisation
+      note: Equation 6 weights the coefficients for each surface type by its surface cover fraction,
+        and Table 4 lists this input as BSoil, so the tuple describes the bare-soil land-cover class
+        before neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -91,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment bare-soil coefficients from four earlier literature
     rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
     and Swindon runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:8f942ff7992aeb081e34fde1526a062b8443e38f44d02e63dfc9defaaaabb836
+  evidence_revision: sha256:5aa706935af538e804aad38a0cc32a5287d798d1debae0870e49b5e017e18cfe
 verification:
   attestations: []
