@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:ae6732e75fc578e7a7589fce06da3c7e37368c33daffba22bf52ff870d655131
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:746f4c9059c471b2d571ff1edca5f747d609d0f569bfc20f71a7e011b5194365
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
-    records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:a42f6262981d4f8ec3b67ad1e108a9bd6af8c565d0bf37c7c4ba5032ece343c6
+    records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:97f58953282d688f623209f9f891f115d668b8e69fdec1793060b057b191cbd6
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -36,16 +36,17 @@ assessment:
       - component-surfaces-dectr-zurich-stagakis-s2024-max-conductance
       - component-surfaces-dectr-zurich-stagakis-s2024-biogen-co2
       - component-surfaces-dectr-zurich-jarvi2011-lai
-      note: 'The composite is named "Deciduous Tree Stagakis et al. 2024", and three components declare
-        source stagakis-s2024: the leaf growth power, the maximum conductance and the biogenic CO2 set.
+      note: 'The composite is named "Deciduous Tree Stagakis et al. 2024", and two components declare
+        source stagakis-s2024: the leaf growth power and the biogenic CO2 set. The maximum conductance
+        is now sourced to breuer2003 as an earlier literature value.
         db/sources.yml registers that key as Stagakis S., Brunner D., Li J., Backman L., Karvonen A.,
         Constantin L., Järvi L., Havu M., Chen J., Emberger S. and Kulmala L., "Intercomparison of biogenic
         CO2 flux models in four urban parks in the city of Zurich", Biogeosciences, with year 2025 and
         doi 10.5194/bg-22-2133-2025, so the year in the label and the year in the registry disagree. Which
         of the two moves is a bibliographic question this review cannot settle without reading the publication,
-        and it should not be guessed. The label also covers only three of the four Zurich slots: the leaf_area_index
+        and it should not be guessed. The label also covers only two of the four Zurich slots: the leaf_area_index
         component is records/surfaces/dectr/zurich--jarvi2011--lai, named "Deciduous Tree (sample data)
-        a" and sourced jarvi2011.'
+        a" and sourced jarvi2011, while the maximum conductance is sourced breuer2003.'
     target:
       conclusion: supported
       evidence_ids:
@@ -187,10 +188,11 @@ assessment:
     record: records/surfaces/dectr/zurich--stagakis-s2024--max-conductance
     role: component
     note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place zurich
-      and representativeness city. It carries source stagakis-s2024.
-  scientific_note: 'The Zurich-specific content is the vegetation behaviour: leaf growth power, maximum
-    conductance and the biogenic CO2 set all come from stagakis-s2024 records placed at Zurich, which
-    is what the label promises, and the leaf area index is a Zurich record too, though it comes from jarvi2011
+      and representativeness city. It carries source breuer2003 and method literature.
+  scientific_note: 'The Zurich-specific content is the configuration and application context rather than
+    a single common parameter source. Leaf growth power and the biogenic CO2 set come from stagakis-s2024
+    records placed at Zurich; maximum conductance is a Breuer 2003 literature value applied there; and
+    the leaf area index is a Zurich record too, though it comes from jarvi2011
     and its own name calls it sample data. The LAI pair agrees on lai.lai_type 1, the targets are right
     and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
@@ -200,6 +202,6 @@ assessment:
     Zurich while its place field says London. Neither question touches a stored value; both are composition
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:f22bd9fbf56f060df96d8c68f01bd4d93c8eb65736e7a2e63e9bc4a47d7219ce
+  evidence_revision: sha256:8e73d51f4fa65eb62d2392061be4d563adbfeaff7e4a20a5c86058c3bd8c6394
 verification:
   attestations: []
