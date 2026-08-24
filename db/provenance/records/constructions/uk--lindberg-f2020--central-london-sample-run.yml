@@ -1,7 +1,7 @@
 provenance_record: records/constructions/uk--lindberg-f2020--central-london-sample-run
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
+record_revision: sha256:2e8f41da6d6b3ac895f541c52a86e2276a1d0606921b5c37f63c0a6d76fedd6f
 dependency_revisions:
   sources:
     lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
@@ -10,7 +10,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T17:22:52Z'
+  assessed_at: '2026-08-24T17:31:58Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -34,26 +34,23 @@ assessment:
       note: Both the article and historical ESTM row describe building roof, wall and internal thermal
         construction properties, matching the construction target.
     values:
-      conclusion: correction_required
+      conclusion: unresolved
       evidence_ids:
       - lindberg-table-2
       - estm-801
-      note: The article publishes aggregate thermal conductivity, heat capacity, and material classes,
-        but not the stored layer thicknesses. Historical code 801 contains a different layer stack, and
-        issue 255 identifies a conductivity copied into a thickness field during migration. This scope-only
-        correction does not change those values.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/255
+      note: Historical code 801 now supports the three roof thicknesses 0.05, 0.15 and 0.12 m and the
+        three wall thicknesses 0.087, 0.0497 and 0.0497 m. Material references are retained only where
+        the pinned conductivity and pre-migration material mapping agree. The third roof layer has no
+        material reference because no material record represents its k 0.05 W m-1 K-1 and rhoCp 290000
+        J m-3 K-1 without inventing a specific-heat/density split.
     source:
       conclusion: curation_required
       evidence_ids:
       - lindberg-table-2
       - estm-801
-      note: Lindberg et al. document the London ESTM construction classes, and the historical SUEWS ESTM
-        registry supplies the code-801 implementation context, but neither directly supports the exact
-        stored five-layer stack. The source relationship must be reassessed with the value correction.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/255
+      note: Lindberg et al. document the London ESTM construction class and aggregate material properties;
+        the pinned historical SUEWS registry, rather than Table 2, supplies the corrected layer triplets.
+        The record format has one source field and cannot distinguish those two evidence roles.
     place:
       conclusion: supported
       evidence_ids:
@@ -74,14 +71,14 @@ assessment:
       evidence_ids:
       - lindberg-table-2
       - estm-801
-      note: The record declares no method, and the available evidence does not document the migration
-        step that converted aggregate ESTM properties and code 801 into the present material-layer representation.
+      note: The record declares no method. The pre-migration mapping and code 801 establish this correction,
+        but the available evidence does not document how the original assembly was produced.
     identity:
       conclusion: curation_required
       evidence_ids:
       - estm-801
-      note: Historical code 801 establishes a distinct high-density GLA construction class, but the sample-run
-        identity and exact layer transformation remain for separate curation.
+      note: Historical code 801 establishes a distinct high-density GLA construction class and now fixes
+        the layer transformation. The sample-run identity remains separate curation under issue 257.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/257
   evidence:
@@ -111,14 +108,27 @@ assessment:
     - kind: dataset
       label: Historical SUEWS_ESTMCoefficients.txt, code 801
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/ESTM_input/SUEWS_ESTMCoefficients.txt
-      note: Labels code 801 "GLA Urban fabric >80", place London and origin GLA, and provides the historical
-        ESTM layer values from which this migration record descends.
-  scientific_note: 'The former UK-regional scope is not supported. Lindberg et al. apply ESTM to a London
-    city domain, and historical code 801 is explicitly a GLA/London class. The record now declares London
-    and city while retaining its stable UK path and origin. No construction value changed. This assessment
-    deliberately leaves two different questions open: issue #257 asks whether a sample-run entry belongs
-    in the curated database, and issue #255 tracks the exact migration error in the present material-layer
-    representation.'
-  evidence_revision: sha256:84972687f5085f91b57d7bf616aab0fc87ae24060b66debc2ebd47187ba5755c
+      note: Labels code 801 "GLA Urban fabric >80", place London and origin GLA. Its roof triplets are
+        0.05/1.142/1606620, 0.15/0.93/1500000 and 0.12/0.05/290000; its wall triplets are
+        0.087/0.760645/1046908.363 and two repeats of 0.0497/0.93/1500000. Layers four and five are
+        sentinel -999 values for both roof and wall.
+    - kind: dataset
+      label: Pre-migration Spartacus Surface row 37240894
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml
+      note: Row 37240894 preserves the material IDs used by the malformed migration input.
+    - kind: dataset
+      label: Pre-migration Spartacus Material rows 36243784, 36243786 and 36243787
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml
+      note: The material registry maps 36243784 to conductivity 1.142, 36243786 to 0.93 and 36243787
+        to 0.760645; those exact matches prove the retained material references. The concrete assignment
+        for roof layer three is rejected because code 801 gives conductivity 0.05 there.
+  scientific_note: 'The corrected record preserves the stable path, London/city scope, source key, origin,
+    legacy ID and sample-run name. Code 801 settles the layer count and thicknesses and exposes the former
+    wall thickness 0.7606 as a conductivity copied into the wrong field. Table 2 supplies aggregate London
+    material classes, not layer thicknesses. The record schema can store a thickness without a material,
+    but cannot store historical per-layer conductivity and volumetric heat capacity directly; because
+    roof layer three has no proven material record, only its 0.12 m thickness is retained. Issue #257
+    remains the separate identity decision.'
+  evidence_revision: sha256:c705e1c82b9d5b9cf799efd8cb8cd4acb687d6de83c5e646120c6ee5b6da8955
 verification:
   attestations: []

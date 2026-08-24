@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     archetypes/surfaces/bldgs/zurich--city-centre: sha256:2e1cb90bf7c81027e7134840e09273aba381785ed9c14ddce4c55495d91dcd06
-    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
+    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:2e8f41da6d6b3ac895f541c52a86e2276a1d0606921b5c37f63c0a6d76fedd6f
     records/ohm/beijing--zheng-y2023--buildings: sha256:7eaa0c266dedd4b0818265a066f677b35f45995d7ecf050f1cd9f2d1e9f324a8
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/bldgs/shanghai--ao2016--emissivity: sha256:48ceb6512fb2a01a59c0e05dad02d9dbf1f5077ec3bce8f02f4d785de1af13ad
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T13:20:00Z'
+  assessed_at: '2026-08-24T17:31:58Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -77,8 +77,8 @@ assessment:
         water storage and snowpack limit slots take Helsinki records, place helsinki, country finland,
         koppen Dfb; drainage takes a generic building-class record; and the construction slot takes
         records/constructions/uk--lindberg-f2020--central-london-sample-run,
-        place london, whose own name reads ''Central London [sample run]'' and whose every roof and wall layer
-        references a material record carrying the sample-run marker in its path. Two questions follow
+        place london, whose own name reads ''Central London [sample run]'' and whose mapped roof and wall
+        materials carry the sample-run marker; its third roof layer has no proven material reference. Two questions follow
         that a maintainer must settle. The database holds records/surfaces/bldgs/shanghai--ao2016--emissivity,
         place shanghai, representativeness site, urban_setting central_business_district and source ao2016,
         the companion of the albedo row this composite already takes, and
@@ -146,8 +146,9 @@ assessment:
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
     role: component
     note: Fills construction. The record declares target construction, name 'Central London [sample run]',
-      place london, representativeness city and source lindberg-f2020, and every one of its roof and wall
-      layers references a material record whose path carries the sample-run marker.
+      place london, representativeness city and source lindberg-f2020. Its three roof and three wall
+      thicknesses now follow historical code 801; mapped material references retain the sample-run marker,
+      while roof layer three has no proven material record.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
@@ -166,7 +167,8 @@ assessment:
     site-scale Shanghai albedo to city-scale Beijing. Emissivity, water storage and the snowpack limit
     are Helsinki rows, drainage is a generic building-class row, and the
     construction is records/constructions/uk--lindberg-f2020--central-london-sample-run, a London record named
-    ''Central London [sample run]'' built entirely from sample-run materials. Part of that is forced:
+    ''Central London [sample run]'' whose mapped layers use sample-run materials; roof layer three has
+    no proven material record. Part of that is forced:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim is the only buildings snowpack_limit record in
     the database, and no Chinese water storage or drainage row exists to choose instead. One part is not
     forced. records/surfaces/bldgs/shanghai--ao2016--emissivity sits unused in the database, from the
@@ -177,6 +179,6 @@ assessment:
     across much of Asia, the Caribbean and Oceania. A maintainer should settle the emissivity selection
     and the standing of the sample-run construction once, for the family, rather than archetype by archetype.
     This review does not revisit any component value.'
-  evidence_revision: sha256:845b25988560a50a8a5f82b05e77abb9ef1193253c3b172ba0ecff5f292d330a
+  evidence_revision: sha256:14836736485ca849dbba50f17658bd7c27e6d9c135c38a4e5504e0dd39093854
 verification:
   attestations: []

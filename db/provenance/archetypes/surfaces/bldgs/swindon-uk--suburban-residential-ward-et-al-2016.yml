@@ -8,7 +8,7 @@ dependency_revisions:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records:
     archetypes/surfaces/bldgs/london-uk--central-london-ward-et-al-2016: sha256:64b267270f8833ad255e7f62f7931a80042575d1d8d8abae58660a9297b691ef
-    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
+    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:2e8f41da6d6b3ac895f541c52a86e2276a1d0606921b5c37f63c0a6d76fedd6f
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
     records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-24T17:31:58Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -149,7 +149,8 @@ assessment:
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
     role: component
     note: Fills construction. The record is named 'Central London [sample run]', declares target construction,
-      place london and representativeness city.
+      place london and representativeness city. Its three roof and three wall thicknesses now follow
+      historical code 801; the separate sample-run identity question remains unresolved.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
@@ -180,6 +181,6 @@ assessment:
     a roof form, which is a maintainer''s decision and not one this review should make on resemblance.
     Nothing here requires a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:018543046f3b79e46fd16b41d8e8194ab3ead6a998bf8b01a693d5a5de959ff6
+  evidence_revision: sha256:274b4fc97eaf1aa4baa8a5b48dfb7620e4c2e2b8d4493e2c8549d96fa4d80e2a
 verification:
   attestations: []

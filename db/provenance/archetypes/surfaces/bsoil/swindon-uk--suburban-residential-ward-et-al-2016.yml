@@ -8,7 +8,7 @@ dependency_revisions:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records:
     archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016: sha256:87c22ea834c9dbf28895706d6c362823f8ea7d47bda01b0dd320d0ddfae6ff5d
-    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:ea77f610a5d4a61888777d5410b05c538740c55917a66b03e73770928e73334b
+    records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:2e8f41da6d6b3ac895f541c52a86e2276a1d0606921b5c37f63c0a6d76fedd6f
     records/ohm/generic--ward2016--bare-soil: sha256:52071f05f8e52e73f651b4897f20aa3cbf7c36f02ca91b4556d456477dcc3d16
     records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:71d99f8b507c5f2a47663d322aa15ed1a2ca3d4ccbed4664a81b1239efa521dc
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T00:43:17Z'
+  assessed_at: '2026-08-24T17:31:58Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -178,8 +178,9 @@ assessment:
     record: records/constructions/uk--lindberg-f2020--central-london-sample-run
     role: component
     note: Fills the construction slot. The record declares target construction, name 'Central London [sample
-      run]', place london, representativeness city and source lindberg-f2020, and carries five-layer roof
-      and wall lists with roof_insulation_layer 2 and wall_insulation_layer 2. scripts/export_record.py
+      run]', place london, representativeness city and source lindberg-f2020, and carries three-layer roof
+      and wall lists with roof_insulation_layer 2 and wall_insulation_layer 2. Roof layer three has only
+      its proven thickness because no material record matches its historical properties. scripts/export_record.py
       keeps the construction slot out of the surface fragment, so this reference contributes no exported
       value.
   - id: component-surfaces-bsoil-helsinki--jarvi2014--snow-lim
@@ -217,6 +218,6 @@ assessment:
     the same place: the exported surface evidence is regional and covers both towns; the London construction
     mismatch is non-exporting but remains a composition-provenance defect. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:4425d4f0ce2ae45c28642af6926e39c791376b7920e872bbf2c36dd0f833c029
+  evidence_revision: sha256:9876967808f4387404b5290812a1d61489dc266dd7ca9ae47a1b4529ccc34e3f
 verification:
   attestations: []
