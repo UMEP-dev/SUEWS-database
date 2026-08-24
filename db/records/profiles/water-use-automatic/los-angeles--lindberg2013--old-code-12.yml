@@ -4,9 +4,9 @@ target: profile.water-use-automatic
 attaches_to: irrigation.wuprofa_24hr
 profile_type: Water use (automatic)
 name: '[old code: 12]'
-place: los-angeles
+place: arcadia
 origin: Los Angeles, United States of America
-representativeness: city
+representativeness: site
 source: unreferenced
 method: calculated
 source_legacy_ref: 90240006
