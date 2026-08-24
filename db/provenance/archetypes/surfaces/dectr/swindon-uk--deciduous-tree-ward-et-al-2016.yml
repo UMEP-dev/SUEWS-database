@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016: sha256:ee9703069152b5adb93085f1e95de0f01bdbfe625312ebbc79cdfcf28202b64f
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
-    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
+    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
@@ -214,6 +214,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology and the
     snow limit, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:6b1e75d8b8529ec91d85517beb05e8f5628a95a24d94eeace25e7993b0510228
+  evidence_revision: sha256:9d2f2f03942d2586ebea57489a9bf356eb49b76dd7186b056714b2255ad9be48
 verification:
   attestations: []

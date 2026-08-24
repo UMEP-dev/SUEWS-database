@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/evetr/london-uk--evergreen-tree-ward-et-al-2016: sha256:f04b5425805171a69da995d2bc92b0ed04eaf7d91fed6abb980bb86f144fde7f
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
-    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:33873d3c59d47cd8f365bdc343e09f9acef0eae73bba392a1755cde200224016
+    records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:fd7891e920fc6ec4013ed9e95793aa432af22a6321ce2ea488a3944577e179d7
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
@@ -248,6 +248,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:79411de4e5332c3c6b6c5ca70678111977f416a62df8371ff2e123c59419ef58
+  evidence_revision: sha256:afaac08c9d83bf30c43be5534450c60b8e04cb8a96772805711bbd8981b5f4bd
 verification:
   attestations: []
