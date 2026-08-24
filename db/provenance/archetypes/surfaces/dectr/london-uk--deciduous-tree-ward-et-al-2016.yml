@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
-    records/surfaces/dectr/london--ward2016--emissivity: sha256:e44622691ed29d4fcb26464e8e263bb97a17747fd647c7c30773423de57a5320
+    records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
     records/surfaces/dectr/se-england--ward2016--drainage: sha256:ee68ecf5fb01f073e0366ef5f1f701e7ffdce65ce5a83e382f8aa85677f3fbf9
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
@@ -81,10 +81,10 @@ assessment:
         no component carries that place. Seven carry place se-england, which db/places.yml marks subnational
         and which contains London, so those sit comfortably; porosity is generic and likewise does not
         overreach. Three slots still do not follow. The emissivity slot takes records/surfaces/dectr/swindon--ward2016--emissivity, placed at
-        swindon, although records/surfaces/dectr/london--ward2016--emissivity exists, carries the same
-        source ward2016, declares emis 0.98 exactly as the Swindon record does, and is the emissivity
-        of the six other deciduous-tree composites; on the entries as they stand the London record is
-        the one this composite should take, and the swap costs nothing. The vegetation_growth slot takes
+        swindon, although records/surfaces/dectr/london--ward2016--emissivity exists, now carries the
+        generic Oke (1987) literature value emis 0.98 and is the emissivity of the six other deciduous-tree
+        composites. This no longer supplies London-specific evidence, but it is the same generic value;
+        selecting it instead of the Swindon record remains a composition decision. The vegetation_growth slot takes
         records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature 5, base_temperature_senescence
         10) although records/surfaces/dectr/se-england--ward2016--phenology exists with the composite's
         own source and region (base_temperature 6, base_temperature_senescence 11) and is referenced by
@@ -223,6 +223,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:1f4e57b02692507817e345b07945c32214fe9a114bf779ecf7449e0622f16a23
+  evidence_revision: sha256:94e0fc8b9fb8f951b6a875035bab6b1ebb5690c0527025707ebff4997a50911e
 verification:
   attestations: []
