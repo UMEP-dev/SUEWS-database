@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
     records/constructions/generic--lindberg-f2020--placeholder: sha256:6306fcc73a3d33757c73eb9e9021e330abb073a89d0dccaadae1a92cd15e0550
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
-    records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:63daa10ccdd4d9e4a7cade85b2aa3e00d9714e0d7a2ec32e94c7a6f6c5e464fd
+    records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
     records/surfaces/paved/se-england--ward2016--drainage: sha256:a2f4f8fcc956087c93b6b6838c874faf3c04200b083d449d8fc4711f57d85ce1
@@ -217,6 +217,6 @@ assessment:
     only paved snowpack-limit record there is, and construction takes a record named Placeholder that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:89c8c549d9fc2d530a60cc64ba6d39c308b1ffb57f937c0b6fa676504fe6c6a6
+  evidence_revision: sha256:fb68b7f094a397aeaca77ab74d67de6aee889205e6d63154f6bb2656d38cc557
 verification:
   attestations: []

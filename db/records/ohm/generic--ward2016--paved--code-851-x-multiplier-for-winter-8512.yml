@@ -2,6 +2,7 @@ record: records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Code 851 x Multiplier for winter [8512]
+applicable_scale: land_cover
 source: ward2016
 legacy_id: 50240028
 season_label: Winter
