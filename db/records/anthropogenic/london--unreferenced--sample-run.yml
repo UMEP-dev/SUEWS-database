@@ -1,11 +1,12 @@
 record: records/anthropogenic/london--unreferenced--sample-run
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: sample run
+name: Archived London anthropogenic configuration
 place: london
 origin: London
 representativeness: city
 source: unreferenced
+method: assumed
 legacy_id: 53245511
 parameters:
   context:
