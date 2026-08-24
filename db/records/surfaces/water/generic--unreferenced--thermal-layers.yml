@@ -1,11 +1,13 @@
 record: records/surfaces/water/generic--unreferenced--thermal-layers
 schema_version: '2026.5'
 target: land_cover.water
-name: Water
+name: Archived SUEWS water configuration
 place: generic
 origin: Unknown
 representativeness: generic
+applicable_scale: land_cover
 source: unreferenced
+method: assumed
 source_legacy_ref: 90240027
 legacy_id: 52240021
 parameters:
