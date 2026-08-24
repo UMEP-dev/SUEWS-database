@@ -1,6 +1,6 @@
 provenance_record: records/ohm/tokyo--unreferenced--buildings
 provenance_format_version: '1.0'
-record_revision: sha256:ec0fc796c11bdbc911ea52a77c973e1af162e37a9bc303357f6f254fed65949e
+record_revision: sha256:c73f86e56833977d1582eddd1a8ad5940595d6c3f971fe8448806c59439d4d9c
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -10,13 +10,13 @@ dependency_revisions:
   records:
     records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:08603e612e22a6a1d4494f9f6e93597aa6380b49f09684046882fa996754d72e
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T19:08:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-24T19:24:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/12
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/19
   method: fitted
   findings:
     name:
@@ -25,13 +25,13 @@ assessment:
         - input-observations
         - parameter-publication
     target:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
         - parameter-publication
       note: >-
-        The atomic target ohm_coefficients is structurally correct. Deciding which building
-        archetype should attach this coefficient set is a separate assembly decision; neither
-        duplicate currently has an archetype backlink.
+        The stored triplet is an OHM coefficient set, so ohm_coefficients is the correct atomic
+        target. Attaching it to a SUEWS surface archetype is a separate composition-layer action,
+        not a change to this record's target.
       issue_urls:
         - https://github.com/UMEP-dev/SUEWS-database/issues/19
     values:
@@ -52,6 +52,17 @@ assessment:
       conclusion: supported
       evidence_ids:
         - input-observations
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+        - input-observations
+        - parameter-publication
+      note: >-
+        Yoshida treats the east-west canyon system, integrating its road and wall surfaces, as
+        a basic physical surface unit represented at the canyon-top plane. Grimmond and Oke list
+        it as the individual physical surface type Canyon before such types are area-weighted to
+        form site coefficients. It is therefore a physical component (facet), not a SUEWS
+        land-cover class.
     method:
       conclusion: supported
       evidence_ids:
@@ -82,8 +93,9 @@ assessment:
           url: https://www.sciencedirect.com/science/article/pii/037877889090016C
           note: >-
             Reports energy-balance measurements at an east-west canyon on Kyoto University
-            main campus. The full text contains no OHM, hysteresis fit, a1–a3 coefficients or
-            the stored coefficient triplet.
+            main campus. The canyon system integrates its road and wall surfaces and is treated
+            as a basic physical surface unit represented at the canyon-top plane. The full text
+            contains no OHM, hysteresis fit, a1–a3 coefficients or the stored coefficient triplet.
     - id: parameter-publication
       source: grimmond1999
       role: parameter_source
@@ -93,8 +105,8 @@ assessment:
           page: 932
           note: >-
             Publishes the E-W canyon values a1 = 0.71, a2 = 0.04 h and a3 = -39.7 W m-2,
-            marks them as new relative to Grimmond et al. (1991), and states that the surface
-            coefficients were derived from published data.
+            marks them as new relative to Grimmond et al. (1991), and lists Canyon as one of the
+            individual physical surface types that are area-weighted to form site coefficients.
     - id: legacy-row-pair
       record: records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
       role: related
@@ -106,9 +118,11 @@ assessment:
     Yoshida et al. (1991) supplies the Kyoto canyon observations but no OHM coefficients.
     Grimmond and Oke (1999) publishes the stored fitted triplet. The corrected origin, resolved
     place and site-specific representativeness now all identify Kyoto while the stable path
-    deliberately remains unchanged. The related Ref-null row is retained only as a separate
-    unresolved migration identity under issue 738; building-archetype attachment remains the
-    separate decision in issue 19.
-  evidence_revision: sha256:11f4b3738013ab4d32af4025a21293d8b5feb58567d862516766160a04e5f80b
+    deliberately remains unchanged. The evidence-backed coefficient set applies to the canyon
+    physical component (facet), not directly to a SUEWS land-cover class. The related Ref-null row
+    is retained only as a separate unresolved migration identity under issue 738. No source
+    identifies which current building archetype should attach this record, so any such attachment
+    remains a separate composition decision.
+  evidence_revision: sha256:774829a89d11a85e8b30adc19375638bbb7c4cde6b1db814e738e4b713e5a4df
 verification:
   attestations: []
