@@ -1,0 +1,103 @@
+provenance_record: records/anthropogenic/new-york--unreferenced
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7d69946c0619f2141cbf0520830b11b5cc20c86257cff029f985257a08ba057d
+dependency_revisions:
+  sources:
+    sailor2004: sha256:082eee2314198bd3876cbc7731ca301e6ab82a6e6069436d9f3b35c75acf7e1f
+    sailor2006: sha256:200c1ccc6137390eef9c9823e4dd75e8ebd9ccdc06b36e4a6b6be24f18931ff6
+    umep-dev2020-sample-qf: sha256:7701f065006432e580484a26195b8f564efa3f31a34d47de0b07f0b8a3cf4b23
+  places:
+    new-york: sha256:4007eb1a4e01deccfb7672824160c22dc7abfa97552a6e8e36b816856d1b728e
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:23:21Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/267
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: The revised label identifies this as the archived New York anthropogenic-emissions configuration,
+        rather than implying that the mixed configuration is a Sailor et al. published parameter set.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: The pinned SUEWS AnthropogenicEmission.txt row 771 is an anthropogenic-emissions configuration,
+        matching the anthropogenic_emissions target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: SUEWS code 771 stores the unrounded QF coefficients 0.318229863, 0.00704918 and 0.029265873,
+        the metabolic, fuel, traffic and CO2 fields, and FcEF values 0.2069 and 0.285. These correspond
+        to the migration row after its retained rounding; the record does not claim they are measured or
+        published scientific parameters.
+    source:
+      conclusion: supported
+      note: The exact mixed configuration is a SUEWS sample-input artefact, not a parameter tuple published
+        by the two Sailor works examined. Source unreferenced is therefore required for this configuration.
+      evidence_ids:
+      - suews-code-771
+    place:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: New York is the preserved legacy application identity of row 53240771, not the location of a
+        measurement or a fitted study established by this evidence.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: City describes the New York-labelled application configuration only and does not extend its
+        evidence reach to other cities or establish a city-wide observation.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: The pinned sample row is a configuration choice with no published derivation for this mixed
+        tuple, so assumed is the honest method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - suews-code-771
+      note: The stable record path, origin New York, legacy ID 53240771, all active values, and the legacy
+        BaseT_HC and FrPDDwe placeholders are retained.
+  evidence:
+  - id: suews-code-771
+    source: umep-dev2020-sample-qf
+    role: compilation
+    locators:
+    - kind: text
+      label: code 771
+      url: https://github.com/UMEP-dev/SUEWS/blob/8c246e2c0aa111912c2c47c5dc6e48ade701faec/src/supy/sample_run/Input/SUEWS_AnthropogenicEmission.txt#L12
+      note: Pinned sample-input row containing the unrounded heat and CO2 tuple.
+    note: The 2020-06-30 sample-input commit documents the exact application configuration retained by this record.
+  attempted_sources:
+  - source: sailor2004
+    attempted_at: '2026-08-24T21:23:21Z'
+    outcome: not_found
+    note: The full article was checked. Its results construct profiles for Atlanta, Chicago, Los Angeles,
+      Philadelphia, Salt Lake City and San Francisco, not an exact New York heat/CO2 configuration tuple.
+  - source: sailor2006
+    url: https://asu.elsevierpure.com/en/publications/correcting-aggregate-energy-consumption-data-to-account-for-varia/
+    attempted_at: '2026-08-24T21:23:21Z'
+    outcome: incomplete
+    note: No catalogued full-text manifestation was available. The authoritative institutional abstract
+      scopes development and validation to Houston, Los Angeles and Seattle and does not establish this
+      New York tuple.
+  scientific_note: 'The exact configuration evidence is the SUEWS sample-input row 771 at https://github.com/UMEP-dev/SUEWS/blob/8c246e2c0aa111912c2c47c5dc6e48ade701faec/src/supy/sample_run/Input/SUEWS_AnthropogenicEmission.txt#L12,
+    introduced in the commit labelled "problematic sample data for QF parameters". Its unrounded values
+    explain the migrated rounded values, but do not make a scientific parameter publication. The pre-migration
+    row 53240771 labelled New York / Sailor et al. is retained as a stable migration identity without
+    attaching the mixed tuple to either Sailor work.'
+  evidence_revision: sha256:e656fc8fa86f82d39159f2714b6dad1157f99cf00ce9d5f14c137ab2472c1e77
+verification:
+  attestations: []

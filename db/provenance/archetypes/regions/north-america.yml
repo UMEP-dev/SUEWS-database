@@ -135,9 +135,9 @@ assessment:
         helsinki likewise, and generic carries no country field. In-region alternatives exist for two
         of those slots and were not taken: archetypes/surfaces/grass/vancouver--irrigated-sample-run carries
         target land_cover.grass and place vancouver, though its name reads Irrigated [sample run], and
-        records/anthropogenic/new-york--unreferenced carries target anthropogenic_emissions and place
-        new-york. A maintainer should decide whether either is preferable to the London row now in the
-        slot.'
+        records/anthropogenic/new-york--unreferenced is an archived New York application configuration.
+        Its source is unreferenced and method assumed, so it does not provide an evidence-backed in-region
+        alternative to the London row now in the slot.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -313,9 +313,9 @@ assessment:
     components sit inside the region they serve. Every land-cover slot, by contrast, reaches to London
     or Swindon, and the anthropogenic set to London, even though the database holds in-region alternatives
     for two of those slots: archetypes/surfaces/grass/vancouver--irrigated-sample-run carries target land_cover.grass
-    and place vancouver, though its name reads Irrigated [sample run], and records/anthropogenic/new-york--unreferenced
-    carries target anthropogenic_emissions and place new-york. Whether either is preferable to the row
-    now in the slot is a maintainer''s call, not an automatic substitution. Thirteen of the fifteen components
+    and place vancouver, though its name reads Irrigated [sample run]. records/anthropogenic/new-york--unreferenced
+    is an archived New York application configuration, but its source is unreferenced and method assumed,
+    so it is not an evidence-backed in-region alternative to the London row now in the slot. Thirteen of the fifteen components
     declare representativeness city, so even the local ones travel further here than their own declaration
     allows. Two defects need no judgement about the region: the profiles.water_use_manual slot takes its
     holiday half from a record declared attaches_to irrigation.wuprofa_24hr and the profiles.water_use_automatic
@@ -329,6 +329,6 @@ assessment:
     target snow and is referenced by none of them, though it carries no melt parameters and its legacy
     block holds -999 throughout. The components'' own values remain subject to their evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:19de5cfb0f9a97c76e250d557cc0d15351908ea3585ce04494a1ceae5bdc394e
+  evidence_revision: sha256:ccaff8b06208a1c7e64aa50c968bd05d0684edbfbd5372de71bdce9b401a7854
 verification:
   attestations: []

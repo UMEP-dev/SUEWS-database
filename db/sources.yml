@@ -600,6 +600,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2020a/SUEWS_NonVeg.txt
     year: 2020
+  umep-dev2020-sample-qf:
+    author: UMEP-dev
+    journal: GitHub
+    title: 'SUEWS anthropogenic-emissions sample input: code 771'
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/blob/8c246e2c0aa111912c2c47c5dc6e48ade701faec/src/supy/sample_run/Input/SUEWS_AnthropogenicEmission.txt
+    year: 2020
   umep-dev2025-database:
     author: UMEP-dev
     journal: GitHub
