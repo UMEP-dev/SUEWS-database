@@ -1,0 +1,99 @@
+provenance_record: records/surfaces/dectr/vancouver--jarvi2011--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:f92c29a73bb459fe9fd64f99ea21bd0bd51cf0f5368901ecac0eea312c4b7eb5
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:40:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: Section 2.2 gives Equation 4 for each vegetation type; the record's deciduous-tree target and
+        LaiEq = 0 label distinguish its use of that published LAI-growth form.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: The paper lists deciduous trees and shrubs among the modelled vegetation surfaces, so the
+        land_cover.dectr target is applicable.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: Equation 4 gives the 0.03 LAI exponent and 5 x 10^-4 degree-day factor for both leaf-on and
+        leaf-off updates, matching the four stored coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: Järvi et al. (2011) directly publishes Equation 4, the model method encoded by this record.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      - jarvi2011-validation
+      note: Equation 4 is introduced as a dynamic LAI method for each vegetation type, while the later
+        measurements section uses Vancouver and Los Angeles to test SUEWS. The equation is not a
+        Vancouver-specific parameter set; generic is the supported place scope.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      - jarvi2011-validation
+      note: The publication presents the equation as a general model method and separately describes
+        Vancouver as an evaluation location. Generic, rather than city, is therefore the supported
+        representativeness.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: The coefficients are adopted directly from the published equation, so literature is the
+        applicable record method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-eq4
+      note: The record keeps its stable Vancouver legacy path and origin, while its active scope now
+        accurately describes the generic published LAI method.
+  evidence:
+  - id: jarvi2011-eq4
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Section 2.2, Leaf area index, Equation 4
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines daily LAI updates for each vegetation type with a 0.03 LAI exponent and 5 x 10^-4
+        GDD or SDD factor for leaf-on and leaf-off, respectively.
+  - id: jarvi2011-validation
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: section
+      label: Section 3.1, Measurements
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that SUEWS is tested against measured fluxes from Vancouver and Los Angeles and identifies
+        those as the locations of the evaluation datasets.
+  scientific_note: >-
+    Järvi et al. (2011) directly publishes the LaiEq = 0 leaf-growth and leaf-off coefficients as the
+    general dynamic LAI method in Equation 4. Vancouver is one of the locations where SUEWS is tested,
+    not the stated origin of these four coefficients. The stable legacy path and origin remain Vancouver,
+    but the active place and representativeness are generic and the record now declares method literature.
+  evidence_revision: sha256:c364579221218b20b539c85cb8ec4958821f6372ec750f60e2534be7070c2bb1
+verification:
+  attestations: []
