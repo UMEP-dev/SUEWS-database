@@ -12,7 +12,7 @@ dependency_revisions:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records:
     records/surfaces/evetr/beijing--ward2016--lai: sha256:629b61c2c60deb82ab8b04f4c7e8335b89d1f29909b6663692810b735a348b48
-    records/surfaces/evetr/shanghai--ao2018--lai: sha256:3b0c17fee9014f3faa752b2acfe9aa4f48119af9a3b5a1c90d5cabd3fe687e0e
+    records/surfaces/evetr/shanghai--ao2018--lai: sha256:598fe1193f5ea24b770f95041613b2673aaa0dc8dbcd37d597491adcdd6607b8
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T07:30:10Z'
@@ -82,8 +82,9 @@ assessment:
       related_records:
       - records/surfaces/evetr/beijing--ward2016--lai
       - records/surfaces/evetr/shanghai--ao2018--lai
-      note: The Shanghai record carries the same lai_type and bounds under another source, while the
-        Beijing sample record carries the same bounds with a different lai_type. Whether the stable SE
+      note: The Shanghai XJH site record carries the same lai_type and bounds under another source and
+        now declares central_business_district setting, while the Beijing sample record carries the same
+        bounds with a different lai_type. Whether the stable SE
         England path is a quoted default or distinct regional evidence requires curation; this source
         correction neither merges nor deletes any record.
   evidence:
@@ -131,6 +132,6 @@ assessment:
     al. evaluate phenological timing without republishing the bounds. The stable path, name, place and
     regional class are retained as migration/application identity and remain curation-required because
     overlapping migrated records exist.'
-  evidence_revision: sha256:298bf850333dd6cee81d44eec178ba988fde2839dc24dbafa81fa88609a29803
+  evidence_revision: sha256:6f5cce2ce339832ed16d5435ef3e5d8e20e8f0dafff1d43a74e31667779ad758
 verification:
   attestations: []
