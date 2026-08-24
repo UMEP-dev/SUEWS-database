@@ -45,6 +45,11 @@ places:
     kind: country
     name: Antigua and Barbuda
     region: North America
+  arcadia:
+    name: Arcadia
+    lat: 34.133333
+    lon: -118.05
+    country: united-states-of-america
   argentina:
     kind: country
     name: Argentina

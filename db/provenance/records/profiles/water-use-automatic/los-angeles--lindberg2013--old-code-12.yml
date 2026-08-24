@@ -1,7 +1,7 @@
 provenance_record: records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b7d5ffcd70f91fb2da6575afe853e78afdcb73f55cf19ea2cb2fb2a09d7da104
+record_revision: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
 dependency_revisions:
   sources:
     grimmond1996: sha256:2a4ddb2340f588c1dd616ea78ab97ebe57bbb5b017f53c29b8cd09ba73d2a00d
@@ -10,16 +10,16 @@ dependency_revisions:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
-    los-angeles: sha256:b1e861c687efd37fd67ec97c2384fa9afc251a94de61b73e2ba9288bce4fc06f
+    arcadia: sha256:77ca8c42aebb8b5d0235ca684a1440146e63a7a02406ec88469d81cf222ed17f
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T21:52:30Z'
+  assessed_at: '2026-08-24T22:27:04Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/367
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/370
   method: calculated
   findings:
     name:
@@ -60,22 +60,20 @@ assessment:
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/367
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-prof2
-      - grimmond-la-observations
-      note: The exact inputs are Arcadia Prof2, and the original observations are from an Arcadia neighborhood
-        within the Los Angeles metropolitan area. The current Los Angeles registry place is retained pending
-        the separate place adjudication.
+      - jarvi-arcadia-site
+      note: Table 4 locates both Ar93 and Ar94 at the Arcadia measurement site, gives its coordinates as
+        34 degrees 08 minutes N, 118 degrees 03 minutes W, and assigns Prof2 to both datasets.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/370
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-prof2
-      - grimmond-la-observations
-      note: The evidence is a local-scale Arcadia neighborhood profile, not a city-wide sample. City remains
-        unchanged in this citation-only repair pending the separate representativeness issue.
+      - jarvi-arcadia-site
+      note: The article analyses individual model grid areas rather than a larger area, and Table 4 reports
+        the Arcadia study area as 78.5 ha. Site therefore reflects the evidence reach without claiming
+        Los Angeles city-wide sampling.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/370
     method:
@@ -104,6 +102,16 @@ assessment:
       note: Gives period shares 0.40 for 20:00-07:00, 0.40 for 07:00-16:00 and 0.20 for 16:00-20:00,
         marks Prof2 as Arcadia data from Grimmond et al. (1996), and states that a constant amount is
         assumed for each hour within a delineated period.
+  - id: jarvi-arcadia-site
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: table
+      label: Table 4, Arcadia Ar93 and Ar94 measurement sites
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Places both Arcadia datasets at 34 degrees 08 minutes N, 118 degrees 03 minutes W, gives
+        each a 78.5 ha study area, and assigns the external-water-use profile Prof2 to both.
   - id: grimmond-la-observations
     source: grimmond1996
     role: input_data
@@ -169,8 +177,9 @@ assessment:
     shares by their period lengths produces the exact code 12 vector. The record therefore changes from
     a false Lindberg citation to an unreferenced database calculation over published inputs. The original
     Grimmond study establishes the observation lineage but does not print the shares, so it is not credited
-    with the derived output. Values, stable path, origin, legacy ID, place and representativeness remain
-    unchanged; the latter two stay with issue 370.
-  evidence_revision: sha256:6a83961271ae8ac268cbde92d52fd18aeda55506fdfe75acbf7b2680db83609a
+    with the derived output. Table 4 now resolves the profile's evidence location and scale as the 78.5 ha
+    Arcadia measurement site. The stable path, legacy Los Angeles origin string, source, method,
+    source_legacy_ref, values and legacy ID remain unchanged.
+  evidence_revision: sha256:b734d33389ad830bc3578cbeceb963ce544c54daaca0318ef75deab7b115f161
 verification:
   attestations: []
