@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:a92cd645c3105a5c64c135914bfe1fa0d61cf4535e108cf578a5a331d494797f
+record_revision: sha256:6f02f0df1ee3ca99918b9642356f2c6a494a9ade9e73770a3f85f4a6cf8ab20d
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -40,6 +40,13 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - later-compilation
+      note: Section 7a defines the listed surface-type coefficients as inputs that are weighted by
+        areal cover to calculate site-specific OHM coefficients; Table 4 lists this tuple for Bare
+        soil, so it describes the bare-soil land-cover class before site aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -63,13 +70,20 @@ assessment:
     source: grimmond1999
     role: compilation
     locators:
+    - kind: section
+      label: Section 7a, Application of OHM
+      page: 931
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
+      note: Defines individual surface-type coefficients as inputs weighted by their areal coverage
+        to calculate site-specific OHM coefficients.
     - kind: table
       label: Table 4, Bare soil
       page: 932
-      url: https://gibbs.science/teaching/efd/handouts/grimmond_oke_1999.pdf
+      url: https://doi.org/10.1175/1520-0450(1999)038%3C0922:HSIUAL%3E2.0.CO;2
   scientific_note: Grimmond et al. (1991) is the canonical parameter publication; Novak is the underlying
-    observation source, not the author of the stored fitted coefficients. The sidecar preserves the role
-    distinction.
-  evidence_revision: sha256:94843d422e49dba4c85a81cbefc02ac8a3f8d6b5f781368dfa44c1a9afeb5aa3
+    observation source, not the author of the stored fitted coefficients. Grimmond and Oke (1999) classify
+    the exact tuple as a bare-soil surface-type input to be weighted by areal cover, establishing land-cover
+    scale before site aggregation. The sidecar preserves the source roles and values.
+  evidence_revision: sha256:34685c6e1ea45b78b77f5cbb1e9c5c7f8b4f1e256b2075cae534978b4d278371
 verification:
   attestations: []

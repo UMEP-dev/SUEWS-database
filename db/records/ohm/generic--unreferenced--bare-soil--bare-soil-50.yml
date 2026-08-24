@@ -2,6 +2,7 @@ record: records/ohm/generic--unreferenced--bare-soil--bare-soil-50
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Bare soil [50]
+applicable_scale: land_cover
 source: grimmond1991b
 method: fitted
 legacy_id: 50240006
