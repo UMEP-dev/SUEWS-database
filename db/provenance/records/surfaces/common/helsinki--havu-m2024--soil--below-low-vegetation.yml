@@ -1,0 +1,126 @@
+provenance_record: records/surfaces/common/helsinki--havu-m2024--soil--below-low-vegetation
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:14606573fc1d5c150a4f8b44265b956e4b74ecf2ac2a35fcdc8080565da68504
+dependency_revisions:
+  sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/surfaces/common/helsinki--havu-m2024--soil: sha256:49a0eb3a46417aa6da38fccb847231f2747e742e0390bb6771e1fed9ebc92c1f
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T18:33:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/236
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - archived-low-vegetation-selection
+      note: Below low vegetation preserves the separate mixed-low-vegetation model identity. Archived
+        surface code 865 selects the same soil code as lawn code 860 but carries a distinct surface label.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      - archived-low-vegetation-selection
+      note: The record stores soil properties in the common land-cover target so the same soil tuple can
+        be selected by distinct grass/low-vegetation surface identities.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      - archived-low-vegetation-selection
+      related_records:
+      - records/surfaces/common/helsinki--havu-m2024--soil
+      note: The citable archived dataset directly supplies the exact executable tuple 349 mm, 150 mm,
+        0.0005 and 1.16 and intentionally reuses soil code 70 for both lawn and mixed-low-vegetation rows.
+        Havu Table B.1 independently reports the rounded grass depth and capacity as 0.35 and 0.15 m. The
+        duplicate records therefore preserve one shared input, not two independent determinations.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      - archived-low-vegetation-selection
+      note: The Zenodo dataset is the direct source for the complete exact tuple and low-vegetation
+        selection. The journal article separately supports the rounded grass depth/capacity and the study-site context.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      - archived-low-vegetation-selection
+      note: The publication and archive identify the grass/low-vegetation parameterisation as a Helsinki application.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/236
+      note: Site is the supported evidence reach because Appendix B.4 derives the grass soil and biogenic
+        parameterisation from one urban-lawn eddy-covariance site in the Helsinki metropolitan region;
+        later citywide use does not turn that determination into city evidence.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - havu-grass-soil
+      - archived-low-vegetation-selection
+      note: Literature records direct transcription of the citable archived dataset, checked against the
+        associated publication; the database does not refit or independently calculate the duplicate tuple.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - archived-low-vegetation-selection
+      related_records:
+      - records/surfaces/common/helsinki--havu-m2024--soil
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/236
+      note: The stable path, distinct name and legacy ID preserve the mixed-low-vegetation selection even
+        though its values equal the Below Grass record. Keeping both semantic records makes the archived
+        lawn/low-vegetation choice traceable; it does not claim two parameter determinations.
+  evidence:
+  - id: havu-grass-soil
+    source: havu-m2024
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table B.1, Grass soil depth and SWCmax
+      page: '11'
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      note: Publishes Grass soil depth 0.35 m and SWCmax 0.15 m.
+    - kind: section
+      label: Appendix B.4, Low vegetation
+      page: '12'
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      note: Describes the single urban-lawn observation site used for the grass/low-vegetation parameterisation.
+  - id: archived-low-vegetation-selection
+    source: havu-m2024-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 70
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Stores depth 349 mm, capacity 150 mm, conductivity 0.0005 and density 1.16.
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 860 and 865
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Assigns SoilTypeCode 70 to both Helsinki lawn and Helsinki mixed-low-vegetation surface rows.
+  - id: below-grass-related
+    record: records/surfaces/common/helsinki--havu-m2024--soil
+    role: related
+    note: Carries the same code-70 tuple under the separate Below Grass model identity.
+  scientific_note: The exact duplicate is intentional configuration reuse, not a second parameter
+    determination. The citable archive assigns soil code 70 to both lawn and mixed-low-vegetation surfaces,
+    while Havu Table B.1 publishes one rounded Grass soil row. Retaining two stable semantic records
+    preserves those separate selections while the sidecar makes their shared evidence explicit. Values and
+    identity remain unchanged; representativeness is narrowed from city to the observation site that supports
+    the parameterisation.
+  evidence_revision: sha256:9d16ee856c38285cd55dd53fcee81a61b58335eb4477d6035b00479e4b1a0215
+verification:
+  attestations: []
