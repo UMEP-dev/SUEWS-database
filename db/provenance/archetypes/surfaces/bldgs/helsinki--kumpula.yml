@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
 assessment:
   status: curation_required
@@ -68,8 +68,8 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite claims place helsinki, country finland. Four of the seven components are Helsinki
-        rows: the emissivity, water storage and snowpack limit records and records/ohm/helsinki--jarvi2014--buildings,
+      note: 'The composite claims place helsinki, country finland. Three of the seven components are Helsinki
+        rows: the emissivity and snowpack limit records and records/ohm/helsinki--jarvi2014--buildings,
         whose name reads ''Roof (own for SMEAR III, Helsinki) [750]''. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo,
         place london, name ''Central London'', a transfer the database forces because it holds no buildings
         albedo record placed in Finland. Drainage takes a generic building-class record. The construction
@@ -90,7 +90,7 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: The composite is classed city; six components are classed city and drainage is generic. The
+      note: The composite is classed city; five components are classed city and water storage and drainage are generic. The
         composite names a single neighbourhood while declaring the city class, but
         no component field settles whether site would be the better class for it, so this review does
         not rule on that.
@@ -130,8 +130,9 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
-    note: Fills water_storage. The record declares target land_cover.bldgs, name 'Building', place helsinki
-      and representativeness city.
+    note: Fills water_storage. The stable Helsinki-path record declares target land_cover.bldgs, name Building,
+      place generic, representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its Helsinki origin preserves migration/application lineage; the value is published as a generic Building parameter.
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
@@ -158,8 +159,8 @@ assessment:
   scientific_note: 'Kumpula is the one archetype in this batch whose OHM selection can be read as deliberate
     rather than borrowed: records/ohm/helsinki--jarvi2014--buildings names a specific measurement site
     in its own name field, ''Roof (own for SMEAR III, Helsinki) [750]'', and Kumpula is a named Helsinki
-    neighbourhood rather than a generic city typology. Three further Helsinki rows supply emissivity,
-    water storage and the snowpack limit, while a generic building-class row supplies drainage. Against
+    neighbourhood rather than a generic city typology. Two further Helsinki rows supply emissivity
+    and the snowpack limit, while generic building-class rows supply water storage and drainage. Against
     that, two slots reach to London. The
     albedo is forced, because no Finnish buildings albedo record exists. The construction is not obviously
     forced, and it is the finding: records/constructions/uk--lindberg-f2020--central-london-sample-run
@@ -170,6 +171,6 @@ assessment:
     construction instead, and no file records why. A maintainer should decide whether Kumpula should take
     a Nordic construction too, or whether the sample-run record should be withdrawn from the archetypes
     altogether. This review does not revisit any component value.'
-  evidence_revision: sha256:1cb1c0cfe5f6787af0aa529d4ecc174aa47710f0fd67dcf0aca8c048462c9b7d
+  evidence_revision: sha256:f8bcf1a0642e9c5aeffaaa07cd2b2beda0548a9629d77ce0f8d8e610a6af1f34
 verification:
   attestations: []

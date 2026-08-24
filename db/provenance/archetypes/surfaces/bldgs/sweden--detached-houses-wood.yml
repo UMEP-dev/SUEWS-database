@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:014482d7418af4d99abda72ccfcbf7927b427a8f537daef8251673863c13fa8d
+    records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -71,9 +71,9 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: 'The composite claims place sweden. Two components are Swedish: the construction declares
-        place sweden and the albedo declares place gothenburg. Four distinct components, filling emissivity,
-        water storage, the snow limit and all four ohm positions, declare place helsinki, which db/places.yml
-        resolves to country finland; drainage is generic. The database holds no Swedish record for the
+        place sweden and the albedo declares place gothenburg. Three distinct components, filling emissivity,
+        the snow limit and all four ohm positions, declare place helsinki, which db/places.yml
+        resolves to country finland; water storage and drainage are generic. The database holds no Swedish record for the
         Helsinki-sourced quantities: of the twenty-one records under records/surfaces/bldgs the only Swedish
         ones are the two Gothenburg albedo rows, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
         is the only building snowpack_limit record there is. The substitution is therefore forced by the
@@ -91,8 +91,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional. Only the construction carries that class;
-        the albedo, emissivity, water storage, snow limit and ohm components declare representativeness
-        city, while drainage is generic. Five of the seven components are therefore city rows standing
+        the albedo, emissivity, snow limit and ohm components declare representativeness
+        city, while water storage and drainage are generic. Four of the seven components are therefore city rows standing
         in for a country-scale default, which extends their claimed reach without anything in the composite
         recording the decision.
     method:
@@ -127,8 +127,9 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
-    note: Fills water_storage. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills water_storage. The stable Helsinki-path record declares target land_cover.bldgs, name Building,
+      place generic, representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its Helsinki origin preserves migration/application lineage; the value is published as a generic Building parameter.
   - id: component-surfaces-bldgs-helsinki-jarvi2011-drainage
     record: records/surfaces/bldgs/helsinki--jarvi2011--drainage
     role: component
@@ -156,15 +157,15 @@ assessment:
     do not. The construction, records/constructions/sweden--bjork2002--detached-houses-wood, is a Swedish
     regional record whose name matches the composite''s and whose layers are mostly wood, and the albedo
     is a Gothenburg row named ''Wood '', so the two slots that carry the typology''s identity are Swedish
-    and consistent with the label. Emissivity, water storage, the snow limit and all four OHM positions
+    and consistent with the label. Emissivity, the snow limit and all four OHM positions
     come from Helsinki records, because the database contains no Swedish record for those quantities and
-    only one building snowpack_limit record in total; drainage is generic. That substitution is forced rather
+    only one building snowpack_limit record in total; water storage and drainage are generic. That substitution is forced rather
     than careless, but it is nowhere stated, and it also leaves a composite declaring representativeness
-    regional resting on five city rows. Both questions live in the composite and can be settled without
+    regional resting on four city rows. Both questions live in the composite and can be settled without
     touching a component value: a maintainer should either record that Nordic cross-border substitution
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:9fc9185b5910891dab42aa3ddd48613ea2e62d316eab49da8057649998bf9474
+  evidence_revision: sha256:2227d86fe615f4666f954075d4e666de28e03326e1a443402921b444a1a61396
 verification:
   attestations: []

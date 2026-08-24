@@ -1,0 +1,112 @@
+provenance_record: records/surfaces/bldgs/helsinki--ward2016--water-storage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T21:31:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Building identifies the building-surface column in Table 2(a).
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Table 2(a) publishes values by SUEWS surface type, including Building.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: The Building column gives Si = 0.25 mm, exactly matching both stored storage bounds.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Järvi et al. publish the exact Building storage capacity in Table 2(a); its Falk and Niemczynowicz
+        footnote records an earlier literature attribution without replacing this verified parameter publication.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      - jarvi2014-helsinki-application
+      note: The parameter is published by generic surface type, not as a Helsinki observation. Järvi et al.
+        later use the same inherited value in Helsinki.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Generic scope reflects a literature parameter set offered for the SUEWS Building class, without
+        a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Table 2(a) defines the value for the Building land-cover class rather than for a whole neighbourhood,
+        an individual roof facet, or a material specimen.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      note: Järvi et al. adopt and publish the literature value in their SUEWS parameter table.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-building-storage
+      - jarvi2014-helsinki-application
+      note: The stable path, Helsinki origin and legacy ID preserve the migrated application-row identity;
+        they do not recast the generic parameter as a Helsinki determination.
+  evidence:
+  - id: jarvi2011-building-storage
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Building column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 0.25 mm for Building. Footnote a attributes the adopted value to Falk and Niemczynowicz
+        (1978), while Järvi et al. publish the exact SUEWS parameter.
+    - kind: table
+      label: Table 3, site characteristics
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: The evaluation sites are in Vancouver and Los Angeles, not Helsinki.
+  - id: jarvi2014-helsinki-application
+    source: jarvi2014
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 4(a), Bldg column
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Reuses Si = 0.25 mm for Bldg in the cold-climate SUEWS table.
+    - kind: text
+      label: Table 4 caption
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that values are sourced from Järvi et al. (2011) unless otherwise indicated; this unfootnoted
+        Building storage value is inherited rather than determined in Helsinki.
+  scientific_note: 'Järvi et al. (2011) publish the exact 0.25 mm Building storage capacity as a generic
+    SUEWS land-cover value. The Table 2 footnote names Falk and Niemczynowicz (1978), but that inaccessible
+    conference paper has not been used as an unverified active source. Järvi et al. (2014) later reuse the
+    value in Helsinki, and legacy row 43240005 records Ward et al. (2016) only as a migration reference,
+    not as evidence that Ward published or determined the value. The stable path, Helsinki origin, legacy ID
+    and values remain unchanged.'
+  evidence_revision: sha256:71eb6cea06af2062b2d01bf3e2da4894a3bb7e129dec0a8232fe91bfa702969a
+verification:
+  attestations: []
