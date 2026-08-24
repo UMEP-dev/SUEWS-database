@@ -10,23 +10,14 @@ legacy_id: 37240894
 parameters:
   roof:
   - material: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
-    thickness: 0.054
+    thickness: 0.05
   - material: records/materials/generic--lindberg-f2020--concrete-sample-run
     thickness: 0.15
-  - material: records/materials/generic--lindberg-f2020--concrete-sample-run
-    thickness: 0.04
-  - material: records/materials/generic--lindberg-f2020--concrete-sample-run
-    thickness: 0.04
-  - material: records/materials/generic--lindberg-f2020--concrete-sample-run
-    thickness: 0.04
+  - thickness: 0.12
   roof_insulation_layer: 2
   wall:
   - material: records/materials/generic--lindberg-f2020--outer-wall-sample-run-stone-concrete-brick-wood-concrete-35-glazed
-    thickness: 0.7606
-  - material: records/materials/generic--lindberg-f2020--concrete-sample-run
-    thickness: 0.0497
-  - material: records/materials/generic--lindberg-f2020--concrete-sample-run
-    thickness: 0.0497
+    thickness: 0.087
   - material: records/materials/generic--lindberg-f2020--concrete-sample-run
     thickness: 0.0497
   - material: records/materials/generic--lindberg-f2020--concrete-sample-run
