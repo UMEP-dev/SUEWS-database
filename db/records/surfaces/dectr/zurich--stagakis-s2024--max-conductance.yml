@@ -5,7 +5,8 @@ name: Deciduous Tree
 place: zurich
 origin: Zurich
 representativeness: city
-source: stagakis-s2024
+source: breuer2003
+method: literature
 legacy_id: 33240040
 parameters:
   max_conductance: 3.1
