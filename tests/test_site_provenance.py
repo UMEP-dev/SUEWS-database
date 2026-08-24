@@ -278,6 +278,35 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Urban setting", browser)
         self.assertIn("Central business district", browser)
 
+    def test_applicable_scale_renders_and_filters(self):
+        records = deepcopy(self.records)
+        records[MIXED]["applicable_scale"] = "facet"
+        page = record_page(
+            MIXED,
+            records[MIXED],
+            records,
+            self.sources,
+            self.used_by,
+            self.cluster,
+            sidecars={},
+            policy=self.policy,
+        )
+        self.assertIn("Applicable scale", page)
+        self.assertIn("Facet or component", page)
+        self.assertIn("#scale=facet", page)
+
+        index = build_search_index(
+            records, self.sources, self.places, self.sidecars, self.policy
+        )
+        mixed = next(item for item in index if item["path"] == MIXED)
+        self.assertEqual(mixed["scale"], "facet")
+        self.assertIn("facet", mixed["text"])
+
+        browser = build_index_page(records, self.sources, self.places, {})
+        self.assertIn('id="facet-scale"', browser)
+        self.assertIn("Applicable scale", browser)
+        self.assertIn("Material or specimen", browser)
+
     def test_signoff_issue_url_binds_current_revisions(self):
         url = signoff_issue_url(MIXED, self.sidecars[MIXED], self.policy)
         self.assertIn("record=records%2Fohm%2Fgeneric--", url)

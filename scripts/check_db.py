@@ -39,6 +39,7 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db"
 URBAN_SETTINGS_FILE = ROOT / "schema" / "urban_settings.yml"
+APPLICABLE_SCALES_FILE = ROOT / "schema" / "applicable_scales.yml"
 
 # Repo-local record targets that have no supy class
 LOCAL_TARGETS = {"material", "construction", "typology", "ohm_coefficients"}
@@ -48,6 +49,12 @@ def load_urban_settings():
     """Return the controlled intra-urban setting registry."""
     doc = yaml.safe_load(URBAN_SETTINGS_FILE.read_text()) or {}
     return doc.get("urban_settings") or {}
+
+
+def load_applicable_scales():
+    """Return the controlled applicable-scale registry."""
+    doc = yaml.safe_load(APPLICABLE_SCALES_FILE.read_text()) or {}
+    return doc.get("applicable_scales") or {}
 
 
 def load_all():
@@ -76,6 +83,7 @@ def iter_uses(uses):
 def structural_check(records, sources, places):
     errors = []
     urban_settings = load_urban_settings()
+    applicable_scales = load_applicable_scales()
     for path, rec in records.items():
         kind = "record" if path.startswith("records/") else "archetype"
         declared = rec.get("record") or rec.get("archetype")
@@ -103,6 +111,15 @@ def structural_check(records, sources, places):
             errors.append(
                 f"{path}: urban_setting {urban_setting!r} not in "
                 "schema/urban_settings.yml"
+            )
+        applicable_scale = rec.get("applicable_scale")
+        if (
+            applicable_scale is not None
+            and applicable_scale not in applicable_scales
+        ):
+            errors.append(
+                f"{path}: applicable_scale {applicable_scale!r} not in "
+                "schema/applicable_scales.yml"
             )
         for ref in iter_uses(rec.get("uses", {})):
             if ref not in records:
@@ -228,6 +245,8 @@ def suews_configuration_fragment(rec, sources):
         desc_bits.append(rec["representativeness"])
     if rec.get("urban_setting"):
         desc_bits.insert(1 if rec.get("place") else 0, rec["urban_setting"])
+    if rec.get("applicable_scale"):
+        desc_bits.append(rec["applicable_scale"])
     ref_info = {
         "ID": src_key,
         "DOI": src.get("doi"),

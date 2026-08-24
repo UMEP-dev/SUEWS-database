@@ -8,6 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from check_db import (  # noqa: E402
+    load_applicable_scales,
     load_all,
     load_urban_settings,
     structural_check,
@@ -78,6 +79,32 @@ class UrbanSettingMetadataTests(unittest.TestCase):
         fragment = suews_configuration_fragment(record, SOURCES)
         self.assertEqual(
             fragment["alb"]["ref"]["desc"], "london, city_centre, site"
+        )
+
+    def test_absent_and_registered_applicable_scales_are_valid(self):
+        self.assertEqual(self.errors_for(deepcopy(BASE_RECORD)), [])
+        for scale in load_applicable_scales():
+            with self.subTest(scale=scale):
+                record = deepcopy(BASE_RECORD)
+                record["applicable_scale"] = scale
+                self.assertEqual(self.errors_for(record), [])
+
+    def test_unknown_and_non_string_applicable_scales_are_rejected(self):
+        for scale in ("plot", "city", 3):
+            with self.subTest(scale=scale):
+                record = deepcopy(BASE_RECORD)
+                record["applicable_scale"] = scale
+                errors = self.errors_for(record)
+                self.assertTrue(
+                    any("applicable_scale" in error for error in errors), errors
+                )
+
+    def test_export_reference_description_includes_applicable_scale(self):
+        record = deepcopy(BASE_RECORD)
+        record["applicable_scale"] = "material"
+        fragment = suews_configuration_fragment(record, SOURCES)
+        self.assertEqual(
+            fragment["alb"]["ref"]["desc"], "london, site, material"
         )
 
 

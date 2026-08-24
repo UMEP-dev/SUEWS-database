@@ -44,6 +44,7 @@ name: Grass
 place: helsinki                   # -> db/places.yml
 origin: Helsinki                  # the raw legacy string, kept verbatim
 representativeness: city          # site | city | regional | generic
+applicable_scale: land_cover      # neighborhood | land_cover | facet | material
 source: jarvi2014                 # -> db/sources.yml
 legacy_id: 35240003               # the row this came from, pre-migration
 parameters:                       # supy canonical names under `target`
@@ -76,8 +77,22 @@ Envelope fields:
   establish the setting; never infer it from a place, filename or record name.
   `schema/urban_settings.yml` is the controlled registry.
   This axis is independent of `representativeness`, which says how far the
-  evidence travels, and of the applicable-scale work in #46, which says what
-  spatial unit the value describes.
+  evidence travels, and of `applicable_scale`, which says what spatial unit
+  the value describes.
+- `applicable_scale` (optional) — the spatial unit described by the value,
+  independent of where it was measured and how far it can be reused. The
+  controlled vocabulary in `schema/applicable_scales.yml` is:
+  `neighborhood` for a grid-cell or whole-neighbourhood aggregate;
+  `land_cover` for a sub-grid SUEWS land-cover class; `facet` for a roof,
+  wall or other physical component; and `material` for a material, specimen
+  or explicitly defined specimen group. The fourth term is deliberate: a
+  roof-facet fit and a laboratory material specimen are not interchangeable.
+  `target` says where a fragment enters the model; it does not determine this
+  scale, and records with the same target may legitimately describe different
+  spatial units. `make export` carries the vocabulary key in each value's
+  `ref.desc` alongside place and representativeness.
+  Omit the field when the source does not establish the scale; never infer it
+  from `target`, the filename or the record name.
 - `method` (optional) — measured | fitted | literature | calculated | assumed.
   Not recoverable for migrated records; fill it in for new ones.
 - `legacy:` (optional) — columns of the migrated row that have no home in
@@ -640,7 +655,7 @@ merged into supy's sample configuration load through
    reference).
 3. Add the citation to `db/sources.yml` (key: `<firstauthor><year>`) and,
    if the place is new, add it to `db/places.yml`.
-4. Set `place`, `representativeness` and `method` honestly. Add
+4. Set `place`, `representativeness`, `applicable_scale` and `method` honestly. Add
    `urban_setting` only when the source establishes one of its controlled
    values. `generic` is a valid representativeness answer; a fabricated site
    or inferred urban setting is not.

@@ -1,0 +1,22 @@
+# Controlled spatial unit described by a record's parameter values.
+#
+# This axis is independent of:
+#   place               where the evidence was obtained;
+#   representativeness  how far the evidence can travel; and
+#   urban_setting       source-established intra-urban context.
+#
+# The field is optional because a scale is an evidence claim. Omit it until
+# the source establishes the unit; never infer it from a filename or target.
+applicable_scales:
+  neighborhood:
+    label: Whole neighbourhood
+    description: A grid-cell or local-scale aggregate over the whole modelled neighbourhood.
+  land_cover:
+    label: Land-cover class
+    description: A sub-grid parameter for one SUEWS land-cover class.
+  facet:
+    label: Facet or component
+    description: A building or surface facet or another physical component, such as a roof or wall.
+  material:
+    label: Material or specimen
+    description: A physical material, individual specimen, or explicitly defined specimen group.
