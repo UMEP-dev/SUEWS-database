@@ -6,12 +6,12 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:acfa8ee5eaf45f6eb5bb02ab0befbccdf9543c1dae0caf227dc8a7831505c23a
+    records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
     records/profiles/human-activity/lucy/iceland: sha256:194dc7bfc8b2a7dc0f4822fa8cf6b4cb02ac3ee18ca003b27cc6549e971cd805
     records/profiles/traffic/lucy/iceland: sha256:ab262567ca6e855237c7414be09c31d0c930ea551dc3fd22c22cb74afc6f7bb1
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-24T12:26:22Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -74,8 +74,9 @@ assessment:
   - id: component-energy-use-helsinki-jarvi2019-energy-use
     record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
     role: component
-    note: Fills energy_use (holiday). The record declares attaches_to anthropogenic_emissions.heat.ahprof_24hr,
-      place helsinki and representativeness city.
+    note: Fills energy_use (holiday), the legacy slot for ahprof_24hr. The record declares attaches_to
+      anthropogenic_emissions.heat.ahprof_24hr and supplies an unpartitioned anthropogenic-heat cycle,
+      with place helsinki and representativeness city.
   - id: component-human-activity-lucy-iceland
     record: records/profiles/human-activity/lucy/iceland
     role: component
@@ -93,6 +94,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:ffe52d64f062b84fb267235549dc4d87da29267b4d247fc819d3e2c1a85ec40a
+  evidence_revision: sha256:9f2fdd8534da256343d382cd8e4eb79c4aefa1ddc88aada8278d6a03ccb0f3b0
 verification:
   attestations: []

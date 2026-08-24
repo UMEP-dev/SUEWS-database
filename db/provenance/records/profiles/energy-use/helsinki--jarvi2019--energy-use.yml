@@ -1,0 +1,105 @@
+provenance_record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
+dependency_revisions:
+  sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T12:26:22Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/317
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: The archive labels the two selected rows Helsinki weekday/weekend QF, and the article identifies
+        this curve as the original unpartitioned anthropogenic-heat profile.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: The archive uses rows 44 and 45 in the EnergyUseProfWD/WE columns that populate ahprof_24hr,
+        while the article establishes that this legacy field carries the unpartitioned anthropogenic-heat
+        profile rather than a source-specific building-energy schedule.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      note: Archive rows 44 and 45 supply the same 24-value working-day and weekend cycles. The record retains
+        the migrated legacy ordering, which stores archive hours 1 through 23 followed by hour 0.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: The Zenodo configuration directly publishes the full numeric rows; the associated article defines
+        their scientific role but does not print all 24 values.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      note: Both profile rows are explicitly labelled Helsinki and are selected by the Helsinki anthropogenic-emission
+        configurations in the same archive.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: One Helsinki QF cycle is reused across the spatial city modelling setup, while the emission magnitudes
+        vary by grid or sector.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: The database adopts a published model-input profile without performing a new fit.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - helsinki-qf-profile
+      - unpartitioned-ah-role
+      note: The paper explicitly distinguishes this historical unpartitioned HAH,d curve from the source-partitioned
+        human, traffic and building-energy terms introduced in the newer model formulation.
+  evidence:
+  - id: helsinki-qf-profile
+    source: jarvi2019-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_Profiles.txt, codes 44 and 45
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: The rows are labelled Helsinki Weekday QF and Weekend QF under hour columns 0 through 23.
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_AnthropogenicEmission.txt, codes 10, 51-53 and 100
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: The Helsinki configurations select profile codes 44 and 45 through EnergyUseProfWD and EnergyUseProfWE.
+  - id: unpartitioned-ah-role
+    source: jarvi2019
+    role: validation
+    locators:
+    - kind: figure
+      label: Figure 1 and caption, HAH,d profile role
+      page: 8369
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines HAH,d as the original SUEWS profile for anthropogenic heat emissions before partitioning
+        into separate emission sources.
+  scientific_note: The legacy table called the ahprof_24hr selector EnergyUseProfWD/WE, which caused the
+    migrated Energy Use label. The article and the archive together show that the selected curve is the older
+    total anthropogenic-heat profile, not a building-energy-use profile. The stable path, legacy IDs, attachment
+    point and 24-value cycles remain unchanged; only the active scientific identity and direct source are corrected.
+  evidence_revision: sha256:f225a0ed1c2721e552b7bde4f4a1ff50c419f6f2b20a0b16e062b5f3afbc832d
+verification:
+  attestations: []

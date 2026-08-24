@@ -1,13 +1,14 @@
 record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
 schema_version: '2026.5'
-target: profile.energy-use
+target: profile.anthropogenic-heat
 attaches_to: anthropogenic_emissions.heat.ahprof_24hr
-profile_type: Energy use
-name: Energy Use
+profile_type: Anthropogenic heat
+name: Unpartitioned anthropogenic heat
 place: helsinki
 origin: Helsinki, Finland
 representativeness: city
-source: jarvi2019
+source: jarvi2019-data
+method: literature
 legacy_id:
 - 60240947
 - 60240948
