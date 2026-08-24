@@ -2,7 +2,7 @@ record: records/profiles/energy-use/shanghai--ao2018--ao-et-al
 schema_version: '2026.5'
 target: profile.energy-use
 attaches_to: anthropogenic_emissions.heat.ahprof_24hr
-profile_type: Commercial
+profile_type: Energy use
 name: Ao et al.
 place: shanghai
 origin: Shanghai, China
