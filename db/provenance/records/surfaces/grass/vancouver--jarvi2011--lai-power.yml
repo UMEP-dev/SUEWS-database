@@ -1,0 +1,100 @@
+provenance_record: records/surfaces/grass/vancouver--jarvi2011--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2ad239fc1f0f5b39a6f50a934c6049b321c43b98b53fa3a2ff194fe739f01dc0
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-24T10:44:59Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: Grass matches the vegetation type represented by the land_cover.grass target, and LaiEq =
+        0 records the stored selector for the published dynamic LAI equation.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: Equation 4 defines daily leaf area index for each vegetation type, so its coefficients belong
+        to land_cover.grass.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: Equation 4 gives an LAI exponent of 0.03 and a degree-day multiplier of 5 x 10-4 for both
+        growth and senescence, exactly matching all four stored coefficients.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: Järvi et al. (2011) introduce SUEWS and directly publish the dynamic LAI equation. Section
+        2.2 describes the response as developed in this work and gives no upstream attribution for the
+        equation or its four coefficients.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      - jarvi2011-evaluation-scope
+      note: Equation 4 is defined for each vegetation type and is not fitted to Vancouver. Generic place
+        correctly separates this method parameter from the later Vancouver evaluation context.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: The coefficients define a general SUEWS vegetation equation rather than evidence measured
+        or fitted at a site, city or region, so generic representativeness is appropriate.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: The record transcribes coefficients directly from the published SUEWS equation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-equation-4
+      note: The deciduous-tree and evergreen-tree siblings carry the same coefficient set because Equation
+        4 applies the same form and constants to every vegetation type, not because the records were accidentally
+        duplicated.
+  evidence:
+  - id: jarvi2011-equation-4
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Sect. 2.2, Eq. 4, dynamic daily leaf area index
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines daily LAI for each vegetation type using exponent 0.03 and multiplier 5 x 10-4 in
+        both the growing-degree-day and senescence-degree-day branches. The section describes the dynamic
+        response as developed for SUEWS and cites no upstream derivation for the equation or coefficients.
+  - id: jarvi2011-evaluation-scope
+    source: jarvi2011
+    role: compilation
+    locators:
+    - kind: section
+      label: Sect. 3.1, Measurements
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Vancouver and Los Angeles supply measurements used to test SUEWS; the dynamic LAI equation
+        is introduced earlier as part of the general model rather than fitted to either evaluation city.
+  scientific_note: Järvi et al. (2011) directly publish the four coefficients in the general SUEWS dynamic
+    LAI equation and do not attribute that equation or its constants to an earlier source. Vancouver is
+    an evaluation location, not the derivation place for this parameter set. The stable path and migration
+    origin remain unchanged, while place and representativeness are corrected to generic so the record
+    does not imply a city-specific fit. The identical deciduous, evergreen and grass coefficient payloads
+    follow Equation 4's common treatment of vegetation types.
+  evidence_revision: sha256:bec77767949673a17ace2c8b209630f64d779a603bb831a093b46f93db69364c
+verification:
+  attestations: []

@@ -2,10 +2,11 @@ record: records/surfaces/grass/vancouver--jarvi2011--lai-power
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass, LaiEq = 0
-place: vancouver
+place: generic
 origin: Vancouver
-representativeness: city
+representativeness: generic
 source: jarvi2011
+method: literature
 legacy_id: 32240006
 parameters:
   lai:
