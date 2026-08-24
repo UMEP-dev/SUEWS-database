@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--water
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5ac5e61baf6a9c9749b12d5a1bbfb5801c9ac90059f13f81c490415acadc0559
+record_revision: sha256:51723acf5699b521f069b77754192103142f529d139b10cf19b3b00397bac335
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -9,12 +9,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-21T21:12:29Z'
+  assessed_at: '2026-08-24T14:45:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/706
   method: fitted
   findings:
     name:
@@ -37,6 +37,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      note: Section 7(a) identifies water as an individual surface type whose coefficients are weighted
+        by its share of total area to calculate site-specific OHM coefficients, and Table 4 lists this
+        tuple for Water—shallow turbid. The tuple therefore describes the water land-cover class before
+        neighborhood aggregation.
     method:
       conclusion: supported
       evidence_ids:
@@ -62,7 +70,9 @@ assessment:
       note: States that the surface coefficients were derived from published data.
   scientific_note: Grimmond and Oke (1999) is the canonical parameter publication; Souch et al. supplied
     the observation input. The sidecar preserves the role distinction without attributing the fitted
-    coefficients to Souch.
-  evidence_revision: sha256:b39ab3fd0c459316bd2ebae6c0c22d30df36256e543f6bbe181cecb5086b21f4
+    coefficients to Souch. Section 7(a) establishes that the published tuple applies to the individual
+    water surface type before surface-fraction weighting into a site-specific OHM coefficient, so its
+    applicable scale is the land-cover class.
+  evidence_revision: sha256:138c37f4533c3c315dd6fe14c87fe9a9dd6dd9234ce50b9c3939d82e21c239b6
 verification:
   attestations: []

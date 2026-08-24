@@ -7,7 +7,7 @@ dependency_revisions:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records:
-    records/ohm/generic--unreferenced--water: sha256:5ac5e61baf6a9c9749b12d5a1bbfb5801c9ac90059f13f81c490415acadc0559
+    records/ohm/generic--unreferenced--water: sha256:51723acf5699b521f069b77754192103142f529d139b10cf19b3b00397bac335
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:13:31Z'
@@ -98,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment water coefficients from Souch et al. (1998),
     then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London and Swindon
     runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:39b1f9ddddc7df9fe617ad14302e336bc599ba7ca78ca34cdf8216f6dea1dfdb
+  evidence_revision: sha256:46c7a675245ae6fd65cea70743c8efc7c040b95659890a6a8a5f9d09a121490b
 verification:
   attestations: []
