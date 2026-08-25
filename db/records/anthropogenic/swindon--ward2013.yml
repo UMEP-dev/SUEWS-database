@@ -6,7 +6,8 @@ place: swindon
 origin: Swindon
 representativeness: site
 urban_setting: suburban
-source: ward2013
+source: umep-dev2019a-anthropogenic-emission-table
+method: literature
 legacy_id: 53240551
 parameters:
   context:
@@ -28,11 +29,11 @@ parameters:
     maxfcmetab: 280
     frfossilfuel_heat: 0.7
     frfossilfuel_nonheat: 0.7
-    ef_umolco2perj: 1.16
+    ef_umolco2perj: 1.159
     enef_v_jkm: 3970000
     fcef_v_kgkm:
-      working_day: 0.21
-      holiday: 0.21
+      working_day: 0.2069
+      holiday: 0.2069
     co2pointsource: 0
     trafficunits: 1
 legacy:
@@ -48,3 +49,22 @@ legacy:
   TCritic_Cooling_WD: -999
   TCritic_Cooling_WE: -999
   FrPDDwe: 1
+parameter_provenance:
+  parameters.co2.minqfmetab:
+    source: sailor2004
+    method: literature
+    representativeness: generic
+  parameters.co2.maxqfmetab:
+    source: sailor2004
+    method: literature
+    representativeness: generic
+  parameters.co2.minfcmetab:
+    source: ward2013
+    method: calculated
+  parameters.co2.maxfcmetab:
+    source: ward2013
+    method: calculated
+  parameters.co2.enef_v_jkm:
+    source: sailor2004
+    method: calculated
+    representativeness: generic

@@ -1,10 +1,12 @@
 provenance_record: records/anthropogenic/swindon--ward2013
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:aceb9a82882d13eb85a23be33df2e690c7ebba78b486dbb9bb869e4d45da92fb
+record_revision: sha256:16c214ebf623e75831ee62e35a3a9822a2f10c752486b5600902ac7cf7d269e6
 dependency_revisions:
   sources:
+    sailor2004: sha256:082eee2314198bd3876cbc7731ca301e6ab82a6e6069436d9f3b35c75acf7e1f
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2019a-anthropogenic-emission-table: sha256:2263d44768d38d1c85c65499a8e71d4703b4fa278a13db21646e325d58f9a171
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
     ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -12,136 +14,150 @@ dependency_revisions:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-25T10:54:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T17:05:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/377
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
+      - release-code-551
       - migration-combined-row
-      note: The neutral name identifies this as the retained Swindon configuration row and makes explicit
-        that it combines anthropogenic heat and CO2 fields. It does not claim that one publication created
-        or supports every field.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/378
+      note: The neutral name identifies the retained Swindon Code 551 combined anthropogenic-emission
+        configuration without claiming that one journal article created every field.
     target:
       conclusion: supported
       evidence_ids:
+      - release-code-551
+      - release-config-fields
+      - release-point-source-field
+      - ward-qf-fit
       - ward-metabolism
       - ward-vehicles
-      - ward-qf-fit
-      note: Appendix A treats vehicular, building and metabolic emissions, which is what the anthropogenic_emissions
-        target holds, while Ward et al. (2016) publish the fitted heat model stored in the same target.
+      note: The release row and publications cover the anthropogenic heat and CO2 fields stored under
+        anthropogenic_emissions.
     values:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - ward-metabolism
-      - ward-vehicles
-      - ward-qf-fit
       - release-code-551
-      - migration-remaining-fields
-      note: 'Ward et al. (2013) support the stored metabolic bounds, 3.97 MJ per vehicle kilometre and
-        the rounded 0.21 kg CO2 per kilometre factor. Ward et al. (2016) and the pinned release row support
-        the six fitted qf_a, qf_b and qf_c values. The qf_model selector, fossil-fuel fractions, emission
-        factor per joule, point-source flag and traffic units are preserved by the migration row, but
-        this assessment has not located their scientific parameter sources.'
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+      - release-config-fields
+      - release-point-source-field
+      - ward-qf-fit
+      - release-code-551-precision
+      - sailor-metabolism
+      - ward-metabolism
+      - sailor-vehicles
+      - ward-vehicles
+      note: The original v2019a Code 551 row plus its point-source column extension match the complete
+        active configuration after restoring EF_umolCO2perJ from 1.16 to 1.159 and both vehicle CO2
+        factors from 0.21 to 0.2069. Ward et al.
+        (2016) publish the fitted heat coefficients, the 2016a release preserves the weekend coefficient's
+        greater precision, Sailor and Lu (2004) publish the metabolic heat bounds and vehicle-energy
+        calculation, and Ward et al. (2013) publish the Swindon metabolic CO2 bounds and vehicle CO2 factor.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - ward-metabolism
-      - ward-vehicles
-      - ward-qf-fit
       - release-code-551
-      - migration-remaining-fields
-      note: 'Ward et al. (2013) compile the values they do publish rather than derive them: Appendix A3 attributes
-        the metabolic heat rates to Sailor and Lu (2004) and the metabolic CO2 rates to Moriwaki and Kanda
-        (2004), and Appendix A1 attributes the 3.97 MJ per kilometre to Sailor and Lu (2004). Ward et al.
-        (2016) are the parameter source for the fitted heat coefficients, while the release and database
-        rows are compilation evidence. The record-level ward2013 source cannot represent every field.'
+      - release-config-fields
+      - release-point-source-field
+      - ward-qf-fit
+      - sailor-metabolism
+      - ward-metabolism
+      - sailor-vehicles
+      - ward-vehicles
+      note: The canonical record source is the pinned public input table because it is the only source
+        for the complete combined configuration. Canonical parameter overrides identify the direct
+        publications for RefValue-capable scalar leaves, while field-scoped sidecar evidence records
+        the fitted heat and vehicle CO2 provenance that the current export shape cannot attach per day type.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/377
     place:
       conclusion: supported
       evidence_ids:
       - ward-scope
-      note: The study site is in Swindon, which is the record's place.
+      - release-code-551
+      note: Ward et al. (2013) and Ward et al. (2016) identify the study site as Swindon, and the released
+        Code 551 configuration is the corresponding Swindon row.
     representativeness:
       conclusion: supported
       evidence_ids:
       - ward-scope
-      note: Site matches the article's suburban study area and the 500 m radius around the flux mast used
-        to characterise it. The estimate is for the study area, not Swindon as a whole.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/379
+      note: Site matches the suburban study area and the 500 m radius around the flux mast used to
+        characterise it; the evidence is not city-wide.
     urban_setting:
       conclusion: supported
       evidence_ids:
       - ward-scope
-      note: Suburban is explicitly established by the article's title and abstract and by the site description
-        of the residential area as typical of UK suburbia.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/379
+      note: Suburban is explicit in the article title, abstract and study-site description.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-metabolism
-      - ward-vehicles
+      - release-code-551
+      - release-config-fields
+      - release-point-source-field
       - ward-qf-fit
-      - migration-remaining-fields
-      note: Multiple methods are present in one record. The metabolic and vehicle factors are literature
-        values compiled for an inventory; qf_a, qf_b and qf_c are fitted coefficients; the remaining
-        configuration fields have only compilation lineage. No single method describes the record.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+      - sailor-metabolism
+      - ward-metabolism
+      - sailor-vehicles
+      - ward-vehicles
+      note: Literature at record level means adoption of the pinned published configuration. The canonical
+        overrides and field-scoped evidence retain the more specific fitted and calculated methods for
+        the individual parameters instead of asserting one shared production method.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-metabolism
-      - ward-vehicles
-      - ward-qf-fit
+      - release-code-551
       - migration-combined-row
-      note: Field-level roles are now explicit, but whether the combined configuration should retain one
-        record-level source and method or be split remains a maintainer decision.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/377
+      note: Public release Code 551 and legacy database row 53240551 identify the same combined Swindon
+        configuration. The release artifact resolves the former question of whether the tuple should be split.
   evidence:
-  - id: ward-metabolism
-    source: ward2013
+  - id: release-code-551
+    source: umep-dev2019a-anthropogenic-emission-table
     role: compilation
-    parameter_paths:
-    - parameters.co2.minqfmetab
-    - parameters.co2.maxqfmetab
-    - parameters.co2.minfcmetab
-    - parameters.co2.maxfcmetab
     locators:
-    - kind: section
-      label: Appendix A3, Human metabolism
-      page: 4662
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: Gives 175 W per person for daytime, 75 W for nighttime and 125 W in transition, following
-        Sailor and Lu (2004), and 280, 120 and 200 umol CO2 per second per person for the same periods,
-        following Moriwaki and Kanda (2004).
-  - id: ward-vehicles
-    source: ward2013
-    role: compilation
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, initial v2019a Code 551
+      url: https://github.com/UMEP-dev/SUEWS/blob/4347c7b662db2c94eee9f4f30c4c669870f242bd/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L5
+      note: The first public v2019a table row for Code 551 states the complete combined configuration,
+        including qf_a 0.1446/0.1329, qf_b 0/0, qf_c 0.0037/0.0038, metabolic heat 75/175,
+        metabolic CO2 120/280, fossil fractions 0.7/0.7, EF 1.159, vehicle energy 3.97e6 J km-1,
+        vehicle CO2 0.2069, and traffic units 1.
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, v2019a point-source column extension
+      url: https://github.com/UMEP-dev/SUEWS/blob/3bb78daf6e9a3f6c0a3e86f29d09b0cd1d35535d/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L5
+      note: The later v2019a table revision splits vehicle factors by day type and adds the point-source
+        column, recording CO2PointSource as 0 for Code 551. It also replaces the Swindon-specific vehicle
+        factor with 0.285; Ward et al. (2013) and the initial Code 551 row independently support 0.2069,
+        so this locator is used only for the newly introduced point-source field.
+  - id: release-config-fields
+    source: umep-dev2019a-anthropogenic-emission-table
+    role: parameter_source
     parameter_paths:
-    - parameters.co2.enef_v_jkm
-    - parameters.co2.fcef_v_kgkm.working_day
-    - parameters.co2.fcef_v_kgkm.holiday
+    - parameters.co2.frfossilfuel_heat
+    - parameters.co2.frfossilfuel_nonheat
+    - parameters.co2.ef_umolco2perj
+    - parameters.co2.trafficunits
     locators:
-    - kind: section
-      label: Appendix A1, Vehicular emissions
-      page: 4661
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: Gives a mean energy release of 3.97 MJ per vehicle kilometre from Sailor and Lu (2004) and
-        a CO2 emission factor of 0.2069 kg per kilometre from the Department of Energy and Climate Change.
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, initial v2019a Code 551 configuration fields
+      url: https://github.com/UMEP-dev/SUEWS/blob/4347c7b662db2c94eee9f4f30c4c669870f242bd/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L5
+      note: These model-configuration leaves have a direct authoritative value in the public input table;
+        no journal article was found that publishes them as one scientific tuple.
+  - id: release-point-source-field
+    source: umep-dev2019a-anthropogenic-emission-table
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.co2pointsource
+    locators:
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, v2019a Code 551 point-source flag
+      url: https://github.com/UMEP-dev/SUEWS/blob/3bb78daf6e9a3f6c0a3e86f29d09b0cd1d35535d/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L5
+      note: The v2019a column extension directly records CO2PointSource as 0 for Code 551.
   - id: ward-qf-fit
     source: ward2016
     role: parameter_source
@@ -157,14 +173,14 @@ assessment:
       label: Section 4.3, Equation 5
       page: 11, 12
       url: https://doi.org/10.1016/j.uclim.2016.05.001
-      note: Defines the temperature-dependent anthropogenic heat model and states that separate weekday
-        and weekend coefficients were fitted to the Swindon data after removing cooling-degree dependence.
+      note: Defines the degree-day anthropogenic heat model and states that the Swindon weekday and
+        weekend coefficients were fitted after removing cooling-degree dependence.
     - kind: table
       label: Table 3, Sw weekday and weekend columns
       page: 12
       url: https://doi.org/10.1016/j.uclim.2016.05.001
       note: Prints qf_a as 0.1446 and 0.1330, qf_b as zero, and qf_c as 0.0037 and 0.0038.
-  - id: release-code-551
+  - id: release-code-551-precision
     source: umep-dev2016a
     role: compilation
     parameter_paths:
@@ -179,7 +195,57 @@ assessment:
       label: SUEWS_AnthropogenicHeat.txt, code 551
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_AnthropogenicHeat.txt#L5
       note: Preserves the Swindon fit at greater precision, including weekend qf_a 0.1329150, which
-        explains the migrated four-decimal value 0.1329 rather than the paper's printed 0.1330.
+        explains the four-decimal configuration value 0.1329 rather than the paper's printed 0.1330.
+  - id: sailor-metabolism
+    source: sailor2004
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.minqfmetab
+    - parameters.co2.maxqfmetab
+    locators:
+    - kind: section
+      label: Section 2.5, Heat released from human metabolism
+      page: 2745
+      url: https://doi.org/10.1016/j.atmosenv.2004.01.034
+      note: States a sleeping metabolic rate of 75 W and adopts an average daytime rate of 175 W.
+  - id: ward-metabolism
+    source: ward2013
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.minfcmetab
+    - parameters.co2.maxfcmetab
+    locators:
+    - kind: section
+      label: Appendix A3, Human metabolism
+      page: 4662
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Publishes 120 and 280 umol CO2 s-1 person-1 for nighttime and daytime after adjusting the
+        Moriwaki and Kanda values to the activity periods used for the Swindon calculation.
+  - id: sailor-vehicles
+    source: sailor2004
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.enef_v_jkm
+    locators:
+    - kind: section
+      label: Section 2.2, Heat from vehicular traffic, Equation 4
+      page: 2740
+      url: https://doi.org/10.1016/j.atmosenv.2004.01.034
+      note: Calculates 3975 J per metre of vehicle travel from combustion heat, fuel density and fuel
+        economy, exactly 3,975,000 J km-1.
+  - id: ward-vehicles
+    source: ward2013
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.fcef_v_kgkm.working_day
+    - parameters.co2.fcef_v_kgkm.holiday
+    locators:
+    - kind: section
+      label: Appendix A1, Vehicular emissions
+      page: 4662
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Gives the Swindon vehicle CO2 emission factor as 0.2069 kg km-1 from DECC and applies it
+        without fleet-composition adjustment.
   - id: ward-scope
     source: ward2013
     role: compilation
@@ -188,24 +254,12 @@ assessment:
       label: Title and abstract, suburban area in Swindon
       page: 4645
       url: https://doi.org/10.5194/acp-13-4645-2013
-      note: The title and abstract explicitly identify the study area and its energy-balance behaviour as suburban.
-    - kind: section
-      label: Sections 1 and 2, local-scale objective and study-site description
-      page: 4646
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: The flux mast is in a residential area 3 km north of the town centre described as typical of UK suburbia.
+      note: The title and abstract explicitly identify the study area as suburban Swindon.
     - kind: table
-      label: Table 1, Land cover within a radius of 500 m around the flux mast
+      label: Table 1, land cover within 500 m of the flux mast
       page: 4647
       url: https://doi.org/10.5194/acp-13-4645-2013
-      note: 'The article''s only table. It fixes the study''s scale: a suburban site characterised over
-        a 500 m radius, described in the title and abstract as a suburban area in Swindon, not a city-wide
-        determination.'
-    - kind: section
-      label: Appendix A, scope of the anthropogenic heat-flux estimate
-      page: 4661
-      url: https://doi.org/10.5194/acp-13-4645-2013
-      note: The inventory is explicitly a first-order estimate for the study area and discusses the coarseness of its spatial scale.
+      note: Establishes the neighbourhood-scale study footprint rather than city-wide representativeness.
   - id: migration-combined-row
     source: umep-dev2025-database
     role: compilation
@@ -213,35 +267,19 @@ assessment:
     - kind: dataset
       label: database.xlsx, AnthropogenicEmission row, legacy ID 53240551
       url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
-      note: The pre-migration row identifies Swindon and stores the heat coefficients, CO2 configuration,
-        model selector and legacy fields together. It establishes the retained configuration identity,
-        not scientific support for every field.
-  - id: migration-remaining-fields
-    source: umep-dev2025-database
-    role: compilation
-    parameter_paths:
-    - parameters.context.qf_model
-    - parameters.co2.frfossilfuel_heat
-    - parameters.co2.frfossilfuel_nonheat
-    - parameters.co2.ef_umolco2perj
-    - parameters.co2.co2pointsource
-    - parameters.co2.trafficunits
-    locators:
-    - kind: dataset
-      label: database.xlsx, AnthropogenicEmission row, legacy ID 53240551
-      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
-      note: Preserves the remaining active configuration fields exactly. This is migration and compilation
-        lineage, not evidence that Ward et al. (2013) publish or derive those fields.
+      note: Preserves the stable database identity but rounds EF to 1.16 and vehicle CO2 to 0.21. The
+        earlier public input table provides the authoritative precision restored here.
   scientific_note: >-
-    This retained configuration combines several provenance roles. Ward et al. (2013) compile metabolic
-    and vehicle factors for a first-order Swindon inventory. Ward et al. (2016) publish the fitted heat
-    coefficients, with the pinned release row preserving greater precision. The qf_model selector, fossil-fuel
-    fractions, emission factor per joule, point-source flag and traffic units currently have compilation
-    lineage only in the pre-migration database row. Field scopes now prevent those roles from being collapsed
-    into a single Ward 2013 claim. Issue #377 remains open because the record still exposes one source and
-    one method, and the scientific sources of the remaining configuration fields are unresolved; a maintainer
-    must decide whether to retain this combined configuration or split it. No parameter value, source key,
-    stable path, place, representativeness or identity changes in this assessment.
-  evidence_revision: sha256:afff53eb169fbe9e2779d3060de574334c905e220331d9fe671049d1207a95a8
+    The former blocker was the record format's single-source envelope, not an absence of public evidence.
+    The canonical record now cites the exact original v2019a combined configuration, while scalar
+    parameter overrides and field-scoped evidence preserve the distinct scientific roles. Ward et al.
+    (2016) are credited for the fitted heat coefficients; Sailor and Lu (2004) for metabolic heat and
+    vehicle energy; Ward et al. (2013) for the Swindon metabolic and vehicle CO2 calculation; and the
+    pinned SUEWS input row for configuration-only fields. No source is made to support values it does
+    not publish. The later v2019a table revision changes the vehicle factor to 0.285 while adding the
+    point-source field; the record retains the Swindon-specific 0.2069 supported by Ward et al. (2013)
+    and the initial Code 551 row, and uses the later revision only for the new flag. The two precision
+    corrections reverse migration rounding rather than invent a new configuration.
+  evidence_revision: sha256:173a217bfeec4150b3e27644e7915e9e6f29a46f5cbbf2ff21431c60b669d835
 verification:
   attestations: []
