@@ -502,6 +502,49 @@ class ProvenanceSemanticTests(unittest.TestCase):
         )
         self.assertTrue(any("parameter_source does not match" in e for e in errors))
 
+    def test_evidence_parameter_paths_must_resolve_in_record(self):
+        records, sources, places = registries()
+        scoped = fixture_sidecar()
+        scoped["assessment"]["evidence"].append(
+            {
+                "id": "field-validation",
+                "source": "paper1999",
+                "role": "validation",
+                "parameter_paths": ["parameters.a1", "parameters.a2"],
+                "locators": [{"kind": "table", "label": "Table 2"}],
+            }
+        )
+        scoped["assessment"]["evidence_revision"] = evidence_revision(scoped)
+        self.assertEqual(
+            check_provenance(records, sources, places, {RECORD_KEY: scoped}),
+            [],
+        )
+
+        missing = deepcopy(scoped)
+        missing["assessment"]["evidence"][1]["parameter_paths"] = [
+            "parameters.not_a_field"
+        ]
+        missing["assessment"]["evidence_revision"] = evidence_revision(missing)
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: missing}
+        )
+        self.assertTrue(
+            any("parameter path 'parameters.not_a_field'" in error for error in errors)
+        )
+
+    def test_field_scoped_parameter_source_cannot_validate_record_source(self):
+        records, sources, places = registries()
+        scoped = fixture_sidecar()
+        scoped["assessment"]["evidence"][0]["parameter_paths"] = [
+            "parameters.a1"
+        ]
+        scoped["assessment"]["evidence_revision"] = evidence_revision(scoped)
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: scoped}
+        )
+        self.assertTrue(any("parameter_source does not match" in e for e in errors))
+        self.assertFalse(signoff_eligible(scoped, RECORD))
+
     def test_derivation_self_reference_cycle_and_duplicate_mean_input(self):
         a_key = "records/ohm/calc-a"
         b_key = "records/ohm/calc-b"

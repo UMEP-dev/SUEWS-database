@@ -153,6 +153,32 @@ def _normalise_handle(handle):
     return handle.casefold() if isinstance(handle, str) else None
 
 
+def _parameter_path_exists(record, path):
+    """Whether a dotted ``parameters.*`` path resolves in the reviewed entry."""
+    if not isinstance(path, str):
+        return False
+    parts = path.split(".")
+    if len(parts) < 2 or parts[0] != "parameters":
+        return False
+    node = record
+    for part in parts:
+        if isinstance(node, dict):
+            key = part
+            if key not in node and part.isdigit() and int(part) in node:
+                key = int(part)
+            if key not in node:
+                return False
+            node = node[key]
+        elif isinstance(node, list) and part.isdigit():
+            index = int(part)
+            if index >= len(node):
+                return False
+            node = node[index]
+        else:
+            return False
+    return True
+
+
 def _event_fact_matches(attestation, fact, provenance_record):
     """Match an attestation to facts authenticated by a GitHub-aware caller."""
     if not isinstance(fact, dict):
@@ -178,14 +204,17 @@ def _event_fact_matches(attestation, fact, provenance_record):
 
 def _parameter_source_aligned(record, assessment):
     method = assessment.get("method")
-    parameter_sources = {
-        item.get("source")
+    parameter_sources = [
+        item
         for item in assessment.get("evidence", [])
         if item.get("role") == "parameter_source"
-    }
+    ]
     source = record.get("source")
     if method in EXTERNAL_METHODS:
-        return source != "unreferenced" and source in parameter_sources
+        return source != "unreferenced" and any(
+            item.get("source") == source and not item.get("parameter_paths")
+            for item in parameter_sources
+        )
     if method in {"calculated", "assumed"}:
         return source == "unreferenced" and not parameter_sources
     return False
@@ -656,6 +685,12 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                     input_records.add(record_ref)
                 if item.get("role") == "component":
                     documented_components.add(record_ref)
+            for parameter_path in item.get("parameter_paths", []):
+                if not _parameter_path_exists(record, parameter_path):
+                    errors.append(
+                        f"{label}: evidence {evidence_id!r} parameter path "
+                        f"{parameter_path!r} is not present in the reviewed entry"
+                    )
         if review_type == "composition":
             component_refs = set(_iter_entry_refs(record.get("uses", {})))
             if documented_components != component_refs:

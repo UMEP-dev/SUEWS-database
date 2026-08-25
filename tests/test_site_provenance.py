@@ -81,6 +81,19 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertNotIn("Possible duplicate", curation)
         self.assertNotIn("class=\"signoff\"", curation)
 
+    def test_field_scoped_evidence_is_visible(self):
+        sidecar = deepcopy(self.sidecars[MIXED])
+        sidecar["assessment"]["evidence"][0]["parameter_paths"] = [
+            "parameters.a1",
+            "parameters.a2",
+        ]
+        candidate = dict(self.sidecars)
+        candidate[MIXED] = sidecar
+        page = self.render(MIXED, candidate)
+        self.assertIn("Applies to:", page)
+        self.assertIn("<code>parameters.a1</code>", page)
+        self.assertIn("<code>parameters.a2</code>", page)
+
     def test_remaining_review_states_are_explicit(self):
         self.assertEqual(provenance_state(None, self.policy), "unaudited")
         candidate = deepcopy(self.sidecars[MIXED])
