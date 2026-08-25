@@ -1,8 +1,9 @@
 record: records/snow/generic--kawai2009--thermal-layers
 schema_version: '2026.5'
 target: snow
-name: Snow
+name: Archived Snow-labelled ESTM migration row
 source: unreferenced
+method: assumed
 legacy_id: 52240019
 parameters: {}
 legacy:

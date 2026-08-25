@@ -1,0 +1,86 @@
+provenance_record: records/snow/generic--kawai2009--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:224cacb9be3f617720fe23765ceec0c7a764b26607d7b207b597f72f0ee19849
+dependency_revisions:
+  sources:
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records:
+    records/surfaces/water/generic--unreferenced--thermal-layers: sha256:a79e66403e98a94a6ba8c0bac10090d761850909303d2fa40b417035a078ef66
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:29:42Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/395
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row]
+      note: Archived Snow-labelled ESTM migration row identifies exactly what the retained artifact proves
+        without presenting it as a physical snow parameterization or claiming why it was created.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row]
+      note: The pre-migration ESTM row is labelled Snow. Modern SnowParams has no thermal-layer fields, so
+        migration retains the columns only under legacy and the record exports no active model parameters.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row, water-row-duplicate]
+      note: The empty canonical parameters mapping and exact legacy columns faithfully preserve the migration
+        artifact. The four layer triplets are value-identical to the adjacent Water row but are not promoted
+        as snow values.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row]
+      note: Unreferenced is correct because the workbook row has no Origin and its former Kawai link was an
+        arithmetic reference-fill artifact removed in PR #478.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/395]
+    place:
+      conclusion: not_applicable
+      note: The migration row has no Origin and makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: An archived migration row with no active parameters makes no evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row, water-row-duplicate]
+      note: Assumed describes the repository curation decision to retain the ambiguous row as an archival
+        configuration artifact; it does not assert the original compiler's intent.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-snow-row, water-row-duplicate]
+      note: Legacy ID 52240019 remains a distinct Snow-labelled workbook row. Retention does not decide
+        whether its duplication of Water was a placeholder, transcription error, or deliberate choice.
+  evidence:
+  - id: legacy-snow-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240019
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L121-L176
+      note: Labels the row Surface/Name Snow, leaves Origin null, and stores four 1.1/0.602/4170000
+        layer triplets. This establishes migration identity and values only.
+    - kind: dataset
+      label: SUEWS legacy ESTM release history
+      url: https://github.com/UMEP-dev/SUEWS/tree/4d4afaca68c81ee8dd878690539883676d806d17/test/fixtures/legacy_tables
+      note: The 2017a tuple appears as Water code 813; both 2017b occurrences are labelled Water. From
+        2018a through 2020a Snow code 61 uses a different tuple and is labelled snow dummy code row.
+  - id: water-row-duplicate
+    record: records/surfaces/water/generic--unreferenced--thermal-layers
+    role: possible_duplicate
+    note: The adjacent Water migration row 52240021 has the same four active layer triplets. This numeric
+      identity is recorded for curation but does not authorize merging or deleting either stable record.
+  scientific_note: >-
+    The evidence establishes an ambiguous Snow-labelled migration row, not a physical snow parameterization.
+    Its canonical parameters remain empty and its legacy payload remains exact, so no snow value reaches an
+    export. The archival name and assumed method make that status explicit while preserving stable identity
+    and avoiding an unsupported claim about whether the water-profile duplication was deliberate or erroneous.
+  evidence_revision: sha256:a7acfb5d1cba7705795c0e30ca5fa2d50edaafcf9873dc2066b41a6958e350a4
+verification:
+  attestations: []
