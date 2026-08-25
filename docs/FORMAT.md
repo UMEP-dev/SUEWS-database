@@ -197,7 +197,10 @@ Field scope records what a source actually supports; it does not silently
 override the record's backwards-compatible `source` field or authorise a value
 change. A mixed tuple can therefore document that one publication supports one
 field while other fields remain unresolved, without presenting partial
-evidence as support for the complete tuple.
+evidence as support for the complete tuple. A field-scoped `parameter_source`
+does not satisfy record-level source alignment or make an assessment eligible
+for sign-off; that requires an unscoped `parameter_source` matching the
+record's exported `source` field.
 
 For a measured, fitted or literature assessment to become sign-off eligible,
 at least one `parameter_source` must equal the evidence record's `source` key.

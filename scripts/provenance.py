@@ -204,14 +204,17 @@ def _event_fact_matches(attestation, fact, provenance_record):
 
 def _parameter_source_aligned(record, assessment):
     method = assessment.get("method")
-    parameter_sources = {
-        item.get("source")
+    parameter_sources = [
+        item
         for item in assessment.get("evidence", [])
         if item.get("role") == "parameter_source"
-    }
+    ]
     source = record.get("source")
     if method in EXTERNAL_METHODS:
-        return source != "unreferenced" and source in parameter_sources
+        return source != "unreferenced" and any(
+            item.get("source") == source and not item.get("parameter_paths")
+            for item in parameter_sources
+        )
     if method in {"calculated", "assumed"}:
         return source == "unreferenced" and not parameter_sources
     return False
