@@ -3,6 +3,8 @@ schema_version: '2026.5'
 target: material
 name: Plaster
 source: unreferenced
+method: assumed
+source_legacy_ref: 99240099
 legacy_id: 36248147
 category: Indoor
 display_colour: Generic
