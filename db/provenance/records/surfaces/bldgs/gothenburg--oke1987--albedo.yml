@@ -1,0 +1,100 @@
+provenance_record: records/surfaces/bldgs/gothenburg--oke1987--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8d51b71b7fa63fa654b73e1b6169388b232c5f0b018693b2110c858dda122272
+dependency_revisions:
+  sources:
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T22:57:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/361
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Industry, dark roofs is retained as the historical configuration label; Oke contains generic
+        roof-material classes but does not publish this industrial class.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The migrated row assigns the value to the Buildings surface class.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: >-
+        Albedo 0.11 is supported as the exact migrated configuration value only. Oke gives broad ranges for
+        several dark roof materials but no exact 0.11 selection or mapping to this industrial label.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/361]
+      note: >-
+        Unreferenced is correct because the cited book does not publish this exact configured point and
+        class. source_legacy_ref 90240001 preserves the former registry link without exporting it as proof.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: >-
+        Generic removes the unsupported geographic claim. Gothenburg remains only in the stable path and
+        origin field as migration and application history.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Generic avoids presenting an archived point selection as city-wide Gothenburg evidence.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Assumed denotes retention of an executable historical value whose point selection and scientific
+        derivation are not recorded.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, name, origin, legacy ID 41240025, target and value preserve the historical
+        configuration identity while unsupported scientific and geographic attribution is removed.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Albedo row 41240025
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/albedo.yml#L65-L71
+      note: >-
+        Stores Buildings, Industry dark roofs, Origin Gothenburg, 0.11/0.11 and Ref 90240001. This
+        establishes release and migration lineage only.
+  - id: oke-table
+    source: oke1987
+    role: validation
+    locators:
+    - kind: table
+      label: Table 8.2, radiative properties of typical urban materials
+      page: '281'
+      note: >-
+        The complete second edition gives albedo ranges 0.08-0.18 for tar and gravel roofs, 0.10-0.16 for
+        corrugated iron roofs, and 0.02-0.15 for black paint. It supplies no exact 0.11, industrial class,
+        row-level mapping or Gothenburg scope. Private manifestation SHA-256
+        2b2e2935cfbc01d06d28341c0c0bf1f66ab389302cf8d10519824c01b6e3becf.
+  attempted_sources:
+  - source: oke1987
+    attempted_at: '2026-08-25T22:57:00Z'
+    outcome: not_found
+    note: Complete-book inspection found ranges containing 0.11 but no publication of the exact configured
+      point, industrial identity, or Gothenburg scope.
+  scientific_note: >-
+    Being numerically inside several Oke ranges does not identify which material, transformation or point
+    selection produced 0.11. This correction therefore preserves the value as an explicit archived
+    configuration assumption without claiming Oke authorship or Gothenburg determination. A future original
+    compiler source can replace the assumption without changing the value or stable path.
+  evidence_revision: sha256:db52f84769ac77781b824c6bed3499c2127f3000c100a8f1ed5aeb3b7f0be516
+verification:
+  attestations: []
