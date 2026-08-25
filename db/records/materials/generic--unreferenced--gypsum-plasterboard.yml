@@ -2,7 +2,9 @@ record: records/materials/generic--unreferenced--gypsum-plasterboard
 schema_version: '2026.5'
 target: material
 name: Gypsum Plasterboard
-source: unreferenced
+source: ies2011-apache-tables
+method: literature
+source_legacy_ref: 99240099
 legacy_id: 36248158
 category: Generic
 display_colour: Generic
@@ -12,3 +14,10 @@ parameters:
   thermal_conductivity: 0.16
   specific_heat: 840
   density: 950
+parameter_provenance:
+  parameters.albedo:
+    source: unreferenced
+    method: assumed
+  parameters.emissivity:
+    source: unreferenced
+    method: assumed

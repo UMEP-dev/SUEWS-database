@@ -1,0 +1,97 @@
+provenance_record: records/materials/generic--unreferenced--gypsum-plasterboard
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a625dd8fc6d9b6a181231a3cb4f107ec469b0c6fc36fa5683279b9c4937f2993
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:08:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/274
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: The IES table and historical catalogue both identify the material as Gypsum Plasterboard.
+    target:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: Both sources describe thermophysical material properties used by a building-energy model.
+    values:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: >-
+        IES Table 6 publishes the exact thermal tuple 0.16/840/950. The optical pair 0.30/0.92 is retained
+        from the migrated row only and is explicitly exported as unreferenced and assumed.
+    source:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/274]
+      note: >-
+        IES is the effective source only for thermal conductivity, specific heat and density. Field-level
+        metadata prevents that citation from being extended to the unsupported albedo and emissivity.
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: Literature applies to the three IES-supported thermal leaves; canonical overrides mark both
+        optical leaves as assumed.
+    identity:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: >-
+        Legacy ID 36248158 identifies the retained catalogue row. Correcting field-level provenance does
+        not change the stable path, values or gypsum-plasterboard identity.
+  evidence:
+  - id: ies-thermal-row
+    source: ies2011-apache-tables
+    role: parameter_source
+    parameter_paths:
+    - parameters.thermal_conductivity
+    - parameters.specific_heat
+    - parameters.density
+    locators:
+    - kind: table
+      label: Table 6, Gypsum Plasterboard row
+      page: '11, 17'
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: >-
+        Publishes thermal conductivity 0.160 W m-1 K-1, specific heat 840 J kg-1 K-1 and density 950 kg m-3.
+        The table does not publish albedo or emissivity.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248158
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L250-L257
+      note: >-
+        Stores the same complete tuple under Ref 99240099, whose registry entry says Missing, reference.
+        This establishes release and migration lineage only.
+  attempted_sources:
+  - source: ies2011-apache-tables
+    attempted_at: '2026-08-26T00:08:00+01:00'
+    outcome: incomplete
+    note: The original IES guide supports all three thermal leaves but contains no optical values.
+  scientific_note: >-
+    This correction uses field-level provenance to represent the evidence boundary rather than treating a
+    missing optical citation as a blocker for the supported thermal tuple. The optical values are not
+    inferred from generic paper, plaster or high-emissivity defaults and remain explicit unreferenced
+    assumptions. No parameter value or stable identity changes.
+  evidence_revision: sha256:88c27721c372c2f6b4a64a82299b40ea5690131863a3d099be57aacc7d4cd145
+verification:
+  attestations: []
