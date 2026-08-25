@@ -1,0 +1,87 @@
+provenance_record: records/materials/generic--cibse2015--concrete-block-heavyweight
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:0ee01c2a6eb084faca45729d735b3fde6675e63dd3ee1331d48f23be03239096
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:19:28Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/259
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The historical catalogue row supplies the Concrete Block (Heavyweight) configuration label.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The row stores optical and thermal material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: The exact tuple is supported as a retained historical configuration row, not as a CIBSE
+        heavyweight-block condition; the checked Guide A rows use different conductivities or identities.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Unreferenced is correct because no CIBSE row states the complete tuple. source_legacy_ref
+        90240071 retains the migrated registry link without exporting it as the parameter publication.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/259]
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Assumed distinguishes retention of the configuration tuple from a verbatim literature material.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: Legacy ID 36248160 identifies the distinct retained material-registry row; no narrower physical
+        block condition is inferred.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248160
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L259-L268
+      note: Stores the exact tuple, name, and Ref 90240071; this proves release and migration lineage only.
+  - id: cibse-material-tables
+    source: cibse2015
+    role: validation
+    locators:
+    - kind: table
+      label: Tables 3.37, 3.40 and 3.46
+      page: 3-38, 3-45, 3-49
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Dense exposed/protected blocks use conductivity 1.87/1.75 at density 2300 and specific heat
+        1000; the 300-mm heavyweight row uses 1.31, density 2240 and specific heat 840. No row states
+        the stored 1.63/1000/2300 trio with albedo 0.37 and emissivity 0.92.
+  attempted_sources:
+  - source: cibse2015
+    attempted_at: '2026-08-25T12:19:28Z'
+    outcome: not_found
+    note: The relevant Guide A material and surface tables contain no complete match.
+  scientific_note: >-
+    The tuple is retained exactly as a historical configuration artifact. The checked CIBSE tables contain
+    materially different heavyweight or dense block conditions and do not publish the complete five-field
+    row. Source unreferenced, method assumed, and source_legacy_ref 90240071 make the distinction explicit
+    without choosing a replacement identity or changing any value.
+  evidence_revision: sha256:9de36aa8ad9d9f9df5d8db08b7a159ba529d8f203da1ddd5478c55511abcc15a
+verification:
+  attestations: []
