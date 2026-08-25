@@ -1,0 +1,83 @@
+provenance_record: records/materials/generic--hertwig2024a--felt-sheathing
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:57e594c59d4b771b4491afdde7cdcb8b82f42fa5c5d35620c66a492e07215dc1
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T19:08:15Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/834
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: Guide A names the material felt sheathing; the retained display name differs only in capitalisation.
+    target:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: The source table and historical catalogue both describe thermophysical material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [cibse-material-row]
+      note: Table 3.36 publishes density 960 kg m-3, conductivity 0.19 W m-1 K-1 and specific heat
+        950 J kg-1 K-1 for felt sheathing, exactly matching the stored tuple.
+    source:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: CIBSE Guide A is the direct parameter source. The historical catalogue attributed this row
+        to the MAPSECC dataset, but the MAPSECC author clarified that material values should cite CIBSE
+        and that Hertwig et al. should be cited for the UK typologies instead.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/834
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [cibse-material-row]
+      note: Literature denotes direct adoption of all three thermophysical values from Guide A.
+    identity:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: Legacy ID 36243800 identifies the retained catalogue row; correcting its source does not
+        change the stable record path, its values or its material identity.
+  evidence:
+  - id: cibse-material-row
+    source: cibse2015
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3.36, felt sheathing row
+      page: 3-37
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Publishes felt sheathing as density 960 kg m-3, thermal conductivity 0.19 W m-1 K-1
+        and specific heat 950 J kg-1 K-1.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36243800
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L169-L178
+      note: Stores the same thermal tuple under MAPSECC Ref 90240069; the root spreadsheet contains
+        the same row, excluding YAML migration as the cause of the attribution.
+  scientific_note: >-
+    This correction changes provenance only: the complete stored tuple is an exact CIBSE Table 3.36 row.
+    A repository-wide usage search finds the material in two roof and two wall construction records. The stable record path remains unchanged
+    because paths are database identities, not current citation labels.
+  evidence_revision: sha256:e9c4ba8231241b303b0f137940bf6af73dd539eb4ebfa376f887e4e923902e56
+verification:
+  attestations: []
