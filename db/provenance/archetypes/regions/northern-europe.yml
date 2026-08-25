@@ -20,7 +20,7 @@ dependency_revisions:
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
     records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11: sha256:27deca8b84bf809f30707514810234510db421579488a635190e0a695736c8d5
-    records/surfaces/common/se-england--ward2016--soil: sha256:55883c0cd5992392039d63601179a09be4a4ccd62d3ae11848ee38427d33d5cb
+    records/surfaces/common/se-england--ward2016--soil: sha256:42602b5fd153d3f5c9a27104534ef10d57d467184995626518c392a22ed9b3e8
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -324,6 +324,6 @@ assessment:
     values the composite declares itself have no recorded origin. None of those is a value error, and
     this review does not touch the components' own numbers, but each needs a curator's decision rather
     than an agent's.
-  evidence_revision: sha256:e80d903c6c2434fd1faadff950b3d47714fbb6cff3cca9cd0e807f3aa0f99956
+  evidence_revision: sha256:909f8f7beee9d47a1fcc8ed05cee0d71563975edf98c78bf161c300ef3028d2c
 verification:
   attestations: []

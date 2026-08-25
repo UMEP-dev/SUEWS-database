@@ -837,6 +837,9 @@ places:
     kind: country
     name: Reunion
     region: Africa
+  reze:
+    name: Rezé
+    country: france
   romania:
     kind: country
     name: Romania
