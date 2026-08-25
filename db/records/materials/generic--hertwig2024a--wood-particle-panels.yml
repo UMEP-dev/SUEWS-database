@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--wood-particle-panels
 schema_version: '2026.5'
 target: material
 name: Wood particle panels
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248206
 category: Generic
 display_colour: Generic
