@@ -1508,6 +1508,14 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 + subject
                 + f"<span class=\"erole\">{esc(role_label)}</span></h4>"
             )
+            if item.get("parameter_paths"):
+                paths = ", ".join(
+                    f"<code>{esc(path)}</code>"
+                    for path in item["parameter_paths"]
+                )
+                main.append(
+                    f"<p class=\"locator\"><b>Applies to:</b> {paths}</p>"
+                )
             for locator in item.get("locators", []):
                 label = locator.get("label") or locator.get("kind", "locator")
                 if locator.get("page"):

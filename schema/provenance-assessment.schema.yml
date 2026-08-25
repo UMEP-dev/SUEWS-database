@@ -693,6 +693,16 @@ $defs:
           - compilation
           - validation
           - composition_source
+      parameter_paths:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/parameter_path'
+        description: >-
+          Optional paths below the reviewed entry's parameters mapping to
+          which this evidence role applies. Omit only when the evidence item
+          applies to the complete parameter set or to a non-value finding.
       locators:
         type: array
         minItems: 1
@@ -721,9 +731,25 @@ $defs:
           - possible_duplicate
           - related
           - component
+      parameter_paths:
+        type: array
+        minItems: 1
+        uniqueItems: true
+        items:
+          $ref: '#/$defs/parameter_path'
+        description: >-
+          Optional paths below the reviewed entry's parameters mapping to
+          which this record relationship applies.
       note:
         type: string
         minLength: 1
+  parameter_path:
+    type: string
+    pattern: ^parameters(?:\.(?:[A-Za-z_][A-Za-z0-9_-]*|[0-9]+))+$
+    description: >-
+      Dotted path rooted at the reviewed entry's parameters mapping. A path
+      may identify one leaf or a container whose complete subtree shares the
+      evidence role.
   attempted_source:
     type: object
     additionalProperties: false

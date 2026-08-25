@@ -185,6 +185,20 @@ record, the checker requires evidence IDs. The checker also verifies that IDs
 are unique within an assessment, all cited IDs exist, and source and record
 keys resolve.
 
+An evidence item may carry `parameter_paths`, such as
+`parameters.thermal_conductivity`, when its role applies to only part of a
+record's parameter set. Paths are rooted at `parameters` and may identify a
+single leaf or a complete nested container. Omitting `parameter_paths` means
+that the evidence item applies to the complete parameter set or to a
+non-value finding. The checker rejects paths that do not exist in the reviewed
+entry, and the site shows the scope beside the evidence locator.
+
+Field scope records what a source actually supports; it does not silently
+override the record's backwards-compatible `source` field or authorise a value
+change. A mixed tuple can therefore document that one publication supports one
+field while other fields remain unresolved, without presenting partial
+evidence as support for the complete tuple.
+
 For a measured, fitted or literature assessment to become sign-off eligible,
 at least one `parameter_source` must equal the evidence record's `source` key.
 If an assessment finds an exact-value publication for a record whose source is
