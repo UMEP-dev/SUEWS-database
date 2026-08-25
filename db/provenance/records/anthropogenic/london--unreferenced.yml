@@ -1,0 +1,221 @@
+provenance_record: records/anthropogenic/london--unreferenced
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c707c9fe9232d593b8bf6105fb0eb8746f8ef1fe17fc340a6d6d783405d8ebe0
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    sailor2004: sha256:082eee2314198bd3876cbc7731ca301e6ab82a6e6069436d9f3b35c75acf7e1f
+    umep-dev2019a-anthropogenic-emission-table: sha256:2263d44768d38d1c85c65499a8e71d4703b4fa278a13db21646e325d58f9a171
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+    ward2013: sha256:5d7a4bec348102bcca4def5c59ceb9b46b433dada5c7a469dc5e6c02da25984b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T17:45:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/265
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - migration-row
+      note: The neutral name identifies the public Code 11 configuration without expanding the legacy
+        abbreviation "Järvi MD" into an unsupported meaning or presenting it as a London determination.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - jarvi-vancouver-heat
+      note: The release row stores the combined heat and CO2 configuration used by the
+        anthropogenic_emissions target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - release-config-fields
+      - release-point-source-field
+      - jarvi-vancouver-heat
+      - sailor-metabolism
+      - ward-metabolism
+      - jarvi-vehicle-energy
+      note: The initial v2019a Code 11 row matches the active tuple after restoring EF_umolCO2perJ from
+        the legacy zero to 1.159. Järvi et al. (2011) publish the Vancouver heat coefficients at article
+        precision; Sailor and Lu (2004), Ward et al. (2013), and Järvi et al. (2019) support the scalar
+        metabolism and vehicle-energy parameters. The later v2019a point-source extension supplies the
+        new zero flag but not the vehicle factor, which it changes from 0.38 to 0.285.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - release-config-fields
+      - release-point-source-field
+      - jarvi-vancouver-heat
+      - sailor-metabolism
+      - ward-metabolism
+      - jarvi-vehicle-energy
+      note: The canonical record source is the pinned public table containing the complete combined
+        configuration. Scalar overrides identify direct publications where the export can carry them,
+        and field-scoped sidecar evidence records the Vancouver fitted heat lineage separately.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/265
+    place:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - jarvi-vancouver-heat
+      - migration-row
+      note: No canonical place is declared. The public row has no geographic label, its heat branch is
+        fitted to Vancouver Vs87, and its complete CO2 tuple is not established as London evidence.
+        The stable path and verbatim origin retain the migration identity without turning it into a place claim.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - jarvi-vancouver-heat
+      note: Generic describes an archived reusable configuration whose branches have different origins;
+        no city-wide observational reach is asserted.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - release-config-fields
+      - release-point-source-field
+      - jarvi-vancouver-heat
+      - sailor-metabolism
+      - ward-metabolism
+      - jarvi-vehicle-energy
+      note: Literature at record level denotes adoption of a pinned public configuration. The direct
+        evidence retains fitted, calculated and literature roles for individual fields instead of asserting
+        one shared production method.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - release-code-11
+      - migration-row
+      note: Public Code 11 and legacy row 53240011 carry the same combined tuple. The stable path and
+        origin remain migration identifiers; the canonical name, place and scope no longer claim London evidence.
+  evidence:
+  - id: release-code-11
+    source: umep-dev2019a-anthropogenic-emission-table
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, initial v2019a Code 11
+      url: https://github.com/UMEP-dev/SUEWS/blob/4347c7b662db2c94eee9f4f30c4c669870f242bd/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L4
+      note: States qf_a 0.3081/0.3081, qf_b 0.0099/0.0099, qf_c 0.0102/0.0102,
+        metabolic heat 75/175, metabolic CO2 120/280, fossil fractions 0.05/0, EF 1.159,
+        vehicle energy 4.11e6 J km-1, vehicle CO2 0.38, and traffic units 1.
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, v2019a point-source column extension
+      url: https://github.com/UMEP-dev/SUEWS/blob/3bb78daf6e9a3f6c0a3e86f29d09b0cd1d35535d/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L4
+      note: Adds CO2PointSource 0 but also changes both vehicle factors to 0.285. The initial 0.38 is
+        retained as the original Code 11 configuration; this later locator is used only for the added flag.
+  - id: release-config-fields
+    source: umep-dev2019a-anthropogenic-emission-table
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.frfossilfuel_heat
+    - parameters.co2.frfossilfuel_nonheat
+    - parameters.co2.ef_umolco2perj
+    - parameters.co2.trafficunits
+    locators:
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, initial v2019a Code 11 configuration fields
+      url: https://github.com/UMEP-dev/SUEWS/blob/4347c7b662db2c94eee9f4f30c4c669870f242bd/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L4
+      note: These configuration-only leaves have direct authoritative values in the public input table.
+  - id: release-point-source-field
+    source: umep-dev2019a-anthropogenic-emission-table
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.co2pointsource
+    locators:
+    - kind: dataset
+      label: SUEWS_AnthropogenicEmission.txt, v2019a Code 11 point-source flag
+      url: https://github.com/UMEP-dev/SUEWS/blob/3bb78daf6e9a3f6c0a3e86f29d09b0cd1d35535d/ReleaseRepo/InputTables/2019a/SUEWS_AnthropogenicEmission.txt#L4
+      note: The v2019a column extension directly records CO2PointSource as 0 for Code 11.
+  - id: jarvi-vancouver-heat
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.heat.qf_a.working_day
+    - parameters.heat.qf_a.holiday
+    - parameters.heat.qf_b.working_day
+    - parameters.heat.qf_b.holiday
+    - parameters.heat.qf_c.working_day
+    - parameters.heat.qf_c.holiday
+    locators:
+    - kind: table
+      label: Table 2(b), general model-run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes a0 0.308, a1 0.00986 and a2 0.0102 at article precision for weekday and weekend.
+    - kind: section
+      label: Section 3.2(a), parameter estimation
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that the anthropogenic heat coefficients were determined by multiple linear regression
+        using Vancouver Vs87 data.
+  - id: sailor-metabolism
+    source: sailor2004
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.minqfmetab
+    - parameters.co2.maxqfmetab
+    locators:
+    - kind: section
+      label: Section 2.5, Heat released from human metabolism
+      page: 2745
+      url: https://doi.org/10.1016/j.atmosenv.2004.01.034
+      note: States a sleeping metabolic rate of 75 W and adopts an average daytime rate of 175 W.
+  - id: ward-metabolism
+    source: ward2013
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.minfcmetab
+    - parameters.co2.maxfcmetab
+    locators:
+    - kind: section
+      label: Appendix A3, Human metabolism
+      page: 4662
+      url: https://doi.org/10.5194/acp-13-4645-2013
+      note: Publishes 120 and 280 umol CO2 s-1 person-1 after adjusting the Moriwaki and Kanda values
+        to nighttime and daytime activity periods.
+  - id: jarvi-vehicle-energy
+    source: jarvi2019
+    role: parameter_source
+    parameter_paths:
+    - parameters.co2.enef_v_jkm
+    locators:
+    - kind: table
+      label: Table 2, nonsite-dependent model parameters
+      page: 8369
+      url: https://doi.org/10.1029/2018JD029576
+      note: Publishes vehicle heat release of 4.11e6 J km-1 as a nonsite-dependent model parameter,
+        calculated in the following text from combustion heat, fuel density and fuel economy.
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration AnthropogenicEmission row 53240011
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/anthropogenic_emission.yml#L79-L113
+      note: Preserves origin London, name "Järvi MD", the stable identity and the combined tuple, but
+        carries the unreferenced placeholder and stores EF as zero.
+  scientific_note: >-
+    The one-source blocker is resolved by separating configuration identity from field-level scientific
+    provenance. The exact combined tuple is public Code 11, with the original revision retaining 0.38
+    for vehicle CO2 and a later revision introducing point-source flag 0. Järvi et al. (2011) establish
+    that the heat coefficients were fitted to Vancouver Vs87, not London. The canonical place is therefore
+    omitted and representativeness is generic, while the stable path and verbatim London origin preserve
+    migration traceability. EF 1.159 is restored from the original table; no unsupported value is inferred.
+  evidence_revision: sha256:9324341e8233eaa481f5c7a042b25032de7b5e35872200956f4e5bc0d7a07c03
+verification:
+  attestations: []

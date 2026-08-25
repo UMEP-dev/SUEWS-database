@@ -1,11 +1,11 @@
 record: records/anthropogenic/london--unreferenced
 schema_version: '2026.5'
 target: anthropogenic_emissions
-name: Järvi MD
-place: london
+name: Archived Code 11 combined anthropogenic-emission configuration
 origin: London
-representativeness: city
-source: unreferenced
+representativeness: generic
+source: umep-dev2019a-anthropogenic-emission-table
+method: literature
 legacy_id: 53240011
 parameters:
   context:
@@ -27,7 +27,7 @@ parameters:
     maxfcmetab: 280
     frfossilfuel_heat: 0.05
     frfossilfuel_nonheat: 0
-    ef_umolco2perj: 0
+    ef_umolco2perj: 1.159
     enef_v_jkm: 4110000
     fcef_v_kgkm:
       working_day: 0.38
@@ -47,3 +47,24 @@ legacy:
   TCritic_Cooling_WD: -999
   TCritic_Cooling_WE: -999
   FrPDDwe: 1
+parameter_provenance:
+  parameters.co2.minqfmetab:
+    source: sailor2004
+    method: literature
+    representativeness: generic
+  parameters.co2.maxqfmetab:
+    source: sailor2004
+    method: literature
+    representativeness: generic
+  parameters.co2.minfcmetab:
+    source: ward2013
+    method: calculated
+    representativeness: generic
+  parameters.co2.maxfcmetab:
+    source: ward2013
+    method: calculated
+    representativeness: generic
+  parameters.co2.enef_v_jkm:
+    source: jarvi2019
+    method: calculated
+    representativeness: generic
