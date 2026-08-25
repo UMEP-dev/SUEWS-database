@@ -1194,7 +1194,8 @@ def leaf_pairs(node, prefix=""):
     return out
 
 
-def params_table(params, target, muted=False, linked=True):
+def params_table(params, target, muted=False, linked=True, rec=None,
+                 sources=None, rel=""):
     """Render a parameter block as a table: linked name, value, docs link."""
     rows = []
     for dotted, value in leaf_pairs(params):
@@ -1203,8 +1204,61 @@ def params_table(params, target, muted=False, linked=True):
                 f"configuration reference\"><code>{esc(dotted)}</code></a>"
                 if url else f"<code>{esc(dotted)}</code>")
         klass = "hrs" if isinstance(value, str) and value.count(" ") > 10 else "val"
+        field_provenance = []
+        row_path = f"parameters.{dotted}"
+        matching_overrides = [
+            (path, override)
+            for path, override in (rec or {}).get(
+                "parameter_provenance", {}
+            ).items()
+            if path == row_path or path.startswith(row_path + ".")
+        ]
+        grouped_overrides = defaultdict(list)
+        for path, override in matching_overrides:
+            effective = tuple(
+                override.get(key, rec.get(key))
+                for key in (
+                    "source",
+                    "method",
+                    "place",
+                    "representativeness",
+                    "urban_setting",
+                    "applicable_scale",
+                )
+            )
+            grouped_overrides[effective].append(path)
+        for effective, paths in sorted(
+            grouped_overrides.items(), key=lambda item: repr(item[0])
+        ):
+            source_key, method, place, rep, setting, scale = effective
+            source = (sources or {}).get(source_key, {})
+            label = source_key or "field provenance"
+            if source.get("year"):
+                author = source.get("author", source_key).split(",")[0]
+                label = f"{author} {source['year']}"
+            details = ["Applies to " + ", ".join(sorted(paths))]
+            for key, value in (
+                ("method", method),
+                ("place", place),
+                ("representativeness", rep),
+                ("urban setting", setting),
+                ("applicable scale", scale),
+            ):
+                if value:
+                    details.append(f"{key}: {value}")
+            title = "; ".join(details)
+            if source_key:
+                field_provenance.append(
+                    f' <a class="chip" href="{rel}source/{esc(source_key)}.html" '
+                    f'title="{esc(title)}">{esc(label)}</a>'
+                )
+            else:
+                field_provenance.append(
+                    f' <span class="chip" title="{esc(title)}">{esc(label)}</span>'
+                )
         rows.append(f"<tr><td>{name}</td>"
-                    f"<td><span class=\"{klass}\">{esc(value)}</span></td></tr>")
+                    f"<td><span class=\"{klass}\">{esc(value)}</span>"
+                    f"{''.join(field_provenance)}</td></tr>")
     cls = "kv params muted" if muted else "kv params"
     return f"<table class=\"{cls}\">" + "".join(rows) + "</table>"
 
@@ -1937,7 +1991,20 @@ def record_page(
                         "<p class=\"crumbs\">Names follow the SUEWS YAML "
                         "specification; click one for its definition in the "
                         "configuration reference.</p>")
-            main.append(params_table(params, rec.get("target")))
+            if rec.get("parameter_provenance"):
+                main.append(
+                    "<p class=\"provmeta\">Labelled fields override the record-level "
+                    "citation or scope; unlabelled fields use the record metadata.</p>"
+                )
+            main.append(
+                params_table(
+                    params,
+                    rec.get("target"),
+                    rec=rec,
+                    sources=sources,
+                    rel=rel,
+                )
+            )
         if context:
             main.append("<h3>Context</h3>"
                         "<p class=\"crumbs\">Conditions the set was derived "
@@ -2147,7 +2214,7 @@ def source_page(key, src, paths, records, role_paths=None):
                 )
                 + "</ul>"
             )
-    body.append("<h3>Records whose main source is this publication</h3>")
+    body.append("<h3>Records citing this source</h3>")
     body.append(grouped_list(paths, records, 1))
     return page(key, "\n".join(body), 1)
 
@@ -2283,6 +2350,7 @@ function writeHash() {
   history.replaceState(null, '', h.toString() ? '#' + h.toString() : location.pathname);
 }
 function facetValues(e, facet) {
+  if (facet === 'source' && Array.isArray(e.sources)) return e.sources;
   const value = e[facet];
   if (Array.isArray(value)) return value;
   return value ? [value] : [];
@@ -2544,7 +2612,7 @@ RELATION_SVG = """<svg viewBox="0 0 780 208" role="img" class="relfig"
 <text x="295" y="73" text-anchor="middle" class="rf-lead rf-rec-ink"
  font-size="14" font-weight="600">evidence records</text>
 <text x="295" y="91" text-anchor="middle" class="rf-sub"
- font-size="11">one coherent set per source</text>
+ font-size="11">one stable model parameter set</text>
 <rect x="440" y="50" width="172" height="54" rx="10" class="rf-box rf-typ"/>
 <text x="526" y="73" text-anchor="middle" class="rf-lead rf-typ-ink"
  font-size="14" font-weight="600">typologies</text>
@@ -2576,6 +2644,12 @@ def build_index_page(records, sources, places, by_place):
     n_arch = sum(1 for p in records if p.startswith("archetypes/"))
     cited = {r.get("source") for r in records.values()
              if r.get("source") and r.get("source") != "unreferenced"}
+    cited.update(
+        override.get("source")
+        for record in records.values()
+        for override in record.get("parameter_provenance", {}).values()
+        if override.get("source") and override.get("source") != "unreferenced"
+    )
     n_unref = sum(1 for p, r in records.items()
                   if p.startswith("records/") and r.get("source") == "unreferenced")
     stats = (
@@ -2590,8 +2664,9 @@ def build_index_page(records, sources, places, by_place):
         "<div class=\"hero\"><h2>Find a parameter value you can cite</h2>"
         "<p>Curated values for "
         "<a href=\"https://github.com/UMEP-dev/SUEWS\">SUEWS</a>: one "
-        "source-coherent set per record, named by the model's own parameter "
-        "paths. Every record exports as a fragment that pastes straight into "
+        "stable model parameter set per record, named by the model's own "
+        "parameter paths. A mixed-source set labels its field-level citations. "
+        "Every record exports as a fragment that pastes straight into "
         "a SUEWS YAML configuration, with its citation attached to every "
         f"value. {n_unref} legacy records with no recorded source are "
         "flagged <span class=\"badge-unref\">unreferenced</span>.</p></div>"
@@ -2843,6 +2918,12 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
 
         vals = "".join(pv(k, v) for k, v in pairs[:5])
         src = sources.get(rec.get("source"), {})
+        override_source_keys = sorted({
+            override.get("source")
+            for override in rec.get("parameter_provenance", {}).values()
+            if override.get("source")
+        })
+        override_sources = [sources.get(key, {}) for key in override_source_keys]
         sidecar = sidecars.get(path)
         assessment = sidecar.get("assessment", {}) if sidecar else {}
         review_type = (
@@ -2865,6 +2946,9 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             URBAN_SETTING_LABEL.get(rec.get("urban_setting")),
             region, country, city,
             rec.get("source"), src.get("author"), src.get("title"),
+            " ".join(override_source_keys),
+            " ".join(source.get("author", "") for source in override_sources),
+            " ".join(source.get("title", "") for source in override_sources),
             rec.get("target"), fam, surface or "",
             review_type, method, verification, " ".join(roles),
             " ".join(k for k, _ in pairs),
@@ -2881,7 +2965,11 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             "rep": rec.get("representativeness"),
             "scale": rec.get("applicable_scale"),
             "setting": rec.get("urban_setting"),
-            "source": rec.get("source"), "method": method,
+            "source": rec.get("source"),
+            "sources": sorted({
+                key for key in [rec.get("source"), *override_source_keys] if key
+            }),
+            "method": method,
             "review_type": review_type,
             "verification": verification, "role": roles,
             "vals": vals, "text": text,
@@ -2930,12 +3018,15 @@ def main():
         )
 
     by_place = defaultdict(list)
-    by_source = defaultdict(list)
+    by_source = defaultdict(set)
     for path, rec in records.items():
         if rec.get("place"):
             by_place[rec["place"]].append(path)
         if rec.get("source"):
-            by_source[rec["source"]].append(path)
+            by_source[rec["source"]].add(path)
+        for override in rec.get("parameter_provenance", {}).values():
+            if override.get("source"):
+                by_source[override["source"]].add(path)
 
     (out / "place").mkdir(parents=True, exist_ok=True)
     for slug, paths in by_place.items():
@@ -2946,7 +3037,7 @@ def main():
     (out / "source").mkdir(parents=True, exist_ok=True)
     source_roles = provenance_source_roles(sidecars)
     for key in sorted(set(by_source) | set(source_roles)):
-        paths = by_source.get(key, [])
+        paths = sorted(by_source.get(key, []))
         src = sources.get(key, {})
         (out / "source" / f"{key}.html").write_text(
             source_page(key, src, paths, records, source_roles.get(key)))

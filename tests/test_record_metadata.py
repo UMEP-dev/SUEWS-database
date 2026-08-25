@@ -14,6 +14,7 @@ from check_db import (  # noqa: E402
     structural_check,
     suews_configuration_fragment,
 )
+from export_record import assemble  # noqa: E402
 
 
 BASE_RECORD = {
@@ -106,6 +107,172 @@ class UrbanSettingMetadataTests(unittest.TestCase):
         self.assertEqual(
             fragment["alb"]["ref"]["desc"], "london, site, material"
         )
+
+
+class ParameterProvenanceTests(unittest.TestCase):
+    def errors_for_entry(self, path, entry):
+        records, sources, places = load_all()
+        records[path] = entry
+        sources = {**sources, **SOURCES}
+        places = {**places, **PLACES}
+        return structural_check(records, sources, places)
+
+    def errors_for(self, record):
+        return self.errors_for_entry("records/test", record)
+
+    def test_valid_override_changes_only_the_named_leaf_reference(self):
+        record = deepcopy(BASE_RECORD)
+        record["parameters"] = {"alb": 0.12, "emis": 0.95}
+        record["parameter_provenance"] = {
+            "parameters.alb": {
+                "source": "archive",
+                "method": "assumed",
+                "place": "generic",
+                "representativeness": "generic",
+                "applicable_scale": "land_cover",
+            }
+        }
+        sources = {
+            **SOURCES,
+            "archive": {"doi": "10.0000/archive"},
+        }
+        places = {**PLACES, "generic": {"name": "Generic"}}
+        records, repo_sources, repo_places = load_all()
+        records["records/test"] = record
+        self.assertEqual(
+            structural_check(
+                records,
+                {**repo_sources, **sources},
+                {**repo_places, **places},
+            ),
+            [],
+        )
+
+        fragment = suews_configuration_fragment(record, sources)
+        self.assertEqual(fragment["alb"]["ref"]["ID"], "archive")
+        self.assertEqual(
+            fragment["alb"]["ref"]["desc"],
+            "generic, generic, land_cover",
+        )
+        self.assertEqual(fragment["emis"]["ref"]["ID"], "paper")
+        self.assertEqual(fragment["emis"]["ref"]["desc"], "london, site")
+
+    def test_numeric_list_is_one_exportable_leaf(self):
+        record = deepcopy(BASE_RECORD)
+        record["parameters"] = {"dz": [0.1, 0.2]}
+        record["parameter_provenance"] = {
+            "parameters.dz": {"source": "paper"}
+        }
+        self.assertEqual(self.errors_for(record), [])
+        fragment = suews_configuration_fragment(record, SOURCES)
+        self.assertEqual(fragment["dz"]["value"], [0.1, 0.2])
+        self.assertEqual(fragment["dz"]["ref"]["ID"], "paper")
+
+    def test_archetype_assembly_preserves_child_field_reference(self):
+        record = deepcopy(BASE_RECORD)
+        record["parameters"] = {"alb": 0.12, "emis": 0.95}
+        record["parameter_provenance"] = {
+            "parameters.alb": {"source": "archive"}
+        }
+        archetype = {
+            "archetype": "archetypes/test",
+            "schema_version": "2026.5",
+            "target": "land_cover.paved",
+            "name": "Test assembly",
+            "uses": {"albedo": "records/test"},
+        }
+        fragment = assemble(
+            "archetypes/test",
+            {"records/test": record, "archetypes/test": archetype},
+            {**SOURCES, "archive": {"doi": "10.0000/archive"}},
+        )
+        self.assertEqual(fragment["alb"]["ref"]["ID"], "archive")
+        self.assertEqual(fragment["emis"]["ref"]["ID"], "paper")
+
+    def test_invalid_override_shapes_and_paths_are_rejected(self):
+        candidates = [
+            {},
+            [],
+            {"alb": {"source": "paper"}},
+            {"parameters.missing": {"source": "paper"}},
+            {"parameters.alb": {}},
+            {"parameters.alb": "paper"},
+            {"parameters.alb": {"source": None}},
+        ]
+        for overrides in candidates:
+            with self.subTest(overrides=overrides):
+                record = deepcopy(BASE_RECORD)
+                record["parameter_provenance"] = overrides
+                errors = self.errors_for(record)
+                self.assertTrue(
+                    any("parameter_provenance" in error for error in errors),
+                    errors,
+                )
+
+    def test_non_exportable_leaves_are_rejected(self):
+        values = [
+            {"context": {"mode": 2}},
+            {"label": "summer"},
+            {"enabled": True},
+            {"working_day": {1: 0.5}},
+            {"nested": {"value": 1}},
+        ]
+        paths = [
+            "parameters.context.mode",
+            "parameters.label",
+            "parameters.enabled",
+            "parameters.working_day.1",
+            "parameters.nested",
+        ]
+        for parameters, path in zip(values, paths):
+            with self.subTest(path=path):
+                record = deepcopy(BASE_RECORD)
+                record["parameters"] = parameters
+                record["parameter_provenance"] = {
+                    path: {"source": "paper"}
+                }
+                errors = self.errors_for(record)
+                self.assertTrue(
+                    any("not an exportable parameter leaf" in error for error in errors),
+                    errors,
+                )
+
+    def test_unknown_metadata_is_rejected(self):
+        invalid = {
+            "source": "missing-source",
+            "method": "modelled",
+            "place": "missing-place",
+            "representativeness": "hemispheric",
+            "urban_setting": "downtown",
+            "applicable_scale": "plot",
+            "role": "parameter_source",
+        }
+        for field, value in invalid.items():
+            with self.subTest(field=field):
+                record = deepcopy(BASE_RECORD)
+                record["parameter_provenance"] = {
+                    "parameters.alb": {field: value}
+                }
+                errors = self.errors_for(record)
+                self.assertTrue(
+                    any("parameter_provenance" in error for error in errors),
+                    errors,
+                )
+
+    def test_archetype_cannot_declare_parameter_provenance(self):
+        archetype = {
+            "archetype": "archetypes/test",
+            "schema_version": "2026.5",
+            "target": "land_cover.paved",
+            "name": "Test paved assembly",
+            "uses": {},
+            "parameters": {"alb": 0.12},
+            "parameter_provenance": {
+                "parameters.alb": {"source": "paper"}
+            },
+        }
+        errors = self.errors_for_entry("archetypes/test", archetype)
+        self.assertTrue(any("allowed only" in error for error in errors), errors)
 
 
 if __name__ == "__main__":
