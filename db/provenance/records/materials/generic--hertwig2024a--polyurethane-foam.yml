@@ -1,0 +1,83 @@
+provenance_record: records/materials/generic--hertwig2024a--polyurethane-foam
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c642a31a16d7dd354df230ea2ed24eb4a30960566fc31eca3354922f0a343b71
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T19:08:15Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/839
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: Guide A names the material polyurethane foam, exactly matching the retained identity.
+    target:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: The source table and historical catalogue both describe thermophysical material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [cibse-material-row]
+      note: Table 3.46 publishes density 30 kg m-3, conductivity 0.025 W m-1 K-1 and specific heat
+        1400 J kg-1 K-1 for polyurethane foam, exactly matching the stored tuple.
+    source:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: CIBSE Guide A is the direct parameter source. The historical catalogue attributed this row
+        to the MAPSECC dataset, but the MAPSECC author clarified that material values should cite CIBSE
+        and that Hertwig et al. should be cited for the UK typologies instead.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/839
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [cibse-material-row]
+      note: Literature denotes direct adoption of all three thermophysical values from Guide A.
+    identity:
+      conclusion: supported
+      evidence_ids: [cibse-material-row, legacy-material-row]
+      note: Legacy ID 36243795 identifies the retained catalogue row; correcting its source does not
+        change the stable record path, its values or its material identity.
+  evidence:
+  - id: cibse-material-row
+    source: cibse2015
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3.46, polyurethane foam row
+      page: 3-49
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Publishes polyurethane foam as density 30 kg m-3, thermal conductivity 0.025 W m-1 K-1
+        and specific heat 1400 J kg-1 K-1.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36243795
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L119-L128
+      note: Stores the same thermal tuple under MAPSECC Ref 90240069; the root spreadsheet contains
+        the same row, excluding YAML migration as the cause of the attribution.
+  scientific_note: >-
+    This correction changes provenance only: the complete stored tuple is an exact CIBSE Table 3.46 row.
+    A repository-wide usage search finds the material in four roof and four wall components across five construction records. The stable record path remains unchanged
+    because paths are database identities, not current citation labels.
+  evidence_revision: sha256:61e453655de30b3764c96275ed059b37819e16797a99a70537406f4b3abeabff
+verification:
+  attestations: []
