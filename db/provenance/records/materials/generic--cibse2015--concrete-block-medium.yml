@@ -1,0 +1,87 @@
+provenance_record: records/materials/generic--cibse2015--concrete-block-medium
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:79dd078d8c1e8b96e5bbdf27f939c23673f25f8b3fea70bde62978097a6bd9a7
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:21:14Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/260
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The historical catalogue row supplies the Concrete Block (Medium) configuration label.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The row stores optical and thermal material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: The exact tuple is supported as a retained historical configuration row, not as a CIBSE
+        medium-block condition; the checked Guide A entries have different conductivities, densities, or
+        specific heat.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Unreferenced is correct because no CIBSE row states the complete tuple. source_legacy_ref
+        90240071 retains the migrated registry link without exporting it as the parameter publication.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/260]
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Assumed distinguishes retention of the configuration tuple from a verbatim literature material.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: Legacy ID 36248161 identifies the distinct retained material-registry row; no narrower physical
+        block condition is inferred.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248161
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L269-L278
+      note: Stores the exact tuple, name, and Ref 90240071; this proves release and migration lineage only.
+  - id: cibse-material-tables
+    source: cibse2015
+    role: validation
+    locators:
+    - kind: table
+      label: Tables 3.37 and 3.40
+      page: 3-38, 3-45
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Medium-weight block entries use conductivities 0.31-0.83, densities 920-1940, and specific heat
+        840. No row states the stored 0.51/1000/1400 trio with albedo 0.37 and emissivity 0.92.
+  attempted_sources:
+  - source: cibse2015
+    attempted_at: '2026-08-25T12:21:14Z'
+    outcome: not_found
+    note: The relevant Guide A material and surface tables contain no complete match.
+  scientific_note: >-
+    The tuple is retained exactly as a historical configuration artifact. The checked CIBSE tables contain
+    several non-interchangeable medium-weight block conditions and do not publish the complete five-field
+    row. Source unreferenced, method assumed, and source_legacy_ref 90240071 make the distinction explicit
+    without choosing a replacement identity or changing any value.
+  evidence_revision: sha256:9b9ff929062ac1f8277ad89d9e689767cb289e779c1eb555c30062ab8b9d512b
+verification:
+  attestations: []
