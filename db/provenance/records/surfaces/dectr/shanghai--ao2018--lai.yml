@@ -1,0 +1,174 @@
+provenance_record: records/surfaces/dectr/shanghai--ao2018--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8f2534c7adeb6c3f1778056045814823c42a87bd423b8e903b70a26bad33b587
+dependency_revisions:
+  sources:
+    ao2018: sha256:88b3c9ee4a7ea161d9dd66a37c999cfa83ed334130ac44f34357ae62a09efc7d
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2017a-source-code: sha256:5e2a046b3b2c2b88f651b18ac33be6350ec512893ad669c0a1cb2022273d8c76
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:53:29Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/352
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      note: Ao et al. use the SUEWS Deciduous Tree class for the Xujiahui application.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      note: Ao et al. publish the LAI bounds and phenology choice for the SUEWS deciduous-tree land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      - suews2017a-lai-selector
+      - jarvi2011-deciduous-bounds
+      - breuer-deciduous-median
+      - jarvi2014-deciduous-compilation
+      note: Ao et al. publish minimum 1 and maximum 5.5 and explicitly adopt thermal-only senescence Eq. (5b).
+        SUEWS v2017a maps that branch to LAIType 0; the migrated value 1 instead selects the rejected day-length
+        branch and is corrected to 0.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      - suews2017a-lai-selector
+      - jarvi2011-deciduous-bounds
+      - breuer-deciduous-median
+      - jarvi2014-deciduous-compilation
+      note: Ao et al. directly publish the complete Xujiahui model-input assertion represented by this record.
+        Järvi and Breuer preserve the older bound lineage, while the v2017a source code supplies the numeric
+        selector semantics.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      note: The tuple is published as an input to the Xujiahui study-site run in Shanghai; older input lineage
+        does not change the application identity of the published tuple.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      note: Ao et al. apply the tuple to the Xujiahui source area and do not establish city-wide reach.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      note: Ao et al. describe Xujiahui as a dense central business district.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      - jarvi2011-deciduous-bounds
+      note: The database adopts a published SUEWS input tuple and its source-established equation choice without
+        performing a new measurement, fit, or calculation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-deciduous-lai
+      - legacy-row-31240019
+      note: The stable path and legacy ID preserve the Shanghai deciduous-LAI record while correcting the selector
+        value that contradicted the named publication and model version.
+  evidence:
+  - id: ao-shanghai-deciduous-lai
+    source: ao2018
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1, SUEWS model parameter values at XJH
+      page: 1987
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Publishes Deciduous Tree maximum LAI 5.5 and minimum LAI 1 for the Xujiahui study run.
+    - kind: section
+      label: Section 2d, SUEWS model setup and LAI equations
+      page: 1988
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: States that SUEWS v2017a is used, defines thermal-only senescence Eq. (5b) and the alternative
+        day-length Eq. (5c), rejects Eq. (5c) as unsuitable at Xujiahui, and explicitly adopts Eq. (5b).
+  - id: suews2017a-lai-selector
+    source: umep-dev2017a-source-code
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_type
+    locators:
+    - kind: text
+      label: suews_phys_dailystate.f95, v2017a LAIType branches
+      url: https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/src/suews/src/suews_phys_dailystate.f95#L1042-L1058
+      note: LAIType below 0.5 uses the thermal-only senescence branch; LAIType at or above 0.5 adds the
+        12-hour day-length condition. Therefore stored integer 0 represents Ao Eq. (5b), while 1 represents
+        the Eq. (5c) branch the paper rejects.
+  - id: jarvi2011-deciduous-bounds
+    source: jarvi2011
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 2, model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes deciduous-tree LAI minimum 1 and maximum 5.5; the maximum carries a Breuer et al. footnote.
+  - id: breuer-deciduous-median
+    source: breuer2003
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 7, parameter values for global temperate land covers
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Publishes median LAI 5.5 for deciduous forest. It supplies the older maximum lineage but not the
+        minimum 1 or the Shanghai equation choice.
+  - id: jarvi2014-deciduous-compilation
+    source: jarvi2014
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 4, SUEWS parameters by surface
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Repeats deciduous maximum 5.5 and minimum 1.0 before their use in the Shanghai application.
+  - id: legacy-row-31240019
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_type
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: dataset
+      label: Pre-migration Leaf Area Index row 31240019
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/leaf_area_index.yml#L25-L32
+      note: Preserves the migrated 1/1/5.5 tuple and Ao reference. It establishes lineage but not scientific
+        support for selector 1, which contradicts Ao's adopted equation under v2017a semantics.
+  scientific_note: >-
+    Ao et al. (2018) use SUEWS v2017a, publish deciduous LAI bounds 1 and 5.5, and explicitly adopt the
+    thermal-only leaf-off Eq. (5b) after rejecting the alternative Eq. (5c) because its day-length trigger is
+    unsuitable at Xujiahui. The v2017a source code maps LAIType 0 to that thermal-only branch and LAIType 1 to
+    the day-length branch. The migrated selector 1 therefore contradicts both the paper and the cited model
+    version; changing it to 0 restores the published configuration. Older Järvi and Breuer tables document the
+    inherited bound lineage without replacing Ao as the publication of the complete Shanghai input tuple.
+  evidence_revision: sha256:5cbd76ab9ae59ffcf59fec69fe01e911a9b0e693b545a4b989dcf49c1e65b756
+verification:
+  attestations: []

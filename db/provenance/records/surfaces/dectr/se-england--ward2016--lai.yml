@@ -12,7 +12,7 @@ dependency_revisions:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records:
     records/surfaces/dectr/beijing--ward2013--lai: sha256:0e594f9120547c56dbd483b638c381bd1063fe40ad827f0562c3f5d535755f5e
-    records/surfaces/dectr/shanghai--ao2018--lai: sha256:2dd0de360cffc44f7597c3bb535fef5dbb3124a39a624d388c1a649ea04fc8cd
+    records/surfaces/dectr/shanghai--ao2018--lai: sha256:8f2534c7adeb6c3f1778056045814823c42a87bd423b8e903b70a26bad33b587
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T07:53:20Z'
@@ -82,11 +82,11 @@ assessment:
       related_records:
       - records/surfaces/dectr/beijing--ward2013--lai
       - records/surfaces/dectr/shanghai--ao2018--lai
-      note: The Shanghai record carries the same lai_type and bounds under another source, while the
-        stable Beijing-path record carries the same bounds with a different lai_type and is now correctly
-        classed as generic literature evidence. Whether the stable SE England
-        path is a quoted default or distinct regional evidence requires curation; this source correction
-        neither merges nor deletes any record.
+      note: The Shanghai Xujiahui record and stable Beijing-path record now carry the same thermal-only
+        selector and 1/5.5 bounds under different application identities, while this SE England record
+        retains the day-length selector 1 with the same bounds. Whether the stable SE England path is a
+        quoted default or distinct regional evidence requires curation; this correction neither merges nor
+        deletes any record.
   evidence:
   - id: jarvi-table-2
     source: jarvi2011
@@ -132,6 +132,6 @@ assessment:
     al. evaluate phenological timing without republishing the bounds. The stable path, name, place and
     regional class are retained as migration/application identity and remain curation-required because
     overlapping migrated records exist.'
-  evidence_revision: sha256:fdd8f123056fc0da74d2c8b6b76f5e1dca9b3d2c36008d8edf069040b5fb39c9
+  evidence_revision: sha256:7805251ea08a4b3090ad5df4d5ac980aaf09231c864bb31e763ece910292997a
 verification:
   attestations: []
