@@ -10,12 +10,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-25T13:39:16Z'
+  assessed_at: '2026-08-25T13:42:59Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/387
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/389
   method: assumed
   findings:
     name:
@@ -33,12 +33,13 @@ assessment:
       evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
       note: The exact five-field tuple is supported only as a retained historical configuration row.
         Eppelbaum Table 2.5 supports thermal_conductivity 2.68, but the book does not publish the tuple;
-        albedo 0.35 and emissivity 0.96 are absent, and specific_heat 1900 is contradicted by granite values
-        950, 790 and 720.
+        albedo 0.35, emissivity 0.96 and an exact generic density 2650 are absent, while specific_heat 1900
+        is contradicted by granite values 950, 790 and 720.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/386
       - https://github.com/UMEP-dev/SUEWS-database/issues/387
       - https://github.com/UMEP-dev/SUEWS-database/issues/388
+      - https://github.com/UMEP-dev/SUEWS-database/issues/389
     source:
       conclusion: supported
       evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
@@ -49,6 +50,7 @@ assessment:
       - https://github.com/UMEP-dev/SUEWS-database/issues/386
       - https://github.com/UMEP-dev/SUEWS-database/issues/387
       - https://github.com/UMEP-dev/SUEWS-database/issues/388
+      - https://github.com/UMEP-dev/SUEWS-database/issues/389
     place:
       conclusion: not_applicable
       note: The generic material row makes no observation-place claim.
@@ -105,15 +107,23 @@ assessment:
     note: The complete monograph was close-read for emissivity. Its sole occurrence is the generic symbol
       in the Stefan-Boltzmann expression on book page 33; it contains no rock emissivity table and no
       granite emissivity 0.96.
+  - source: eppelbaum2014
+    attempted_at: '2026-08-24T16:04:19Z'
+    outcome: not_found
+    note: The complete monograph was close-read for density. Table 4.10 gives granite density 2600 kg/m3
+      only in a melting-transition context, and Table 12.1 gives a granite range 2.5-2.7 g/cm3. Neither
+      states a generic granite density 2650 kg/m3 as the stored exact value.
   scientific_note: >-
     Deattribution is a whole-record curation decision required by the one-source export format, not a claim
     that every field lacks evidence. Eppelbaum remains exact field-scoped validation evidence for conductivity
     2.68. Albedo 0.35 is absent from the complete monograph: every albedo or ordinary reflectivity passage
     concerns planetary material, not granite. Emissivity 0.96 is absent too; the book uses emissivity only
     as a generic Stefan-Boltzmann symbol and contains no rock emissivity table. The specific heat 1900 is
-    also absent and conflicts with three stated granite alternatives. No replacement is substituted because
-    the intended source or transformation is unknown. All five values and the stable identity are retained
-    as an explicit unreferenced assumed configuration; the density review adds its disposition separately.
-  evidence_revision: sha256:b97a6568d5195f712c7890c7899c1936f14f47b4eeeb392fadc5a071ad240d3f
+    also absent and conflicts with three stated granite alternatives. Density 2650 is not stated either;
+    the book offers a different melting-context value and a broad range that merely contains 2650. No
+    replacement is substituted because the intended sources or transformations are unknown. All five values
+    and the stable identity are retained as an explicit unreferenced assumed configuration, with all four
+    unsupported fields now carrying explicit dispositions.
+  evidence_revision: sha256:363fe9dcddc1ad00b5042957aa2830a5fc5df1f80c9c1e16f2ac561fe58397c7
 verification:
   attestations: []
