@@ -1,0 +1,103 @@
+provenance_record: records/profiles/energy-use/london--iamarino2012--iamarino
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:d7e309447526a42057cf54e818eabec16e016220e836aba53b27a6ff63d69446
+dependency_revisions:
+  sources:
+    greaterqf-v3-2: sha256:071112bfc80281ba03519559e841b1e43713a834b724c9672834d74324727829
+    iamarino2012: sha256:613baa56e3b6ff2cdf79e9a6d8b31cd9fa3b060ebaec7350f8c903eaa8e8ecec
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:27:44Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/337
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, iamarino-erc-method]
+      note: The historical rows and paper support the Iamarino industry-application identity without
+        implying that the article prints the stored vectors.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, iamarino-erc-method]
+      note: The rows are 24-hour industry energy-use schedules used in the London anthropogenic-heat work.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, greaterqf-industry-profile]
+      note: Both vectors are preserved exactly as historical configuration rows. The archived GreaterQF
+        winter industry input reproduces every working-day value, but no located artifact reproduces the
+        holiday vector.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, iamarino-erc-method, greaterqf-industry-profile]
+      note: Unreferenced is correct because Iamarino et al. do not print or derive the complete stored pair
+        of vectors. source_legacy_ref 90240007 preserves the migrated paper link without exporting it as the
+        parameter publication.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/337]
+    place:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, iamarino-erc-method]
+      note: The historical rows and article identify London as the application domain.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [iamarino-erc-method]
+      note: The sector profile is used in the Greater London building-energy calculation, supporting city
+        application scope rather than a single measurement site.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows, greaterqf-industry-profile]
+      note: Assumed records retention of the complete historical schedule pair because only the working-day
+        transformation is reproducible; the missing holiday transformation is not invented.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-industry-rows]
+      note: Legacy IDs 60240941 and 60240943 are respectively the London industry weekend and weekday rows;
+        migration combines them as holiday and working_day without changing order or values.
+  evidence:
+  - id: legacy-industry-rows
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Historical database rows 60240941 and 60240943
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L28870-L28962
+      note: Preserves the exact weekend and weekday vectors, London/industry identity, and Ref 90240007.
+        This is compilation lineage rather than proof that Iamarino et al. publish the vectors.
+  - id: greaterqf-industry-profile
+    source: greaterqf-v3-2
+    role: input_data
+    parameter_paths: [parameters.working_day]
+    locators:
+    - kind: dataset
+      label: GreaterQFV3.2.7z/V3.2/Index2_EnergyHourly.csv, ElInd_Wi rows 1-48
+      url: https://github.com/Urban-Meteorology-Reading/Urban-Meteorology-Reading.github.io/blob/1d8a6ac6daa322b8ecf358a76b3f226e0de09a23/other%20files/GreaterQFV3.2.7z
+      note: Archive SHA-256 34ae31d1270068cd7b1ec277eab3e13a8ed0593e17589e0bf614bca5988f442d;
+        internal CSV SHA-256 cbae41035e112e0d32805bf64d6ab9cfa7ae530f901f4ba4b4aaa866f791cde2.
+        Adjacent pairs of the first 48 ElInd_Wi values divided by their total 48.000 reproduce working_day.
+  - id: iamarino-erc-method
+    source: iamarino2012
+    role: validation
+    locators:
+    - kind: section
+      label: Section 2.1, Buildings, ERC load-reference profiles
+      page: 1757, 1758
+      url: https://doi.org/10.1002/joc.2390
+      note: Identifies the half-hour ERC industrial profiles used in the London calculation, but does not
+        publish the stored normalized 24-hour vectors or their complete transformations.
+  scientific_note: >-
+    The working-day vector has an exact deterministic lineage through GreaterQF v3.2, while the holiday
+    vector survives only in the historical database and is not reproduced by the located seasonal
+    Saturday/Sunday inputs or later authoritative candidates. The complete record therefore remains an
+    explicit unreferenced assumed configuration. This preserves every value and the London/industry identity,
+    retains Ref 90240007 as historical metadata, and does not invent the missing holiday calculation.
+  evidence_revision: sha256:4659ac8963c6abff26b22e03153dcac7e2e0a6939f8355d49a31c5bac8f947c9
+verification:
+  attestations: []
