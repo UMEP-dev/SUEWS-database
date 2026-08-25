@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/bldgs/sweden--concrete-million-program: sha256:68d7b5429fd8741c01b624bba6fd8e12d4c0dc061ec96d7cccee397dfb4cb7d6
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
-    records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s: sha256:72f8509bebf0412cb77537c73b0bd01ca8a3973911e03bd2440911c82de5c7e4
+    records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s: sha256:fb5b3fbc3dbfb3be1bcea0fd01bad4376e1cac2e0fcd77fe45cf9ab7fefc3e75
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -33,7 +33,7 @@ assessment:
       - archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
       note: The name field of the composite reads 'Brick House, Traditional Neighbourhood'. Its construction
         slot takes records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
-        whose own name reads 'Traditional Neighbourhood, early 1900s' and whose wall stack is records/materials/generic--cibse2015--wood
+        whose own name reads 'Archived UMEP 4.4.3 Traditional Neighbourhood construction' and whose wall stack is records/materials/generic--cibse2015--wood
         at 0.025 m, records/materials/generic--hertwig2024a--felt-sheathing at 0.001 m, records/materials/generic--cibse2015--wood
         at 0.075 m, records/materials/generic--cibse2015--wood at 0.025 m and records/materials/generic--hertwig2024a--plaster-dense
         at 0.025 m. No layer is brick, and the roof is clay tile over wood. The one bjork2002 construction
@@ -163,10 +163,10 @@ assessment:
   - id: component-constructions-gothenburg-bjork2002-traditional-neighbourhood
     record: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s
     role: component
-    note: Fills construction. The record declares target construction, name 'Traditional Neighbourhood,
-      early 1900s', place gothenburg, origin 'Gothenburg, Sweden', representativeness city and source
-      bjork2002, and its wall stack is wood, felt sheathing, wood, wood and dense plaster, with no brick
-      layer.
+    note: Fills construction. The record declares target construction, name 'Archived UMEP 4.4.3
+      Traditional Neighbourhood construction', place gothenburg, origin 'Gothenburg, Sweden',
+      representativeness city, source unreferenced and method assumed; its wall stack is wood, felt
+      sheathing, wood, wood and dense plaster, with no brick layer.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
@@ -193,6 +193,6 @@ assessment:
     the database holds, but the albedo is not: two Gothenburg rows exist, named ''Wood '' and ''Industry,
     dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
     be settled once rather than seven times. This review does not revisit any component value.'
-  evidence_revision: sha256:cca96910280764b0107012c00fe191cbb96151e661961a904bf9d8ae8a4164e0
+  evidence_revision: sha256:44bf3ec60a2d42127d88a0b499aade870ba393a1b31f272a6a6717266d22c12a
 verification:
   attestations: []

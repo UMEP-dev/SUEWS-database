@@ -26,7 +26,7 @@ assessment:
       note: 'The composite is named ''Traditional neighborhood'' and described as ''Traditional neighborhood
         (Stone houses)''. The bldgs slot takes archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood,
         named ''Brick House, Traditional Neighbourhood'', whose construction is records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
-        named ''Traditional Neighbourhood, early 1900s''. The description therefore says stone while the
+        named ''Archived UMEP 4.4.3 Traditional Neighbourhood construction''. The description therefore says stone while the
         component it selects says brick, and this database keeps the two apart: archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
         exists separately, is named ''Stone Houses, Traditional Neighbourhood'', rests on records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
         and is the bldgs component of archetypes/typologies/sweden--traditional-stone-house-neighbourhood.
@@ -114,14 +114,14 @@ assessment:
     is assembled entirely from Swedish country-scale surfaces, and the paved component is the same one
     three sibling Swedish typologies use. The problem is what the entry says it assembles. Its description
     reads ''Traditional neighborhood (Stone houses)'', but the building archetype it selects is named
-    ''Brick House, Traditional Neighbourhood'' and rests on a construction named ''Traditional Neighbourhood,
-    early 1900s''. The database is not indifferent to that distinction: it holds a separate archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
+    ''Brick House, Traditional Neighbourhood'' and rests on a construction named ''Archived UMEP 4.4.3
+    Traditional Neighbourhood construction''. The database is not indifferent to that distinction: it holds a separate archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood
     with its own stone construction, and a separate typology, archetypes/typologies/sweden--traditional-stone-house-neighbourhood,
     that uses it. So either this composite''s description belongs to that other typology and should be
     corrected here, or the bldgs slot is filled by the wrong archetype and the two Swedish traditional-neighbourhood
     entries are crossed. The evidence in the repository does not distinguish those two readings, and they
     have different consequences for anyone selecting this typology, so a maintainer should settle it.
     Nothing here turns on a component''s values, which remain subject to their own assessments.'
-  evidence_revision: sha256:503a3bed059b582cd83a16af3ea2917ab29684dc2b389bda32937a06568f4f35
+  evidence_revision: sha256:735b563b7f36fd458d4ecc0fab45a08d7da3d6e6602bcd9a5a6eac5d63ce7fca
 verification:
   attestations: []
