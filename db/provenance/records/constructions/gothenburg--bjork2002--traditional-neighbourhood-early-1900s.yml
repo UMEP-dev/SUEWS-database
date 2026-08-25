@@ -1,0 +1,108 @@
+provenance_record: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:fb5b3fbc3dbfb3be1bcea0fd01bad4376e1cac2e0fcd77fe45cf9ab7fefc3e75
+dependency_revisions:
+  sources:
+    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    gothenburg: sha256:064c1ba6198c36d16604424614ea02d6c6aec477d924ed6a9becf0ecb3a2428c
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T13:23:53Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/375
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row, release-transition]
+      note: The archival display name states the exact UMEP release identity selected by the maintainer and
+        does not present the configuration as a construction verified from Bjork.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The historical row defines roof and wall material assemblies and insulation indices, matching
+        the construction target.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, release-transition]
+      note: The values are retained exactly as the migrated UMEP 4.4.3 configuration. In particular,
+        wall_insulation_layer 6 means no designated wall-insulation layer; the later value 2 is documented
+        as a release divergence rather than silently substituted.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, release-transition]
+      note: Unreferenced is correct for the archived configuration because the Bjork source could not be
+        inspected and no located publication establishes the complete assembly or insulation index.
+        source_legacy_ref 90242357 preserves the migrated Bjork registry link without exporting it as proof.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/375]
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The historical row explicitly gives Origin Gothenburg, Sweden.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: City records the Gothenburg application identity of the archived row, not a claim that its
+        physical assembly has been independently verified across the city.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, release-transition]
+      note: Assumed denotes the explicit curation decision to preserve the 4.4.3 release behavior while the
+        later 4.5 change lacks a published rationale.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row, release-transition]
+      note: Legacy ID 37243437 is continuous across both official artifacts. The stable record intentionally
+        represents the migrated 4.4.3 snapshot, while the sidecar records that current UMEP uses value 2.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Surface row 37243437
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml#L36-L62
+      note: Stores the exact roof and wall assembly, Gothenburg origin, wInsulation 6 and Ref 90242357.
+        This establishes release and migration lineage, not publication support from Bjork.
+    - kind: dataset
+      label: Official QGIS UMEP 4.4.3 release archive
+      url: https://plugins.qgis.org/plugins/UMEP/version/4.4.3/
+      note: The archive contains workbook SHA-256 50dfc15322115651f672fed86df1fdcc7dc8b13a58b7ced9b2e270b388aee6d3
+        with legacy row 37243437 set to wInsulation 6.
+  - id: release-transition
+    source: umep-dev2025-database
+    role: validation
+    locators:
+    - kind: dataset
+      label: UMEP commit ee02726 and official 4.5 release
+      url: https://github.com/UMEP-dev/UMEP/commit/ee02726e68627d68b80e62eb1a1143a022ab4214
+      note: First public revision with row 37243437 wInsulation 2. The change is retained in UMEP 4.5 and
+        later, but no commit message, issue, cell annotation or changelog explains its evidence basis.
+    - kind: dataset
+      label: Official QGIS UMEP 4.5 release archive
+      url: https://plugins.qgis.org/plugins/UMEP/version/4.5/
+      note: Contains workbook SHA-256 53ba334067cbe51f98e42b3f6ee9544f2567184de9540a3982e05dbe3a690c81
+        with the same construction row set to wInsulation 2.
+  attempted_sources:
+  - source: bjork2002
+    attempted_at: '2026-08-25T13:23:53Z'
+    outcome: inaccessible
+    note: The book was located only as print-only or restricted-access copies; the relevant construction
+      page could not be lawfully inspected, and no public artifact links either insulation index to it.
+  scientific_note: >-
+    This is an identity and release-policy resolution, not a claim that value 6 is scientifically preferable
+    to value 2. UMEP 4.4.3 and the database migration use 6, which makes the wall one horizontally aggregated
+    layer. UMEP 4.5 and later use 2, which separates the 1 mm felt-sheathing layer during aggregation. Total
+    material thickness and steady thermal resistance are unchanged, but transient storage behavior may
+    differ. The maintainer chose to preserve historical 4.4.3 behavior; the record is therefore explicitly
+    unreferenced and assumed, with the later release divergence retained as evidence rather than overwritten.
+  evidence_revision: sha256:2cc4cb1ac7d854e8903a70be55b8c33f2398a433fab0fdc089d2a539860cd437
+verification:
+  attestations: []

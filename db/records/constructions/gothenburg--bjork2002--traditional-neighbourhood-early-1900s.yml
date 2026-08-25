@@ -1,11 +1,13 @@
 record: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s
 schema_version: '2026.5'
 target: construction
-name: Traditional Neighbourhood, early 1900s
+name: Archived UMEP 4.4.3 Traditional Neighbourhood construction
 place: gothenburg
 origin: Gothenburg, Sweden
 representativeness: city
-source: bjork2002
+source: unreferenced
+method: assumed
+source_legacy_ref: 90242357
 legacy_id: 37243437
 parameters:
   roof:
