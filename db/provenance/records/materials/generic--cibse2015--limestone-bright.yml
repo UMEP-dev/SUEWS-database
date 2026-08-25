@@ -1,0 +1,98 @@
+provenance_record: records/materials/generic--cibse2015--limestone-bright
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:225feec7bf6e1587d2ad2ee6509f06a52729d7ed856b5fc97cc89de04717e2d5
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:24:02Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/262
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, kotthaus-s004]
+      note: The historical catalogue supplies the Limestone Bright configuration label; Kotthaus sample
+        S004 is relevant to its radiative pair but does not establish that the row is that specimen.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The row stores optical and thermal material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables, kotthaus-s004]
+      note: The exact tuple is supported as a retained historical configuration row. CIBSE does not publish
+        its thermal trio; Kotthaus independently publishes only the 0.68/0.93 radiative pair for sample S004.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables, kotthaus-s004]
+      note: Unreferenced is correct because no located source states the complete tuple. source_legacy_ref
+        90240071 retains the migrated CIBSE link without exporting it as the parameter publication.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/262]
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables, kotthaus-s004]
+      note: Assumed retains the compilation without claiming a recovered per-field assembly method.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, kotthaus-s004]
+      note: Legacy ID 36248153 identifies the retained catalogue row. Numeric agreement alone does not
+        authorize identifying it with Kotthaus sample S004 or another narrower limestone specimen.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248153
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L219-L228
+      note: Stores the exact tuple, name, and Ref 90240071; this proves release and migration lineage only.
+  - id: cibse-material-tables
+    source: cibse2015
+    role: validation
+    locators:
+    - kind: table
+      label: Tables 3.37 and 3.40
+      page: 3-38, 3-45
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Limestone rows include 1.5/720/2180, 2.9/840/2750 and 1.8/840/2420; none states the stored
+        conductivity 0.93, specific heat 909 and density 2711.
+  - id: kotthaus-s004
+    source: kotthaus2014
+    role: validation
+    parameter_paths: [parameters.albedo, parameters.emissivity]
+    locators:
+    - kind: table
+      label: Table C.1, sample S004
+      url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
+      note: Publishes albedo 0.68 and emissivity 0.93 for a beige limestone specimen, but does not publish
+        the thermal trio or prove that the historical generic row represents that specimen.
+  attempted_sources:
+  - source: cibse2015
+    attempted_at: '2026-08-25T12:24:02Z'
+    outcome: not_found
+    note: The relevant Guide A tables contain no complete thermal or five-field match.
+  scientific_note: >-
+    The exact row is retained as a historical configuration artifact. CIBSE does not publish its thermal
+    trio, while Kotthaus sample S004 explains only the radiative pair and cannot establish specimen identity
+    from numeric agreement alone. Source unreferenced, method assumed, and source_legacy_ref 90240071 make
+    the mixed lineage explicit without changing values or inventing the missing thermal source.
+  evidence_revision: sha256:92ce8cfa1ffba830a87201699527115be1275e477afbdfe2a7b916a1585b9c32
+verification:
+  attestations: []
