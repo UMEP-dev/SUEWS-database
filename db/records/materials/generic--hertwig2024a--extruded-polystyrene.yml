@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--extruded-polystyrene
 schema_version: '2026.5'
 target: material
 name: extruded polystyrene
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248194
 category: Insulation
 display_colour: Grey
