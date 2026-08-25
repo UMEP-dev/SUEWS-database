@@ -1,0 +1,103 @@
+provenance_record: records/materials/generic--hertwig2024a--no-fines-concrete
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:f45c107136c9b69c3a38e7bab92f79a131409828b73e07b118a678be462cc805
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T20:45:01Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/889
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, legacy-material-row]
+      note: Guide A Table 3.46 contains the corresponding material row; the historical catalogue retains the current label.
+    target:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, cibse-radiative-row, legacy-material-row]
+      note: The source tables and historical catalogue describe thermophysical and radiative material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, cibse-radiative-row, legacy-material-row]
+      note: >-
+        Table 3.46 publishes the exact thermal tuple. Table 3.40 places stored emissivity 0.90 within the concrete interval; stored albedo 0.375 is retained only as an unreferenced legacy assumption.
+    source:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, cibse-radiative-row, legacy-material-row]
+      note: >-
+        CIBSE Guide A supports the thermal tuple and the scoped radiative field. Field-level metadata
+        leaves albedo 0.375 unreferenced instead of extending CIBSE beyond what its table states.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/889
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, cibse-radiative-row, legacy-material-row]
+      note: >-
+        Literature is the record-level method for the CIBSE-supported values. Canonical overrides mark emissivity as assumed within 0.85-0.95 and albedo as unreferenced and assumed.
+    identity:
+      conclusion: supported
+      evidence_ids: [cibse-thermal-row, legacy-material-row]
+      note: >-
+        Legacy ID 36248197 identifies the retained catalogue row; correcting its record and
+        field-level provenance does not change the stable path, values or material identity.
+  evidence:
+  - id: cibse-thermal-row
+    source: cibse2015
+    role: parameter_source
+    parameter_paths:
+    - parameters.thermal_conductivity
+    - parameters.specific_heat
+    - parameters.density
+    locators:
+    - kind: table
+      label: Table 3.46, no fines concrete row
+      page: 3-49
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: >-
+        Publishes density 2000 kg m-3, thermal conductivity 1.33 W m-1 K-1
+        and specific heat 1000 J kg-1 K-1.
+  - id: cibse-radiative-row
+    source: cibse2015
+    role: parameter_source
+    parameter_paths:
+    - parameters.emissivity
+    locators:
+    - kind: table
+      label: Table 3.40, concrete row
+      page: 3-45
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: >-
+        Publishes absorptivity 0.65-0.80 and emissivity 0.85-0.95. Stored emissivity 0.90 is within the interval; complementary albedo 0.20-0.35 does not contain stored albedo 0.375.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248197
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L539-L548
+      note: >-
+        Stores the same complete tuple under MAPSECC Ref 90240069; the root spreadsheet contains
+        the same row, excluding YAML migration as the cause of the attribution.
+  scientific_note: >-
+    This correction changes provenance metadata only. CIBSE is scoped to the values it supports,
+    while albedo 0.375 remains an explicit unreferenced legacy assumption. The material is unlinked from any current construction record.
+    The stable record path remains unchanged because paths are database identities, not citations.
+  evidence_revision: sha256:d72c4e40e351f63a71ea6354aca5103c4a1583096f9459830dfb4b32f3135520
+verification:
+  attestations: []
