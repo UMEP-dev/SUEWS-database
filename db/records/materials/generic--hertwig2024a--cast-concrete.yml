@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--cast-concrete
 schema_version: '2026.5'
 target: material
 name: Cast concrete
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248183
 category: Generic
 display_colour: Generic
@@ -12,3 +13,13 @@ parameters:
   thermal_conductivity: 1.33
   specific_heat: 1000
   density: 2000
+parameter_provenance:
+  parameters.albedo:
+    source: unreferenced
+    method: assumed
+  parameters.emissivity:
+    method: assumed
+    source_bounds:
+      minimum: 0.85
+      maximum: 0.95
+      active_role: within
