@@ -1,0 +1,117 @@
+provenance_record: records/surfaces/paved/shanghai--ao2016--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
+dependency_revisions:
+  sources:
+    ao2016: sha256:b1ca07de6a9fb83ab41c961da2415c13cf396f9cc4618134dc3f0015918e493f
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-25T10:41:21Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/339
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      - legacy-row-41240030
+      note: Ao et al. Table 2 and the pre-migration row both identify the surface as Paved.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      note: Table 2 presents the values as SUEWS Paved-surface albedo inputs, matching land_cover.paved.
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      - legacy-row-41240030
+      note: Ao et al. publish a Paved minimum of 0.12 and maximum of 0.14. The active alb value preserves
+        the lower endpoint exactly, but the model-ready record cannot export the upper endpoint because
+        the nonvegetation schema exposes only one scalar alb field.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/339
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      - legacy-row-41240030
+      note: Ao et al. directly print both Paved cells without a source superscript. The legacy row preserves
+        the migration link to that publication. Field scope is limited to the active lower endpoint and
+        does not claim that the stranded upper endpoint is represented in the parameter mapping.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      note: The values are model inputs for the Xujiahui Shanghai study site.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      note: The paper applies the inputs at the Xujiahui site and evaluates the radiometer field of view
+        and eddy-covariance source area, supporting site rather than city reach.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      note: The study identifies Xujiahui as a central business district.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      note: The two unfootnoted Table 2 cells are published as model inputs, but the paper does not establish
+        whether they were measured, fitted, or adopted from earlier material.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-paved-albedo-inputs
+      - legacy-row-41240030
+      note: The publication and pre-migration row preserve the Paved, Shanghai and legacy-ID identity
+        without implying that discarding the upper endpoint was a scientific decision.
+  evidence:
+  - id: ao-paved-albedo-inputs
+    source: ao2016
+    role: parameter_source
+    parameter_paths:
+    - parameters.alb
+    locators:
+    - kind: table
+      label: Table 2, Paved column, alpha_i minimum and maximum (accepted manuscript)
+      page: 13
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      note: Publishes Paved albedo minimum 0.12 and maximum 0.14. Neither cell carries the source superscripts
+        used elsewhere in the table. The active parameters.alb stores 0.12; 0.14 remains under legacy.Alb_max.
+    - kind: section
+      label: Section 3.4, evaluation of a radiation parameterization scheme (accepted manuscript)
+      page: 12
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      note: Describes the Table 2 values as inputs to the XJH SUEWS and NARP runs evaluated over the
+        radiometer field of view and eddy-covariance source area.
+  - id: legacy-row-41240030
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Albedo row 41240030
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/albedo.yml#L72-L78
+      note: Preserves Paved, Shanghai, Alb_min 0.12, Alb_max 0.14 and Ref 90240065, which resolves to
+        Ao et al. This establishes migration fidelity, not a policy for collapsing the pair to one scalar.
+  scientific_note: >-
+    Ao et al. publish the Paved albedo bounds as 0.12 and 0.14. Migration preserves 0.12 as the active
+    parameters.alb value and strands 0.14 under legacy.Alb_max because the current nonvegetation model
+    schema has only one alb field. The field-scoped parameter-source evidence therefore applies only to
+    parameters.alb: provenance paths cannot point into legacy, and this partial scope deliberately prevents
+    record-level sign-off. Issue #339 remains open for a maintainer or upstream model-schema decision:
+    either represent both bounds or explicitly define a scalar policy. The source does not authorise an
+    average or replacing 0.12 with 0.14. No value, source, path, place or identity changes in this assessment.
+  evidence_revision: sha256:f2805c548e82d9f91a473bb10a908fdc93b5d4d7e059e086bec7be89fd5b9639
+verification:
+  attestations: []
