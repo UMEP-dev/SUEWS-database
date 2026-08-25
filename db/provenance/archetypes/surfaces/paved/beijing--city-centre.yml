@@ -13,11 +13,11 @@ dependency_revisions:
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
-    records/surfaces/paved/shanghai--ao2016--albedo: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
+    records/surfaces/paved/shanghai--ao2016--albedo: sha256:118e7cc6bd0a53f843d5af025e2753a521f8b5606d440f23a522117e1be27212
     records/surfaces/paved/shanghai--ao2016--emissivity: sha256:11545d4292418609ee4470ad16f3c310d51f8b47498784dbdc3cc0d7eee02b44
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T14:06:13Z'
+  assessed_at: '2026-08-25T16:01:28Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -138,7 +138,9 @@ assessment:
     record: records/surfaces/paved/shanghai--ao2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place shanghai,
-      representativeness site, urban_setting central_business_district and source ao2016, and carries alb.
+      representativeness site, urban_setting central_business_district, source ao2016 and method literature.
+      It carries alb 0.12 as the published minimum and preserves the published 0.14 maximum as canonical
+      source_bounds metadata.
   - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
     record: records/surfaces/paved/helsinki--jarvi2014--emissivity
     role: component
@@ -192,6 +194,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:5c7db416ce088bb8baa7f6169c870c5acac57d0d973bf901ab1c49aeb44272bf
+  evidence_revision: sha256:da9e194155e013df15f5c5cec1a7d7a1734fbb5a3db8cf1b73b2100e0888a26c
 verification:
   attestations: []

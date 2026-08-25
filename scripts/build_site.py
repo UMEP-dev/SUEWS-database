@@ -1215,6 +1215,12 @@ def params_table(params, target, muted=False, linked=True, rec=None,
         ]
         grouped_overrides = defaultdict(list)
         for path, override in matching_overrides:
+            bounds = override.get("source_bounds")
+            bounds_key = (
+                bounds.get("minimum"),
+                bounds.get("maximum"),
+                bounds.get("active_role"),
+            ) if isinstance(bounds, dict) else None
             effective = tuple(
                 override.get(key, rec.get(key))
                 for key in (
@@ -1225,12 +1231,12 @@ def params_table(params, target, muted=False, linked=True, rec=None,
                     "urban_setting",
                     "applicable_scale",
                 )
-            )
+            ) + (bounds_key,)
             grouped_overrides[effective].append(path)
         for effective, paths in sorted(
             grouped_overrides.items(), key=lambda item: repr(item[0])
         ):
-            source_key, method, place, rep, setting, scale = effective
+            source_key, method, place, rep, setting, scale, bounds = effective
             source = (sources or {}).get(source_key, {})
             label = source_key or "field provenance"
             if source.get("year"):
@@ -1246,6 +1252,11 @@ def params_table(params, target, muted=False, linked=True, rec=None,
             ):
                 if metadata_value:
                     details.append(f"{key}: {metadata_value}")
+            if bounds:
+                minimum, maximum, active_role = bounds
+                details.append(
+                    f"source bounds: {minimum}–{maximum}; active: {active_role}"
+                )
             title = "; ".join(details)
             if source_key:
                 field_provenance.append(
@@ -1255,6 +1266,14 @@ def params_table(params, target, muted=False, linked=True, rec=None,
             else:
                 field_provenance.append(
                     f' <span class="chip" title="{esc(title)}">{esc(label)}</span>'
+                )
+            if bounds:
+                minimum, maximum, active_role = bounds
+                bounds_label = (
+                    f"source bounds {minimum}–{maximum} · active {active_role}"
+                )
+                field_provenance.append(
+                    f' <span class="chip">{esc(bounds_label)}</span>'
                 )
         rows.append(f"<tr><td>{name}</td>"
                     f"<td><span class=\"{klass}\">{esc(value)}</span>"
@@ -2015,8 +2034,8 @@ def record_page(
         main.append(provenance_main)
 
     if rec.get("legacy"):
-        main.append("<h3>Legacy values (no home in the current model; "
-                    "kept verbatim under their original column names)</h3>")
+        main.append("<h3>Legacy values (verbatim original columns; "
+                    "not SUEWS model inputs)</h3>")
         main.append(params_table(rec["legacy"], None, muted=True, linked=False))
 
     try:

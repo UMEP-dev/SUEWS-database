@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/shanghai--ao2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:bc4dcded9b5bcd695a6f7a475589019bcf11f7e96ed506825638bffed5b4b455
+record_revision: sha256:118e7cc6bd0a53f843d5af025e2753a521f8b5606d440f23a522117e1be27212
 dependency_revisions:
   sources:
     ao2016: sha256:b1ca07de6a9fb83ab41c961da2415c13cf396f9cc4618134dc3f0015918e493f
@@ -10,13 +10,14 @@ dependency_revisions:
     shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-25T10:41:21Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T16:01:28Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/339
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -30,13 +31,13 @@ assessment:
       - ao-paved-albedo-inputs
       note: Table 2 presents the values as SUEWS Paved-surface albedo inputs, matching land_cover.paved.
     values:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ao-paved-albedo-inputs
       - legacy-row-41240030
       note: Ao et al. publish a Paved minimum of 0.12 and maximum of 0.14. The active alb value preserves
-        the lower endpoint exactly, but the model-ready record cannot export the upper endpoint because
-        the nonvegetation schema exposes only one scalar alb field.
+        the lower endpoint exactly, and canonical source_bounds now preserve the upper endpoint and
+        explicitly identify the active scalar as the published minimum without changing model behaviour.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/339
     source:
@@ -45,8 +46,8 @@ assessment:
       - ao-paved-albedo-inputs
       - legacy-row-41240030
       note: Ao et al. directly print both Paved cells without a source superscript. The legacy row preserves
-        the migration link to that publication. Field scope is limited to the active lower endpoint and
-        does not claim that the stranded upper endpoint is represented in the parameter mapping.
+        the migration link to that publication, while parameter_provenance.source_bounds now carries both
+        endpoints as canonical field-level metadata.
     place:
       conclusion: supported
       evidence_ids:
@@ -64,18 +65,19 @@ assessment:
       - ao-paved-albedo-inputs
       note: The study identifies Xujiahui as a central business district.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ao-paved-albedo-inputs
-      note: The two unfootnoted Table 2 cells are published as model inputs, but the paper does not establish
-        whether they were measured, fitted, or adopted from earlier material.
+      note: Literature records the database action of adopting Ao et al.'s directly published SUEWS input
+        bounds. It does not claim that the underlying albedos were measured or fitted by Ao et al.
     identity:
       conclusion: supported
       evidence_ids:
       - ao-paved-albedo-inputs
       - legacy-row-41240030
-      note: The publication and pre-migration row preserve the Paved, Shanghai and legacy-ID identity
-        without implying that discarding the upper endpoint was a scientific decision.
+      note: The publication and pre-migration row preserve the Paved, Shanghai and legacy-ID identity.
+        The former legacy-only maximum now also has a canonical home under the active albedo leaf's
+        source_bounds; legacy.Alb_max remains as verbatim migration lineage.
   evidence:
   - id: ao-paved-albedo-inputs
     source: ao2016
@@ -88,7 +90,8 @@ assessment:
       page: 13
       url: https://doi.org/10.1175/JAMC-D-16-0082.1
       note: Publishes Paved albedo minimum 0.12 and maximum 0.14. Neither cell carries the source superscripts
-        used elsewhere in the table. The active parameters.alb stores 0.12; 0.14 remains under legacy.Alb_max.
+        used elsewhere in the table. parameters.alb stores the minimum and its canonical source_bounds
+        preserve the complete pair.
     - kind: section
       label: Section 3.4, evaluation of a radiation parameterization scheme (accepted manuscript)
       page: 12
@@ -105,13 +108,12 @@ assessment:
       note: Preserves Paved, Shanghai, Alb_min 0.12, Alb_max 0.14 and Ref 90240065, which resolves to
         Ao et al. This establishes migration fidelity, not a policy for collapsing the pair to one scalar.
   scientific_note: >-
-    Ao et al. publish the Paved albedo bounds as 0.12 and 0.14. Migration preserves 0.12 as the active
-    parameters.alb value and strands 0.14 under legacy.Alb_max because the current nonvegetation model
-    schema has only one alb field. The field-scoped parameter-source evidence therefore applies only to
-    parameters.alb: provenance paths cannot point into legacy, and this partial scope deliberately prevents
-    record-level sign-off. Issue #339 remains open for a maintainer or upstream model-schema decision:
-    either represent both bounds or explicitly define a scalar policy. The source does not authorise an
-    average or replacing 0.12 with 0.14. No value, source, path, place or identity changes in this assessment.
-  evidence_revision: sha256:f2805c548e82d9f91a473bb10a908fdc93b5d4d7e059e086bec7be89fd5b9639
+    Ao et al. publish the Paved albedo bounds as 0.12 and 0.14, while SUEWS accepts one alb scalar.
+    Canonical source_bounds now preserve the pair, state that the active 0.12 is the source minimum,
+    render the pair on the record page and carry it in the exported RefValue description. This removes
+    the silent migration loss without averaging the bounds, replacing the active value or changing the
+    SUEWS data model. The maximum is no longer legacy-only: field-level provenance carries its
+    canonical meaning while legacy.Alb_max retains the original column for migration fidelity.
+  evidence_revision: sha256:b06607f477826fbc0611f228971b5984490a57b44a95d77932bf877755d171ec
 verification:
   attestations: []

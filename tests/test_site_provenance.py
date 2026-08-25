@@ -101,6 +101,11 @@ class SiteProvenanceTests(unittest.TestCase):
             "parameters.alb": {
                 "source": "yoshida1991",
                 "method": "literature",
+                "source_bounds": {
+                    "minimum": 0.1,
+                    "maximum": 0.2,
+                    "active_role": "minimum",
+                },
             }
         }
         records = dict(self.records)
@@ -120,6 +125,7 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertNotIn('<span class="val">None</span>', page)
         self.assertIn("source/yoshida1991.html", page)
         self.assertIn("Yoshida 1991", page)
+        self.assertIn("source bounds 0.1–0.2 · active minimum", page)
         self.assertIn("ID: yoshida1991", page)
         index = build_search_index(
             records, self.sources, self.places, self.sidecars, self.policy
