@@ -1,0 +1,91 @@
+provenance_record: records/materials/generic--hertwig2024a--plywood-lightweight
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:3bbfa71414d4248e57962e1c58fd1fbcf659d00de7dcb3d0ce6b6a8a1860a735
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T20:45:01Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/890
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: The historical catalogue supplies the Plywood (Lightweight) label; Guide A has plywood rows but no matching tuple.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: The historical row and Guide A table describe thermophysical material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: >-
+        The exact 0.15/2500/560 tuple is supported only as a retained historical configuration row.
+        Guide A publishes two plywood tuples, neither of which matches all three stored values.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: >-
+        Unreferenced is correct because no located source states the complete tuple. source_legacy_ref
+        90240069 retains the migrated MAPSECC link without exporting it as the parameter publication.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/890
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: Assumed retains the historical tuple without claiming a recovered per-field assembly method.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-plywood-rows]
+      note: >-
+        Legacy ID 36248181 identifies the retained catalogue row. Similarity to one CIBSE conductivity
+        value does not establish either published plywood row as the source of this complete tuple.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248181
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L379-L388
+      note: >-
+        Stores the exact tuple, name and MAPSECC Ref 90240069; this proves release and migration lineage only.
+  - id: cibse-plywood-rows
+    source: cibse2015
+    role: validation
+    locators:
+    - kind: table
+      label: Table 3.38, plywood rows
+      page: 3-43
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: >-
+        Publishes plywood tuples 0.12 W m-1 K-1, 1210 J kg-1 K-1, 540 kg m-3 and
+        0.15 W m-1 K-1, 1420 J kg-1 K-1, 700 kg m-3; neither is the stored 0.15/2500/560 tuple.
+  attempted_sources:
+  - source: cibse2015
+    attempted_at: '2026-08-25T20:45:01Z'
+    outcome: not_found
+    note: The relevant Guide A plywood rows contain no complete thermal match.
+  scientific_note: >-
+    The exact row is retained as a historical configuration artifact. CIBSE does not publish its complete
+    thermal tuple, so source unreferenced, method assumed and source_legacy_ref 90240069 expose the unresolved
+    lineage without changing values or inventing a source. The material is unlinked from current constructions.
+  evidence_revision: sha256:e93fd4ce3aeda2c681e3df778c9702b6e75e873be166cd772b5ed049067f56a5
+verification:
+  attestations: []
