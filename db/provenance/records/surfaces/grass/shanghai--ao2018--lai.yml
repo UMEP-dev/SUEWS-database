@@ -1,0 +1,182 @@
+provenance_record: records/surfaces/grass/shanghai--ao2018--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:54ec59a03ee9344fdc4f2e687b0b0bc4f2a7e21d043ec30f0f12bbbc43b1f848
+dependency_revisions:
+  sources:
+    ao2018: sha256:88b3c9ee4a7ea161d9dd66a37c999cfa83ed334130ac44f34357ae62a09efc7d
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-25T10:47:20Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/354
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-local-grass-minimum
+      - legacy-row-31240020
+      note: Ao et al. Table 1 and the pre-migration row both identify the SUEWS surface as Grass.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-local-grass-minimum
+      - ao-shanghai-grass-maximum
+      note: Ao et al. publish both bounds for the SUEWS Grass surface, matching land_cover.grass.
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-local-grass-minimum
+      - jarvi2014-grass-baseline
+      - ao-shanghai-grass-maximum
+      - jarvi2011-grass-maximum
+      - breuer-grass-median
+      - legacy-row-31240020
+      note: Ao et al. publish the stored 3.2/5.9 bounds. The minimum is a local adjustment from 1.6,
+        while the maximum reaches SUEWS from Breuer's median rather than maximum statistic. The legacy
+        row preserves lai_type 1, but the papers do not explicitly map the selected equation to that
+        numeric database code.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - ao-local-grass-minimum
+      - jarvi2014-grass-baseline
+      - ao-shanghai-grass-maximum
+      - jarvi2011-grass-maximum
+      - breuer-grass-median
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/354
+      note: Ao et al. are the parameter source for the locally adjusted minimum but only compile the
+        inherited maximum. Järvi et al. directly publish 5.9 as a SUEWS maximum, while Breuer supplies
+        it as an upstream median. One record-level source cannot express all field roles.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-local-grass-minimum
+      - ao-shanghai-grass-maximum
+      note: Shanghai is the derivation context for the locally adjusted minimum and the application
+        context for the inherited maximum; it is not the evidence origin of both fields.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-local-grass-minimum
+      - ao-shanghai-grass-maximum
+      note: Site reach is supported for the Xujiahui minimum adjustment and model application, but not
+        as the provenance scope of the inherited maximum.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-local-grass-minimum
+      note: Ao et al. identify Xujiahui as a dense central business district.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-local-grass-minimum
+      - jarvi2014-grass-baseline
+      - ao-shanghai-grass-maximum
+      note: The minimum was locally adjusted based on photographs, with better model performance reported,
+        while the maximum was adopted from literature. No single record-level method describes both fields.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-local-grass-minimum
+      - legacy-row-31240020
+      note: The publication and pre-migration row preserve the Grass, Shanghai and legacy-ID identity.
+  evidence:
+  - id: ao-local-grass-minimum
+    source: ao2018
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_min
+    locators:
+    - kind: table
+      label: Table 1, XJH Grass LAI minimum
+      page: 1987
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Publishes the Xujiahui Grass minimum as 3.2.
+    - kind: section
+      label: Section 2d, SUEWS model setup and parameters
+      page: 1988
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: States that winter and spring photographs show green grass, so the minimum was increased
+        from 1.6 in Järvi et al. (2014) to 3.2, yielding better winter and spring model performance.
+  - id: jarvi2014-grass-baseline
+    source: jarvi2014
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_min
+    locators:
+    - kind: table
+      label: Table 4, Grass LAI minimum
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Publishes the earlier Grass minimum 1.6 that Ao et al. explicitly adjusted for Xujiahui.
+  - id: ao-shanghai-grass-maximum
+    source: ao2018
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 1, XJH Grass LAI maximum
+      page: 1987
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Republishes 5.9 as the Shanghai run maximum and directs sources not otherwise given to
+        Järvi et al. (2011); it does not derive a new maximum locally.
+  - id: jarvi2011-grass-maximum
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 2, Grass LAI maximum
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Directly publishes LAImax,grass as 5.9 with a Breuer et al. (2003) source footnote.
+  - id: breuer-grass-median
+    source: breuer2003
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 7, Herbs, forbs, grasses LAI distribution
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Publishes median LAI 5.9 for herbs, forbs and grasses, with maximum 16.2 and N 77. The later
+        SUEWS table repurposes the median as its LAI maximum.
+  - id: legacy-row-31240020
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_type
+    locators:
+    - kind: dataset
+      label: Pre-migration Leaf Area Index row 31240020
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/leaf_area_index.yml#L33-L40
+      note: Preserves Grass, Shanghai, LAIEq 1, LAIMin 3.2, LAIMax 5.9 and Ref 90240064. This establishes
+        migration fidelity for the numeric selector, not independent scientific support for it.
+  scientific_note: >-
+    The tuple is intrinsically mixed. Ao et al. locally adjusted lai_min from 1.6 to 3.2 based on Xujiahui
+    photographs and reported better model performance. The stored lai_max 5.9 instead comes through Järvi et al. from
+    Breuer, where 5.9 is the median of a grass/herb/forb distribution rather than its maximum. Field-scoped
+    evidence now records those roles without attributing both values to one publication. The numeric
+    lai_type 1 remains migration fidelity because the papers do not explicitly map the selected equation
+    to that code. Issue #354 remains open: one record-level source, method, place and representativeness
+    cannot summarise all fields, and scoped parameter sources deliberately cannot make the record eligible
+    for sign-off. No additional source material is missing, and no value, source, path, place or identity
+    changes in this assessment.
+  evidence_revision: sha256:b98aabdc3c440db532ea0870e7abcea7abcc534b3ff8b35454f62581c29516e4
+verification:
+  attestations: []
