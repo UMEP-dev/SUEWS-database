@@ -1,0 +1,109 @@
+provenance_record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
+dependency_revisions:
+  sources:
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T22:50:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/360
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Wood is the historical configuration label and a material category present in Oke Table 8.2;
+        removing trailing whitespace changes no identity or scientific claim.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The migrated row assigns the value to the Buildings surface class.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: >-
+        Albedo 0.22 is supported as the exact migrated configuration value only. Oke Table 8.2 leaves the
+        Wood albedo cell blank, so the value is not represented as an Oke parameter.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/360]
+      note: >-
+        Unreferenced is correct because the cited book does not publish 0.22 for Wood. source_legacy_ref
+        90240001 preserves the former registry link without exporting it as proof.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: >-
+        Generic removes the unsupported geographic claim. Gothenburg remains only in the stable path and
+        origin field as migration and application history.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Generic avoids presenting an archived point value as city-wide Gothenburg evidence.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, oke-table]
+      note: Assumed denotes retention of an executable historical value whose scientific derivation is not
+        recorded.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, origin, legacy ID 41240026, target and value preserve the historical configuration
+        identity while the unsupported scientific and geographic attribution is removed.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Albedo row 41240026
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/albedo.yml#L58-L64
+      note: >-
+        Stores Buildings, Wood, Origin Gothenburg, 0.22/0.22 and Ref 90240001. This establishes release and
+        migration lineage only.
+  - id: oke-table
+    source: oke1987
+    role: validation
+    locators:
+    - kind: table
+      label: Table 8.2, Walls — Wood row
+      page: '281'
+      note: >-
+        The complete second edition prints emissivity 0.90 for Wood but leaves its albedo cell blank. Full
+        text search found no other Wood 0.22 and no Gothenburg or Goteborg occurrence. Private manifestation
+        SHA-256 2b2e2935cfbc01d06d28341c0c0bf1f66ab389302cf8d10519824c01b6e3becf.
+  attempted_sources:
+  - source: oke1987
+    attempted_at: '2026-08-25T22:50:00Z'
+    outcome: not_found
+    note: Complete-book inspection found no Wood albedo 0.22 and no Gothenburg scope.
+  - description: Iqbal (1983), An Introduction to Solar Radiation, Table 9.4.2, p. 290
+    attempted_at: '2026-08-25T22:50:00Z'
+    outcome: incomplete
+    note: Prints Wood 0.22 but attributes its building-material values to Gubareff et al.; it is a useful
+      lead, not the original provenance or evidence of Gothenburg scope.
+  - description: Gubareff, Janssen and Torborg (1960), Thermal Radiation Properties Survey, p. 245
+    url: https://books.google.com/books?id=6wKHQgAACAAJ
+    attempted_at: '2026-08-25T22:50:00Z'
+    outcome: inaccessible
+    note: No readable scan of the cited original page was available, so neither its row-level source nor
+      geographic scope was inferred.
+  scientific_note: >-
+    This correction closes the false Oke/Gothenburg attribution without claiming that the first scientific
+    origin of Wood 0.22 has been recovered. The exact value remains available as an explicit archived
+    configuration assumption. Iqbal and Gubareff remain discoverable research leads, but neither is exported
+    as the source. No parameter value or stable identity changes.
+  evidence_revision: sha256:e924219e2f8e9ceaff0ed15710c94d8ace5570a0522f216f4ece4c77e02861d3
+verification:
+  attestations: []

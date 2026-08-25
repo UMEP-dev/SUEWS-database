@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/sweden--bjork2002--detached-houses-wood: sha256:54da694b18acee41a363bb2f9099af20b07274f64bdf05dd2991332f45efde15
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
-    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
+    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -32,7 +32,7 @@ assessment:
       - component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
       note: The composite is named 'Detached houses, Wood'. Its construction component is now neutrally
         labelled as an archived Swedish detached-house configuration, but six of its ten layers are the
-        generic wood material record; the albedo slot also takes a record named 'Wood '. The label still
+        generic wood material record; the albedo slot also takes a record named Wood. The label still
         identifies what the composite assembles without relying on the removed Bjork attribution.
     target:
       conclusion: supported
@@ -70,12 +70,11 @@ assessment:
       - component-constructions-sweden-bjork2002-detached-houses-wood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite claims place sweden. Two components are Swedish: the construction declares
-        place sweden and the albedo declares place gothenburg. Three distinct components, filling emissivity,
+      note: 'The composite claims place sweden. The construction declares place sweden, while the albedo is
+        now generic and retains Gothenburg only as origin history. Three distinct components, filling emissivity,
         the snow limit and all four ohm positions, declare place helsinki, which db/places.yml
         resolves to country finland; water storage and drainage are generic. The database holds no Swedish record for the
-        Helsinki-sourced quantities: of the twenty-one records under records/surfaces/bldgs the only Swedish
-        ones are the two Gothenburg albedo rows, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
+        Helsinki-sourced quantities, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
         is the only building snowpack_limit record there is. The substitution is therefore forced by the
         record set rather than chosen carelessly, but a Swedish national default assembled mostly from
         Finnish city measurements carries no recorded justification, and only a maintainer can decide
@@ -91,8 +90,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional, but none of its components now carries that
-        class. The construction, water storage and drainage are generic, while the albedo, emissivity, snow
-        limit and OHM components are city records. Four of the seven components are therefore city rows
+        class. The construction, albedo, water storage and drainage are generic, while the emissivity, snow
+        limit and OHM components are city records. Three of the seven components are therefore city rows
         standing in for a country-scale default, and the archived construction no longer supplies even a
         regional evidence-reach claim.
     method:
@@ -117,8 +116,8 @@ assessment:
   - id: component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
     record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
     role: component
-    note: Fills albedo. The record is named 'Wood ', declares target land_cover.bldgs, place gothenburg
-      and representativeness city.
+    note: Fills albedo. The record is named Wood, declares target land_cover.bldgs, place generic,
+      representativeness generic, source unreferenced and method assumed; Gothenburg survives only as origin history.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -156,17 +155,17 @@ assessment:
   scientific_note: 'The selection is coherent at the level of archived identity and borrowed at the level
     of evidence reach. The construction, records/constructions/sweden--bjork2002--detached-houses-wood,
     retains a Swedish application identity and mostly wood layers but is now explicitly an unreferenced,
-    assumed configuration with generic reach. The albedo is a Gothenburg row named ''Wood '', so the two
-    slots carrying the typology''s label still have Swedish migration identities without together providing
+    assumed configuration with generic reach. The albedo is likewise a generic, unreferenced archived row
+    named Wood whose Gothenburg origin is migration history, so neither identity-bearing slot provides
     regional evidence. Emissivity, the snow limit and all four OHM positions
     come from Helsinki records, because the database contains no Swedish record for those quantities and
     only one building snowpack_limit record in total; water storage and drainage are generic. That substitution is forced rather
     than careless, but it is nowhere stated, and it leaves a composite declaring representativeness
-    regional resting on four city rows and three generic components. Both questions live in the composite and can be settled without
+    regional resting on three city rows and four generic components. Both questions live in the composite and can be settled without
     touching a component value: a maintainer should either record that Nordic cross-border substitution
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:6d4db9d3a1e652433c36e4395b508de4c13a37472e811315f901856d545c4f76
+  evidence_revision: sha256:18b0b3a0b761e6015dcb4ca06c36817b857b19ce3f874e00e92026cb4314ee43
 verification:
   attestations: []

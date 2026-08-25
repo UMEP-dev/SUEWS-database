@@ -74,9 +74,10 @@ assessment:
         record. The other two are records/surfaces/bldgs/london--ward2016--albedo, place london, name
         ''Central London'', and records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
         place gothenburg, origin ''Gothenburg, Sweden''. Both are transfers the database forces. It holds
-        no buildings albedo record placed in Finland, and the only other northern European rows are records/surfaces/bldgs/gothenburg--oke1987--albedo,
-        named ''Industry, dark roofs'', and records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
-        named ''Wood '', neither of which describes a city-centre roof. It holds no Finnish construction
+        no buildings albedo record placed in Finland, and the only other northern-European-lineage rows are
+        records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark roofs'', and the generic
+        archived record records/surfaces/bldgs/gothenburg--oke1987--albedo--wood, named Wood; neither
+        describes a city-centre roof. It holds no Finnish construction
         record at all, and the one selected is a Nordic masonry perimeter block whose wall stack runs
         external lime-sand render, records/materials/generic--hertwig2024a--brick-protected at 0.29 m,
         wood and dense plaster, which is a defensible stand-in for a Nordic city centre.'
@@ -179,6 +180,6 @@ assessment:
     rows do declare source jarvi2014. And this city-scale composite
     is the buildings default for two region archetypes, western Europe and northern Europe, which stretches
     one Helsinki city centre across a continent. This review does not revisit any component value.'
-  evidence_revision: sha256:89fb8a73a1e7e74c825e37eddf3138b721d5c9451a4fb06680f6a84ac2bae0ed
+  evidence_revision: sha256:08d736b010c8936e463bc99e90237ad56da944e9501bbfae65a48d452cf24856
 verification:
   attestations: []

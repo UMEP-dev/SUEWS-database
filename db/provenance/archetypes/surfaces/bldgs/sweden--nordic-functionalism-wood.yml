@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
     records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s: sha256:963d9d8604a87241f4d84459869855d24a2ad2fc6b253c75921d083896ff01e1
     records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
-    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:4f533f4183c90b2161bdd81d0d083b2936c388bcf07aa13f8301c94f07652618
+    records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -35,7 +35,7 @@ assessment:
         are limestone, brick twice, mineral wool batts and dense plaster, with no wood among them, and
         its roof is clay tile over wood-wool slab, waterproof covering and air. The only component supporting
         the composite''s Wood qualifier is the albedo row records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
-        named ''Wood ''. That construction is also the only Nordic Functionalism record in records/constructions,
+        named Wood. That construction is also the only Nordic Functionalism record in records/constructions,
         so no wood variant was passed over. A maintainer should decide whether the composite''s name claims
         more than it assembles or whether a wood-framed fabric record is missing.'
     target:
@@ -74,8 +74,8 @@ assessment:
       - component-constructions-sweden-bjork2002-nordic-functionalism-mid-1900s
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: The composite claims place sweden. The construction declares place sweden and the albedo declares
-        place gothenburg. Emissivity, the snow limit and all four ohm positions take records
+      note: The composite claims place sweden. The construction declares place sweden, while the albedo is
+        generic and retains Gothenburg only as origin history. Emissivity, the snow limit and all four ohm positions take records
         declaring place helsinki, while water storage and drainage are generic; db/places.yml resolves helsinki to country finland. The database
         holds no Swedish record for any of those quantities, so the substitution is forced by the record
         set, but it is stated nowhere and only a maintainer can decide whether it is the intended policy
@@ -91,8 +91,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
       note: The composite declares representativeness regional. Only the construction carries that class;
-        the albedo, emissivity, snow limit and ohm components declare representativeness
-        city, while water storage and drainage are generic. Four of the seven components are therefore city rows standing
+        the emissivity, snow limit and ohm components declare representativeness
+        city, while albedo, water storage and drainage are generic. Three of the seven components are therefore city rows standing
         in for a country-scale default.
     method:
       conclusion: supported
@@ -115,8 +115,8 @@ assessment:
   - id: component-surfaces-bldgs-gothenburg-oke1987-albedo-wood
     record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
     role: component
-    note: Fills albedo. The record is named 'Wood ', declares target land_cover.bldgs, place gothenburg
-      and representativeness city.
+    note: Fills albedo. The record is named Wood, declares target land_cover.bldgs, place generic,
+      representativeness generic, source unreferenced and method assumed; Gothenburg survives only as origin history.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -157,14 +157,14 @@ assessment:
     one. Its construction, records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s, is
     Swedish, regional and correctly named for the period, but its wall is limestone, brick, mineral wool
     and plaster with no wood layer, and it is the only Nordic Functionalism construction the database
-    holds. The Wood in the composite's name is carried by the albedo alone, a Gothenburg row named 'Wood
-    '. Either the name claims a variant the database cannot yet describe, in which case the fabric record
+    holds. The Wood in the composite's name is carried by the albedo alone, now a generic archived row named
+    Wood. Either the name claims a variant the database cannot yet describe, in which case the fabric record
     is missing, or the name should say what the construction says; a maintainer has to choose, and this
     review will not choose for them. Alongside that, the composite declares representativeness regional
-    while four of its seven components are city rows; its emissivity, snow limit and OHM
+    while three of its seven components are city rows; its emissivity, snow limit and OHM
     coefficients come from Helsinki because no Swedish record for those quantities exists, while water storage and drainage
     are generic.
     None of this requires a component value to change.
-  evidence_revision: sha256:08f00eb6e9d17a768f49d9fc1bc9afb29c37e4b09e2c67658a3a56074b86b396
+  evidence_revision: sha256:6dda7f330b734dcb0f965448d4ba8deeadc54d5db64d6b97a58e8ebae010e9d6
 verification:
   attestations: []
