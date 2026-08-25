@@ -2,7 +2,9 @@ record: records/materials/generic--cibse2015--concrete-block-medium
 schema_version: '2026.5'
 target: material
 name: Concrete Block (Medium)
-source: cibse2015
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240071
 legacy_id: 36248161
 category: Generic
 display_colour: Generic
