@@ -98,12 +98,13 @@ Envelope fields:
 - `method` (optional) — measured | fitted | literature | calculated | assumed.
   Not recoverable for migrated records; fill it in for new ones.
 - `parameter_provenance` (optional, evidence records only) — controlled
-  overrides for exact numeric parameter leaves when a stable model tuple is
-  not source-coherent. Keys are
+  provenance metadata for exact numeric parameter leaves when a stable model
+  tuple is not source-coherent or when a scalar model input represents one
+  member of a source-published range. Keys are
   dotted paths rooted at `parameters`, and values may override `source`,
   `method`, `place`, `representativeness`, `urban_setting`, or
-  `applicable_scale`. The record envelope remains the fallback for every
-  unlisted leaf. For example:
+  `applicable_scale`, or declare `source_bounds`. The record envelope remains
+  the fallback for every unlisted leaf. For example:
 
   ```yaml
   source: ward2016
@@ -115,7 +116,21 @@ Envelope fields:
     parameters.s2:
       source: umep-dev2016a
       method: assumed
+    parameters.alb:
+      source_bounds:
+        minimum: 0.12
+        maximum: 0.14
+        active_role: minimum
   ```
+
+  `source_bounds` preserves a minimum–maximum pair explicitly published by the
+  cited source when SUEWS accepts only one scalar. `active_role` is controlled:
+  `minimum`, `maximum`, or `within`, and the checker requires the active value
+  to match that role and lie inside finite, ordered bounds. Bounds are
+  provenance, not extra SUEWS parameters: the scalar remains the model input,
+  while the website shows the pair beside it and the exported `RefValue`
+  carries a human-readable bounds statement in `ref.desc`. This records the
+  source without silently inventing a midpoint or changing model behaviour.
 
   Overrides are canonical data: they change record and evidence revisions and
   travel into the model-ready fragment. `make check` accepts only exact leaves
@@ -127,10 +142,12 @@ Envelope fields:
   assessment's `method` remains the record-level default; its method finding
   must explicitly review any per-leaf method overrides and cite the evidence
   that supports them.
-- `legacy:` (optional) — columns of the migrated row that have no home in
-  the current supy model (documented per column in
-  `schema/table_mapping.yml`), and `-999` placeholder cells. Kept verbatim
-  so nothing the legacy database asserted is lost.
+- `legacy:` (optional) — verbatim columns from the migrated row that are not
+  active supy model inputs (documented per column in
+  `schema/table_mapping.yml`), plus `-999` placeholder cells. A value may also
+  have a canonical metadata home, such as a source-published bound, while its
+  original-column copy remains here for migration fidelity. Nothing under
+  `legacy` enters a SUEWS configuration.
 - `context:` inside `parameters:` — values that condition the set without
   being model inputs themselves (e.g. which QF formulation an emission set
   was fitted for, which conductance model a g-set belongs to).

@@ -168,6 +168,43 @@ class ParameterProvenanceTests(unittest.TestCase):
         self.assertEqual(fragment["dz"]["value"], [0.1, 0.2])
         self.assertEqual(fragment["dz"]["ref"]["ID"], "paper")
 
+    def test_source_bounds_are_validated_and_exported(self):
+        record = deepcopy(BASE_RECORD)
+        record["parameter_provenance"] = {
+            "parameters.alb": {
+                "source_bounds": {
+                    "minimum": 0.12,
+                    "maximum": 0.14,
+                    "active_role": "minimum",
+                }
+            }
+        }
+        self.assertEqual(self.errors_for(record), [])
+        fragment = suews_configuration_fragment(record, SOURCES)
+        self.assertEqual(
+            fragment["alb"]["ref"]["desc"],
+            "london, site, source bounds 0.12–0.14 (active: minimum)",
+        )
+
+    def test_invalid_source_bounds_are_rejected(self):
+        candidates = [
+            [],
+            {"minimum": 0.12, "maximum": 0.14},
+            {"minimum": True, "maximum": 0.14, "active_role": "minimum"},
+            {"minimum": 0.15, "maximum": 0.14, "active_role": "minimum"},
+            {"minimum": 0.10, "maximum": 0.14, "active_role": "minimum"},
+            {"minimum": 0.12, "maximum": 0.14, "active_role": "maximum"},
+            {"minimum": 0.12, "maximum": 0.14, "active_role": "average"},
+        ]
+        for bounds in candidates:
+            with self.subTest(bounds=bounds):
+                record = deepcopy(BASE_RECORD)
+                record["parameter_provenance"] = {
+                    "parameters.alb": {"source_bounds": bounds}
+                }
+                errors = self.errors_for(record)
+                self.assertTrue(any("source_bounds" in error for error in errors), errors)
+
     def test_archetype_assembly_preserves_child_field_reference(self):
         record = deepcopy(BASE_RECORD)
         record["parameters"] = {"alb": 0.12, "emis": 0.95}

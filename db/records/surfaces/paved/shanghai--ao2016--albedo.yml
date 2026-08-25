@@ -7,8 +7,15 @@ origin: Shanghai
 representativeness: site
 urban_setting: central_business_district
 source: ao2016
+method: literature
 legacy_id: 41240030
 parameters:
   alb: 0.12
 legacy:
   Alb_max: 0.14
+parameter_provenance:
+  parameters.alb:
+    source_bounds:
+      minimum: 0.12
+      maximum: 0.14
+      active_role: minimum

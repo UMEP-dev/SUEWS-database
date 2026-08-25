@@ -31,6 +31,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import math
 import sys
 from pathlib import Path
 
@@ -52,6 +53,7 @@ PARAMETER_PROVENANCE_FIELDS = {
     "representativeness",
     "urban_setting",
     "applicable_scale",
+    "source_bounds",
 }
 BARE_PARAMETER_CONTAINERS = {"daywat", "daywatper", "working_day", "holiday"}
 
@@ -172,6 +174,59 @@ def parameter_provenance_errors(path, rec, sources, places, urban_settings,
             errors.append(
                 f"{prefix} has invalid applicable_scale {applicable_scale!r}"
             )
+        bounds = override.get("source_bounds")
+        if bounds is not None:
+            if not isinstance(bounds, dict):
+                errors.append(f"{prefix} source_bounds must be a mapping")
+                continue
+            expected = {"minimum", "maximum", "active_role"}
+            if set(bounds) != expected:
+                errors.append(
+                    f"{prefix} source_bounds must contain exactly "
+                    "minimum, maximum and active_role"
+                )
+                continue
+            minimum = bounds["minimum"]
+            maximum = bounds["maximum"]
+            active_role = bounds["active_role"]
+            def numeric(value):
+                return (
+                    isinstance(value, (int, float))
+                    and not isinstance(value, bool)
+                    and math.isfinite(value)
+                )
+            if not numeric(minimum) or not numeric(maximum):
+                errors.append(
+                    f"{prefix} source_bounds minimum and maximum must be finite numbers"
+                )
+                continue
+            if minimum > maximum:
+                errors.append(f"{prefix} source_bounds minimum exceeds maximum")
+                continue
+            if active_role not in {"minimum", "maximum", "within"}:
+                errors.append(
+                    f"{prefix} source_bounds active_role must be minimum, maximum or within"
+                )
+                continue
+            node = rec.get("parameters", {})
+            for part in parameter_path.removeprefix("parameters.").split("."):
+                node = node.get(part) if isinstance(node, dict) else None
+            if not numeric(node):
+                errors.append(f"{prefix} source_bounds require a numeric scalar leaf")
+            elif not minimum <= node <= maximum:
+                errors.append(f"{prefix} active value lies outside source_bounds")
+            elif active_role == "minimum" and node != minimum:
+                errors.append(
+                    f"{prefix} active value is not the source_bounds minimum"
+                )
+            elif active_role == "maximum" and node != maximum:
+                errors.append(
+                    f"{prefix} active value is not the source_bounds maximum"
+                )
+            elif active_role == "within" and not minimum < node < maximum:
+                errors.append(
+                    f"{prefix} active value is not within source_bounds"
+                )
     return errors
 
 
@@ -373,6 +428,12 @@ def reference_info(rec, sources, override=None):
         desc_bits.append(metadata["representativeness"])
     if metadata.get("applicable_scale"):
         desc_bits.append(metadata["applicable_scale"])
+    bounds = metadata.get("source_bounds")
+    if isinstance(bounds, dict):
+        desc_bits.append(
+            f"source bounds {bounds.get('minimum')}–{bounds.get('maximum')} "
+            f"(active: {bounds.get('active_role')})"
+        )
     return {
         "ID": src_key,
         "DOI": src.get("doi"),
