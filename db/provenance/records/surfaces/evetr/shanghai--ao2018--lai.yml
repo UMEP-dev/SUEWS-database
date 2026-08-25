@@ -1,0 +1,177 @@
+provenance_record: records/surfaces/evetr/shanghai--ao2018--lai
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:598fe1193f5ea24b770f95041613b2673aaa0dc8dbcd37d597491adcdd6607b8
+dependency_revisions:
+  sources:
+    ao2018: sha256:88b3c9ee4a7ea161d9dd66a37c999cfa83ed334130ac44f34357ae62a09efc7d
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-25T10:28:42Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/350
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-table-1
+      note: Ao et al. use the SUEWS Evergreen Tree class for the Xujiahui application.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-table-1
+      - jarvi-table-2
+      note: Both papers publish the LAI bounds for the SUEWS evergreen or coniferous-tree land-cover
+        class represented by land_cover.evetr; neither explicitly maps the selected equation to numeric
+        lai_type 1.
+    values:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-shanghai-table-1
+      - jarvi-table-2
+      - breuer-table-7
+      - jarvi2014-table-4
+      - legacy-row-31240018
+      note: Ao et al. publish minimum 4 and maximum 5.1 for Shanghai. Järvi et al. (2011) directly
+        publish the same bounds; their maximum footnote resolves to Breuer's coniferous-forest median
+        5.1, but neither Breuer nor another located upstream source establishes the minimum 4. The legacy
+        row preserves lai_type 1, while the paper does not explicitly map its selected equation to that
+        numeric database code.
+    source:
+      conclusion: correction_required
+      evidence_ids:
+      - ao-shanghai-table-1
+      - jarvi-table-2
+      - breuer-table-7
+      - jarvi2014-table-4
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/350
+      note: Ao et al. are the Shanghai application and compilation source, not the origin of the bounds.
+        Järvi et al. (2011) are the earliest located direct publisher of the complete pair. Breuer supports
+        only the maximum, and the basis of the unfootnoted minimum 4 remains unknown, so changing the
+        record's single source field requires curation.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-shanghai-table-1
+      note: Ao et al. apply the LAI bounds at the Xujiahui site in Shanghai, but the bounds were
+        not derived there. Whether place denotes application context or evidence origin needs curation.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ao-shanghai-table-1
+      note: The paper presents the values as inputs for its Xujiahui study site, but it does not establish
+        the inherited bounds as site-derived evidence. The stored site label therefore needs curation.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-table-1
+      note: Ao et al. describe Xujiahui as a dense central business district.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-table-1
+      - jarvi-table-2
+      note: The record transcribes published SUEWS LAI bounds and preserves the numeric equation code
+        from the legacy row; no new fit or calculation is performed by the database.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-shanghai-table-1
+      - legacy-row-31240018
+      note: The Ao application and pre-migration row jointly preserve the Evergreen Tree, Shanghai,
+        LAI-equation and legacy-ID identity of this record.
+  evidence:
+  - id: ao-shanghai-table-1
+    source: ao2018
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 1, SUEWS model parameter values at XJH
+      page: 1987
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Publishes Evergreen Tree maximum 5.1 and minimum 4 as Xujiahui study inputs; sources not
+        otherwise given are directed to Järvi et al. (2011). It does not print a numeric LAI type code.
+    - kind: section
+      label: Section 2d, SUEWS model setup and parameters
+      page: 1988
+      url: https://doi.org/10.1175/JHM-D-18-0057.1
+      note: Documents local changes to evergreen c4 and grass minimum LAI, but no local derivation or
+        change of the evergreen 5.1/4 bounds.
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 2, model parameter values by surface type and general run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Directly publishes LAImax,con 5.1 with a Breuer et al. (2003) footnote and LAImin,con 4 without
+        a source footnote.
+  - id: breuer-table-7
+    source: breuer2003
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 7, parameter values for land covers in global temperate ecosystems
+      page: 286
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      note: Publishes median LAI 5.1 for coniferous forest. It does not publish the lower bound 4; Section
+        2.2 instead notes the scarcity of minimum-LAI information.
+  - id: jarvi2014-table-4
+    source: jarvi2014
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: table
+      label: Table 4, parameters used in SUEWS by surface
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Repeats LAImax,everg 5.1 and LAImin,everg 4.0 and states that values use Järvi et al. (2011)
+        sources unless otherwise indicated.
+  - id: legacy-row-31240018
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths:
+    - parameters.lai.lai_type
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
+    locators:
+    - kind: dataset
+      label: Pre-migration Leaf Area Index row 31240018
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/leaf_area_index.yml#L16-L24
+      note: Preserves Evergreen Tree, Shanghai, LAIEq 1, LAIMin 4, LAIMax 5.1 and Ref 90240064, which
+        resolves to Ao et al. This is migration lineage, not independent scientific support.
+  scientific_note: >-
+    The stored LAI bounds are published in Ao et al. for the Shanghai application, but their field-level
+    lineage is older and mixed. Järvi et al. (2011) are the earliest located publication of the complete
+    4/5.1 pair. Their footnote and Breuer Table 7 support only the maximum 5.1; the source or modelling
+    basis of the minimum 4 is still unidentified. Ao et al. select an LAI equation, but the paper does not explicitly
+    map it to the migrated numeric lai_type 1 code. The record therefore remains curation-required: replacing
+    Ao with Breuer would falsely attribute the complete pair, while replacing it with Järvi would identify
+    the earliest located direct publisher without recovering the original basis of the minimum. No stored
+    value, source, path, place or identity is changed by this assessment.
+  evidence_revision: sha256:0a1da8f9bf92f82c90c6a1dfbceac9f72926c5e636c7fe8fbf599e70d6fdb297
+verification:
+  attestations: []
