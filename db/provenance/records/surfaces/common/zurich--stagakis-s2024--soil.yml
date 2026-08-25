@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/common/zurich--stagakis-s2024--soil--below-grass: sha256:db644d552c48ddb1055247022043e1f28878e85522a9497104050ba118c5ace6
+    records/surfaces/common/zurich--stagakis-s2024--soil--below-grass: sha256:7f75e2bf48937a2b03f7184c21c6ef723aa8bf4c70b77d8862e0af8a045a70a8
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-25T22:12:00Z'
@@ -107,6 +107,6 @@ assessment:
     truthfully preserve an executable historical configuration even when its original parameter source is
     unknown. Stagakis et al. remain useful validation and application context, but they are not exported as
     the authors of values they did not publish. No parameter value or stable identity changes.
-  evidence_revision: sha256:e7c789c64fe47f6f8779b69fc67364fb2282143ca2eae3de9272030db1356e29
+  evidence_revision: sha256:e71cc4f6de3f9a4f5aefeb4630ac3faf52d729d0187e155e0f16f4e4774d050f
 verification:
   attestations: []
