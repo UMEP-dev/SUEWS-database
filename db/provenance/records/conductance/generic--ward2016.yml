@@ -1,0 +1,140 @@
+provenance_record: records/conductance/generic--ward2016
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:be9d6ebb9be42658cc9d407d4210b35d96d25164c99a01b6ae9c9dc44260b262
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T14:01:24Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/104
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      - suews2016a-code-200
+      note: Ward et al. present the new generic surface-conductance parameterisation, and the release
+        workbook labels its code 200 tuple for use with gsChoice 2.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      - suews2016a-code-200
+      note: Appendix A defines the conductance response functions and the release workbook places the
+        tuple in SUEWS_Conductance for gsChoice 2.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      - suews2016a-code-200
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/104
+      note: Ward Table A1 supports g_max, g_k, g_q_base, g_q_shape, g_t, g_sm, th, tl and kmax.
+        The pinned v2016a workbook supports the complete implemented tuple and is the direct source
+        for s1 5.56 and s2 0. No value is changed.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      - suews2016a-code-200
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/104
+      note: Parameter-level provenance now keeps Ward et al. as the source for the nine values they
+        publish while identifying the v2016a release artifact as the source for s1 and s2.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      note: The coefficients were informed by an empirical fit to Swindon data, now recorded as the
+        origin, while the authors explicitly aimed for a generic parameterisation.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      note: Ward et al. state that the Swindon-informed coefficients aim to be as generic as possible
+        and set the fixed limits to span a wide range of environmental and climatic conditions.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-conductance-parameterisation
+      - suews2016a-code-200
+      note: G1-G6 were obtained by non-linear least squares after Kmax, TL, TH and the 120 mm paper
+        threshold were set. The canonical method overrides therefore mark th, tl and kmax as assumed;
+        s1 and s2 are also implementation choices stated by the release artifact rather than fitted
+        coefficients from the paper.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - suews2016a-code-200
+      note: Workbook code 200 contains the exact eleven-value tuple and identifies it for gsChoice 2,
+        supporting the stable path and legacy ID without changing either.
+  evidence:
+  - id: ward-conductance-parameterisation
+    source: ward2016
+    role: parameter_source
+    parameter_paths:
+    - parameters.g_max
+    - parameters.g_k
+    - parameters.g_q_base
+    - parameters.g_q_shape
+    - parameters.g_t
+    - parameters.g_sm
+    - parameters.th
+    - parameters.tl
+    - parameters.kmax
+    locators:
+    - kind: section
+      label: Appendix A, Equations A1-A5 and derivation paragraph
+      page: 28, 29
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Defines the response functions; sets Kmax to 1200, TL to -10, TH to 55 and the paper's
+        wilting-point deficit to 120 mm; and states that non-linear least squares supplied G1-G6 from
+        Swindon data while aiming for coefficients that were as generic as possible.
+    - kind: table
+      label: Appendix A, Table A1
+      page: 29
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Publishes G1 3.5, G2 200, G3 0.13, G4 0.7, G5 30, G6 0.05, TL -10, TH 55 and Kmax 1200,
+        plus a separate 120 mm wilting-point deficit that is not stored directly as s1 or s2.
+    note: The article is the original parameter publication for the six fitted response coefficients
+      and the three fixed radiation and temperature limits, but it does not state s1 5.56 or s2 0.
+  - id: suews2016a-code-200
+    source: umep-dev2016a
+    role: parameter_source
+    parameter_paths:
+    - parameters.s1
+    - parameters.s2
+    locators:
+    - kind: dataset
+      label: SUEWS_Conductance, row 5, code 200, cells A5:N5
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The static workbook cells contain the full tuple, including J5 s1 5.56 and K5 s2 0;
+        N5 labels it New coefficients - Use with gsChoice = 2 (HCW 18 Jun 2015). The downloaded
+        workbook bytes have SHA-256 e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.
+    - kind: dataset
+      label: V2016a SUEWS_Conductance.txt, code 200
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Conductance.txt#L8
+      note: Independently preserves the same code 200 tuple and description in the pinned flat input artifact.
+    note: The release configuration is the direct, exact source for the two implementation cells in
+      the SUEWS conductance tuple. It does not establish that they encode the paper's 120 mm deficit.
+  scientific_note: Ward et al. publish six fitted response coefficients and three fixed limits, but
+    express soil-moisture limitation with a 120 mm wilting-point deficit rather than the s1 and s2 fields
+    stored by SUEWS. The authoritative v2016a workbook maps the proposed gsChoice 2 parameterisation to
+    code 200 with s1 5.56 and s2 0. This change preserves the released model tuple and makes that mixed
+    provenance explicit instead of attributing artifact-only cells to the paper or presenting them as
+    an exact encoding of its 120 mm deficit. It also records Swindon as the observational origin while
+    retaining the source-supported generic application scope.
+  evidence_revision: sha256:f8ac0eead92e78529434dccf4a08459422c40742c9ba44b8c942286ee674a676
+verification:
+  attestations: []

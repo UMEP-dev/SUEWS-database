@@ -116,6 +116,8 @@ class SiteProvenanceTests(unittest.TestCase):
             policy=self.policy,
         )
         self.assertIn("Labelled fields override the record-level", page)
+        self.assertIn('<span class="val">0.1</span>', page)
+        self.assertNotIn('<span class="val">None</span>', page)
         self.assertIn("source/yoshida1991.html", page)
         self.assertIn("Yoshida 1991", page)
         self.assertIn("ID: yoshida1991", page)

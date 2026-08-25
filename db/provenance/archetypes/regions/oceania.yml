@@ -16,7 +16,7 @@ dependency_revisions:
     archetypes/surfaces/paved/beijing--city-centre: sha256:93698df964bdb43e4e592980da8979cfaee0793da142f11154e1cfc0a6f3126a
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
-    records/conductance/generic--ward2016: sha256:6efeb69638e0a3ba9328f0384c98cd72b05c062f383489fcda77c45155a30b61
+    records/conductance/generic--ward2016: sha256:be9d6ebb9be42658cc9d407d4210b35d96d25164c99a01b6ae9c9dc44260b262
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
     records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12: sha256:ad2ee5b1d1d9e003648b7cf6f1abc7764c97de8ae3c7a0d86b35862b1c1f4f42
@@ -329,6 +329,6 @@ assessment:
     means a straight swap will not fix it. Thirteen of fifteen components are single-city rows standing
     for a region, and the two base temperatures the composite declares have no recorded origin. The selection
     needs a curator, not a value correction.'
-  evidence_revision: sha256:c69ba3fe5c46b47a04ad227053862736067bc56b71a26aa539f3801e23055391
+  evidence_revision: sha256:cb2d6f08e947307ea182cce1a0c9ca0019b2f2e4f6f46baa4c9e8c161eaba7c2
 verification:
   attestations: []
