@@ -1,0 +1,85 @@
+provenance_record: records/materials/generic--cibse2015--concrete-block-lightweight
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7fdd9aa76511000225babd7673ec86bad5f33db5f030dbc7401bd566f92e490e
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:22:35Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/261
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The historical catalogue row supplies the Concrete Block (Lightweight) configuration label.
+    target:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: The row stores optical and thermal material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: The exact tuple is supported as a retained historical configuration row, not as a verbatim
+        CIBSE lightweight-block condition; Guide A's nearest named row uses conductivity 0.20, not 0.19.
+    source:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Unreferenced is correct because no CIBSE row states the complete tuple. source_legacy_ref
+        90240071 retains the migrated registry link without exporting it as the parameter publication.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/261]
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [legacy-material-row, cibse-material-tables]
+      note: Assumed records retention without claiming that 0.19 is a deliberate rounding or transformation.
+    identity:
+      conclusion: supported
+      evidence_ids: [legacy-material-row]
+      note: Legacy ID 36248162 identifies the distinct retained material-registry row; no narrower physical
+        block condition is inferred.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248162
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L279-L288
+      note: Stores the exact tuple, name, and Ref 90240071; this proves release and migration lineage only.
+  - id: cibse-material-tables
+    source: cibse2015
+    role: validation
+    locators:
+    - kind: table
+      label: Tables 3.37, 3.40 and 3.46
+      page: 3-38, 3-45, 3-49
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Lightweight aggregate concrete block is listed as conductivity 0.20, density 600 and specific
+        heat 1000. No row states conductivity 0.19 with the stored radiative pair 0.37/0.92.
+  attempted_sources:
+  - source: cibse2015
+    attempted_at: '2026-08-25T12:22:35Z'
+    outcome: not_found
+    note: The relevant Guide A material and surface tables contain no complete match or stated transformation.
+  scientific_note: >-
+    The tuple is retained exactly as a historical configuration artifact. Similarity to the 0.20 CIBSE row
+    does not authorize rounding or replacement. Source unreferenced, method assumed, and source_legacy_ref
+    90240071 make the distinction explicit without changing any value or choosing a new material identity.
+  evidence_revision: sha256:707bf31a092970fa0320f7fcd077a33d74f146d8aab1452e28750001911ea259
+verification:
+  attestations: []
