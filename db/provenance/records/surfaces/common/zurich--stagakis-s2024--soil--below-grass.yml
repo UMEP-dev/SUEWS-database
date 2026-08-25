@@ -1,100 +1,113 @@
 provenance_record: records/surfaces/common/zurich--stagakis-s2024--soil--below-grass
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:db644d552c48ddb1055247022043e1f28878e85522a9497104050ba118c5ace6
+record_revision: sha256:7f75e2bf48937a2b03f7184c21c6ef723aa8bf4c70b77d8862e0af8a045a70a8
 dependency_revisions:
   sources:
     stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/surfaces/common/zurich--stagakis-s2024--soil: sha256:f4e6dfd5f709b878d1361b157076caa27cb03e3b93be0dbcbbc504f33cc5014c
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T01:50:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T22:20:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/222
+  method: assumed
   findings:
     name:
       conclusion: supported
-      evidence_ids:
-      - stagakis-parameter-table
-      note: Below Grass corresponds to the Lawn column that Table S3 uses for the vegetated surfaces.
+      evidence_ids: [migration-row]
+      note: The neutral name identifies the retained Zurich below-grass soil configuration without presenting
+        Below Grass as a parameter class published by Stagakis et al.
     target:
       conclusion: supported
-      evidence_ids:
-      - stagakis-parameter-table
-      note: Soil properties beneath a vegetated surface are a land_cover.common property.
+      evidence_ids: [migration-row]
+      note: The historical row stores common SUEWS soil hydraulic and storage inputs.
     values:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-parameter-table
-      note: None of the four stored values appears in the article or the supplement. Table S3 publishes
-        a wilting-point deficit of 143 mm for the Lawn column, which is a different quantity from the
-        stored soil_store_capacity of 150 mm and, in any case, a different number; it should not be read
-        as the same figure. There is no soil depth, saturated hydraulic conductivity or soil density anywhere
-        in the publication.
+      conclusion: supported
+      evidence_ids: [migration-row, stagakis-parameter-table]
+      note: The four values are supported as the exact migrated configuration tuple. The Stagakis article
+        and supplement do not publish them, so no scientific origin or Zurich determination is asserted.
     source:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-parameter-table
-      note: The cited study cannot be shown to publish these values, and no replacement is named here.
+      conclusion: supported
+      evidence_ids: [migration-row, stagakis-parameter-table]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/222]
+      note: Unreferenced is correct because the cited publication contains no soil depth, store capacity,
+        saturated hydraulic conductivity or density matching this row. source_legacy_ref 90240068 retains
+        the historical registry link without exporting it as proof.
     place:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-scope
-      note: Nothing published ties these soil properties to Zurich.
+      conclusion: supported
+      evidence_ids: [migration-row, stagakis-scope]
+      note: Zurich records the archived application identity. It is not evidence that the tuple was
+        measured or derived in Zurich.
     representativeness:
-      conclusion: correction_required
-      evidence_ids:
-      - stagakis-scope
-      note: City representativeness overstates a four-park study.
+      conclusion: supported
+      evidence_ids: [migration-row, stagakis-scope]
+      note: Generic avoids converting a four-park application or a migrated Origin cell into city-wide
+        parameter evidence.
     method:
-      conclusion: unresolved
-      evidence_ids:
-      - stagakis-parameter-table
-      note: With no source established, the production method is open.
+      conclusion: supported
+      evidence_ids: [migration-row, stagakis-parameter-table]
+      note: Assumed denotes retention of an executable historical configuration whose scientific source
+        and production method are not recorded.
     identity:
       conclusion: supported
-      evidence_ids:
-      - stagakis-parameter-table
-      note: The two Zurich soil records differ only in storage capacity, which matches Table S3 distinguishing
-        the Trees and Lawn columns, so keeping them separate is coherent even though the values themselves
-        are unsourced.
+      evidence_ids: [migration-row]
       related_records:
       - records/surfaces/common/zurich--stagakis-s2024--soil
+      note: Legacy ID 22240065 and the 150 mm capacity distinguish this below-grass configuration from the
+        related 130 mm tree-soil row without claiming two independently published determinations.
   evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Soil row 22240065
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/soil.yml#L165-L177
+      note: Stores the exact 349/150/0.0005/1.16 tuple, Origin Zurich and Ref 90240068. This establishes
+        release and migration lineage only.
   - id: stagakis-parameter-table
     source: stagakis-s2024
-    role: compilation
+    role: validation
     locators:
     - kind: supplementary
       label: Supplement Table S3, Parameters used by SUEWS model
-      page: 3
+      page: '3'
       url: https://doi.org/10.5194/bg-22-2133-2025-supplement
-      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
-        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
-        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
-        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
-        storage capacity, no light-response alpha or theta and no minimum respiration.
+      note: Distinguishes Trees and Lawn columns but publishes none of the four stored soil properties;
+        its 143 mm Lawn value is a different quantity, wilting-point deficit.
   - id: stagakis-scope
     source: stagakis-s2024
-    role: compilation
+    role: validation
     locators:
     - kind: section
       label: Title and abstract
-      page: 2133
+      page: '2133'
       url: https://doi.org/10.5194/bg-22-2133-2025
-      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
-        situ measurements made in those parks; it is park-scale, not a city-wide determination.
-  scientific_note: The publication carries no soil hydraulic properties. The only soil quantity in Table
-    S3 is a wilting-point deficit, 143 mm for the Lawn column, and it is neither the same quantity as
-    the stored storage capacity of 150 mm nor the same number, so the near-miss should not tempt anyone
-    into treating one as the other. The stored depth, conductivity and density have no locator in this
-    source at all. What keeps this from being a contradiction is that Table S3 covers the photosynthesis
-    and conductance equations rather than the water balance, so its silence on soil is not a denial.
-  evidence_revision: sha256:7a65c7e8c00ba5a037180e5086ea2876919c83ec9bc07327ba169ae0de490b41
+      note: The study evaluates models in four Zurich parks; it does not establish city-wide reach for
+        an unpublished soil tuple.
+  - id: related-tree-soil
+    record: records/surfaces/common/zurich--stagakis-s2024--soil
+    role: related
+    note: Retains the separate 130 mm tree-soil configuration from the same migrated table.
+  attempted_sources:
+  - source: stagakis-s2024
+    attempted_at: '2026-08-25T22:20:00Z'
+    outcome: not_found
+    note: The article, final supplement and public Zenodo parameter table contain no matching soil tuple.
+  scientific_note: >-
+    This resolves the incorrect attribution without inventing a replacement publication. The database can
+    truthfully preserve an executable historical configuration even when its original parameter source is
+    unknown. Stagakis et al. remain useful validation and application context, but they are not exported as
+    the authors of values they did not publish. An identical tuple in an unrelated Helsinki configuration is
+    not lineage evidence. No parameter value or stable identity changes.
+  evidence_revision: sha256:6638dca599db47269d791456b6b2beae9c36370eefca2a7259604d09d5ecac43
 verification:
   attestations: []

@@ -1,11 +1,13 @@
 record: records/surfaces/common/zurich--stagakis-s2024--soil--below-grass
 schema_version: '2026.5'
 target: land_cover.common
-name: Below Grass
+name: Archived Zurich below-grass soil configuration
 place: zurich
 origin: Zurich
-representativeness: city
-source: stagakis-s2024
+representativeness: generic
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240068
 legacy_id: 22240065
 parameters:
   soil_depth: 349
