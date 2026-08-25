@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/common/zurich--stagakis-s2024--soil: sha256:450fb0a3c99a42c19ae4a365dd91d8a23f51c239b98c0cab0e9036e8c9a7b737
+    records/surfaces/common/zurich--stagakis-s2024--soil: sha256:f4e6dfd5f709b878d1361b157076caa27cb03e3b93be0dbcbbc504f33cc5014c
 assessment:
   status: unresolved
   assessed_at: '2026-08-23T01:50:00Z'
@@ -95,6 +95,6 @@ assessment:
     into treating one as the other. The stored depth, conductivity and density have no locator in this
     source at all. What keeps this from being a contradiction is that Table S3 covers the photosynthesis
     and conductance equations rather than the water balance, so its silence on soil is not a denial.
-  evidence_revision: sha256:6c0a504c5320193b201184ff38f9ed2462fc1e8e0eeac3d43495ac690b4207c1
+  evidence_revision: sha256:7a65c7e8c00ba5a037180e5086ea2876919c83ec9bc07327ba169ae0de490b41
 verification:
   attestations: []
