@@ -1,0 +1,85 @@
+provenance_record: records/materials/generic--hertwig2024a--ballast-chips-or-paving-slab
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:236debad055d7a7d395e4e499be0ac0a7dc33fdece89eadcc67d3f25029f3f61
+dependency_revisions:
+  sources:
+    cibse2015: sha256:8602f8702f972135777d0daefd5021d7236bfa48bcf41994e2ce10f3dc1099ce
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T17:05:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/213
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [cibse-ballast, legacy-material-row]
+      note: Guide A names the material ballast; the historical catalogue preserves the longer display label.
+    target:
+      conclusion: supported
+      evidence_ids: [cibse-ballast, legacy-material-row]
+      note: The source table and historical catalogue both describe thermophysical material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [cibse-ballast]
+      note: Table 3.46 publishes density 1800 kg m-3, conductivity 1.1 W m-1 K-1 and specific heat
+        1000 J kg-1 K-1 for ballast. The former conductivity 1.13 belongs to the adjacent cast-concrete row.
+    source:
+      conclusion: supported
+      evidence_ids: [cibse-ballast, legacy-material-row]
+      note: CIBSE Guide A is the parameter source. The historical catalogue attributed this row to the
+        MAPSECC dataset, but the MAPSECC author clarified that material values should cite CIBSE and that
+        Hertwig et al. should be cited for the UK typologies instead.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [cibse-ballast]
+      note: Literature denotes direct adoption of the three thermophysical values from Guide A.
+    identity:
+      conclusion: supported
+      evidence_ids: [cibse-ballast, legacy-material-row]
+      note: Legacy ID 36248185 identifies the retained catalogue row; correcting its source and conductivity
+        does not change the stable record path or its material identity.
+  evidence:
+  - id: cibse-ballast
+    source: cibse2015
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3.46, ballast row
+      page: 3-49
+      url: https://www.cibse.org/knowledge-research/knowledge-portal/guide-a-environmental-design-2015
+      note: Publishes ballast as density 1800 kg m-3, thermal conductivity 1.1 W m-1 K-1 and specific
+        heat 1000 J kg-1 K-1. The immediately preceding cast-concrete row has conductivity 1.13.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248185
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L419-L428
+      note: Stores the migrated 1.13/1000/1800 tuple under the MAPSECC reference. The root spreadsheet
+        contains the same literal conductivity, excluding YAML migration as the cause.
+  scientific_note: >-
+    This correction resolves the previously ambiguous MAPSECC lineage. The MAPSECC author confirmed that
+    material values should cite CIBSE rather than Hertwig et al.; a repository-wide usage search finds this
+    ballast record unlinked from any wall, roof or typology. The direct CIBSE row therefore controls both
+    source and value: 1.1 is ballast, while 1.13 is the adjacent cast-concrete value. The stable record path
+    remains unchanged because paths are database identities, not current citation labels.
+  evidence_revision: sha256:af3e9123864ca01f7ff4d398253a5ae79a6fd8e7d904de4c5c28bd0e577a3ca0
+verification:
+  attestations: []
