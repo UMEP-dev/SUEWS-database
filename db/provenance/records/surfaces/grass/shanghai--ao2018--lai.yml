@@ -1,115 +1,120 @@
 provenance_record: records/surfaces/grass/shanghai--ao2018--lai
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:54ec59a03ee9344fdc4f2e687b0b0bc4f2a7e21d043ec30f0f12bbbc43b1f848
+record_revision: sha256:966112c029bd0b897c60db87ab26cc50741789e8ebd7bf2bf79a91a39aa9491a
 dependency_revisions:
   sources:
     ao2018: sha256:88b3c9ee4a7ea161d9dd66a37c999cfa83ed334130ac44f34357ae62a09efc7d
     breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2017a-source-code: sha256:5e2a046b3b2c2b88f651b18ac33be6350ec512893ad669c0a1cb2022273d8c76
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-25T10:47:20Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T13:05:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/354
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      - legacy-row-31240020
-      note: Ao et al. Table 1 and the pre-migration row both identify the SUEWS surface as Grass.
+      - ao-shanghai-grass-lai
+      note: Ao et al. use the SUEWS Grass class for the Xujiahui application.
     target:
       conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      - ao-shanghai-grass-maximum
-      note: Ao et al. publish both bounds for the SUEWS Grass surface, matching land_cover.grass.
+      - ao-shanghai-grass-lai
+      note: Ao et al. publish the LAI bounds and phenology choice for the SUEWS grass land-cover class.
     values:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
+      - ao-shanghai-grass-lai
+      - suews2017a-lai-selector
       - jarvi2014-grass-baseline
-      - ao-shanghai-grass-maximum
       - jarvi2011-grass-maximum
       - breuer-grass-median
       - legacy-row-31240020
-      note: Ao et al. publish the stored 3.2/5.9 bounds. The minimum is a local adjustment from 1.6,
-        while the maximum reaches SUEWS from Breuer's median rather than maximum statistic. The legacy
-        row preserves lai_type 1, but the papers do not explicitly map the selected equation to that
-        numeric database code.
+      note: Ao et al. publish the stored 3.2/5.9 bounds and explicitly adopt thermal-only senescence Eq. (5b).
+        SUEWS v2017a maps that branch to LAIType 0; the migrated value 1 instead selects the rejected day-length
+        branch and is corrected to 0. The evidence also records the distinct upstream lineages of both bounds.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
+      - ao-shanghai-grass-lai
+      - suews2017a-lai-selector
       - jarvi2014-grass-baseline
-      - ao-shanghai-grass-maximum
       - jarvi2011-grass-maximum
       - breuer-grass-median
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/354
-      note: Ao et al. are the parameter source for the locally adjusted minimum but only compile the
-        inherited maximum. Järvi et al. directly publish 5.9 as a SUEWS maximum, while Breuer supplies
-        it as an upstream median. One record-level source cannot express all field roles.
+      note: Ao et al. directly publish the complete Xujiahui model-input assertion represented by this record.
+        Järvi and Breuer preserve the older bound lineage, while the v2017a source code supplies the numeric
+        selector semantics.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      - ao-shanghai-grass-maximum
-      note: Shanghai is the derivation context for the locally adjusted minimum and the application
-        context for the inherited maximum; it is not the evidence origin of both fields.
+      - ao-shanghai-grass-lai
+      note: The tuple is published as an input to the Xujiahui study-site run in Shanghai; older input lineage
+        does not change the application identity of the published tuple.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      - ao-shanghai-grass-maximum
-      note: Site reach is supported for the Xujiahui minimum adjustment and model application, but not
-        as the provenance scope of the inherited maximum.
+      - ao-shanghai-grass-lai
+      note: Ao et al. apply the tuple to the Xujiahui source area and do not establish city-wide reach.
     urban_setting:
       conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      note: Ao et al. identify Xujiahui as a dense central business district.
+      - ao-shanghai-grass-lai
+      note: Ao et al. describe Xujiahui as a dense central business district.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
-      - jarvi2014-grass-baseline
-      - ao-shanghai-grass-maximum
-      note: The minimum was locally adjusted based on photographs, with better model performance reported,
-        while the maximum was adopted from literature. No single record-level method describes both fields.
+      - ao-shanghai-grass-lai
+      - jarvi2011-grass-maximum
+      note: The database adopts the complete tuple published by Ao et al.; its sidecar separately records
+        that the minimum was locally adjusted and the maximum inherited from earlier literature.
     identity:
       conclusion: supported
       evidence_ids:
-      - ao-local-grass-minimum
+      - ao-shanghai-grass-lai
       - legacy-row-31240020
-      note: The publication and pre-migration row preserve the Grass, Shanghai and legacy-ID identity.
+      note: The stable path and legacy ID preserve the Shanghai grass-LAI record while correcting the selector
+        value that contradicted the named publication and model version.
   evidence:
-  - id: ao-local-grass-minimum
+  - id: ao-shanghai-grass-lai
     source: ao2018
     role: parameter_source
-    parameter_paths:
-    - parameters.lai.lai_min
     locators:
     - kind: table
-      label: Table 1, XJH Grass LAI minimum
+      label: Table 1, SUEWS model parameter values at XJH
       page: 1987
       url: https://doi.org/10.1175/JHM-D-18-0057.1
-      note: Publishes the Xujiahui Grass minimum as 3.2.
+      note: Publishes Grass maximum LAI 5.9 and minimum LAI 3.2 for the Xujiahui study run.
     - kind: section
-      label: Section 2d, SUEWS model setup and parameters
+      label: Section 2d, SUEWS model setup, parameters and LAI equations
       page: 1988
       url: https://doi.org/10.1175/JHM-D-18-0057.1
       note: States that winter and spring photographs show green grass, so the minimum was increased
-        from 1.6 in Järvi et al. (2014) to 3.2, yielding better winter and spring model performance.
+        from 1.6 to 3.2; also states that SUEWS v2017a is used, rejects the day-length senescence Eq. (5c),
+        and explicitly adopts the thermal-only Eq. (5b).
+  - id: suews2017a-lai-selector
+    source: umep-dev2017a-source-code
+    role: input_data
+    parameter_paths:
+    - parameters.lai.lai_type
+    locators:
+    - kind: text
+      label: suews_phys_dailystate.f95, v2017a LAIType branches
+      url: https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/src/suews/src/suews_phys_dailystate.f95#L1042-L1058
+      note: LAIType below 0.5 uses the thermal-only senescence branch; LAIType at or above 0.5 adds the
+        12-hour day-length condition. Therefore stored integer 0 represents Ao Eq. (5b), while 1 represents
+        the Eq. (5c) branch the paper rejects.
   - id: jarvi2014-grass-baseline
     source: jarvi2014
     role: input_data
@@ -121,21 +126,9 @@ assessment:
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
       note: Publishes the earlier Grass minimum 1.6 that Ao et al. explicitly adjusted for Xujiahui.
-  - id: ao-shanghai-grass-maximum
-    source: ao2018
-    role: compilation
-    parameter_paths:
-    - parameters.lai.lai_max
-    locators:
-    - kind: table
-      label: Table 1, XJH Grass LAI maximum
-      page: 1987
-      url: https://doi.org/10.1175/JHM-D-18-0057.1
-      note: Republishes 5.9 as the Shanghai run maximum and directs sources not otherwise given to
-        Järvi et al. (2011); it does not derive a new maximum locally.
   - id: jarvi2011-grass-maximum
     source: jarvi2011
-    role: parameter_source
+    role: input_data
     parameter_paths:
     - parameters.lai.lai_max
     locators:
@@ -161,22 +154,21 @@ assessment:
     role: compilation
     parameter_paths:
     - parameters.lai.lai_type
+    - parameters.lai.lai_min
+    - parameters.lai.lai_max
     locators:
     - kind: dataset
       label: Pre-migration Leaf Area Index row 31240020
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/leaf_area_index.yml#L33-L40
-      note: Preserves Grass, Shanghai, LAIEq 1, LAIMin 3.2, LAIMax 5.9 and Ref 90240064. This establishes
-        migration fidelity for the numeric selector, not independent scientific support for it.
+      note: Preserves the migrated 1/3.2/5.9 tuple and Ao reference. It establishes lineage but not scientific
+        support for selector 1, which contradicts Ao's adopted equation under v2017a semantics.
   scientific_note: >-
-    The tuple is intrinsically mixed. Ao et al. locally adjusted lai_min from 1.6 to 3.2 based on Xujiahui
-    photographs and reported better model performance. The stored lai_max 5.9 instead comes through Järvi et al. from
-    Breuer, where 5.9 is the median of a grass/herb/forb distribution rather than its maximum. Field-scoped
-    evidence now records those roles without attributing both values to one publication. The numeric
-    lai_type 1 remains migration fidelity because the papers do not explicitly map the selected equation
-    to that code. Issue #354 remains open: one record-level source, method, place and representativeness
-    cannot summarise all fields, and scoped parameter sources deliberately cannot make the record eligible
-    for sign-off. No additional source material is missing, and no value, source, path, place or identity
-    changes in this assessment.
-  evidence_revision: sha256:b98aabdc3c440db532ea0870e7abcea7abcc534b3ff8b35454f62581c29516e4
+    Ao et al. (2018) publish the complete Xujiahui grass LAI tuple: they locally adjust the minimum from 1.6
+    to 3.2 using site photographs, retain the inherited 5.9 maximum, and explicitly adopt thermal-only
+    senescence Eq. (5b). SUEWS v2017a maps that equation to LAIType 0 and maps the migrated selector 1 to the
+    day-length branch that Ao rejects. Changing the selector to 0 restores the published configuration.
+    Järvi and Breuer document the distinct upstream lineages of the bounds without replacing Ao as the
+    publication of the complete Shanghai application tuple.
+  evidence_revision: sha256:eb03030b08493b71e9aa2559eb7bcbbbd636bcd41195da4fda9a42aed900146b
 verification:
   attestations: []
