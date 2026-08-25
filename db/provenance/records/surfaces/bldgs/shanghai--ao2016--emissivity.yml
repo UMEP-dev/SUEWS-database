@@ -1,0 +1,110 @@
+provenance_record: records/surfaces/bldgs/shanghai--ao2016--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:48ceb6512fb2a01a59c0e05dad02d9dbf1f5077ec3bce8f02f4d785de1af13ad
+dependency_revisions:
+  sources:
+    ao2016: sha256:b1ca07de6a9fb83ab41c961da2415c13cf396f9cc4618134dc3f0015918e493f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:30:27Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/346
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: Ao et al. publish the value for the SUEWS Building surface in their Xujiahui CBD application.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: The Building-column emissivity is an input for the SUEWS building land-cover class.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: Ao et al. Table 2 directly prints Building emissivity 0.91, exactly matching the stored value.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      - oke-material-emissivities
+      note: Ao et al. are the first directly checked publication that states the exact Building mapping of 0.91.
+        Their Oke citation supplies upstream material ranges but no exact Building or Roof value of 0.91, so it
+        cannot replace Ao as this record's exact-value source.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: The table supplies model inputs for the Xujiahui study site in Shanghai.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: Ao et al. apply the parameter to the Xujiahui source areas; they do not establish a Shanghai-wide
+        building survey, so site reach is supported.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: Ao et al. describe Xujiahui as a central business district.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      - oke-material-emissivities
+      note: The stored value is adopted from a published model-input table rather than measured or fitted by
+        the database.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-building-emissivity
+      note: The publication preserves the Building, Xujiahui CBD and Shanghai application identity represented
+        by the stable record path and legacy ID.
+  evidence:
+  - id: ao-building-emissivity
+    source: ao2016
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, Building column, epsilon_i
+      page: 2463
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      note: Publishes Building emissivity 0.91 for the Xujiahui SUEWS runs. The superscript points to Oke
+        (1987), but the exact Building-to-0.91 mapping is stated in this table.
+    - kind: section
+      label: Section 3.4, radiation-parameterization evaluation
+      page: 2462
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      note: Describes the Table 2 values as inputs to SUEWS and NARP for the Xujiahui radiometer field of view
+        and eddy-covariance source area.
+  - id: oke-material-emissivities
+    source: oke1987
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 8.2, radiative properties of urban materials
+      page: 281
+      note: Gives emissivity ranges for concrete, brick and stone walls and values for wood walls,
+        tar-and-gravel roofs, and tile or slate roofs. It contains no exact Building or Roof value of 0.91
+        and no Xujiahui or Shanghai mapping.
+  scientific_note: >-
+    Ao et al. (2016) directly publish Building emissivity 0.91 for their Xujiahui SUEWS application and are
+    therefore the checked publication that states the exact stored parameter. Their Table 2 cites Oke (1987),
+    but Oke Table 8.2 offers material-specific values and ranges rather than this exact Building mapping. Keeping
+    source ao2016 records the first directly located exact assertion; recording Oke as upstream input preserves
+    the source chain without fabricating a cell-level derivation. No value, source, path, place, method or identity
+    changes are required.
+  evidence_revision: sha256:8c9f3a09273bf2f2218b203875042f81c495b3bbac3d0fa3a5f937a6e63ec19a
+verification:
+  attestations: []
