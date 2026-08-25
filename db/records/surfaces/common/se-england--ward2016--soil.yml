@@ -6,11 +6,18 @@ place: se-england
 origin: SE England
 representativeness: regional
 source: ward2016
+method: assumed
 legacy_id: 22240040
 parameters:
   soil_depth: 350
   soil_store_capacity: 150
   saturated_hydraulic_conductivity: 0.0005
+parameter_provenance:
+  parameters.saturated_hydraulic_conductivity:
+    source: berthier2006
+    method: literature
+    place: reze
+    representativeness: site
 legacy:
   SoilDensity: -999
   InfiltrationRate: -999

@@ -1,0 +1,141 @@
+provenance_record: records/surfaces/common/se-england--ward2016--soil
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:42602b5fd153d3f5c9a27104534ef10d57d467184995626518c392a22ed9b3e8
+dependency_revisions:
+  sources:
+    berthier2006: sha256:1f94f640556f66b816845a9124ab2b7353a0aa1ed39e3fba5145b8787206bb1d
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    reze: sha256:c1f6704986778f894c391ab8aff77c954b3fd4b5b39a62932730c352a5a78fe6
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T14:55:01Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/139
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      note: Ward et al. describe one soil-property set beneath every surface in their two UK
+        applications, which supports the common-surface record name.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      note: Ward et al. explicitly apply the same depth and capacity to the soil stores beneath
+        each surface, supporting the shared land_cover.common target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - berthier-reze-ksat
+      - jarvi-ksat-compilation
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/139
+      note: Ward et al. state soil depth 350 mm and maximum moisture capacity 150 mm. Berthier
+        et al. publish saturated hydraulic conductivity 5.0 x 10^-7 m s^-1, exactly 0.0005 mm
+        s^-1, and Järvi et al. carry the same value into the SUEWS parameter table. No value is changed.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - berthier-reze-ksat
+      - jarvi-ksat-compilation
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/139
+      note: Ward remains the source for depth and capacity. The field-level override now cites
+        Berthier 2006, the original publication of the conductivity value, while Järvi 2011 is
+        recorded only as the later SUEWS compilation that explicitly attributes it to Berthier.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - berthier-reze-ksat
+      note: Ward supports the SE England application envelope for depth and capacity. Berthier
+        identifies the conductivity parameter with the 4.7 ha Rezé suburban site in France,
+        supporting the field-level place override.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - berthier-reze-ksat
+      note: Ward uses the assumed depth and capacity at two UK sites, supporting the regional
+        envelope. Berthier reports the conductivity in the base run for one Rezé site, so that
+        leaf is scoped to site rather than SE England.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - berthier-reze-ksat
+      - jarvi-ksat-compilation
+      note: Ward explicitly calls the shared depth and capacity assumptions. The conductivity is
+        adopted unchanged from a published model-input table through the Järvi SUEWS compilation,
+        supporting the literature method override for that leaf.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-soil-assumption
+      - jarvi-ksat-compilation
+      note: The stable path and legacy ID preserve the migrated shared-soil tuple; field-level
+        provenance changes neither its values nor its record identity.
+  evidence:
+  - id: ward-soil-assumption
+    source: ward2016
+    role: parameter_source
+    parameter_paths:
+    - parameters.soil_depth
+    - parameters.soil_store_capacity
+    locators:
+    - kind: section
+      label: Section 3.2, Model setup
+      page: 6
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: States that, without detailed information, the same soil properties were assumed
+        beneath each surface, with soil-layer depth 350 mm and maximum moisture capacity 150 mm,
+        for the Swindon and London applications.
+  - id: berthier-reze-ksat
+    source: berthier2006
+    role: parameter_source
+    parameter_paths:
+    - parameters.saturated_hydraulic_conductivity
+    locators:
+    - kind: table
+      label: Table 1, parameter values used in the model base runs
+      page: 640
+      url: https://doi.org/10.1016/j.jhydrol.2006.01.007
+      note: Publishes UHE soil saturated hydraulic conductivity Ks as 5.0 x 10^-7 m s^-1;
+        multiplying by 1000 converts it exactly to the stored 0.0005 mm s^-1.
+    - kind: section
+      label: Section 3, Application of the models above the Rezé site
+      page: 638
+      url: https://doi.org/10.1016/j.jhydrol.2006.01.007
+      note: Describes the model application to a 4.7 ha suburban catchment at Rezé, France.
+  - id: jarvi-ksat-compilation
+    source: jarvi2011
+    role: compilation
+    parameter_paths:
+    - parameters.saturated_hydraulic_conductivity
+    locators:
+    - kind: table
+      label: Table 2b, general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Carries saturated hydraulic conductivity 0.0005 mm s^-1 into the SUEWS parameter
+        table and attributes the value by footnote to Berthier et al. (2006).
+  scientific_note: The SUEWS record combines two explicit Ward et al. UK soil-store assumptions
+    with a hydraulic-conductivity value transmitted through Järvi et al. (2011). Following that
+    paper's own footnote to the original source shows that Berthier et al. (2006), not Järvi or Ward,
+    directly publish the exact conductivity value. Parameter-level provenance now preserves that
+    original citation and its Rezé site scope without altering the migrated tuple.
+  evidence_revision: sha256:4c3071c859153ed8ca1f16425c295e53d038149eda07c39154d4ecb504029f87
+verification:
+  attestations: []

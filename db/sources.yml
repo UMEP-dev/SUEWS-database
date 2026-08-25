@@ -60,6 +60,13 @@ sources:
       assessment of light-response curve parameters
     type: journalArticle
     year: 2017
+  berthier2006:
+    author: Berthier, E.; Dupont, S.; Mestayer, P. G.; Andrieu, H.
+    doi: 10.1016/j.jhydrol.2006.01.007
+    journal: Journal of Hydrology
+    title: Comparison of two evapotranspiration schemes on a sub-urban site
+    type: journalArticle
+    year: 2006
   bjork2002:
     author: Björk, Cecilia; Kallstenius, Per; Reppen, Laila;
     journal: Book
