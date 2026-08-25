@@ -7,9 +7,10 @@ origin: Shanghai
 representativeness: site
 urban_setting: central_business_district
 source: ao2018
+method: literature
 legacy_id: 31240018
 parameters:
   lai:
-    lai_type: 1
+    lai_type: 0
     lai_min: 4
     lai_max: 5.1
