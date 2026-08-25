@@ -13,12 +13,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T23:03:46Z'
+  assessed_at: '2026-08-25T10:18:44Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/209
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/492
   method: assumed
   findings:
     name:
@@ -35,7 +35,6 @@ assessment:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      - earlier-anohm-water-row
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/209
@@ -47,51 +46,49 @@ assessment:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      - earlier-anohm-water-row
-      - jarvi-anohm-absent
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/209
-      note: Unreferenced is correct. Järvi et al. predate AnOHM, Sun et al. do not publish this exact
-        tuple, and a release table can prove configuration lineage without becoming a scientific
-        parameter source.
+      note: Unreferenced is correct. Author adjudication in issue 492 confirms that the tuple was
+        deliberately assumed and that Järvi et al. have no AnOHM parameter-provenance role. The
+        release table documents compilation lineage while Sun et al. validate AnOHM without
+        publishing this exact tuple.
     place:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      - jarvi-anohm-absent
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/209
       note: Generic is the active evidence place because no publication determines this tuple at a
-        study location. London remains in the stable path and origin as the v2017a application label.
+        study location. Author adjudication in issue 492 confirms that London is only the application
+        label retained in the stable path and origin.
     representativeness:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      - jarvi-anohm-absent
       - published-anohm-values
-      note: Generic scope records an explicit configuration assumption; city would falsely present the
-        tuple as a London observational or fitted result.
+      note: Generic scope records the deliberately assumed land-cover default; city would falsely
+        present the tuple as a London observational or fitted result.
     applicable_scale:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      note: The tuple is stored on the Water surface row and applies to that land-cover class rather
-        than a whole-neighbourhood bulk calibration.
+      note: Author adjudication in issue 492 confirms that the tuple applies to the water land-cover
+        class rather than a whole-neighbourhood bulk calibration.
     method:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      - earlier-anohm-water-row
-      note: Assumed accurately records a sample configuration whose production is undocumented; the
-        companion workbook disagreement rules out treating the text row as a transparent calculation.
+      note: Author adjudication in issue 492 confirms that the tuple was deliberately assumed, not
+        derived or calibrated; the companion workbook disagreement also rules out treating the text
+        row as a transparent calculation.
     identity:
       conclusion: supported
       evidence_ids:
       - v2017a-water-row
-      note: The stable path, London origin, legacy ID, target and values preserve the migrated v2017a
-        water configuration while correcting its evidence claims.
+      note: Author adjudication in issue 492 confirms the meaningful land-cover configuration identity;
+        the stable path, London origin, legacy ID, target and values preserve the migrated v2017a row.
   evidence:
   - id: v2017a-water-row
     source: umep-dev2017a-input-tables
@@ -107,25 +104,6 @@ assessment:
       url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/InputFiles_SUEWS_v2017a_SiteInfo.xlsm
       note: The generator workbook committed with the text table stores 100000/1.2/4 for code 661,
         so it does not document how the released text value 4100000 was produced.
-  - id: earlier-anohm-water-row
-    source: umep-dev2016-anohm-table-introduction
-    role: validation
-    locators:
-    - kind: dataset
-      label: SUEWS_Water.txt, code 661 at the AnOHM-field introduction
-      url: https://github.com/UMEP-dev/SUEWS/blob/d3659012860cb22f8c778e953e474d532cc08ae3/InputTables/SUEWS_Water.txt#L5
-      note: The first non-reverted AnOHM input table stores 100000/1.2/4, demonstrating that the
-        current 4100000 tuple was introduced later by the v2017a text-table update.
-  - id: jarvi-anohm-absent
-    source: jarvi2014
-    role: validation
-    locators:
-    - kind: text
-      label: Whole-article search for AnOHM and its three input parameters
-      page: 1691-1711
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: The article does not mention AnOHM or publish volumetric heat capacity, thermal conductivity
-        and bulk transfer coefficient values for water; its study sites are in Helsinki and Montreal.
   - id: published-anohm-values
     source: sun2017
     role: validation
@@ -141,10 +119,22 @@ assessment:
       url: https://doi.org/10.5194/gmd-10-2875-2017
       note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a
         separate water tuple of 4.1 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
+  attempted_sources:
+  - source: umep-dev2016-anohm-table-introduction
+    attempted_at: '2026-08-24T23:03:46Z'
+    outcome: not_found
+    note: The first non-reverted AnOHM input table was checked and stores 100000/1.2/4 for code 661,
+      not the current 4100000/1.2/4 tuple.
+  - source: jarvi2014
+    attempted_at: '2026-08-24T23:03:46Z'
+    outcome: not_found
+    note: The complete article was checked and does not mention AnOHM or publish its three input
+      parameters; author adjudication in issue 492 confirms that it has no role in this tuple's provenance.
   scientific_note: The exact 4100000/1.2/4 tuple first appears in the SUEWS v2017a text table as a
-    London Water configuration, but its companion generator workbook retains 100000/1.2/4. Neither
-    Järvi et al. nor Sun et al. publish the stored tuple. It is retained honestly as an unreferenced,
-    assumed generic land-cover configuration; the stable London path/origin preserves its application lineage.
-  evidence_revision: sha256:e1a4bb5be11567e21e8650414ceda76085b2280e00e22d9f5678ad9f2f283863
+    London Water configuration, but its companion generator workbook retains 100000/1.2/4. Author
+    adjudication in issue 492 confirms that the tuple is a deliberately assumed generic land-cover
+    default and London is only its application label. The v2017a table is compilation evidence,
+    Sun et al. provide validation, and Järvi et al. have no AnOHM parameter-provenance role.
+  evidence_revision: sha256:64260ba4b43328b98f8359734b2be30e86d2d4f016875b3ece5047484e2bb25a
 verification:
   attestations: []

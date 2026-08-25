@@ -14,12 +14,12 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2014--anohm--dectree: sha256:583429ec61e82446681075f2c07002ef2e63df773354835e0091d0a8a3e26b76
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T23:03:46Z'
+  assessed_at: '2026-08-25T10:18:44Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/204
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/492
   method: assumed
   findings:
     name:
@@ -36,7 +36,6 @@ assessment:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      - earlier-anohm-dectr-row
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/204
@@ -48,52 +47,50 @@ assessment:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      - earlier-anohm-dectr-row
-      - jarvi-anohm-absent
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/204
-      note: Unreferenced is correct. Järvi et al. predate AnOHM, Sun et al. do not publish this exact
-        tuple, and a release table can prove configuration lineage without becoming a scientific
-        parameter source.
+      note: Unreferenced is correct. Author adjudication in issue 492 confirms that the tuple was
+        deliberately assumed and that Järvi et al. have no AnOHM parameter-provenance role. The
+        release table documents compilation lineage while Sun et al. validate AnOHM without
+        publishing this exact tuple.
     place:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      - jarvi-anohm-absent
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/204
       note: Generic is the active evidence place because no publication determines this tuple at a
-        study location. London remains in the stable path and origin as the v2017a application label.
+        study location. Author adjudication in issue 492 confirms that London is only the application
+        label retained in the stable path and origin.
     representativeness:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      - jarvi-anohm-absent
       - published-anohm-values
-      note: Generic scope records an explicit configuration assumption; city would falsely present the
-        tuple as a London observational or fitted result.
+      note: Generic scope records the deliberately assumed land-cover default; city would falsely
+        present the tuple as a London observational or fitted result.
     applicable_scale:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      note: The tuple is stored on the DecTree surface row and applies to that land-cover class rather
-        than a whole-neighbourhood bulk calibration.
+      note: Author adjudication in issue 492 confirms that the tuple applies to the deciduous-tree
+        land-cover class rather than a whole-neighbourhood bulk calibration.
     method:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      - earlier-anohm-dectr-row
-      note: Assumed accurately records a sample configuration whose production is undocumented; the
-        companion workbook disagreement rules out treating the text row as a transparent calculation.
+      note: Author adjudication in issue 492 confirms that the tuple was deliberately assumed, not
+        derived or calibrated; the companion workbook disagreement also rules out treating the text
+        row as a transparent calculation.
     identity:
       conclusion: supported
       evidence_ids:
       - v2017a-dectr-row
-      note: Rows 662 and 701 are separate complete configurations with different OHM code families
-        while reusing the same AnOHM subset. The stable path and legacy ID preserve row 662 without
-        claiming that the repeated tuple is a second scientific determination.
+      note: Author adjudication in issue 492 confirms that rows 662 and 701 are intentionally separate
+        complete configurations with different OHM code families while reusing the same AnOHM subset.
+        The stable path and legacy ID preserve row 662 without claiming a second scientific determination.
       related_records:
       - records/surfaces/dectr/london--jarvi2014--anohm--dectree
   evidence:
@@ -116,25 +113,6 @@ assessment:
       url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/InputFiles_SUEWS_v2017a_SiteInfo.xlsm
       note: The generator workbook committed with the text table stores 100000/1.2/4 for code 662,
         so it does not document how the released text value 1000000 was produced.
-  - id: earlier-anohm-dectr-row
-    source: umep-dev2016-anohm-table-introduction
-    role: validation
-    locators:
-    - kind: dataset
-      label: SUEWS_Veg.txt, code 662 at the AnOHM-field introduction
-      url: https://github.com/UMEP-dev/SUEWS/blob/d3659012860cb22f8c778e953e474d532cc08ae3/InputTables/SUEWS_Veg.txt#L11
-      note: The first non-reverted AnOHM input table stores 100000/1.2/4, demonstrating that the
-        current 1000000 tuple was introduced later by the v2017a text-table update.
-  - id: jarvi-anohm-absent
-    source: jarvi2014
-    role: validation
-    locators:
-    - kind: text
-      label: Whole-article search for AnOHM and its three input parameters
-      page: 1691-1711
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: The article does not mention AnOHM or publish volumetric heat capacity, thermal conductivity
-        and bulk transfer coefficient values for deciduous-tree; its study sites are in Helsinki and Montreal.
   - id: published-anohm-values
     source: sun2017
     role: validation
@@ -150,10 +128,23 @@ assessment:
       url: https://doi.org/10.5194/gmd-10-2875-2017
       note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a
         separate deciduous-tree tuple of 1.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
+  attempted_sources:
+  - source: umep-dev2016-anohm-table-introduction
+    attempted_at: '2026-08-24T23:03:46Z'
+    outcome: not_found
+    note: The first non-reverted AnOHM input table was checked and stores 100000/1.2/4 for code 662,
+      not the current 1000000/1.2/4 tuple.
+  - source: jarvi2014
+    attempted_at: '2026-08-24T23:03:46Z'
+    outcome: not_found
+    note: The complete article was checked and does not mention AnOHM or publish its three input
+      parameters; author adjudication in issue 492 confirms that it has no role in this tuple's provenance.
   scientific_note: The exact 1000000/1.2/4 tuple first appears in the SUEWS v2017a text table as a
-    London DecTr configuration, but its companion generator workbook retains 100000/1.2/4. Neither
-    Järvi et al. nor Sun et al. publish the stored tuple. It is retained honestly as an unreferenced,
-    assumed generic land-cover configuration; the stable London path/origin preserves its application lineage.
-  evidence_revision: sha256:11de1fa195ea43c28728a54a2a2552b2f8923e7b7a77ab7fbdece165d2c123ba
+    London DecTr configuration, but its companion generator workbook retains 100000/1.2/4. Author
+    adjudication in issue 492 confirms that the tuple is a deliberately assumed generic land-cover
+    default, London is only its application label, and the two DecTr rows are meaningful complete
+    configurations. The v2017a table is compilation evidence, Sun et al. provide validation, and
+    Järvi et al. have no AnOHM parameter-provenance role.
+  evidence_revision: sha256:221e2e0124290d3b24c503ffb90c3991f0f0e1c7c5d5d4ff71ea47991da16e0d
 verification:
   attestations: []
