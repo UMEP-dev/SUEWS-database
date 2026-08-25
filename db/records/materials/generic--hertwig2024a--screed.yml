@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--screed
 schema_version: '2026.5'
 target: material
 name: Screed
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36243802
 category: Masonry
 display_colour: Generic
@@ -12,3 +13,6 @@ parameters:
   thermal_conductivity: 0.46
   specific_heat: 1000
   density: 1200
+parameter_provenance:
+  parameters.albedo:
+    method: calculated
