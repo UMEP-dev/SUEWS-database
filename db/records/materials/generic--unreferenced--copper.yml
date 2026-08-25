@@ -2,7 +2,9 @@ record: records/materials/generic--unreferenced--copper
 schema_version: '2026.5'
 target: material
 name: Copper
-source: unreferenced
+source: ies2011-apache-tables
+method: literature
+source_legacy_ref: 99240099
 legacy_id: 36248171
 category: Generic
 display_colour: Generic
@@ -12,3 +14,10 @@ parameters:
   thermal_conductivity: 200
   specific_heat: 418
   density: 8900
+parameter_provenance:
+  parameters.albedo:
+    source: unreferenced
+    method: assumed
+  parameters.emissivity:
+    source: unreferenced
+    method: assumed
