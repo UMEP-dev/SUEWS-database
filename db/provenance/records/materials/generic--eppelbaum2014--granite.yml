@@ -10,12 +10,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-25T13:28:48Z'
+  assessed_at: '2026-08-25T13:34:42Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/388
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/386
   method: assumed
   findings:
     name:
@@ -32,15 +32,20 @@ assessment:
       conclusion: supported
       evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
       note: The exact five-field tuple is supported only as a retained historical configuration row.
-        Eppelbaum Table 2.5 supports thermal_conductivity 2.68, but the book does not publish the tuple and
-        specifically contradicts specific_heat 1900 with granite values 950, 790 and 720 J/(kg K).
+        Eppelbaum Table 2.5 supports thermal_conductivity 2.68, but the book does not publish the tuple;
+        albedo 0.35 is absent, and specific_heat 1900 is contradicted by granite values 950, 790 and 720.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/386
+      - https://github.com/UMEP-dev/SUEWS-database/issues/388
     source:
       conclusion: supported
       evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
       note: Unreferenced is correct because no located publication states or derives the complete tuple.
         source_legacy_ref 90240059 preserves the migrated Eppelbaum link, while field-scoped validation
         evidence retains the exact conductivity locator without exporting it across the other fields.
-      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/388]
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/386
+      - https://github.com/UMEP-dev/SUEWS-database/issues/388
     place:
       conclusion: not_applicable
       note: The generic material row makes no observation-place claim.
@@ -85,13 +90,20 @@ assessment:
     note: The complete 757-page monograph was close-read for specific heat. It contains granite values
       950 J/(kg K) in Table 2.8, 790 J/(kg K) in Table 2.9 and 720 J/(kg K) from Scharli and Rybach (2001),
       but specific_heat 1900 appears nowhere.
+  - source: eppelbaum2014
+    attempted_at: '2026-08-24T16:04:19Z'
+    outcome: not_found
+    note: The complete monograph was close-read for albedo and related radiative terms. Its albedo and
+      reflectivity passages concern planets or the Moon; reflectance elsewhere is vitrinite reflectance.
+      It contains no rock radiative-property table and no granite albedo 0.35.
   scientific_note: >-
     Deattribution is a whole-record curation decision required by the one-source export format, not a claim
     that every field lacks evidence. Eppelbaum remains exact field-scoped validation evidence for conductivity
-    2.68. The specific heat 1900 is not published anywhere in the complete monograph and conflicts with its
-    three stated granite alternatives, but none is substituted because the intended table or transformation
+    2.68. Albedo 0.35 is absent from the complete monograph: every albedo or ordinary reflectivity passage
+    concerns planetary material, not granite. The specific heat 1900 is also absent and conflicts with three
+    stated granite alternatives. No replacement is substituted because the intended source or transformation
     is unknown. All five values and the stable identity are retained as an explicit unreferenced assumed
     configuration; sibling field reviews add their own dispositions separately.
-  evidence_revision: sha256:444c5657480604e44ded51c96ae0f113a86a312a05641ac3d4141c19f60943bd
+  evidence_revision: sha256:2a62916c8d0aa3c9045af53699cb68a8a83d517fb260ddab5b1d12e1342e9020
 verification:
   attestations: []
