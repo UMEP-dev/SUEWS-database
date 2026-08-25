@@ -1,0 +1,135 @@
+provenance_record: records/surfaces/grass/london--halldin1979--anohm
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:e5d52ac12d84458e930b2e64712c7eba476558007dcb05f7d11333bdab0b1a2d
+dependency_revisions:
+  sources:
+    halldin1979: sha256:1838dbe36e7630285fa696927aaf682fe6ddbc9babbdecadddc60e259e2906d6
+    sun2017: sha256:db4668370c905c4555d8a11e7f6aa6aa9888e1bc4016442b1267287ad9e7fd9c
+    umep-dev2016-anohm-table-introduction: sha256:bb16ef807c365be842eb42872e2d0993a51de7922bb414ce8b954887cf528e01
+    umep-dev2017a-input-tables: sha256:5b11bb1f3acceb14cafb2d562c22a0edd96b5fd8aef76ff980887b4149c62d08
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T11:40:27Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/409
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      note: Grass is the surface named by the v2017a configuration row. The UF suffix is retained
+        strictly as a migrated legacy identifier whose expansion remains unknown, not as a scientific claim.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      note: The exact tuple is stored on the SUEWS grass surface row and belongs to land_cover.grass.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/409
+      note: The v2017a text table stores 500000, 0.2 and 1 exactly. Sun et al. publish different
+        generic and calibrated grassland values, so the tuple is supported only as the preserved
+        configuration assumption confirmed by author adjudication.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/409
+      note: Unreferenced is correct. Author adjudication confirms that Halldin et al. supplied no
+        parameter provenance or input data for this tuple; the release row is compilation lineage
+        and Sun et al. validate AnOHM without publishing the exact values.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      - published-anohm-values
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/409
+      note: Generic is the active evidence place because no publication determines this tuple at a
+        study location. Author adjudication confirms that London is only the application label retained
+        in the stable path and origin.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      - published-anohm-values
+      note: Generic records the deliberately assumed land-cover default; city would falsely present
+        the tuple as a London observational or fitted result.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      note: Author adjudication confirms that the tuple applies to the grass land-cover class rather
+        than a whole-neighbourhood bulk calibration.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/409
+      note: Author adjudication confirms that the tuple was deliberately assumed, not derived or calibrated.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - v2017a-grass-uf-row
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/409
+      note: The stable path, London origin, legacy ID, target, UF label and values preserve the migrated
+        configuration. The unknown expansion of UF is documented rather than guessed.
+  evidence:
+  - id: v2017a-grass-uf-row
+    source: umep-dev2017a-input-tables
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg.txt, code 702 Grass London row
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Veg.txt#L15
+      note: Stores AnOHM rho_cp 500000, k 0.2 and Ch 1 on the Grass London configuration row without
+        an AnOHM parameter citation.
+  - id: published-anohm-values
+    source: sun2017
+    role: validation
+    locators:
+    - kind: table
+      label: Table 1(a), input-parameter sensitivity distributions
+      page: 2880
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes generic means of 2.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4, not the stored tuple.
+    - kind: table
+      label: Table 3, US-Wlr grassland calibration
+      page: 2883
+      url: https://doi.org/10.5194/gmd-10-2875-2017
+      note: Publishes grassland Cp 0.31 MJ m-3 K-1, k 0.43 W m-1 K-1 and Ch 1.9, not 0.5/0.2/1.
+  attempted_sources:
+  - source: umep-dev2016-anohm-table-introduction
+    attempted_at: '2026-08-24T14:18:47Z'
+    outcome: not_found
+    note: The first non-reverted AnOHM input table was checked and contains different vegetation values;
+      it does not document the production of code 702 or the current tuple.
+  - source: halldin1979
+    attempted_at: '2026-08-24T14:18:47Z'
+    outcome: not_found
+    note: The complete chapter was checked. It models a sparse pine stand at Jädraås and does not
+      mention AnOHM or publish 500000/0.2/1; author adjudication confirms that it has no provenance role.
+  scientific_note: The exact 500000/0.2/1 tuple first appears in the v2017a text table as a London
+    Grass configuration. Author adjudication in issue 409 confirms that it is a deliberately assumed
+    generic grass land-cover default, London is only its application label, and Halldin et al. have no
+    parameter-provenance role. The v2017a table is compilation evidence and Sun et al. provide validation.
+    UF remains an unresolved legacy abbreviation and is preserved without inventing an expansion.
+  evidence_revision: sha256:7870ace81c5f1dbaabe7c73e50cb40645cba0fe89c7035dab860777b92097372
+verification:
+  attestations: []
