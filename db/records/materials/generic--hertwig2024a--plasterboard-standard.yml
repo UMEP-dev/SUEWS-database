@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--plasterboard-standard
 schema_version: '2026.5'
 target: material
 name: Plasterboard, standard
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36243793
 category: Surface
 display_colour: Generic
@@ -12,3 +13,10 @@ parameters:
   thermal_conductivity: 0.21
   specific_heat: 1000
   density: 700
+parameter_provenance:
+  parameters.albedo:
+    method: assumed
+    source_bounds:
+      minimum: 0.5
+      maximum: 0.7
+      active_role: within
