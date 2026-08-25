@@ -1,7 +1,7 @@
 provenance_record: archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:6350c64d5f520c5a8462a621f8a7480c9c40ba82c8a8a5b32896ede4942ec2f4
+record_revision: sha256:b1f1df363bcdbb9b3cda1011702591d67d31a185f279e55192ac54d717c93918
 dependency_revisions:
   sources: {}
   places:
@@ -16,12 +16,12 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
     records/surfaces/grass/zurich--ao2018--lai: sha256:446974f3fd26a7b144e9c849ce8cdeb9b0c36d15dd5bd48883aee28b1058c0a8
-    records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:50a3cb169e10414d6374495276d3a80c4ba934b7e38d1376a32d28649afb38e2
+    records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:dbe3dd4de133f3738c597e933bf61120cd4d3615ab9b0e74b8b43aa64ba1809b
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
     records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:dc1654866786d1b26bf067964998dc5e0894bf0e7fb668b7dc0fad485c8400d2
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T21:56:29Z'
+  assessed_at: '2026-08-25T15:42:23Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -99,15 +99,16 @@ assessment:
     representativeness:
       conclusion: supported
       evidence_ids:
+      - component-surfaces-grass-zurich-stagakis-s2024-biogen-co2
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: The composite declares representativeness city. Seven components declare city, two declare
-        regional, the albedo and porosity records declare generic and the ohm
-        component carries no representativeness field. No component is classed narrower than the composite,
-        so nothing site-specific is offered as a city typology, and this entry rests on city-classed values
-        in more slots than any other of the nine grass composites.
+      note: >-
+        The composite declares representativeness site, matching the narrowest evidence-bearing
+        component: the biogenic CO2 tuple applied and evaluated at four Zurich park sites. Other components
+        declare city, regional or generic reach, while the OHM component carries no representativeness.
+        The composite therefore does not advertise a broader evidence reach than any of its components.
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -179,7 +180,9 @@ assessment:
     record: records/surfaces/grass/zurich--stagakis-s2024--biogen-co2
     role: component
     note: Fills the biogen_co2 slot. The record declares target land_cover.grass, name "Grass", place
-      zurich, representativeness city and source stagakis-s2024.
+      zurich, representativeness site, source stagakis-s2024 and method literature. Its field-level
+      provenance preserves Bellucco's Helsinki fit for alpha and theta and Järvi's Southern Finland
+      chamber evidence for the minimum-respiration floor.
   - id: component-surfaces-grass-zurich-stagakis-s2024-lai-power
     record: records/surfaces/grass/zurich--stagakis-s2024--lai-power
     role: component
@@ -192,15 +195,17 @@ assessment:
       "Grass", place zurich, representativeness city, source havu-m2024 and method literature.
   scientific_note: 'This is the best-localised of the nine grass composites. Four of its twelve components
     declare place zurich and they are every Zurich grass record the database holds. Three cite stagakis-s2024,
-    the study the label names, for leaf area index, leaf-growth power and biogenic CO2; maximum conductance
-    is the Havu et al. literature value. Together they fill the four slots that distinguish the entry
+    the study the label names, for leaf area index, leaf-growth power and the directly stated parts of the
+    biogenic CO2 configuration; the biogenic record separately preserves Bellucco and Järvi field provenance,
+    and maximum conductance is the Havu et al. literature value. Together they fill the four slots that distinguish the entry
     from its neighbours. The rest are transparent transfers: a generic literature albedo, the snowpack
     limit and phenology from Helsinki, generic literature drainage, emissivity and water storage from SE England,
     porosity from an unreferenced dummy record
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Two observations belong to
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
     and the source key read 2024, which is a source registry matter. The drainage component is openly generic
-    literature evidence rather than a Zurich observation.'
-  evidence_revision: sha256:009fdda395650472a4188baf5f770ce4dccdc5dc18333f87afc3d15684a906b5
+    literature evidence rather than a Zurich observation. The composite now uses site representativeness
+    because its biogenic CO2 component is supported at the four studied park sites rather than city-wide.'
+  evidence_revision: sha256:06967dfd5653206e1dff39b510423802ae1de8a32e4dee4039c5ae25d67219ed
 verification:
   attestations: []
