@@ -1237,15 +1237,15 @@ def params_table(params, target, muted=False, linked=True, rec=None,
                 author = source.get("author", source_key).split(",")[0]
                 label = f"{author} {source['year']}"
             details = ["Applies to " + ", ".join(sorted(paths))]
-            for key, value in (
+            for key, metadata_value in (
                 ("method", method),
                 ("place", place),
                 ("representativeness", rep),
                 ("urban setting", setting),
                 ("applicable scale", scale),
             ):
-                if value:
-                    details.append(f"{key}: {value}")
+                if metadata_value:
+                    details.append(f"{key}: {metadata_value}")
             title = "; ".join(details)
             if source_key:
                 field_provenance.append(
