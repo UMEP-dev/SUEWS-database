@@ -1,11 +1,13 @@
 record: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
 schema_version: '2026.5'
 target: land_cover.bldgs
-name: 'Wood '
-place: gothenburg
+name: Wood
+place: generic
 origin: Gothenburg
-representativeness: city
-source: oke1987
+representativeness: generic
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240001
 legacy_id: 41240026
 parameters:
   alb: 0.22

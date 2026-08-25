@@ -74,9 +74,10 @@ assessment:
         and declaring place london; emissivity, the snow limit and all four ohm positions
         take records declaring place helsinki, which db/places.yml resolves to country finland; and water storage
         and drainage are generic.
-        For the Helsinki slots the database offers no Swedish alternative. For the albedo it does: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood
-        and records/surfaces/bldgs/gothenburg--oke1987--albedo are the two Gothenburg albedo rows, named
-        ''Wood '' and ''Industry, dark roofs'', and neither describes a rendered or stone facade. The
+        For the Helsinki slots the database offers no Swedish alternative. For the albedo it does hold two
+        Gothenburg-lineage configurations: the generic archived records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
+        named Wood, and records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark roofs'';
+        neither describes a rendered or stone facade. The
         composite takes the London row instead and records no reason, which only a maintainer can settle.'
     representativeness:
       conclusion: curation_required
@@ -163,8 +164,8 @@ assessment:
       representativeness city, and declares no season_label.
   scientific_note: 'The construction is the right record and it is Swedish: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
     a rendered brick fabric from Gothenburg, matches the composite''s name exactly. Around it the assembly
-    is entirely borrowed. The albedo is a London row named ''Central London'', chosen over the two Gothenburg
-    albedo rows the database holds, neither of which describes a rendered facade, and the remaining five
+    is entirely borrowed. The albedo is a London row named ''Central London'', chosen over the two
+    Gothenburg-lineage configurations the database holds, neither of which describes a rendered facade, and the remaining five
     slots are Helsinki records for which no Swedish alternative exists. The sharper problem is uniqueness.
     Slot for slot this composite selects the identical set to archetypes/surfaces/bldgs/helsinki--city-centre,
     so a Swedish regional stone typology and a Finnish city centre resolve to the same parameters and
@@ -172,6 +173,6 @@ assessment:
     its siblings either, which is consistent with a later addition. Whether the duplication is intended,
     and which of the two should change, is a curation decision; nothing here calls for a component value
     to change, and the components'' own values remain subject to their evidence assessments.'
-  evidence_revision: sha256:4d9916e491d6f2ec4dcf7339f933403862f4f9e117c38d5efc5535d2ff88f9fc
+  evidence_revision: sha256:9f7dce9872ee31875a4ac95bb4cef8fb2a084a2eb4f842e590f5912198f37205
 verification:
   attestations: []

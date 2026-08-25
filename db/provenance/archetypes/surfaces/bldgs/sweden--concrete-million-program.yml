@@ -77,9 +77,9 @@ assessment:
         place sweden. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, place london,
         the emissivity, snowpack limit and OHM slots take Helsinki records, place helsinki,
         country finland, and water storage and drainage take generic building-class records. The database does hold two
-        Swedish buildings albedo rows, records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
-        named ''Wood '', and records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark
-        roofs'', and the other Swedish buildings archetypes do use them; neither describes a concrete-tile
+        buildings albedo rows with Gothenburg lineage: the generic archived records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
+        named Wood, and records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark
+        roofs''. Other Swedish buildings archetypes do use them, but neither describes a concrete-tile
         facade, and nothing in the files records why a Central London city-centre albedo was taken instead.
         Part of the Helsinki borrowing is forced, since records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
         is the only buildings snowpack_limit record in the database and no Swedish water storage or emissivity
@@ -177,10 +177,11 @@ assessment:
     follow. The composite claims regional but five of its seven components are classed city, so a national
     default rests on city measurements, which is not correctable inside the composite and needs either
     a narrower class or country-scale rows that do not yet exist. And the albedo selection is the one
-    borrowing that was not forced: two Gothenburg rows exist, named ''Wood '' and ''Industry, dark roofs'',
+    borrowing that was not forced: two Gothenburg-lineage configurations exist, the generic archived Wood
+    row and ''Industry, dark roofs'',
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:54a50f8efa0fbd466f3492c2bb3d262ca4a8330d847a4bd33c7b6799481cc0f9
+  evidence_revision: sha256:c56d79ef03f457657ea8718d16daec9879ec5d4cf509b4a681a47000c835a8db
 verification:
   attestations: []
