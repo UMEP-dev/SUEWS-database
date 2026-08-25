@@ -1,119 +1,131 @@
 provenance_record: records/anthropogenic/helsinki--jarvi2014
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:ddb24ed982c0a8b5d2e68daaf3cbafd9dcf39e8f102d58f17b603595b0c40228
+record_revision: sha256:ec8d66253a87e4ae7677c021202aa32d3f950417d9f7f654734ad076edd5c5b9
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T22:42:20Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T16:18:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/190
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
+      - jarvi2019-data-code10
       - migration-combined-row
-      note: The neutral name identifies the retained Helsinki configuration row and makes explicit that
-        it combines anthropogenic heat and CO2 fields. It does not claim a single scientific source or
-        a finer site identity that the full tuple cannot support.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/191
+      note: The neutral name identifies the retained Helsinki combined anthropogenic-emission
+        configuration. The public model archive labels the matching row "Helsinki Jarvi et al 2014",
+        while the stable path and legacy row retain the database identity.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The stored fields are anthropogenic heat and CO2 model parameters, which is the anthropogenic_emissions
-        target.
+      - jarvi2019-data-code10
+      note: The archived SUEWS_AnthropogenicEmission table directly supplies the heat and CO2 fields
+        under anthropogenic_emissions.
     values:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: 'Three heat coefficients are traceable and the rest are not. Table 4b gives a0 as 0.1, which
-        is the stored qf_a, and a2 as 0.0102, which is qf_c. The stored qf_b of 0.0099 corresponds to
-        a1 as 9.9 x 10^-3, whereas the table prints 9.9 x 10^3; the printed exponent is inconsistent with
-        the neighbouring coefficients and with the stated unit, so this looks like a typesetting error
-        in the article, but the audit records the discrepancy rather than assuming it away. The legacy
-        base temperature of 18.2 degC matches TBaseQF. Nothing in the article publishes ah_min 15, the
-        heating and cooling slopes of 2.7, the base temperatures of 7, or any of the CO2 block: the metabolic
-        rates, the fossil-fuel fractions, the vehicle energy factor of 3970000 J km-1 or the emission
-        factor of 0.29 kg km-1.'
+      - jarvi2019-data-code10
+      - jarvi2014-heat-table
+      - migration-combined-row
+      note: Code 10 in the public model archive directly states every exported heat and CO2 leaf.
+        Aligning the record with that row restores qf_b 0.00986 on both day types, the missing working-day
+        heating base temperature 7, EF_umolCO2perJ 1.159 and vehicle CO2 factors 0.285. All other active
+        values already match. The legacy row explains the former rounded or missing cells but does not
+        override the original archived configuration.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: For the three traceable coefficients the Table 4 caption makes this a compiler rather than
-        a source. For everything else it is not a source in any sense, since the values are absent.
+      - jarvi2019-data-code10
+      - jarvi2014-heat-table
+      - migration-combined-row
+      note: The canonical source is now the pinned Järvi et al. data archive that contains the exact
+        configuration artifact. Järvi et al. (2014) independently documents the degree-day heat branch,
+        while the pre-migration workbook is retained only as later database lineage.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/190
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is a study site, but the published coefficients are inherited and the remainder are
-        unlocated.
+      - jarvi2019-data-code10
+      - jarvi2014-heat-table
+      note: The archived row is explicitly labelled Helsinki, and the 2014 paper applies the heat
+        configuration at Helsinki study sites.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi2019-data-code10
+      - jarvi2014-heat-table
+      note: >-
+        Site is the conservative evidence reach: the artifact is distributed inside the Kumpula
+        model-run input package, while the 2014 evaluation uses local Helsinki measurement footprints
+        rather than a city-wide determination.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: Part inherited regression coefficients, part unlocated inventory factors, so no single production
-        method describes the record.
+      - jarvi2019-data-code10
+      - jarvi2014-heat-table
+      note: Literature describes adoption of the complete pinned configuration row. It does not claim
+        one shared production method for the underlying inventory, metabolic and degree-day inputs.
     identity:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The related record is now named Kumpula Ku1 sector from Järvi et al. (2019), but it still has
-        a mixed Järvi 2014/2019 source and unresolved values. This record's distinct identity remains open.
+      - jarvi2019-data-code10
+      - migration-combined-row
+      note: Archive Code 10 is the Helsinki combined configuration. The related Code 51/legacy 53240051
+        record is a distinct Ku1 sector configuration with different heat coefficients and remains under
+        its own review.
       related_records:
       - records/anthropogenic/helsinki--jarvi2014--unclear-two
   evidence:
-  - id: jarvi-table-4b
+  - id: jarvi2019-data-code10
+    source: jarvi2019-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip, Input/SUEWS_AnthropogenicEmission.txt, Code 10
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: >-
+        The public archive file (Zenodo MD5 2ba163c63fdd5497f636b1567f13bd09; downloaded SHA256
+        bc86356ba3f60568bbc7ed4167e46a08ebd98d532ac372b6d2935305c6f0ffff) labels Code 10
+        "Helsinki Jarvi et al 2014" and gives BaseTHDD 18.2; qf_a 0.1/0.1; qf_b
+        0.00986/0.00986; qf_c 0.0102/0.0102; AHMin 15/15; all four heating/cooling
+        slopes 2.7; all four critical temperatures 7; metabolic heat 75/175; metabolic
+        CO2 120/280; fossil fractions 0.05/0; EF 1.159; vehicle energy 3.97e6 J km-1;
+        vehicle CO2 0.285/0.285; point source 0; and traffic units 1.
+    - kind: dataset
+      label: SpatialRun_input.zip, Input/SUEWS_AnthropogenicEmission.txt, Code 10
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: The independently packaged spatial-run input repeats the same Code 10 row byte-for-value,
+        confirming that the Kumpula archive copy is not an isolated transcription.
+  - id: jarvi2014-heat-table
     source: jarvi2014
     role: compilation
     locators:
     - kind: table
-      label: Table 4b, overall area parameter values
+      label: Table 4b, overall-area parameter values
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
-        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
-        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
-        area.
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
+      note: Publishes qf_a 0.1, qf_b approximately 0.0099, qf_c 0.0102 and BaseTHDD 18.2
+        for the Helsinki cold-climate configuration. It does not publish the complete archived row.
+    - kind: section
+      label: Sect. 2.1, anthropogenic heat flux
+      page: 1693
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
+      note: Describes the degree-day anthropogenic heat formulation evaluated at the Helsinki sites.
   - id: migration-combined-row
     source: umep-dev2025-database
     role: compilation
@@ -121,21 +133,16 @@ assessment:
     - kind: dataset
       label: database.xlsx, AnthropogenicEmission row, legacy ID 53240010
       url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
-      note: The pre-migration row identifies Helsinki and stores the heat branches, CO2 configuration,
-        model selector and legacy fields together. It establishes the retained configuration identity,
-        not scientific support for every field.
-  scientific_note: 'The record now has a neutral configuration name grounded in the exact pre-migration
-    row: it identifies the retained Helsinki artifact and its combined heat-and-CO2 scope without claiming
-    a single publication or measurement site for the whole tuple. This resolves issue #191 while leaving
-    the mixed field-level provenance in issue #190 open. Three of the heat coefficients can be pointed
-    to in Table 4b, and one of those three
-    raises a question about the article rather than the record: the table prints a1 as 9.9 x 10^3 where
-    the stored 0.0099 corresponds to 9.9 x 10^-3. Given a0 of 0.1 and a2 of 0.0102 beside it, the printed
-    exponent is almost certainly a typesetting slip, but this audit will not silently correct a published
-    figure, so the discrepancy is recorded. The larger problem is the rest of the record. The anthropogenic
-    heat minima and slopes and the whole CO2 block are not in this article. The related record is now
-    identified as Kumpula Ku1 from the later 2019 study, but that does not establish this record''s identity
-    or resolve either record''s mixed provenance.'
-  evidence_revision: sha256:4123e935a7366ad629ec69b149bb1814718a2e1dcbd9954a92574f2090aaa167
+      note: Preserves the stable Helsinki configuration identity and combined heat/CO2 structure, but
+        rounds qf_b and vehicle CO2 factors, omits the active working-day heating base temperature and
+        stores EF as zero. The pinned original input artifact settles those discrepancies.
+  scientific_note: >-
+    The apparent mixed-source blocker was caused by auditing the journal article and migrated workbook
+    without the public model-run input bundle. Zenodo 2572472 contains the exact classic SUEWS table,
+    and two independently packaged copies agree on Code 10. The record now follows that original
+    configuration artifact, with four evidence-authorised corrections and no inferred values. Järvi
+    et al. (2014) remains useful validation for the degree-day branch rather than being made to support
+    CO2 fields it never prints. The Ku1 Code 51 record is scientifically distinct and remains unresolved.
+  evidence_revision: sha256:68f7d5b940178f97eaa6fb36b36f63d330a3e8d757c0148cd7e9541b900ed25b
 verification:
   attestations: []
