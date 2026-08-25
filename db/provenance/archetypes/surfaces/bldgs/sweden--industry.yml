@@ -15,7 +15,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/sweden--unreferenced--industrial: sha256:a152fa4156d6472d5a5542877f171c17168b646649b143e84c9b83a672a9d85d
     records/ohm/generic--jarvi2014--buildings: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
-    records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:3192a50d224ef0dd9060543e3f2ce0f58e4008e3705075f757d4c72b15d4ed65
+    records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:8d51b71b7fa63fa654b73e1b6169388b232c5f0b018693b2110c858dda122272
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -36,9 +36,9 @@ assessment:
       - component-surfaces-bldgs-gothenburg-oke1987-albedo
       note: The composite is named Industry. The construction it selects, records/constructions/sweden--unreferenced--industrial,
         is named 'Archived Swedish industrial construction configuration' and declares place sweden,
-        and the albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo, named 'Industry,
-        dark roofs'. Both slots that carry the typology's identity name the same building class the
-        composite does.
+        and the albedo slot takes records/surfaces/bldgs/gothenburg--oke1987--albedo, a generic archived
+        configuration named 'Industry, dark roofs'. Both slots that carry the typology's identity name the
+        same building class without relying on the removed Oke or Gothenburg evidence claims.
     target:
       conclusion: supported
       evidence_ids:
@@ -75,8 +75,8 @@ assessment:
       - component-constructions-sweden-unreferenced-industrial
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-jarvi2014-buildings
-      note: The composite claims place sweden. The construction declares place sweden and the albedo declares
-        place gothenburg. Emissivity and the snow limit take records declaring place helsinki,
+      note: The composite claims place sweden. The construction declares place sweden, while the albedo is
+        generic and retains Gothenburg only as origin history. Emissivity and the snow limit take records declaring place helsinki,
         which db/places.yml resolves to country finland; water storage and drainage are generic; and the four ohm positions take
         records/ohm/generic--jarvi2014--buildings, which declares no place at all. The database holds
         no Swedish record for any of those quantities, so the Helsinki substitution is forced rather than
@@ -94,10 +94,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-jarvi2014-buildings
       note: The composite declares representativeness regional. The construction is the only component
-        of that class. Emissivity, the snow limit and the albedo declare representativeness
-        city, water storage and drainage are generic, and records/ohm/generic--jarvi2014--buildings declares no representativeness
-        at all while naming itself 'Archived code-799 roof average'. A country-scale default therefore
-        rests on three city rows, two generic rows and one archived legacy row whose reach is undeclared.
+        of that class. Emissivity and the snow limit are city records; albedo, water storage and drainage
+        are generic; and records/ohm/generic--jarvi2014--buildings declares no representativeness at all
+        while naming itself 'Archived code-799 roof average'. A country-scale default therefore rests on
+        two city rows, three generic rows and one archived legacy row whose reach is undeclared.
     method:
       conclusion: supported
       evidence_ids:
@@ -129,7 +129,8 @@ assessment:
     record: records/surfaces/bldgs/gothenburg--oke1987--albedo
     role: component
     note: Fills albedo. The record is named 'Industry, dark roofs', declares target land_cover.bldgs,
-      place gothenburg and representativeness city.
+      place generic, representativeness generic, source unreferenced and method assumed; Gothenburg survives
+      only as origin history.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -164,9 +165,10 @@ assessment:
     note: Fills ohm.summer_wet, ohm.summer_dry, ohm.winter_wet and ohm.winter_dry. The record is named
       'Archived code-799 roof average', declares target ohm_coefficients, and declares no place, no
       representativeness and no season_label.
-  scientific_note: 'The two slots that make this an industrial typology are well chosen and Swedish: the
-    construction is records/constructions/sweden--unreferenced--industrial, place sweden, and the albedo
-    is a Gothenburg row named ''Industry, dark roofs''. Emissivity and the snow limit come
+  scientific_note: 'The two slots that make this an industrial typology remain coherent as archived
+    configuration choices: the construction is records/constructions/sweden--unreferenced--industrial,
+    place sweden, and the albedo is a generic, unreferenced configuration named ''Industry, dark roofs''
+    whose Gothenburg origin is migration history. Emissivity and the snow limit come
     from Helsinki, which the record set forces, since the database holds no Swedish row for those building
     properties; water storage and drainage are generic. What deserves a maintainer''s attention is the coefficient slot.
     All four ohm positions take records/ohm/generic--jarvi2014--buildings, an archived code-799 record
@@ -176,6 +178,6 @@ assessment:
     than something this review can settle. The same is true of the composite''s declared
     regional reach, which no component except the construction supports. Neither question requires a component
     value to change; both live in the composite.'
-  evidence_revision: sha256:62398328cc8f50ca3d5043911302096b61a04b17e2ea6ea02957d773fe1968d8
+  evidence_revision: sha256:c6cca2ae91de0b842c0c586abb29144c8d47d9bf3ef55781d6f3301cbd7c18b5
 verification:
   attestations: []

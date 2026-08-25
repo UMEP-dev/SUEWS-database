@@ -2,10 +2,12 @@ record: records/surfaces/bldgs/gothenburg--oke1987--albedo
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Industry, dark roofs
-place: gothenburg
+place: generic
 origin: Gothenburg
-representativeness: city
-source: oke1987
+representativeness: generic
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240001
 legacy_id: 41240025
 parameters:
   alb: 0.11

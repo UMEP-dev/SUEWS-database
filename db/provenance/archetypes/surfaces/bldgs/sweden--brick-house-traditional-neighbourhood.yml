@@ -85,7 +85,7 @@ assessment:
         place gothenburg, origin ''Gothenburg, Sweden''. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo,
         place london; the emissivity, snowpack limit and OHM slots take Helsinki records,
         place helsinki, country finland; and water storage and drainage take generic building-class records. The database
-        does hold two buildings albedo rows with Gothenburg lineage: the generic archived
+        does hold two generic archived buildings albedo rows with Gothenburg lineage:
         records/surfaces/bldgs/gothenburg--oke1987--albedo--wood, named Wood, and records/surfaces/bldgs/gothenburg--oke1987--albedo,
         named ''Industry, dark roofs''. Other Swedish buildings archetypes do use them, but neither
         describes brick masonry, and nothing in the files records why a Central London city-centre albedo
@@ -190,9 +190,9 @@ assessment:
     and place together. The composite claims to be a Swedish regional typology, yet exactly one of its
     seven components is Swedish; five are classed city and water storage and drainage are generic, so a country default is
     assembled mostly from city evidence taken in Finland and, for albedo, in London. Some of that is forced by what
-    the database holds, but the albedo is not: two Gothenburg-lineage configurations exist, the generic
-    archived Wood row and ''Industry, dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
+    the database holds, but the albedo is not: two generic archived configurations with Gothenburg lineage
+    exist, Wood and ''Industry, dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
     be settled once rather than seven times. This review does not revisit any component value.'
-  evidence_revision: sha256:d42a4cffc8b0a09a803c29bc9c53f825d19edd92314ea6bd83092218963533a6
+  evidence_revision: sha256:f689ae8531c46333b4ac1cb4497b6e5e78653895840aaab8066bfd062651022a
 verification:
   attestations: []
