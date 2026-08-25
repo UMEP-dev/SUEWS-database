@@ -1,0 +1,103 @@
+provenance_record: records/materials/generic--lindberg-f2020--asphalt-shingles
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7cd8497432750efc564118ae80587b930540b84e0638c0eeabc100e19d830e44
+dependency_revisions:
+  sources:
+    lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T12:15:22Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/249
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      note: The historical material row names this retained configuration Asphalt shingles; this is a
+        catalogue identity, not evidence that Lindberg et al. publish the physical tuple.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      note: The historical row stores optical and thermal material properties and therefore supports the
+        material target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - lindberg-table-2
+      note: The exact five values are supported only as the preserved historical configuration row.
+        Lindberg et al. publish effective layer properties and identify asphalt roll as a component, but
+        do not publish this atomic tuple.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - lindberg-table-2
+      note: Unreferenced is correct because no located publication states or derives the complete tuple.
+        source_legacy_ref 90240057 retains the migrated Lindberg registry link without exporting it as the
+        parameter source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/249
+    place:
+      conclusion: not_applicable
+      note: The generic historical material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      - lindberg-table-2
+      note: Assumed distinguishes retention of a historical configuration tuple from a measured, fitted,
+        calculated, or verbatim literature material.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - legacy-material-row
+      note: Legacy ID 36243781 identifies a distinct material-registry row whose stable path and values are
+        retained without asserting a more specific asphalt product than the artifact records.
+  evidence:
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36243781
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L19-L28
+      note: Stores the exact tuple, the Asphalt shingles name, and Ref 90240057. This establishes release
+        and migration lineage, not a publication claim for the values.
+  - id: lindberg-table-2
+    source: lindberg-f2020
+    role: validation
+    locators:
+    - kind: table
+      label: Table 2, ESTM surface material properties
+      page: 274, 275
+      url: https://doi.org/10.1007/s00704-020-03189-1
+      note: Reports effective surface and building-layer properties and cites asphalt roll as an ASHRAE
+        component. It does not state albedo 0.12, emissivity 0.92, conductivity 0.33, specific heat 1390,
+        and density 1700 as one asphalt-shingle material.
+  attempted_sources:
+  - source: lindberg-f2020
+    attempted_at: '2026-08-25T12:15:22Z'
+    outcome: not_found
+    note: Table 2 and its material-source notes were checked; the complete atomic tuple is not published.
+  scientific_note: >-
+    The exact tuple is retained as a historical configuration artifact because the migration row proves
+    that lineage. Lindberg et al. do not publish it as an atomic asphalt-shingle material, and no exact
+    ASHRAE row was located. Source unreferenced, method assumed, and source_legacy_ref 90240057 make that
+    boundary explicit without guessing replacement values or a more specific product identity.
+  evidence_revision: sha256:b7833337501ee409a87ae2d804bea831e9950e8d604a05c556e8058f9f1f2f15
+verification:
+  attestations: []
