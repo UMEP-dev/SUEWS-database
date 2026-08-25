@@ -1,0 +1,74 @@
+provenance_record: records/materials/generic--unreferenced--gypsum
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:1309c51e0af1d5caa9f591e9ca7403a6a4e9dda5dfcf980003e2f5ab773e94ac
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:26:00+01:00'
+  assessor: {kind: agent, name: provenance-audit, version: '1.0', run_url: https://github.com/UMEP-dev/SUEWS-database/issues/275}
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row, ies-mismatch]
+      note: Gypsum is the migrated configuration label; similar IES gypsum rows are demonstrably different.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The historical material table establishes the material target.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, ies-mismatch]
+      note: The complete tuple is supported as the exact migrated configuration only, not as an IES row.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, ies-mismatch]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/275]
+      note: Unreferenced is correct; placeholder Ref 99240099 is retained only as source_legacy_ref.
+    place:
+      conclusion: not_applicable
+      note: This is a generic material.
+    representativeness:
+      conclusion: not_applicable
+      note: This material makes no geographic evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, ies-mismatch]
+      note: Assumed denotes an archived tuple with no recoverable scientific source or production method.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 36248152 and all five values are preserved.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248152
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L207-L217
+      note: Stores 0.40/0.93/0.43/1080/1000 under placeholder Ref 99240099; migration lineage only.
+  - id: ies-mismatch
+    source: ies2011-apache-tables
+    role: validation
+    locators:
+    - kind: table
+      label: Table 6, Gypsum Plastering row
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Publishes 0.42/837/1200, not the stored 0.43/1080/1000, and supplies no matching optical pair.
+  attempted_sources:
+  - source: ies2011-apache-tables
+    attempted_at: '2026-08-26T00:26:00+01:00'
+    outcome: not_found
+    note: Neither IES nor the checked consolidated gypsum rows matches this tuple.
+  scientific_note: >-
+    Similar individual numbers are not lineage. The database can preserve this executable historical tuple
+    as an explicit assumption without inventing a source. No value or stable identity changes.
+  evidence_revision: sha256:91b1793daa0ad9f425c014acc61ac621182562305691cea9e3dd03163fbf38fc
+verification: {attestations: []}
