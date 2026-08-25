@@ -636,6 +636,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/tree/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables
     year: 2017
+  umep-dev2017a-source-code:
+    author: UMEP-dev
+    journal: GitHub
+    title: SUEWS v2017a source code
+    type: software
+    url: https://github.com/UMEP-dev/SUEWS/tree/2017ada79a7688860d11a8384b9f52c7de8c8273/src/suews/src
+    year: 2017
   umep-dev2018a-fixture:
     author: UMEP-dev
     journal: GitHub
