@@ -1,0 +1,117 @@
+provenance_record: records/surfaces/evetr/se-england--ward2016--phenology
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:594a9615b33067da997e4905e34decbf61996456a3d5aee91e8c125def55ce2c
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T14:37:30Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/141
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      note: Ward et al. evaluate vegetation phenology for the Swindon and London UK applications. The
+        stable target and name identify this copy of the shared settings as the evergreen-tree record.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      note: Ward Section 4.1 and Järvi Equation 4 define the growing- and senescence-degree-day controls
+        represented by the four nested lai fields.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/141
+      note: Ward states base temperatures 6 and 11 degrees C for the UK applications. Järvi Table 2b
+        publishes the inherited general run options GDD 300 and SDD -450. No value is changed.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/141
+      note: Ward remains the source for the two UK base temperatures, while parameter-level overrides
+        identify Järvi 2011 as the original publication for gdd_full and sdd_full.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      note: Ward supports the SE England application context for the two base temperatures. Järvi presents
+        GDD and SDD as general model-run options, supporting the generic place override for those leaves.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      note: Ward applies the base temperatures at both UK sites and relates the growth threshold to latitude,
+        supporting the regional envelope. Järvi publishes GDD and SDD as general options, supporting their
+        generic overrides rather than attributing them specifically to SE England.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-uk-phenology
+      - jarvi-general-phenology
+      note: Ward increased or set the base temperatures as application choices, and Järvi Table 2b states
+        GDD and SDD as general run options. Assumed is therefore the supported method for all four leaves.
+    identity:
+      conclusion: supported
+      note: The stable path, evergreen-tree target and legacy ID retain the migrated SE England phenology
+        identity; field-level provenance changes no parameter or record identity.
+  evidence:
+  - id: ward-uk-phenology
+    source: ward2016
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.base_temperature
+    - parameters.lai.base_temperature_senescence
+    locators:
+    - kind: section
+      label: Section 4.1, Seasonal cycle of vegetation phenology
+      page: 7
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: States that the growing-degree-day base temperature was raised from 5 to 6 degrees C for
+        the Swindon and London applications and that the senescence base temperature was set to 11 degrees C.
+  - id: jarvi-general-phenology
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.gdd_full
+    - parameters.lai.sdd_full
+    locators:
+    - kind: equation
+      label: Equation 4, dynamic daily LAI
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines the daily LAI response to growing and senescence degree days and their base temperatures.
+    - kind: table
+      label: Table 2b, general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes GDD 300 and SDD -450 as general model-run options, rather than SE England-specific values.
+  scientific_note: Ward et al. document the UK base-temperature choices but not the inherited GDD and
+    SDD thresholds. Järvi et al. (2011) is the original publication that states those thresholds as general
+    model-run options. The record keeps its whole four-value phenology tuple and stable identity while
+    exporting the correct citation and scope for each leaf.
+  evidence_revision: sha256:64cfb1bad1a04aab810392567588967d15dfbff69731a4a5ed70ef566b28c26c
+verification:
+  attestations: []

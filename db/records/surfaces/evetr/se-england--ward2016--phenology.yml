@@ -6,6 +6,7 @@ place: se-england
 origin: SE England
 representativeness: regional
 source: ward2016
+method: assumed
 legacy_id: 35240044
 parameters:
   lai:
@@ -13,3 +14,12 @@ parameters:
     base_temperature_senescence: 11
     gdd_full: 300
     sdd_full: -450
+parameter_provenance:
+  parameters.lai.gdd_full:
+    source: jarvi2011
+    place: generic
+    representativeness: generic
+  parameters.lai.sdd_full:
+    source: jarvi2011
+    place: generic
+    representativeness: generic
