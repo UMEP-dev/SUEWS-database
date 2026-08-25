@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--steel
 schema_version: '2026.5'
 target: material
 name: steel
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248202
 category: Generic
 display_colour: Red
@@ -12,3 +13,12 @@ parameters:
   thermal_conductivity: 50
   specific_heat: 450
   density: 7800
+parameter_provenance:
+  parameters.albedo:
+    method: calculated
+  parameters.emissivity:
+    method: assumed
+    source_bounds:
+      minimum: 0.79
+      maximum: 0.82
+      active_role: within
