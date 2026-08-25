@@ -1,0 +1,98 @@
+provenance_record: records/surfaces/grass/helsinki--havu-m2024--lai-power
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:186a3e2a4293c1356710940d1f3db34188da2015a8411e790ce9ee519d40f71a
+dependency_revisions:
+  sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records:
+    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T21:20:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/226
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse]
+      note: Grass, LaiEq = 1 preserves the grass configuration identity explicitly stored by the archived
+        SUEWS vegetation rows; it does not claim that the associated article derived a grass parameter set.
+    target:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse]
+      note: The archived rows apply the coefficients to SUEWS grass/low-vegetation land-cover inputs.
+    values:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse, published-tree-lineage]
+      note: The citable Zenodo configuration stores the exact four coefficients and applies them to grass.
+        The associated supplement publishes the same tuple only for updated deciduous trees, establishing
+        that the grass row is configuration reuse rather than a separately derived grass parameterisation.
+    source:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse, published-tree-lineage]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/226]
+      note: The Zenodo dataset is the direct exact-value source for the executable grass configuration.
+        The journal article is retained as validation of the tuple's deciduous-tree lineage, not exported
+        as though it published a grass derivation.
+    place:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse]
+      note: The archived surface rows identify the configuration as a Helsinki application.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse]
+      note: City records the reach of the archived Helsinki model configuration, not an observational
+        claim that the four coefficients were independently determined from grass across Helsinki.
+    method:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse, published-tree-lineage]
+      note: Literature denotes direct transcription of the citable archived configuration. No new fit or
+        grass-specific derivation is asserted.
+    identity:
+      conclusion: supported
+      evidence_ids: [archived-grass-reuse, published-tree-lineage]
+      related_records:
+      - records/surfaces/dectr/helsinki--havu-m2024--lai-power
+      note: The separate grass record is retained because the archive deliberately selects the tuple for
+        grass, while the related deciduous record preserves the parameter class described by the paper.
+  evidence:
+  - id: archived-grass-reuse
+    source: havu-m2024-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, grass codes 860 and 865
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Applies LaiEq 1 with growth_lai 0.04, growth_gdd 0.002, senescence_lai -1.5 and
+        senescence_sdd 0.0005 to the archived Helsinki grass/low-vegetation configurations.
+  - id: published-tree-lineage
+    source: havu-m2024
+    role: validation
+    locators:
+    - kind: supplementary
+      label: Supplement Table 1, updated LAI parameterisation for deciduous trees
+      page: '1'
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      note: Publishes the same four coefficients specifically for deciduous trees; it does not describe
+        a separate grass fit or derivation.
+  - id: related-deciduous-configuration
+    record: records/surfaces/dectr/helsinki--havu-m2024--lai-power
+    role: related
+    note: Carries the same tuple under the deciduous-tree identity described by the publication.
+  scientific_note: >-
+    The missing grass publication is not a blocker because the canonical claim is narrower: this is an
+    archived executable configuration reuse, not a grass-specific scientific determination. The public
+    Zenodo input explicitly applies the four values to grass, while the article explains their
+    deciduous-tree lineage. Using the dataset as the record source makes both roles visible without
+    inventing a grass derivation or requiring an author statement to confirm what the archived input says.
+  evidence_revision: sha256:4931369cfb90e8c959d8060f94d0a4d5beeb07507de4987c06a178b0e2fb02a6
+verification:
+  attestations: []

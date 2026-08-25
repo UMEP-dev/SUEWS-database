@@ -12,7 +12,7 @@ dependency_revisions:
     : sha256:dd41cc1b253e83f29fe5d2ff442d6853f4c1563853fda5285fc58bd913f11fd2
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
-    records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:8701187d36b8aba856ec2cd3aea8582d78704b96bd2325fef10a6fad209e7fed
+    records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:186a3e2a4293c1356710940d1f3db34188da2015a8411e790ce9ee519d40f71a
     records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
@@ -226,6 +226,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its irrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:7a8dd361e5f3fe1cc349844c78998590df0473fb66323227a6879502af995e5e
+  evidence_revision: sha256:6f76a0b965e816ecd15f63bc87046b20a03529335b033aa3a640040c78d6e345
 verification:
   attestations: []
