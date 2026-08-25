@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:3788ddb2685a492f5e0bd94ffae79f012da2bbff15c3c57cc3e151fd62772fd9
-    records/surfaces/grass/se-england--ward2016--phenology: sha256:747a1e16496f2453fc5462cde394ca5ad44322b855b7a83b81544bb260cd2aa0
+    records/surfaces/grass/se-england--ward2016--phenology: sha256:2d70390a2e9047e423a2b9b9fbfb0e052a78f43a593d3c5a6dd96c22fc8cd8e0
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
 assessment:
   status: curation_required
@@ -244,6 +244,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:53eefe7be06f20913526b9533d63b111abece1a10cee6f08379219c4dd44a960
+  evidence_revision: sha256:131262f0bbf3c7115c09a77ab4952279e4933fa432ec11fad44939b095ca1286
 verification:
   attestations: []
