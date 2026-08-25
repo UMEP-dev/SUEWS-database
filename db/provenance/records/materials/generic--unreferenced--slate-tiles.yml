@@ -1,0 +1,89 @@
+provenance_record: records/materials/generic--unreferenced--slate-tiles
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:044968ac9fb29b37759bb37a49a85a8a8935eea13b252681e9ec20cbe8975b57
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:14:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/277
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: The IES table and historical catalogue both identify the material as Slate Tiles.
+    target:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: Both sources describe thermophysical material properties used by a building-energy model.
+    values:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: >-
+        IES Table 6 publishes the exact thermal tuple 2.0/753/2700. The optical pair 0.25/0.90 is retained
+        from the migrated row only and is explicitly exported as unreferenced and assumed.
+    source:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/277]
+      note: IES is the effective source only for the three thermal leaves; field-level metadata prevents
+        that citation from being extended to the unsupported optical pair.
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: Literature applies to the three IES-supported thermal leaves; both optical leaves are assumed.
+    identity:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, legacy-material-row]
+      note: Legacy ID 36248180 preserves the catalogue identity; no path or value changes.
+  evidence:
+  - id: ies-thermal-row
+    source: ies2011-apache-tables
+    role: parameter_source
+    parameter_paths:
+    - parameters.thermal_conductivity
+    - parameters.specific_heat
+    - parameters.density
+    locators:
+    - kind: table
+      label: Table 6, Slate Tiles row
+      page: '19'
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Publishes thermal conductivity 2.000 W m-1 K-1, specific heat 753 J kg-1 K-1 and density
+        2700 kg m-3. Table 14 instead implies grey-slate albedo 0.1-0.2, not the stored 0.25.
+  - id: legacy-material-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248180
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L370-L377
+      note: Stores the complete tuple under placeholder Ref 99240099; this establishes migration lineage only.
+  attempted_sources:
+  - source: ies2011-apache-tables
+    attempted_at: '2026-08-26T00:14:00+01:00'
+    outcome: incomplete
+    note: The guide supports all three thermal leaves but contradicts rather than supports stored albedo 0.25.
+  scientific_note: >-
+    Field-level provenance preserves the exact thermal evidence without treating the absent optical source
+    as a blocker. The optical values remain explicit unreferenced assumptions; no generic slate range is
+    substituted and no parameter value or stable identity changes.
+  evidence_revision: sha256:545f3f7c668c06eeec985a162cc2819ad5e91bc6bfb72a012b69e71c766752aa
+verification:
+  attestations: []
