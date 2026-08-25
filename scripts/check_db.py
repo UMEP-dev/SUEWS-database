@@ -43,6 +43,17 @@ APPLICABLE_SCALES_FILE = ROOT / "schema" / "applicable_scales.yml"
 
 # Repo-local record targets that have no supy class
 LOCAL_TARGETS = {"material", "construction", "typology", "ohm_coefficients"}
+PARAMETER_METHODS = {"measured", "fitted", "literature", "calculated", "assumed"}
+REPRESENTATIVENESS = {"site", "city", "regional", "generic"}
+PARAMETER_PROVENANCE_FIELDS = {
+    "source",
+    "method",
+    "place",
+    "representativeness",
+    "urban_setting",
+    "applicable_scale",
+}
+BARE_PARAMETER_CONTAINERS = {"daywat", "daywatper", "working_day", "holiday"}
 
 
 def load_urban_settings():
@@ -78,6 +89,90 @@ def iter_uses(uses):
             yield from iter_uses(v)
         elif isinstance(v, str):
             yield v
+
+
+def export_ref_leaf_paths(rec):
+    """Return exact parameter paths that the exporter wraps as RefValues."""
+    paths = set()
+
+    def visit(node, path="", bare=False):
+        if isinstance(node, dict):
+            for key, value in node.items():
+                child = f"{path}.{key}" if path else str(key)
+                visit(
+                    value,
+                    child,
+                    bare or key in BARE_PARAMETER_CONTAINERS or key == "context",
+                )
+            return
+        if isinstance(node, list):
+            if not bare and all(
+                value is None or isinstance(value, (int, float)) for value in node
+            ):
+                paths.add(f"parameters.{path}")
+            return
+        if not bare and node is not None and not isinstance(node, (str, bool)):
+            paths.add(f"parameters.{path}")
+
+    visit(rec.get("parameters", {}))
+    return paths
+
+
+def parameter_provenance_errors(path, rec, sources, places, urban_settings,
+                                applicable_scales):
+    """Validate canonical per-leaf provenance overrides."""
+    overrides = rec.get("parameter_provenance")
+    if overrides is None:
+        return []
+    if not isinstance(overrides, dict) or not overrides:
+        return [f"{path}: parameter_provenance must be a non-empty mapping"]
+
+    errors = []
+    exportable_paths = export_ref_leaf_paths(rec)
+    for parameter_path, override in overrides.items():
+        prefix = f"{path}: parameter_provenance {parameter_path!r}"
+        if parameter_path not in exportable_paths:
+            errors.append(f"{prefix} is not an exportable parameter leaf")
+            continue
+        if not isinstance(override, dict) or not override:
+            errors.append(f"{prefix} must be a non-empty mapping")
+            continue
+        unknown = sorted(set(override) - PARAMETER_PROVENANCE_FIELDS)
+        if unknown:
+            errors.append(f"{prefix} has unknown fields {unknown}")
+        null_fields = sorted(key for key, value in override.items() if value is None)
+        if null_fields:
+            errors.append(f"{prefix} has null fields {null_fields}")
+        source = override.get("source")
+        if source is not None and source not in sources:
+            errors.append(f"{prefix} source {source!r} not in sources.yml")
+        method = override.get("method")
+        if method is not None and method not in PARAMETER_METHODS:
+            errors.append(f"{prefix} has invalid method {method!r}")
+        place = override.get("place")
+        if place is not None and place not in places:
+            errors.append(f"{prefix} place {place!r} not in places.yml")
+        representativeness = override.get("representativeness")
+        if (
+            representativeness is not None
+            and representativeness not in REPRESENTATIVENESS
+        ):
+            errors.append(
+                f"{prefix} has invalid representativeness "
+                f"{representativeness!r}"
+            )
+        urban_setting = override.get("urban_setting")
+        if urban_setting is not None and urban_setting not in urban_settings:
+            errors.append(f"{prefix} has invalid urban_setting {urban_setting!r}")
+        applicable_scale = override.get("applicable_scale")
+        if (
+            applicable_scale is not None
+            and applicable_scale not in applicable_scales
+        ):
+            errors.append(
+                f"{prefix} has invalid applicable_scale {applicable_scale!r}"
+            )
+    return errors
 
 
 def structural_check(records, sources, places):
@@ -120,6 +215,19 @@ def structural_check(records, sources, places):
             errors.append(
                 f"{path}: applicable_scale {applicable_scale!r} not in "
                 "schema/applicable_scales.yml"
+            )
+        if kind == "record":
+            errors += parameter_provenance_errors(
+                path,
+                rec,
+                sources,
+                places,
+                urban_settings,
+                applicable_scales,
+            )
+        elif "parameter_provenance" in rec:
+            errors.append(
+                f"{path}: parameter_provenance is allowed only on evidence records"
             )
         for ref in iter_uses(rec.get("uses", {})):
             if ref not in records:
@@ -208,7 +316,7 @@ def image_check(records):
 # ---------------- SUEWS configuration validation via SuPy ----------------
 
 
-def wrap_ref(params, ref_info):
+def wrap_ref(params, ref_info, ref_overrides=None):
     """Wrap each leaf value as a RefValue dict, mirroring the exporter.
 
     Three shapes stay bare because their supy fields are not FlexibleRefValue:
@@ -216,44 +324,71 @@ def wrap_ref(params, ref_info):
     profile sides, and any string/bool. A list of scalars wraps as ONE
     RefValue holding the whole list (thermal_layers.dz etc.).
     """
-    BARE_CONTAINERS = {"daywat", "daywatper", "working_day", "holiday"}
+    ref_overrides = ref_overrides or {}
 
-    def wrap(node, bare=False):
+    def wrap(node, path="", bare=False):
         if isinstance(node, dict):
             return {
-                k: wrap(v, bare or k in BARE_CONTAINERS) for k, v in node.items()
+                k: wrap(
+                    v,
+                    f"{path}.{k}" if path else str(k),
+                    bare or k in BARE_PARAMETER_CONTAINERS,
+                )
+                for k, v in node.items()
             }
         if isinstance(node, list):
             if all(v is None or isinstance(v, (int, float)) for v in node):
-                return node if bare else {"value": node, "ref": ref_info}
-            return [wrap(v, bare) for v in node]
+                effective_ref = ref_overrides.get(f"parameters.{path}", ref_info)
+                return node if bare else {"value": node, "ref": effective_ref}
+            return [wrap(v, path, bare) for v in node]
         if bare or node is None or isinstance(node, (str, bool)):
             return node
-        return {"value": node, "ref": ref_info}
+        effective_ref = ref_overrides.get(f"parameters.{path}", ref_info)
+        return {"value": node, "ref": effective_ref}
 
     return wrap(params)
 
 
-def suews_configuration_fragment(rec, sources):
-    """Build the SUEWS configuration fragment emitted for a record."""
-    src_key = rec.get("source")
+def reference_info(rec, sources, override=None):
+    """Build one export citation from the record envelope plus an override."""
+    metadata = {
+        key: rec.get(key)
+        for key in (
+            "source",
+            "place",
+            "representativeness",
+            "urban_setting",
+            "applicable_scale",
+        )
+    }
+    metadata.update(override or {})
+    src_key = metadata.get("source")
     src = sources.get(src_key, {}) if src_key else {}
     desc_bits = []
-    if rec.get("place"):
-        desc_bits.append(rec["place"])
-    if rec.get("representativeness"):
-        desc_bits.append(rec["representativeness"])
-    if rec.get("urban_setting"):
-        desc_bits.insert(1 if rec.get("place") else 0, rec["urban_setting"])
-    if rec.get("applicable_scale"):
-        desc_bits.append(rec["applicable_scale"])
-    ref_info = {
+    if metadata.get("place"):
+        desc_bits.append(metadata["place"])
+    if metadata.get("urban_setting"):
+        desc_bits.append(metadata["urban_setting"])
+    if metadata.get("representativeness"):
+        desc_bits.append(metadata["representativeness"])
+    if metadata.get("applicable_scale"):
+        desc_bits.append(metadata["applicable_scale"])
+    return {
         "ID": src_key,
         "DOI": src.get("doi"),
         "desc": ", ".join(desc_bits) or None,
     }
+
+
+def suews_configuration_fragment(rec, sources):
+    """Build the SUEWS configuration fragment emitted for a record."""
+    ref_info = reference_info(rec, sources)
+    ref_overrides = {
+        path: reference_info(rec, sources, override)
+        for path, override in rec.get("parameter_provenance", {}).items()
+    }
     params = {k: v for k, v in rec.get("parameters", {}).items() if k != "context"}
-    return wrap_ref(params, ref_info)
+    return wrap_ref(params, ref_info, ref_overrides)
 
 
 def supy_check(records, sources):

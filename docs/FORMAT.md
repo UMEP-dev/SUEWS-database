@@ -7,10 +7,12 @@ that a record exports mechanically into a modern SUEWS YAML configuration.
 Three layers make up the database.
 
 - **Evidence** (`db/records/`) — values as they were measured, fitted or
-  published: one file per set that shares a source, a place and a surface.
-  Values that were determined together stay together (a phenology record
-  carries the degree-day totals *and* the base temperatures they were
-  accumulated against), which is what makes a record safe to reuse whole.
+  published: normally one file per set that shares a source, a place and a
+  surface. Values that were determined together stay together (a phenology
+  record carries the degree-day totals *and* the base temperatures they were
+  accumulated against), which is what makes a record safe to reuse whole. A
+  stable model-coupled tuple that genuinely mixes sources keeps the tuple
+  intact and declares the exceptional leaves under `parameter_provenance`.
 - **Assembly** (`db/archetypes/`) — curated combinations: a complete surface
   description (`archetypes/surfaces/`), a snow parameter set
   (`archetypes/snow/`), a building typology (`archetypes/typologies/`), or a
@@ -95,6 +97,36 @@ Envelope fields:
   from `target`, the filename or the record name.
 - `method` (optional) — measured | fitted | literature | calculated | assumed.
   Not recoverable for migrated records; fill it in for new ones.
+- `parameter_provenance` (optional, evidence records only) — controlled
+  overrides for exact numeric parameter leaves when a stable model tuple is
+  not source-coherent. Keys are
+  dotted paths rooted at `parameters`, and values may override `source`,
+  `method`, `place`, `representativeness`, `urban_setting`, or
+  `applicable_scale`. The record envelope remains the fallback for every
+  unlisted leaf. For example:
+
+  ```yaml
+  source: ward2016
+  method: fitted
+  parameter_provenance:
+    parameters.s1:
+      source: umep-dev2016a
+      method: assumed
+    parameters.s2:
+      source: umep-dev2016a
+      method: assumed
+  ```
+
+  Overrides are canonical data: they change record and evidence revisions and
+  travel into the model-ready fragment. `make check` accepts only exact leaves
+  that can carry a SUEWS `RefValue`, registered sources and places, and the
+  controlled method and scope vocabularies. Do not use an override to make an
+  uncertain citation look precise. Source roles, evidence locators, and the
+  review conclusion still belong in the provenance sidecar, whose
+  `parameter_paths` explain why each canonical override is justified. The
+  assessment's `method` remains the record-level default; its method finding
+  must explicitly review any per-leaf method overrides and cite the evidence
+  that supports them.
 - `legacy:` (optional) — columns of the migrated row that have no home in
   the current supy model (documented per column in
   `schema/table_mapping.yml`), and `-999` placeholder cells. Kept verbatim
@@ -113,10 +145,14 @@ data problem; it does not silently redefine the citation. `source` must not be
 changed to the publication that supplied underlying observations when that
 publication did not publish the parameter itself.
 
-An internally calculated or explicitly assumed record may have no external
+An internally calculated or explicitly assumed value may have no external
 parameter publication and keep `source: unreferenced`. Its sidecar makes that
 absence precise by recording the method, input records or assumption, and the
-human decision that accepted it; it does not manufacture a publication.
+human decision that accepted it; it does not manufacture a publication. When
+a publication or pinned configuration artifact itself states the calculated or
+assumed value, that source may travel with the affected leaf, but the sidecar
+must identify it as the exact-value `parameter_source` rather than presenting
+the underlying observations as the parameter publication.
 
 Full provenance and its review state live in a sidecar under `db/provenance/`
 that mirrors the reviewed entry path. For example, the assessment for
@@ -193,23 +229,23 @@ that the evidence item applies to the complete parameter set or to a
 non-value finding. The checker rejects paths that do not exist in the reviewed
 entry, and the site shows the scope beside the evidence locator.
 
-Field scope records what a source actually supports; it does not silently
-override the record's backwards-compatible `source` field or authorise a value
-change. A mixed tuple can therefore document that one publication supports one
-field while other fields remain unresolved, without presenting partial
-evidence as support for the complete tuple. A field-scoped `parameter_source`
-does not satisfy record-level source alignment or make an assessment eligible
-for sign-off; that requires an unscoped `parameter_source` matching the
-record's exported `source` field.
+Field scope records what a source actually supports; it never changes the
+canonical record or authorises a value edit by itself. A mixed tuple can
+therefore document partial evidence before a separate record PR adds matching
+`parameter_provenance`. For sign-off, every exported leaf must be covered by a
+`parameter_source` whose source matches that leaf's effective canonical source.
+An unscoped evidence item covers the complete tuple; once any leaf has a
+different source, the evidence items must be scoped so they do not overclaim
+other leaves.
 
-For a measured, fitted or literature assessment to become sign-off eligible,
-at least one `parameter_source` must equal the evidence record's `source` key.
-If an assessment finds an exact-value publication for a record whose source is
-different or `unreferenced`, its source finding is `correction_required`; that
-record cannot be verified until a separate record-fix PR resolves the mismatch.
-Internally `calculated` and explicitly `assumed` records are the deliberate
-exception: they use `source: unreferenced`, do not invent a parameter
-publication, and document the calculation or assumption in the sidecar.
+For a value with an external source, the matching `parameter_source` may be a
+publication or pinned configuration artifact that states or derives the exact
+stored value. If the effective source is different or `unreferenced`, the
+source finding remains `correction_required` until a separate record-fix PR
+aligns the canonical metadata. A genuinely internal `calculated` or `assumed`
+leaf may instead use `source: unreferenced` and have no covering
+`parameter_source`; its sidecar documents the calculation or assumption rather
+than inventing a publication.
 
 An assessment reports a conclusion for each of eight core review scopes:
 `name`, `target`, `values`, `source`, `place`, `representativeness`, `method`,
@@ -684,6 +720,10 @@ which pastes directly into a SUEWS YAML configuration under the path named
 by `target` (`sites[].properties.land_cover.bldgs` here). The citation
 travels with the value into the user's config. Where declared, the controlled
 urban setting is included between place and representativeness in `ref.desc`.
+Where a record declares `parameter_provenance`, the affected value instead
+carries its effective field-level source and scope; all other values retain the
+record-level citation. The record page labels those fields explicitly and the
+source page lists records that cite a publication through either route.
 This is verified end to end:
 `make validate` checks every fragment against the supy data model
 (`PavedProperties`, `SnowParams`, `HourlyProfile`, ...), and fragments

@@ -94,6 +94,73 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("<code>parameters.a1</code>", page)
         self.assertIn("<code>parameters.a2</code>", page)
 
+    def test_canonical_parameter_provenance_is_visible(self):
+        key = "records/surfaces/paved/se-england--ward2016--albedo"
+        record = deepcopy(self.records[key])
+        record["parameter_provenance"] = {
+            "parameters.alb": {
+                "source": "yoshida1991",
+                "method": "literature",
+            }
+        }
+        records = dict(self.records)
+        records[key] = record
+        page = record_page(
+            key,
+            record,
+            records,
+            self.sources,
+            self.used_by,
+            self.cluster,
+            sidecars=self.sidecars,
+            policy=self.policy,
+        )
+        self.assertIn("Labelled fields override the record-level", page)
+        self.assertIn("source/yoshida1991.html", page)
+        self.assertIn("Yoshida 1991", page)
+        self.assertIn("ID: yoshida1991", page)
+        index = build_search_index(
+            records, self.sources, self.places, self.sidecars, self.policy
+        )
+        item = next(entry for entry in index if entry["path"] == key)
+        self.assertEqual(record["source"], item["source"])
+        self.assertIn("yoshida1991", item["sources"])
+        self.assertIn(record["source"], item["sources"])
+
+        source = source_page(
+            "yoshida1991",
+            self.sources["yoshida1991"],
+            [key],
+            records,
+        )
+        self.assertIn("Records citing this source", source)
+        self.assertIn(record["name"], source)
+
+    def test_hour_level_parameter_provenance_is_visible_on_collapsed_row(self):
+        key = "records/profiles/energy-use/shanghai--ao2018--ao-et-al"
+        record = deepcopy(self.records[key])
+        record["parameter_provenance"] = {
+            "parameters.public_holiday.1": {
+                "source": "yoshida1991",
+                "method": "literature",
+            }
+        }
+        records = dict(self.records)
+        records[key] = record
+        page = record_page(
+            key,
+            record,
+            records,
+            self.sources,
+            self.used_by,
+            self.cluster,
+            sidecars=self.sidecars,
+            policy=self.policy,
+        )
+        self.assertIn("source/yoshida1991.html", page)
+        self.assertIn("Applies to parameters.public_holiday.1", page)
+        self.assertIn("ID: yoshida1991", page)
+
     def test_remaining_review_states_are_explicit(self):
         self.assertEqual(provenance_state(None, self.policy), "unaudited")
         candidate = deepcopy(self.sidecars[MIXED])

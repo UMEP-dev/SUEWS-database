@@ -16,6 +16,8 @@ import rfc8785
 import yaml
 from jsonschema import Draft202012Validator, FormatChecker
 
+from check_db import export_ref_leaf_paths
+
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db"
@@ -34,6 +36,7 @@ REVIEWED_ASSESSMENT_FIELDS = (
 )
 SIGNOFF_FINDINGS = {"supported", "not_applicable"}
 EXTERNAL_METHODS = {"measured", "fitted", "literature"}
+INTERNAL_METHODS = {"calculated", "assumed"}
 
 EVENT_URLS = {
     "issue": re.compile(
@@ -202,22 +205,60 @@ def _event_fact_matches(attestation, fact, provenance_record):
     )
 
 
+def _evidence_covers_path(item, path):
+    scopes = item.get("parameter_paths")
+    if not scopes:
+        return True
+    return any(path == scope or path.startswith(scope + ".") for scope in scopes)
+
+
+def _effective_leaf_metadata(record, assessment):
+    """Yield each exported path with its effective canonical source and method."""
+    overrides = record.get("parameter_provenance", {})
+    for path in export_ref_leaf_paths(record):
+        override = overrides.get(path, {})
+        source = override.get("source", record.get("source"))
+        method = override.get(
+            "method", record.get("method", assessment.get("method"))
+        )
+        yield path, source, method
+
+
 def _parameter_source_aligned(record, assessment):
-    method = assessment.get("method")
+    """Whether every exported leaf has one honest parameter-source claim."""
     parameter_sources = [
         item
         for item in assessment.get("evidence", [])
         if item.get("role") == "parameter_source"
     ]
-    source = record.get("source")
-    if method in EXTERNAL_METHODS:
-        return source != "unreferenced" and any(
+    if not record.get("parameter_provenance"):
+        source = record.get("source")
+        method = record.get("method", assessment.get("method"))
+        if source == "unreferenced":
+            return method in INTERNAL_METHODS and not parameter_sources
+        return method in EXTERNAL_METHODS | INTERNAL_METHODS and any(
             item.get("source") == source and not item.get("parameter_paths")
             for item in parameter_sources
         )
-    if method in {"calculated", "assumed"}:
-        return source == "unreferenced" and not parameter_sources
-    return False
+    for path, source, method in _effective_leaf_metadata(record, assessment):
+        covering = [
+            item for item in parameter_sources if _evidence_covers_path(item, path)
+        ]
+        if method not in EXTERNAL_METHODS | INTERNAL_METHODS:
+            return False
+        if source == "unreferenced":
+            if method not in INTERNAL_METHODS or covering:
+                return False
+        elif not covering or any(item.get("source") != source for item in covering):
+            return False
+    return True
+
+
+def _record_has_published_parameter_source(record, assessment):
+    return any(
+        source not in (None, "unreferenced")
+        for _, source, _ in _effective_leaf_metadata(record, assessment)
+    )
 
 
 def _review_type(sidecar):
@@ -253,11 +294,9 @@ def signoff_eligible(sidecar, record):
         for scope in required_supported
     ):
         return False
-    if (
-        review_type == "evidence"
-        and assessment.get("method") in EXTERNAL_METHODS
-        and findings.get("source", {}).get("conclusion") != "supported"
-    ):
+    if review_type == "evidence" and _record_has_published_parameter_source(
+        record, assessment
+    ) and findings.get("source", {}).get("conclusion") != "supported":
         return False
     try:
         revisions_are_current = (
@@ -451,6 +490,11 @@ def _dependency_keys(record, assessment, review_type="evidence"):
     if record.get("source") not in (None, "unreferenced"):
         source_keys.add(record["source"])
     place_keys = {record["place"]} if record.get("place") else set()
+    for override in record.get("parameter_provenance", {}).values():
+        if override.get("source") not in (None, "unreferenced"):
+            source_keys.add(override["source"])
+        if override.get("place"):
+            place_keys.add(override["place"])
     record_paths = set()
     for item in assessment.get("evidence", []):
         if "source" in item:
@@ -783,37 +827,28 @@ def check_provenance(records, sources, places, sidecars, schema=None):
             )
         if derivation_kind == "regression" and method != "fitted":
             errors.append(f"{label}: regression derivation requires method 'fitted'")
-        if review_type == "evidence" and method in EXTERNAL_METHODS:
-            for scope in ("source", "values", "method"):
-                finding = findings.get(scope, {})
-                if finding.get("conclusion") in {
-                    "supported",
-                    "contradicted",
-                    "correction_required",
-                } and not finding.get("evidence_ids"):
-                    errors.append(
-                        f"{label}: definitive {scope} finding requires evidence_ids"
-                    )
+        if review_type == "evidence" and method in EXTERNAL_METHODS | INTERNAL_METHODS:
+            if _record_has_published_parameter_source(record, assessment):
+                for scope in ("source", "values", "method"):
+                    finding = findings.get(scope, {})
+                    if finding.get("conclusion") in {
+                        "supported",
+                        "contradicted",
+                        "correction_required",
+                    } and not finding.get("evidence_ids"):
+                        errors.append(
+                            f"{label}: definitive {scope} finding requires "
+                            "evidence_ids"
+                        )
             if not _parameter_source_aligned(record, assessment):
                 if findings.get("source", {}).get("conclusion") != (
                     "correction_required"
                 ):
                     errors.append(
-                        f"{label}: parameter_source does not match record.source; "
-                        "source finding must be correction_required"
+                        f"{label}: parameter_source does not match effective "
+                        "parameter sources; source finding must be "
+                        "correction_required"
                     )
-        elif review_type == "evidence" and method in {"calculated", "assumed"}:
-            if record.get("source") != "unreferenced":
-                errors.append(
-                    f"{label}: {method} record must use source 'unreferenced'"
-                )
-            if any(
-                item.get("role") == "parameter_source"
-                for item in assessment.get("evidence", [])
-            ):
-                errors.append(
-                    f"{label}: {method} assessment cannot claim a parameter_source"
-                )
         record_method = record.get("method") if review_type == "evidence" else None
         if record_method and method and record_method != method:
             if findings.get("method", {}).get("conclusion") not in {

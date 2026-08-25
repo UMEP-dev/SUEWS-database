@@ -683,9 +683,10 @@ $defs:
         not:
           const: unreferenced
         description: >-
-          Source-registry key. For a sign-off-eligible measured, fitted or
-          literature assessment, the checker requires a parameter_source key
-          equal to the evidence record's source field.
+          Source-registry key. For a sign-off-eligible evidence assessment,
+          every externally sourced exported leaf must be covered by a
+          parameter_source whose key equals that leaf's effective canonical
+          source, including any parameter_provenance override.
       role:
         enum:
           - parameter_source

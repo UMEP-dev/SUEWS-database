@@ -545,6 +545,81 @@ class ProvenanceSemanticTests(unittest.TestCase):
         self.assertTrue(any("parameter_source does not match" in e for e in errors))
         self.assertFalse(signoff_eligible(scoped, RECORD))
 
+    def test_canonical_field_sources_require_exact_scoped_evidence_and_dependencies(self):
+        record = deepcopy(RECORD)
+        record["parameter_provenance"] = {
+            "parameters.a1": {
+                "source": "otherpaper",
+                "method": "literature",
+                "place": "otherplace",
+            }
+        }
+        records, sources, places = registries(record)
+        sources["otherpaper"] = {
+            "author": "B. Example",
+            "title": "Field publication",
+            "type": "journalArticle",
+            "year": 2001,
+        }
+        places["otherplace"] = {"name": "Other place"}
+
+        sidecar = fixture_sidecar()
+        sidecar["record_revision"] = canonical_revision(record)
+        sidecar["dependency_revisions"]["sources"]["otherpaper"] = (
+            canonical_revision(sources["otherpaper"])
+        )
+        sidecar["dependency_revisions"]["places"]["otherplace"] = (
+            canonical_revision(places["otherplace"])
+        )
+        sidecar["assessment"]["evidence"][0]["parameter_paths"] = [
+            "parameters.a2",
+            "parameters.a3",
+        ]
+        sidecar["assessment"]["evidence"].append(
+            {
+                "id": "field-publication",
+                "source": "otherpaper",
+                "role": "parameter_source",
+                "parameter_paths": ["parameters.a1"],
+                "locators": [{"kind": "table", "label": "Table 2"}],
+            }
+        )
+        for scope in ("values", "source", "method"):
+            sidecar["assessment"]["findings"][scope]["evidence_ids"] = [
+                "parameter-publication",
+                "field-publication",
+            ]
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+
+        self.assertNotEqual(canonical_revision(record), canonical_revision(RECORD))
+        self.assertEqual(
+            check_provenance(records, sources, places, {RECORD_KEY: sidecar}),
+            [],
+        )
+        self.assertTrue(signoff_eligible(sidecar, record))
+
+        missing_dependency = deepcopy(sidecar)
+        missing_dependency["dependency_revisions"]["sources"].pop("otherpaper")
+        missing_dependency["assessment"]["evidence_revision"] = evidence_revision(
+            missing_dependency
+        )
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: missing_dependency}
+        )
+        self.assertTrue(
+            any("missing dependency revisions ['otherpaper']" in error for error in errors),
+            errors,
+        )
+
+        overclaim = deepcopy(sidecar)
+        overclaim["assessment"]["evidence"][0].pop("parameter_paths")
+        overclaim["assessment"]["evidence_revision"] = evidence_revision(overclaim)
+        errors = check_provenance(
+            records, sources, places, {RECORD_KEY: overclaim}
+        )
+        self.assertTrue(any("parameter_source does not match" in e for e in errors))
+        self.assertFalse(signoff_eligible(overclaim, record))
+
     def test_derivation_self_reference_cycle_and_duplicate_mean_input(self):
         a_key = "records/ohm/calc-a"
         b_key = "records/ohm/calc-b"
