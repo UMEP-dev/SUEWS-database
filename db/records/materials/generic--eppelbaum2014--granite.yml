@@ -2,7 +2,9 @@ record: records/materials/generic--eppelbaum2014--granite
 schema_version: '2026.5'
 target: material
 name: Granite
-source: eppelbaum2014
+source: unreferenced
+method: assumed
+source_legacy_ref: 90240059
 legacy_id: 36248177
 category: Generic
 display_colour: Generic

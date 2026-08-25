@@ -1,99 +1,97 @@
 provenance_record: records/materials/generic--eppelbaum2014--granite
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c887d11ed73335546058b7702ec99f41f075f036280efc8bf4d485442f1b0b64
+record_revision: sha256:491d2b226b23283c3fbcb4a93741ad61188fa0584e59f9abaab0648684cd4147
 dependency_revisions:
   sources:
     eppelbaum2014: sha256:6ff9a5579a2808310838dc8996c38f09098c2563dddec90b233987934ec83597
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places: {}
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-25T10:21:35Z'
+  status: agent_assessed
+  assessed_at: '2026-08-25T13:28:48Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/385
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/388
+  method: assumed
   findings:
     name:
       conclusion: supported
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: Granite is the material row named in Table 2.5.
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: Granite is both the historical catalogue label and the material row named in Eppelbaum Table 2.5;
+        no narrower lithology is inferred.
     target:
       conclusion: supported
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: Thermal conductivity is a material property, but the other stored fields require separate provenance.
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: The historical row stores optical and thermal material properties, and Table 2.5 confirms that
+        thermal conductivity is a granite material property.
     values:
-      conclusion: curation_required
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: Table 2.5 supports only thermal_conductivity 2.68 W/(m K), reported as the mean of 383
-        compiled samples. The book does not publish albedo 0.35, emissivity 0.96, specific_heat 1900,
-        or density 2650 as this record's values, so the tuple cannot be accepted as a whole.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/386
-      - https://github.com/UMEP-dev/SUEWS-database/issues/387
-      - https://github.com/UMEP-dev/SUEWS-database/issues/388
-      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+      conclusion: supported
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: The exact five-field tuple is supported only as a retained historical configuration row.
+        Eppelbaum Table 2.5 supports thermal_conductivity 2.68, but the book does not publish the tuple and
+        specifically contradicts specific_heat 1900 with granite values 950, 790 and 720 J/(kg K).
     source:
-      conclusion: curation_required
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: Eppelbaum et al. are the exact-value publication for the conductivity field but do not
-        support the other four fields. The single record-level source cannot make all five attributions true.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/386
-      - https://github.com/UMEP-dev/SUEWS-database/issues/387
-      - https://github.com/UMEP-dev/SUEWS-database/issues/388
-      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+      conclusion: supported
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: Unreferenced is correct because no located publication states or derives the complete tuple.
+        source_legacy_ref 90240059 preserves the migrated Eppelbaum link, while field-scoped validation
+        evidence retains the exact conductivity locator without exporting it across the other fields.
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/388]
     place:
       conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
     representativeness:
       conclusion: not_applicable
+      note: The record makes no site, city, or regional evidence-reach claim.
     method:
-      conclusion: curation_required
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: Literature adoption describes the supported conductivity, which is itself a compiled mean;
-        the production method of the remaining tuple is unresolved.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/386
-      - https://github.com/UMEP-dev/SUEWS-database/issues/387
-      - https://github.com/UMEP-dev/SUEWS-database/issues/388
-      - https://github.com/UMEP-dev/SUEWS-database/issues/389
+      conclusion: supported
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: Assumed distinguishes retention of the complete historical tuple from a verbatim literature
+        material; the partial conductivity publication is documented separately.
     identity:
       conclusion: supported
-      evidence_ids:
-      - eppelbaum-conductivity
-      note: The stable record remains the migrated generic granite material tuple; this assessment
-        documents mixed support without splitting or renaming that identity.
+      evidence_ids: [legacy-granite-row, eppelbaum-conductivity]
+      note: Legacy ID 36248177 remains the stable generic granite configuration. The record is neither split
+        nor renamed, and its values remain unchanged.
   evidence:
+  - id: legacy-granite-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248177
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L339-L348
+      note: Stores the exact 0.35/0.96/2.68/1900/2650 tuple, Granite label and Ref 90240059. This proves
+        release and migration lineage, not that Eppelbaum publishes the complete tuple.
   - id: eppelbaum-conductivity
     source: eppelbaum2014
-    role: parameter_source
-    parameter_paths:
-    - parameters.thermal_conductivity
+    role: validation
+    parameter_paths: [parameters.thermal_conductivity]
     locators:
     - kind: table
       label: Table 2.5, Granite row
       page: 104
       url: https://doi.org/10.1007/978-3-642-34023-9_2
-      note: Reports N = 383 and average heat conductivity 2.68 W/(m K). The table is compiled from
-        the earlier datasets identified in its footnote; it is not presented as a new Eppelbaum measurement.
+      note: Reports N = 383 and average heat conductivity 2.68 W/(m K), compiled from the earlier datasets
+        identified in the table footnote.
   attempted_sources:
   - source: eppelbaum2014
     attempted_at: '2026-08-24T16:04:19Z'
     outcome: not_found
-    note: The complete 757-page monograph was close-read. It contains no matching granite albedo or
-      emissivity table, no specific heat 1900, and no stated generic density 2650.
-  scientific_note: 'Issue #385 is settled without changing the record: Eppelbaum et al. Table 2.5 is
-    the exact publication of thermal_conductivity 2.68 as a mean compiled from 383 samples, so the
-    provenance role is literature rather than a new measurement. This does not validate the five-field
-    tuple. Issues #386-#389 remain explicit source and curation blockers for the other four fields, and
-    no value, source key, stable path or record identity has changed.'
-  evidence_revision: sha256:e90234756d901dc13583380c9e23e118ed74411f3088bfca0f9a5baa20f4fe5d
+    note: The complete 757-page monograph was close-read for specific heat. It contains granite values
+      950 J/(kg K) in Table 2.8, 790 J/(kg K) in Table 2.9 and 720 J/(kg K) from Scharli and Rybach (2001),
+      but specific_heat 1900 appears nowhere.
+  scientific_note: >-
+    Deattribution is a whole-record curation decision required by the one-source export format, not a claim
+    that every field lacks evidence. Eppelbaum remains exact field-scoped validation evidence for conductivity
+    2.68. The specific heat 1900 is not published anywhere in the complete monograph and conflicts with its
+    three stated granite alternatives, but none is substituted because the intended table or transformation
+    is unknown. All five values and the stable identity are retained as an explicit unreferenced assumed
+    configuration; sibling field reviews add their own dispositions separately.
+  evidence_revision: sha256:444c5657480604e44ded51c96ae0f113a86a312a05641ac3d4141c19f60943bd
 verification:
   attestations: []
