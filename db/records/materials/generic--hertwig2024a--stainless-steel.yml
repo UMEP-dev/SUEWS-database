@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--stainless-steel
 schema_version: '2026.5'
 target: material
 name: stainless steel
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248201
 category: Generic
 display_colour: Generic
@@ -12,3 +13,12 @@ parameters:
   thermal_conductivity: 17
   specific_heat: 460
   density: 7900
+parameter_provenance:
+  parameters.albedo:
+    method: calculated
+  parameters.emissivity:
+    method: assumed
+    source_bounds:
+      minimum: 0.074
+      maximum: 0.097
+      active_role: within
