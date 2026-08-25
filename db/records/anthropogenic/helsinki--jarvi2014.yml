@@ -4,8 +4,9 @@ target: anthropogenic_emissions
 name: Archived Helsinki combined anthropogenic-emission configuration
 place: helsinki
 origin: Helsinki
-representativeness: city
-source: jarvi2014
+representativeness: site
+source: jarvi2019-data
+method: literature
 legacy_id: 53240010
 parameters:
   context:
@@ -15,8 +16,8 @@ parameters:
       working_day: 0.1
       holiday: 0.1
     qf_b:
-      working_day: 0.0099
-      holiday: 0.0099
+      working_day: 0.00986
+      holiday: 0.00986
     qf_c:
       working_day: 0.0102
       holiday: 0.0102
@@ -30,6 +31,7 @@ parameters:
       working_day: 2.7
       holiday: 2.7
     baset_heating:
+      working_day: 7
       holiday: 7
     baset_cooling:
       working_day: 7
@@ -41,11 +43,11 @@ parameters:
     maxfcmetab: 280
     frfossilfuel_heat: 0.05
     frfossilfuel_nonheat: 0
-    ef_umolco2perj: 0
+    ef_umolco2perj: 1.159
     enef_v_jkm: 3970000
     fcef_v_kgkm:
-      working_day: 0.29
-      holiday: 0.29
+      working_day: 0.285
+      holiday: 0.285
     co2pointsource: 0
     trafficunits: 1
 legacy:

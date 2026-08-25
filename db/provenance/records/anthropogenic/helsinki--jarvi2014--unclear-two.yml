@@ -9,10 +9,10 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/anthropogenic/helsinki--jarvi2014: sha256:ddb24ed982c0a8b5d2e68daaf3cbafd9dcf39e8f102d58f17b603595b0c40228
+    records/anthropogenic/helsinki--jarvi2014: sha256:ec8d66253a87e4ae7677c021202aa32d3f950417d9f7f654734ad076edd5c5b9
 assessment:
   status: unresolved
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-08-25T16:18:00Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -81,7 +81,8 @@ assessment:
       - jarvi2019-appendix-c
       note: The stored qf_a and qf_c values match the Ku1 column. Table 1 and Appendix C define that column
         as the Kumpula northern land-use sector, resolving the active display identity without resolving
-        the source mixture.
+        the source mixture. The related Code 10 record is now tied to its exact public configuration
+        artifact, confirming that it is a separate Helsinki combined configuration rather than a duplicate.
       related_records:
       - records/anthropogenic/helsinki--jarvi2014
   evidence:
@@ -134,9 +135,10 @@ assessment:
     Järvi et al. (2019) identifies this record's distinctive base and HDD coefficients as the Kumpula Ku1
     sector, a northern land-use sector within the Kumpula EC site's 1-km radius. The record now says that
     in its display name and declares site representativeness while retaining Helsinki as its registry place.
-    Its source remains Järvi et al. (2014), pending separate resolution of the mixed Järvi 2014/2019
-    parameter set: the 2019 CDD is zero whereas the stored qf_b is 0.0099, and the full CO2 block is not
-    established by either paper as one record-level source.
-  evidence_revision: sha256:9a965d92ff5088213a81eefd607be1d4705df88384ba99e1079690074796b607
+    Its source remains Järvi et al. (2014), pending resolution of the mixed Järvi 2014/2019 parameter
+    set: the 2019 CDD is zero whereas the stored qf_b is 0.0099, and the full CO2 block is not established
+    by either paper as one record-level source. The related Code 10 record is now independently resolved
+    against the public Zenodo input table and does not settle this Code 51 conflict.
+  evidence_revision: sha256:abc87297d212ed61b95bc1bc1bc466062bd187b7536ece4d2a3feb2d8a045ede
 verification:
   attestations: []
