@@ -1,0 +1,76 @@
+provenance_record: records/materials/generic--unreferenced--roofing-felt
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:9d07f45ae08ff10e17744b93c982be1d9562fbeafe166530c8d9e0faf11ffbeb
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:19:00+01:00'
+  assessor: {kind: agent, name: provenance-audit, version: '1.0', run_url: https://github.com/UMEP-dev/SUEWS-database/issues/279}
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, migration-row]
+      note: Both rows identify Roofing Felt.
+    target:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, migration-row]
+      note: Both describe building material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, migration-row]
+      note: IES publishes the exact 0.19/837/960 thermal tuple; 0.18/0.92 remain migrated assumptions.
+    source:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/279]
+      note: IES is scoped to the thermal leaves; field overrides keep both optical leaves unreferenced.
+    place:
+      conclusion: not_applicable
+      note: This is a generic material.
+    representativeness:
+      conclusion: not_applicable
+      note: This material makes no geographic evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [ies-thermal-row, migration-row]
+      note: Literature applies to thermal leaves; optical leaves are assumed.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Legacy ID 36248156, stable path and all values are preserved.
+  evidence:
+  - id: ies-thermal-row
+    source: ies2011-apache-tables
+    role: parameter_source
+    parameter_paths: [parameters.thermal_conductivity, parameters.specific_heat, parameters.density]
+    locators:
+    - kind: table
+      label: Table 6, Roofing Felt row
+      page: '11'
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: Publishes 0.190 W m-1 K-1, 837 J kg-1 K-1 and 960 kg m-3; no optical values.
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36248156
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L240-L247
+      note: Stores the complete tuple under placeholder Ref 99240099; migration lineage only.
+  attempted_sources:
+  - source: ies2011-apache-tables
+    attempted_at: '2026-08-26T00:19:00+01:00'
+    outcome: incomplete
+    note: The guide contains the thermal tuple but no roofing-felt optical pair.
+  scientific_note: >-
+    Field-level provenance preserves the supported thermal tuple without inferring optics from generic
+    asphalt, bitumen or paper. The optical values remain explicit assumptions; no values or identity change.
+  evidence_revision: sha256:9a84f9403a27945a468cc1ef752ccc6b3c39f08bb76a660890d98807861392da
+verification: {attestations: []}
