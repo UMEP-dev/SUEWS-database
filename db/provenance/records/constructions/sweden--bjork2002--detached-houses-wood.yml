@@ -1,0 +1,120 @@
+provenance_record: records/constructions/sweden--bjork2002--detached-houses-wood
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:54da694b18acee41a363bb2f9099af20b07274f64bdf05dd2991332f45efde15
+dependency_revisions:
+  sources:
+    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-25T22:34:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/376
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-construction, migration-archetype, migration-typology]
+      note: >-
+        The neutral archival label identifies the retained Swedish detached-house construction without
+        presenting the assembly as one published by Björk et al.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-construction, migration-archetype]
+      note: The migrated construction row is selected by a building-surface archetype's construction slot.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-construction]
+      note: >-
+        The migration row records the complete retained roof and wall stacks, thicknesses, and insulation
+        indices. This supports configuration lineage, not physical validation or publication provenance.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-construction, bjork-scope]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/376]
+      note: >-
+        Unreferenced is correct because the exact assembly has not been located in the cited work, whose
+        catalogued scope is multi-family housing. source_legacy_ref 90242357 preserves the historical link
+        without exporting it as evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-construction, migration-archetype, migration-typology]
+      note: Sweden records the archived application and typology identity; it is not a claim that the stack
+        was measured or derived from a representative Swedish sample.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-construction]
+      note: Generic avoids retaining the unsupported regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-construction, bjork-scope]
+      note: Assumed denotes an executable historical assembly whose scientific source and selection method
+        are not recorded.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-construction, migration-archetype, migration-typology]
+      note: >-
+        Stable path, legacy ID 37240893, Sweden origin, parameter stack and typology chain preserve the
+        historical configuration identity while its unsupported attribution is removed.
+  evidence:
+  - id: migration-construction
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Surface row 37240893
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml#L144-L170
+      note: >-
+        Stores the exact roof and wall layers, thicknesses, both insulation indices, Origin Sweden and Ref
+        90242357. This establishes release and migration lineage only.
+  - id: migration-archetype
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration NonVeg row 20240008
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/non_veg.yml#L79-L92
+      note: The Detached houses, Wood building archetype selects construction 37240893.
+  - id: migration-typology
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Types row 12240005
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/types.yml#L54-L64
+      note: The Wooden detached houses typology selects building archetype 20240008.
+  - id: bjork-scope
+    source: bjork2002
+    role: validation
+    locators:
+    - kind: text
+      label: LIBRIS catalogue scope and edition record
+      url: https://libris.kb.se/bib/8875068
+      note: Catalogues the cited work as a history of Swedish multi-family housing; it does not locate the
+        stored detached-house assembly.
+    - kind: text
+      label: Stockholm City Library description
+      url: https://stockholmskallan.stockholm.se/post/151
+      note: Describes the work as presenting Swedish multi-family house types and construction examples.
+  attempted_sources:
+  - source: bjork2002
+    attempted_at: '2026-08-25T22:34:00Z'
+    outcome: inaccessible
+    note: No exact page showing the detached-house assembly was available for inspection; title similarity
+      is not used to infer support.
+  scientific_note: >-
+    This correction preserves a model configuration, not a recommendation or validated physical assembly.
+    The pinned migration rows establish that the stack was released and used as the Swedish detached-house
+    configuration, but they do not establish who first defined it. Removing the Björk attribution means the
+    exact-edition question tracked separately does not block this record. No parameter value, material,
+    thickness, insulation index or stable identity changes.
+  evidence_revision: sha256:e7cdfb92d46feda322902df61ad97d27f0a1605f1484b3dd02f7a453557aedef
+verification:
+  attestations: []
