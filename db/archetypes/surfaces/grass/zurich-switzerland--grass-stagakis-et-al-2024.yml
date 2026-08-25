@@ -4,7 +4,7 @@ target: land_cover.grass
 name: Grass Stagakis et al. 2024
 place: zurich
 origin: Zurich, Switzerland
-representativeness: city
+representativeness: site
 legacy_id: 24240022
 uses:
   albedo: records/surfaces/grass/helsinki--vargo2013--albedo

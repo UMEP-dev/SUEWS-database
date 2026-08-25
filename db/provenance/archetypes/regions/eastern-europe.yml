@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016: sha256:87c22ea834c9dbf28895706d6c362823f8ea7d47bda01b0dd320d0ddfae6ff5d
     archetypes/surfaces/dectr/zurich-switzerland--deciduous-tree-stagakis-et-al-2024: sha256:ff8ca653954309f8d20bfb653a8afb48a8b8220d653acbe15c94675dbbc1eb20
     archetypes/surfaces/evetr/zurich-switzerland--evergreen-tree-stagakis-et-al-2024: sha256:c791197c3c5142a3fcde14a25ddcfd7d7648ca1c4cf94b92add170e6ef6f4b2f
-    archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024: sha256:6350c64d5f520c5a8462a621f8a7480c9c40ba82c8a8a5b32896ede4942ec2f4
+    archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024: sha256:b1f1df363bcdbb9b3cda1011702591d67d31a185f279e55192ac54d717c93918
     archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
     records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
@@ -23,7 +23,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ward2016--soil: sha256:42602b5fd153d3f5c9a27104534ef10d57d467184995626518c392a22ed9b3e8
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-25T15:42:23Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -145,9 +145,9 @@ assessment:
       - component-records-profiles-water-use-automatic-los-angeles--lindberg2013--old-code-12
       - component-records-profiles-water-use-manual-los-angeles--loridan2011--old-code-11
       - component-records-surfaces-common-se-england--ward2016--soil
-      note: The composite is the default for a whole region, but thirteen of its fifteen components are
-        classed city and none is classed regional except records/surfaces/common/se-england--ward2016--soil,
-        which reads regional. The remaining one, records/conductance/generic--ward2016, reads generic
+      note: The composite is the default for a whole region, but twelve of its fifteen components are
+        classed city, the Zurich grass archetype is classed site, and only records/surfaces/common/se-england--ward2016--soil
+        is classed regional. The remaining one, records/conductance/generic--ward2016, reads generic
         with place generic and the name Ward et al. (2016) generic surface conductance parameterisation (gsModel=2). docs/FORMAT.md
         defines representativeness as how far a value travels, site through city, regional and generic,
         precisely so that a rooftop measurement and a value offered as typical of a region are no longer
@@ -231,7 +231,7 @@ assessment:
     record: archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024
     role: component
     note: Fills land_cover.grass. The entry declares target land_cover.grass, place zurich and representativeness
-      city.
+      site, reflecting the four Zurich park sites behind its biogenic CO2 component.
   - id: component-archetypes-surfaces-paved-london-uk--central-london-ward-et-al-2016
     record: archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
     role: component
@@ -301,6 +301,6 @@ assessment:
     is referenced by none of them, though it carries no melt parameters and its legacy block holds -999
     throughout. The components'' own values remain subject to their evidence assessments; this review
     does not revisit them.'
-  evidence_revision: sha256:808e2b5ade9c16ac805b1c7fd5b8257b51ca885e28374cac6fd3fa15dc9cd3dc
+  evidence_revision: sha256:a5c010d507d0ea78423996c91704018201292b46e280f0620d02e296bde41954
 verification:
   attestations: []
