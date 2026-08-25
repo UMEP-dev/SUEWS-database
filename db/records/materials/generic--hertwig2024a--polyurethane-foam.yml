@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--polyurethane-foam
 schema_version: '2026.5'
 target: material
 name: Polyurethane foam
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36243795
 category: Insulation
 display_colour: Generic
