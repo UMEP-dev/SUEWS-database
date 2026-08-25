@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--terracotta-tile
 schema_version: '2026.5'
 target: material
 name: terracotta tile
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36248203
 category: Roof material
 display_colour: Grey
@@ -12,3 +13,16 @@ parameters:
   thermal_conductivity: 0.81
   specific_heat: 840
   density: 1700
+parameter_provenance:
+  parameters.albedo:
+    method: assumed
+    source_bounds:
+      minimum: 0.31
+      maximum: 0.4
+      active_role: within
+  parameters.emissivity:
+    method: assumed
+    source_bounds:
+      minimum: 0.85
+      maximum: 0.95
+      active_role: within
