@@ -2,7 +2,8 @@ record: records/materials/generic--hertwig2024a--mineral-wool-quilt
 schema_version: '2026.5'
 target: material
 name: Mineral wool (quilt)
-source: hertwig2024a
+source: cibse2015
+method: literature
 legacy_id: 36243796
 category: Insulation
 display_colour: Generic
