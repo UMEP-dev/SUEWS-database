@@ -5,7 +5,8 @@ name: Temperate grassland
 place: lethbridge
 origin: Lethbridge, Alberta, Canada
 representativeness: site
-source: flanagan2002
+source: unreferenced
+method: calculated
 legacy_id: 30240009
 parameters:
   alpha_bio_co2: 0.0205
@@ -17,3 +18,19 @@ legacy:
   theta: -999
   alpha_enh: -999
   beta_enh: -999
+parameter_provenance:
+  parameters.resp_a:
+    source: schmid2000
+    method: fitted
+    place: morgan-monroe-state-forest
+    representativeness: site
+  parameters.resp_b:
+    source: schmid2000
+    method: fitted
+    place: morgan-monroe-state-forest
+    representativeness: site
+  parameters.min_res_bioco2:
+    source: jarvi2019
+    method: measured
+    place: finland
+    representativeness: site
