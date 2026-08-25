@@ -1,0 +1,47 @@
+provenance_record: records/materials/generic--unreferenced--plaster
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:5d033cc0db7b360acd30fb81fedb22bd8e5f96fc896aa2ee8448d23bd8483483
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:31:00+01:00'
+  assessor: {kind: agent, name: provenance-audit, version: '1.0', run_url: https://github.com/UMEP-dev/SUEWS-database/issues/281}
+  method: assumed
+  findings:
+    name: {conclusion: supported, evidence_ids: [migration-row, ies-mismatch], note: Plaster is the migrated configuration label; checked IES plaster rows are different.}
+    target: {conclusion: supported, evidence_ids: [migration-row], note: The historical table establishes the material target.}
+    values: {conclusion: supported, evidence_ids: [migration-row, ies-mismatch], note: The tuple is supported as the exact migrated configuration only.}
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, ies-mismatch]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/281]
+      note: Unreferenced is correct; placeholder Ref 99240099 is retained only as source_legacy_ref.
+    place: {conclusion: not_applicable, note: This is a generic material configuration.}
+    representativeness: {conclusion: not_applicable, note: No geographic evidence reach is claimed.}
+    method: {conclusion: supported, evidence_ids: [migration-row, ies-mismatch], note: Assumed denotes an archived tuple with no recoverable scientific source.}
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 36248147 and all values are preserved.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - {kind: dataset, label: Pre-migration Spartacus Material row 36248147, url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L197-L207, note: Stores the complete tuple under placeholder Ref 99240099; migration lineage only.}
+  - id: ies-mismatch
+    source: ies2011-apache-tables
+    role: validation
+    locators:
+    - {kind: table, label: Table 6 plaster rows, url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf, note: Dense plaster is 0.50/1000/1300 and lightweight plaster 0.16/1000/600; neither matches 0.74/800/1000.}
+  attempted_sources:
+  - {source: ies2011-apache-tables, attempted_at: '2026-08-26T00:31:00+01:00', outcome: not_found, note: Neither IES nor checked consolidated plaster rows matches this tuple.}
+  scientific_note: Similar individual numbers are not lineage. This executable historical tuple remains an explicit assumption; no value or stable identity changes.
+  evidence_revision: sha256:ffc4e91d63d4c3c3f514794e82f2b29eeba05e6548743ff092bd21a913aabe46
+verification: {attestations: []}
