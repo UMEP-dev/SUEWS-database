@@ -657,6 +657,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/2017ada79a7688860d11a8384b9f52c7de8c8273/test/fixtures/legacy_format/2018a/Input/SUEWS_ESTMCoefficients.txt
     year: 2018
+  umep-dev2019a-anthropogenic-emission-table:
+    author: UMEP-dev
+    journal: GitHub
+    title: SUEWS v2019a anthropogenic-emission input table
+    type: dataRepository
+    url: https://github.com/UMEP-dev/SUEWS/blob/9acf8b37fdda35f617c74d85a9aae18c2cf7f5b7/Release/InputTables/2019a/SUEWS_AnthropogenicEmission.txt
+    year: 2019
   umep-dev2020a:
     author: UMEP-dev
     journal: GitHub
