@@ -9,7 +9,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-24T16:04:19Z'
+  assessed_at: '2026-08-25T10:21:35Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -74,6 +74,8 @@ assessment:
   - id: eppelbaum-conductivity
     source: eppelbaum2014
     role: parameter_source
+    parameter_paths:
+    - parameters.thermal_conductivity
     locators:
     - kind: table
       label: Table 2.5, Granite row
@@ -92,6 +94,6 @@ assessment:
     provenance role is literature rather than a new measurement. This does not validate the five-field
     tuple. Issues #386-#389 remain explicit source and curation blockers for the other four fields, and
     no value, source key, stable path or record identity has changed.'
-  evidence_revision: sha256:9d2617166b1d1bf1f57680f3901f5e38f6352e27f5b9429ee97d3424a50d0fae
+  evidence_revision: sha256:e90234756d901dc13583380c9e23e118ed74411f3088bfca0f9a5baa20f4fe5d
 verification:
   attestations: []
