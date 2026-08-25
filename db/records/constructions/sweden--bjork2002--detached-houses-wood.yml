@@ -1,11 +1,13 @@
 record: records/constructions/sweden--bjork2002--detached-houses-wood
 schema_version: '2026.5'
 target: construction
-name: Detached houses, Wood
+name: Archived Swedish detached-house construction configuration
 place: sweden
 origin: Sweden
-representativeness: regional
-source: bjork2002
+representativeness: generic
+source: unreferenced
+method: assumed
+source_legacy_ref: 90242357
 legacy_id: 37240893
 parameters:
   roof:
