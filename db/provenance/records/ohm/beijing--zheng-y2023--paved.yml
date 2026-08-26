@@ -1,66 +1,97 @@
 provenance_record: records/ohm/beijing--zheng-y2023--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0923789bdbfbccbe2b34135aa696c1d5b8572639de054d620da166686fefe03d
+record_revision: sha256:187865cca1b8f047652864529d28bf2153488ae682d5b806c99fd25cee2ab714
 dependency_revisions:
   sources:
     anandakumar1999: sha256:8f9ce76ac029430efa0a79dc9766624272a672b02ff9733493d71f91201f828f
+    umep-dev2017a-input-tables: sha256:5b11bb1f3acceb14cafb2d562c22a0edd96b5fd8aef76ff980887b4149c62d08
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
     alland: sha256:46467c5ee95bf1aaae2fdc452faa432eb36dc687a917e210732870d30fb4007f
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:21:09Z'
+  status: agent_assessed
+  assessed_at: '2026-08-26T16:11:15Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/327
+  method: assumed
   findings:
     name:
       conclusion: supported
-      evidence_ids:
-      - zheng-paved-application
+      evidence_ids: [suews-code904]
+      note: >-
+        The neutral archival label identifies the retained AN99 all-year paved configuration without
+        presenting the undocumented weighted calculation as recovered provenance.
     target:
       conclusion: supported
-      evidence_ids:
-      - zheng-paved-application
+      evidence_ids: [suews-code904]
+      note: The public table stores Code 904 as an OHM coefficient triplet for a paved/asphalt configuration.
     values:
       conclusion: supported
-      evidence_ids:
-      - zheng-paved-model-input
+      evidence_ids: [suews-code904, zheng-paved-model-input]
+      note: >-
+        The pinned v2017a table and the later Beijing model archive both state 0.805, -0.193 and -9.39
+        exactly. No coefficient changes.
     source:
-      conclusion: correction_required
-      evidence_ids:
-      - zheng-paved-application
-      - zheng-paved-model-input
-      note: Zheng et al. apply and archive the exact tuple but do not derive it; the article describes
-        it as an AN99 weighted average following earlier work.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/327
+      conclusion: supported
+      evidence_ids: [suews-code904, zheng-paved-application]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/327]
+      note: >-
+        The canonical source is the pinned SUEWS input table that directly states the complete tuple.
+        Zheng et al. are retained as a later Beijing application/compilation, while source_legacy_ref
+        90240067 preserves the migrated registry link.
     place:
       conclusion: supported
-      evidence_ids:
-      - anandakumar-asphalt-site
-      note: Alland is the observation location of the single asphalt-road station underlying the AN99
-        coefficients; Beijing remains the later model-application origin recorded on the stable path.
+      evidence_ids: [anandakumar-asphalt-site, suews-code904]
+      note: >-
+        Alland is the observation location identified by the AN99 label and original asphalt study;
+        Beijing remains the later application origin recorded on the stable path.
     representativeness:
       conclusion: supported
-      evidence_ids:
-      - anandakumar-asphalt-site
-      note: The underlying coefficients come from one micrometeorological station over an unused part
-        of an 8 m-wide asphalt road, so site scale is the supported scope.
+      evidence_ids: [anandakumar-asphalt-site]
+      note: >-
+        The underlying daily coefficients come from one micrometeorological station over part of an
+        8 m-wide asphalt road, so site is the supported evidence reach.
     method:
-      conclusion: curation_required
-      note: Historical SUEWS documentation identifies the tuple as an internal weighted calculation, but
-        the current record cannot express its unpublished calculation inputs and application source without
-        a maintainer decision.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/327
+      conclusion: supported
+      evidence_ids: [suews-code904, seasonal-rows]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/327]
+      note: >-
+        The release calls Code 904 a weighted average calculated by HCW but publishes no selected inputs,
+        weights, missing-month treatment, calculation order or rounding. Assumed is therefore the honest
+        production method until the original calculation is recovered or a verifier adopts a new reconstruction.
     identity:
       conclusion: supported
-      note: No exact cross-record coefficient duplicate was found in the current OHM inventory.
+      evidence_ids: [suews-code904, zheng-paved-model-input]
+      note: >-
+        Stable path, legacy ID 50240044, Beijing application origin, Code 904 label and exact triplet
+        preserve the archived configuration identity while removing the false publication attribution.
   evidence:
+  - id: suews-code904
+    source: umep-dev2017a-input-tables
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SUEWS v2017a SUEWS_OHMCoefficients.txt, Code 904
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_OHMCoefficients.txt#L53
+      note: >-
+        Directly stores 0.805, -0.193 and -9.39 and labels the row "An99 weighted average (all year) -
+        calculated by HCW". It states the executable tuple but not the calculation.
+  - id: seasonal-rows
+    source: umep-dev2017a-input-tables
+    role: validation
+    locators:
+    - kind: dataset
+      label: SUEWS v2017a AN99 seasonal rows 907-910
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_OHMCoefficients.txt#L54-L57
+      note: >-
+        Lists Apr-Sep, Oct-Mar, August and JJA tuples. Code 904 equals the component-wise mean of the
+        rounded 907 and 908 rows, but no artifact says that this was HCW's operation, so numeric coincidence
+        is not promoted to calculated provenance.
   - id: anandakumar-asphalt-site
     source: anandakumar1999
     role: input_data
@@ -73,8 +104,9 @@ assessment:
       label: Table 1, daily asphalt coefficients
       page: 3917
       url: https://doi.org/10.1016/S1352-2310(99)00133-8
-    note: The source locates the one-year asphalt observations at a single road station in Alland and
-      publishes the daily coefficient inputs, but not the exact annual weighted tuple stored here.
+      note: >-
+        Publishes 33 daily fits from the Alland asphalt-road site, not Code 904 or the unpublished HCW
+        aggregation.
   - id: zheng-paved-application
     source: zheng-y2023
     role: compilation
@@ -82,27 +114,39 @@ assessment:
     - kind: section
       label: Section 4.3, Storage heat flux
       page: 4556
-    note: The article states that paved coefficients are AN99 asphalt weighted-average values used in
-      the Beijing SUEWS application; it does not publish their calculation.
+      url: https://doi.org/10.5194/gmd-16-4551-2023
+      note: >-
+        States that the Beijing application uses AN99 asphalt weighted-average values following earlier
+        work; it does not publish or derive the tuple.
   - id: zheng-paved-model-input
     source: zheng-y2023
     role: compilation
     locators:
     - kind: dataset
-      label: ModelRuns/Input/SUEWS_OHMCoefficients.txt, code 904
+      label: Final ModelRuns/Input/SUEWS_OHMCoefficients.txt, Code 904
       url: https://doi.org/10.5281/zenodo.8012194
     - kind: dataset
-      label: ModelRuns/Input/SUEWS_NonVeg.txt, code 110 maps all OHM seasons to code 904
+      label: Final SUEWS_NonVeg code 110 and SUEWS_SiteSelect mapping
       url: https://doi.org/10.5281/zenodo.8012194
-    - kind: dataset
-      label: ModelRuns/Input/SUEWS_SiteSelect.txt, Beijing paved surface uses code 110
-      url: https://doi.org/10.5281/zenodo.8012194
-    note: The final model archive contains 0.805, -0.193, -9.39 as code 904 and traces it to the paved
-      surface used in the Beijing runs.
-  scientific_note: The exact tuple is recoverable as a Beijing model input, but Zheng et al. are a later
-    application/compilation rather than its parameter publication. Anandakumar fixes the observation
-    scope at one asphalt-road station in Alland. The exact annual weighting, calculation credit and direct
-    source still require the separate record-specific curation in issue 327.
-  evidence_revision: sha256:1a2cd32b19665d1824d79cf9bc66f9decb2e9e3e23c1fc5f774842051f4cfb0c
+      note: >-
+        The final archive repeats Code 904 and maps Beijing's paved surface to it in all four OHM slots,
+        establishing later application lineage only.
+  attempted_sources:
+  - source: anandakumar1999
+    attempted_at: '2026-08-26T16:11:15Z'
+    outcome: not_found
+    note: >-
+      The paper contains the daily asphalt fits but not the selected HCW inputs, weights, missing-month
+      treatment, formula, calculation order or rounding used for Code 904.
+  scientific_note: >-
+    The exact Code 904 tuple is directly recoverable from a pinned SUEWS release table, so the record no
+    longer needs a false Zheng et al. parameter attribution. The historical HCW calculation is not
+    recoverable from the public workbooks: the coefficients are literal cells with no formula or derivation
+    sheet. Although Code 904 equals the mean of the rounded seasonal rows 907 and 908, numeric coincidence
+    cannot establish lineage. The record therefore cites the public configuration artifact and remains
+    method assumed for focused human review. Anandakumar supplies the observation inputs and Alland site;
+    Zheng supplies later Beijing application evidence. No coefficient, stable path, place or downstream
+    selection changes.
+  evidence_revision: sha256:f227db973a74e93142484afe8c85f6c863c3e7a097bcd5356ae284765cf0a424
 verification:
   attestations: []
