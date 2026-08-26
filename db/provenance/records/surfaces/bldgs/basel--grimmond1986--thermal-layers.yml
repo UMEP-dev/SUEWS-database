@@ -73,7 +73,7 @@ assessment:
   attempted_sources:
   - source: grimmond1986
     url: https://doi.org/10.1029/WR022i010p01397
-    attempted_at: '2026-08-22T00:00:00Z'
+    attempted_at: '2026-08-21T17:07:39Z'
     outcome: not_found
     note: >-
       The full publication was checked under issue #396. It concerns Vancouver urban water balance and
@@ -82,6 +82,6 @@ assessment:
     The evidence establishes an exact archived Basel configuration, not a measured or literature-published
     construction parameter set. The values therefore remain unchanged with source unreferenced and method
     assumed. This sidecar remains agent assessed and should enter the focused human review of assumed records.
-  evidence_revision: sha256:897a485ac33ea86888dc434c91dd428e511ac027107ee5cacc6d26a3d88e28f9
+  evidence_revision: sha256:488ea545a5d020529d52b8acefb33800e97bbbb03d366d992c62752183b92761
 verification:
   attestations: []
