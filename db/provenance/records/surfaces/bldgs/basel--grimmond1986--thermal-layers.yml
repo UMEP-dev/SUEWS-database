@@ -11,7 +11,7 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-26T17:15:00+01:00'
+  assessed_at: '2026-08-26T15:17:53+01:00'
   assessor:
     kind: agent
     name: provenance-audit
