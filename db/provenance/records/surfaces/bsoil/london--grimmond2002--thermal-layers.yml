@@ -1,0 +1,86 @@
+provenance_record: records/surfaces/bsoil/london--grimmond2002--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:95fd76398771b4680a57638ebfc5ccf6d67bbf533230cb15f1fef53624dcf0a6
+dependency_revisions:
+  sources:
+    grimmond2002: sha256:8077e0b410718b8d2222e35296556ea09ad62669bf490eec9e77e70fd5f20e31
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:28:37+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/398
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained Barbican bare-soil configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Bare Soil and stores surface thermal-layer fields, matching land_cover.bsoil.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated four-layer tuple exactly. This supports configuration
+        preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/398]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Grimmond and Oke (2002)
+        reference was a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: London is supported by the row's explicit Barbican, London application identity.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Site preserves the archived Barbican configuration scope; it does not claim a measured soil profile.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/398]
+      note: Assumed identifies a retained application configuration whose assembly procedure and original
+        parameter sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240005, name, origin and complete tuple preserve the migrated row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240005
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L737
+      note: Stores the exact Barbican-labelled four-layer configuration and the mechanically generated legacy
+        reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: grimmond2002
+    url: https://doi.org/10.1175/1520-0450(2002)041%3C0792:THFIUA%3E2.0.CO;2
+    attempted_at: '2026-08-21T17:07:46Z'
+    outcome: not_found
+    note: >-
+      The publication was checked under issue #398. It evaluates LUMPS with North American observations and
+      does not publish this Barbican soil-layer tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived Barbican configuration, not a measured or literature-published
+    soil parameter set. The values therefore remain unchanged with source unreferenced and method assumed.
+    This sidecar remains agent assessed and should enter the focused human review of assumed records.
+  evidence_revision: sha256:ca39cc42cc08deb899733a782df552ee7a70a77b893313fe4f7d422026def8ad
+verification:
+  attestations: []
