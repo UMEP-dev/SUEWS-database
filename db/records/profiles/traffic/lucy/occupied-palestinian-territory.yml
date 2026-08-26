@@ -7,7 +7,8 @@ name: Traffic
 place: occupied-palestinian-territory
 origin: LUCY, Occupied Palestinian Territory
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240794
 - 60240795

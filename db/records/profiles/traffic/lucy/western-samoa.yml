@@ -7,7 +7,8 @@ name: Traffic
 place: western-samoa
 origin: LUCY, Western Samoa
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240838
 - 60240839

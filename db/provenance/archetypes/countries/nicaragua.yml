@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/nicaragua: sha256:a2a9686c153e4dc2402db99837b884e2830d9882ac4b0a44425eac06b1629a1c
-    records/profiles/traffic/lucy/nicaragua: sha256:43ef94e08c9cd4dabbd978eae99aefb77486f8c1d610bb257da5c47896b3b2ac
+    records/profiles/traffic/lucy/nicaragua: sha256:16802655e601ee64456f4e3a8ddb10a2ba0853d972c6ce3332caae8b0462ac87
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:ffa5b7164d93897dccfba7ab4a5e161d099a78d12e1095297bf390bf6b76e181
+  evidence_revision: sha256:82adefa62e4bdbacf0e8ac9bcf8e266eaf5d732d217c51207c4d397806b5f833
 verification:
   attestations: []

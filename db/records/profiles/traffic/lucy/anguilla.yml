@@ -7,7 +7,8 @@ name: Traffic
 place: anguilla
 origin: LUCY, Anguilla
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240492
 - 60240493

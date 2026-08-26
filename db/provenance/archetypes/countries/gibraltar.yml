@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/gibraltar: sha256:bdcee8af5b6f45d1813059ebf1afa7370f9b152a52f4561460a39de6818cbc53
-    records/profiles/traffic/lucy/gibraltar: sha256:340e2089c03aff3cba6f261808659db0f8788dd7f482fd6024ea85f74ff5d97d
+    records/profiles/traffic/lucy/gibraltar: sha256:3cf4b80007ce922799045c0669681213535ec5d3c014667303d2c752cd8a99ee
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:b198b04cc8ba546a550f890094e4b244a18ca2994b25841fa59f156c4cd6b31c
+  evidence_revision: sha256:81863eae506f0e0a889e8c9784749ba5096675706ed7fae515f7d1891c028047
 verification:
   attestations: []

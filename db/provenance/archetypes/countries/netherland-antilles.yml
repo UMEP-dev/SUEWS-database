@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/netherland-antilles: sha256:e0becb5d9c9789113444c843a86b66a659c19e00c21fe001bb3fca55c919f2e3
-    records/profiles/traffic/lucy/netherland-antilles: sha256:9aa41bb543de2e97f6a724badf65cd624f6d76406e09bf0eb379264cd834944e
+    records/profiles/traffic/lucy/netherland-antilles: sha256:b8818b515ca022258d9c9be66d09555ed51ec644aae265b8f84ff0ea22475810
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:1865cf79e010d939c7f70e5f0ba31fe4e93f2a5b91cca6d32509e0cabcf0ff38
+  evidence_revision: sha256:6c1911832b351d29264f88037e9e1f4459179ec76bc3339d8d39af1512dce7dd
 verification:
   attestations: []

@@ -7,7 +7,8 @@ name: Traffic
 place: kuwait
 origin: LUCY, Kuwait
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240700
 - 60240701

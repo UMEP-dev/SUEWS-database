@@ -7,7 +7,8 @@ name: Traffic
 place: chad
 origin: LUCY, Chad
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240558
 - 60240559

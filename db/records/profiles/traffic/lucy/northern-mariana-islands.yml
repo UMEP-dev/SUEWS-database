@@ -7,7 +7,8 @@ name: Traffic
 place: northern-mariana-islands
 origin: LUCY, Northern Mariana Islands
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240790
 - 60240791

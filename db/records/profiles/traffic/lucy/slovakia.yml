@@ -7,7 +7,8 @@ name: Traffic
 place: slovakia
 origin: LUCY, Slovakia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240856
 - 60240857

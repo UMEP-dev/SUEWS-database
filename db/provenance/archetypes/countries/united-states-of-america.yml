@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/united-states-of-america: sha256:6f6debaa154c729fe48a0b7eb3bb5bac35fc6ec2f8f27acae5b91f0534d10a6b
-    records/profiles/traffic/lucy/united-states-of-america: sha256:d8bf4bc9b249929f81aa4a5ddc6dd2921fa0abcd4cc828d346cb12bb740745ca
+    records/profiles/traffic/lucy/united-states-of-america: sha256:4cf3a705fc7c499f5d301607e31b5faae24bbeb3a00f62523af3ea7127bea8ed
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7da0ac96baa3693fce4fe1d83748d9a0b1f52e02512f56dc994b03c3065ee19b
+  evidence_revision: sha256:343047bc587a4f9ca8e01ce813668c8590bd47dd3e8448ba35e6481269214249
 verification:
   attestations: []

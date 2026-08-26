@@ -7,7 +7,8 @@ name: Traffic
 place: mongolia
 origin: LUCY, Mongolia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240756
 - 60240757

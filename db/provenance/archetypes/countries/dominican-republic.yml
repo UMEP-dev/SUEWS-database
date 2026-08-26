@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/dominican-republic: sha256:d5abebe124d76985e307569ccde52ea1448071e00b93f3b7ac1071fd5c3336fa
-    records/profiles/traffic/lucy/dominican-republic: sha256:3db04ab40c6ba93ee17d41f06f86130acb07ad90fd610418c94b559c1a948d5f
+    records/profiles/traffic/lucy/dominican-republic: sha256:2b0a9a84704bd23ae2b2f515d90017f06103d5dd2e1603f3bd19d7b45bc3cb15
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:81cf20f7f217b5652d36a834c090d2675c9fef25b565d512d3e7461669a1870c
+  evidence_revision: sha256:8ed8999016530496bc762ed131ce0ee27d696404383b74445984883665362d80
 verification:
   attestations: []

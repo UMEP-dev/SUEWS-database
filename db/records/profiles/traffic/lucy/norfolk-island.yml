@@ -7,7 +7,8 @@ name: Traffic
 place: norfolk-island
 origin: LUCY, Norfolk Island
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240788
 - 60240789

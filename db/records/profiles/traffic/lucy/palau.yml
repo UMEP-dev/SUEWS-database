@@ -7,7 +7,8 @@ name: Traffic
 place: palau
 origin: LUCY, Palau
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240800
 - 60240801

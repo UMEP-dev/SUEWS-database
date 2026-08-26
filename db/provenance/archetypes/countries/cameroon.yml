@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/cameroon: sha256:cbde2a0ed12e2208e3cb8901034d8b05ed70c039ea70d128c2c966b1d957cc15
-    records/profiles/traffic/lucy/cameroon: sha256:39fcdb4c3829ef7449953317848cccf3f08da203271c95d4baeebc8a7586582e
+    records/profiles/traffic/lucy/cameroon: sha256:d7da4d2d751ad7f5c053ce430d4ddc234b75402cc6d16b7fe2ae921cc2bd6ddb
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:4a064d292d3223d14643deb864f7bc9a4a7abea92f7a3978ecc5da5044e0ca38
+  evidence_revision: sha256:73c6b10d3b2bab7d2a42f670d4727c6ac5bcaddfd9896ca0cee4b8ad2250bdb3
 verification:
   attestations: []

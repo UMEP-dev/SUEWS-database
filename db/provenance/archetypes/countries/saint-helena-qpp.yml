@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/saint-helena-qpp: sha256:bdd4879cac52594c7cb7023bb2fb634cc5d04912230f117eb0ae289d082adb30
-    records/profiles/traffic/lucy/saint-helena-qpp: sha256:ba3d0006e62fd1a31189d2d7624c44fc3de3a7f9edac1d0d90b50c3c01b70e5a
+    records/profiles/traffic/lucy/saint-helena-qpp: sha256:4f895d7f0ee907be8e0e7121faa7749ed778b7b29f5b45d76b04c2c0d1b7ea8d
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:d992a49828e82de89f625cc5875baa9c9a1d0f2485dee46daebd1032e10ece58
+  evidence_revision: sha256:2c98cbc88628aea17800c4f5264711984a9baf81cfdfe5582dfa92ad85f9cd70
 verification:
   attestations: []

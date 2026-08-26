@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/iraq: sha256:b02a1c63703ea31e63897dc8ab782f907fa0497952207edb89a86e6a1f7072ac
-    records/profiles/traffic/lucy/iraq: sha256:d87fcc807e322fc45b0b127e4cc111fa7313dfced30a83eeed1f5a5133b90139
+    records/profiles/traffic/lucy/iraq: sha256:89c9780b395bc6ccb1122eaee6a482092d069c01e36adedb56f76c0a350b4811
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -83,6 +83,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:264eea6de03121c14783f8860929aed74510f1e28b3986598161a2908af3baa7
+  evidence_revision: sha256:b5bd5e0a7dc22b6f45fc19d2f5943f9dcd74352e7db3537f9910ddd7e2e40d5d
 verification:
   attestations: []

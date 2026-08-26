@@ -7,7 +7,8 @@ name: Traffic
 place: united-kingdom
 origin: LUCY, United Kingdom
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240918
 - 60240919

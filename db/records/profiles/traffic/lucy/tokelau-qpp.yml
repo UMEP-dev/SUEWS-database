@@ -7,7 +7,8 @@ name: Traffic
 place: tokelau-qpp
 origin: LUCY, Tokelau* qpp
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240896
 - 60240897

@@ -7,7 +7,8 @@ name: Traffic
 place: nauru
 origin: LUCY, Nauru
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240768
 - 60240769

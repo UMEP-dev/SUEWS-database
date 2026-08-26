@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/romania: sha256:f754f32dc3638b2c730a918128f4aaef1aafdf299c5e5ba5181dba4647f2755f
-    records/profiles/traffic/lucy/romania: sha256:a58cc7cca6aea354f7d1afad5667f9fb65993582ec13b80eca8eaa21db0f7bdb
+    records/profiles/traffic/lucy/romania: sha256:002c6e8f328806f8fa4e1c418a02a5eb21aa900edb78e25e03a9b72b5b8383ce
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:69c6c7b90f8f6ff0efcbc5528d32be515c75f013e880b56cd680cd8101a4cc4a
+  evidence_revision: sha256:5be435610b3915cea1e656afe9964a8cbb6f04d9c4a8e9937712f33f00051dba
 verification:
   attestations: []

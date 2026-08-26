@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/mayotte-qpp: sha256:af17e4eb772721b1b74f0a247e27dca30391b82de9d76d1161e8e2c76aa6232a
-    records/profiles/traffic/lucy/mayotte-qpp: sha256:8feda1298fa719ed602cf56e10bad108e02a1a1e53a3fa8aa1e139fcdbe4afec
+    records/profiles/traffic/lucy/mayotte-qpp: sha256:8bbb9afcd01ff095615b4724485a600e265ae92d43f607f9be8949bc6382ed45
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f2cfa4ebadfb631d4496458b73c13a0d19c4b2918a4a29faa9436e43f4940b4d
+  evidence_revision: sha256:7fc3f0cd561e5c4fb4c9388ecdefb3559d74a78767065e42bdd35fced27afbb6
 verification:
   attestations: []

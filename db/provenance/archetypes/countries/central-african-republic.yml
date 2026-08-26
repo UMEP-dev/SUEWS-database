@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/central-african-republic: sha256:2efd2fd3c4c1f3397f957389e11694e7662b7ba4d3ed96fa402b98b756fd6186
-    records/profiles/traffic/lucy/central-african-republic: sha256:bb09b6af264af599efa46fa008794efadf2a752268016c5b37fce88290884e2a
+    records/profiles/traffic/lucy/central-african-republic: sha256:ed082866c87a669026923a7b47beb5b76dbc914065f311882184685ec389c6dd
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:b9b0c805d0a2425e7bd62c88ad11aca412f68aac6eaa73a8f9118dd1db609e00
+  evidence_revision: sha256:b399cc1e4a76063c02c550870699f207594f80e3d8c027e72ead280d540fec45
 verification:
   attestations: []

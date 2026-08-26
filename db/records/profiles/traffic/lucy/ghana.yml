@@ -7,7 +7,8 @@ name: Traffic
 place: ghana
 origin: LUCY, Ghana
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240632
 - 60240633

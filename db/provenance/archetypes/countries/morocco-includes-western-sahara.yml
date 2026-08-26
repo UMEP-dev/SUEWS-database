@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/morocco-includes-western-sahara: sha256:b1468297ac823ca8677a2cf10e86f06c23566ce988514dbd556e861a8718d860
-    records/profiles/traffic/lucy/morocco-includes-western-sahara: sha256:2dd7af685a61560eb058a9b39d7a3fff8306508d6f6abb924e2a4a63f8ecae73
+    records/profiles/traffic/lucy/morocco-includes-western-sahara: sha256:51802d5b32945659ef38bab71abdd9f0c1b0fae6801facd9a652f6535f96c0a2
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -87,6 +87,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:3d6e9dd336212fc95a328efbfce81d2a1314ac52768df1a0a052d9fde490e0e3
+  evidence_revision: sha256:b9948da0871cacae3efe803e9209ecdcada971e2ffce07b79e20c68f83484b47
 verification:
   attestations: []

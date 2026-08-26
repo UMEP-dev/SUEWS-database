@@ -7,7 +7,8 @@ name: Traffic
 place: denmark
 origin: LUCY, Denmark
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240586
 - 60240587

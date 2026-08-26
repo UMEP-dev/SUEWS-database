@@ -7,7 +7,8 @@ name: Traffic
 place: federated-state-of-micronesia
 origin: LUCY, Federated State of Micronesia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240750
 - 60240751

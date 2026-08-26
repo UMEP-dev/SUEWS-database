@@ -7,7 +7,8 @@ name: Traffic
 place: saint-helena-qpp
 origin: LUCY, Saint Helena* qpp
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240832
 - 60240833

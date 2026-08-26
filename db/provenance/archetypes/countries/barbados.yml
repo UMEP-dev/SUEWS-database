@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/barbados: sha256:6cc1e1bf0d30a9cf7cc0f1b066399fa79f671523f19c0e031149a4e43a1f3b4e
-    records/profiles/traffic/lucy/barbados: sha256:91b0d1cf7d6403b9443367c1dc47a914f3b5510517c7aad879d132282d3e56dc
+    records/profiles/traffic/lucy/barbados: sha256:af9676d29d776c52638025646af2a5caf6f61e321c737634ab6ea8c322a763db
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:34b6a54a87a9813b5a9b0d124ff43d188a2ea2587de82d4f272f9efad5c9d918
+  evidence_revision: sha256:e50e73220dbadbc32d5d0f1fb71c6ed4d700da4dac3353fdb5914d22aa898bd0
 verification:
   attestations: []

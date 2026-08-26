@@ -7,7 +7,8 @@ name: Traffic
 place: turkmenistan
 origin: LUCY, Turkmenistan
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240906
 - 60240907

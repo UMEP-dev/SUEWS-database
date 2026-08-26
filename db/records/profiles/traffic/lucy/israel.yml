@@ -7,7 +7,8 @@ name: Traffic
 place: israel
 origin: LUCY, Israel
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240678
 - 60240679

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/ethiopia: sha256:bf82ac78a8fc71718a1145430a27e6da32d74daeed350fee359ae72e46e31e89
-    records/profiles/traffic/lucy/ethiopia: sha256:1f742bae84e356a399c0b16b231aabb8db76990a025e9681718100f9f28ce6c0
+    records/profiles/traffic/lucy/ethiopia: sha256:cafa77ede8218bfe372950e54ccc8e0dd13fe4cd54220606aec6c972d404d88f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:ef9b9d5cf829df45cfeb99cb774afd30482ccc1131fb9281246f1b2eff360ac7
+  evidence_revision: sha256:f2d8e490edf30dbde7a4927da78ce33cf142c80c97e9793deabeef21145e58d8
 verification:
   attestations: []

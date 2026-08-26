@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/iran: sha256:0af3b7fd96940662370f87991c539674220e38b43ffa9944da9827116b9d39a4
-    records/profiles/traffic/lucy/iran: sha256:5d07aaee18d81f12fd585e877dd67d030b7ca9b78177615c78ee9edc534b8141
+    records/profiles/traffic/lucy/iran: sha256:e3abb829c471c4345de20a723414ce6c0d45748f3e1eaf5764cf08c5c1c48195
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -83,6 +83,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:04ad3131ad171069447945e5937010475859b41b88ad0a53a2fbbe3dfa3ff003
+  evidence_revision: sha256:8d417368749db9ab6b4334f3173fb7ac1a56ade7a8f93e4c8d54fab50582a9cf
 verification:
   attestations: []

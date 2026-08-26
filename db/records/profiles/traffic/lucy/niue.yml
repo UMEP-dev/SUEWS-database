@@ -7,7 +7,8 @@ name: Traffic
 place: niue
 origin: LUCY, Niue
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240786
 - 60240787

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/aruba: sha256:25feae0121ae2bee82c726872ecf030dfe10692021d77e06729c90addfcb3618
-    records/profiles/traffic/lucy/aruba: sha256:33fcf2b6efbc149f6bc0fbac8366f7e14ea85a239cd842758b1021b5bce83d7f
+    records/profiles/traffic/lucy/aruba: sha256:948340fdfb21d1e0e480f537cb6f401338d011978a0b70d577feb8936ca85c29
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:2e12adbbdcdb51c5137089e7b1334fc68c042e3d6af654d9f60c114265b6b721
+  evidence_revision: sha256:45ef5ec9511b0b490dde20d88b90bd0bb75e6241071e77b9ad6ce541016a02d3
 verification:
   attestations: []

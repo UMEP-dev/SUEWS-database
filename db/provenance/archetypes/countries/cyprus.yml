@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/cyprus: sha256:f5b5e805f0265785044e357493c92ab68fde0744d6f12d26e1c105b0de477dd0
-    records/profiles/traffic/lucy/cyprus: sha256:0f87d818a6e79b829ce6b4b450ebc6b13864a0edc5b647d0c04433b582fbb31c
+    records/profiles/traffic/lucy/cyprus: sha256:8ef515ba4e1ae7462bef76bdc1f499f2e2243648df890032579eb3589355b981
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:005849e3514a8d9fca85a9539e80af874d7f6e0dea3ca848c9537ed031ae476b
+  evidence_revision: sha256:da8cd0b79bee8239bd2af2bd0ffa088a5ab9ce5f76eb95cce439a8d0f0206700
 verification:
   attestations: []

@@ -7,7 +7,8 @@ name: Traffic
 place: sri-lanka
 origin: LUCY, Sri Lanka
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240868
 - 60240869

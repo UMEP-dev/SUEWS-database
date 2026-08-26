@@ -7,7 +7,8 @@ name: Traffic
 place: pitcairn
 origin: LUCY, Pitcairn
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240812
 - 60240813

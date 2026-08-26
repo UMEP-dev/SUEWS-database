@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/qatar: sha256:775707a833c085e4b53caf4260692eb16487f115ebe66bec1f19af22f3a9b053
-    records/profiles/traffic/lucy/qatar: sha256:97f3112caa40a9a189cfd13ef04c0dbba87857f2861a56e8966d6c961b12ab6d
+    records/profiles/traffic/lucy/qatar: sha256:16bb9ecfe26908fcd76c0d43c3228acb77d3047301803eeea27a02a4031ff385
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:406a2113fac7408f46faa4388a2b4767d95e7834212de0aeb7677f008342f301
+  evidence_revision: sha256:ed2f01dd2f25fcf31613a28fec69407b156673940a3969386c1e839835da91bc
 verification:
   attestations: []

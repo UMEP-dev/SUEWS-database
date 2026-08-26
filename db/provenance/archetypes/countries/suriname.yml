@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/suriname: sha256:a2c34a7467e6fbaf4c36045b2b73faba29f6f7e0d2a3ff124a7cf56c535bba23
-    records/profiles/traffic/lucy/suriname: sha256:2225dd9096647f8cd9d08ca2f58fb76b3a1dba3295c0bbacfb8034d570608335
+    records/profiles/traffic/lucy/suriname: sha256:b79002766247889365e378b3ab4e9d20589bbb11bebcb57436827773549c4f85
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:65ba8d4a2c6ce1d6a913c2f15bca0272cd682aa13b9727458aac3e797211647b
+  evidence_revision: sha256:e0587d07c9e186c31be8f70b3c21e9ad52248add6f71ba573d5656a1d5791f72
 verification:
   attestations: []

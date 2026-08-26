@@ -7,7 +7,8 @@ name: Traffic
 place: madagascar
 origin: LUCY, Madagascar
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240726
 - 60240727

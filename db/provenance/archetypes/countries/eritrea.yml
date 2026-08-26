@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/eritrea: sha256:db7412752b7fdd7abc0e28e48a3d0c0009689d5476a5e44332a894b8eca643c6
-    records/profiles/traffic/lucy/eritrea: sha256:37d0f0349eca834a48b71acfcf30cdea3fcb3e6db54564b5c67234a707db692e
+    records/profiles/traffic/lucy/eritrea: sha256:f2c2c55f49e5a01e463a2624d65b4b5ab5ddfce566c75b404df54216f362fffd
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:67506291f68bf6f27b11dc796724f89692452cb08965765f26904054b82f7a1b
+  evidence_revision: sha256:d284e7dfbd478e9f04851d528a9221a549a2e3695eb59da28b0522e4c93fbcec
 verification:
   attestations: []

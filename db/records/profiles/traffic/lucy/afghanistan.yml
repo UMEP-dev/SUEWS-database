@@ -7,7 +7,8 @@ name: Traffic
 place: afghanistan
 origin: LUCY, Afghanistan
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240480
 - 60240481

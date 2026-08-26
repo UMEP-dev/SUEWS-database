@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/cambodia: sha256:0c1caa568940f74dc3225624db4d0cb43980fbb70cb54ff635a67baa4737ffe5
-    records/profiles/traffic/lucy/cambodia: sha256:4fad93cf6cb31f1f698ea3d76818d28d38a311f9df0c23ff92a52658ee6f0319
+    records/profiles/traffic/lucy/cambodia: sha256:b135f5ed617c130b97c570537ee8208a6818e923f444990ca190f221aedff45c
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:af8bcc0eb816b50c81d3a30b8a5abbb0d9a3330cce467bab7477d0b62f3491b8
+  evidence_revision: sha256:0f38fcfc96af710470569c81bee1a31409e5be68fd28fbcddff748a4f9eed533
 verification:
   attestations: []

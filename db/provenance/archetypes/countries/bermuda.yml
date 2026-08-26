@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/bermuda: sha256:f8364078fa84609386d58c3fa0bed8a256f77e660c6bd2b1fd275822b8bd3b24
-    records/profiles/traffic/lucy/bermuda: sha256:e04907cb6213aa7a14c807072ca53a483e9b5a769c6ff050d69427ff7510af64
+    records/profiles/traffic/lucy/bermuda: sha256:c17ab651e330ea4670520b896794ff57ea5d214b4d4fa5d3f6e8877dd136255e
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f27d85d3ca29488554862faf7747da773a15a55cc97cfaac4cb63267c8ce1804
+  evidence_revision: sha256:6fa469c69381c30b579e86a94da843dc91697a7d397b26df0954b61bd09f259d
 verification:
   attestations: []

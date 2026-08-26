@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/united-rep-of-tanzania: sha256:bb8d3e8d81355b8714b092deb1b47d13e3bc3570babce211db1471401765e5cd
-    records/profiles/traffic/lucy/united-rep-of-tanzania: sha256:19e1e555cf29383a01dcdf04ebd63c0dbce80ec9e7f5e98cb0b0d5806eb87f1b
+    records/profiles/traffic/lucy/united-rep-of-tanzania: sha256:643433e5e8a38b057fba1fdfa86c77bac7bb9ad5356aa358cc4272bbdf82d1ef
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:10ca94bf0a9da37031b53e98fe61af0634557570430578da86ba33886d1374b1
+  evidence_revision: sha256:e71c2004da727f074ff15ddf2e9f9aecb5a3ba2d662a21a759130707ac04b8ab
 verification:
   attestations: []

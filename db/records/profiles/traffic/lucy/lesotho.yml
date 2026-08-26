@@ -7,7 +7,8 @@ name: Traffic
 place: lesotho
 origin: LUCY, Lesotho
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240710
 - 60240711

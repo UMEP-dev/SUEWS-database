@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/mali: sha256:cb39c0814ff9676b44817a12b0f56c792524be83de623286b9ff3ded15d32644
-    records/profiles/traffic/lucy/mali: sha256:bba9e34b45d25765c2db5c28645f4c1698fa698d5f03ea9a16e3304a8e691af1
+    records/profiles/traffic/lucy/mali: sha256:be46bcc7f5a6d3d2ec282f22e06c8d342bb63af29a5ff984d328e13095eef188
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -83,6 +83,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:1fb0781386ca4809e8b831e222d46649f1f74faea65e88ba0196ec563f67581d
+  evidence_revision: sha256:a35bbb6df87d302bef2d6acb670ca5d9e290d827ea74f4ad6b4b45ae8e3797f3
 verification:
   attestations: []

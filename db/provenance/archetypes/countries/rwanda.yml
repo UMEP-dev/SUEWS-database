@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/rwanda: sha256:8b74ed612dbac3e60e48bf4499e6b6b84b694357b5f344defa2a4f49bb170806
-    records/profiles/traffic/lucy/rwanda: sha256:ae000ca068fe65c2af0ff36b07cd901ba682a0ec0531a48d6d5ffc185157e4c1
+    records/profiles/traffic/lucy/rwanda: sha256:91bdcd1a977ce8165f7c4722ffb033edf62cf04d8800822dfd2831d62905d62a
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:4b845f797579704de2e8889c2717fbaea8cf1a29f820f1ba71e93d6daf8f378c
+  evidence_revision: sha256:a80a4bad3cbd244d0b124a0b2b013eab522ea439ac992c916ea54ac97de03128
 verification:
   attestations: []
