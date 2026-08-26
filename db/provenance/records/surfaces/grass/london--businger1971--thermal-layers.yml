@@ -1,0 +1,87 @@
+provenance_record: records/surfaces/grass/london--businger1971--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:9b13dda1e5c933cec9a0824cfceedd0f441f59e189c6913aff2d913305d49372
+dependency_revisions:
+  sources:
+    businger1971: sha256:193f50f311cb9f99d43fca0c1864ad53e10bb79210c9e01f766082024c156e53
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:33:20+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/401
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained London Grass configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Grass and stores surface thermal-layer fields, matching land_cover.grass.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated four-layer tuple exactly. This supports configuration
+        preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/401]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Businger et al. (1971) reference
+        was a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: London is the explicit application identity of the pinned configuration row.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: City preserves the archived London configuration scope; it does not claim a city-wide measurement.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/401]
+      note: Assumed identifies a retained application configuration whose assembly procedure and original
+        parameter sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240017, name, origin and complete tuple preserve the migrated grass row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240017
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L289
+      note: Stores the exact London-labelled four-layer grass configuration and the mechanically generated
+        legacy reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: businger1971
+    url: https://doi.org/10.1175/1520-0469(1971)028%3C0181:FPRITA%3E2.0.CO;2
+    attempted_at: '2026-08-21T17:08:25Z'
+    outcome: not_found
+    note: >-
+      The publication was checked under issue #401. It concerns atmospheric flux-profile relationships and
+      does not publish this exact London grass thermal-layer tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived London grass configuration, not a measured or
+    literature-published thermal parameter set. The values therefore remain unchanged with source
+    unreferenced and method assumed. This sidecar remains agent assessed and should enter the focused human
+    review of assumed records.
+  evidence_revision: sha256:4a0060af0b3392edaaa4fcf537cb27e4123642d6e851da6922d2a2877b0a3aec
+verification:
+  attestations: []
