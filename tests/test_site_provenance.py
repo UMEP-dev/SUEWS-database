@@ -29,7 +29,7 @@ MIXED = (
     "mixed-forest-20-mccaughey-1985"
 )
 KYOTO = "records/ohm/tokyo--unreferenced--buildings"
-CURATION = "records/ohm/generic--jarvi2014--buildings"
+CURATION = "records/surfaces/bldgs/helsinki--jarvi2014--snow-lim"
 COMPOSITE = "archetypes/surfaces/evetr/tropics--broad-leaf"
 
 
@@ -77,7 +77,6 @@ class SiteProvenanceTests(unittest.TestCase):
 
         curation = self.render(CURATION)
         self.assertIn("Curation required", curation)
-        self.assertIn("Related record", curation)
         self.assertNotIn("Possible duplicate", curation)
         self.assertNotIn("class=\"signoff\"", curation)
 

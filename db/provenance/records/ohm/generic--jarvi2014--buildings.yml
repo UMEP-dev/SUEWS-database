@@ -1,76 +1,116 @@
 provenance_record: records/ohm/generic--jarvi2014--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
+record_revision: sha256:20f2b1bbd07070e97663009407d4805eb79195b5e57f61d49c5878a8ffe6a322
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    jarvi2017: sha256:0411608374cf880b5e590190bdb02f91d8e20ad9cdaacb845958e7d4b88ca1b3
+    meyn2009: sha256:06ab5259aa97c44ca95eff15a0e8d9c3f14048ff4d76cd724e209172bbf18748
+    umep-dev2017a-input-tables: sha256:5b11bb1f3acceb14cafb2d562c22a0edd96b5fd8aef76ff980887b4149c62d08
   places: {}
   records:
     records/ohm/beijing--zheng-y2023--buildings: sha256:4ebd7373c8e5b8c1c08b5786cc227396d9a6407253c7a0d76794e9a22b15fa2c
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-21T21:12:29Z'
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:51:36+01:00'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/65
+  method: assumed
   findings:
     name:
       conclusion: supported
-      note: Archived code-799 roof average identifies the retained legacy configuration without claiming
-        that the unresolved tuple was published by Meyn, independently determined, or merely disposable
-        sample data.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/67
+      evidence_ids: [suews-code-799]
+      note: Archived code-799 roof average identifies the retained public SUEWS configuration without
+        claiming that its undocumented averaging procedure has been recovered.
     target:
       conclusion: supported
-      note: The triplet is structurally an OHM coefficient set.
+      evidence_ids: [suews-code-799]
+      note: The public table stores code 799 as an OHM coefficient triplet for a roof average, matching
+        target ohm_coefficients.
     values:
       conclusion: supported
-      note: Järvi et al. (2017), Supplementary Table S4, lists 0.238, 0.427 and -16.7 for the Minneapolis
-        building input, matching the stored triplet exactly.
+      evidence_ids: [suews-code-799, jarvi2017-reuse]
+      note: The pinned v2017a table states 0.238, 0.427 and -16.7 exactly for code 799. Järvi et al. (2017)
+        later reuse the same triplet as a model input, but do not establish its original derivation.
     source:
-      conclusion: correction_required
-      note: Järvi et al. (2014) does not state or derive the exact tuple. The later 2017 table is a model-input
-        compilation and does not settle the original roof-average provenance.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/65
+      conclusion: supported
+      evidence_ids: [suews-code-799, jarvi2017-reuse]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/65]
+      note: The canonical source is the pinned v2017a input table that directly states the complete tuple.
+        Järvi et al. (2014) does not state or derive code 799 and is retained only as an attempted source.
     place:
       conclusion: not_applicable
+      note: Code 799 is a generic roof-average configuration and makes no observation-place claim.
     representativeness:
       conclusion: not_applicable
+      note: The generic release row declares no site, city or regional evidence reach.
     method:
-      conclusion: curation_required
-      note: The name and historical values indicate a compiled arithmetic mean, but the selected atomic
-        roof inputs and an auditable historical formula are absent from the database.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/65
+      conclusion: supported
+      evidence_ids: [suews-code-799, component-rows]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/65]
+      note: The release row calls the tuple an average, but states neither the selected inputs nor the
+        operation. Assumed is therefore the honest production method until a verifier adopts an explicit
+        reconstruction or the historical calculation is recovered.
     identity:
       conclusion: supported
-      evidence_ids:
-      - beijing-application-reuse
-      note: The generic record preserves reusable legacy code 799, while the related Beijing record
-        preserves an archived city-model selection of that code. Their stable identities distinguish the
-        unresolved generic derivation from application reuse rather than claiming independent values.
-      related_records:
-      - records/ohm/beijing--zheng-y2023--buildings
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/66
-      - https://github.com/UMEP-dev/SUEWS-database/issues/67
+      evidence_ids: [suews-code-799, jarvi2017-reuse]
+      related_records: [records/ohm/beijing--zheng-y2023--buildings]
+      note: Stable path, legacy ID 50240024, code 799, display name and exact triplet preserve the generic
+        release identity. The related Beijing record remains a distinct application reuse of this code.
   evidence:
-  - id: beijing-application-reuse
-    record: records/ohm/beijing--zheng-y2023--buildings
-    role: related
-    note: Carries the same code-799 tuple as an explicit unreferenced, assumed Beijing application record;
-      the Zheng archive establishes selection, not a second parameter determination.
+  - id: suews-code-799
+    source: umep-dev2017a-input-tables
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: SUEWS v2017a SUEWS_OHMCoefficients.txt, code 799
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_OHMCoefficients.txt#L44
+      note: Directly stores 0.238, 0.427 and -16.7 and labels the row Original roof average, including two
+        not-recommended coefficients.
+    note: This is the earliest pinned public configuration artifact currently established for the exact tuple.
+  - id: component-rows
+    source: umep-dev2017a-input-tables
+    role: validation
+    locators:
+    - kind: dataset
+      label: SUEWS v2017a roof coefficient rows 701-791
+      url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_OHMCoefficients.txt#L23-L40
+      note: An arithmetic mean of codes 701, 708, 709, 710, 711, 713, 750, 751, 752, 790 and 791 rounds
+        to the stored tuple. No source artifact states that this was the historical selected set, so the
+        numeric reconstruction is not promoted to canonical calculated provenance.
+    note: Records a reproducible possible reconstruction while preserving the evidential boundary.
+  - id: jarvi2017-reuse
+    source: jarvi2017
+    role: validation
+    locators:
+    - kind: supplementary
+      label: Supplementary Table S4, Minneapolis building input
+      url: https://doi.org/10.1038/s41598-017-05733-y
+      note: Lists 0.238, 0.427 and -16.7 as a later model input; it does not publish the code-799 averaging
+        formula or selected component set.
+  attempted_sources:
+  - source: jarvi2014
+    url: https://doi.org/10.5194/gmd-7-1691-2014
+    attempted_at: '2026-08-21T15:44:06Z'
+    outcome: not_found
+    note: The publication does not state or derive code 799 or its exact roof-average tuple.
+  - source: meyn2009
+    url: https://doi.org/10.1016/j.enbuild.2009.02.005
+    attempted_at: '2026-08-21T15:44:06Z'
+    outcome: not_found
+    note: The publication supports several component roof coefficients but does not publish code 799, its
+      complete selected set, or the compiled tuple.
   scientific_note: >-
-    The exact values can be located in a later model-input table, but the stored Järvi
-    2014 citation and compiled-average production lineage remain unresolved under issue 65. Retention
-    and the non-misleading display name were settled under issue 67 because the stable code-799 record
-    is selected by the Swedish industry composite. The generic code and its Beijing application reuse
-    remain distinct stable records without claiming two determinations.
-  evidence_revision: sha256:bafc7ba645d15b20179dd82c032ddb28e42385f001286df31911c9a64cad639e
+    The exact code-799 tuple is directly recoverable from a pinned SUEWS release table, so the record no
+    longer needs an unsupported Järvi et al. (2014) citation. The table calls it an average but does not
+    document its calculation. A reproducible 11-code arithmetic reconstruction exists and includes the two
+    not-recommended rows named by the label, but uniqueness of a numeric subset is not historical lineage.
+    The record therefore cites the public configuration artifact and remains method assumed for focused
+    human review. No coefficient, stable identity or downstream selection changes.
+  evidence_revision: sha256:0a0322e063348cf8b530a79ff1780c19d9ab56d9c49fa2bf7cfbf7727c8eac51
 verification:
   attestations: []
