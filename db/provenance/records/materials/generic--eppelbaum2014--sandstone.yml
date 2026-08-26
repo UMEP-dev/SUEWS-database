@@ -1,0 +1,117 @@
+provenance_record: records/materials/generic--eppelbaum2014--sandstone
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:61b4251de4ad44ef60e1c3a8f6824117694063377566198156926e0502164a50
+dependency_revisions:
+  sources:
+    eppelbaum2014: sha256:6ff9a5579a2808310838dc8996c38f09098c2563dddec90b233987934ec83597
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:38:36+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/391
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained generic Sandstone material configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is a material entry with radiative and thermophysical fields, matching target material.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, book-close-read]
+      note: The migration row stores the complete five-value tuple exactly. The book close-read establishes
+        that those values are not a coherent Eppelbaum sandstone row; support here means exact configuration
+        preservation, not scientific validation.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, book-close-read]
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/390
+      - https://github.com/UMEP-dev/SUEWS-database/issues/391
+      - https://github.com/UMEP-dev/SUEWS-database/issues/392
+      - https://github.com/UMEP-dev/SUEWS-database/issues/393
+      - https://github.com/UMEP-dev/SUEWS-database/issues/394
+      note: >-
+        Source unreferenced is correct. The complete cited monograph was checked and does not publish any of
+        the five parameters as this generic Sandstone tuple; PR #479 removed the unsupported attribution.
+    place:
+      conclusion: not_applicable
+      note: A generic material record makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: A generic material entry does not declare site, city or regional evidence reach.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, book-close-read]
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/390
+      - https://github.com/UMEP-dev/SUEWS-database/issues/391
+      - https://github.com/UMEP-dev/SUEWS-database/issues/392
+      - https://github.com/UMEP-dev/SUEWS-database/issues/393
+      - https://github.com/UMEP-dev/SUEWS-database/issues/394
+      note: Assumed identifies a retained material configuration whose original component sources and
+        assembly procedure have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 36248175, name, category, display colour and exact tuple preserve the
+        migrated material row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus material row 36248175
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L329-L338
+      note: Stores Sandstone with albedo 0.35, emissivity 0.915, conductivity 1.8, specific heat 1000 and
+        density 2300, plus the legacy reference removed by PR #479.
+    note: Establishes migrated configuration identity and values only.
+  - id: book-close-read
+    source: eppelbaum2014
+    role: validation
+    locators:
+    - kind: table
+      label: Table 2.6, conditioned sandstone properties
+      page: 106
+      url: https://doi.org/10.1007/978-3-642-34023-9
+      note: Publishes several sandstone conductivity, density and specific-heat combinations, none matching
+        the complete stored tuple; 0.915 is a specific heat, not emissivity.
+    - kind: table
+      label: Tables 2.9 and 2.10, generic sandstone properties
+      page: 107-108
+      url: https://doi.org/10.1007/978-3-642-34023-9
+      note: Gives specific heat 920 J/(kg K) and generic density 2.35-2.97 g/cm3, not the stored values.
+    - kind: text
+      label: Complete-monograph radiative-property sweep
+      page: 33 and Tables 1.7-1.8
+      url: https://doi.org/10.1007/978-3-642-34023-9
+      note: Finds no rock albedo or emissivity table; the occurrences are planetary or the
+        Stefan-Boltzmann symbol.
+    note: Establishes that the monograph does not support the stored generic Sandstone tuple.
+  attempted_sources:
+  - source: eppelbaum2014
+    url: https://doi.org/10.1007/978-3-642-34023-9
+    attempted_at: '2026-08-22T18:04:37Z'
+    outcome: not_found
+    note: >-
+      The complete 757-page monograph was close-read under issues #390-#394. It contains no coherent row
+      matching the stored five parameters, and further acquisition of this source cannot recover the tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived material configuration and rules out its former Eppelbaum
+    attribution. It does not establish the original optical or thermophysical sources. The values therefore
+    remain unchanged with source unreferenced and method assumed. This sidecar remains agent assessed and
+    should enter the focused human review of assumed records.
+  evidence_revision: sha256:e67f40210503c1c9c27590caf5b050badf617c38acce26d84edf8a89b2b0e6d0
+verification:
+  attestations: []
