@@ -1,0 +1,99 @@
+provenance_record: records/surfaces/water/swindon--ward2016--water-state
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:341ab479d4f14db8cc46eded061580593d60c8631e6d143e5eafc8a77ea8b9f5
+dependency_revisions:
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:05:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/131
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Both artifacts label the configuration Swindon, UK (not used).
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
+      note: Both artifacts place the cell under the water surface, matching land_cover.water.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Both artifacts store StateLimit 1000 and WaterDepth 1000 exactly. This supports preservation
+        of an unused configuration cell, not scientific validation as a Swindon parameter.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/131]
+      note: Source unreferenced is correct. The artifacts establish configuration lineage; the linked
+        adjudication found that Ward et al. (2016) did not publish 1000 and that the Swindon setup had
+        zero water fraction.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Swindon is the explicit archived application identity, qualified by the not-used label.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: City preserves the archived configuration scope; it does not claim that 1000 was measured,
+        derived or applied at Swindon.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/131]
+      note: Assumed means that the exact unused configuration cell is retained without a recoverable
+        scientific derivation.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Stable path, legacy ID 42240047, name, origin, StateLimit and WaterDepth preserve the archived
+        not-used configuration identity.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.state_limit]
+    locators:
+    - kind: dataset
+      label: Pre-migration water_state.yml row 42240047
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L72-L78
+      note: Stores the not-used Swindon water configuration with StateLimit 1000, WaterDepth 1000 and
+        legacy reference 90240002.
+    note: Establishes the exact migrated configuration identity and value only.
+  - id: release-row
+    source: umep-dev2016a
+    role: compilation
+    parameter_paths: [parameters.state_limit]
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_Water.txt code 551
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Water.txt#L4
+      note: Code 551 stores StateLimit 1000 and is the Swindon water configuration retained by migration.
+    note: Confirms an executable release cell, not a source-published Swindon parameter.
+  - id: water-statelimit-semantics
+    source: umep-dev2016a
+    role: validation
+    locators:
+    - kind: text
+      label: SUEWS_Water StateLimit guidance
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L4
+      note: The option table describes StateLimit as a configurable water-body cap and gives only generic
+        examples; it does not establish the exact Swindon value.
+  scientific_note: This assessment establishes only that 1000 is the exact archived, not-used Swindon
+    water configuration. It does not establish 1000 as a measured, fitted or literature-supported local
+    parameter. The honest classification is source unreferenced and method assumed; focused human review
+    of assumed records remains appropriate.
+  evidence_revision: sha256:a2c9376b6c8554a94534fd18b644ba3ed1b03afee9be60d8ef70968a7d216912
+verification:
+  attestations: []
