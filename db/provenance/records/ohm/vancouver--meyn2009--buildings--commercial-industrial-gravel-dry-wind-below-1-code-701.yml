@@ -1,0 +1,47 @@
+provenance_record: records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:744042c7a28a5c2f8a2b281af453c03e793607b6425bd80b82a95158b5b195ae
+dependency_revisions:
+  sources:
+    meyn2009: sha256:06ab5259aa97c44ca95eff15a0e8d9c3f14048ff4d76cd724e209172bbf18748
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records:
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T16:25:51+01:00'
+  assessor: {kind: agent, name: provenance-audit, version: '1.0'}
+  method: fitted
+  findings:
+    name: {conclusion: supported, evidence_ids: [meyn-table-4], note: Table 4 identifies a commercial or industrial gravel roof under dry conditions with mean wind below 1 m s-1; code 701 is retained legacy identity.}
+    target: {conclusion: supported, evidence_ids: [meyn-table-4], note: The source reports objective-hysteresis coefficients for roof heat storage.}
+    values: {conclusion: supported, evidence_ids: [meyn-table-4], note: 'Table 4 states a1 0.30, a2 0.96 h and a3 -24 W m-2 exactly.'}
+    source: {conclusion: supported, evidence_ids: [meyn-table-4], note: Meyn and Oke directly publish the complete fitted tuple.}
+    place: {conclusion: supported, evidence_ids: [meyn-sites], note: The measured roof sites are on the University of British Columbia campus in Vancouver.}
+    representativeness: {conclusion: supported, evidence_ids: [meyn-sites], note: 'The coefficients are derived from specific monitored roofs, supporting site scope.'}
+    method: {conclusion: supported, evidence_ids: [meyn-table-4], note: The table reports averages of regression coefficients fitted to hourly measured Q-star and roof conductive heat flux.}
+    identity:
+      conclusion: supported
+      evidence_ids: [meyn-table-4, derived-roof-mean]
+      related_records: [records/ohm/helsinki--jarvi2014--buildings]
+      note: The material, wetness, wind class and exact tuple identify one Table 4 row; the related Helsinki record uses it as an arithmetic-mean input.
+  evidence:
+  - id: meyn-table-4
+    source: meyn2009
+    role: parameter_source
+    locators:
+    - {kind: table, label: 'Table 4, measured commercial/industrial gravel roof — dry, wind <1 m s-1', page: 750, url: 'https://doi.org/10.1016/j.enbuild.2009.02.005', note: 'Average of seven days of measurements on the UBC University Services building; 0.30, 0.96 h, -24 W m-2.'}
+  - id: meyn-sites
+    source: meyn2009
+    role: input_data
+    locators:
+    - {kind: table, label: 'Table 2, roof study sites and assemblies', page: 747, url: 'https://doi.org/10.1016/j.enbuild.2009.02.005'}
+  - id: derived-roof-mean
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: related
+    note: Uses code 701 with six other Meyn rows and code 713 in its documented arithmetic mean.
+  scientific_note: The record is a direct, source-coherent transcription of one Table 4 regression row derived from measured fluxes. No canonical field changes.
+  evidence_revision: sha256:9d81221a12e93992b86ab1b766a2684215706de5f240fb80817a3ca1c8dca181
+verification: {attestations: []}
