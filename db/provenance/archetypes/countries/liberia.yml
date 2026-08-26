@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/liberia: sha256:88a0db8dfd58b179df967e73f93945bd138dc5a2b9b197b5fff961b7164d7739
+    records/profiles/human-activity/lucy/liberia: sha256:d2dc5c61ed23c8e2ee05c4089dbead2890a36aea6eaad52aa740b0c0d58605a7
     records/profiles/traffic/lucy/liberia: sha256:897073565dabebfe75f6ba7fb24763b70f6efc1465f9ebd9a273f2c644b1fb59
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7645ea979d41ed206b12e0362410cb8ac28e6c939d4d736199fa22307396fa40
+  evidence_revision: sha256:2e31dc0df83a6485540e86c9c3bfa741fbafb1a05a1f080f3d23a37e70e1b59c
 verification:
   attestations: []

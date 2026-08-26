@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/sao-tome-and-principe: sha256:727b2005323ce8e59a4ec1606cc77a4d4f932dba45ab0ff7fc602149c36af927
+    records/profiles/human-activity/lucy/sao-tome-and-principe: sha256:e762879df8c62293e21c091bc49a57c31c1a0ee05f00b022b7cbe3f12759bc5a
     records/profiles/traffic/lucy/sao-tome-and-principe: sha256:a63e28c83afb7104d81ac7b2f6d5f6ea92abfec2577cd47cbbf2ba60282ffdaf
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7598fe6a86c3c9b087d190f101151dc18cddd1c7b00e14af352b24f30f685d2e
+  evidence_revision: sha256:5ab4c025102e556809edd11b16f703712c51fbb30443730a47bf3b346005f3d4
 verification:
   attestations: []

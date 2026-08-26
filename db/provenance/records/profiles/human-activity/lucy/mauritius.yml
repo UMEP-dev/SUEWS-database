@@ -1,0 +1,140 @@
+provenance_record: records/profiles/human-activity/lucy/mauritius
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:1ce3891beef405fc2757ecb3d7675a51b8f9e076483acfa68ed579f2bff9dbe5
+dependency_revisions:
+  sources:
+    allen2011: sha256:b9cad81def8280c69c5b65c312025601e10fb4ec7624e1aa88af57fec72ed0fe
+    grimmond2018: sha256:44c23d615a50e561a589b78fdf4defd93fcabee3415a4337e57086a001263122
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    mauritius: sha256:25853c5786e20c33a9af0f76e2b3fe05c0a548399983f10d84c37b3b131ab001
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T19:41:15Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/979
+  method: calculated
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - allen-metabolic-patterns
+      - lucy-metabolism-row
+      note: The display name identifies the LUCY human metabolic-activity profile represented by the stored multipliers.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - allen-metabolic-patterns
+      - lucy-metabolism-row
+      note: Allen et al. and the archived Metabolism table define a human metabolic-activity schedule, matching
+        the SUEWS human-activity profile target.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - lucy-metabolism-row
+      - legacy-profile-rows
+      note: Applying 75 to 1, 125 to 1.5, and 175 to 2 to all 24 cells of Metabolism.txt row 133 reproduces both
+        stored day arrays exactly.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - allen-metabolic-patterns
+      - lucy-metabolism-row
+      - legacy-profile-rows
+      note: 'Unreferenced is correct for the transformed multipliers: Allen et al. publish the metabolic levels
+        and the archive publishes their country-row schedule, but neither states the recoded SUEWS array. The historical
+        Allen reference is retained only as source_legacy_ref.'
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/979
+    place:
+      conclusion: supported
+      evidence_ids:
+      - lucy-metabolism-row
+      note: CountryID.txt maps row 133 to Mauritius, matching the record place and retained origin.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - allen-metabolic-patterns
+      - lucy-metabolism-row
+      note: The archived mapping selects a country-specific working-hour pattern, supporting regional rather than
+        site or city scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - lucy-metabolism-row
+      - legacy-profile-rows
+      note: Calculated records the deterministic database-side recoding of the archived watt levels to dimensionless
+        SUEWS multipliers.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - lucy-metabolism-row
+      - legacy-profile-rows
+      note: Legacy IDs 60240284 and 60240285 map mechanically to LUCY country row 133; stable paths and values are
+        unchanged.
+  evidence:
+  - id: allen-metabolic-patterns
+    source: allen2011
+    role: input_data
+    locators:
+    - kind: table
+      label: Table II and Section 3.1, metabolic activity patterns
+      page: 2662-2663
+      url: https://doi.org/10.1002/joc.2210
+      note: Defines resting, transition and active metabolic levels of 75, 125 and 175 W and the working-hour schedules
+        used in LUCY; it does not print the recoded SUEWS multipliers.
+  - id: lucy-metabolism-row
+    source: grimmond2018
+    role: input_data
+    locators:
+    - kind: dataset
+      label: CountryID.txt and Metabolism.txt, row 133 (Mauritius)
+      url: https://researchdata.reading.ac.uk/149/2/LUCYSetup64bit.exe.zip
+      note: CountryID.txt identifies row 133 as Mauritius; Metabolism.txt states its complete 24-hour sequence of
+        75, 125 and 175 W inputs.
+  - id: legacy-profile-rows
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Profiles rows 60240284-60240285
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/profiles.yml#L8503-L8564
+      note: Preserves the exact two stored multiplier arrays and their historical Ref 90240008 link before record
+        migration; it is compilation evidence, not an external parameter publication.
+  derivation:
+    kind: other
+    description: Affine recoding of each archived LUCY metabolic watt level to the dimensionless SUEWS human-activity
+      multiplier.
+    expression: stored = 1 + (W - 75) / 100
+    external_inputs:
+    - id: resting-level
+      evidence_id: lucy-metabolism-row
+      parameter: Metabolism.txt cells with resting activity
+      value: 75
+      unit: W
+      note: Maps to 1.
+    - id: transition-level
+      evidence_id: lucy-metabolism-row
+      parameter: Metabolism.txt cells with transition activity
+      value: 125
+      unit: W
+      note: Maps to 1.5.
+    - id: active-level
+      evidence_id: lucy-metabolism-row
+      parameter: Metabolism.txt cells with active activity
+      value: 175
+      unit: W
+      note: Maps to 2.
+  scientific_note: The official LUCY 2014a archive assigns Mauritius to Metabolism.txt row 133. Recoding its 75,
+    125 and 175 W cells as 1, 1.5 and 2 reproduces both retained 24-hour arrays exactly. Neither Allen et al. nor
+    the software archive publishes those transformed multipliers, so the record is an unreferenced database calculation
+    over explicitly located source-table inputs; Ref 90240008 remains only as historical metadata. Parameter values,
+    stable path, place, origin, representativeness and legacy IDs are unchanged.
+  evidence_revision: sha256:76b01ff272ea5bb43e6490326892440478a8e10fe7c748dda65d82a9343f4012
+verification:
+  attestations: []

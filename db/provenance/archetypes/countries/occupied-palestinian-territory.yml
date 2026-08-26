@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/occupied-palestinian-territory: sha256:70f8a0343d8be8037d0ff5a7af3aa2cded5c634e3e5470d436ea1a0df05a3610
+    records/profiles/human-activity/lucy/occupied-palestinian-territory: sha256:7a2db842a5d01cd372d2c5b904e319fb7d4082bfae4e327bb8f6cfccd555fb4b
     records/profiles/traffic/lucy/occupied-palestinian-territory: sha256:5ee0fbc4c55aa99c43f427e7c8b5bdea9970f6831b4b2be06dba83d60afe5cb2
 assessment:
   status: agent_assessed
@@ -87,6 +87,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:39ce33ce58b7deea0cfb41311c2aff34a9a59ff1c7cf6ee774b992d39d0adf28
+  evidence_revision: sha256:cf84da7007f7ed0baee616983820b74f7748eca20d857cc8f9b91fb6d34fcfae
 verification:
   attestations: []

@@ -7,7 +7,9 @@ name: Human activity
 place: germany
 origin: LUCY, Germany
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240170
 - 60240171

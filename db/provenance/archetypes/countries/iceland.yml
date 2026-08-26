@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
-    records/profiles/human-activity/lucy/iceland: sha256:194dc7bfc8b2a7dc0f4822fa8cf6b4cb02ac3ee18ca003b27cc6549e971cd805
+    records/profiles/human-activity/lucy/iceland: sha256:f656158f1792557acff78cb1179b83baa11e3dcdbf36fa4bad0c96e4fbb356e1
     records/profiles/traffic/lucy/iceland: sha256:711f46e625ff733a7ba147653647d3536d05a2dadf694c0130252122e3784b44
 assessment:
   status: agent_assessed
@@ -94,6 +94,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:8f906490a75be657fe4f001ac23f04e440e75a19e1e7751bbd46deed0e837c88
+  evidence_revision: sha256:4ca2265f2c203b43751b2c6f69fd395d32daa121ae7ec7d6568dc75c73630fa6
 verification:
   attestations: []

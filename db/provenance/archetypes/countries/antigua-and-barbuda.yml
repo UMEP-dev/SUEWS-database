@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/antigua-and-barbuda: sha256:9c89a9100a332e38fd30363658dcb260b6f72260b77ef3033f5c79cb764dcafb
+    records/profiles/human-activity/lucy/antigua-and-barbuda: sha256:340109b26df8b65a86716e8f84953a3b3e3a04c095d807d4f0fb7c5d239aced6
     records/profiles/traffic/lucy/antigua-and-barbuda: sha256:4c553c0c1739be3a930d0375a5f2af2a8e5e4c359270fee939019832cf9d26e3
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7677e76c6ebd02f50dfd88664749ab58232706765d09821a24729e8a4461b77c
+  evidence_revision: sha256:1a8de29c5bfd22cf544e3e9cdab043a7cb30aa1dd01456cac000946702df4242
 verification:
   attestations: []

@@ -7,7 +7,9 @@ name: Human activity
 place: turkey
 origin: LUCY, Turkey
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240444
 - 60240445

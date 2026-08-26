@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/swaziland: sha256:b3c954fa07b334d85690123bb22884b9b289c33d4a7da54fb97a649bdacf5b78
+    records/profiles/human-activity/lucy/swaziland: sha256:fe79c6797d781c6d09568759e88e36520e46e2fb25a83910c766b5b47c6bf757
     records/profiles/traffic/lucy/swaziland: sha256:15380ab64ccdc008dbc521924734181cf1aa836d6d4c79ae22fd02e3614acf5c
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:c214979dac2e966edd8623ba7d20f7e8cfa71ee06379c8832633f6176cd3569c
+  evidence_revision: sha256:4591ea50f37801a67f7f2aa4052773d48588a8ab2b81050e0a47a7b1e48dad33
 verification:
   attestations: []

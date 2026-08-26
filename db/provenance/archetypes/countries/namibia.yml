@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/namibia: sha256:9f69937d0829472e8e6b556694c15b6d736284df61ea40f75ec43a8d6cadf25a
+    records/profiles/human-activity/lucy/namibia: sha256:a43abefb2e1e03ed44af290c94be8bb13c6a9b8e579ed7400531c6a9efa2da8e
     records/profiles/traffic/lucy/namibia: sha256:69ed487f7a7ebd41341b161ce89e2fda319f2e855b03db05c929957caca679c1
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:337672f88ce661a2b25d26e09f6f14f368f031700945ad8b65aee0b83b4f3673
+  evidence_revision: sha256:d58e0265f1353776b11e63eb7281b3ca686a93075f88c5f4d10c6704cc683382
 verification:
   attestations: []

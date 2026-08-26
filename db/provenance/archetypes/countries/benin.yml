@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/benin: sha256:98e0ec6d90bae81f0b2281d235c3e95426ff6f95cfdb3b1bee32f710f79835ed
+    records/profiles/human-activity/lucy/benin: sha256:a0e9702ae66341ac23fe68f9297f3838972b40981b9444bbfd8f2c620b8b7a90
     records/profiles/traffic/lucy/benin: sha256:5011e11bf1f0f82789f25060e0b3850d5692baebf4065551cf37408eafc9eb18
 assessment:
   status: agent_assessed
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:1ca258cc1ab9f0927bf500fdce1ee20f16d62b8d491aa64a1353f693f62a686b
+  evidence_revision: sha256:902c9d3b4ab6e9f417ca7ad41c7419399230fbdd103fb10a91faaa8add516dcd
 verification:
   attestations: []

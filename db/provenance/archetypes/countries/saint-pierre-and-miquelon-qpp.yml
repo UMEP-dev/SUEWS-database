@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/saint-pierre-and-miquelon-qpp: sha256:250d49eb37c478bc6323b2826c92d48a956e7d7d3dfa3cc4dd3218d553facc55
+    records/profiles/human-activity/lucy/saint-pierre-and-miquelon-qpp: sha256:83d27101e74d89eacf7390fc3538ee2a288c34b3920de90830128a28725738ca
     records/profiles/traffic/lucy/saint-pierre-and-miquelon-qpp: sha256:989dc186a98db2d54439c28c8896a8c56091da14f110d6a710e210ac013ab79f
 assessment:
   status: agent_assessed
@@ -87,6 +87,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f1b3cef9684e35d758aed92d03f2febb568820882c7f6a31ee71e4b99df34a66
+  evidence_revision: sha256:86fbd2116a3357e4ca7b8f6dfe0801ea3526561f3cd7e2ee17aee14f05be17b7
 verification:
   attestations: []

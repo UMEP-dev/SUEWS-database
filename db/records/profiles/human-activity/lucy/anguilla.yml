@@ -7,7 +7,9 @@ name: Human activity
 place: anguilla
 origin: LUCY, Anguilla
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240032
 - 60240033

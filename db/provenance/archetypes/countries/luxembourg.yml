@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/luxembourg: sha256:558a80940232620ab625d6aad084a9d803a7e6fc3954d6a40371b76b53326e49
+    records/profiles/human-activity/lucy/luxembourg: sha256:af7d4694454599e3db874f5dbc6867d2f21884018d443a61f3faf6c3a031348d
     records/profiles/traffic/lucy/luxembourg: sha256:6b1c13445495351a3009d28fa4824ac3053216e2d7645d2e06e153425efdbcaa
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:877638064ff1688cc1b581c08cfdffe2ce16636ffa2200119319bab9bfe7f359
+  evidence_revision: sha256:3c89ba08af4420ff0c8176f45968c702014df9c667a5ee9b40026eacd6bb7a30
 verification:
   attestations: []

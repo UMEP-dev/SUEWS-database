@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/turks-and-caicos-islands: sha256:3982a6a511a846450275cd40cbc65806e4d80b0ed68559133c3ff6f6a9ec70fd
+    records/profiles/human-activity/lucy/turks-and-caicos-islands: sha256:dac96f6ec00c9c8100069c9db8af1356ad407c650d66a46611f9707e277f8eed
     records/profiles/traffic/lucy/turks-and-caicos-islands: sha256:aec0cf1bfa3025d3e4e77fc348238f3acf97df8d9cead07a9432f56297e2a393
 assessment:
   status: agent_assessed
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:cc07c9f85404e20b6a7832088cfcb888dd52ea4cb9d0b2f347f8ebe95ad29682
+  evidence_revision: sha256:b79db6928b53018283caa085e087e8265f458f26d35477e09cc1b8c01e9e307b
 verification:
   attestations: []

@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/equatorial-guinea: sha256:1244780724c7378d9bcedfffbc4d7610a7f247816de5d1bac135d0b307791146
+    records/profiles/human-activity/lucy/equatorial-guinea: sha256:20c3357b232de5fbf0f6663f4d15db18eb5f55567ec793335bcd2b796bc7ef64
     records/profiles/traffic/lucy/equatorial-guinea: sha256:7e73916f4f9fcde43e1fb3eba664e0bec74ed8d3043574655303b30183d17dee
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fc8616cb03ca1f85e9c6ba13060dbf209ca8b9444f8d0c53990192f87c7e2c15
+  evidence_revision: sha256:59b81b5d178f7ee15218266eb2172264baccb260b57ce92476409117de1b1ed4
 verification:
   attestations: []

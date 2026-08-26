@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/tokelau-qpp: sha256:b3a28e098e12662f95005c3c8e48c73f8b63fb5f3e3d0020e6d7080a861c8da8
+    records/profiles/human-activity/lucy/tokelau-qpp: sha256:d2cbf90b0c5be343e4ea7c9acf3868f72d5cc0bcbe4ccbacbc751a51c48592dd
     records/profiles/traffic/lucy/tokelau-qpp: sha256:40b0a68e8c479e9b8cbf41e2a4b7a310b0cc7001590157fa0987f4d7a2d2023d
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:e4bfd1d218bc017ad9026b2633bbdc71380f8f835fe27cb0bdecf0e4f72bda27
+  evidence_revision: sha256:61b4b639395833b08dbf19452d833b58864a25b52c80583ac82a2ec5cf541f8d
 verification:
   attestations: []

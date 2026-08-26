@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/cape-verde: sha256:285453839551da9b565e11ef1f1e60ca4df9dede4ee3f2c2752f42855ba86d02
+    records/profiles/human-activity/lucy/cape-verde: sha256:e1470362bdf0e3c058d9c6f04d172aa353848d674a36c91405f9172900bdab82
     records/profiles/traffic/lucy/cape-verde: sha256:275d38418428de107923034411b32a5f4d381edae0d2a34769d8a01b905579bc
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7d5126a9818501cf624fcc1c487c3ed8f258abe34e9e3f4bdcfa6c1b4691fa73
+  evidence_revision: sha256:0efe672d1500526eaeeeed6cdec254c5217715fbea9937988a8863a1a504596c
 verification:
   attestations: []

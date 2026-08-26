@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/kazakhstan: sha256:0b3389d38eba61856b069213e0e090fab076e0cae6dcbdaa63c15dc090605cc9
+    records/profiles/human-activity/lucy/kazakhstan: sha256:f6437da339791f50fd628c519c7a2449ff137aeeaeda185f68f10cfd6a2d103b
     records/profiles/traffic/lucy/kazakhstan: sha256:c5a297c1fe8816de3756d88a0bc238de7ef6bdb82a273466aa04a2d843fd9130
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:12a53bca1ab0bf2151173e2ae4b4e7f69b65b09bd546d675a233c80a0dd1b2d2
+  evidence_revision: sha256:98676a454cca93a2774864e89a69c3588aff3247006b124d1baff408c6309aad
 verification:
   attestations: []

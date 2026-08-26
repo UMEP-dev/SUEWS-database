@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/comoros: sha256:313c3435c80d17943ec507f3fe7f4ffc1d573939cf938e7748cba2555bb77275
+    records/profiles/human-activity/lucy/comoros: sha256:7f3fce5e232fb986e598c46823972e087011cd5cc798cc0c69900057b34c1464
     records/profiles/traffic/lucy/comoros: sha256:8d2d5cd3f24f789915d8fc79f3cdc06b8ce1d1f99b85fb8a15fa76d79586e9a3
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:8b3beb27beb9a2cef77db77f0c29e474201c4cac5369835ff3ea376c7a7ff6f1
+  evidence_revision: sha256:9b08f6c5d14bdb24233d495378082a1c8cc03cf43fe4cdc4679b760c9e32220c
 verification:
   attestations: []

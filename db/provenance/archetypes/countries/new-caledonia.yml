@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/new-caledonia: sha256:44621801dfd3cd2257d3f801316aa763614f729287e90fe27155cecefc394e43
+    records/profiles/human-activity/lucy/new-caledonia: sha256:cbfe1d39d4f65bc19ddef8779ece4740c36fcf6d4517ce9d6f62b3766ae55ff3
     records/profiles/traffic/lucy/new-caledonia: sha256:f183bfdb537a428d8d3d999d003736590d2fa5390ed8409a63a196c8c482016d
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:5e8f4eb38e403f07e3fcdeeddede58ee8f76e59498268927f569c4191438b5fd
+  evidence_revision: sha256:350bada811b9f4c4a477118b3e03d50e82a202eb38d0ea800ef4d6eb886b1349
 verification:
   attestations: []

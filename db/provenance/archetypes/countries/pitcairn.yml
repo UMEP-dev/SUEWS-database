@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/pitcairn: sha256:9d831cd68937c458639dab7bb0d82e25c8f910e40de2ad9ae00de1ff2fb75205
+    records/profiles/human-activity/lucy/pitcairn: sha256:474c99978d1e4de2871e28298372a57636d596d01a2c58a5ccce63f6e538a906
     records/profiles/traffic/lucy/pitcairn: sha256:7871de0b72c1f48a39001d66390e1454ebdea819f5a5cc82f32a8e270e0d2d83
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:6ddae3d22c5ea16708adfbaf4ba4701bd725b6e25dd9ecc08bcf15a05616914d
+  evidence_revision: sha256:2a3cf845cf40fcf2f79b2430641f8c55f926c25960973e39be91f90fead1efa9
 verification:
   attestations: []

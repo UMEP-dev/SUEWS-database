@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/togo: sha256:fa743ba496b6f65cd296614e80ec9b9db5d4f9dd24c29b8c7151c50b8cced112
+    records/profiles/human-activity/lucy/togo: sha256:d03740878f7591e41326b8daa6a5b2d75370573aff5def41db99ed2114ce1166
     records/profiles/traffic/lucy/togo: sha256:558550a2593689bd1c658f6370dae6d08d81f4defd50ed46eab6ebc1752871c8
 assessment:
   status: agent_assessed
@@ -83,6 +83,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:8dc7bd05f5c8acc5153e57816882a64a9d50f8376edb57fb3fed6a8da899bd75
+  evidence_revision: sha256:9c9b328d2165a3399ed4c3b1f3339752a75170f8b883b4ccb0a0ee0f3f2b947b
 verification:
   attestations: []

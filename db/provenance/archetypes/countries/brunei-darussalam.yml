@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/brunei-darussalam: sha256:00f14b602688cf137eaf52a545b508019febd49a46aa247be4fc6bfe8d42b7f0
+    records/profiles/human-activity/lucy/brunei-darussalam: sha256:ca0c1920653c3c65a69eb20c1ab43709204c8613e4f63fefce7ad795373db35e
     records/profiles/traffic/lucy/brunei-darussalam: sha256:c987f3ac00b18c1c4ff8eae26c6202a8f5ab1d9f02ef8b5140a4b58298f2f605
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:90e6356d3b3345eaa917336c6c93e98422a3220e92b07e24d8fa5c494e2c6ec1
+  evidence_revision: sha256:39fd57f41fff0205060af33e76825e2f82bd2d7aa4c4df7c63efcf84a721959c
 verification:
   attestations: []

@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/burundi: sha256:41a652919c44c23b9b18021158949caa01da065049b466fd3182e5b59c618ee5
+    records/profiles/human-activity/lucy/burundi: sha256:e0cfc1960f790f77fa32d0bfca28a5c3c42a051c991c7572f23d2f8e40c267cc
     records/profiles/traffic/lucy/burundi: sha256:fbe44ae7d2a7507715be464ee60c91268001b4714a07aa562246dff79626a198
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:9178dfd35592c37827fc2566195590292ddc0d13772f963f65aed3b4f70733a3
+  evidence_revision: sha256:29b64ba440fe7e804d62c09bef57f344e9fb4f3026a916575975fe24bb27401c
 verification:
   attestations: []

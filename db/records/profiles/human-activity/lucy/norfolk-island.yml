@@ -7,7 +7,9 @@ name: Human activity
 place: norfolk-island
 origin: LUCY, Norfolk Island
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240328
 - 60240329

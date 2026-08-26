@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/east-timor: sha256:619b4277e18fd992327a9ad0b98a7ae19f02f55119c1e4507b3228d75d9d346f
+    records/profiles/human-activity/lucy/east-timor: sha256:0386015a3038fda14e492ddc129ee0f5603f86b76baaa61ae7ae44e76e5c0b39
     records/profiles/traffic/lucy/east-timor: sha256:6401dc1c9c2d6361f80186ce88052edb2f2faa92d943fef80e7e1a80b038ebba
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:e67f2149e8cc3c4340c5d8374c6078f3f94b5e3c33bd4a040ffa5b18318f7ae4
+  evidence_revision: sha256:6db793278f1cdc615957133799611e2848d1514c6f6060cd20e4b5cf13750cff
 verification:
   attestations: []

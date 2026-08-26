@@ -7,7 +7,9 @@ name: Human activity
 place: taiwan
 origin: LUCY, Taiwan
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240426
 - 60240427

@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/northern-mariana-islands: sha256:134ec2b9d2698efa3feef19bdaa42c33b8e8a6affa74e6602d37927bf911fe47
+    records/profiles/human-activity/lucy/northern-mariana-islands: sha256:a24609e117c4675de4d855ce548a6ff2e2f483ae809d8f6b48a7a4c0ed4d0c0a
     records/profiles/traffic/lucy/northern-mariana-islands: sha256:ad168233fc23e8351f38066c65aaadfc673af02e41e7e9cca3c915f43140288b
 assessment:
   status: agent_assessed
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:a562c4f3947fc01e266ddd2fa80d96c519d8fe4681d7aec98dfe0fcf0fda7f79
+  evidence_revision: sha256:e19d961abedffc9360cc3eb4c07c9a66f60231b87cd289aa63ce89708b0a8343
 verification:
   attestations: []

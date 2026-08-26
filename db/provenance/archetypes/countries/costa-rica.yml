@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/costa-rica: sha256:14e1eb6a00076d604b7009654442009dac1f37febced3520e3d810a48684b913
+    records/profiles/human-activity/lucy/costa-rica: sha256:0444e21b20eef8ad4baaac420ed51923c38aed9675cec5795aef0a63f195f273
     records/profiles/traffic/lucy/costa-rica: sha256:177c98771d6d5967c37a3ab0d3324807345c820ad70fb225e5922e92bf13aef3
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:daea3de543e8a4c220d8d671d4dbbbc03c097e3e795cee71e3d0149b706b0ba2
+  evidence_revision: sha256:55409d541f9eb26fee25f251c075abbbaa59be14fc8dfccf2f867fe1a2f2c7dd
 verification:
   attestations: []
