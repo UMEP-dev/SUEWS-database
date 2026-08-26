@@ -26,20 +26,6 @@ parameters:
     baset_cooling:
       working_day: 15.2
       holiday: 15.2
-  co2:
-    minqfmetab: 75
-    maxqfmetab: 175
-    minfcmetab: 120
-    maxfcmetab: 280
-    frfossilfuel_heat: 0.7
-    frfossilfuel_nonheat: 0.7
-    ef_umolco2perj: 1.16
-    enef_v_jkm: 3970000
-    fcef_v_kgkm:
-      working_day: 0.21
-      holiday: 0.21
-    co2pointsource: 0
-    trafficunits: 1
 legacy:
   BaseT_HC: -999
   AHMin_WD: -999
