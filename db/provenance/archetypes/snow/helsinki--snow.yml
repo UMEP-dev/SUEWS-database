@@ -10,7 +10,7 @@ dependency_revisions:
   records:
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
-    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
+    records/ohm/helsinki--jarvi2014--snow: sha256:36546244eeb25d8323e4016c5a4518a1f74d3633f63cdc06d58e7f5fc2602a0c
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
@@ -143,6 +143,6 @@ assessment:
     no record behind them, so nothing in the database can yet review them. The emissivity component is
     the database''s only snow emissivity record, and its own evidence review establishes it as a generic
     literature parameter.'
-  evidence_revision: sha256:db5c9e3d9aa471c989ffcb19e6df9d4e2154f5f23ae9aa34b8448f882c7903ab
+  evidence_revision: sha256:b74a53245df5ba1b4183102b7c4630176c5171dbb5f7bbdba7762c53e133c0ec
 verification:
   attestations: []

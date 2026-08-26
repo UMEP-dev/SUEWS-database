@@ -1,7 +1,7 @@
 provenance_record: records/ohm/helsinki--jarvi2014--snow
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
+record_revision: sha256:36546244eeb25d8323e4016c5a4518a1f74d3633f63cdc06d58e7f5fc2602a0c
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -9,7 +9,8 @@ dependency_revisions:
     montreal-suburban: sha256:b10fe91ea2fb9cde2b197a0f807398c66c48abd4ead58d6314cb73eae75078c8
   records: {}
 assessment:
-  status: curation_required
+  status: agent_assessed
+  method: fitted
   assessed_at: '2026-08-21T21:12:29Z'
   assessor:
     kind: agent
@@ -29,6 +30,9 @@ assessment:
       conclusion: supported
       evidence_ids:
       - snow-parameter-publication
+      note: Section 3.1.2 identifies a2 = 0.60 as the optimum and Table 4(b) uses 0.6 in the final
+        model parameter set. Table 3 prints 0.5, an internal inconsistency that does not outweigh the
+        matching narrative and final parameter table but must remain visible to reviewers.
     source:
       conclusion: supported
       evidence_ids:
@@ -49,13 +53,12 @@ assessment:
         of a2 and a3 used the single Pr site. Applying the completed set at all sites describes how far
         the evidence travelled, not a broader place or observational scale.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - snow-parameter-publication
-      note: a1 is an assumption calculated from shallow-water a1 and a heat-capacity ratio, whereas a2
-        and a3 were optimized against sensible heat. One record-level method cannot express both.
-      issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/71
+      note: The record-level fitted method applies to a2 and a3, which were optimized against sensible
+        heat. The parameter-specific assumed method on a1 records its selection from shallow-water a1
+        and a heat-capacity ratio.
     identity:
       conclusion: supported
       evidence_ids:
@@ -75,20 +78,22 @@ assessment:
       label: Tables 3 and 4(b)
       page: 1700-1701
       url: https://gmd.copernicus.org/articles/7/1691/2014/gmd-7-1691-2014.pdf
-      note: Lists the final snow OHM triplet and optimization context.
+      note: Table 4(b) lists the final snow OHM triplet 0.25, 0.6 and -30. Table 3 instead prints
+        a2 = 0.5, despite the section text identifying 0.60 as the optimum.
     - kind: table
       label: Table 1 and Section 2.2.2, Montreal site characteristics
       page: 1696
       url: https://doi.org/10.5194/gmd-7-1691-2014
       note: Identifies Pr as the Pierrefonds–Roxboro suburban site in Montreal and locates it at 45.501
         N, 73.811 W.
-  scientific_note: The publication and exact values are supported. The record now declares the Pr suburban
-    site in Montreal and site representativeness because that is where a2 and a3 were optimized against
-    observed sensible heat. The place-neutral a1 assumption does not support a different location, and
-    the completed triplet's later use at all sites describes evidence travel rather than origin. Human
-    curation is still required under issue 71 because the tuple combines coefficient-specific methods.
-    The a1 coefficient is assumed from shallow-water and heat-capacity relationships, whereas a2 and
-    a3 are fitted.
-  evidence_revision: sha256:f33c5e51dab5e8df796b4365202639dfbd17989c11bdca0af886295ddf7dabe3
+  scientific_note: The publication supports the triplet, subject to an internal inconsistency for a2.
+    Section 3.1.2 states the optimum is 0.60 and Table 4(b) uses 0.6 in the final model parameters,
+    whereas Table 3 prints 0.5. The record retains 0.6 because the narrative and final parameter table
+    agree. It declares the Pr suburban site in Montreal and site representativeness because that is where
+    a2 and a3 were optimized against observed sensible heat. The place-neutral a1 assumption does not
+    support a different location, and the completed triplet's later use at all sites describes evidence
+    travel rather than origin. The coefficient-specific method metadata preserves that a1 is assumed
+    from shallow-water and heat-capacity relationships, whereas a2 and a3 are fitted.
+  evidence_revision: sha256:c941d293ba74557325859a5ad78556fcdd1f80a683fa7799f9de5903b91a3ebc
 verification:
   attestations: []
