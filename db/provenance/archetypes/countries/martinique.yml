@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/martinique: sha256:4ef72412ecad44722ef3fc0fae287b0525bec3e82aa4d791e36b909cec7c299a
-    records/profiles/traffic/lucy/martinique: sha256:d50b29a34051c17b94858f937c1053d7eb8346badc0f03b025c627dbbcfa49c0
+    records/profiles/traffic/lucy/martinique: sha256:20260c1f30c175e6552b30a29058b7863a3c3920bef8b06c2f729856dd866de3
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:8ad801d6fefc2841fa4d670b99a8fb9b97adfeedfb270822befe2045380b525c
+  evidence_revision: sha256:e6f35b8c6a9fd1ba5dae39963657449fdbcd32dd84c4d50286af9909670ae9cd
 verification:
   attestations: []

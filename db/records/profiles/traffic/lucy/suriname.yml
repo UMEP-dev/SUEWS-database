@@ -7,7 +7,8 @@ name: Traffic
 place: suriname
 origin: LUCY, Suriname
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240874
 - 60240875

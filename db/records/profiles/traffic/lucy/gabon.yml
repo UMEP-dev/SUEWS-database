@@ -7,7 +7,8 @@ name: Traffic
 place: gabon
 origin: LUCY, Gabon
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240624
 - 60240625

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/french-polynesia: sha256:03d09ae3726bfa6f757868621afbf111be0165c5fbe15dc151d0d04b505b7d6c
-    records/profiles/traffic/lucy/french-polynesia: sha256:a25c70e7b2d3a80e77d2c0a5a766f9a6c6e6895f0c42804e50ce787950ffded0
+    records/profiles/traffic/lucy/french-polynesia: sha256:8c41d9d88851e3db8f77bec3cd9b03497ea80594d87b79112df72484d0e317ab
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:53fa8592e171e9b13d83eb6b152cf0e4112fd7c1608bdaf16cd08139fd64cf14
+  evidence_revision: sha256:e37710e1c0af21251c0c88f62f0580836b3350f9c6d88d360cf78c43fac44ab3
 verification:
   attestations: []

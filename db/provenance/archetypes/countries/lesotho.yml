@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/lesotho: sha256:49cc2b0730751dd6d82ad3b60c64b0c68bd27e5a1b1607ab2caa5d80ea50c78b
-    records/profiles/traffic/lucy/lesotho: sha256:ff98c63bb54cae20fd9e147c8fe6bcd7c43e007220f590faac2e699d2d38e993
+    records/profiles/traffic/lucy/lesotho: sha256:f5398f17b73e9037aeabab5ea13952739d57ee5d5148ca7574dcbbdeb4c81966
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fae1354f5768f3149684741c3eb1c80594b354ca6d23c2bd41f1cbe10290edef
+  evidence_revision: sha256:29e7c49c524f981abd1a3ca3010295161f951d199e0b3da2235aaf72989a4084
 verification:
   attestations: []

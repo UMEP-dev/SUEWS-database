@@ -7,7 +7,8 @@ name: Traffic
 place: congo-democratic-republic
 origin: LUCY, Congo, Democratic Republic
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240568
 - 60240569

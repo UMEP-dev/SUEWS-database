@@ -7,7 +7,8 @@ name: Traffic
 place: nepal
 origin: LUCY, Nepal
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240770
 - 60240771

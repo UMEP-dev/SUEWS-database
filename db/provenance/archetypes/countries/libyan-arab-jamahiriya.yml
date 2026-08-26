@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/libyan-arab-jamahiriya: sha256:a70d6b7fadec5306ab7da227d89964dfa5f35bf68d5f0cb87a0b84983df2460c
-    records/profiles/traffic/lucy/libyan-arab-jamahiriya: sha256:379d4ceb5c752c948afbb738f4e88b8f8512369f3cbca1b724b44939c7bb9db1
+    records/profiles/traffic/lucy/libyan-arab-jamahiriya: sha256:5131d1f9faa47d8acb227eeeb6ca65cd61cf8e66db7cfca1d26cb832002af8f7
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:080b9ae698825e38baffac838e5321d06d8747a04fbc0cc25f768fed2e658b0c
+  evidence_revision: sha256:52b69a1c6bae1697578fa77ce1105b7af67eacae1f684d708f1d67e30a6b3967
 verification:
   attestations: []

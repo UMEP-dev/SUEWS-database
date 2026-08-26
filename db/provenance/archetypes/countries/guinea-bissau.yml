@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/guinea-bissau: sha256:55097dcfbcc3cdc66c658e28b00ca5f55b74d2714044c59d429c32be3a42597a
-    records/profiles/traffic/lucy/guinea-bissau: sha256:b89741641d914486fb536e4e7181499fa4d6a2c347904a59fded7e34c694caf5
+    records/profiles/traffic/lucy/guinea-bissau: sha256:bdeaa55e18999e22bbdd9de9605a97f32db10ad5df2c5cbe4638f147a16b2940
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:cf0e3d096f0d08a4ebfdf471e74825257438ded8f9be5bc79c13b78268e3f212
+  evidence_revision: sha256:a9228919f04d7d39c3e0fb3469d925618e436d2cbfe76ca46436b894b21da543
 verification:
   attestations: []

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/american-samoa: sha256:7ffe96ab0277c8b50d9d359f69b7c932a2070e994343090241d7a0833388c31d
-    records/profiles/traffic/lucy/american-samoa: sha256:c1db1d05d81dc4454da56a2142dcf79c5e64d4062f9f1edd27a21e6b269d9414
+    records/profiles/traffic/lucy/american-samoa: sha256:93f09e08f2c9d70ba6562a4e770ddcbcafc04820a143d7bf55cf7e4d72208329
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f99584c09b470ae24b5e311ff98d8fff94718df6150ce7fee8c4edc4472cab9c
+  evidence_revision: sha256:5addf190ab65e092df7f27f0bd3584db50727aaaa8a1ed2691b72144e4cd3358
 verification:
   attestations: []

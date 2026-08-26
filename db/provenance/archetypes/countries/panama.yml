@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/panama: sha256:347cea2cf475de0fc86e9282b6c52db55cc63859d45d1dcc159c4d8e89c767e4
-    records/profiles/traffic/lucy/panama: sha256:fc15ec077f70fe6725f40778b4025b09b5e6e8ebbf2199b442b7a7378b8a6cf9
+    records/profiles/traffic/lucy/panama: sha256:b60106b2cdd83c9e269e5cc234b888a04396645d25fad5eb9e034da01204534d
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:e75d5db44da4c849dcd65aab3382ff56e21b5e8462499d1254885c1c86aa6592
+  evidence_revision: sha256:8ac4fedfa6a3c03108ca304fbd05e766bd6df2f3be0ac187127fbcd0ffb9a343
 verification:
   attestations: []

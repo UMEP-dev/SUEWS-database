@@ -7,7 +7,8 @@ name: Traffic
 place: wallis-and-futuna-qpp
 origin: LUCY, Wallis and Futuna* qpp
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240932
 - 60240933

@@ -7,7 +7,8 @@ name: Traffic
 place: maldives
 origin: LUCY, Maldives
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240732
 - 60240733

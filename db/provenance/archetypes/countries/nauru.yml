@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/nauru: sha256:389ceaa543e7ddb02549a8daeecfb9d8a6698adfb34ae8eef5f9daa9535f21c9
-    records/profiles/traffic/lucy/nauru: sha256:c852da8e49d6c3c48c08dd6d81e6576fe8926f7ee00abee83bdae60a6e616602
+    records/profiles/traffic/lucy/nauru: sha256:54d5d7b5923764e87f1357b323467cfce43852856a50dd7f8c126077d48ac966
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:a4a22a5f744998b089003fb3eb779905d18bba1a01762dfaaa1f1864ad7b6325
+  evidence_revision: sha256:413e2b75523b986fc77a3e68254b503afd0fd69e64bd1965fd3c1c859648d94a
 verification:
   attestations: []

@@ -202,6 +202,13 @@ sources:
       Los Angeles
     type: journalArticle
     year: 1996
+  grimmond2018:
+    author: Grimmond, S.; Lindberg, F.; Allen, L.; Yogeswaran, N.; Kotthaus, S.
+    doi: 10.17864/1947.149
+    journal: University of Reading Research Data Archive
+    title: 'LUCY: Large scale Urban Consumption of Energy'
+    type: dataRepository
+    year: 2018
   grimmond1999:
     author: Grimmond, C. S. B.; Oke, T. R.
     doi: 10.1175/1520-0450(1999)038<0922:HSIUAL>2.0.CO;2

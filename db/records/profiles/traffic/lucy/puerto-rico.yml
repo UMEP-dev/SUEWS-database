@@ -7,7 +7,8 @@ name: Traffic
 place: puerto-rico
 origin: LUCY, Puerto Rico
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240818
 - 60240819

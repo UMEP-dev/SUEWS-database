@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/wallis-and-futuna-qpp: sha256:46bdb09ed765e8c814cd862275f8592a716f895ff7d43c5f24311f5c6d582e31
-    records/profiles/traffic/lucy/wallis-and-futuna-qpp: sha256:1f12cbc28d823781c040056ad7ff3de9d6a7e213762ee464f08f7ab9ec236c99
+    records/profiles/traffic/lucy/wallis-and-futuna-qpp: sha256:10cabb70474bd5639bc6839d1d4ac956d7e9595940ebd143176125cab675d253
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:b7540faa99eb4a27e261fce323bd85f30f7b4f910b22532bb148ebf00bdae606
+  evidence_revision: sha256:f66bcbc5349f07c780f5776fdbbe09f450ef767b4c5bb4bc6859006883bb2bed
 verification:
   attestations: []

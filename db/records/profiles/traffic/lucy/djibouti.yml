@@ -7,7 +7,8 @@ name: Traffic
 place: djibouti
 origin: LUCY, Djibouti
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240588
 - 60240589

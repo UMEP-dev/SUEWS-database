@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/isle-of-man: sha256:fd6e8226aabf3272f33d5956588164435f64467292719e56eda03b23fb9f2e5d
-    records/profiles/traffic/lucy/isle-of-man: sha256:b0211832781c8c13daf86761cfbea95dd85c74f41b75b19d8c9453263328ab42
+    records/profiles/traffic/lucy/isle-of-man: sha256:8e96d1dcef1c602af9c1b48137237e40fc965f485444c1d91f3c4c04bc536cf8
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:119e6f064d224d0453a321139c0df96fc7a7178f0c33e5dd96ab9d8b0ba0f736
+  evidence_revision: sha256:041628bcb5f04d66ed9a393dec96f51587eafab08b5b4007152a06c7fe192dd3
 verification:
   attestations: []

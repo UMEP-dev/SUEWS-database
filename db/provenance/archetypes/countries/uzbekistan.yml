@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/uzbekistan: sha256:b4d2f937072214b71ae7319ef7515a057505d1b1f6353b4063fdd15814df51cb
-    records/profiles/traffic/lucy/uzbekistan: sha256:b9f4ca4fb51223a5b0755ae7c3a6dd4131648e42672a4296fdda68b6fe3754b5
+    records/profiles/traffic/lucy/uzbekistan: sha256:3ec229a25d6142508ef573e0cc734fd8d81cf2c1fd156e645eb15b27f8fae842
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:eef8a5d15358eafff78b36acbe3daf8fd3ad599e4703f3bf19928071ff6bed98
+  evidence_revision: sha256:d3634cad34aaf4096a9ad41889d6799895802b36fb446d6f1428372668aa5372
 verification:
   attestations: []

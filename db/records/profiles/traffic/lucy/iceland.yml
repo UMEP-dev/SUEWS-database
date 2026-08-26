@@ -7,7 +7,8 @@ name: Traffic
 place: iceland
 origin: LUCY, Iceland
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240664
 - 60240665

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/belize: sha256:b516b139e58dd04f9d65e57f786f7bd306f43dffa25d9d4767da696a768c5ca7
-    records/profiles/traffic/lucy/belize: sha256:8c9109b669340d0e4694f545addf587704200a6bd796a8d92f424753d74977c0
+    records/profiles/traffic/lucy/belize: sha256:7fc9c1070997fc3253c04210ae7a1ee8860157156a049ef4b84976c3ac9b42d1
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:d3e93256ba4b17ac1c16f35983ce772bfcf771fdc61dbc0c6a8e8e90303fe836
+  evidence_revision: sha256:79af1ea415e0ee1fee2241c342264d1a6b1efe843ad2da656276f28169ba56f9
 verification:
   attestations: []

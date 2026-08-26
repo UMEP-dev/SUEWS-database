@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/burkina-faso: sha256:abb1be47cf6eae3ba31acd88289bcfbaf7ca38b95b9f7ef030fac04bd2fba4ff
-    records/profiles/traffic/lucy/burkina-faso: sha256:80d5540bfb0a721f5f96befa2aef496cfc03db76e6cbf04beb9433448024bcbf
+    records/profiles/traffic/lucy/burkina-faso: sha256:302966b4243310981330855586aeb4b0c885eaef3b5ed16acd5a13905806aab2
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:e1690ec07f25bb6805a273d2b8ffdbbbdbf6c7e4f414a96c62a98ce12e40088d
+  evidence_revision: sha256:6da37e3ee9071d67a5b915b8458269f151368aba7c0d3293822de0550c1be933
 verification:
   attestations: []

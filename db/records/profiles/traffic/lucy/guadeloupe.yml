@@ -7,7 +7,8 @@ name: Traffic
 place: guadeloupe
 origin: LUCY, Guadeloupe
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240642
 - 60240643

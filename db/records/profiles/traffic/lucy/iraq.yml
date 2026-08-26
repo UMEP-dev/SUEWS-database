@@ -7,7 +7,8 @@ name: Traffic
 place: iraq
 origin: LUCY, Iraq
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240672
 - 60240673

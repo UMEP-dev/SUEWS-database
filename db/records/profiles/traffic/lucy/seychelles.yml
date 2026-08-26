@@ -7,7 +7,8 @@ name: Traffic
 place: seychelles
 origin: LUCY, Seychelles
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240850
 - 60240851

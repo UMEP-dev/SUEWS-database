@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/puerto-rico: sha256:481613c0fe2858b94d6981d3cbf45a5aedb61ca5056d7f485e304739c8b86779
-    records/profiles/traffic/lucy/puerto-rico: sha256:f1f78cbbf89e741c59ec92a5ff560c51ad648dd0d7640c58960572e1fc27938d
+    records/profiles/traffic/lucy/puerto-rico: sha256:fbe7bbba90a6424a94779c9b97ad18836cf29db9db138a65c2e1d958b119940f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:afa8e1a40fe32efdc3429e77d01ba1584157a79ca2f0c634020a476386ca7839
+  evidence_revision: sha256:35d220c4a4dffe9cb465a5e5622ca7bd6fb6d99e5ef69d86d99cd51184db7b9b
 verification:
   attestations: []

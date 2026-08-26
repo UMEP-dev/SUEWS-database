@@ -7,7 +7,8 @@ name: Traffic
 place: tuvalu
 origin: LUCY, Tuvalu
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240910
 - 60240911

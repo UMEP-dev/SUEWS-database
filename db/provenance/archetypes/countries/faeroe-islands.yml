@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/faeroe-islands: sha256:b9bc46eca659f0f629db3895d38f1f610a9e149a5b8fe428a9860bba7f706401
-    records/profiles/traffic/lucy/faeroe-islands: sha256:302cc8be6a3efed549ecff33508a629131d258f477cbd3047486d237fb763102
+    records/profiles/traffic/lucy/faeroe-islands: sha256:22f25885ada26c39dfe1829acc681e8f76ce80c2caaeb95154a7187c1edeebe0
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:04b92874d2e374f475a9154f8febe7c1b2057deda52bbdbe5eb6218cac05a26b
+  evidence_revision: sha256:e808a2dce159aa4f5a0b85f61c914602166eb23bc02202580f6845d15829e924
 verification:
   attestations: []

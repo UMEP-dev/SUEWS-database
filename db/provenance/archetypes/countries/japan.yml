@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/japan: sha256:57be5c5845108b2374b766eaed0f15d18c6359af9660b133f62ca89ad615644b
-    records/profiles/traffic/lucy/japan: sha256:650d7474123437315eb44df70766bfbdeeabcfa3eeec31088c4bfca180b5c0e3
+    records/profiles/traffic/lucy/japan: sha256:54736f70fae7c1a98ce4ae8839f98df06967b4fa4d4db33db4293b95f9eb3ce2
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:6f64485a8c058419bb315448196694d27f4f6806d3740d0e0e985bc4b32a6758
+  evidence_revision: sha256:3e392ca3872af696562e075b2880bfd64e4f96b983c36f18b226c69f30fd64b0
 verification:
   attestations: []

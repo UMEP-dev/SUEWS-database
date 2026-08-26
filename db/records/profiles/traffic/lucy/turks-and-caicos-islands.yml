@@ -7,7 +7,8 @@ name: Traffic
 place: turks-and-caicos-islands
 origin: LUCY, Turks and Caicos Islands
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240908
 - 60240909

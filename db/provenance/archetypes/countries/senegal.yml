@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/senegal: sha256:6950d3315178acef344ab68c2611f9eeffebb7f216675fddd9cb9ccbf8ccff64
-    records/profiles/traffic/lucy/senegal: sha256:110faa490de44406645a0364aefdd8f9733a483cf896a083ace2ad71f71e476e
+    records/profiles/traffic/lucy/senegal: sha256:3e66d443ff117e4176db844e9733ceda6c83414bca073f06e24e106eff0f578a
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:c4c761e91dfed04c19a29024fc3ab3db7c7d0c56d5a3b4dc7387ed78f282bbe5
+  evidence_revision: sha256:21db57e9fa72c1fb70a3e1047670715347c316697058cdc90300e684f85c9ac1
 verification:
   attestations: []

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/norfolk-island: sha256:184d20a0fbc56bfe602a606fbd1966985070a235c860dbbdefcc2887737ff580
-    records/profiles/traffic/lucy/norfolk-island: sha256:79db3b8fd4b2301409aaaaec5278be332d1f506adb565d8bff4aa55228be0023
+    records/profiles/traffic/lucy/norfolk-island: sha256:c9e68c3c2fa597f5840c810f2bd63e8252c1e88eb88cc1a24c535dbd16bbdef4
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:761cfef9e61eda5a697e2d9e17b2f00e3154a482f400655ece714123d0f255e4
+  evidence_revision: sha256:02fb1b78f00b3f809e239c803060960a245f56ecfe0b6e8c38d7251f16cb4417
 verification:
   attestations: []

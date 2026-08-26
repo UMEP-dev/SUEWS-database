@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/angola: sha256:aeb7593f0bee567f625352a2a2408ba45ac9e5619fbbba42aea8fb9bbc2e3d72
-    records/profiles/traffic/lucy/angola: sha256:86888f41fdf280b9400d723abf45af8d04c7fd5e4c0a31910b8b3216a831799d
+    records/profiles/traffic/lucy/angola: sha256:cfcd17c09d80e4276e5f894810ca0eefa234af6ccdbbf7ec2b33bf0f92103f10
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fdb15ee66c3d48244b3e90294d83a321bd656b552d52aed6d1905b163c05d324
+  evidence_revision: sha256:2ff6bba034701f434d2829dd08ed0b614dd28986c3d348660060adc0964d9949
 verification:
   attestations: []

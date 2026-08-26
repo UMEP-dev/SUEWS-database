@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/lao-people-s-democratic-republic: sha256:a2691b28c848b52626d10ae396dd276684d291279434e2c68ff7aa67d093f4dc
-    records/profiles/traffic/lucy/lao-people-s-democratic-republic: sha256:bb96b66c9ab7ec04f535ac8d03c2591679fff36cf8ffe5738aa0d60841fd78aa
+    records/profiles/traffic/lucy/lao-people-s-democratic-republic: sha256:0c74158e8bf523c0e2bdf5fdfdb2b6abf3416df68003eec48620866b83a6c026
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -87,6 +87,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:0f91679f06d3f957604e8e18fadc01400b9273ce33300fbbb0d0d7086471864e
+  evidence_revision: sha256:5d5ed61bf4a1603f52efa58667465c5f5931eb90f2d2b3b330229a8efb3a0d97
 verification:
   attestations: []

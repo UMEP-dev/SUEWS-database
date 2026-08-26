@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/marshall-islands: sha256:8870aa234abf0535e300100d49e943aebe90e11e18785f5116575d8bd00ad48b
-    records/profiles/traffic/lucy/marshall-islands: sha256:a2a83f5bab349f1b7d1c904015aa0f0a49247926fd7ca84bd0c0513eb704d8f4
+    records/profiles/traffic/lucy/marshall-islands: sha256:9c85d2e17eceab54dffe663abfe025368845f8da822d37b7ae3c0b2ba34c8b02
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:34181d2291d5b2c74c7ed2f4e5f3dc424b003d2b45012674bdbac6212b2eab84
+  evidence_revision: sha256:bd1259f3b367f073a5b9e6ae17186b4e02575c39fa9948145408f5bf97dc4540
 verification:
   attestations: []

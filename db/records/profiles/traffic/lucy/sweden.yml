@@ -7,7 +7,8 @@ name: Traffic
 place: sweden
 origin: LUCY, Sweden
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240880
 - 60240881

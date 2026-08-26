@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/falkland-islands: sha256:c09fad41d3aa83bdcd7149a6773392e0462436d1f7230cbcccdb05497a2aca0b
-    records/profiles/traffic/lucy/falkland-islands: sha256:99ec5025f33ea7d49b1775224aa9c3ec33d6b70a0b71de511465bcfb074dcc81
+    records/profiles/traffic/lucy/falkland-islands: sha256:30d711da5699698931fa6ef6d6b3aaf8e19354f14d1f24aa0767245d55535d89
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:884bba3898bbec9a52daaa63da4793111ba880647499ac0c6e0da6e0b60fdbc3
+  evidence_revision: sha256:589a656d0a0e1c10ef2aa3fe44ead80714a93fd626524a8b62cd22d70c670140
 verification:
   attestations: []

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/serbia-and-montenegro: sha256:dbe69c521bcb33ba43a06ea48479247f43871a6d30804957fa7303aa7e5fb7a4
-    records/profiles/traffic/lucy/serbia-and-montenegro: sha256:f8de3a7b322692f416e6f9b493507cd08636c1059c9256b65a4448f53941c50c
+    records/profiles/traffic/lucy/serbia-and-montenegro: sha256:ed3fcb2b6097612887f76e1ca2da2e65d5d4bfc1bb402b61d3661c17cc8936c5
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:8484a1fb721cfbc308585b1b40ce4cb34eeafc488d840c37e3ecf28cc0206df2
+  evidence_revision: sha256:775694c0d911855c2b155cbd84902f8ffe37aa8fbbf9021a01a6feb6f03b7cd2
 verification:
   attestations: []

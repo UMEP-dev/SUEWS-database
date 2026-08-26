@@ -1,0 +1,100 @@
+provenance_record: records/profiles/traffic/lucy/bolivia
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:8a25451754ee8f96dea96d388d04683e65d716202a5f5c9479c7382a46a8e58c
+dependency_revisions:
+  sources:
+    allen2011: sha256:b9cad81def8280c69c5b65c312025601e10fb4ec7624e1aa88af57fec72ed0fe
+    grimmond2018: sha256:44c23d615a50e561a589b78fdf4defd93fcabee3415a4337e57086a001263122
+  places:
+    bolivia: sha256:3dbebe256eb837f3c4bcfece2864921d30ea7c78b51203f8af9f66b4ad1f0577
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T19:29:45Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/978
+  method: literature
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      note: The display name identifies the LUCY traffic-profile family published with the software dataset.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - allen-traffic-method
+      - lucy-traffic-tables
+      note: Allen et al. define these as traffic activity profiles, and the archived files provide the corresponding
+        hourly arrays.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      note: The 24 working-day and 24 holiday values match row 25 of the official weekdayhours.txt and weekendhours.txt
+        files exactly.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      - allen-traffic-method
+      note: The Reading archive is the parameter source because it publishes every exact stored array; Allen et
+        al. remains method evidence and is not credited with values absent from its tables and figures.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/978
+    place:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      note: CountryID.txt maps row 25 to Bolivia, matching the record place and retained origin.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - allen-traffic-method
+      - lucy-traffic-tables
+      note: The source constructs country-specific profiles from national working-hour information, supporting regional
+        rather than site or city scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      note: Literature records direct adoption of the archived country-row arrays without a new database-side fit
+        or calculation.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - lucy-traffic-tables
+      note: Legacy IDs 60240528 and 60240529 map mechanically to LUCY country row 25; stable paths and values are
+        unchanged.
+  evidence:
+  - id: lucy-traffic-tables
+    source: grimmond2018
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: CountryID.txt, weekdayhours.txt and weekendhours.txt, row 25 (Bolivia)
+      url: https://researchdata.reading.ac.uk/149/2/LUCYSetup64bit.exe.zip
+      note: CountryID.txt identifies row 25 as Bolivia. The same row in weekdayhours.txt and weekendhours.txt states
+        the complete working-day and holiday arrays stored by this record.
+  - id: allen-traffic-method
+    source: allen2011
+    role: input_data
+    locators:
+    - kind: section
+      label: Section 3.2 and Figure 2, traffic activity profiles
+      page: 2663-2665
+      url: https://doi.org/10.1002/joc.2210
+      note: Describes the Hallenbeck base profile, national working-hour adjustment, weekday peaks and weekend reduction
+        used by LUCY, but presents only example curves rather than all country arrays.
+  scientific_note: The official LUCY 2014a archive assigns Bolivia to row 25; its weekdayhours.txt and weekendhours.txt
+    rows reproduce both stored arrays exactly. Allen et al. document the construction method but do not tabulate
+    this complete country-specific pair, so the canonical source is corrected to the archived dataset and the article
+    is retained as method input evidence. Parameter values, stable path, place, origin, representativeness and legacy
+    IDs are unchanged.
+  evidence_revision: sha256:d32e9a5fc31445aecce017afe21330a32d75d098dde9a6a5c383bf8ca058eb7d
+verification:
+  attestations: []

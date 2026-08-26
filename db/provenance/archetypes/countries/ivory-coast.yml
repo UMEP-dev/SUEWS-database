@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/ivory-coast: sha256:e0811409104a60b812e2848c1e3f3f052f26acc39bdd2b75f895abf001b7aca4
-    records/profiles/traffic/lucy/ivory-coast: sha256:e648d6576b7d4a514e1f75adaed5fc054e70725725c5b5633ecc9ac4e7853ba5
+    records/profiles/traffic/lucy/ivory-coast: sha256:167dd4dcdd711517c11e0293fbd494edda667082ac691d37757ea955fc36903f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f72136412a5520427c0d7f4132e777cb0ce12f901be24998333f858b50d36407
+  evidence_revision: sha256:2e551103a05b5e774c5376c844acacbbc0d9e55e572b6126a97c62f4d5bdd801
 verification:
   attestations: []

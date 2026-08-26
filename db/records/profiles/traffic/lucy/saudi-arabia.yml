@@ -7,7 +7,8 @@ name: Traffic
 place: saudi-arabia
 origin: LUCY, Saudi Arabia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240844
 - 60240845

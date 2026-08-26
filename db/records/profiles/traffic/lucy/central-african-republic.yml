@@ -7,7 +7,8 @@ name: Traffic
 place: central-african-republic
 origin: LUCY, Central African Republic
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240556
 - 60240557

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/sri-lanka: sha256:6a511156868eace0e24d383e13051f0da5c084b7a7f3544e0582e54fd0fade9c
-    records/profiles/traffic/lucy/sri-lanka: sha256:eabc7f90ee40718537c653add06eae1beed0294ac300b347e17f96e9060aa1d3
+    records/profiles/traffic/lucy/sri-lanka: sha256:5091f50f94e2a87725eaa56226a9be53a276f369f74293b0791dc26b386d597f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:c82b40e2e46d95ff7c3da4365254e97f1215ce2f1808649fd56b1242521aeccb
+  evidence_revision: sha256:b4dc7dcdf7a869926d42150b80fc25bf79c6b4fba579d04235c35951c93df810
 verification:
   attestations: []

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/congo-democratic-republic: sha256:28809509168a27243b5b873d0169c9090044338b9377018d9dc74abdac56bd4b
-    records/profiles/traffic/lucy/congo-democratic-republic: sha256:cfeacba45c99e5f6d6eea355ee161ffedf3a0b6a9cd9d82a7275a73afa826091
+    records/profiles/traffic/lucy/congo-democratic-republic: sha256:eee353934e3203f830fa94398ecca5dffc31243b5a08c1cb346d3c7ad6a92b81
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:0073c7db2f87c5bd7cdf59bfaa0c9ba9c905c39ec9b77be2b53cb6b9e2b90d80
+  evidence_revision: sha256:a5d6d5e5d6cafdffc7a4baebb3e2a2776c8265723cbfefc817f2486dce3a3de3
 verification:
   attestations: []

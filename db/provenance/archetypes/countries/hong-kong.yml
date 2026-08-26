@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/hong-kong: sha256:601596e0de1a867ba98f153c9c72c61052bb8b1d51a8e8330a96c94cac9e8524
-    records/profiles/traffic/lucy/hong-kong: sha256:7ce58e9d9628fdea38e30db6d226b9d7c0da37119b271c2688c65a82b64f649e
+    records/profiles/traffic/lucy/hong-kong: sha256:f7ecb1e6c89d29469852ceb0f9923b0d901546d8a6194c6376153bcaa4749d40
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:a5183e51df5a0d1fbe98f31d4d0f65aef81f672f5aefccebd66f195dc3d450cd
+  evidence_revision: sha256:5ae9d197d62044d226b174e43b1e1301947a96c50c8ba6d7c54ad36086700b49
 verification:
   attestations: []

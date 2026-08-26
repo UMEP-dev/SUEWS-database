@@ -7,7 +7,8 @@ name: Traffic
 place: philippines
 origin: LUCY, Philippines
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240810
 - 60240811

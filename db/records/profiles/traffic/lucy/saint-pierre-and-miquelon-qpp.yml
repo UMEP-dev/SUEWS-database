@@ -7,7 +7,8 @@ name: Traffic
 place: saint-pierre-and-miquelon-qpp
 origin: LUCY, Saint Pierre and Miquelon* qpp
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240836
 - 60240837

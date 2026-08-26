@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/montserrat: sha256:a7aeddaf7b8f48691156ffd54bdebafed49f23c8a146025ebf0bd9236b4cafbc
-    records/profiles/traffic/lucy/montserrat: sha256:8b5bf72d6fa31b79c7b87eb6b74b19f812ec0ce2bdc300f86be2b7cbdba72e8c
+    records/profiles/traffic/lucy/montserrat: sha256:7188d74bfc147383ca71d672a417c155674829970e13b478eea747dc8298249c
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fe709ef412daa1fbf50a4f2fe5d7814da44c7725ebd057bdeb9506691a012721
+  evidence_revision: sha256:68dcf5daeac0e2255242db1c38e5db5ba3c66c0f5829def5a6ace2ffa3617a1c
 verification:
   attestations: []

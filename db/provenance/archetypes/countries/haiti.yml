@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/haiti: sha256:166e0d49a1de0d1cdc1ef683ee0e6528626ee31ad3738b4baa3a16d10233bb28
-    records/profiles/traffic/lucy/haiti: sha256:63e3a424cda67fa43260600cecc9da33fbb29b3ecf75f50a69f75bbe086e069d
+    records/profiles/traffic/lucy/haiti: sha256:8d05a4f65cee6adfee837c26973999e4837e5ef0b99133f60156656233abf92e
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:4943e63150ba5d18e47eb3fb46ee9352ab344431b6bef5d35a25b94018bdbc99
+  evidence_revision: sha256:accc330715a469d75c404aea4ce461fe2b33911c2726e100a29c7ab1ece912ac
 verification:
   attestations: []

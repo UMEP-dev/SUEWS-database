@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/british-virgin-islands: sha256:f61f17490700af69af0d08ec6bb450e207b784ea344abf992a654e6d1d39705d
-    records/profiles/traffic/lucy/british-virgin-islands: sha256:00ed8706f06d917ab43c13f335c38cdc9543dcacfda70d5b4c44fc13c4100f9f
+    records/profiles/traffic/lucy/british-virgin-islands: sha256:07cc0375282758b54456d3fdfd6375cc50f86735a68c01e778fac03aa826be02
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:a4e1c1e6387703e8802694b2495f662dcfe4271b0503b12c1a904a907333e4b7
+  evidence_revision: sha256:23cc1846a1714bb8d33eb45fea703b2a6c14b7e04110811c6e039339731dfc56
 verification:
   attestations: []

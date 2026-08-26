@@ -7,7 +7,8 @@ name: Traffic
 place: american-samoa
 origin: LUCY, American Samoa
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240486
 - 60240487

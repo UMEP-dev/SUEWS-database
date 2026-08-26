@@ -7,7 +7,8 @@ name: Traffic
 place: korea-dem-people-s-rep-of
 origin: LUCY, Korea, Dem. People's Rep. of
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240696
 - 60240697

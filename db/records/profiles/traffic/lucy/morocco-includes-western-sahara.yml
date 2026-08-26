@@ -7,7 +7,8 @@ name: Traffic
 place: morocco-includes-western-sahara
 origin: LUCY, Morocco (includes Western Sahara)
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240760
 - 60240761

@@ -7,7 +7,7 @@ dependency_revisions:
   places: {}
   records:
     records/profiles/human-activity/lucy/niue: sha256:2ed7557fd42a94127903cb36ced77be14b3fb3331cccb77042561cff07b8f579
-    records/profiles/traffic/lucy/niue: sha256:88be5839da2a989bef013443bbb7802b76ea8d4876ebb5d0a689fd0894dfe5a7
+    records/profiles/traffic/lucy/niue: sha256:ef79383e3d942a3d72a3d33ff4971ff0e03aa3220a88c488cd521b575aea1a9f
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T01:20:00Z'
@@ -83,6 +83,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:8e3ec607eb2ba23d2c4a75d2f1b4506ca6dad57ff6a3fd5895b99d696116a8aa
+  evidence_revision: sha256:749e5f7d8693a202f90fdebd6afa3d85862def3bb9e8a5d04a81b163a6ad2bfc
 verification:
   attestations: []

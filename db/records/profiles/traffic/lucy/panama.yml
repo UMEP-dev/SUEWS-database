@@ -7,7 +7,8 @@ name: Traffic
 place: panama
 origin: LUCY, Panama
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240802
 - 60240803

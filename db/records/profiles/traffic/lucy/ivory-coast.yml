@@ -7,7 +7,8 @@ name: Traffic
 place: ivory-coast
 origin: LUCY, Ivory Coast
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240576
 - 60240577

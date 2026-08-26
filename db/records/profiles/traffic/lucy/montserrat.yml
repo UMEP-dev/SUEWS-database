@@ -7,7 +7,8 @@ name: Traffic
 place: montserrat
 origin: LUCY, Montserrat
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240758
 - 60240759

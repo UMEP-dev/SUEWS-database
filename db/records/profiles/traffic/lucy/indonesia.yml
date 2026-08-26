@@ -7,7 +7,8 @@ name: Traffic
 place: indonesia
 origin: LUCY, Indonesia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240668
 - 60240669

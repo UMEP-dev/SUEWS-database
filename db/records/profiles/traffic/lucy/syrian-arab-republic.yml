@@ -7,7 +7,8 @@ name: Traffic
 place: syrian-arab-republic
 origin: LUCY, Syrian Arab Republic
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240884
 - 60240885

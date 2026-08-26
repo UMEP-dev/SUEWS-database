@@ -7,7 +7,8 @@ name: Traffic
 place: jamaica
 origin: LUCY, Jamaica
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240682
 - 60240683

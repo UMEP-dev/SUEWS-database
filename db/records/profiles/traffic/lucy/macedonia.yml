@@ -7,7 +7,8 @@ name: Traffic
 place: macedonia
 origin: LUCY, Macedonia
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240724
 - 60240725

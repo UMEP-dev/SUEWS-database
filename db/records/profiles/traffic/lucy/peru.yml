@@ -7,7 +7,8 @@ name: Traffic
 place: peru
 origin: LUCY, Peru
 representativeness: regional
-source: allen2011
+source: grimmond2018
+method: literature
 legacy_id:
 - 60240808
 - 60240809
