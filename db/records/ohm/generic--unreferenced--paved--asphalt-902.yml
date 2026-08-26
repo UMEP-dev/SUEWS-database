@@ -4,6 +4,7 @@ target: ohm_coefficients
 name: Asphalt [902]
 place: saitama-university
 representativeness: site
+applicable_scale: material
 source: asaeda1993
 method: fitted
 legacy_id: 50240004

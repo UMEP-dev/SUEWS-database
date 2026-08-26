@@ -6,10 +6,10 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
 assessment:
-  status: agent_assessed
+  status: unresolved
   assessed_at: '2026-08-21T21:12:29Z'
   assessor:
     kind: agent
@@ -39,6 +39,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: unresolved
+      evidence_ids:
+      - mixed-forest-input
+      - short-grass-input
+      note: The internal mean combines mixed-forest and short-grass inputs, but no design artifact states whether the result is a per-class default or a cross-class aggregate. A legacy design artifact or maintainer confirmation is required.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -64,6 +72,6 @@ assessment:
     description: The component-wise means are 0.215, 0.325 and -19.85, exactly matching the stored triplet.
   scientific_note: This is an internally calculated record. It correctly remains unreferenced and identifies
     both current database inputs instead of manufacturing an external parameter publication.
-  evidence_revision: sha256:78f3dad42f91ecddd4edc923cd8c2dc71532ec9145a1d84c01395e2db31a1efb
+  evidence_revision: sha256:923eaeb454d2cfc035232ce88327f6d56c0891ae9f82298d7e7c6c9a9e7593e7
 verification:
   attestations: []

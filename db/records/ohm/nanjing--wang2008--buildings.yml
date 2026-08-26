@@ -5,6 +5,7 @@ name: Concrete roof
 place: nanjing
 origin: Nanjing
 representativeness: site
+applicable_scale: facet
 source: wang2008
 legacy_id: 50240041
 season_label: Summer

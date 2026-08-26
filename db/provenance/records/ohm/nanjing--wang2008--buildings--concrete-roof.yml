@@ -1,7 +1,7 @@
 provenance_record: records/ohm/nanjing--wang2008--buildings--concrete-roof
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:fee46be1da731ecc1a655d1dd5ffe92a960d286d9b81a89c334668233a0670fd
+record_revision: sha256:ee3a45868e0083d8f3edc606d50c77292c55a683ca4faea9532746f9662ade33
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
@@ -49,6 +49,13 @@ assessment:
       evidence_ids:
       - wang-winter-roof
       note: Site is appropriate because the fit uses one 20 m by 10 m instrumented cement roof slab, not a city-scale roof sample.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - wang-winter-roof
+      note: Wang et al. fit the winter coefficients to one instrumented concrete roof slab. The described unit is therefore a roof facet.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -97,6 +104,6 @@ assessment:
       page: 13162
     note: Dou et al. reproduce the winter tuple and attribute it to Wang et al. (2008), concrete roof.
   scientific_note: The original full text establishes that this is a fitted winter OHM tuple from one instrumented teaching-building roof slab. The paper discusses the surrounding urban setting and possible wider applicability, but it does not sample or validate roofs across Nanjing. The database therefore classifies the evidence at site scale while preserving Nanjing as the location. The separate summer fit remains in its own record and review.
-  evidence_revision: sha256:23ddda1832d15aa76d88d59425088607141113dac5b710eab8de85e99e3651ec
+  evidence_revision: sha256:e162578c7b5d1d6664d12a52023799fe8c6c10ba679175e7af433b15bf767fde
 verification:
   attestations: []

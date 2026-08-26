@@ -5,6 +5,7 @@ name: Commercial/industrial gravel roof, wet, wind 0.9-1.9 m s-1 [704]
 place: vancouver
 origin: Vancouver
 representativeness: site
+applicable_scale: facet
 source: meyn2009
 method: fitted
 parameters:

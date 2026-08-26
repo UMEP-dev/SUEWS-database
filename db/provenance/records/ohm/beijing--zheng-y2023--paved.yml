@@ -1,7 +1,7 @@
 provenance_record: records/ohm/beijing--zheng-y2023--paved
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:187865cca1b8f047652864529d28bf2153488ae682d5b806c99fd25cee2ab714
+record_revision: sha256:d3840fc8c87eb3ee72d03958f65962a9315bb1b1ae50e4f88b6ec7cd58fb6990
 dependency_revisions:
   sources:
     anandakumar1999: sha256:8f9ce76ac029430efa0a79dc9766624272a672b02ff9733493d71f91201f828f
@@ -56,6 +56,14 @@ assessment:
       note: >-
         The underlying daily coefficients come from one micrometeorological station over part of an
         8 m-wide asphalt road, so site is the supported evidence reach.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - suews-code904
+      - anandakumar-asphalt-site
+      note: Code 904 is an all-year weighted average of fitted asphalt-road coefficients. The archived row and Anandakumar asphalt experiment describe the asphalt material response, not a complete paved land-cover class or a neighborhood aggregate.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids: [suews-code904, seasonal-rows]
@@ -147,6 +155,6 @@ assessment:
     method assumed for focused human review. Anandakumar supplies the observation inputs and Alland site;
     Zheng supplies later Beijing application evidence. No coefficient, stable path, place or downstream
     selection changes.
-  evidence_revision: sha256:f227db973a74e93142484afe8c85f6c863c3e7a097bcd5356ae284765cf0a424
+  evidence_revision: sha256:51e8bfffa949852acd8871d3695f7ba00d730418b528e3a09c81cb1fc3107f70
 verification:
   attestations: []

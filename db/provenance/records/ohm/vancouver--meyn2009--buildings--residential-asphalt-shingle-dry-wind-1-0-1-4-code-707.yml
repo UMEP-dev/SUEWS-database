@@ -1,11 +1,11 @@
 provenance_record: records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e1be61c2a1fd155ec08483be1e1b077b81202e77b05c462afdc006bfa3493b28
+record_revision: sha256:331bda20c76fdc6632107f44c76f9c0d440de27c7741cfa24c60c1f8699967ab
 dependency_revisions:
   sources: {meyn2009: 'sha256:06ab5259aa97c44ca95eff15a0e8d9c3f14048ff4d76cd724e209172bbf18748'}
   places: {vancouver: 'sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b'}
-  records: {records/ohm/helsinki--jarvi2014--buildings: 'sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf'}
+  records: {records/ohm/helsinki--jarvi2014--buildings: 'sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec'}
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-26T16:25:51+01:00'
@@ -18,6 +18,14 @@ assessment:
     source: {conclusion: supported, evidence_ids: [meyn-table-4], note: Meyn and Oke directly publish the complete fitted tuple.}
     place: {conclusion: supported, evidence_ids: [meyn-sites], note: The measured residential roof is in Vancouver.}
     representativeness: {conclusion: supported, evidence_ids: [meyn-sites], note: 'The coefficients are derived from one monitored residential roof, supporting site scope.'}
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - meyn-table-4
+      - meyn-sites
+      note: Meyn and Oke fit each tuple to a specific monitored commercial/industrial or residential roof under the stated surface and weather condition, establishing roof-facet scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method: {conclusion: supported, evidence_ids: [meyn-table-4], note: The table reports averages of regression coefficients fitted to hourly measured Q-star and roof conductive heat flux.}
     identity:
       conclusion: supported
@@ -39,5 +47,5 @@ assessment:
     role: related
     note: Uses code 707 with six other Meyn rows and code 713 in its documented arithmetic mean.
   scientific_note: The record is a direct, source-coherent transcription of one Table 4 regression row derived from measured fluxes. No canonical field changes.
-  evidence_revision: sha256:0f1b65438d8b53b64047f4ee40b12d4db73d76cb893869f7f040231e225c6953
+  evidence_revision: sha256:585e9dcc494bf2da591c5e04ec45d59f9559fd9c6e0bb9af6a6ad93a54837216
 verification: {attestations: []}

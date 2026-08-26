@@ -1,7 +1,7 @@
 provenance_record: records/ohm/vancouver--unreferenced--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:6482cb2b959bbe645c9d5e62d52bbb56f033008dd9b981b9d08e9a1c15c5476f
+record_revision: sha256:7bdf32814c3b42be4555e5d14331240e608b4d9c8613273575abdb8910576316
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -47,6 +47,13 @@ assessment:
       evidence_ids:
       - parameter-publication
       note: The fit comes from one canyon dataset and supports site rather than city scale.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      note: The coefficients are fitted to one north-south urban canyon dataset, so the described physical unit is a canyon facet rather than an area-weighted neighborhood.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -77,6 +84,6 @@ assessment:
   scientific_note: Grimmond et al. (1991) is the canonical parameter publication and Nunez is the observation
     source. The record is classified at the site scale supported by the single canyon dataset; the raw
     origin typo is retained only as migration history and is not treated as evidence.
-  evidence_revision: sha256:fa99b0a0d2607365cf9cebf982fd22df5c178325287734f7760098508fa6a9ab
+  evidence_revision: sha256:bb18e422de00f3e4cd342695c83ea272e2f303adbc9c1600f6343ef1284d34b4
 verification:
   attestations: []

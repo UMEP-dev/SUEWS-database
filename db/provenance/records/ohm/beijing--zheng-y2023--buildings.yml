@@ -10,7 +10,7 @@ dependency_revisions:
   records:
     records/ohm/generic--jarvi2014--buildings: sha256:20f2b1bbd07070e97663009407d4805eb79195b5e57f61d49c5878a8ffe6a322
 assessment:
-  status: agent_assessed
+  status: unresolved
   assessed_at: '2026-08-24T19:22:00Z'
   assessor:
     kind: agent
@@ -67,6 +67,15 @@ assessment:
       - records/ohm/generic--jarvi2014--buildings
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/66
+    applicable_scale:
+      conclusion: unresolved
+      evidence_ids:
+      - zheng-building-application
+      - zheng-building-model-input
+      - related-generic-code-799
+      note: Zheng et al. establish later Beijing use of code 799 but not whether the tuple originally describes a roof facet or a building land-cover class. The original code-799 publication/table or an author statement defining its fitted unit is required.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -123,6 +132,6 @@ assessment:
     preserves the application-paper link. The related generic record now cites the pinned v2017a table
     that directly stores the tuple and marks its undocumented averaging method as assumed. No value,
     stable path, origin or legacy ID is changed.
-  evidence_revision: sha256:fc9da1dda16d9391605c819a489fef45583134bddc25d3580d097b72940a5cbd
+  evidence_revision: sha256:d8a6bb44a965b64a35b396dcc2ed26d76d292a731d20cfee0195448fe675a87a
 verification:
   attestations: []

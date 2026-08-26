@@ -12,7 +12,7 @@ dependency_revisions:
   records:
     records/ohm/beijing--zheng-y2023--buildings: sha256:4ebd7373c8e5b8c1c08b5786cc227396d9a6407253c7a0d76794e9a22b15fa2c
 assessment:
-  status: agent_assessed
+  status: unresolved
   assessed_at: '2026-08-26T15:51:36+01:00'
   assessor:
     kind: agent
@@ -48,6 +48,15 @@ assessment:
     representativeness:
       conclusion: not_applicable
       note: The generic release row declares no site, city or regional evidence reach.
+    applicable_scale:
+      conclusion: unresolved
+      evidence_ids:
+      - suews-code-799
+      - component-rows
+      - jarvi2017-reuse
+      note: The release stores code 799 and calls it a roof average, but does not expose the selected inputs or construction unit. The original derivation or an author statement is required to choose between facet and building land-cover scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids: [suews-code-799, component-rows]
@@ -111,6 +120,6 @@ assessment:
     not-recommended rows named by the label, but uniqueness of a numeric subset is not historical lineage.
     The record therefore cites the public configuration artifact and remains method assumed for focused
     human review. No coefficient, stable identity or downstream selection changes.
-  evidence_revision: sha256:0a0322e063348cf8b530a79ff1780c19d9ab56d9c49fa2bf7cfbf7727c8eac51
+  evidence_revision: sha256:7f5928a02a52b812e420c800a82085b3758d62849e38920d3202d756e9b388c8
 verification:
   attestations: []

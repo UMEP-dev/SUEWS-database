@@ -5,6 +5,7 @@ name: Archived Tokyo E-W canyon configuration
 place: tokyo
 origin: Tokyo
 representativeness: city
+applicable_scale: facet
 source: unreferenced
 method: assumed
 legacy_id: 50240017

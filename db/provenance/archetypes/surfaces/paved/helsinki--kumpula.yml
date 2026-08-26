@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/paved/helsinki--city-centre: sha256:231a3aebbbe9c924d140ca3e6e1c6c68ba176dc790c5b433c2ca8172f8ee7e53
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
-    records/ohm/generic--unreferenced--paved: sha256:0402699f2de4ca96cdc9bc2533b3238b55452cb127e5a8e43f64158bacb7838c
+    records/ohm/generic--unreferenced--paved: sha256:15123edba703f59b7bc19c8e62c3c10acc6d85aee62ce5f6a8a89c541a1a1066
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
@@ -193,6 +193,6 @@ assessment:
     the files do not say which. archetypes/surfaces/paved/zurich--city-centre takes the same seven components
     again, so the decision reaches beyond this pair. The drainage record is now documented as generic
     literature evidence; the OHM record still declares source unreferenced, a question for that record''s own evidence review.'
-  evidence_revision: sha256:fbb04b56a624454c68f88323041c3b9a641aaabc762a9798fd9ca827061fb8e2
+  evidence_revision: sha256:4f8aaf724334a7c243cff1c5d6d3d9a5479b0c33b7407c6f03d1804dc6b9754e
 verification:
   attestations: []

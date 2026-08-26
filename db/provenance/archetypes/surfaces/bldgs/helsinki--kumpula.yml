@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/helsinki--city-centre: sha256:1be8e36d5862b1bdf5930efa257243fe94077d4abcc5f62e942c65662f779d04
     archetypes/surfaces/bldgs/zurich--city-centre: sha256:2e1cb90bf7c81027e7134840e09273aba381785ed9c14ddce4c55495d91dcd06
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -171,6 +171,6 @@ assessment:
     construction instead, and no file records why. A maintainer should decide whether Kumpula should take
     a Nordic construction too, or whether the sample-run record should be withdrawn from the archetypes
     altogether. This review does not revisit any component value.'
-  evidence_revision: sha256:f8bcf1a0642e9c5aeffaaa07cd2b2beda0548a9629d77ce0f8d8e610a6af1f34
+  evidence_revision: sha256:a3ed3d45bc0560548aaa84e91d02443cfcade429c872054bc5108c57e84c7a9e
 verification:
   attestations: []

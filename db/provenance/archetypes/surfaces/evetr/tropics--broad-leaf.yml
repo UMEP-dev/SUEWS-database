@@ -7,7 +7,7 @@ dependency_revisions:
   places:
     tropics: sha256:f7443a4778b8c70ecb4a06d98db62d34463dbb7fcdb8489a6fe5c53bfb65116b
   records:
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/surfaces/common/midwest-usa--schmid2000--biogen-co2: sha256:6f5c584ae6748b5063c95036486afa444757ffca80844930e4740ec10d560ef3
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
@@ -228,6 +228,6 @@ assessment:
     a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
     value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
     should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
-  evidence_revision: sha256:c2514fe23e0c4a0c9175aca694b97f4f7d6bcb7589a1950367a51c18e86f6a02
+  evidence_revision: sha256:db3ecaa8089bcbd4670f54084a3eef498c136285fbe6a9fccac8a3bf7fc0fe67
 verification:
   attestations: []

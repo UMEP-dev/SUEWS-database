@@ -5,6 +5,7 @@ name: Residential asphalt-shingle roof, dry, wind below 1 m s-1 [706]
 place: vancouver
 origin: Vancouver
 representativeness: site
+applicable_scale: facet
 source: meyn2009
 method: fitted
 parameters:

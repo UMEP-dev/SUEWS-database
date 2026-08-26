@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--detached-houses-wood: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
     archetypes/surfaces/bldgs/sweden--mixed-city: sha256:342bfce26ee05c3bf7b5088110dbf7aa34f3ec8a518969c97be0c15dd56353ee
     records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s: sha256:963d9d8604a87241f4d84459869855d24a2ad2fc6b253c75921d083896ff01e1
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -165,6 +165,6 @@ assessment:
     coefficients come from Helsinki because no Swedish record for those quantities exists, while water storage and drainage
     are generic.
     None of this requires a component value to change.
-  evidence_revision: sha256:6dda7f330b734dcb0f965448d4ba8deeadc54d5db64d6b97a58e8ebae010e9d6
+  evidence_revision: sha256:499b3171f40ffeb119de89b473598b6aac1842681e87ffdf59ee16f0032fed26
 verification:
   attestations: []

@@ -1,7 +1,7 @@
 provenance_record: records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:77230eeb04fd0414e221d412d17545aa1b3b837f19fed9fac8dd3fac6286877f
+record_revision: sha256:38ada69c9c4827a596150e73e7cc107eda208c86af58c6cbfa3a167e3d802867
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -61,6 +61,14 @@ assessment:
       - archived-row-50240017
       note: City describes the retained Tokyo-labelled application configuration only. It does not claim
         city-wide empirical support or extend the Kyoto evidence to Tokyo.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - archived-row-50240017
+      - parameter-publication
+      note: The retained row is a canyon/building-surface coefficient configuration, and the related published tuple is fitted to an east-west canyon surface before any area-weighted neighborhood aggregation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -122,6 +130,6 @@ assessment:
     of the related code-[10] row. Its stable path, origin, values and legacy ID remain unchanged. The
     repository transcript establishes migration identity only; source remains unreferenced and method is
     assumed. Any future building-archetype attachment requires a separate composition review.
-  evidence_revision: sha256:c74a9453c017012ce765d5ad117fae4699ff3bb3b1a5385d178fca9778c789a8
+  evidence_revision: sha256:967618a3149d1625a032a0dd3e13a30a362654458b9447b8ec3e2893d754653e
 verification:
   attestations: []

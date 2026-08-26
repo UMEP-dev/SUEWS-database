@@ -5,6 +5,7 @@ name: Detached houses with air source heat pumps operated in occupied rooms only
 place: london
 origin: London
 representativeness: city
+applicable_scale: land_cover
 source: xie2024
 legacy_id: 50240029
 parameters:

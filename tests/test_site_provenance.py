@@ -306,7 +306,7 @@ class SiteProvenanceTests(unittest.TestCase):
         ]
         index = build_provenance_index({MIXED: sidecar}, self.policy)[MIXED]
         self.assertEqual(
-            [item["issue"] for item in index["audit_issues"]], [11, 13]
+            [item["issue"] for item in index["audit_issues"]], [11, 13, 46]
         )
         self.assertEqual(index["signoff_issues"][0]["issue"], 301)
         self.assertEqual(index["signoff_issues"][0]["verifier"], "sunt05")

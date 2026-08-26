@@ -7,7 +7,7 @@ dependency_revisions:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places: {}
   records:
-    records/ohm/generic--unreferenced--bare-soil: sha256:f8686ed8a4d8aa609c0dae7e03b7f4a9e8ab1aa866f18e10c7f7330192581d03
+    records/ohm/generic--unreferenced--bare-soil: sha256:cfc003e5b7ffc14c4d34c1f85b0fd9df14086e20fdffcd2c89d7b0c1062bc316
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:13:31Z'
@@ -98,6 +98,6 @@ assessment:
   scientific_note: Ward et al. compile the pre-adjustment bare-soil coefficients from four earlier literature
     rows, then calculate seasonal a1 and a3 values using Anandakumar-derived multipliers. Their London
     and Swindon runs validate/apply the coefficients but are not their observation input.
-  evidence_revision: sha256:6f533e307e0dbf4f7bdd780ba8c862cb56ab47d11bb9fc8f530fe511ae390d3d
+  evidence_revision: sha256:e413d7e592139e0da6e0af3fb1d6983a9b73f290fec2ea6380b955a300c82522
 verification:
   attestations: []

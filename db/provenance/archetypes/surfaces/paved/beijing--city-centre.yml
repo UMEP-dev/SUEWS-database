@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
-    records/ohm/beijing--zheng-y2023--paved: sha256:187865cca1b8f047652864529d28bf2153488ae682d5b806c99fd25cee2ab714
+    records/ohm/beijing--zheng-y2023--paved: sha256:d3840fc8c87eb3ee72d03958f65962a9315bb1b1ae50e4f88b6ec7cd58fb6990
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
@@ -195,6 +195,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:08a28e585961b4fd59771f4b9b4063025088723a785e2ad0d737e09786e9285d
+  evidence_revision: sha256:f0f9fe83a4026e6fed644aaa7dc56b397dc549e2aad8913f043fb55d54d26d7e
 verification:
   attestations: []

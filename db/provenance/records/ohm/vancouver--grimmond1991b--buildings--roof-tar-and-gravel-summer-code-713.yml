@@ -1,7 +1,7 @@
 provenance_record: records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:3730001f108846150f8d9aa8a7c16bd4379419fad81b42eda6ecd53f9e15c937
+record_revision: sha256:a8a8f89aca1db471adeedc4a80b26c62ab6869e4cfaae8eb8b7650c09f19ae3e
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
   records:
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-26T16:25:51+01:00'
@@ -45,6 +45,14 @@ assessment:
       conclusion: supported
       evidence_ids: [yap-roof-site]
       note: The observations concern the Vancouver School Board building roof, supporting site rather than city scope.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - grimmond-table-1a
+      - yap-roof-site
+      note: The fitted tuple comes from the Vancouver School Board tar-and-gravel roof observations, so the described unit is the monitored roof facet.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids: [grimmond-table-1a, yap-roof-observations]
@@ -95,6 +103,6 @@ assessment:
     Yap (1973) is now recorded separately as the original Vancouver gravel-and-tar roof observation source.
     This preserves the distinction between observations and parameter publication. No canonical value,
     place, scope, path or production method changes.
-  evidence_revision: sha256:ccc33cf602e8b0dedf83b0a8fa4d75d86b590e7be19aff8e877f70ed04119e9a
+  evidence_revision: sha256:e1cf840777d2b9b78883abeb7c7373e0816bd22eb1a853bec3a0914ac8c78c95
 verification:
   attestations: []

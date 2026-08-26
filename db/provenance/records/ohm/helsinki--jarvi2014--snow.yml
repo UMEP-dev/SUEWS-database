@@ -1,7 +1,7 @@
 provenance_record: records/ohm/helsinki--jarvi2014--snow
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:36546244eeb25d8323e4016c5a4518a1f74d3633f63cdc06d58e7f5fc2602a0c
+record_revision: sha256:c33b6182ea7f11eb08c17412de2ab722028d67827098931a53879ea930b9d500
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -52,6 +52,13 @@ assessment:
       note: Site representativeness is the honest evidence envelope because the observational optimization
         of a2 and a3 used the single Pr site. Applying the completed set at all sites describes how far
         the evidence travelled, not a broader place or observational scale.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - snow-parameter-publication
+      note: Järvi et al. define this as the snow-covered surface-type OHM input used before surface-cover aggregation, establishing land-cover scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -94,6 +101,6 @@ assessment:
     support a different location, and the completed triplet's later use at all sites describes evidence
     travel rather than origin. The coefficient-specific method metadata preserves that a1 is assumed
     from shallow-water and heat-capacity relationships, whereas a2 and a3 are fitted.
-  evidence_revision: sha256:c941d293ba74557325859a5ad78556fcdd1f80a683fa7799f9de5903b91a3ebc
+  evidence_revision: sha256:f0e1c5072d44523b1f7f64c27f9ced7d1b452817173b3ba3bcf98a8669b2a470
 verification:
   attestations: []

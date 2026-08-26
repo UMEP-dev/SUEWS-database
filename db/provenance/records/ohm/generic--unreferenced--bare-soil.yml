@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--bare-soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:f8686ed8a4d8aa609c0dae7e03b7f4a9e8ab1aa866f18e10c7f7330192581d03
+record_revision: sha256:cfc003e5b7ffc14c4d34c1f85b0fd9df14086e20fdffcd2c89d7b0c1062bc316
 dependency_revisions:
   sources:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
@@ -55,6 +55,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - release-code55
+      - grimmond-table-4
+      note: Code 55 is compiled from four bare-soil surface-type inputs before any areal aggregation, so its supported unit is the bare-soil land-cover class.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -114,6 +122,6 @@ assessment:
     represented as external derivation inputs rather than artificial database records. The visible a2
     inputs average to 0.3325, so the retained 0.335 is explicitly a historical release value whose extra
     0.0025 is not reconstructed from the displayed rows.
-  evidence_revision: sha256:df00cf1005eb586c46dbdb6b8f78cdb53a36b5dc1f9284096b5a414d7be37d2b
+  evidence_revision: sha256:d88e0e27e1789eb19a0d751022508ffc9e4c5c578cb404bf09e62a22233bf207
 verification:
   attestations: []

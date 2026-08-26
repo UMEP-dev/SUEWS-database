@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/dectr/helsinki-finland--deciduous-forest-trees-havu-et-al-2024: sha256:f89b056866fd9871b9466f5c5303b92d40becea175df48ae0c0977bf97ec2dc3
     archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
     archetypes/surfaces/dectr/helsinki-finland--mixed-dec-jarvi-et-al-2014: sha256:b21dc9e5d8d54572d5a983b7c148996c8633621f5467ddd878332be5461b6cdb
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass: sha256:02b3ebf998c10d4ca984ae3cd4c3ec274a743f0c2246373298fe0ee1eba284d8
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street: sha256:d0f626490a4bf015d63c7a6a7f56076987f4aaac7d1846cc5a6a919727183387
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
@@ -207,6 +207,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:da3db9d67522e6d4f5d6e7badf7bc8a1d25fb1f191808d76439bb32b2243574e
+  evidence_revision: sha256:57e8f92c0277c4973cb43a1f764325bdb9bf29ca36c9df39769c83b4449f4e11
 verification:
   attestations: []

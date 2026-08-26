@@ -7,12 +7,12 @@ dependency_revisions:
     grimmond1999: sha256:b17eb734e176c6c87f64f182ada3678426075b4fcf0612c1dd73318a341240f3
   places: {}
   records:
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/ohm/generic--unreferenced--bare-soil--bare-soil-50: sha256:6f02f0df1ee3ca99918b9642356f2c6a494a9ade9e73770a3f85f4a6cf8ab20d
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/ohm/generic--unreferenced--water: sha256:51723acf5699b521f069b77754192103142f529d139b10cf19b3b00397bac335
 assessment:
-  status: agent_assessed
+  status: unresolved
   assessed_at: '2026-08-24T12:28:00Z'
   assessor:
     kind: agent
@@ -46,6 +46,17 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: unresolved
+      evidence_ids:
+      - grimmond-table-4
+      - code20-input
+      - code30-input
+      - code50-input
+      - code60-input
+      note: The code-200 mean crosses forest, grass, bare-soil and water inputs, and no source defines that result as one controlled scale term. A legacy coefficient-design artifact or maintainer confirmation is required.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -103,6 +114,6 @@ assessment:
   scientific_note: Grimmond and Oke publish the seven component triplets, while legacy SUEWS code 200 is
     their internally calculated, component-wise rounded mean. Current atomic records preserve codes 20, 30,
     50 and 60; external table inputs preserve codes 51-53. No parameter value has changed.
-  evidence_revision: sha256:d5a526920fdbb6f6641332455f10c697002b90661f6517aff0e2e357fdadc260
+  evidence_revision: sha256:f7518761cf8bfb0e08750d72bb5afe3dc048680ea6c8c83cdcb2a1aaea6a21eb
 verification:
   attestations: []

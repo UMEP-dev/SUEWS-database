@@ -1,7 +1,7 @@
 provenance_record: records/ohm/london--xie2024--buildings--detached-houses-with-air-source-heat-pumps-operated-in-whole-buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e6665574d26340c0daeb57dffe0b3eb456c9737a030622f9affbd777d47f7643
+record_revision: sha256:9b307cce43c45e52cff96272acd3115c49c357ae28d837e5bbb37670bc7293f5
 dependency_revisions:
   sources:
     xie2024: sha256:7f8cce92cf2b85e545cbee66b3c57f747633ff992bfc82e689884737a4c23f4e
@@ -50,6 +50,13 @@ assessment:
       - xie2024-ohm
       note: The city tag denotes the London scenario context; the source models an idealised neighbourhood
         and does not claim a city-wide observation.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Xie et al. Equation (4) and Table S1 define building-surface-class coefficients before cover-fraction weighting produces neighborhood storage heat, so these scenarios are land-cover-scale inputs.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -103,6 +110,6 @@ assessment:
     a later compilation, external validation, or an internal database calculation. No separate input_data,
     compilation, or validation relationship is asserted. London is a model-scenario application using
     an idealised neighbourhood rather than an observational study site.'
-  evidence_revision: sha256:e2623bcecc1582c0cd2a031d16de5e0e7e7925e3c660ce2a330a18e7d882aa6e
+  evidence_revision: sha256:fe04d773c9ed4b1b22191d3adc42edcd565c53510b2f4f96314f63d1e98649be
 verification:
   attestations: []

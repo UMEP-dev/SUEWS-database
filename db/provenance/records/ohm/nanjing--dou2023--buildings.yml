@@ -1,15 +1,15 @@
 provenance_record: records/ohm/nanjing--dou2023--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2ba74cf2a30693ad34b9062173497f8dcedd9e379ab350ce0331001328784a9b
+record_revision: sha256:4e20f038def36ebf3d1f8d58a8b0134990e4cf945817aea907a9d7da0e5f8ac9
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
   places:
     nanjing: sha256:a48db9563fb7994fd0a9b55f7dc167263c9a161ad27f7e97ce3adca9a715eebe
   records:
-    records/ohm/nanjing--wang2008--buildings: sha256:ca173a894025c4ee88fdf4dc1eb824f56953e471244e552d355066bed6c4e3de
-    records/ohm/nanjing--wang2008--buildings--concrete-roof: sha256:fee46be1da731ecc1a655d1dd5ffe92a960d286d9b81a89c334668233a0670fd
+    records/ohm/nanjing--wang2008--buildings: sha256:569ce05cba97f8c72bfd83c15953c771fed2acbd1bb8b9b80c3ec8116aab01b5
+    records/ohm/nanjing--wang2008--buildings--concrete-roof: sha256:ee3a45868e0083d8f3edc606d50c77292c55a683ca4faea9532746f9662ade33
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-21T21:21:09Z'
@@ -47,6 +47,13 @@ assessment:
         arithmetic mean remains site-specific rather than city-representative.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/72
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - dou-derived-mean
+      note: Dou et al. publish this as the component-wise mean of summer and winter concrete-roof fits, so it describes a roof facet rather than a complete building land-cover class.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -82,6 +89,6 @@ assessment:
     so its record-level method is literature. Within that publication, the tuple is explicitly the component-wise
     arithmetic mean of the Wang et al. summer and winter rows: (0.83 + 0.86) / 2 = 0.845; (0.52 + 0.27)
     / 2 = 0.395; and (-16.95 + -9.64) / 2 = -13.295.'
-  evidence_revision: sha256:04b4979d46d096489b764e51078299d1e3ff36ca8b7c8f438329e34125279cc2
+  evidence_revision: sha256:0f149e472f2826931c69dbff5f715e608621e33c102fa26f5429571ffac41555
 verification:
   attestations: []
