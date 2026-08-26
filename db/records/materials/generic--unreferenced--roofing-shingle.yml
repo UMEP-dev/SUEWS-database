@@ -2,7 +2,9 @@ record: records/materials/generic--unreferenced--roofing-shingle
 schema_version: '2026.5'
 target: material
 name: Roofing shingle
-source: unreferenced
+source: kotthaus2014
+method: measured
+source_legacy_ref: 99240099
 legacy_id: 36243783
 category: Generic
 display_colour: Black
@@ -12,3 +14,13 @@ parameters:
   thermal_conductivity: 2
   specific_heat: 753
   density: 1013
+parameter_provenance:
+  parameters.thermal_conductivity:
+    source: unreferenced
+    method: assumed
+  parameters.specific_heat:
+    source: unreferenced
+    method: assumed
+  parameters.density:
+    source: unreferenced
+    method: assumed

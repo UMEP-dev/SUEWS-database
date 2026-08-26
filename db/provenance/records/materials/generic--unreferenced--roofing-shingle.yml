@@ -1,0 +1,110 @@
+provenance_record: records/materials/generic--unreferenced--roofing-shingle
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6f25cdda4bfd527433972df1f23ce0c6838f857621d5a3727651e9daa67e4306
+dependency_revisions:
+  sources:
+    ies2011-apache-tables: sha256:120a04f733eb131107519305d6c119d0855519cb2b2e16ff41ae11b836ed6a11
+    kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T00:39:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/278
+  method: measured
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row]
+      note: Kotthaus sample L003 is a roofing shingle; the historical row preserves the generic label.
+    target:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row]
+      note: Both evidence items describe material properties.
+    values:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row, ies-mismatch]
+      note: >-
+        Kotthaus reports the exact optical pair 0.06/0.95 for sample L003. The thermal tuple 2/753/1013
+        is supported only as the exact migrated configuration and is exported as unreferenced and assumed.
+    source:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row, ies-mismatch]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/278]
+      note: >-
+        Kotthaus is the effective source only for albedo and emissivity. Canonical field overrides prevent
+        it from being credited with thermal properties the article does not publish.
+    place:
+      conclusion: not_applicable
+      note: The generic material row makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic material row makes no site, city or regional evidence-reach claim.
+    method:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row]
+      note: Measured applies to the two spectral properties; the three thermal leaves are explicitly assumed.
+    identity:
+      conclusion: supported
+      evidence_ids: [kotthaus-sample, migration-row]
+      note: >-
+        Legacy ID 36243783, stable path and every parameter value are preserved. Field-level provenance
+        records the mixed evidence without asserting that Kotthaus published the complete tuple.
+  evidence:
+  - id: kotthaus-sample
+    source: kotthaus2014
+    role: parameter_source
+    parameter_paths:
+    - parameters.albedo
+    - parameters.emissivity
+    locators:
+    - kind: table
+      label: Table C.1, sample L003
+      page: '210'
+      url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
+      note: >-
+        Reports albedo 0.06 and emissivity 0.95 for a black, weathered fibre-cement roofing shingle.
+        The article reports spectral measurements, not the stored thermal tuple.
+  - id: ies-mismatch
+    source: ies2011-apache-tables
+    role: validation
+    parameter_paths:
+    - parameters.thermal_conductivity
+    - parameters.specific_heat
+    - parameters.density
+    locators:
+    - kind: table
+      label: Table 6 material rows
+      page: '19'
+      url: https://web.archive.org/web/20150513225206/http://www.iesve.com/downloads/help/ve2012/Thermal/ApacheTables.pdf
+      note: >-
+        No Roofing shingle row matches 2/753/1013. Conductivity 2 and specific heat 753 occur for slate,
+        but that row's density is 2700, so it is not provenance for the stored tuple.
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration Spartacus Material row 36243783
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L29-L37
+      note: >-
+        Stores the complete 0.06/0.95/2/753/1013 tuple under placeholder Ref 99240099; this establishes
+        release and migration lineage only.
+  attempted_sources:
+  - source: ies2011-apache-tables
+    attempted_at: '2026-08-26T00:39:00+01:00'
+    outcome: not_found
+    note: The guide contains no roofing-shingle thermal tuple matching the record.
+  scientific_note: >-
+    The absence of one publication containing all five fields is not a blocker once the mixed evidence is
+    represented honestly. Kotthaus supports only the two optical leaves; the three thermal values remain
+    explicit archived assumptions. No value or stable identity changes.
+  evidence_revision: sha256:06c643a5811b5f5da770d8197eb9aca94ba38e5f6c2342529e502f749563d056
+verification:
+  attestations: []
