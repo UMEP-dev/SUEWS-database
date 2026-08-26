@@ -1,0 +1,88 @@
+provenance_record: records/surfaces/bldgs/london--cleugh2001--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:aad259e4d43e4171c0c4621287a402801959349956e7dfe4f0d893eaa761ff35
+dependency_revisions:
+  sources:
+    cleugh2001: sha256:a77fdfd570279c84c9dd5f022a3cc053f479e6efd3318fb42d04fe0a28fef730
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:25:01+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/397
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained GLA Urban fabric 50-80 (suburb) configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Buildings and stores roof, wall and internal construction fields, matching
+        land_cover.bldgs.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated roof, wall and internal tuple exactly. This supports
+        configuration preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/397]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Cleugh and Grimmond (2001)
+        reference was a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: London is the explicit application identity of the pinned configuration row.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: City preserves the archived GLA configuration scope; it does not claim a city-wide measurement.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/397]
+      note: Assumed identifies a retained application configuration whose assembly procedure and original
+        parameter sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240010, name, origin and complete tuple preserve the migrated GLA row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240010
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L625
+      note: Stores the exact London-labelled roof, wall and internal configuration and the mechanically
+        generated legacy reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: cleugh2001
+    url: https://doi.org/10.1023/A:1018798928158
+    attempted_at: '2026-08-21T17:07:42Z'
+    outcome: not_found
+    note: >-
+      The publication was checked under issue #397. It concerns regional energy exchange and boundary-layer
+      growth in the Sacramento landscape and does not publish the exact London ESTM construction tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived London suburban configuration, not a measured or
+    literature-published construction parameter set. The values therefore remain unchanged with source
+    unreferenced and method assumed. This sidecar remains agent assessed and should enter the focused human
+    review of assumed records.
+  evidence_revision: sha256:5055ea0f5cf242878fa57982bf1c7d4ceb50c46e606373ec8e24792c19ad5348
+verification:
+  attestations: []
