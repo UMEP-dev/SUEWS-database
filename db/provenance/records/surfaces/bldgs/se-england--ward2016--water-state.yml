@@ -1,0 +1,143 @@
+provenance_record: records/surfaces/bldgs/se-england--ward2016--water-state
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b8c1d6f5760897f96cf6da6f89007cb30897ed4d3930f919e32bdc715050c5f6
+dependency_revisions:
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T13:19:31Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/124
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      note: Buildings is the preserved label of pre-migration water-state row 42240042.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      - release-nonveg-buildings
+      note: Both pinned artifacts classify the cell under the buildings entry of the non-vegetated
+        surface table.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      - release-nonveg-buildings
+      note: The value 0.25 is supported as the exact preserved configuration cell only. This does
+        not validate it as a scientifically determined non-water StateLimit.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      - release-nonveg-buildings
+      - nonwater-statelimit-semantics
+      - ward-no-statelimit
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/124
+      note: Unreferenced is correct because the release artifacts preserve the cell but do not provide
+        a scientific derivation, the documented option is currently used only for water surfaces,
+        and Ward et al. (2016) do not publish this non-water StateLimit.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      note: SE England is the preserved application identity of the migration row, not an observation
+        site established for this value.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      note: Regional records the intended reach of the archived SE England configuration; it does not
+        claim regional empirical validation of the value.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      - release-nonveg-buildings
+      - nonwater-statelimit-semantics
+      - ward-no-statelimit
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/124
+      note: Assumed denotes retention of an exact historical configuration cell whose scientific
+        production method is not documented; it is not a claim that the value was measured, fitted,
+        calculated or published.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - migration-row-42240042
+      - release-nonveg-buildings
+      note: Legacy ID 42240042, the Buildings label, SE England origin and value 0.25 establish the
+        stable archived configuration identity.
+  evidence:
+  - id: migration-row-42240042
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths:
+    - parameters.state_limit
+    locators:
+    - kind: dataset
+      label: Pre-migration Water State row 42240042
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L37-L43
+      note: Stores Buildings, SE England, StateLimit 0.25, WaterDepth -999 and Ref 90240002. The Ref
+        records migration lineage and is not evidence that Ward et al. published the cell.
+  - id: release-nonveg-buildings
+    source: umep-dev2016a
+    role: compilation
+    parameter_paths:
+    - parameters.state_limit
+    locators:
+    - kind: dataset
+      label: V2016a SUEWS_NonVeg.txt buildings rows
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_NonVeg.txt#L4-L9
+      note: Codes 150, 552 and 662 are buildings configurations and each stores StateLimit 0.25. This
+        establishes exact release lineage, not scientific validation.
+  - id: nonwater-statelimit-semantics
+    source: umep-dev2016a
+    role: validation
+    locators:
+    - kind: text
+      label: StateLimit option applicability
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L2
+      note: The option table states that StateLimit in SUEWS_NonVeg.txt is currently only used for
+        the water surface.
+  - id: ward-no-statelimit
+    source: ward2016
+    role: validation
+    locators:
+    - kind: text
+      label: SUEWS description, model setup and reported parameter tables
+      page: 2-8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: The paper discusses moisture storage capacity generally and reports adjusted albedo and
+        emissivity in Table 2, but it neither identifies StateLimit nor publishes 0.25 as a non-water
+        buildings StateLimit.
+  attempted_sources:
+  - source: ward2016
+    attempted_at: '2026-08-26T13:19:31Z'
+    outcome: not_found
+    note: The complete 32-page article was searched and close-read around the SUEWS description, site
+      setup and parameter tables; no non-water StateLimit value or 0.25 buildings StateLimit was found.
+  scientific_note: This record is an archived SE England buildings configuration, not a scientifically
+    validated non-water StateLimit determination. The exact 0.25 cell is present in both migration row
+    42240042 and the pinned v2016a SUEWS_NonVeg.txt buildings rows. However, the option documentation
+    says non-vegetated StateLimit is currently used only for water surfaces, and Ward et al. (2016) do
+    not publish this parameter. Source unreferenced and method assumed therefore preserve executable
+    configuration lineage without inventing scientific provenance. The record value, stable path,
+    origin, representativeness and legacy ID remain unchanged.
+  evidence_revision: sha256:ef3cfc133f2f241c9a5fcbbf021ae737345829c393d0d6f2fdd2202eaadf8db2
+verification:
+  attestations: []
