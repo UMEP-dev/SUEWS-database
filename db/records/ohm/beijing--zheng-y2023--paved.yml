@@ -5,6 +5,7 @@ name: Archived AN99 all-year paved configuration
 place: alland
 origin: Beijing
 representativeness: site
+applicable_scale: material
 source: umep-dev2017a-input-tables
 method: assumed
 source_legacy_ref: 90240067

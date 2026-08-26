@@ -5,6 +5,7 @@ name: Flats with gas boilers operated in whole buildings
 place: london
 origin: London
 representativeness: city
+applicable_scale: land_cover
 source: xie2024
 legacy_id: 50240036
 parameters:

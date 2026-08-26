@@ -8,7 +8,7 @@ dependency_revisions:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
@@ -204,6 +204,6 @@ assessment:
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them. The corrected biogen_co2 component has three values directly
     supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:8d467358020b59f839eb8e5a628c919d057d1c99b541f332bacf1bbf5d02625e
+  evidence_revision: sha256:b94dbed93935abca305b85d40c9f6c748c1d6974a83c4a89d52a861accd995db
 verification:
   attestations: []

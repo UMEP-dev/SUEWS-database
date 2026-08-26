@@ -5,6 +5,7 @@ name: Snow [61]
 place: montreal-suburban
 origin: Helsinki
 representativeness: site
+applicable_scale: land_cover
 source: jarvi2014
 method: fitted
 legacy_id: 50240016

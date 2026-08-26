@@ -1,7 +1,7 @@
 provenance_record: records/ohm/generic--unreferenced--paved--asphalt-902
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b5478d15edca4d1165d4fe29606f5e869694284659e8fe44145530f95d2abc20
+record_revision: sha256:c9d6dfa4107feb8fb56d0870bf5f9bbf7436485131c5a24c7ad5bbb0ddc3e218
 dependency_revisions:
   sources:
     asaeda1993: sha256:5e6addf987eec5675cfcc84cadf80c8268b8e88d03de1318727b932f83304358
@@ -46,6 +46,13 @@ assessment:
       conclusion: supported
       evidence_ids:
       - primary-publication
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - primary-publication
+      note: Asaeda and Ca fit the tuple to a dry asphalt experimental pavement specimen, so the supported unit is the material rather than an area-weighted paved land-cover class.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -82,6 +89,6 @@ assessment:
   scientific_note: The primary article supplies the exact fitted values and method and locates the experiment
     at Saitama University campus. The stable record path is retained while the evidence envelope now records
     the site and site-scale representativeness explicitly.
-  evidence_revision: sha256:cc1f544000c0cc4bb4aca7871e9dc40f27fa77d82989994721f0b4e632ddbf5d
+  evidence_revision: sha256:1d8f89003b578ead73c627d9b2a947e68630fcafc8249c9e3e20603afdc50d52
 verification:
   attestations: []

@@ -5,6 +5,7 @@ name: Wheat-maize
 place: weishan
 origin: Weishan, Shandong Province, China
 representativeness: site
+applicable_scale: land_cover
 source: dou2023
 legacy_id: 50240038
 season_label: Summer

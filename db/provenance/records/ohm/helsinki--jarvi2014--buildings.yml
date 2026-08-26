@@ -1,7 +1,7 @@
 provenance_record: records/ohm/helsinki--jarvi2014--buildings
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+record_revision: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -10,14 +10,14 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713: sha256:3730001f108846150f8d9aa8a7c16bd4379419fad81b42eda6ecd53f9e15c937
-    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705: sha256:1023cbfe149c477cbb3e54473aabf1602b557846100cd3deae75e3f524afb16a
-    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702: sha256:92f9972ea4d4195f27773e8b06c0a94daaa8cffb02b9b87a8378bedcf0e74241
-    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-5-2-0-code-703: sha256:4b2467b47e837e9551f381184712e0366f39d42775b45c28b915f613e1b0186a
-    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701: sha256:744042c7a28a5c2f8a2b281af453c03e793607b6425bd80b82a95158b5b195ae
-    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-wet-wind-0-9-1-9-code-704: sha256:1f8fc89bd23da520b55dce05b9c2c566c5d751381a5f6c7c36bd7efaceca3c55
-    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707: sha256:e1be61c2a1fd155ec08483be1e1b077b81202e77b05c462afdc006bfa3493b28
-    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-below-1-code-706: sha256:99275f8586da0594b9e56cebec7fe05c080217a7bf91a4e3d5448653b7509fab
+    records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713: sha256:a8a8f89aca1db471adeedc4a80b26c62ab6869e4cfaae8eb8b7650c09f19ae3e
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705: sha256:4ec1b94e620345401896b6bf5af470e9c9074b1411b120724cb76cc1eac3484d
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702: sha256:1aa7a86182522df4576a3d29b67cdebf76873fe84b663933c8682892a0ef6e9f
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-5-2-0-code-703: sha256:9b36b43736f940ab182ea9ab5abc0c443de36005c31f2b29623de0354f46f555
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701: sha256:0afd43f3d3fad691c52f803eebd1dbb7b46b3f53c5f2c38ba62a79bac0f6b21c
+    records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-wet-wind-0-9-1-9-code-704: sha256:4a35beb4e73e55af1995d76c9a15a529b46845df18e23f2cf906ca981d8fd05f
+    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707: sha256:331bda20c76fdc6632107f44c76f9c0d440de27c7741cfa24c60c1f8699967ab
+    records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-below-1-code-706: sha256:e610f0cbbbb69d1c371697f211ecff31f9d56ef479226d73e93c23f477994d67
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T08:06:15Z'
@@ -76,6 +76,14 @@ assessment:
       - jarvi2017-table-s4
       note: The output is presented as the Helsinki input in a multi-city SUEWS analysis, supporting city
         application scope without treating the Vancouver inputs as Helsinki measurements.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - grimmond1991b-table-1a
+      - meyn2009-table-4
+      note: The tuple is the equal-weight mean of eight roof-surface coefficient sets. Those inputs describe physical roof facets before any building-cover or neighborhood aggregation.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -164,6 +172,6 @@ assessment:
     subset reconstruction uniquely identifies codes 713 and 701-707 as the equal-weight inputs. Code
     708 is excluded by the exact arithmetic; why it was not selected was not documented. This uncertainty
     concerns the historical selection rationale, not the reproducibility of the stored tuple.'
-  evidence_revision: sha256:e314d21527141afa7dd969c87cabe627c653583743dfe85226782a27bedc2d9f
+  evidence_revision: sha256:85d4200d614d0daca6ea1298ae3bf0f77bdd196c6899131e7050d9dda7b0b37e
 verification:
   attestations: []

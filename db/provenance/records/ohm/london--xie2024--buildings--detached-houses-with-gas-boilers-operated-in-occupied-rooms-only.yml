@@ -1,7 +1,7 @@
 provenance_record: records/ohm/london--xie2024--buildings--detached-houses-with-gas-boilers-operated-in-occupied-rooms-only
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:2f07f99ea10c140cac095222bdd89b1fb1cef3ee9e330868477cfe8d575d9a9f
+record_revision: sha256:b038eea9223cb5bfa227aa623dc1fc29212d29c0c6e0ed361cf4fdbed9952534
 dependency_revisions:
   sources:
     xie2024: sha256:7f8cce92cf2b85e545cbee66b3c57f747633ff992bfc82e689884737a4c23f4e
@@ -50,6 +50,13 @@ assessment:
       - xie2024-ohm
       note: The city tag denotes the London scenario context; the source models an idealised neighbourhood
         and does not claim a city-wide observation.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - xie2024-ohm
+      note: Xie et al. Equation (4) and Table S1 define building-surface-class coefficients before cover-fraction weighting produces neighborhood storage heat, so these scenarios are land-cover-scale inputs.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -103,6 +110,6 @@ assessment:
     a later compilation, external validation, or an internal database calculation. No separate input_data,
     compilation, or validation relationship is asserted. London is a model-scenario application using
     an idealised neighbourhood rather than an observational study site.'
-  evidence_revision: sha256:552dd4a7b07c2a2324d656be57e86adce1193814eca61adc75e06c31ee62be40
+  evidence_revision: sha256:3ddea033ed5dc9fe10238af5903c3f1078cf0b2cabe8f7b455efe1d9ba5e7f65
 verification:
   attestations: []

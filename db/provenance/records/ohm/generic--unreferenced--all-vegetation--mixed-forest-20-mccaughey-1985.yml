@@ -1,6 +1,6 @@
 provenance_record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
 provenance_format_version: '1.0'
-record_revision: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+record_revision: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
 dependency_revisions:
   sources:
     grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
@@ -17,7 +17,7 @@ assessment:
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/11
   method: fitted
-  evidence_revision: sha256:77162aab5ca6fe52bcf7c21bfd29fe50d4df25a9fc3685f9d12313d817883846
+  evidence_revision: sha256:1ce92937005094f861a2bb77b6236b399950e5cd4f2a3cb3ed96288d845ccf3c
   findings:
     name:
       conclusion: supported
@@ -46,6 +46,14 @@ assessment:
       conclusion: not_applicable
     representativeness:
       conclusion: not_applicable
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - parameter-publication
+      - later-compilation
+      note: The publications present this tuple as the mixed-forest surface-cover input before surface fractions are combined, establishing land-cover scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:

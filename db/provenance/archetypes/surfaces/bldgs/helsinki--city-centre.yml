@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s: sha256:0eb3f4dbad5a047d1ab98fd807df52d1c83cd0a56cac64e80e292ece2558e849
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -180,6 +180,6 @@ assessment:
     rows do declare source jarvi2014. And this city-scale composite
     is the buildings default for two region archetypes, western Europe and northern Europe, which stretches
     one Helsinki city centre across a continent. This review does not revisit any component value.'
-  evidence_revision: sha256:9438fde4ec7e05a6522f501a59f91d6e718e4af988dc0bf3c32bd66512e5da4a
+  evidence_revision: sha256:951effb652ae2f4f822c77a7559f4b133c43a764cffee4689766f0ed11605d08
 verification:
   attestations: []

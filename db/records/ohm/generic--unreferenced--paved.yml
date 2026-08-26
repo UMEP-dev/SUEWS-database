@@ -3,6 +3,7 @@ schema_version: '2026.5'
 target: ohm_coefficients
 name: Impervious (average). This is the average of Codes 801, 802, 901, 902, 903, 905, 906.
   [800]
+applicable_scale: land_cover
 source: unreferenced
 method: calculated
 legacy_id: 50240001

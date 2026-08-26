@@ -1,7 +1,7 @@
 provenance_record: records/ohm/weishan--dou2023--cropland--maize-wheat
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:83e57eed466013c0baf1287d9b9c40d4d167736c205b77a47ae8754ba6fd91ca
+record_revision: sha256:3546824e67c9884036a7d63702cbda511f96b3d4bb2bc0d605ec1e1eb3ad711b
 dependency_revisions:
   sources:
     dou2023: sha256:93631131773b71a7226c38c6d269b18d52d0c37f962f67fd00c65eb975dcbd04
@@ -43,6 +43,13 @@ assessment:
       conclusion: supported
       evidence_ids:
       - dou-weishan-evidence
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - dou-weishan-evidence
+      note: Dou et al. Equation B1 and Table B1 define crop/land-cover coefficients before cover-fraction weighting, establishing land-cover scale.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/46
     method:
       conclusion: supported
       evidence_ids:
@@ -66,6 +73,6 @@ assessment:
       page: 13162
     note: Dou et al. fit season-specific coefficients to measured net radiation and soil heat flux, using
       70 percent of each season for fitting and 30 percent for evaluation.
-  evidence_revision: sha256:65570ed550615a5e190a03064139364257d977a61b2b1ccee202010d9d8fb990
+  evidence_revision: sha256:8b0714d870ec50b37c96018fcedb8d7cb771c3858c36f6abdef68c144515283f
 verification:
   attestations: []

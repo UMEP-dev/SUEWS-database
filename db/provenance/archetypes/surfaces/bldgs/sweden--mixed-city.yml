@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--detached-houses-wood: sha256:4177e91fd7df0eda358546fb802d56703fb503c54017fcae81f3a52a972e4cc8
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/stockholm--bjork2002--mixed-city-2000s: sha256:c9587bccffc90a991af2d48a76cea297a3ebb37dc0e360f6aba566c5c1748978
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -164,6 +164,6 @@ assessment:
     filling emissivity, the snow limit and the OHM positions are forced; water storage and drainage are generic,
     since no Swedish record exists for any of those quantities, but that too is unstated. All of this
     lives in the composite and none of it requires a component value to change.'
-  evidence_revision: sha256:ecec43a9c60b7cc62b31e49cc32b06305286a0bfed14fd67d080db88562ab793
+  evidence_revision: sha256:bfbd71e647dc8dd39d06d49c6161d3a689e56961caa83782e3b921ebd75bf75d
 verification:
   attestations: []

@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--brick-house-traditional-neighbourhood: sha256:f1d978d90a398d73c2afb30ac14aa27c846f79d63416e6938e2f125233c17ef6
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s: sha256:caa258b9c5e1ef9259b94087ee62662d79b3d5debe460970006b80264690fe55
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -182,6 +182,6 @@ assessment:
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:4be6a52407111b74006527bbd347a147ddd154d0c4022de8f02864ebe079fd30
+  evidence_revision: sha256:7eb2f93d758be0547b54800929cc1b5b02d9bf14bb965eba2cb485f1642b8e75
 verification:
   attestations: []

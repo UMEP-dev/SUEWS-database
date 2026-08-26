@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     kyoto: sha256:7b0f034fb43f3eadc4e833fd7b3d25adc9252eb1c910e7d4a9e96155502ffc96
   records:
-    records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:77230eeb04fd0414e221d412d17545aa1b3b837f19fed9fac8dd3fac6286877f
+    records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan: sha256:38ada69c9c4827a596150e73e7cc107eda208c86af58c6cbfa3a167e3d802867
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T19:24:00Z'
@@ -125,6 +125,6 @@ assessment:
     is retained only as a separate archived configuration with source unreferenced and method assumed.
     No source identifies which current building archetype should attach this record, so any such
     attachment remains a separate composition decision.
-  evidence_revision: sha256:9d92c88e66da30c07fd425eb46e203c6ba3a54b9ae9ede7b926c0debd4868fbf
+  evidence_revision: sha256:58fe0606dee7603b0ca55096e5c894878aaee39a1bee3ef2125767caf023fec3
 verification:
   attestations: []

@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
     archetypes/surfaces/dectr/helsinki-finland--deciduous-street-trees-havu-et-al-2022: sha256:a4c4bccd6e7b906ee40bde8c64cf5f300f337e146d7ee2ad4d0458c30a590c0d
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2: sha256:4f6ae96c3af89b1c026297af9c0930c54570eb3c812357887c66e407fe42d1f4
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance: sha256:f2a8cb35a22ceb08c1a5b909406383d8f3f2d4ec1370d734fcc1bceccf66e65e
@@ -198,6 +198,6 @@ assessment:
     not mix equations. What is missing is only the written rationale for the imports, which no composite
     in this family carries and which the format expects a composition sidecar to supply. The components'
     values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:4cfc499203007555784b3ca4bc7ef81faf55212adb47446fb432027f52cac13c
+  evidence_revision: sha256:5bb90f5dedd76c05056fba85e02ed157fdd64a8e88f6e9af566725e7e69d4945
 verification:
   attestations: []

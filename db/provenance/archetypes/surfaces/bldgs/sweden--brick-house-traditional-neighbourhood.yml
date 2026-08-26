@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--concrete-million-program: sha256:68d7b5429fd8741c01b624bba6fd8e12d4c0dc061ec96d7cccee397dfb4cb7d6
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s: sha256:fb5b3fbc3dbfb3be1bcea0fd01bad4376e1cac2e0fcd77fe45cf9ab7fefc3e75
-    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+    records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
@@ -193,6 +193,6 @@ assessment:
     the database holds, but the albedo is not: two generic archived configurations with Gothenburg lineage
     exist, Wood and ''Industry, dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
     be settled once rather than seven times. This review does not revisit any component value.'
-  evidence_revision: sha256:f689ae8531c46333b4ac1cb4497b6e5e78653895840aaab8066bfd062651022a
+  evidence_revision: sha256:3a04fb5002d2759e1859b794b80e9d7289ac77b93ed784a38cd0bc7408e2c756
 verification:
   attestations: []

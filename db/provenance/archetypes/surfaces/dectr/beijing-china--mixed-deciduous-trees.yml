@@ -7,7 +7,7 @@ dependency_revisions:
   places:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
     records/surfaces/dectr/beijing--ward2013--lai: sha256:0e594f9120547c56dbd483b638c381bd1063fe40ad827f0562c3f5d535755f5e
     records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
@@ -206,6 +206,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:3f71d4c10e398510a2a0a7e576f06e5f5c47f70f416cee02b943182c88a067ac
+  evidence_revision: sha256:d430855b27e687e123c0319d4cef4ebb42293897049b96dd4edde35c1e68e538
 verification:
   attestations: []

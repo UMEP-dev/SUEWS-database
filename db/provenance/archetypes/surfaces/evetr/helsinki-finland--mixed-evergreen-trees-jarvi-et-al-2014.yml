@@ -8,7 +8,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     archetypes/surfaces/evetr/helsinki-finland--evergreen-street-trees-havu-et-al-2022: sha256:f09cd2030a94be38383a7fa7ca77904345ca6bfa54260f8dd18fe2e588a73650
-    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:cc7e35d0ea717beb6316a001b4ad30bb05cca85a3bdf46afd3d20670649706a6
+    records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     ? records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
     : sha256:dd41cc1b253e83f29fe5d2ff442d6853f4c1563853fda5285fc58bd913f11fd2
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
@@ -221,6 +221,6 @@ assessment:
     later application history. What is sound is the slot set, which is complete, the LAI pair, which agrees
     on lai_type 1, and the generic drainage and maximum-conductance rows. The remaining questions are about
     selection and mapping, so they can be settled inside the composite without touching any record.'
-  evidence_revision: sha256:848f93c18179ea1a819c145da3299e21a7690e3dc5fca90bc41087c0bace5095
+  evidence_revision: sha256:00faa5aa23cd870d05f420d3e38933e72f8b4453a22748f9f330755d3f35a8ca
 verification:
   attestations: []
