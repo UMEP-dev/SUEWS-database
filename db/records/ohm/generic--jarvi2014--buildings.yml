@@ -2,7 +2,8 @@ record: records/ohm/generic--jarvi2014--buildings
 schema_version: '2026.5'
 target: ohm_coefficients
 name: Archived code-799 roof average
-source: jarvi2014
+source: umep-dev2017a-input-tables
+method: assumed
 legacy_id: 50240024
 parameters:
   a1: 0.238

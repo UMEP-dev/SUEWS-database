@@ -14,7 +14,7 @@ dependency_revisions:
     archetypes/surfaces/bldgs/sweden--nordic-functionalism-wood: sha256:6c25e4f477238aacd946bc7cc48053261f076839411405061101e55b47d5f34e
     archetypes/surfaces/bldgs/sweden--stone-houses-traditional-neighbourhood: sha256:6d69dd86a2dc3e39d87a6a8945507934782021d050ca5a5eb10bf3c052e35b67
     records/constructions/sweden--unreferenced--industrial: sha256:a152fa4156d6472d5a5542877f171c17168b646649b143e84c9b83a672a9d85d
-    records/ohm/generic--jarvi2014--buildings: sha256:30983c786ce5cae178a3069e997317c6518f93d8ae2b39694f2b54181d20da6e
+    records/ohm/generic--jarvi2014--buildings: sha256:20f2b1bbd07070e97663009407d4805eb79195b5e57f61d49c5878a8ffe6a322
     records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:8d51b71b7fa63fa654b73e1b6169388b232c5f0b018693b2110c858dda122272
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
@@ -178,6 +178,6 @@ assessment:
     than something this review can settle. The same is true of the composite''s declared
     regional reach, which no component except the construction supports. Neither question requires a component
     value to change; both live in the composite.'
-  evidence_revision: sha256:c6cca2ae91de0b842c0c586abb29144c8d47d9bf3ef55781d6f3301cbd7c18b5
+  evidence_revision: sha256:eefdaeffab70288d5b69bddbb623ac2cb2b01c52d0d463f5fa4560a7e47ef2de
 verification:
   attestations: []
