@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
-    records/ohm/beijing--zheng-y2023--paved: sha256:0923789bdbfbccbe2b34135aa696c1d5b8572639de054d620da166686fefe03d
+    records/ohm/beijing--zheng-y2023--paved: sha256:187865cca1b8f047652864529d28bf2153488ae682d5b806c99fd25cee2ab714
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
@@ -58,8 +58,8 @@ assessment:
         drain_coef_2 and wet_threshold into drainage, snowpack_limit into snow_lim_patch, and a1, a2 and
         a3 into each ohm position. The water_storage and drainage components both write into storage_drain_params
         and their keys do not overlap, so neither overrides the other. records/ohm/beijing--zheng-y2023--paved
-        declares no season_label and is named ''An99 weighted average (all year)'', so filling all four
-        season and wetness positions from it asserts no seasonal split the record itself denies.'
+        declares no season_label and is named ''Archived AN99 all-year paved configuration'', so filling
+        all four season and wetness positions from it asserts no seasonal split the record itself denies.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameters of its own, so it overrides no component value; every
@@ -175,13 +175,14 @@ assessment:
     record: records/ohm/beijing--zheng-y2023--paved
     role: component
     note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
-      declares target ohm_coefficients, name 'An99 weighted average (all year)', place alland, representativeness
-      site and source zheng-y2023, carries a1, a2 and a3, and declares no season_label.
+      declares target ohm_coefficients, name 'Archived AN99 all-year paved configuration', place alland,
+      representativeness site, source umep-dev2017a-input-tables and method assumed, carries a1, a2 and a3,
+      and declares no season_label.
   scientific_note: 'archetypes/surfaces/paved/beijing--city-centre is a Beijing typology with no component
     measured or fitted in Beijing. records/ohm/beijing--zheng-y2023--paved supplies site-scale Alland evidence
     to all four season
-    and wetness positions, and since it declares no season_label and is named ''An99 weighted average
-    (all year)'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
+    and wetness positions, and since it declares no season_label and is named ''Archived AN99 all-year
+    paved configuration'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
     albedo from a site in a Shanghai central business district, emissivity, water storage and snowpack
     limit from Helsinki, drainage from London,
     and the construction reference from an archived internal construction fixture. The database holds no paved surface
@@ -194,6 +195,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:da9e194155e013df15f5c5cec1a7d7a1734fbb5a3db8cf1b73b2100e0888a26c
+  evidence_revision: sha256:08a28e585961b4fd59771f4b9b4063025088723a785e2ad0d737e09786e9285d
 verification:
   attestations: []
