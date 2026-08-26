@@ -1,0 +1,75 @@
+provenance_record: records/irrigation/se-england--ward2016
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:83250d85c08413428a6028965226d53ffd7ed702a3435bcf461840895403c0d2
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-irrigation
+      note: The source reports London and Swindon sites, not a south-east England regional determination.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-irrigation
+      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
+        evidence reach is not established.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-irrigation
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: ward-irrigation
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: section
+      label: Section 3.2, model setup
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 6
+      note: States that irrigation was assumed to be zero at the two UK sites.
+  scientific_note: The publication supports the values used in its UK model runs, but the database currently
+    overstates evidence reach; emissivity rows also need original-source role separation.
+  evidence_revision: sha256:44f170543ac6cc120956fa32970a26f614394542b57b70eab0c584e681326cb0
+verification:
+  attestations: []

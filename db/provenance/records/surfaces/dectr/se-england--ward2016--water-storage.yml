@@ -1,0 +1,76 @@
+provenance_record: records/surfaces/dectr/se-england--ward2016--water-storage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      note: The table is a Vancouver/Los Angeles model parameter compilation and does not establish the
+        record's London or south-east England place claim.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - jarvi-table-2
+      note: The publication does not establish city or regional evidence reach for the later UK application.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: jarvi-table-2
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2a, model parameter values by surface type
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      page: 223
+      note: Publishes the stored surface storage and drainage values in the Vancouver/Los Angeles model
+        parameter table.
+  scientific_note: The values are exact literature values, but the UK place/evidence-reach assignment
+    is a later application not supported by this source.
+  evidence_revision: sha256:565025c53a2cb059adf86d41d2275189f0fa307caf16e498dc43cf689ccf335a
+verification:
+  attestations: []

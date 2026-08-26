@@ -1,0 +1,81 @@
+provenance_record: records/profiles/traffic/helsinki--jarvi2019--traffic
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b2b5c4d2c1b79f0495cb13e71b848346aae327e86c8fc018570ae4594d8a239e
+dependency_revisions:
+  sources:
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-figure-1
+      note: The record says only Traffic although the plotted series is the Kumpula, not Torni, profile.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - jarvi-figure-1
+      note: Figure 1 supports the curve and Kumpula identity, but exact hourly values cannot be verified
+        numerically from the plot alone.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The paper is the direct publication of the Kumpula traffic profile.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: Stable path, target, source and values identify one retained database record.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-figure-1
+      note: The source explicitly describes this urban setting.
+  evidence:
+  - id: jarvi-figure-1
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: figure
+      label: Figure 1, weekday and weekend traffic profiles
+      url: https://doi.org/10.1029/2018JD029576
+      page: 8369
+      note: The black Kumpula curves agree visually with the stored weekday and weekend series, but the
+        exact 24 hourly numbers are not tabulated.
+  scientific_note: The publication supports the profile family and site, but exact point values need the
+    underlying plotted data or model input table before sign-off.
+  evidence_revision: sha256:493c98d3448752c881f0bc960932719f6b148dec38bd0514053d7055fa47220d
+verification:
+  attestations: []

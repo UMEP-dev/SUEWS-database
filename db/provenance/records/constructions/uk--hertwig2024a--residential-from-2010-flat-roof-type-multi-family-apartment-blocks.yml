@@ -1,0 +1,98 @@
+provenance_record: records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:7ff26a8c6c84560c8d45efd1963c60fad4a6180551c589a15f4f0cf2464a318f
+dependency_revisions:
+  sources:
+    hertwig2024a: sha256:99f44929ba81e41129be69245ae7072a50901db55ce1ed8e3a2e794ace132971
+  places:
+    uk: sha256:cf1d940381097ce83ea1b68dba9e06d6fa92a1f97c778bf52f62fda3acb81681
+  records: {}
+assessment:
+  status: source_inaccessible
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    target:
+      conclusion: supported
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    source:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    place:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    representativeness:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    method:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - mapsecc-zenodo
+      note: The exact Materials source table and compilation mapping are unavailable, so this claim cannot
+        be checked.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/213
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - mapsecc-zenodo
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: mapsecc-zenodo
+    source: hertwig2024a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: MAPSECC Zenodo dataset record
+      url: https://doi.org/10.5281/zenodo.12190341
+      note: The public record identifies the MAPSECC dataset, but the Materials source tables needed to
+        verify the construction stacks are not available for inspection.
+  scientific_note: The dataset identity and UK typology labels are known, but the exact layer stacks require
+    embargoed/unavailable MAPSECC Materials files or an author locator. No stack value is altered.
+  attempted_sources:
+  - source: hertwig2024a
+    attempted_at: '2026-08-26T20:30:00Z'
+    outcome: inaccessible
+    note: 'The Zenodo record was checked; the exact Materials files needed by issue #213 were not accessible.'
+    url: https://doi.org/10.5281/zenodo.12190341
+  evidence_revision: sha256:a05c476ff7161fd2d07a3a5195ac28f05e45e0ab8a7a839e2bfa2baaf1826452
+verification:
+  attestations: []

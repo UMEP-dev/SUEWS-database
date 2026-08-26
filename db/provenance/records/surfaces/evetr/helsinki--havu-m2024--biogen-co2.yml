@@ -1,0 +1,114 @@
+provenance_record: records/surfaces/evetr/helsinki--havu-m2024--biogen-co2
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6163b08fa8d104900860d42dccffccbad0f22c8cb7fedad04c8adcc8cf971012
+dependency_revisions:
+  sources:
+    bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: Havu Table B.1/Appendix B supports beta and respiration coefficients; Bellucco supports alpha
+        and theta; Järvi supports the 0.6 floor.
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - havu-table-b1
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: No single publication owns the tuple. Field-level source roles must distinguish Havu, Bellucco
+        and Järvi before sign-off.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: curation_required
+      evidence_ids:
+      - havu-table-b1
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: The tuple mixes fitted, calculated-combination and adopted literature parameters; one record-level
+        method cannot describe every field.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: havu-table-b1
+    source: havu-m2024
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table B.1, site characteristics and model parameters used for Helsinki
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      page: 11
+      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
+        for the Helsinki simulations.
+    parameter_paths:
+    - parameters.beta_bio_co2
+    - parameters.resp_a
+    - parameters.resp_b
+  - id: bellucco-light-response
+    source: bellucco2017
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 4, Helsinki local light-response parameters
+      url: https://doi.org/10.1016/j.agrformet.2016.12.011
+      page: 6
+      note: Publishes alpha 0.031 and theta 0.723 for a Helsinki EC scope.
+    parameter_paths:
+    - parameters.alpha_bio_co2
+    - parameters.theta_bio_co2
+  - id: jarvi-respiration-floor
+    source: jarvi2019
+    role: parameter_source
+    locators:
+    - kind: equation
+      label: Equation 11 and Appendix B, minimum respiration
+      url: https://doi.org/10.1029/2018JD029576
+      page: 5
+      note: Publishes the 0.6 minimum respiration floor.
+    parameter_paths:
+    - parameters.min_res_bioco2
+  scientific_note: Every field now has an original-source locator, but the canonical record still presents
+    the mixed tuple as wholly Havu-derived. Apply parameter-level source/method metadata in a separate
+    correction review.
+  evidence_revision: sha256:189169b7008a0ace4ca7f4b3f23f53c6de2354d54d986f8ebf240af9d1039bd3
+verification:
+  attestations: []

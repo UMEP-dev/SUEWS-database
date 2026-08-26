@@ -232,8 +232,13 @@ class SiteProvenanceTests(unittest.TestCase):
         )
 
     def test_unaudited_entry_links_to_gated_review_procedure(self):
-        key = next(path for path in self.records if path not in self.sidecars)
-        page = self.render(key)
+        # The repository now has complete assessment coverage, so construct an
+        # unaudited rendering explicitly instead of depending on a missing
+        # production sidecar.
+        key = MIXED
+        sidecars = dict(self.sidecars)
+        sidecars.pop(key)
+        page = self.render(key, sidecars=sidecars)
         self.assertIn("Review procedure", page)
         self.assertIn("review.html?entry=", page)
         self.assertIn("Only a GitHub account in the verifier registry", page)

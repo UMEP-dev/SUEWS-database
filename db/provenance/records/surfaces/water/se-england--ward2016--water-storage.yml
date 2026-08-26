@@ -1,0 +1,77 @@
+provenance_record: records/surfaces/water/se-england--ward2016--water-storage
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:feb52bb520718ad7bd88170804ad7984a319000e843d327ca37e8320b7785acc
+dependency_revisions:
+  sources:
+    ward2018: sha256:27389a8f55237f3011250ee058d990a69331b535f1d17563c93398f702919c7c
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - ward2018-inputs
+      note: The published inputs are for the Swindon measurement-site grid point, whereas the record claims
+        south-east England.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ward2018-inputs
+      note: The source calls the inputs representative of the area surrounding the Swindon site, not of
+        the region.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward2018-inputs
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: ward2018-inputs
+    source: ward2018
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Equations 3-4 and Table 1, Swindon model inputs
+      url: https://doi.org/10.1002/joc.5200
+      page: 651-652
+      note: Publishes drainage coefficients and the surface-specific wetness thresholds and moisture-storage
+        capacities used for the Swindon grid point.
+  scientific_note: All stored values are recoverable from the original article, but the canonical place
+    and regional evidence-reach claims should be narrowed through record-specific curation.
+  evidence_revision: sha256:b4122aae3b3e519e8bca633695f702ee9a66ca135c26afc577b280307e1fb25d
+verification:
+  attestations: []

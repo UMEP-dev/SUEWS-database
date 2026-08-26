@@ -1,0 +1,74 @@
+provenance_record: records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:52df218984bdbac8ebf80f20543dd973e9ce379af614e7560761eeecaeb35eb2
+dependency_revisions:
+  sources:
+    breuer2003: sha256:bc93e69b047884d6ad6dbab7429e60aa4af9b6dcf2cc6ac39a8d6bfacff224ef
+  places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - breuer-table-7
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: breuer-table-7
+    source: breuer2003
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 7, parameter values for global temperate land covers
+      url: https://doi.org/10.1016/S0304-3800(03)00274-6
+      page: 286
+      note: The maximum stomatal-conductance row gives 7.4 for coniferous forest, 11.7 for deciduous forest
+        and 33.1 for herbs/forbs/grasses.
+  method: literature
+  evidence_revision: sha256:a990f335c791d38e25fcb60ff1a4dbc6bfac59269c3f7696fad322ce57c17dbc
+verification:
+  attestations: []

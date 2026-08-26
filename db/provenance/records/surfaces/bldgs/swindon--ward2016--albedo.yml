@@ -1,0 +1,76 @@
+provenance_record: records/surfaces/bldgs/swindon--ward2016--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:4e9c4de714d48f7b591e5c4b2dd4846422695e5804f81b9931880fa071a2df9a
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-table-2
+      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
+        evidence reach is not established.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: ward-table-2
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, adjusted albedo and emissivity model inputs
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 8
+      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
+        explicitly carried forward from Järvi et al. (2011).
+  scientific_note: The publication supports the values used in its UK model runs, but the database currently
+    overstates evidence reach; emissivity rows also need original-source role separation.
+  evidence_revision: sha256:139066b0092a4c9deb9d48286c2b7dbef70a258eca9c69635834e2f8f732bc12
+verification:
+  attestations: []
