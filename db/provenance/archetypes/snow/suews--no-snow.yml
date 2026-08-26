@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
-    records/ohm/helsinki--jarvi2014--snow: sha256:b70ee97a9ff2aae9bbccf310a19d1aec26125707d4fe81e24864a3e703ebfea8
+    records/ohm/helsinki--jarvi2014--snow: sha256:36546244eeb25d8323e4016c5a4518a1f74d3633f63cdc06d58e7f5fc2602a0c
     records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
@@ -137,6 +137,6 @@ assessment:
     does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
     the uses block should not be here at all. A maintainer with the model''s requirements to hand can
     settle all three findings in one decision.'
-  evidence_revision: sha256:f3d626c8e30a40c596309e126f35afc6c44d474e304ae1801de42355b94603c0
+  evidence_revision: sha256:5c1bb92806937bbf601ae96a3657f871686f1136884603b9a86637e0515d0b80
 verification:
   attestations: []

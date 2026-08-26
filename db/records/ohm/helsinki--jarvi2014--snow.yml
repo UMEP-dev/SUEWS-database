@@ -6,8 +6,12 @@ place: montreal-suburban
 origin: Helsinki
 representativeness: site
 source: jarvi2014
+method: fitted
 legacy_id: 50240016
 parameters:
   a1: 0.25
   a2: 0.6
   a3: -30
+parameter_provenance:
+  parameters.a1:
+    method: assumed
