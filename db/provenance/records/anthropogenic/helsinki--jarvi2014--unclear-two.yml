@@ -1,144 +1,160 @@
 provenance_record: records/anthropogenic/helsinki--jarvi2014--unclear-two
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
+record_revision: sha256:10a5c99a86476682139a5d43712cfa2e5d2a3f92dc7ddc2d1ecafa9f09aaf341
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/anthropogenic/helsinki--jarvi2014: sha256:ec8d66253a87e4ae7677c021202aa32d3f950417d9f7f654734ad076edd5c5b9
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-25T16:18:00Z'
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:54:45Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/192
+  method: literature
   findings:
     name:
       conclusion: supported
-      evidence_ids:
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: Table 1 identifies the published values as the Ku1 column, and the paper defines Ku1 as the
-        Kumpula northern land-use sector. The active name therefore states the source's site-sector identity.
+      evidence_ids: [jarvi2019-data-code51, migration-code51]
+      note: >-
+        The neutral archival name identifies the complete Kumpula Ku1 anthropogenic-emission
+        configuration stored as Code 51 without presenting the whole row as a tuple published in a paper.
     target:
       conclusion: supported
-      evidence_ids:
-      - jarvi-table-4b
-      note: The stored fields are anthropogenic heat and CO2 model parameters, which is the anthropogenic_emissions
-        target.
+      evidence_ids: [jarvi2019-data-code51]
+      note: The archived SUEWS_AnthropogenicEmission row directly supplies the heat and CO2 fields.
     values:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-table-4b
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: Järvi et al. (2019) Table 1 gives the stored qf_a values 0.1337 and 0.1153 and qf_c 0.0149
-        for Ku1, while Appendix C gives a vehicle heat factor of 4.11 x 10^6 J km-1 vehicle-1. However,
-        the 2019 Appendix sets the CDD coefficient to zero, not the stored qf_b 0.0099; the rest of the
-        CO2 block is not established as one published parameter set. The all-record source/value mixture
-        remains unresolved.
+      conclusion: supported
+      evidence_ids: [jarvi2019-data-code51, jarvi2019-ku1]
+      note: >-
+        Code 51 states every active field. Aligning the record with that row restores qf_b 0.00986,
+        qf_c 0.01, EF_umolCO2perJ 1.159 and vehicle CO2 factors 0.285. The later paper independently
+        confirms the Ku1 qf_a values but publishes an improved heat tuple rather than this archived row.
     source:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-table-4b
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: The record still declares Järvi et al. (2014), whose Table 4b is not this set. Järvi et al.
-        (2019) identifies the Ku1 base and HDD values, but conflicts on qf_b and does not establish the
-        whole CO2 block as one source. Changing the source would require resolving that mixed provenance.
+      conclusion: supported
+      evidence_ids: [jarvi2019-data-code51, migration-code51]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/192]
+      note: >-
+        The canonical source is the pinned Järvi et al. data archive containing the exact executable
+        configuration. source_legacy_ref 90240015 preserves the migrated Järvi 2014 registry link without
+        requiring that paper to support the later heat-plus-CO2 row.
     place:
       conclusion: supported
-      evidence_ids:
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: The paper places Ku1 in the Kumpula site within Helsinki. The registry place helsinki is therefore
-        correct, while the display name carries the finer site-sector identity.
+      evidence_ids: [jarvi2019-data-code51, jarvi2019-ku1]
+      note: SiteSelect applies Code 51 to Kumpula grid 1, and the paper identifies Ku1 within Helsinki.
     representativeness:
       conclusion: supported
-      evidence_ids:
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: Table 1 reports Ku1 as a Kumpula land-use sector within a 1-km radius of the EC tower, and
-        Appendix C says the coefficients are calculated for sectors within that 1-km circle. This supports
-        site rather than Helsinki-wide representativeness.
+      evidence_ids: [jarvi2019-data-code51, jarvi2019-ku1]
+      note: >-
+        Site is the supported reach: the configuration is applied to one Kumpula spatial sector inside
+        the local model and observational domain, not asserted as a Helsinki-wide parameter determination.
     method:
-      conclusion: unresolved
-      evidence_ids:
-      - jarvi-table-4b
-      - jarvi2019-appendix-c
-      note: Appendix C calculates a0 from an inventory approach and estimates a2 from EC sensible-heat
-        observations, but the stored qf_b is not the Appendix C value and the remaining fields are not
-        established as one production method. The record-level method remains unresolved.
+      conclusion: supported
+      evidence_ids: [jarvi2019-data-code51, jarvi2019-ku1]
+      note: >-
+        Literature records adoption of the complete pinned configuration artifact. It does not claim that
+        every inventory, metabolic, traffic and degree-day field shares one underlying production method.
     identity:
       conclusion: supported
-      evidence_ids:
-      - jarvi2019-table-1
-      - jarvi2019-appendix-c
-      note: The stored qf_a and qf_c values match the Ku1 column. Table 1 and Appendix C define that column
-        as the Kumpula northern land-use sector, resolving the active display identity without resolving
-        the source mixture. The related Code 10 record is now tied to its exact public configuration
-        artifact, confirming that it is a separate Helsinki combined configuration rather than a duplicate.
-      related_records:
-      - records/anthropogenic/helsinki--jarvi2014
+      evidence_ids: [jarvi2019-data-code51, migration-code51, related-code10]
+      related_records: [records/anthropogenic/helsinki--jarvi2014]
+      note: >-
+        Archive Code 51, SiteSelect's explicit selection, stable legacy ID 53240051 and the migrated row
+        establish one distinct Ku1 configuration. The related Code 10 record is a different combined
+        Helsinki configuration.
   evidence:
-  - id: jarvi-table-4b
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 4b, overall area parameter values
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
-        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
-        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
-        area.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  - id: jarvi2019-table-1
-    source: jarvi2019
+  - id: jarvi2019-data-code51
+    source: jarvi2019-data
     role: parameter_source
     locators:
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip, Input/SUEWS_AnthropogenicEmission.txt, Code 51
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: >-
+        The public archive file (Zenodo MD5 2ba163c63fdd5497f636b1567f13bd09; downloaded SHA256
+        bc86356ba3f60568bbc7ed4167e46a08ebd98d532ac372b6d2935305c6f0ffff) labels Code 51
+        "Helsinki KU1" and gives qf_a 0.1337/0.1153; qf_b 0.00986/0.00986; qf_c 0.01/0.01;
+        all heat floors, slopes and critical temperatures; metabolic heat 75/175; metabolic CO2 120/280;
+        fossil fractions 0.05/0; EF 1.159; vehicle energy 4.11e6 J km-1; vehicle CO2 0.285/0.285;
+        point source 0; and traffic units 1.
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip, Input/SUEWS_SiteSelect.txt, grids 1 for 2011 and 2012
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: Both grid-1 rows select AnthropogenicCode 51.
+    - kind: dataset
+      label: SUEWS_Model_run_Kumpula.zip, RunControl.nml and Output/SM_SUEWS_OutputFormat.txt
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: >-
+        RunControl uses EmissionsMethod 45. The output schema includes Fc, FcMetab, FcTraff and FcBuild,
+        confirming that the CO2 part of the selected configuration is active rather than unused baggage.
+    - kind: dataset
+      label: SpatialRun_input.zip, Input/SUEWS_AnthropogenicEmission.txt, Code 51
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: >-
+        The spatial-run package contains a byte-identical anthropogenic table
+        (file SHA256 e2d258d7ee75528c93fc561a0d66d45972fe1ffa201e4ad73a44f8ebd653e146),
+        independently packaging the same Code 51 row.
+  - id: jarvi2019-ku1
+    source: jarvi2019
+    role: validation
+    locators:
     - kind: table
-      label: Table 1, site characteristics within 1-km radius circles around the EC measurement towers
+      label: Table 1, Ku1 site sector and anthropogenic heat coefficients
       page: 8367
       url: https://doi.org/10.1029/2018JD029576
-      note: The Ku1 column gives a0,wd 0.1337, a0,we 0.1153 and a2,d 0.0149. The text identifies Ku1 as
-        the Kumpula northern land-use sector and Table 1 describes the Kumpula 1-km-radius site context.
-  - id: jarvi2019-appendix-c
-    source: jarvi2019
-    role: parameter_source
-    locators:
-    - kind: text
+      note: >-
+        Identifies Ku1 as the Kumpula northern land-use sector and confirms qf_a 0.1337/0.1153. Its later
+        improved heat tuple sets CDD to zero and HDD to 0.0149, so it validates identity and selected fields
+        but is not used to overwrite the exact archived Code 51 configuration.
+    - kind: section
       label: Appendix C, Improved Coefficients for Building Heat Emissions
       page: 8380
       url: https://doi.org/10.1029/2018JD029576
-      note: States that the coefficients are revisited for Kumpula and Torni, calculated separately for
-        sectors within 1 km of the EC measurements; CDD is set to zero and HDD is 0.0149. Table C1 gives
-        4.11 x 10^6 J km-1 vehicle-1 for the vehicle heat factor.
+      note: Describes the later sector-specific heat revision and gives the 4.11e6 J km-1 vehicle heat factor.
+  - id: jarvi2014-heat
+    source: jarvi2014
+    role: validation
+    locators:
+    - kind: table
+      label: Table 4b, overall-area parameter values
+      page: 1701
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: >-
+        Documents the older Helsinki degree-day heat branch and explains the historical registry link,
+        but does not publish the complete Code 51 heat-plus-CO2 configuration.
+  - id: migration-code51
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: Pre-migration AnthropogenicEmission row 53240051
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/anthropogenic_emission.yml#L184-L218
+      note: >-
+        Preserves the stable record identity, Helsinki origin and Ref 90240015, but rounds qf_b and vehicle
+        CO2 factors, substitutes the paper's later 0.0149 heat coefficient, and stores EF as zero. The pinned
+        original input artifact settles those discrepancies.
+  - id: related-code10
+    record: records/anthropogenic/helsinki--jarvi2014
+    role: related
+    note: The resolved Code 10 row is the distinct combined Helsinki configuration in the same archive.
   scientific_note: >-
-    Järvi et al. (2019) identifies this record's distinctive base and HDD coefficients as the Kumpula Ku1
-    sector, a northern land-use sector within the Kumpula EC site's 1-km radius. The record now says that
-    in its display name and declares site representativeness while retaining Helsinki as its registry place.
-    Its source remains Järvi et al. (2014), pending resolution of the mixed Järvi 2014/2019 parameter
-    set: the 2019 CDD is zero whereas the stored qf_b is 0.0099, and the full CO2 block is not established
-    by either paper as one record-level source. The related Code 10 record is now independently resolved
-    against the public Zenodo input table and does not settle this Code 51 conflict.
-  evidence_revision: sha256:abc87297d212ed61b95bc1bc1bc466062bd187b7536ece4d2a3feb2d8a045ede
+    The apparent mixed-source conflict arose because the journal tables and migrated workbook were compared
+    without adopting the exact public model input selected by the run. Zenodo 2572472 contains Code 51 twice
+    in independently packaged, byte-identical tables, and SiteSelect applies it to Kumpula grid 1. The run uses
+    EmissionsMethod 45 and emits the CO2 components, so deleting the CO2 block would misrepresent the executable
+    configuration. Four evidence-authorised corrections restore the exact archived row: qf_b 0.00986, qf_c
+    0.01, EF 1.159 and vehicle CO2 0.285. Järvi et al. (2019) remains field-level validation for the Ku1
+    identity and qf_a values, not the source of the complete archived tuple. Legacy-only fields retain their
+    migrated values for traceability.
+  evidence_revision: sha256:17dc36db5e70e2490d19f300339b4f1bfc5aea6f460a27cc7aab16fd10ed8a34
 verification:
   attestations: []
