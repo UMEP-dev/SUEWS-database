@@ -1,0 +1,87 @@
+provenance_record: records/surfaces/paved/london--kokkonen2018--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:fd48386ea56173ee53b5d61d5becf00518efab7b4e9b986109c107156a9c2768
+dependency_revisions:
+  sources:
+    kokkonen2018: sha256:1beef2d18e4ce4159510c40c871932e9b8745cc45f83ec74f2f7663280add2ab
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:35:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/402
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained London Other roads configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Paved and stores surface thermal-layer fields, matching land_cover.paved.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated four-layer tuple exactly. This supports configuration
+        preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/402]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Kokkonen et al. (2018) reference
+        was a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: London is the explicit application identity of the pinned configuration row.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: City preserves the archived London configuration scope; it does not claim a city-wide measurement.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/402]
+      note: Assumed identifies a retained application configuration whose assembly procedure and original
+        parameter sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240012, name, origin and complete tuple preserve the migrated road row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240012
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L233
+      note: Stores the exact London-labelled Other roads configuration and the mechanically generated legacy
+        reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: kokkonen2018
+    url: https://doi.org/10.1016/j.uclim.2017.05.001
+    attempted_at: '2026-08-21T17:08:28Z'
+    outcome: not_found
+    note: >-
+      The publication was checked under issue #402. It uses SUEWS at Vancouver and London sites but does not
+      publish the Other roads construction identity or this exact thermal-layer tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived London road configuration, not a measured or
+    literature-published thermal parameter set. The values therefore remain unchanged with source
+    unreferenced and method assumed. This sidecar remains agent assessed and should enter the focused human
+    review of assumed records.
+  evidence_revision: sha256:dfa12a35d61d1e6672bab83bcfacd68d968a64bc50824d282a49769c9c75edd0
+verification:
+  attestations: []
