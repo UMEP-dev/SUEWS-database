@@ -10,7 +10,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:0b748e460526ada3bb9b29ff557a48920020ddd9d8921bf87e4b92b9c97e8725
+    records/anthropogenic/helsinki--jarvi2014--unclear-two: sha256:10a5c99a86476682139a5d43712cfa2e5d2a3f92dc7ddc2d1ecafa9f09aaf341
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-25T16:18:00Z'
@@ -86,8 +86,8 @@ assessment:
       - jarvi2019-data-code10
       - migration-combined-row
       note: Archive Code 10 is the Helsinki combined configuration. The related Code 51/legacy 53240051
-        record is a distinct Ku1 sector configuration with different heat coefficients and remains under
-        its own review.
+        record is now independently tied to the exact Ku1 archive row and remains a distinct sector
+        configuration with different heat and CO2 fields.
       related_records:
       - records/anthropogenic/helsinki--jarvi2014--unclear-two
   evidence:
@@ -142,7 +142,8 @@ assessment:
     and two independently packaged copies agree on Code 10. The record now follows that original
     configuration artifact, with four evidence-authorised corrections and no inferred values. Järvi
     et al. (2014) remains useful validation for the degree-day branch rather than being made to support
-    CO2 fields it never prints. The Ku1 Code 51 record is scientifically distinct and remains unresolved.
-  evidence_revision: sha256:68f7d5b940178f97eaa6fb36b36f63d330a3e8d757c0148cd7e9541b900ed25b
+    CO2 fields it never prints. The Ku1 Code 51 record is scientifically distinct and is now resolved
+    against its own exact archived input row.
+  evidence_revision: sha256:0d56202fc08a435861b9743bb50823d40db33c72ab9b8b22dda4977d6baa8362
 verification:
   attestations: []
