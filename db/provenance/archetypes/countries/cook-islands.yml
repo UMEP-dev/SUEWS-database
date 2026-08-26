@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/cook-islands: sha256:fb4cf4b88962da08129117ec6b9e1868d447c984e8edb8b5fabb3968e7c4e464
+    records/profiles/human-activity/lucy/cook-islands: sha256:b8789b7af450046025fb6f9c39468b638257f426dbccc721c38dd68e8352f962
     records/profiles/traffic/lucy/cook-islands: sha256:831d696e08fa71ac4048615e7a068edfd71cb0332ec68d865e5762a981cf8d66
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:2cb497c4173a7440fbca9ffc7fa9ac0a0fa2bb807904ba23fd9cc4406b7ff572
+  evidence_revision: sha256:c469dd12c36d5342d5b2231260c377ec8d537e93948d338526bb7812ce07f2e9
 verification:
   attestations: []

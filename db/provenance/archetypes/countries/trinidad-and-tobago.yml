@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/trinidad-and-tobago: sha256:5702e64927e18f2a02e8265f6f79b4aec75364fd74da2f5caabc3db50474a40e
+    records/profiles/human-activity/lucy/trinidad-and-tobago: sha256:7fe1c16ed49b3e20ea5660fb2a0b5926b34e093b9d6f43890eab088575c87707
     records/profiles/traffic/lucy/trinidad-and-tobago: sha256:bfd084199b4f41eb02d501fcce38f79f640a14bd9991613b5737cc86b3e03339
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:c7ce7e664d5397210c868ea3558f4b8be935d21f47ae91067d72786a063a4d1a
+  evidence_revision: sha256:142d3bb44668ec20f078acb37d759475459302702a0a39123d1fb968b9c0d6ad
 verification:
   attestations: []

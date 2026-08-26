@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/syrian-arab-republic: sha256:5f8b25d8b4bc08da2e8bbb7203d05be3db99159b9245343601fef9f4e0299665
+    records/profiles/human-activity/lucy/syrian-arab-republic: sha256:26c93da31e33f8d077ff894ff837dd561462d2c00dfb85ef97b1c1587dc4adf2
     records/profiles/traffic/lucy/syrian-arab-republic: sha256:82e200479b915018d5b07e7f24466ecf5fdd7453f9aa96407844c3c06eb7a2bf
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:e722198fa0828886f3068910ae21d0396fb5532edfbf909db471d22c15cd1e2d
+  evidence_revision: sha256:4ccafca27c6e2a77c57a40b382056b3d8cdcd9643394bac4e6fd32f52cdef7c8
 verification:
   attestations: []

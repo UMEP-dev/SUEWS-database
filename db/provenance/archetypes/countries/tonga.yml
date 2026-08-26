@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/tonga: sha256:ed45ba1875d7e45b928aba79c1fe261c926aec61f56787f20f88abcfc9f26abf
+    records/profiles/human-activity/lucy/tonga: sha256:0bde10730a68cb7c09fd04d836f845bda43cb88e58a79069fea37245e917653e
     records/profiles/traffic/lucy/tonga: sha256:f0ab62b55ff7838d4c284549f5f5eaf35aaf3bc75c86c661778a979fe41b4744
 assessment:
   status: agent_assessed
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:f8394f20c88c811e1fedbaabb91e3ad533cf981baed33b8631ea072e59dd29b4
+  evidence_revision: sha256:30e916d44d93efc71830ade0b704b3694ab80ba04dbba34ac31e30dba847519e
 verification:
   attestations: []

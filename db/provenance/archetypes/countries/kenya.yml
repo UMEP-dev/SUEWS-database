@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/kenya: sha256:1aa59607abe0e8cd749ff370fe0a72f55e3b9f89e767f4e511fe6ef508c88247
+    records/profiles/human-activity/lucy/kenya: sha256:3f44376d498e6829888015cd228d725aa2bade901f5ed490a2880c4ef79fae98
     records/profiles/traffic/lucy/kenya: sha256:6a68a2e475e3b5a43031b19539be0e56b2b9526c02a3f7affa8287bcd8ea6a9a
 assessment:
   status: agent_assessed
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:37c1d6eaf3c1729c8109bd258cdc915f7abdd82d5138b749ddf04c7f9e929243
+  evidence_revision: sha256:244a3abdd34398c27f24199c0e69270179658e085c31537440a07e69f8a45370
 verification:
   attestations: []

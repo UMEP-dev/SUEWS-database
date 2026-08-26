@@ -7,7 +7,9 @@ name: Human activity
 place: netherlands
 origin: LUCY, Netherlands
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240312
 - 60240313

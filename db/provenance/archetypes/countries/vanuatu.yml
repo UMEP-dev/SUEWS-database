@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/vanuatu: sha256:f2b4dc8967ebf64b57eee84a7d9248472d421eeec8a0f72ca2f148e814aa2d77
+    records/profiles/human-activity/lucy/vanuatu: sha256:4c7ab8d0046b6346d7f934376b02448357a655fa3003d452944e764c8ecf0740
     records/profiles/traffic/lucy/vanuatu: sha256:e1f882cad53cd79b16582c98a34aa7400f88da4add2332c7daa97360a43b9ee5
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:26eb5b75864e8711b09980089e398a4860d72a1d3017589566451f8a4f042e21
+  evidence_revision: sha256:2f21a9a5fd0f21f6d609e1bf086930df44356c56a9d4dc30036eaca608d42dc7
 verification:
   attestations: []

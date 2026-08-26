@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/viet-nam: sha256:2ce2b45b56a4c685878201a704bb4806077a367c1eea5fbeb6aad562c68d4141
+    records/profiles/human-activity/lucy/viet-nam: sha256:71b5f61217ba4f3be63752af45827ed52e26e8f60f8cf896f9130b3b0c75d864
     records/profiles/traffic/lucy/viet-nam: sha256:d000570c259057b354f38db3bd68ebdb25978a4e9a38f2378669f68582960597
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:3ffedaa32259d2a63590472c2fd6b17331481ffb0c65bb716345235376b80c12
+  evidence_revision: sha256:2563ef3eb046bdf510cd5420201f57cee4aa5159d02c15627a6cf777b4af62f1
 verification:
   attestations: []

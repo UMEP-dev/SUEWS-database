@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/malawi: sha256:4aa3d47cfeda2430c59cf40ea5edf7bc6773e586102c40b81ad8459a01e92608
+    records/profiles/human-activity/lucy/malawi: sha256:016013f36d3c9bdbaacb1a1620c71708a6c9816d23d1cf8f5f096bbb3dfe7580
     records/profiles/traffic/lucy/malawi: sha256:5721478c39fce0ebb1622ac25ea3227d6ad07a867f34da1dfd06dd3795a8fa4c
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:c71c9aea1d19a86c9b28b4922d8680f54aa6dc8bf13922aeb9f6f2981c5986c3
+  evidence_revision: sha256:11201bd46bf3d39a75ab12e610679c31c057eefa97982d9911ded7183ce000f8
 verification:
   attestations: []

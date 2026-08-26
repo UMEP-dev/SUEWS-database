@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/anguilla: sha256:b9994cce14e52c701a5d80b9e916317ec0b86a13c06b0afcc7dc86196d492eb4
+    records/profiles/human-activity/lucy/anguilla: sha256:706d2e481342cd6b396c21a6574657b1aae67161be44a9854a2814e9150d32cd
     records/profiles/traffic/lucy/anguilla: sha256:89459b70397bf069af54befcf1a4658871dfed5ba5742f2e68314ee3b42fa37e
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:2fd6479a9a6fd8f99e63809026be8449b605834bdf071c55ee7ea86c047da75b
+  evidence_revision: sha256:9301d161b1145082f11fb9d244bbdda4fb92d1c63365bb54af189b93ffea36e6
 verification:
   attestations: []

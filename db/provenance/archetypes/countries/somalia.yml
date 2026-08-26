@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/somalia: sha256:2a452ba055622df96d73bdfb612fb36e9d513e5e1c99e74afb237c095301814d
+    records/profiles/human-activity/lucy/somalia: sha256:a7d085abe3f0bbbdcfd8c9478ac604fc549b3466ca34da7250c19fca535fb958
     records/profiles/traffic/lucy/somalia: sha256:55887c793f5a3da73ba8196b9ceaaa72acb8956ce155dc22eed814fd987402ff
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:438a57033bd98aef28a261982101d86af463c87fddaabdd5d57c9d019eefca2e
+  evidence_revision: sha256:57978ba1faaaafac1649b8e82169229ae8eb6e9c7b229a845922b5006a685700
 verification:
   attestations: []

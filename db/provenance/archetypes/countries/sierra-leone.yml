@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/sierra-leone: sha256:6b4753de574bdefe9877ce2c35ecf24ef88e94230e9d4d2f859cd5e62cf8f5a4
+    records/profiles/human-activity/lucy/sierra-leone: sha256:3a42f66348a2ba5700c3efc91dd685a875a58a6609e096b73bf6a673f76dce7b
     records/profiles/traffic/lucy/sierra-leone: sha256:fce487f39aace813396602c8aa4df15377c5603153056faa58e91b47f61fae93
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:603aafe2ceace487709d9b65b630856be197783043348454c5bf4f007e467d45
+  evidence_revision: sha256:6e8577f94ff96d74f5f1e5174ede42c87ccf8e29e45f04c31604d33b814af419
 verification:
   attestations: []

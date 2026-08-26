@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/federated-state-of-micronesia: sha256:4f4e4f055374c801da9a07776e6f1152f1e0af08f7ac9f9c29e55a55ad173f51
+    records/profiles/human-activity/lucy/federated-state-of-micronesia: sha256:0cc20d06fc6e865429275e793e2462ad376924fe7aa2d3877177db10fe19231e
     records/profiles/traffic/lucy/federated-state-of-micronesia: sha256:66cac8af374d42ad3ab31603ca31dee3c110e963038db4e4795b7c0342a55386
 assessment:
   status: agent_assessed
@@ -86,6 +86,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:b9ad63095f26c04d60fd4889182b7cc862e1ae98b3d5327db4125cbfa6899347
+  evidence_revision: sha256:1de1c9718947efd86aa16ec1c909f6b2a37049154c5535811b43d3425676d2fe
 verification:
   attestations: []

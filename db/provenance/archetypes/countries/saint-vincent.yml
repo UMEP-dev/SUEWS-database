@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/saint-vincent: sha256:d3e22d04507004523e1081fbac944da6f742a28064375583107a46b33a59947c
+    records/profiles/human-activity/lucy/saint-vincent: sha256:850b86e2be66f194d7eb26c81f5797cf2e1eb1dfd8ba6d09207f6312e40b5761
     records/profiles/traffic/lucy/saint-vincent: sha256:c7a49a313c09c0e57d11329545228f48746bd6e412abd2bb990cb9c153ba7425
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fb9b819e01d5774c488134660017ea10e3e33b7b716a50e7e12814bc9994d08a
+  evidence_revision: sha256:53d82fe35fc4a71109977e84d8127b6c421656293766a62dc808b846cb27f145
 verification:
   attestations: []

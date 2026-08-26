@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/nigeria: sha256:8196973b5760c9b24c819a4982b3861ac0c64b80e12bed571ae7b1065f7b2e0d
+    records/profiles/human-activity/lucy/nigeria: sha256:bc8e404a4e07799408a67218adad178487810ff35add0a216d410a5e122df1e9
     records/profiles/traffic/lucy/nigeria: sha256:0eae29cc8f82abbfe49c3abe29cf08ffad3a6a495cd3ff417827874d113e5665
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:fdad9f3f9cb1ad0253a08dfaba20eac2ebe8b8659573dd8b434eeea88a3ef057
+  evidence_revision: sha256:b87060d46f118fca06a8eeb61ef05badcec848c04c61aca3619b7443945687f6
 verification:
   attestations: []

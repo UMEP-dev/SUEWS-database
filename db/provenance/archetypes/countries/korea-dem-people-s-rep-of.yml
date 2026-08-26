@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/korea-dem-people-s-rep-of: sha256:aaec80e2a4e6fa30f74c12affeb91a860529d1a3ba3bb7a6f118b2c078a36824
+    records/profiles/human-activity/lucy/korea-dem-people-s-rep-of: sha256:28280210086df37fac57f8ebd1861f515e63354670afab250f7cbc0468fe1f05
     records/profiles/traffic/lucy/korea-dem-people-s-rep-of: sha256:4920073960e75d81f704be516a4f4d9b6f52f491ddad61fbabafb9b808c8bfd0
 assessment:
   status: agent_assessed
@@ -87,6 +87,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:2ed224601ba92edae73529bc58085c0406140d587259cedb7cfa48cdf7c2ad6a
+  evidence_revision: sha256:f6f4693884e9191538aa96aa5e8d7376e7007f4247da7e4d662795041f180383
 verification:
   attestations: []

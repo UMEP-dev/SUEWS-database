@@ -7,7 +7,9 @@ name: Human activity
 place: turks-and-caicos-islands
 origin: LUCY, Turks and Caicos Islands
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240448
 - 60240449

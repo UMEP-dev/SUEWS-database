@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/papua-new-guinea: sha256:1a6ee74cd90ccc493b1f1dac9300fbd0e444f7bd67ae9133676bd02088279070
+    records/profiles/human-activity/lucy/papua-new-guinea: sha256:1f5e723465116788642a3f0ec6163c583d9ebce458ee82d5e2320f965f6aa31f
     records/profiles/traffic/lucy/papua-new-guinea: sha256:fbfd0c8bc453000e4e031b41e4b2840eafd4f7c122513186423da1c575c01eeb
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:7f64bc879ca6aced07eb1cae4b2bcc94796d2b308fb106783d6c11c56aa14db2
+  evidence_revision: sha256:118ed52616326542ab73da40a26583d9ff0fda40aab3ed024d9b2e7e97feb7df
 verification:
   attestations: []

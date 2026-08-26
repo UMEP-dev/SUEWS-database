@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/mauritius: sha256:d5bacf4c034288265c267389f18754c44ff70ae7ac85c919ce8d5a1b7b1632cf
+    records/profiles/human-activity/lucy/mauritius: sha256:1ce3891beef405fc2757ecb3d7675a51b8f9e076483acfa68ed579f2bff9dbe5
     records/profiles/traffic/lucy/mauritius: sha256:4d8012e10d92401bc249dd46ffc84e86cb98c228b4c82dfdb81af790c7673083
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:80eea1d1c7d8eb7162cc085d190cf764c3459c1d93ce671d31ab2e549f544cba
+  evidence_revision: sha256:356c728f6140862e50f1f5063084df541b38fa08b554e6a02709ebcd3a915237
 verification:
   attestations: []

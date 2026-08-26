@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/san-marino: sha256:45f9db7db60bb1a5ba1758e9bb965ffd1e6d13879a1fee0a8eb2647e12e711a2
+    records/profiles/human-activity/lucy/san-marino: sha256:6c96ca916ff7f2d73b5cf6ec52379491dcb0b7d13d1a06a7b6ce89763a759bf0
     records/profiles/traffic/lucy/san-marino: sha256:014d3036d3af992c513191491238a4136145f6a3a2f9af33a846f882c4b3bec4
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:1820081801461b3bc3756a6a3e11a5d0d7ea01ff3cacac47da7a2e74eda11dc5
+  evidence_revision: sha256:f365ad60ee8baf6240db3c962f46d919fe1657cfdd7cec7d5cfcd1ea8f40f5fd
 verification:
   attestations: []

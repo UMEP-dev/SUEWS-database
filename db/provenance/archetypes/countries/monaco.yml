@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/monaco: sha256:9cc4f5852b32e2ceee71d092b622325c662c218c899fa7b76ea61a7d5a6f5421
+    records/profiles/human-activity/lucy/monaco: sha256:c390cdb7299fd61500ad8b58c0f3b6ccf5d23eb6cbcc83fc94cebc6b0e203e30
     records/profiles/traffic/lucy/monaco: sha256:fdab0915c209d75105c793338fc804ac5923cb94701b8a67f8f675907de327e3
 assessment:
   status: agent_assessed
@@ -85,6 +85,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:bc98fac4e2e4942b14c3fb04e77bea06ae2167e09006bf3ed5485273d7211686
+  evidence_revision: sha256:061e1145b936ea4c0cd22d4f758d9803251163950d925b196e1703278902ddcb
 verification:
   attestations: []

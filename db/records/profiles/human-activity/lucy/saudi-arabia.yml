@@ -7,7 +7,9 @@ name: Human activity
 place: saudi-arabia
 origin: LUCY, Saudi Arabia
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240384
 - 60240385

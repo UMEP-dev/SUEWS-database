@@ -7,7 +7,9 @@ name: Human activity
 place: occupied-palestinian-territory
 origin: LUCY, Occupied Palestinian Territory
 representativeness: regional
-source: allen2011
+source: unreferenced
+method: calculated
+source_legacy_ref: 90240008
 legacy_id:
 - 60240334
 - 60240335

@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/human-activity/lucy/gabon: sha256:b62c136e267308b1e55254e0f6d69774c5ff5170bb71379ffad25709e8e5c694
+    records/profiles/human-activity/lucy/gabon: sha256:720197be69642bf32f02b669c4e5adcc27c278b7707b2b26cccfec68b20d6ef8
     records/profiles/traffic/lucy/gabon: sha256:c31d97a6d29329cb5214084e359ca07609446d3579e86770e416a5791d1c2731
 assessment:
   status: agent_assessed
@@ -84,6 +84,6 @@ assessment:
     the same mapping recurs across the country defaults, so a maintainer should settle it once rather
     than country by country. The components' values remain subject to their own evidence assessments;
     this review does not revisit them.
-  evidence_revision: sha256:b2af35386db46e313bbb694f82059e26abf9843651406a5b0c9eaf7ebfa665aa
+  evidence_revision: sha256:5463a74a437a4875cd6ec2e2933787fd3248c749e0410d9015cf5211a8d7839d
 verification:
   attestations: []
