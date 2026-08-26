@@ -1,0 +1,96 @@
+provenance_record: records/surfaces/paved/se-england--ward2016--water-state
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:42897c1a3046fd4c27e275987f03252669d0e6a22273234b08c44bbe88299375
+dependency_revisions:
+  sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:00:00+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/129
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pre-migration row labels legacy ID 42240041 as Paved.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Both artifacts place the cell under the paved surface, matching land_cover.paved.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row]
+      note: Both artifacts store StateLimit 0.48 exactly. This supports preservation of the configuration
+        cell, not scientific validation of a non-water parameter.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row, nonwater-statelimit-semantics]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/129]
+      note: Source unreferenced is correct. The artifacts establish configuration lineage; the linked
+        adjudication found no Ward et al. (2016) publication or derivation of this non-water StateLimit.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: SE England is the explicit application origin stored in the pre-migration row.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Regional preserves the configuration scope; it does not claim that 0.48 was regionally
+        measured or validated.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row, release-row, nonwater-statelimit-semantics]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/129]
+      note: Assumed means that the exact legacy configuration cell is retained without a recoverable
+        scientific derivation.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 42240041, surface name, origin, value and WaterDepth -999 placeholder
+        are preserved.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.state_limit]
+    locators:
+    - kind: dataset
+      label: Pre-migration water_state.yml row 42240041
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L30-L36
+      note: Stores Paved, SE England, StateLimit 0.48, WaterDepth -999 and legacy reference 90240002.
+    note: Establishes the exact migrated configuration identity and value only.
+  - id: release-row
+    source: umep-dev2016a
+    role: compilation
+    parameter_paths: [parameters.state_limit]
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_NonVeg.txt paved rows
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_NonVeg.txt#L3-L8
+      note: Codes 100, 551 and 661 retain StateLimit 0.48 for paved configurations.
+    note: Confirms that 0.48 was an executable release configuration cell, not a published parameter.
+  - id: nonwater-statelimit-semantics
+    source: umep-dev2016a
+    role: validation
+    locators:
+    - kind: text
+      label: SUEWS_NonVeg StateLimit option applicability
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L2
+      note: The option table states that StateLimit is currently only used for the water surface.
+  scientific_note: This assessment establishes only that 0.48 is the exact archived SUEWS configuration
+    for this stable record. It does not establish 0.48 as a measured, fitted or literature-supported
+    non-water parameter. The honest classification is source unreferenced and method assumed; focused
+    human review of assumed records remains appropriate.
+  evidence_revision: sha256:173de1376008a79c4d289dd55edeb67071c6a0a40228743bbfdce0a5ee229e67
+verification:
+  attestations: []
