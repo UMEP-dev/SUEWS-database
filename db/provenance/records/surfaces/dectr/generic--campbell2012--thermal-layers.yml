@@ -1,0 +1,85 @@
+provenance_record: records/surfaces/dectr/generic--campbell2012--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:26118599b8fa0b5c16e1a649439c94f9e1c79b7638a77d0223b7649c1d49b381
+dependency_revisions:
+  sources:
+    campbell2012: sha256:fcb95515720d435bbbccf3205a7a24d8bfaef3318e1f584edf91880aa6ec913c
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places: {}
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:30:15+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/399
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained Deciduous Tree configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Deciduous Tree and stores surface thermal-layer fields, matching
+        land_cover.dectr.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated four-layer tuple exactly. This supports configuration
+        preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/399]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Campbell and Norman reference was
+        a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: not_applicable
+      note: The generic migration row has no origin and makes no observation-place claim.
+    representativeness:
+      conclusion: not_applicable
+      note: The generic archived configuration makes no evidence-reach claim for a named site or city.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/399]
+      note: Assumed identifies a retained configuration whose assembly procedure and original parameter
+        sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240016, name and complete tuple preserve the migrated tree row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240016
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L401
+      note: Stores the exact four-layer deciduous-tree configuration and the mechanically generated legacy
+        reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: campbell2012
+    url: https://books.google.com/books/about/An_Introduction_to_Environmental_Biophys.html?id=QpsMBwAAQBAJ
+    attempted_at: '2026-08-21T17:07:49Z'
+    outcome: incomplete
+    note: >-
+      Issue #399 found only partial access to the cited book. Accessible SUEWS material uses Campbell and
+      Norman for atmospheric stability, not as evidence for this exact deciduous-tree ESTM tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived deciduous-tree configuration, not a measured or
+    literature-published thermal parameter set. The values therefore remain unchanged with source
+    unreferenced and method assumed. This sidecar remains agent assessed and should enter the focused human
+    review of assumed records.
+  evidence_revision: sha256:7f2dac1e694f043519b393d9ae4ced4a04d4754ed4187c7e4e4270595f8e4f94
+verification:
+  attestations: []
