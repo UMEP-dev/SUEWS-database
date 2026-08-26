@@ -1,0 +1,100 @@
+provenance_record: records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:3730001f108846150f8d9aa8a7c16bd4379419fad81b42eda6ecd53f9e15c937
+dependency_revisions:
+  sources:
+    grimmond1991b: sha256:c7cdb172a67abeed42a88e841dba17dee9c1be1326f7fd7d7c5ca01eed59a62c
+    yap1973: sha256:072cb1dbb5b8162a8788e117f4ec95938604dd038b23db1789ef28f00ee8c68b
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records:
+    records/ohm/helsinki--jarvi2014--buildings: sha256:2c4d188b71500030ab9414363a6ea39ecb78186a8c0f8c0907c26d0f70e9c5cf
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T16:25:51+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+  method: fitted
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a, yap-roof-site]
+      note: Grimmond et al. identify the Vancouver summer rooftop row, while Yap's site plan identifies
+        the observed Vancouver School Board surface as a gravel-and-tar roof. Code 713 is retained legacy identity.
+    target:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a]
+      note: Table 1(a) presents the triplet as development coefficients for the Objective Hysteresis Model.
+    values:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a]
+      note: Table 1(a) states 0.17, 0.10 h and -17.0 W m-2 exactly for the Vancouver rooftop row.
+    source:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a, yap-roof-observations]
+      note: Grimmond et al. are the parameter publication that states the OHM fit. Yap's earlier thesis
+        supplies the roof observations and must not be credited with coefficients it does not publish.
+    place:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a, yap-roof-site]
+      note: Both publications locate the rooftop observations in Vancouver, British Columbia.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [yap-roof-site]
+      note: The observations concern the Vancouver School Board building roof, supporting site rather than city scope.
+    method:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a, yap-roof-observations]
+      note: Grimmond et al. present fitted OHM development coefficients derived from Yap's observational dataset.
+    identity:
+      conclusion: supported
+      evidence_ids: [grimmond-table-1a, derived-roof-mean]
+      related_records: [records/ohm/helsinki--jarvi2014--buildings]
+      note: The exact tuple and Vancouver rooftop label identify one source row; the related Helsinki record
+        uses this record as one of eight explicit arithmetic-mean inputs.
+  evidence:
+  - id: grimmond-table-1a
+    source: grimmond1991b
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 1(a), development coefficients for OHM, rooftop — Vancouver
+      page: 314
+      url: https://doi.org/10.1016/0957-1272(91)90003-W
+      note: Lists author Yap (1973) and coefficients a1 0.17, a2 0.10 h and a3 -17.0 W m-2.
+    note: This is the publication that performs and reports the OHM parameterisation.
+  - id: yap-roof-site
+    source: yap1973
+    role: input_data
+    locators:
+    - kind: figure
+      label: Figure 8, Vancouver School Board building site plan
+      page: 32
+      url: https://doi.org/10.14288/1.0101037
+      note: Labels the main experimental area and building roof as gravel and tar.
+    note: Establishes the physical observation surface and site, not the later OHM coefficients.
+  - id: yap-roof-observations
+    source: yap1973
+    role: input_data
+    locators:
+    - kind: section
+      label: Chapter 6, Urban Energy Balance
+      page: 131-158
+      url: https://doi.org/10.14288/1.0101037
+      note: Reports roof-top net-radiation and heat-storage observations used by the later OHM parameterisation.
+    note: Original observational lineage is kept distinct from the Grimmond et al. coefficient fit.
+  - id: derived-roof-mean
+    record: records/ohm/helsinki--jarvi2014--buildings
+    role: related
+    note: Uses code 713 with Meyn codes 701-707 in its documented eight-input arithmetic mean.
+  scientific_note: >-
+    The canonical source remains Grimmond et al. (1991) because that paper states the fitted OHM tuple.
+    Yap (1973) is now recorded separately as the original Vancouver gravel-and-tar roof observation source.
+    This preserves the distinction between observations and parameter publication. No canonical value,
+    place, scope, path or production method changes.
+  evidence_revision: sha256:ccc33cf602e8b0dedf83b0a8fa4d75d86b590e7be19aff8e877f70ed04119e9a
+verification:
+  attestations: []
