@@ -1,0 +1,88 @@
+provenance_record: records/surfaces/bldgs/london--jarvi2014--thermal-layers
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:2f5b494d3348398729a3b93c606d063c144da3d85210eb2864b7808756e01627
+dependency_revisions:
+  sources:
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T15:26:48+01:00'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/188
+  method: assumed
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned migration row identifies the retained GLA Urban fabric 50-80 (centre) configuration.
+    target:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The row is labelled Buildings and stores roof, wall and internal construction fields, matching
+        land_cover.bldgs.
+    values:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: The pinned row stores the complete migrated roof, wall and internal tuple exactly. This supports
+        configuration preservation, not scientific validation of the thermal properties.
+    source:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/188]
+      note: >-
+        Source unreferenced is correct. PR #478 established that the former Järvi et al. (2014) reference was
+        a mechanically generated workbook link, while the exact tuple is compilation evidence.
+    place:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: London is the explicit application identity of the pinned configuration row.
+    representativeness:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: City preserves the archived GLA configuration scope; it does not claim a city-wide measurement.
+    method:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/188]
+      note: Assumed identifies a retained application configuration whose assembly procedure and original
+        parameter sources have not been recovered.
+    identity:
+      conclusion: supported
+      evidence_ids: [migration-row]
+      note: Stable path, legacy ID 52240009, name, origin and complete tuple preserve the migrated GLA row.
+  evidence:
+  - id: migration-row
+    source: umep-dev2025-database
+    role: compilation
+    parameter_paths: [parameters.thermal_layers]
+    locators:
+    - kind: dataset
+      label: Pre-migration ESTM row 52240009
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/estm.yml#L569
+      note: Stores the exact London-labelled roof, wall and internal configuration and the mechanically
+        generated legacy reference later removed by PR #478.
+    note: Establishes migrated configuration identity and values only.
+  attempted_sources:
+  - source: jarvi2014
+    url: https://doi.org/10.5194/gmd-7-1691-2014
+    attempted_at: '2026-08-21T16:06:19Z'
+    outcome: not_found
+    note: >-
+      The publication was checked under issue #188. It presents SUEWS development and applications but does
+      not describe ESTM or publish this exact London construction tuple.
+  scientific_note: >-
+    The evidence establishes an exact archived London central configuration, not a measured or
+    literature-published construction parameter set. The values therefore remain unchanged with source
+    unreferenced and method assumed. This sidecar remains agent assessed and should enter the focused human
+    review of assumed records.
+  evidence_revision: sha256:05658b5fbc0259d4ca229a5bb43ebdd8903df5589aa5d05c1bbdb4d1d2e0297d
+verification:
+  attestations: []
