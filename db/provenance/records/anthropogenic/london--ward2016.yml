@@ -1,0 +1,76 @@
+provenance_record: records/anthropogenic/london--ward2016
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
+dependency_revisions:
+  sources:
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-table-3
+      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
+        evidence reach is not established.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-3
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: ward-table-3
+    source: ward2016
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3, fitted central-London anthropogenic heat coefficients
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 12
+      note: The Kc weekday/weekend columns publish 0.3743/0.3412, zero cooling terms, and 0.0073/0.0067
+        heating terms.
+  scientific_note: The publication supports the values used in its UK model runs, but the database currently
+    overstates evidence reach; emissivity rows also need original-source role separation.
+  evidence_revision: sha256:582358a9bb80e14170a10fa6ca54f5bfa6ae7b511e1a92dcfc86b10db6ac717c
+verification:
+  attestations: []

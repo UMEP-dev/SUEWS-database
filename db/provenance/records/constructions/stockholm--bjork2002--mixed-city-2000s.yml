@@ -1,0 +1,99 @@
+provenance_record: records/constructions/stockholm--bjork2002--mixed-city-2000s
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c9587bccffc90a991af2d48a76cea297a3ebb37dc0e360f6aba566c5c1748978
+dependency_revisions:
+  sources:
+    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+  places:
+    stockholm: sha256:e7c2e7ac5f7df325a2eaac9b2fe06a3d6a1ab9cea937a5689cc6ccad26ad9f95
+  records: {}
+assessment:
+  status: source_inaccessible
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    target:
+      conclusion: supported
+      evidence_ids:
+      - bjork-catalogue
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    source:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    place:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    representativeness:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    method:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - bjork-catalogue
+      note: The exact edition pages and construction table were not available, so the stored stack cannot
+        be verified.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/374
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - bjork-catalogue
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: bjork-catalogue
+    source: bjork2002
+    role: validation
+    locators:
+    - kind: text
+      label: LIBRIS catalogue record for the cited book
+      url: https://libris.kb.se/bib/8875068
+      note: Establishes the book identity and its multi-family-housing scope, but not the stored construction
+        layers.
+  scientific_note: Public catalogues confirm the book but not the exact construction stack. The edition/full-text
+    request remains optional for publication, but this evidence record cannot be signed off without the
+    relevant pages.
+  attempted_sources:
+  - source: bjork2002
+    attempted_at: '2026-08-26T20:30:00Z'
+    outcome: inaccessible
+    note: The bibliographic catalogue was accessible; the full book pages needed for the record were not.
+    url: https://libris.kb.se/bib/8875068
+  evidence_revision: sha256:086333463b15f534136755072f5fb5fb395cd45e6efe67912e3db7aed64e46e1
+verification:
+  attestations: []

@@ -1,0 +1,78 @@
+provenance_record: records/surfaces/bldgs/shanghai--ao2016--albedo
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c801beda0f1759df289c23fbf3252cfd0066e634033a756e7427e0b724f6b56a
+dependency_revisions:
+  sources:
+    ao2016: sha256:b1ca07de6a9fb83ab41c961da2415c13cf396f9cc4618134dc3f0015918e493f
+  places:
+    shanghai: sha256:8b8ff4ba58a4ae84c8fb69843510b13ea6cb18573cbcbd8bdc03ef12487888a9
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: Stable path, target, source and values identify one retained database record.
+    urban_setting:
+      conclusion: supported
+      evidence_ids:
+      - ao-table-2
+      note: The source explicitly describes this urban setting.
+  evidence:
+  - id: ao-table-2
+    source: ao2016
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, SUEWS model input parameters by surface type
+      url: https://doi.org/10.1175/JAMC-D-16-0082.1
+      page: 13
+      note: The Building column gives albedo 0.18 for the Shanghai CBD source area.
+  method: literature
+  evidence_revision: sha256:51de98bbbd71217900bc3410d3173c5016e3be0dca4df5ebda05174640da1093
+verification:
+  attestations: []

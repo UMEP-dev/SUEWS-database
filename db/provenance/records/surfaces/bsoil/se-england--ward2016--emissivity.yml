@@ -1,0 +1,88 @@
+provenance_record: records/surfaces/bsoil/se-england--ward2016--emissivity
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
+  places:
+    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+  records: {}
+assessment:
+  status: curation_required
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-table-2
+      - jarvi-emissivity
+      note: Ward et al. publish the UK configuration but explicitly identify Järvi et al. (2011) as the
+        original source of these emissivities; the canonical source role should be separated.
+    place:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-table-2
+      note: The source reports London and Swindon sites, not a south-east England regional determination.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - ward-table-2
+      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
+        evidence reach is not established.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: ward-table-2
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, adjusted albedo and emissivity model inputs
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 8
+      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
+        explicitly carried forward from Järvi et al. (2011).
+  - id: jarvi-emissivity
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2a, emissivity values by surface type
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      page: 223
+      note: Original table identified by Ward et al. as the source of the UK emissivities.
+  scientific_note: The publication supports the values used in its UK model runs, but the database currently
+    overstates evidence reach; emissivity rows also need original-source role separation.
+  evidence_revision: sha256:832508aa60712237b629c2252defbd8804b7ac6e3f595991f54634a8799fbc65
+verification:
+  attestations: []

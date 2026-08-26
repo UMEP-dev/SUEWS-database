@@ -1,0 +1,76 @@
+provenance_record: records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
+dependency_revisions:
+  sources:
+    havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+  places:
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+  records: {}
+assessment:
+  status: unresolved
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: unresolved
+      evidence_ids:
+      - havu-table-b1
+      note: Table B.1 supports the broad soil depth/storage class but does not publish the complete stored
+        tuple at exact precision; hydraulic conductivity and soil density are absent.
+    source:
+      conclusion: unresolved
+      evidence_ids:
+      - havu-table-b1
+      note: The article does not contain an exact source for every stored field.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: unresolved
+      evidence_ids:
+      - havu-table-b1
+      note: The transformation from published rounded soil properties to the stored tuple is not documented.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - havu-table-b1
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: havu-table-b1
+    source: havu-m2024
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table B.1, site characteristics and model parameters used for Helsinki
+      url: https://doi.org/10.1016/j.ufug.2024.128261
+      page: 11
+      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
+        for the Helsinki simulations.
+  scientific_note: 'The accessible paper is incomplete for this record: some soil values are corroborated,
+    but the complete tuple and exact transformation need the model input archive or curator documentation.'
+  evidence_revision: sha256:80fb0489c294ca94749ff7d7a3a53983fd4dad9377e9a4dbe61ba9dacdf0d9d2
+verification:
+  attestations: []

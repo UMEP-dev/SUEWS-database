@@ -1,0 +1,73 @@
+provenance_record: records/profiles/energy-use/se-england--ward2016--energy-use
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:a69bdfd2c82d8acf92e1531b8c955cb8f189f2cb0ce151d6c31e007250541fee
+dependency_revisions:
+  sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+  places:
+    vancouver: sha256:2d03ab05cd9562d99dd67879c192dac1379e544ea4400bc8655d83a03537dc9b
+  records: {}
+assessment:
+  status: agent_assessed
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The cited locator publishes the stored values at the available precision.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The cited source is a direct parameter publication or an explicit published model-input table.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The declared evidence reach does not exceed the source scope.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: The production or literature-compilation method is stated in the source.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-3
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: jarvi-table-3
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 3a, Vancouver residential anthropogenic-heat profile
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      page: 224
+      note: Publishes the exact 24 weekday and weekend multipliers stored in the record.
+  method: literature
+  evidence_revision: sha256:1198e4d6c294cf5939b18f737a67fbe7cebfdea69fa8a7958cb5e3e8949417cd
+verification:
+  attestations: []

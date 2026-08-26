@@ -1,0 +1,85 @@
+provenance_record: records/anthropogenic/plymouth--xie2024
+review_type: evidence
+provenance_format_version: '1.0'
+record_revision: sha256:6c94883744cd86435917718cc2dcbb8d9c5802cf1fcbcae8c8b9de10a6894b61
+dependency_revisions:
+  sources:
+    xie2024: sha256:7f8cce92cf2b85e545cbee66b3c57f747633ff992bfc82e689884737a4c23f4e
+  places:
+    plymouth: sha256:49f424f601f00a8bee5eef7cc6a9af6bb010428ddb3dcad6856fceb2741be9bb
+  records: {}
+assessment:
+  status: source_inaccessible
+  assessed_at: '2026-08-26T20:30:00Z'
+  assessor:
+    kind: agent
+    name: provenance-audit
+    version: '1.0'
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  findings:
+    name:
+      conclusion: supported
+      evidence_ids:
+      - xie-table-3
+      note: The label identifies the published parameter class or model configuration.
+    target:
+      conclusion: supported
+      evidence_ids:
+      - xie-table-3
+      note: The source uses the parameter for the same SUEWS target represented by the record.
+    values:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - xie-table-3
+      note: The article does not tabulate this city's or whole-building case's exact fitted coefficient
+        tuple; the restricted run archive is needed.
+    source:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - xie-table-3
+      note: The article establishes the scenario family but not the exact stored numbers.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - xie-table-3
+      note: The place agrees with the source scope or is explicitly generic.
+    representativeness:
+      conclusion: curation_required
+      evidence_ids:
+      - xie-table-3
+      note: The coefficients describe an idealised residential neighbourhood under the named city's climate,
+        not a city-wide determination.
+    method:
+      conclusion: source_inaccessible
+      evidence_ids:
+      - xie-table-3
+      note: The exact regression inputs/output for this tuple are in the unavailable run materials.
+    identity:
+      conclusion: supported
+      evidence_ids:
+      - xie-table-3
+      note: Stable path, target, source and values identify one retained database record.
+  evidence:
+  - id: xie-table-3
+    source: xie2024
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 3 and scenario-method sections
+      url: https://doi.org/10.1016/j.scs.2024.105811
+      page: 5
+      note: Table 3 publishes four London occupied-room scenarios; other cities and whole-building cases
+        are discussed but their exact coefficient tuples are not tabulated.
+  scientific_note: The publication was read and supports the overall method and scenario, but exact coefficients
+    for this case require the restricted Zenodo 13351764 run materials. No values or citation are changed
+    while access is pending.
+  attempted_sources:
+  - source: xie2024
+    attempted_at: '2026-08-26T20:30:00Z'
+    outcome: incomplete
+    note: The open article was read; Zenodo 13351764 remains restricted and contains the exact run tables
+      needed for this case.
+    url: https://doi.org/10.5281/zenodo.13351764
+  evidence_revision: sha256:fc6218a6319a0f65a72a4587ff011031249be8812e7f020ce559798bbff7ceae
+verification:
+  attestations: []
