@@ -31,6 +31,8 @@ MIXED = (
 KYOTO = "records/ohm/tokyo--unreferenced--buildings"
 CURATION = "records/surfaces/bldgs/helsinki--jarvi2014--snow-lim"
 COMPOSITE = "archetypes/surfaces/evetr/tropics--broad-leaf"
+REGION = "archetypes/regions/central-africa"
+UNIQUE_REGION = "archetypes/regions/eastern-europe"
 
 
 class SiteProvenanceTests(unittest.TestCase):
@@ -435,6 +437,19 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Slot and season mapping", reviewed)
         self.assertIn("Sign off composition on GitHub", reviewed)
         self.assertIn("review_type=Composition", reviewed)
+
+    def test_region_pages_explain_fallback_and_shared_assembly(self):
+        page = self.render(REGION)
+        self.assertIn("Legacy regional fallback", page)
+        self.assertIn("legacy fallback</span>", page)
+        self.assertIn("identifies where the fallback is offered", page)
+        self.assertIn("does not claim that the selected components provide", page)
+        self.assertIn("shared by 12 regional routes", page)
+        self.assertIn("archetypes/regions/northern-africa.html", page)
+
+        unique = self.render(UNIQUE_REGION)
+        self.assertIn("Legacy regional fallback", unique)
+        self.assertNotIn("This exact assembly is shared", unique)
 
 
 if __name__ == "__main__":

@@ -641,6 +641,15 @@ and the evidence-review state of that record. A separate composition sidecar
 can document and sign off why that London value was selected for Kumpula and
 how every component was mapped; it does not replace the record-level review.
 
+Region archetypes preserve the 22 routing choices in the legacy database.
+They are **fallbacks**, not claims that every selected component was measured
+in, or shown to represent, the named region. Several region routes carry the
+same assembly because that is how the legacy table recorded them; the migration
+preserves that fact without treating the copies as independent regional
+evidence. Their stable paths remain distinct because country archetypes point
+to them. The website exposes shared assemblies and the composition review
+rather than collapsing those routing identities into fewer entries.
+
 ### Typology photographs
 
 A typology is a visual idea, so the site shows a photograph of one where it
