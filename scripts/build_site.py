@@ -684,6 +684,11 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   gap: 0.8rem; flex-wrap: wrap; margin: 2rem 0 0.75rem; }
 .provhead h3 { margin: 0; }
 .provmeta { color: var(--text-muted); font-size: 0.84rem; margin: 0 0 1rem; }
+.fallback-note { border-left: 3px solid var(--gold-ink); border-radius: 0 10px 10px 0;
+  background: var(--bg-card); padding: 0.9rem 1rem; margin: 0 0 1.4rem; }
+.fallback-note h3 { margin: 0 0 0.4rem; font-size: 0.95rem; }
+.fallback-note p { margin: 0.35rem 0 0; color: var(--text-secondary);
+  font-size: 0.86rem; line-height: 1.55; }
 .evidence-list { border-top: 1px solid var(--border-light); }
 .evidence-item { padding: 0.9rem 0; border-bottom: 1px solid var(--border-light); }
 .evidence-item h4 { margin: 0 0 0.35rem; font-size: 0.95rem; font-weight: 600; }
@@ -1823,6 +1828,7 @@ def record_page(
     src = sources.get(src_key) if src_key else None
     fam = family_of(path)
     surface = surface_of(path, rec)
+    is_region_fallback = path.startswith("archetypes/regions/")
 
     crumbs = (f"<div class=\"crumbs\"><a href=\"{rel}index.html\">browse</a> · "
               f"{esc(path)}.yml</div>")
@@ -1858,6 +1864,8 @@ def record_page(
     if kind == "typology":
         chips.append(chip_link(f"{rel}index.html#typology={esc(fam)}",
                                TYP_LABEL.get(fam, fam)))
+        if is_region_fallback:
+            chips.append('<span class="chip">legacy fallback</span>')
     else:
         chips.append(chip_link(f"{rel}index.html#family={esc(fam)}", fam))
     if surface:
@@ -1949,6 +1957,39 @@ def record_page(
             + f" <span class=\"chip\">{kind_label}</span>{unref_badge}</h2>",
             headline, chip_row]
     main = []
+
+    if is_region_fallback:
+        assembly_fields = ("uses", "parameters", "legacy")
+        peers = sorted(
+            other_path
+            for other_path, other in records.items()
+            if other_path != path
+            and other_path.startswith("archetypes/regions/")
+            and all(
+                other.get(field, {}) == rec.get(field, {})
+                for field in assembly_fields
+            )
+        )
+        shared = ""
+        if peers:
+            peer_links = ", ".join(
+                f'<a href="{rel}{esc(peer)}.html">'
+                f'{esc(records[peer].get("name") or peer.rsplit("/", 1)[-1])}</a>'
+                for peer in peers
+            )
+            shared = (
+                f"<p>This exact assembly is shared by {len(peers) + 1} regional "
+                f"routes: {peer_links}, and this page.</p>"
+            )
+        main.append(
+            "<section class=\"fallback-note\"><h3>Legacy regional fallback</h3>"
+            "<p>This entry preserves a routing choice from the original database. "
+            "Its region name identifies where the fallback is offered; it does not "
+            "claim that the selected components provide independent evidence for "
+            "that region. Review each component's provenance and the composition "
+            "assessment before reuse.</p>"
+            f"{shared}</section>"
+        )
 
     # a typology is a visual idea -- "Mixed-City Ideal" and "Residential
     # Functionalism" are not self-explanatory from their names, and a reader
