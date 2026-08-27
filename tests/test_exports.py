@@ -79,6 +79,19 @@ class ExportCompatibilityTests(unittest.TestCase):
             "humactivity_24hr", fragment["anthropogenic_emissions"]["co2"]
         )
 
+    def test_country_export_honours_profile_side_selection(self):
+        records, sources, _ = load_all()
+        fragment = assemble("archetypes/countries/iceland", records, sources)
+
+        anthropogenic_heat = fragment["anthropogenic_emissions"]["heat"]
+        self.assertEqual(set(anthropogenic_heat["ahprof_24hr"]), {"holiday"})
+        self.assertEqual(
+            anthropogenic_heat["ahprof_24hr"]["holiday"],
+            records[
+                "records/profiles/energy-use/helsinki--jarvi2019--energy-use"
+            ]["parameters"]["holiday"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
