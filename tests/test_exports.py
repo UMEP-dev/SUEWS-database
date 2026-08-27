@@ -5,6 +5,10 @@ import unittest
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+
+from check_db import load_all  # noqa: E402
+from export_record import assemble  # noqa: E402
 
 
 class ExportCompatibilityTests(unittest.TestCase):
@@ -46,6 +50,33 @@ class ExportCompatibilityTests(unittest.TestCase):
             cwd=ROOT,
             check=True,
             capture_output=True,
+        )
+
+    def test_region_export_includes_nested_surfaces_and_profiles(self):
+        records, sources, _ = load_all()
+        fragment = assemble(
+            "archetypes/regions/southern-south-america", records, sources
+        )
+
+        self.assertEqual(
+            set(fragment["land_cover"]),
+            {"paved", "bldgs", "bsoil", "grass", "evetr", "dectr", "water"},
+        )
+        self.assertIn("snow_profile_24hr", fragment["snow"])
+        self.assertIn("working_day", fragment["irrigation"]["wuprofm_24hr"])
+        self.assertIn("holiday", fragment["irrigation"]["wuprofa_24hr"])
+
+    def test_country_export_inherits_region_and_attaches_local_profiles(self):
+        records, sources, _ = load_all()
+        fragment = assemble("archetypes/countries/ecuador", records, sources)
+
+        self.assertIn("land_cover", fragment)
+        self.assertIn("snow", fragment)
+        self.assertIn(
+            "traffprof_24hr", fragment["anthropogenic_emissions"]["co2"]
+        )
+        self.assertIn(
+            "humactivity_24hr", fragment["anthropogenic_emissions"]["co2"]
         )
 
 

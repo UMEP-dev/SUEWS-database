@@ -22,6 +22,7 @@ from pathlib import Path
 import yaml
 
 from check_db import (  # noqa: F401
+    iter_uses,
     load_all,
     suews_configuration_fragment,
     wrap_ref,
@@ -48,12 +49,25 @@ def deep_merge(base, extra):
     return base
 
 
+def at_dotted_path(path, value):
+    """Nest value under a dotted SUEWS configuration path."""
+    result = value
+    for part in reversed(path.split(".")):
+        result = {part: result}
+    return result
+
+
 def assemble(path, records, sources, depth=0):
     """Build the SUEWS configuration fragment for a record or archetype path."""
     rec = records[path]
     if depth > 4:
         raise RuntimeError(f"reference chain too deep at {path}")
     fragment = {}
+    region_ref = rec.get("region_ref")
+    if isinstance(region_ref, str):
+        if region_ref not in records:
+            raise RuntimeError(f"unresolved region_ref {region_ref!r} at {path}")
+        deep_merge(fragment, assemble(region_ref, records, sources, depth + 1))
     uses = rec.get("uses", {})
     for slot, ref in uses.items():
         if slot == "ohm":
@@ -62,6 +76,23 @@ def assemble(path, records, sources, depth=0):
                 sub = suews_configuration_fragment(records[season_ref], sources)
                 coef[season] = sub
             deep_merge(fragment, {"ohm_coef": coef})
+        elif slot == "land_cover" and isinstance(ref, dict):
+            surfaces = {}
+            for surface, surface_ref in ref.items():
+                surfaces[surface] = assemble(
+                    surface_ref, records, sources, depth + 1
+                )
+            deep_merge(fragment, {"land_cover": surfaces})
+        elif slot == "profiles" and isinstance(ref, dict):
+            for profile_ref in iter_uses(ref):
+                profile = records[profile_ref]
+                attaches_to = profile.get("attaches_to")
+                if not attaches_to:
+                    raise RuntimeError(
+                        f"profile {profile_ref!r} used by {path} has no attaches_to"
+                    )
+                sub = suews_configuration_fragment(profile, sources)
+                deep_merge(fragment, at_dotted_path(attaches_to, sub))
         elif slot in ("albedo", "emissivity", "water_storage", "drainage",
                       "water_state", "leaf_area_index", "leaf_growth_power",
                       "max_vegetation_conductance", "porosity", "biogen_co2",
@@ -78,6 +109,8 @@ def assemble(path, records, sources, depth=0):
             deep_merge(
                 fragment, {slot: assemble(ref, records, sources, depth + 1)}
             )
+        elif isinstance(ref, dict):
+            raise RuntimeError(f"unsupported structured use {slot!r} at {path}")
         # unresolved references are a data error make check reports; they
         # never enter a fragment
     own = suews_configuration_fragment(rec, sources)
