@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/hungary
-    energy_use: records/profiles/traffic/lucy/hungary
     human_activity: records/profiles/human-activity/lucy/hungary
-    population: records/profiles/human-activity/lucy/hungary

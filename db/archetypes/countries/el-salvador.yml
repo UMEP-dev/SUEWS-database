@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/el-salvador
-    energy_use: records/profiles/traffic/lucy/el-salvador
     human_activity: records/profiles/human-activity/lucy/el-salvador
-    population: records/profiles/human-activity/lucy/el-salvador

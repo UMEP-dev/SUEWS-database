@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/ecuador
-    energy_use: records/profiles/traffic/lucy/ecuador
     human_activity: records/profiles/human-activity/lucy/ecuador
-    population: records/profiles/human-activity/lucy/ecuador

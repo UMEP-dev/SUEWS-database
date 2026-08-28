@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/bahrain
-    energy_use: records/profiles/traffic/lucy/bahrain
     human_activity: records/profiles/human-activity/lucy/bahrain
-    population: records/profiles/human-activity/lucy/bahrain

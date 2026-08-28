@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/uruguay
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:fbe07b0d3d7ba5377085c3f18ba8b77afa1d1e49591da36b948f862f77113ec9
+record_revision: sha256:2c56a6afe0e9ecbd93e0076dadf734c7816c61bd4949b3deb942304b73a1122d
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/uruguay: sha256:4748f2d3c0c48cab15d2047c05ee68d574d4c45bfe408ec735e0bc0c2e382975
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Uruguay, its country field reads Uruguay, and both agree with the entry
         path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-uruguay
       - component-traffic-lucy-uruguay
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/uruguay, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/uruguay,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/uruguay, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/uruguay, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/central-south-america,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Uruguay.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/central-south-america, which is the pattern the country defaults follow.
+        The region reference is not a uses component, so it is not documented as one here. No second country
+        default exists for Uruguay.
   evidence:
   - id: component-traffic-lucy-uruguay
     record: records/profiles/traffic/lucy/uruguay
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place uruguay and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      uruguay and representativeness regional.
   - id: component-human-activity-lucy-uruguay
     record: records/profiles/human-activity/lucy/uruguay
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place uruguay and representativeness regional.
-  scientific_note: Uruguay's default takes Uruguay's own rows, every one of them classed regional, which
-    is what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/uruguay,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/uruguay,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:04d3e12cbc8f3f8f4e0ff8afb117a30185a9c6ca3128c2b8ae0ab9dc8f330faf
+  scientific_note: 'Uruguay''s default takes Uruguay''s own rows, every one of them classed regional,
+    which is what a country default should do. Each component attaches where its slot expects: the traffic
+    record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:60b98f1882a6e48ce908062334c9bc608823fabebff206745f6238226690b6f8
 verification:
   attestations: []

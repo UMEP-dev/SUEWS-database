@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/morocco-includes-western-sahara
-    energy_use: records/profiles/traffic/lucy/morocco-includes-western-sahara
     human_activity: records/profiles/human-activity/lucy/morocco-includes-western-sahara
-    population: records/profiles/human-activity/lucy/morocco-includes-western-sahara

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/mauritania
-    energy_use: records/profiles/traffic/lucy/mauritania
     human_activity: records/profiles/human-activity/lucy/mauritania
-    population: records/profiles/human-activity/lucy/mauritania

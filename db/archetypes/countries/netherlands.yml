@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/netherlands
-    energy_use: records/profiles/traffic/lucy/netherlands
     human_activity: records/profiles/human-activity/lucy/netherlands
-    population: records/profiles/human-activity/lucy/netherlands

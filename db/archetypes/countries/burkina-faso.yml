@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/burkina-faso
-    energy_use: records/profiles/traffic/lucy/burkina-faso
     human_activity: records/profiles/human-activity/lucy/burkina-faso
-    population: records/profiles/human-activity/lucy/burkina-faso

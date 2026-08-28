@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/tonga
-    energy_use: records/profiles/traffic/lucy/tonga
     human_activity: records/profiles/human-activity/lucy/tonga
-    population: records/profiles/human-activity/lucy/tonga

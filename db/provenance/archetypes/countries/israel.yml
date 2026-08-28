@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/israel
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:f6f747a08982df7ec2259bcaaace4eca21ae199fdb24013b49df164ccc8882cd
+record_revision: sha256:2aa9954da38f7d46b5ea1d3f850c226376276813a99f494f7f9b72f75b912755
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/israel: sha256:8ed88ca96cd71bb4d328c142cc23a70633a040faf82cd48735468c84860579c0
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Israel, its country field reads Israel, and both agree with the entry
         path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-israel
       - component-traffic-lucy-israel
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/israel, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/israel,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/israel, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/israel, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/middle-east,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Israel.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/middle-east, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Israel.
   evidence:
   - id: component-traffic-lucy-israel
     record: records/profiles/traffic/lucy/israel
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place israel and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      israel and representativeness regional.
   - id: component-human-activity-lucy-israel
     record: records/profiles/human-activity/lucy/israel
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place israel and representativeness regional.
-  scientific_note: Israel's default takes Israel's own rows, every one of them classed regional, which
-    is what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/israel,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/israel,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:852f60af4fe24493747aa0d07d54ae85cf81b6ce727e04e128fb919b00bd31c1
+  scientific_note: 'Israel''s default takes Israel''s own rows, every one of them classed regional, which
+    is what a country default should do. Each component attaches where its slot expects: the traffic record
+    to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:8eb226ac7013c31723903b228024205de6138d1d470f81ff79f6412b221c7944
 verification:
   attestations: []

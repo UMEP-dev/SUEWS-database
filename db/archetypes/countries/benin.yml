@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/benin
-    energy_use: records/profiles/traffic/lucy/benin
     human_activity: records/profiles/human-activity/lucy/benin
-    population: records/profiles/human-activity/lucy/benin

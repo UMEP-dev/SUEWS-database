@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/sweden
-    energy_use: records/profiles/traffic/lucy/sweden
     human_activity: records/profiles/human-activity/lucy/sweden
-    population: records/profiles/human-activity/lucy/sweden

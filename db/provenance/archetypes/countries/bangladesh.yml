@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/bangladesh
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:b78da4bfa21deca0c0afd8a55d15430400242829f49259a7046098b390bee806
+record_revision: sha256:9a7d55d3aec4074bacd60702712c1c467158bba1dfe7f919a1ac6d72ccf0d161
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/bangladesh: sha256:6aaafcaded8b1f771e64709f5995d4e96e16e660533786734a9edf731b77086d
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Bangladesh, its country field reads Bangladesh, and both agree with
         the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-bangladesh
       - component-traffic-lucy-bangladesh
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/bangladesh,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/bangladesh,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/bangladesh, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/bangladesh, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/south-central-asia,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Bangladesh.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/south-central-asia, which is the pattern the country defaults follow. The
+        region reference is not a uses component, so it is not documented as one here. No second country
+        default exists for Bangladesh.
   evidence:
   - id: component-traffic-lucy-bangladesh
     record: records/profiles/traffic/lucy/bangladesh
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place bangladesh and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      bangladesh and representativeness regional.
   - id: component-human-activity-lucy-bangladesh
     record: records/profiles/human-activity/lucy/bangladesh
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place bangladesh and representativeness regional.
-  scientific_note: Bangladesh's default takes Bangladesh's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/bangladesh,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/bangladesh,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:f8338d081fbe91745a637f176dbdb480e175eaa7fced4ee9ca968cc805d38482
+  scientific_note: 'Bangladesh''s default takes Bangladesh''s own rows, every one of them classed regional,
+    which is what a country default should do. Each component attaches where its slot expects: the traffic
+    record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:a4996c0388ed9b57bfc61600c0ad337503646d71657ebd8720002cc4ea63f48a
 verification:
   attestations: []

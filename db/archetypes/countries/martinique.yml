@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/martinique
-    energy_use: records/profiles/traffic/lucy/martinique
     human_activity: records/profiles/human-activity/lucy/martinique
-    population: records/profiles/human-activity/lucy/martinique

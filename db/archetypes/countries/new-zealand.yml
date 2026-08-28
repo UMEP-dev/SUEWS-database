@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/new-zealand
-    energy_use: records/profiles/traffic/lucy/new-zealand
     human_activity: records/profiles/human-activity/lucy/new-zealand
-    population: records/profiles/human-activity/lucy/new-zealand

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/australia
-    energy_use: records/profiles/traffic/lucy/australia
     human_activity: records/profiles/human-activity/lucy/australia
-    population: records/profiles/human-activity/lucy/australia

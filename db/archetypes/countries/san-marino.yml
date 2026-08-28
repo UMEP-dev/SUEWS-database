@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/san-marino
-    energy_use: records/profiles/traffic/lucy/san-marino
     human_activity: records/profiles/human-activity/lucy/san-marino
-    population: records/profiles/human-activity/lucy/san-marino

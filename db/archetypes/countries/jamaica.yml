@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/jamaica
-    energy_use: records/profiles/traffic/lucy/jamaica
     human_activity: records/profiles/human-activity/lucy/jamaica
-    population: records/profiles/human-activity/lucy/jamaica

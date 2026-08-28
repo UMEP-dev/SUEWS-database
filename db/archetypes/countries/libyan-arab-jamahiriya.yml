@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/libyan-arab-jamahiriya
-    energy_use: records/profiles/traffic/lucy/libyan-arab-jamahiriya
     human_activity: records/profiles/human-activity/lucy/libyan-arab-jamahiriya
-    population: records/profiles/human-activity/lucy/libyan-arab-jamahiriya

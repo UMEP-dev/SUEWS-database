@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/tokelau-qpp
-    energy_use: records/profiles/traffic/lucy/tokelau-qpp
     human_activity: records/profiles/human-activity/lucy/tokelau-qpp
-    population: records/profiles/human-activity/lucy/tokelau-qpp

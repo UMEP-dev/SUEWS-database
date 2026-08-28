@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/yemen
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:076cb5107e50b07040c4333db5e176c77d2be81b3de1820e8c64b61546d521b8
+record_revision: sha256:206aed8602939315cd7397ca1fb16fc8d3af76779c2eb1aa8fae4894f69985bb
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/yemen: sha256:be9134adaee7910fcd6606f548041d81e51ee9a93741d1233fa742db9e5e5dd3
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Yemen, its country field reads Yemen, and both agree with the entry
         path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-yemen
       - component-traffic-lucy-yemen
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/yemen, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/yemen, which
-        declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/yemen, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/yemen, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -59,31 +59,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/middle-east,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Yemen.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/middle-east, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Yemen.
   evidence:
   - id: component-traffic-lucy-yemen
     record: records/profiles/traffic/lucy/yemen
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place yemen and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      yemen and representativeness regional.
   - id: component-human-activity-lucy-yemen
     record: records/profiles/human-activity/lucy/yemen
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place yemen and representativeness regional.
-  scientific_note: Yemen's default takes Yemen's own rows, every one of them classed regional, which is
-    what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/yemen, which
-    declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/yemen, which
-    declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:1fd54515c492eca4e122d6e26de40538a4b98b1aafab11fe709416c83d9678e9
+  scientific_note: 'Yemen''s default takes Yemen''s own rows, every one of them classed regional, which
+    is what a country default should do. Each component attaches where its slot expects: the traffic record
+    to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:1f96041cf96fe724776cdb71b9ea5da4cd633c1b816e5b743e9dfcb8b3a0847e
 verification:
   attestations: []

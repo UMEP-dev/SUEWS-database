@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/china
-    energy_use: records/profiles/traffic/lucy/china
     human_activity: records/profiles/human-activity/lucy/china
-    population: records/profiles/human-activity/lucy/china

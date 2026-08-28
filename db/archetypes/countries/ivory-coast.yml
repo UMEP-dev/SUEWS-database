@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/ivory-coast
-    energy_use: records/profiles/traffic/lucy/ivory-coast
     human_activity: records/profiles/human-activity/lucy/ivory-coast
-    population: records/profiles/human-activity/lucy/ivory-coast

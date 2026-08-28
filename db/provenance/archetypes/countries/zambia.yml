@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/zambia
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:4963543b4c988a195f6c05454105e7a0eb2add04c114e8a0d280d42a27c1aa75
+record_revision: sha256:6eb5b70084cb9837dc515777636dcab98c833714c63c0693d267b548ff497c09
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/zambia: sha256:a0fc8a2062e46c582925f3f3f29d0d77a70eb89a6d05756f1474f9afbf8308fd
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Zambia, its country field reads Zambia, and both agree with the entry
         path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-zambia
       - component-traffic-lucy-zambia
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/zambia, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/zambia,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/zambia, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/zambia, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/eastern-africa,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Zambia.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/eastern-africa, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Zambia.
   evidence:
   - id: component-traffic-lucy-zambia
     record: records/profiles/traffic/lucy/zambia
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place zambia and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      zambia and representativeness regional.
   - id: component-human-activity-lucy-zambia
     record: records/profiles/human-activity/lucy/zambia
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place zambia and representativeness regional.
-  scientific_note: Zambia's default takes Zambia's own rows, every one of them classed regional, which
-    is what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/zambia,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/zambia,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:4f5cc70da4e25a328f709c6769708be645a02294d87af101d446779d56236ede
+  scientific_note: 'Zambia''s default takes Zambia''s own rows, every one of them classed regional, which
+    is what a country default should do. Each component attaches where its slot expects: the traffic record
+    to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:6423ae50b16f5d795ead55ea28d618a7e8db7e8aa78859eb4efcaaff8d715a83
 verification:
   attestations: []

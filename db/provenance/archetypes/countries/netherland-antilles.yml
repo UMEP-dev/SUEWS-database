@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/netherland-antilles
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:8ef238ad32eb76f10e66990a52e1bd7b22f05ae93bf1d4052662b9a359039d88
+record_revision: sha256:3a393150cd6bd40cf17925fe0c662ed2468aa82126fd7324c2bf0cfdf7a657fd
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/netherland-antilles: sha256:b8818b515ca022258d9c9be66d09555ed51ec644aae265b8f84ff0ea22475810
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Netherland Antilles, its country field reads Netherland Antilles, and
         both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-netherland-antilles
       - component-traffic-lucy-netherland-antilles
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/netherland-antilles,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/netherland-antilles,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/netherland-antilles,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/netherland-antilles, which declares attaches_to
+        anthropogenic_emissions.co2.humactivity_24hr. The former energy_use and population slots, which
+        re-declared the same two records against heat-namespace fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/caribbean,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Netherland Antilles.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/caribbean, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Netherland Antilles.
   evidence:
   - id: component-traffic-lucy-netherland-antilles
     record: records/profiles/traffic/lucy/netherland-antilles
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place netherland-antilles and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      netherland-antilles and representativeness regional.
   - id: component-human-activity-lucy-netherland-antilles
     record: records/profiles/human-activity/lucy/netherland-antilles
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place netherland-antilles and representativeness regional.
-  scientific_note: Netherland Antilles's default takes Netherland Antilles's own rows, every one of them
-    classed regional, which is what a country default should do. The slot mapping, however, is not. Reading
-    the composite against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/netherland-antilles,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/netherland-antilles,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:043c62ef47005ef3d657bfd6d2daac6cca0137b4a7bfe34757438a0f3d277a6e
+  scientific_note: 'Netherland Antilles''s default takes Netherland Antilles''s own rows, every one of
+    them classed regional, which is what a country default should do. Each component attaches where its
+    slot expects: the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity
+    record to anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat
+    or population diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles
+    for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr; that omission is a documented
+    property of the country defaults rather than a silent slot mismatch. The components'' values remain
+    subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:f0755719950e783d5930293b4634bafa36d64a4e3d1d718b4b37699e4352beb9
 verification:
   attestations: []

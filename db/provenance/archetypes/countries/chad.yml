@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/chad
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:71aa42e9baed2ed1cafd9e7a3d98a81609dd8bd50d10983cae83a3213a60e92b
+record_revision: sha256:e24ff511f9ddf23b2c4b3676cfd62bb10b7bc71d8d26032b85398b1b11eb3c75
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/chad: sha256:11f02457b41e3e000df07044947c96ea2fea8d7b62d7d5a6253b4ae31b21f046
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -24,16 +24,16 @@ assessment:
       - component-traffic-lucy-chad
       note: The composite is named Chad, its country field reads Chad, and both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-chad
       - component-traffic-lucy-chad
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/chad, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/chad, which
-        declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/chad, which declares
+        attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes records/profiles/human-activity/lucy/chad,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr. The former energy_use
+        and population slots, which re-declared the same two records against heat-namespace fields they
+        never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -58,31 +58,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/central-africa,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Chad.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/central-africa, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Chad.
   evidence:
   - id: component-traffic-lucy-chad
     record: records/profiles/traffic/lucy/chad
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place chad and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      chad and representativeness regional.
   - id: component-human-activity-lucy-chad
     record: records/profiles/human-activity/lucy/chad
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place chad and representativeness regional.
-  scientific_note: Chad's default takes Chad's own rows, every one of them classed regional, which is
-    what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/chad, which
-    declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/chad, which
-    declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:c4ae6e7e56053bf76a49f63a438641e574cf1776f168547f4bfaa0c57d8d23ad
+  scientific_note: 'Chad''s default takes Chad''s own rows, every one of them classed regional, which
+    is what a country default should do. Each component attaches where its slot expects: the traffic record
+    to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:7399c9194e78d64228792b0cde6784e7e33ec5c99a37a62adae6429a84deb444
 verification:
   attestations: []

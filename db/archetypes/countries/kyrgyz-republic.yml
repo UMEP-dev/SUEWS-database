@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/kyrgyz-republic
-    energy_use: records/profiles/traffic/lucy/kyrgyz-republic
     human_activity: records/profiles/human-activity/lucy/kyrgyz-republic
-    population: records/profiles/human-activity/lucy/kyrgyz-republic

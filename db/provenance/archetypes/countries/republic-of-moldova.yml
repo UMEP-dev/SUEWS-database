@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/republic-of-moldova
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:c330baef408f21063dc29c79ec1013e818c7f89d5bbd8a6ea9b27627763a743c
+record_revision: sha256:ef4b773d2b9f36c2129a62d38d748add35a2065da7698e2e3d31e3b57afc6c91
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/republic-of-moldova: sha256:45f77ee8c8eed4ad84fcdb477653e26bbd2259e8b96b1b1185a98e60937503d3
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Republic of Moldova, its country field reads Republic of Moldova, and
         both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-republic-of-moldova
       - component-traffic-lucy-republic-of-moldova
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/republic-of-moldova,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/republic-of-moldova,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/republic-of-moldova,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/republic-of-moldova, which declares attaches_to
+        anthropogenic_emissions.co2.humactivity_24hr. The former energy_use and population slots, which
+        re-declared the same two records against heat-namespace fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/eastern-europe,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Republic of Moldova.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/eastern-europe, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Republic of Moldova.
   evidence:
   - id: component-traffic-lucy-republic-of-moldova
     record: records/profiles/traffic/lucy/republic-of-moldova
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place republic-of-moldova and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      republic-of-moldova and representativeness regional.
   - id: component-human-activity-lucy-republic-of-moldova
     record: records/profiles/human-activity/lucy/republic-of-moldova
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place republic-of-moldova and representativeness regional.
-  scientific_note: Republic of Moldova's default takes Republic of Moldova's own rows, every one of them
-    classed regional, which is what a country default should do. The slot mapping, however, is not. Reading
-    the composite against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/republic-of-moldova,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/republic-of-moldova,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:caa274ab43751f1ce0bbec1ee79cfe4d928b050eca530d2ee9dc5fe4b3d0745f
+  scientific_note: 'Republic of Moldova''s default takes Republic of Moldova''s own rows, every one of
+    them classed regional, which is what a country default should do. Each component attaches where its
+    slot expects: the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity
+    record to anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat
+    or population diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles
+    for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr; that omission is a documented
+    property of the country defaults rather than a silent slot mismatch. The components'' values remain
+    subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:535de9878bccbd7954c6726b8a079c386b2890393679cec498b4f42b104684e6
 verification:
   attestations: []

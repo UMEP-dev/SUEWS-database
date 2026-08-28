@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/namibia
-    energy_use: records/profiles/traffic/lucy/namibia
     human_activity: records/profiles/human-activity/lucy/namibia
-    population: records/profiles/human-activity/lucy/namibia

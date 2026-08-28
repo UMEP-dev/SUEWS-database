@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/turks-and-caicos-islands
-    energy_use: records/profiles/traffic/lucy/turks-and-caicos-islands
     human_activity: records/profiles/human-activity/lucy/turks-and-caicos-islands
-    population: records/profiles/human-activity/lucy/turks-and-caicos-islands

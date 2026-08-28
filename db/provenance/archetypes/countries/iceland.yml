@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/iceland
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:fb4ee7a434645559beb302fb53b11618ad4fb696ed568284846039d196e2b32e
+record_revision: sha256:a41d9c47b0769a8fe390a1d59b2ad4a7c6ce14fb5dfdb51d1c023d7216ca2bdf
 dependency_revisions:
   sources: {}
   places: {}
@@ -11,7 +11,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/iceland: sha256:711f46e625ff733a7ba147653647d3536d05a2dadf694c0130252122e3784b44
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T12:26:22Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -27,16 +27,16 @@ assessment:
       note: The composite is named Iceland, its country field reads Iceland, and both agree with the entry
         path.
     target:
-      conclusion: correction_required
-      evidence_ids:
-      - component-human-activity-lucy-iceland
-      - component-traffic-lucy-iceland
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use (working_day) slot takes records/profiles/traffic/lucy/iceland,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/iceland,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      conclusion: supported
+      evidence_ids: *id001
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/iceland (attaches_to
+        anthropogenic_emissions.co2.traffprof_24hr), the human_activity slot takes records/profiles/human-activity/lucy/iceland
+        (attaches_to anthropogenic_emissions.co2.humactivity_24hr), and the energy_use slot retains only
+        its holiday side, records/profiles/energy-use/helsinki--jarvi2019--energy-use, which declares
+        attaches_to anthropogenic_emissions.heat.ahprof_24hr as the slot expects. The former energy_use
+        working_day side, which re-declared the traffic record against a heat-namespace field it never
+        filled, and the population slot have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -62,15 +62,16 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/northern-europe,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Iceland.
+      note: The composite fills the traffic, energy_use (holiday) and human_activity profile slots and
+        defers everything else to archetypes/regions/northern-europe, which is the pattern the country
+        defaults follow. The region reference is not a uses component, so it is not documented as one
+        here. No second country default exists for Iceland.
   evidence:
   - id: component-traffic-lucy-iceland
     record: records/profiles/traffic/lucy/iceland
     role: component
-    note: Fills traffic, energy_use (working_day). The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place iceland and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      iceland and representativeness regional.
   - id: component-energy-use-helsinki-jarvi2019-energy-use
     record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
     role: component
@@ -80,20 +81,18 @@ assessment:
   - id: component-human-activity-lucy-iceland
     record: records/profiles/human-activity/lucy/iceland
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place iceland and representativeness regional.
   scientific_note: 'Iceland''s default is not assembled from Iceland''s own country-scale rows: it borrows
     records/profiles/energy-use/helsinki--jarvi2019--energy-use (place helsinki) and stands records/profiles/energy-use/helsinki--jarvi2019--energy-use,
-    classed city, in for a country-scale value. The slot mapping is wrong as well. Reading the composite
-    against the components'' own declarations, the energy_use (working_day) slot takes records/profiles/traffic/lucy/iceland,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/iceland,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components'' values remain subject to their own evidence assessments;
-    this review does not revisit them.'
-  evidence_revision: sha256:4ca2265f2c203b43751b2c6f69fd395d32daa121ae7ec7d6568dc75c73630fa6
+    classed city, in for a country-scale value. The slot mapping is now consistent: the traffic and human-activity
+    records attach to their CO2 paths, and the energy_use slot retains only its holiday side, records/profiles/energy-use/helsinki--jarvi2019--energy-use,
+    which attaches to anthropogenic_emissions.heat.ahprof_24hr as the slot expects. The former working_day
+    side, which re-declared the traffic record against a heat-namespace field it never filled, and the
+    population slot have been removed; the exported ahprof_24hr therefore carries a holiday series with
+    no working_day counterpart, and the population profile falls back to supy''s uniform default. The
+    components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:f4117a9e08d96a3e0a12624a0cf0992d444b9657fe1d6f320efdfccee4fc7e0b
 verification:
   attestations: []

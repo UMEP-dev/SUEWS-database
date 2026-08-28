@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/indonesia
-    energy_use: records/profiles/traffic/lucy/indonesia
     human_activity: records/profiles/human-activity/lucy/indonesia
-    population: records/profiles/human-activity/lucy/indonesia

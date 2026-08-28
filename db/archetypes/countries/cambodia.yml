@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/cambodia
-    energy_use: records/profiles/traffic/lucy/cambodia
     human_activity: records/profiles/human-activity/lucy/cambodia
-    population: records/profiles/human-activity/lucy/cambodia

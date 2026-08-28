@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/san-marino
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:b4fd44491cdf62a0432c27c63099eec68d2fd81d16b4d8193f9d439ecc4a67a4
+record_revision: sha256:04190a62f652d7b49dcc2feb3f0408c5bb0dd462ce65852876337e602ca50f88
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/san-marino: sha256:014d3036d3af992c513191491238a4136145f6a3a2f9af33a846f882c4b3bec4
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named San Marino, its country field reads San Marino, and both agree with
         the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-san-marino
       - component-traffic-lucy-san-marino
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/san-marino,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/san-marino,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/san-marino, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/san-marino, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/southern-europe,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for San Marino.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/southern-europe, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for San Marino.
   evidence:
   - id: component-traffic-lucy-san-marino
     record: records/profiles/traffic/lucy/san-marino
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place san-marino and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      san-marino and representativeness regional.
   - id: component-human-activity-lucy-san-marino
     record: records/profiles/human-activity/lucy/san-marino
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place san-marino and representativeness regional.
-  scientific_note: San Marino's default takes San Marino's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/san-marino,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/san-marino,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:f365ad60ee8baf6240db3c962f46d919fe1657cfdd7cec7d5cfcd1ea8f40f5fd
+  scientific_note: 'San Marino''s default takes San Marino''s own rows, every one of them classed regional,
+    which is what a country default should do. Each component attaches where its slot expects: the traffic
+    record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:8754f955d13b97914e021691ca7bb6b58b76e8140bfab579efec62adaafcac1d
 verification:
   attestations: []

@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/northern-mariana-islands
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:7f08e8ff2cea7b875eff772a8420ed87bdd469ca9d0f6df155034178735bcc93
+record_revision: sha256:a0c8b84e0d154a19380c92292acb872a033c92fc40e0b6d6bd688fbd203ea785
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/northern-mariana-islands: sha256:ad168233fc23e8351f38066c65aaadfc673af02e41e7e9cca3c915f43140288b
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Northern Mariana Islands, its country field reads Northern Mariana
         Islands, and both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-northern-mariana-islands
       - component-traffic-lucy-northern-mariana-islands
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/northern-mariana-islands,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/northern-mariana-islands,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/northern-mariana-islands,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/northern-mariana-islands, which declares attaches_to
+        anthropogenic_emissions.co2.humactivity_24hr. The former energy_use and population slots, which
+        re-declared the same two records against heat-namespace fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,32 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Northern Mariana Islands.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/oceania, which is the pattern the country defaults follow. The region reference
+        is not a uses component, so it is not documented as one here. No second country default exists
+        for Northern Mariana Islands.
   evidence:
   - id: component-traffic-lucy-northern-mariana-islands
     record: records/profiles/traffic/lucy/northern-mariana-islands
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place northern-mariana-islands and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      northern-mariana-islands and representativeness regional.
   - id: component-human-activity-lucy-northern-mariana-islands
     record: records/profiles/human-activity/lucy/northern-mariana-islands
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place northern-mariana-islands and representativeness regional.
-  scientific_note: Northern Mariana Islands's default takes Northern Mariana Islands's own rows, every
-    one of them classed regional, which is what a country default should do. The slot mapping, however,
-    is not. Reading the composite against the components' own declarations, the energy_use slot takes
-    records/profiles/traffic/lucy/northern-mariana-islands, which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr
-    rather than the anthropogenic_emissions.heat.ahprof_24hr field that slot fills, and the population
-    slot takes records/profiles/human-activity/lucy/northern-mariana-islands, which declares attaches_to
-    anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:e19d961abedffc9360cc3eb4c07c9a66f60231b87cd289aa63ce89708b0a8343
+  scientific_note: 'Northern Mariana Islands''s default takes Northern Mariana Islands''s own rows, every
+    one of them classed regional, which is what a country default should do. Each component attaches where
+    its slot expects: the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity
+    record to anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat
+    or population diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles
+    for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr; that omission is a documented
+    property of the country defaults rather than a silent slot mismatch. The components'' values remain
+    subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:c80dbbdd36a02727dfbee1eea2f8b0c4dfd96cdfb090e61a8a86d38412d1c9c0
 verification:
   attestations: []

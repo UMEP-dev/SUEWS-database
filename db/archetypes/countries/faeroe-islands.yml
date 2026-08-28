@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/faeroe-islands
-    energy_use: records/profiles/traffic/lucy/faeroe-islands
     human_activity: records/profiles/human-activity/lucy/faeroe-islands
-    population: records/profiles/human-activity/lucy/faeroe-islands

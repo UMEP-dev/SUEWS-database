@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/cape-verde
-    energy_use: records/profiles/traffic/lucy/cape-verde
     human_activity: records/profiles/human-activity/lucy/cape-verde
-    population: records/profiles/human-activity/lucy/cape-verde

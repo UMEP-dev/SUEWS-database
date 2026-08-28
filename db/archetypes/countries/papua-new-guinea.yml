@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/papua-new-guinea
-    energy_use: records/profiles/traffic/lucy/papua-new-guinea
     human_activity: records/profiles/human-activity/lucy/papua-new-guinea
-    population: records/profiles/human-activity/lucy/papua-new-guinea

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/zambia
-    energy_use: records/profiles/traffic/lucy/zambia
     human_activity: records/profiles/human-activity/lucy/zambia
-    population: records/profiles/human-activity/lucy/zambia

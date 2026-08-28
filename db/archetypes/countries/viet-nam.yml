@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/viet-nam
-    energy_use: records/profiles/traffic/lucy/viet-nam
     human_activity: records/profiles/human-activity/lucy/viet-nam
-    population: records/profiles/human-activity/lucy/viet-nam
