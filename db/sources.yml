@@ -69,12 +69,16 @@ sources:
     year: 2006
   bjork2002:
     author: Björk, Cecilia; Kallstenius, Per; Reppen, Laila;
+    edition: 6
+    isbn: 978-91-540-5888-0
     journal: Book
     legacy_id: 90242357
+    publisher: Forskningsrådet Formas
     title: Så byggdes husen 1880-2000. Arkitektur, konstruktion och material i våra flerbostadshus
       under 120 år
     type: book
-    year: 2002
+    url: https://formas.se/kunskap-och-fordjupning/formas-rapporter/publikationer/2018-12-23-sa-byggdes-husen-1880---2000-sjatte-upplagan.html
+    year: 2008
   breuer2003:
     author: Breuer, Lutz; Eckhardt, Klaus; Frede, Hans-Georg
     doi: 10.1016/S0304-3800(03)00274-6

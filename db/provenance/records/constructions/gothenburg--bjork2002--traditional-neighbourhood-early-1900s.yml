@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:fb5b3fbc3dbfb3be1bcea0fd01bad4376e1cac2e0fcd77fe45cf9ab7fefc3e75
 dependency_revisions:
   sources:
-    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+    bjork2002: sha256:024a88604053742e2b4faa7342cffdbcfb5e5d314da9b8a0374a4df9e5862a48
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     gothenburg: sha256:064c1ba6198c36d16604424614ea02d6c6aec477d924ed6a9becf0ecb3a2428c
@@ -103,6 +103,6 @@ assessment:
     material thickness and steady thermal resistance are unchanged, but transient storage behavior may
     differ. The maintainer chose to preserve historical 4.4.3 behavior; the record is therefore explicitly
     unreferenced and assumed, with the later release divergence retained as evidence rather than overwritten.
-  evidence_revision: sha256:2cc4cb1ac7d854e8903a70be55b8c33f2398a433fab0fdc089d2a539860cd437
+  evidence_revision: sha256:52531fe6da8c792c306538789307acbdea34469130295483156ea5f613e71812
 verification:
   attestations: []

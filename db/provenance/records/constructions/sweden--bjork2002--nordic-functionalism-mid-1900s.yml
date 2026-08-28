@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:963d9d8604a87241f4d84459869855d24a2ad2fc6b253c75921d083896ff01e1
 dependency_revisions:
   sources:
-    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+    bjork2002: sha256:024a88604053742e2b4faa7342cffdbcfb5e5d314da9b8a0374a4df9e5862a48
   places:
     sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
   records: {}
@@ -94,6 +94,6 @@ assessment:
     outcome: inaccessible
     note: The bibliographic catalogue was accessible; the full book pages needed for the record were not.
     url: https://libris.kb.se/bib/8875068
-  evidence_revision: sha256:df2ec85300645ef796dd0473b1dc251f272c4104b97b2926064228967fa503b4
+  evidence_revision: sha256:aaf3c0d23acfc345266ad584c1de449baf0e16695cf4c4bbbb8d1cfab9ca4c3f
 verification:
   attestations: []
