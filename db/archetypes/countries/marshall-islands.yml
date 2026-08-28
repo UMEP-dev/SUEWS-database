@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/marshall-islands
-    energy_use: records/profiles/traffic/lucy/marshall-islands
     human_activity: records/profiles/human-activity/lucy/marshall-islands
-    population: records/profiles/human-activity/lucy/marshall-islands

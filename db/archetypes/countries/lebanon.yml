@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/lebanon
-    energy_use: records/profiles/traffic/lucy/lebanon
     human_activity: records/profiles/human-activity/lucy/lebanon
-    population: records/profiles/human-activity/lucy/lebanon

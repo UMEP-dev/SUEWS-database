@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/malta
-    energy_use: records/profiles/traffic/lucy/malta
     human_activity: records/profiles/human-activity/lucy/malta
-    population: records/profiles/human-activity/lucy/malta

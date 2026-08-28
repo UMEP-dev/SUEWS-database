@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/georgia
-    energy_use: records/profiles/traffic/lucy/georgia
     human_activity: records/profiles/human-activity/lucy/georgia
-    population: records/profiles/human-activity/lucy/georgia

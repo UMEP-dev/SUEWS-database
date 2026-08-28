@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/singapore
-    energy_use: records/profiles/traffic/lucy/singapore
     human_activity: records/profiles/human-activity/lucy/singapore
-    population: records/profiles/human-activity/lucy/singapore

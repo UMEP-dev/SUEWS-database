@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/kenya
-    energy_use: records/profiles/traffic/lucy/kenya
     human_activity: records/profiles/human-activity/lucy/kenya
-    population: records/profiles/human-activity/lucy/kenya

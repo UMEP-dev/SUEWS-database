@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/trinidad-and-tobago
-    energy_use: records/profiles/traffic/lucy/trinidad-and-tobago
     human_activity: records/profiles/human-activity/lucy/trinidad-and-tobago
-    population: records/profiles/human-activity/lucy/trinidad-and-tobago

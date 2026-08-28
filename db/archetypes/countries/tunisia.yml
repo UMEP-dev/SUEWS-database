@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/tunisia
-    energy_use: records/profiles/traffic/lucy/tunisia
     human_activity: records/profiles/human-activity/lucy/tunisia
-    population: records/profiles/human-activity/lucy/tunisia

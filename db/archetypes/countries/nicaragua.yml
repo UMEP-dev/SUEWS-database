@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/nicaragua
-    energy_use: records/profiles/traffic/lucy/nicaragua
     human_activity: records/profiles/human-activity/lucy/nicaragua
-    population: records/profiles/human-activity/lucy/nicaragua

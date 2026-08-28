@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/slovenia
-    energy_use: records/profiles/traffic/lucy/slovenia
     human_activity: records/profiles/human-activity/lucy/slovenia
-    population: records/profiles/human-activity/lucy/slovenia

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/liberia
-    energy_use: records/profiles/traffic/lucy/liberia
     human_activity: records/profiles/human-activity/lucy/liberia
-    population: records/profiles/human-activity/lucy/liberia

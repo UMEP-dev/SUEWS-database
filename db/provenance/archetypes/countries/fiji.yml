@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/fiji
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:106755009cdc9d04aef83e67c5adc04597307dd32423fc3955b5df9d44c2ea43
+record_revision: sha256:7bdb8bfeaa9f22b03640d550d77a6bb22f8c6dd9c5db6f8cba9235137381ca1e
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/fiji: sha256:18df77b98db31f43b08c3e0acdc5cdad96950d9aff749f897b0644dad7750594
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -24,16 +24,16 @@ assessment:
       - component-traffic-lucy-fiji
       note: The composite is named Fiji, its country field reads Fiji, and both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-fiji
       - component-traffic-lucy-fiji
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/fiji, which
-        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/fiji, which
-        declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/fiji, which declares
+        attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes records/profiles/human-activity/lucy/fiji,
+        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr. The former energy_use
+        and population slots, which re-declared the same two records against heat-namespace fields they
+        never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -58,31 +58,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Fiji.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/oceania, which is the pattern the country defaults follow. The region reference
+        is not a uses component, so it is not documented as one here. No second country default exists
+        for Fiji.
   evidence:
   - id: component-traffic-lucy-fiji
     record: records/profiles/traffic/lucy/fiji
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place fiji and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      fiji and representativeness regional.
   - id: component-human-activity-lucy-fiji
     record: records/profiles/human-activity/lucy/fiji
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place fiji and representativeness regional.
-  scientific_note: Fiji's default takes Fiji's own rows, every one of them classed regional, which is
-    what a country default should do. The slot mapping, however, is not. Reading the composite against
-    the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/fiji, which
-    declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/fiji, which
-    declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:f40ad5160deb59025bdd68314baeac4600842a0447aaf612941f42123cd1089e
+  scientific_note: 'Fiji''s default takes Fiji''s own rows, every one of them classed regional, which
+    is what a country default should do. Each component attaches where its slot expects: the traffic record
+    to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:c625cfa7b8a16dbf2d9d0ea7528d1f2d2e512d4d2d3da6949330ce504e615712
 verification:
   attestations: []

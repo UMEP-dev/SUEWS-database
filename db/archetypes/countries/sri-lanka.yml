@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/sri-lanka
-    energy_use: records/profiles/traffic/lucy/sri-lanka
     human_activity: records/profiles/human-activity/lucy/sri-lanka
-    population: records/profiles/human-activity/lucy/sri-lanka

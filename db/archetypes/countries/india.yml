@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/india
-    energy_use: records/profiles/traffic/lucy/india
     human_activity: records/profiles/human-activity/lucy/india
-    population: records/profiles/human-activity/lucy/india

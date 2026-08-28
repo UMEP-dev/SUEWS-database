@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/united-kingdom
-    energy_use: records/profiles/traffic/lucy/united-kingdom
     human_activity: records/profiles/human-activity/lucy/united-kingdom
-    population: records/profiles/human-activity/lucy/united-kingdom

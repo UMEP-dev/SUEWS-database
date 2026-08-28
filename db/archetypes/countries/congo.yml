@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/congo
-    energy_use: records/profiles/traffic/lucy/congo
     human_activity: records/profiles/human-activity/lucy/congo
-    population: records/profiles/human-activity/lucy/congo

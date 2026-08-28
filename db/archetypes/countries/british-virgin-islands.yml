@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/british-virgin-islands
-    energy_use: records/profiles/traffic/lucy/british-virgin-islands
     human_activity: records/profiles/human-activity/lucy/british-virgin-islands
-    population: records/profiles/human-activity/lucy/british-virgin-islands

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/poland
-    energy_use: records/profiles/traffic/lucy/poland
     human_activity: records/profiles/human-activity/lucy/poland
-    population: records/profiles/human-activity/lucy/poland

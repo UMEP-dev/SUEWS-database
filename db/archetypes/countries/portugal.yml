@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/portugal
-    energy_use: records/profiles/traffic/lucy/portugal
     human_activity: records/profiles/human-activity/lucy/portugal
-    population: records/profiles/human-activity/lucy/portugal

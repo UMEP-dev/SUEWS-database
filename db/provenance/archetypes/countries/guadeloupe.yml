@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/guadeloupe
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:499e9256d1035004b8734816b354dd796d69b1e8f39564816dd3c5ddac6d27d5
+record_revision: sha256:f6040c03ed3adb785775f23bf905a2bc8b3a0d9c5b370e62ed093e32e8863574
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/guadeloupe: sha256:9291fa86b369bf336255e178d9dab7be65aef660183843f5c60dbdea39444678
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Guadeloupe, its country field reads Guadeloupe, and both agree with
         the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-guadeloupe
       - component-traffic-lucy-guadeloupe
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/guadeloupe,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/guadeloupe,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/guadeloupe, which
+        declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity slot takes
+        records/profiles/human-activity/lucy/guadeloupe, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/caribbean,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Guadeloupe.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/caribbean, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Guadeloupe.
   evidence:
   - id: component-traffic-lucy-guadeloupe
     record: records/profiles/traffic/lucy/guadeloupe
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place guadeloupe and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      guadeloupe and representativeness regional.
   - id: component-human-activity-lucy-guadeloupe
     record: records/profiles/human-activity/lucy/guadeloupe
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place guadeloupe and representativeness regional.
-  scientific_note: Guadeloupe's default takes Guadeloupe's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/guadeloupe,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/guadeloupe,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:1f2023728dc8f01c503fb3b33916f34cff1359564eabd33802bb50eb9b620005
+  scientific_note: 'Guadeloupe''s default takes Guadeloupe''s own rows, every one of them classed regional,
+    which is what a country default should do. Each component attaches where its slot expects: the traffic
+    record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:9c6769dae8abd4d6a243b8c699a87a53b65d88494572b805fe871905848b8ee5
 verification:
   attestations: []

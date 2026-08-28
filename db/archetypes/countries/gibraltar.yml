@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/gibraltar
-    energy_use: records/profiles/traffic/lucy/gibraltar
     human_activity: records/profiles/human-activity/lucy/gibraltar
-    population: records/profiles/human-activity/lucy/gibraltar

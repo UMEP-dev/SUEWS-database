@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/oman
-    energy_use: records/profiles/traffic/lucy/oman
     human_activity: records/profiles/human-activity/lucy/oman
-    population: records/profiles/human-activity/lucy/oman

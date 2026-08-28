@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/iran
-    energy_use: records/profiles/traffic/lucy/iran
     human_activity: records/profiles/human-activity/lucy/iran
-    population: records/profiles/human-activity/lucy/iran

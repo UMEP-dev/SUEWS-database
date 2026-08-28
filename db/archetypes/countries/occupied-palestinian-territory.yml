@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/occupied-palestinian-territory
-    energy_use: records/profiles/traffic/lucy/occupied-palestinian-territory
     human_activity: records/profiles/human-activity/lucy/occupied-palestinian-territory
-    population: records/profiles/human-activity/lucy/occupied-palestinian-territory

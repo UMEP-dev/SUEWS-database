@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/guadeloupe
-    energy_use: records/profiles/traffic/lucy/guadeloupe
     human_activity: records/profiles/human-activity/lucy/guadeloupe
-    population: records/profiles/human-activity/lucy/guadeloupe

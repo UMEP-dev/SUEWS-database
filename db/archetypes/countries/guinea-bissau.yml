@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/guinea-bissau
-    energy_use: records/profiles/traffic/lucy/guinea-bissau
     human_activity: records/profiles/human-activity/lucy/guinea-bissau
-    population: records/profiles/human-activity/lucy/guinea-bissau

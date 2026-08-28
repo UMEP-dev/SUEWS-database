@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/canada
-    energy_use: records/profiles/traffic/lucy/canada
     human_activity: records/profiles/human-activity/lucy/canada
-    population: records/profiles/human-activity/lucy/canada

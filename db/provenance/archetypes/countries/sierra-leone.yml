@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/sierra-leone
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:13a2782fca919eaa780ab663d39d76c9fbbb0c242212f528e0c3a4f9a6ae5d1e
+record_revision: sha256:1241cc81ece2feb58fd7e9abce2dbf0f5134af2e64febadf94b529bbd7dbb110
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/sierra-leone: sha256:fce487f39aace813396602c8aa4df15377c5603153056faa58e91b47f61fae93
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Sierra Leone, its country field reads Sierra Leone, and both agree
         with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-sierra-leone
       - component-traffic-lucy-sierra-leone
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/sierra-leone,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/sierra-leone,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/sierra-leone,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/sierra-leone, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/west-africa,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Sierra Leone.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/west-africa, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Sierra Leone.
   evidence:
   - id: component-traffic-lucy-sierra-leone
     record: records/profiles/traffic/lucy/sierra-leone
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place sierra-leone and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      sierra-leone and representativeness regional.
   - id: component-human-activity-lucy-sierra-leone
     record: records/profiles/human-activity/lucy/sierra-leone
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place sierra-leone and representativeness regional.
-  scientific_note: Sierra Leone's default takes Sierra Leone's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/sierra-leone,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/sierra-leone,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:6e8577f94ff96d74f5f1e5174ede42c87ccf8e29e45f04c31604d33b814af419
+  scientific_note: 'Sierra Leone''s default takes Sierra Leone''s own rows, every one of them classed
+    regional, which is what a country default should do. Each component attaches where its slot expects:
+    the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to
+    anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat or population
+    diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr
+    and heat.popprof_24hr; that omission is a documented property of the country defaults rather than
+    a silent slot mismatch. The components'' values remain subject to their own evidence assessments;
+    this review does not revisit them.'
+  evidence_revision: sha256:9cc9352757bd130bef2af6d4ca230ec1ea6b5812ca74742f91c371be98bb55f9
 verification:
   attestations: []

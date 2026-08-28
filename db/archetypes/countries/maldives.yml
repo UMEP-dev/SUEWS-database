@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/maldives
-    energy_use: records/profiles/traffic/lucy/maldives
     human_activity: records/profiles/human-activity/lucy/maldives
-    population: records/profiles/human-activity/lucy/maldives

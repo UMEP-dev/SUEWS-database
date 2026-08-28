@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/central-african-republic
-    energy_use: records/profiles/traffic/lucy/central-african-republic
     human_activity: records/profiles/human-activity/lucy/central-african-republic
-    population: records/profiles/human-activity/lucy/central-african-republic

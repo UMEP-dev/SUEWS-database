@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/paraguay
-    energy_use: records/profiles/traffic/lucy/paraguay
     human_activity: records/profiles/human-activity/lucy/paraguay
-    population: records/profiles/human-activity/lucy/paraguay

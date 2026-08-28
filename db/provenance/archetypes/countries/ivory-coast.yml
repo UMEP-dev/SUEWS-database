@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/ivory-coast
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:19e85e4bd4a29752f53d3895400c3cd86fdbc37299eb5b95a4bbf78a053ef436
+record_revision: sha256:a81535dc8ef183304e03b7466e38af7247f97c15b42d30e35942f286c88997ca
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/ivory-coast: sha256:167dd4dcdd711517c11e0293fbd494edda667082ac691d37757ea955fc36903f
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Ivory Coast, its country field reads Ivory Coast, and both agree with
         the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-ivory-coast
       - component-traffic-lucy-ivory-coast
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/ivory-coast,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/ivory-coast,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/ivory-coast,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/ivory-coast, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/west-africa,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Ivory Coast.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/west-africa, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Ivory Coast.
   evidence:
   - id: component-traffic-lucy-ivory-coast
     record: records/profiles/traffic/lucy/ivory-coast
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place ivory-coast and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      ivory-coast and representativeness regional.
   - id: component-human-activity-lucy-ivory-coast
     record: records/profiles/human-activity/lucy/ivory-coast
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place ivory-coast and representativeness regional.
-  scientific_note: Ivory Coast's default takes Ivory Coast's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/ivory-coast,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/ivory-coast,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:21ecd6fb5f8efa950e823b26f37c18fd5bd8ddc750b83fb481c4e15995a04710
+  scientific_note: 'Ivory Coast''s default takes Ivory Coast''s own rows, every one of them classed regional,
+    which is what a country default should do. Each component attaches where its slot expects: the traffic
+    record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to anthropogenic_emissions.co2.humactivity_24hr.
+    The archetype declares no anthropogenic heat or population diurnal profile, so exported defaults fall
+    back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr;
+    that omission is a documented property of the country defaults rather than a silent slot mismatch.
+    The components'' values remain subject to their own evidence assessments; this review does not revisit
+    them.'
+  evidence_revision: sha256:248bdaae72f789476cc565da19bdc9b7e5e728ba0eecd1e09b391ca37d290fc1
 verification:
   attestations: []

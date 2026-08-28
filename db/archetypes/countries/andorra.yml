@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/andorra
-    energy_use: records/profiles/traffic/lucy/andorra
     human_activity: records/profiles/human-activity/lucy/andorra
-    population: records/profiles/human-activity/lucy/andorra

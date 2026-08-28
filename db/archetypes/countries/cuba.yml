@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/cuba
-    energy_use: records/profiles/traffic/lucy/cuba
     human_activity: records/profiles/human-activity/lucy/cuba
-    population: records/profiles/human-activity/lucy/cuba

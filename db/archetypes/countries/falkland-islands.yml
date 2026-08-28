@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/falkland-islands
-    energy_use: records/profiles/traffic/lucy/falkland-islands
     human_activity: records/profiles/human-activity/lucy/falkland-islands
-    population: records/profiles/human-activity/lucy/falkland-islands

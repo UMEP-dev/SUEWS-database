@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/trinidad-and-tobago
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:7cbcb4e626aa6c753e38fc6a7c2d91553dd2533e9b2672df3aeb84333f0abaee
+record_revision: sha256:17f2e7d39804c0eaca2c4803e75d76f330d0c804719f5b27daa7e5c121bc6673
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/trinidad-and-tobago: sha256:bfd084199b4f41eb02d501fcce38f79f640a14bd9991613b5737cc86b3e03339
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Trinidad and Tobago, its country field reads Trinidad and Tobago, and
         both agree with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-trinidad-and-tobago
       - component-traffic-lucy-trinidad-and-tobago
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/trinidad-and-tobago,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/trinidad-and-tobago,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/trinidad-and-tobago,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/trinidad-and-tobago, which declares attaches_to
+        anthropogenic_emissions.co2.humactivity_24hr. The former energy_use and population slots, which
+        re-declared the same two records against heat-namespace fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/caribbean,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Trinidad and Tobago.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/caribbean, which is the pattern the country defaults follow. The region
+        reference is not a uses component, so it is not documented as one here. No second country default
+        exists for Trinidad and Tobago.
   evidence:
   - id: component-traffic-lucy-trinidad-and-tobago
     record: records/profiles/traffic/lucy/trinidad-and-tobago
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place trinidad-and-tobago and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      trinidad-and-tobago and representativeness regional.
   - id: component-human-activity-lucy-trinidad-and-tobago
     record: records/profiles/human-activity/lucy/trinidad-and-tobago
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place trinidad-and-tobago and representativeness regional.
-  scientific_note: Trinidad and Tobago's default takes Trinidad and Tobago's own rows, every one of them
-    classed regional, which is what a country default should do. The slot mapping, however, is not. Reading
-    the composite against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/trinidad-and-tobago,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/trinidad-and-tobago,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:142d3bb44668ec20f078acb37d759475459302702a0a39123d1fb968b9c0d6ad
+  scientific_note: 'Trinidad and Tobago''s default takes Trinidad and Tobago''s own rows, every one of
+    them classed regional, which is what a country default should do. Each component attaches where its
+    slot expects: the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity
+    record to anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat
+    or population diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles
+    for anthropogenic_emissions.heat.ahprof_24hr and heat.popprof_24hr; that omission is a documented
+    property of the country defaults rather than a silent slot mismatch. The components'' values remain
+    subject to their own evidence assessments; this review does not revisit them.'
+  evidence_revision: sha256:38eb62411515f9a90df2b4af88450d4a8084d4072389724e719e82a0e3d41776
 verification:
   attestations: []

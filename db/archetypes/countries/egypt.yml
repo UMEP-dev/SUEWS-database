@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/egypt
-    energy_use: records/profiles/traffic/lucy/egypt
     human_activity: records/profiles/human-activity/lucy/egypt
-    population: records/profiles/human-activity/lucy/egypt

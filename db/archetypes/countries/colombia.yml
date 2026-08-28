@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/colombia
-    energy_use: records/profiles/traffic/lucy/colombia
     human_activity: records/profiles/human-activity/lucy/colombia
-    population: records/profiles/human-activity/lucy/colombia

@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/lao-people-s-democratic-republic
-    energy_use: records/profiles/traffic/lucy/lao-people-s-democratic-republic
     human_activity: records/profiles/human-activity/lucy/lao-people-s-democratic-republic
-    population: records/profiles/human-activity/lucy/lao-people-s-democratic-republic

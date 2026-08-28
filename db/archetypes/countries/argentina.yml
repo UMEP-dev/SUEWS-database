@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/argentina
-    energy_use: records/profiles/traffic/lucy/argentina
     human_activity: records/profiles/human-activity/lucy/argentina
-    population: records/profiles/human-activity/lucy/argentina

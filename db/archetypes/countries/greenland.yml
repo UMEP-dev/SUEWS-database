@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/greenland
-    energy_use: records/profiles/traffic/lucy/greenland
     human_activity: records/profiles/human-activity/lucy/greenland
-    population: records/profiles/human-activity/lucy/greenland

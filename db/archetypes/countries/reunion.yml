@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/reunion
-    energy_use: records/profiles/traffic/lucy/reunion
     human_activity: records/profiles/human-activity/lucy/reunion
-    population: records/profiles/human-activity/lucy/reunion

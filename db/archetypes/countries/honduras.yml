@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/honduras
-    energy_use: records/profiles/traffic/lucy/honduras
     human_activity: records/profiles/human-activity/lucy/honduras
-    population: records/profiles/human-activity/lucy/honduras

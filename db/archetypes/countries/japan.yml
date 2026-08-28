@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/japan
-    energy_use: records/profiles/traffic/lucy/japan
     human_activity: records/profiles/human-activity/lucy/japan
-    population: records/profiles/human-activity/lucy/japan

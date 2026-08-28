@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/qatar
-    energy_use: records/profiles/traffic/lucy/qatar
     human_activity: records/profiles/human-activity/lucy/qatar
-    population: records/profiles/human-activity/lucy/qatar

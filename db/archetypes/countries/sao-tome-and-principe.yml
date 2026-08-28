@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/sao-tome-and-principe
-    energy_use: records/profiles/traffic/lucy/sao-tome-and-principe
     human_activity: records/profiles/human-activity/lucy/sao-tome-and-principe
-    population: records/profiles/human-activity/lucy/sao-tome-and-principe

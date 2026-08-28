@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/norfolk-island
-    energy_use: records/profiles/traffic/lucy/norfolk-island
     human_activity: records/profiles/human-activity/lucy/norfolk-island
-    population: records/profiles/human-activity/lucy/norfolk-island

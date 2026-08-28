@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/barbados
-    energy_use: records/profiles/traffic/lucy/barbados
     human_activity: records/profiles/human-activity/lucy/barbados
-    population: records/profiles/human-activity/lucy/barbados

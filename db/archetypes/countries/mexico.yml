@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/mexico
-    energy_use: records/profiles/traffic/lucy/mexico
     human_activity: records/profiles/human-activity/lucy/mexico
-    population: records/profiles/human-activity/lucy/mexico

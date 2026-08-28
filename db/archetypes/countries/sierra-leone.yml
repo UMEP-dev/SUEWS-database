@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/sierra-leone
-    energy_use: records/profiles/traffic/lucy/sierra-leone
     human_activity: records/profiles/human-activity/lucy/sierra-leone
-    population: records/profiles/human-activity/lucy/sierra-leone

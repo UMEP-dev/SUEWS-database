@@ -9,6 +9,4 @@ city: LUCY
 uses:
   profiles:
     traffic: records/profiles/traffic/lucy/republic-of-moldova
-    energy_use: records/profiles/traffic/lucy/republic-of-moldova
     human_activity: records/profiles/human-activity/lucy/republic-of-moldova
-    population: records/profiles/human-activity/lucy/republic-of-moldova

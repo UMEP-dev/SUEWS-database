@@ -1,7 +1,7 @@
 provenance_record: archetypes/countries/western-samoa
 review_type: composition
 provenance_format_version: '1.0'
-record_revision: sha256:730e229e704bca374473b8609a066236c5d2c23ca867afeb7eb76eea2d0c2ea7
+record_revision: sha256:7b8be09ce8f4f3417e499cafd4688c96d50416e2e74b5ad396e0a0b43b38e64a
 dependency_revisions:
   sources: {}
   places: {}
@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/traffic/lucy/western-samoa: sha256:800948aca8cc6b0f5c21444faeaa5742a4386e4ae5199f49471bf05db43324c3
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -25,16 +25,16 @@ assessment:
       note: The composite is named Western Samoa, its country field reads Western Samoa, and both agree
         with the entry path.
     target:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - component-human-activity-lucy-western-samoa
       - component-traffic-lucy-western-samoa
-      note: 'The composite''s own target, site, is correct, but the slot mapping does not match the components''
-        declared attachment points: the energy_use slot takes records/profiles/traffic/lucy/western-samoa,
-        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-        field that slot fills; the population slot takes records/profiles/human-activity/lucy/western-samoa,
-        which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-        field that slot fills.'
+      note: 'The composite''s target, site, is correct, and the slot mapping matches the components''
+        declared attachment points: the traffic slot takes records/profiles/traffic/lucy/western-samoa,
+        which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, and the human_activity
+        slot takes records/profiles/human-activity/lucy/western-samoa, which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr.
+        The former energy_use and population slots, which re-declared the same two records against heat-namespace
+        fields they never filled, have been removed.'
     values:
       conclusion: not_applicable
       note: The composite declares no parameter overrides of its own.
@@ -60,31 +60,29 @@ assessment:
     identity:
       conclusion: supported
       evidence_ids: *id001
-      note: The composite fills all four profile slots and defers everything else to archetypes/regions/oceania,
-        which is the pattern the country defaults follow. The region reference is not a uses component,
-        so it is not documented as one here. No second country default exists for Western Samoa.
+      note: The composite fills the traffic and human_activity profile slots and defers everything else
+        to archetypes/regions/oceania, which is the pattern the country defaults follow. The region reference
+        is not a uses component, so it is not documented as one here. No second country default exists
+        for Western Samoa.
   evidence:
   - id: component-traffic-lucy-western-samoa
     record: records/profiles/traffic/lucy/western-samoa
     role: component
-    note: Fills traffic, energy_use. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr,
-      place western-samoa and representativeness regional.
+    note: Fills traffic. The record declares attaches_to anthropogenic_emissions.co2.traffprof_24hr, place
+      western-samoa and representativeness regional.
   - id: component-human-activity-lucy-western-samoa
     record: records/profiles/human-activity/lucy/western-samoa
     role: component
-    note: Fills human_activity, population. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
+    note: Fills human_activity. The record declares attaches_to anthropogenic_emissions.co2.humactivity_24hr,
       place western-samoa and representativeness regional.
-  scientific_note: Western Samoa's default takes Western Samoa's own rows, every one of them classed regional,
-    which is what a country default should do. The slot mapping, however, is not. Reading the composite
-    against the components' own declarations, the energy_use slot takes records/profiles/traffic/lucy/western-samoa,
-    which declares attaches_to anthropogenic_emissions.co2.traffprof_24hr rather than the anthropogenic_emissions.heat.ahprof_24hr
-    field that slot fills, and the population slot takes records/profiles/human-activity/lucy/western-samoa,
-    which declares attaches_to anthropogenic_emissions.co2.humactivity_24hr rather than the anthropogenic_emissions.heat.popprof_24hr
-    field that slot fills. Two of the four profile fields therefore receive a series that was never derived
-    for them. This lives in the composite, so it is fixable without touching any component value, and
-    the same mapping recurs across the country defaults, so a maintainer should settle it once rather
-    than country by country. The components' values remain subject to their own evidence assessments;
-    this review does not revisit them.
-  evidence_revision: sha256:afa923fb72f47a0e2f8c9270a7170f9e58c9821f15f1334a2d0390478133cddf
+  scientific_note: 'Western Samoa''s default takes Western Samoa''s own rows, every one of them classed
+    regional, which is what a country default should do. Each component attaches where its slot expects:
+    the traffic record to anthropogenic_emissions.co2.traffprof_24hr and the human-activity record to
+    anthropogenic_emissions.co2.humactivity_24hr. The archetype declares no anthropogenic heat or population
+    diurnal profile, so exported defaults fall back to supy''s uniform 24-hour profiles for anthropogenic_emissions.heat.ahprof_24hr
+    and heat.popprof_24hr; that omission is a documented property of the country defaults rather than
+    a silent slot mismatch. The components'' values remain subject to their own evidence assessments;
+    this review does not revisit them.'
+  evidence_revision: sha256:5b6335616c37d5dfe4912616ce709d28557c8642c7ead869527473b79a6d6242
 verification:
   attestations: []
