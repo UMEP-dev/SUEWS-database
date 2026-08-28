@@ -4,7 +4,7 @@ provenance_format_version: '1.0'
 record_revision: sha256:54da694b18acee41a363bb2f9099af20b07274f64bdf05dd2991332f45efde15
 dependency_revisions:
   sources:
-    bjork2002: sha256:2dad767dc5670e146d3ae21f32e6bab856fd0ec5e2c8a769a9f20b69f7daf9f5
+    bjork2002: sha256:024a88604053742e2b4faa7342cffdbcfb5e5d314da9b8a0374a4df9e5862a48
     umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
     sweden: sha256:6ea90f635d11649358ce77ad84b1d35252306a1a3fba8ded2f78a4855d1590af
@@ -115,6 +115,6 @@ assessment:
     configuration, but they do not establish who first defined it. Removing the Björk attribution means the
     exact-edition question tracked separately does not block this record. No parameter value, material,
     thickness, insulation index or stable identity changes.
-  evidence_revision: sha256:e7cdfb92d46feda322902df61ad97d27f0a1605f1484b3dd02f7a453557aedef
+  evidence_revision: sha256:a65ae7243d784c483e6c89bac46c7cebb587e3203499d6dac9e4a8771931b2c7
 verification:
   attestations: []
