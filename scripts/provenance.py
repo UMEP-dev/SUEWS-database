@@ -286,14 +286,19 @@ def signoff_eligible(sidecar, record):
         ):
             return False
     review_type = _review_type(sidecar)
-    required_supported = (
-        ("values", "method") if review_type == "evidence" else ("method",)
-    )
-    if any(
-        findings.get(scope, {}).get("conclusion") != "supported"
-        for scope in required_supported
-    ):
+    if findings.get("method", {}).get("conclusion") != "supported":
         return False
+    if review_type == "evidence":
+        values_conclusion = findings.get("values", {}).get("conclusion")
+        values_supported = values_conclusion == "supported" or (
+            # A deliberate no-active-parameter adapter row is attestable
+            # as an adapter: values cannot be supported because there are
+            # no active values to support.
+            values_conclusion == "not_applicable"
+            and not record.get("parameters")
+        )
+        if not values_supported:
+            return False
     if review_type == "evidence" and _record_has_published_parameter_source(
         record, assessment
     ) and findings.get("source", {}).get("conclusion") != "supported":
