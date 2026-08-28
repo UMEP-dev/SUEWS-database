@@ -620,6 +620,32 @@ class ProvenanceSemanticTests(unittest.TestCase):
         self.assertTrue(any("parameter_source does not match" in e for e in errors))
         self.assertFalse(signoff_eligible(overclaim, record))
 
+    def test_empty_parameter_adapter_with_not_applicable_values_is_eligible(self):
+        record = deepcopy(RECORD)
+        record["parameters"] = {}
+        record["source"] = "unreferenced"
+        record["method"] = "assumed"
+        sidecar = fixture_sidecar()
+        sidecar["record_revision"] = canonical_revision(record)
+        sidecar["assessment"]["method"] = "assumed"
+        sidecar["assessment"]["findings"]["values"] = {
+            "conclusion": "not_applicable"
+        }
+        sidecar["assessment"]["evidence"][0]["role"] = "related"
+        sidecar["assessment"]["evidence_revision"] = evidence_revision(sidecar)
+        self.assertTrue(signoff_eligible(sidecar, record))
+
+        populated = deepcopy(RECORD)
+        populated_sidecar = fixture_sidecar()
+        populated_sidecar["record_revision"] = canonical_revision(populated)
+        populated_sidecar["assessment"]["findings"]["values"] = {
+            "conclusion": "not_applicable"
+        }
+        populated_sidecar["assessment"]["evidence_revision"] = evidence_revision(
+            populated_sidecar
+        )
+        self.assertFalse(signoff_eligible(populated_sidecar, populated))
+
     def test_derivation_self_reference_cycle_and_duplicate_mean_input(self):
         a_key = "records/ohm/calc-a"
         b_key = "records/ohm/calc-b"

@@ -314,8 +314,11 @@ editable claims. The state is computed in this order:
 3. an `agent_assessed` sidecar with contradicted or correction-required
    findings remains `agent_assessed` until the record or assessment is fixed;
 4. an assessment with only supported or not-applicable findings, supported
-   `method`, and (for evidence reviews) supported `values`, but without enough
-   current eligible attestations is `awaiting_signoff`;
+   `method`, and (for evidence reviews) supported `values` — or a
+   `not_applicable` `values` finding when the record's active `parameters`
+   mapping is empty, so a no-active-parameter adapter row is attestable as an
+   adapter — but without enough current eligible attestations is
+   `awaiting_signoff`;
 5. only the configured number of distinct eligible verifiers signing the
    current evidence and policy revisions produces `verified`.
 
