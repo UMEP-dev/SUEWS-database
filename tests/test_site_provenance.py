@@ -440,6 +440,12 @@ class SiteProvenanceTests(unittest.TestCase):
 
     def test_findings_legend_defines_rows_for_the_review_layer(self):
         page = self.render(MIXED)
+        # the definitions hang off the heading itself, not a second control
+        self.assertIn(
+            "<details class=\"legend\"><summary>"
+            "<h3>Assessment findings</h3>",
+            page,
+        )
         self.assertIn("What each row means in an evidence review", page)
         # written headings, not Title-cased schema keys
         self.assertIn("<th>Stored values</th>", page)

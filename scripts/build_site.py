@@ -824,24 +824,27 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   stroke-width: 1.4; stroke-linecap: round; }
 .signoff-help { color: var(--text-muted); font-size: 0.78rem;
   line-height: 1.45; margin: 0.55rem 0 0; }
-details.legend { margin: 0.1rem 0 1rem; }
-details.legend > summary { cursor: pointer; display: inline-flex;
-  align-items: center; gap: 0.32rem; color: var(--text-muted);
-  font-size: 0.82rem; list-style: none; padding: 0.15rem 0; }
+details.legend { margin: 1.35rem 0 0; }
+details.legend > summary { cursor: pointer; display: flex;
+  align-items: center; gap: 0.4rem; list-style: none; }
 details.legend > summary::-webkit-details-marker { display: none; }
-details.legend > summary:hover { color: var(--gold-ink); }
-details.legend > summary svg { width: 1.05rem; height: 1.05rem; fill: none;
-  stroke: currentColor; stroke-width: 1.4; stroke-linecap: round;
-  flex: 0 0 auto; }
-details.legend[open] > summary { margin-bottom: 0.5rem; }
+details.legend > summary h3 { margin: 0; }
+.legendcue { display: inline-flex; width: 1.1rem; height: 1.1rem;
+  flex: 0 0 auto; color: var(--text-muted); }
+.legendcue svg { width: 100%; height: 100%; fill: none; stroke: currentColor;
+  stroke-width: 1.4; stroke-linecap: round; }
+details.legend > summary:hover .legendcue,
+details.legend[open] > summary .legendcue { color: var(--gold-ink); }
+details.legend[open] > summary { margin-bottom: 0.7rem; }
 .legend-dl { margin: 0; padding: 0.8rem 1rem; border-radius: 10px;
   background: var(--bg-card); font-size: 0.85rem; line-height: 1.5; }
 .legend-dl dt { color: var(--text-primary); font-weight: 600; }
 .legend-dl dd { margin: 0.12rem 0 0.65rem; color: var(--text-secondary); }
 .legend-dl dd:last-child { margin-bottom: 0; }
-.legend-head { margin: 0.85rem 0 0.3rem; font-size: 0.72rem;
+.legend-head { margin: 0 0 0.35rem; font-size: 0.72rem;
   text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
   font-weight: 600; }
+.legend-dl + .legend-head { margin-top: 0.85rem; }
 .reviewhero { max-width: 760px; margin: 2.6rem 0 2rem; }
 .reviewhero h2 { max-width: 18ch; margin: 0 0 0.8rem; font-size: 2.15rem;
   line-height: 1.12; letter-spacing: -0.025em; }
@@ -1760,8 +1763,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 f"<tr><th>{esc(finding_label(scope, is_composition))}</th>"
                 f"<td class=\"{klass}\">{detail}</td></tr>"
             )
-        main.append("<h3>Assessment findings</h3>"
-                    + findings_legend(findings, is_composition)
+        main.append(findings_heading(findings, is_composition)
                     + "<table class=\"kv\">" + "".join(rows) + "</table>")
 
     derivation = assessment.get("derivation")
@@ -1866,8 +1868,8 @@ def finding_label(scope, is_composition):
     return table.get(scope, scope.replace("_", " ").title())
 
 
-def findings_legend(findings, is_composition):
-    """Definitions for the rows this page actually shows.
+def findings_heading(findings, is_composition):
+    """The "Assessment findings" heading, carrying its own definitions.
 
     Scoped to what is on the page rather than the whole schema: a reader
     opening it is asking about the table in front of them, and the optional
@@ -1893,14 +1895,20 @@ def findings_legend(findings, is_composition):
         if name in seen
     ]
     if not terms and not verdicts:
-        return ""
-    body = f"<dl class=\"legend-dl\">{''.join(terms)}</dl>" if terms else ""
+        return "<h3>Assessment findings</h3>"
+    layer = "a composition review" if is_composition else "an evidence review"
+    body = f"<p class=\"legend-head\">What each row means in {layer}</p>"
+    if terms:
+        body += f"<dl class=\"legend-dl\">{''.join(terms)}</dl>"
     if verdicts:
         body += ("<p class=\"legend-head\">Conclusions on this page</p>"
                  f"<dl class=\"legend-dl\">{''.join(verdicts)}</dl>")
-    layer = "a composition review" if is_composition else "an evidence review"
-    return ("<details class=\"legend\"><summary>" + INFO_ICON
-            + f"What each row means in {layer}</summary>{body}</details>")
+    return (
+        "<details class=\"legend\"><summary><h3>Assessment findings</h3>"
+        "<span class=\"legendcue\" aria-label=\"What each row means\" "
+        f"title=\"What each row means\">{INFO_ICON}</span></summary>"
+        f"{body}</details>"
+    )
 
 
 def review_guide_page(policy):
