@@ -131,6 +131,113 @@ COMPOSITION_FINDING_LABEL = {
     "identity": "Completeness and uniqueness",
 }
 
+# Evidence pages used to Title-case the raw finding key, so a reviewer met
+# bare words like "Name" and "Identity" and had to know the schema to read
+# them. Both layers now carry written labels.
+EVIDENCE_FINDING_LABEL = {
+    "name": "Record name",
+    "target": "Parameter target",
+    "values": "Stored values",
+    "source": "Parameter source",
+    "place": "Observation place",
+    "representativeness": "Value representativeness",
+    "applicable_scale": "Applicable scale",
+    "urban_setting": "Intra-urban setting",
+    "method": "Production method",
+    "identity": "Record identity",
+}
+
+# One sentence per scope, per review layer: (evidence review, composition
+# review). The two layers share the machine-stable keys but ask different
+# questions of them, which is exactly what a reader cannot guess from the key.
+# Canonical mapping: docs/FORMAT.md, "Assessment and verification states".
+FINDING_GLOSS = {
+    "name": (
+        "Whether the record’s name honestly describes the values it holds.",
+        "Whether the composite’s name honestly describes what has been "
+        "assembled.",
+    ),
+    "target": (
+        "Whether the declared supy path is the right insertion point for this "
+        "parameter fragment.",
+        "Whether the declared supy path is the right insertion point for the "
+        "assembled fragment.",
+    ),
+    "values": (
+        "Whether the stored numbers are what the cited source states or "
+        "derives.",
+        "Whether the composite declares parameter values of its own. Normally "
+        "not applicable: its numbers come from its components, which are "
+        "reviewed as records.",
+    ),
+    "source": (
+        "Whether the cited source genuinely supports these values, and covers "
+        "every exported leaf.",
+        "Whether the stated reason for assembling these particular components "
+        "is sound.",
+    ),
+    "place": (
+        "Whether the declared place is where the values were actually observed "
+        "or derived.",
+        "Whether the composite is applicable to the place it claims.",
+    ),
+    "representativeness": (
+        "How far the values travel (site, city, regional or generic), and "
+        "whether that claim is inflated.",
+        "How far the assembled composite travels as a whole.",
+    ),
+    "applicable_scale": (
+        "The spatial unit the value describes (neighbourhood, land cover, "
+        "facet or material), independent of where it was measured.",
+        "The spatial unit the composite describes.",
+    ),
+    "urban_setting": (
+        "The intra-urban environment the source establishes (city centre, "
+        "central business district or suburban). Independent of "
+        "representativeness and of applicable scale.",
+        "Whether the composite applies to the intra-urban setting it declares.",
+    ),
+    "method": (
+        "Whether the declared production method (measured, fitted, literature, "
+        "calculated or assumed) is the one the evidence supports.",
+        "Whether the selected components are mapped to the right slots and "
+        "seasons.",
+    ),
+    "identity": (
+        "Whether this record duplicates another, and whether it sits at the "
+        "right granularity.",
+        "Whether the composite is complete, and distinct from every other "
+        "composite.",
+    ),
+}
+
+# A coloured cell is as opaque as an unlabelled row: green does not say whether
+# a scope was checked or skipped, and amber does not separate "the source says
+# otherwise" from "a maintainer must choose".
+CONCLUSION_ORDER = [
+    "supported",
+    "not_applicable",
+    "contradicted",
+    "correction_required",
+    "unresolved",
+    "source_inaccessible",
+    "curation_required",
+]
+CONCLUSION_GLOSS = {
+    "supported": "The evidence read for this assessment supports the claim.",
+    "not_applicable": "The scope does not apply to this entry.",
+    "contradicted": "The evidence contradicts the claim as stored.",
+    "correction_required": "The entry needs a fix before it can be signed off.",
+    "unresolved": "The available evidence does not settle the question.",
+    "source_inaccessible": "A source that would settle it could not be read.",
+    "curation_required": "The evidence leaves a choice that a maintainer must "
+                         "make.",
+}
+
+INFO_ICON = ('<svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">'
+             '<circle cx="8" cy="8" r="6.5"/>'
+             '<path d="M8 7v4 M8 4.5h.01"/></svg>')
+
 # A report control that follows the reader down every page. Scaffolding for
 # the phase where the site is still being shaped and structural problems are
 # found faster than they can be filed -- not the furniture of a finished site.
@@ -717,6 +824,24 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   stroke-width: 1.4; stroke-linecap: round; }
 .signoff-help { color: var(--text-muted); font-size: 0.78rem;
   line-height: 1.45; margin: 0.55rem 0 0; }
+details.legend { margin: 0.1rem 0 1rem; }
+details.legend > summary { cursor: pointer; display: inline-flex;
+  align-items: center; gap: 0.32rem; color: var(--text-muted);
+  font-size: 0.82rem; list-style: none; padding: 0.15rem 0; }
+details.legend > summary::-webkit-details-marker { display: none; }
+details.legend > summary:hover { color: var(--gold-ink); }
+details.legend > summary svg { width: 1.05rem; height: 1.05rem; fill: none;
+  stroke: currentColor; stroke-width: 1.4; stroke-linecap: round;
+  flex: 0 0 auto; }
+details.legend[open] > summary { margin-bottom: 0.5rem; }
+.legend-dl { margin: 0; padding: 0.8rem 1rem; border-radius: 10px;
+  background: var(--bg-card); font-size: 0.85rem; line-height: 1.5; }
+.legend-dl dt { color: var(--text-primary); font-weight: 600; }
+.legend-dl dd { margin: 0.12rem 0 0.65rem; color: var(--text-secondary); }
+.legend-dl dd:last-child { margin-bottom: 0; }
+.legend-head { margin: 0.85rem 0 0.3rem; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
+  font-weight: 600; }
 .reviewhero { max-width: 760px; margin: 2.6rem 0 2rem; }
 .reviewhero h2 { max-width: 18ch; margin: 0 0 0.8rem; font-size: 2.15rem;
   line-height: 1.12; letter-spacing: -0.025em; }
@@ -934,6 +1059,7 @@ table.matrix td.mt { background: repeating-linear-gradient(135deg,
   .layout > .rail { order: 2; }
   .placerows { columns: 1; }
   table.params td:first-child { width: auto; }
+  table.kv th { width: auto; }
 }
 """
 
@@ -1630,17 +1756,13 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 links.append(f"<a href=\"{esc(url)}\">issue #{esc(issue)}</a>")
             if links:
                 detail += "<br>" + " · ".join(links)
-            scope_label = (
-                COMPOSITION_FINDING_LABEL.get(scope, scope.replace("_", " ").title())
-                if is_composition
-                else scope.replace("_", " ").title()
-            )
             rows.append(
-                f"<tr><th>{esc(scope_label)}</th>"
+                f"<tr><th>{esc(finding_label(scope, is_composition))}</th>"
                 f"<td class=\"{klass}\">{detail}</td></tr>"
             )
-        main.append("<h3>Assessment findings</h3><table class=\"kv\">"
-                    + "".join(rows) + "</table>")
+        main.append("<h3>Assessment findings</h3>"
+                    + findings_legend(findings, is_composition)
+                    + "<table class=\"kv\">" + "".join(rows) + "</table>")
 
     derivation = assessment.get("derivation")
     if derivation:
@@ -1682,9 +1804,7 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
                 info = (
                     f" <a class=\"reviewinfo\" href=\"{esc(guide_url)}\" "
                     "aria-label=\"Review procedure\" title=\"Review procedure\">"
-                    "<svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" "
-                    "focusable=\"false\"><circle cx=\"8\" cy=\"8\" r=\"6.5\"/>"
-                    "<path d=\"M8 7v4 M8 4.5h.01\"/></svg></a>"
+                    + INFO_ICON + "</a>"
                 )
                 guide_shown = True
             rail.append(
@@ -1738,6 +1858,49 @@ REVIEW_GUIDE_JS = r"""<script>
   context.hidden = false;
 })();
 </script>"""
+
+
+def finding_label(scope, is_composition):
+    """The written row heading for a finding key, per review layer."""
+    table = COMPOSITION_FINDING_LABEL if is_composition else EVIDENCE_FINDING_LABEL
+    return table.get(scope, scope.replace("_", " ").title())
+
+
+def findings_legend(findings, is_composition):
+    """Definitions for the rows this page actually shows.
+
+    Scoped to what is on the page rather than the whole schema: a reader
+    opening it is asking about the table in front of them, and the optional
+    `applicable_scale` and `urban_setting` scopes appear on a small minority
+    of entries. Progressive disclosure rather than a tooltip, because a
+    hover title is invisible on a phone and undiscoverable to a verifier who
+    arrives on a record page from a sign-off link.
+    """
+    terms = []
+    for scope in findings:
+        gloss = FINDING_GLOSS.get(scope)
+        if not gloss:
+            continue
+        terms.append(
+            f"<dt>{esc(finding_label(scope, is_composition))}</dt>"
+            f"<dd>{esc(gloss[1 if is_composition else 0])}</dd>"
+        )
+    seen = {finding.get("conclusion") for finding in findings.values()}
+    verdicts = [
+        f"<dt>{esc(name.replace('_', ' '))}</dt>"
+        f"<dd>{esc(CONCLUSION_GLOSS[name])}</dd>"
+        for name in CONCLUSION_ORDER
+        if name in seen
+    ]
+    if not terms and not verdicts:
+        return ""
+    body = f"<dl class=\"legend-dl\">{''.join(terms)}</dl>" if terms else ""
+    if verdicts:
+        body += ("<p class=\"legend-head\">Conclusions on this page</p>"
+                 f"<dl class=\"legend-dl\">{''.join(verdicts)}</dl>")
+    layer = "a composition review" if is_composition else "an evidence review"
+    return ("<details class=\"legend\"><summary>" + INFO_ICON
+            + f"What each row means in {layer}</summary>{body}</details>")
 
 
 def review_guide_page(policy):

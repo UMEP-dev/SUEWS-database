@@ -438,6 +438,33 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Sign off composition on GitHub", reviewed)
         self.assertIn("review_type=Composition", reviewed)
 
+    def test_findings_legend_defines_rows_for_the_review_layer(self):
+        page = self.render(MIXED)
+        self.assertIn("What each row means in an evidence review", page)
+        # written headings, not Title-cased schema keys
+        self.assertIn("<th>Stored values</th>", page)
+        self.assertIn("<th>Record identity</th>", page)
+        self.assertIn("<th>Production method</th>", page)
+        self.assertNotIn("<th>Values</th>", page)
+        self.assertNotIn("<th>Identity</th>", page)
+        # the conclusions on the page are defined too
+        self.assertIn("Conclusions on this page", page)
+        self.assertIn("The evidence read for this assessment supports", page)
+        # a scope this entry does not declare stays off the page
+        self.assertNotIn("The intra-urban environment the source establishes",
+                         page)
+
+        sidecar = deepcopy(self.sidecars[MIXED])
+        sidecar["provenance_record"] = COMPOSITE
+        sidecar["review_type"] = "composition"
+        sidecar["assessment"]["method"] = "assembled"
+        candidate = dict(self.sidecars)
+        candidate[COMPOSITE] = sidecar
+        composite = self.render(COMPOSITE, candidate)
+        self.assertIn("What each row means in a composition review", composite)
+        self.assertIn("mapped to the right slots and seasons", composite)
+        self.assertNotIn("the one the evidence supports", composite)
+
     def test_region_pages_explain_fallback_and_shared_assembly(self):
         page = self.render(REGION)
         self.assertIn("Legacy regional fallback", page)
