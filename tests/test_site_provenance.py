@@ -438,23 +438,22 @@ class SiteProvenanceTests(unittest.TestCase):
         self.assertIn("Sign off composition on GitHub", reviewed)
         self.assertIn("review_type=Composition", reviewed)
 
-    def test_findings_legend_defines_rows_for_the_review_layer(self):
+    def test_each_finding_row_defines_itself_for_its_review_layer(self):
         page = self.render(MIXED)
-        # the definitions hang off the heading itself, not a second control
+        # written headings, not Title-cased schema keys
+        self.assertIn("<summary>Stored values<span", page)
+        self.assertIn("<summary>Record identity<span", page)
+        self.assertIn("<summary>Production method<span", page)
+        self.assertNotIn("<summary>Values<span", page)
+        self.assertNotIn("<summary>Identity<span", page)
+        # each row carries its own definition
         self.assertIn(
-            "<details class=\"legend\"><summary>"
-            "<h3>Assessment findings</h3>",
+            "<p class=\"rowdefp\">Whether the stored numbers are what the "
+            "cited source states or derives.</p>",
             page,
         )
-        self.assertIn("What each row means in an evidence review", page)
-        # written headings, not Title-cased schema keys
-        self.assertIn("<th>Stored values</th>", page)
-        self.assertIn("<th>Record identity</th>", page)
-        self.assertIn("<th>Production method</th>", page)
-        self.assertNotIn("<th>Values</th>", page)
-        self.assertNotIn("<th>Identity</th>", page)
-        # the conclusions on the page are defined too
-        self.assertIn("Conclusions on this page", page)
+        # the conclusions on the page are defined below the table
+        self.assertIn("What these conclusions mean", page)
         self.assertIn("The evidence read for this assessment supports", page)
         # a scope this entry does not declare stays off the page
         self.assertNotIn("The intra-urban environment the source establishes",
@@ -467,7 +466,6 @@ class SiteProvenanceTests(unittest.TestCase):
         candidate = dict(self.sidecars)
         candidate[COMPOSITE] = sidecar
         composite = self.render(COMPOSITE, candidate)
-        self.assertIn("What each row means in a composition review", composite)
         self.assertIn("mapped to the right slots and seasons", composite)
         self.assertNotIn("the one the evidence supports", composite)
 

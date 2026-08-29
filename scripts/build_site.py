@@ -824,27 +824,32 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   stroke-width: 1.4; stroke-linecap: round; }
 .signoff-help { color: var(--text-muted); font-size: 0.78rem;
   line-height: 1.45; margin: 0.55rem 0 0; }
-details.legend { margin: 1.35rem 0 0; }
-details.legend > summary { cursor: pointer; display: flex;
-  align-items: center; gap: 0.4rem; list-style: none; }
-details.legend > summary::-webkit-details-marker { display: none; }
-details.legend > summary h3 { margin: 0; }
-.legendcue { display: inline-flex; width: 1.1rem; height: 1.1rem;
-  flex: 0 0 auto; color: var(--text-muted); }
+details.rowdef > summary { cursor: pointer; list-style: none;
+  display: inline-flex; align-items: center; gap: 0.28rem; }
+details.rowdef > summary::-webkit-details-marker { display: none; }
+details.rowdef > summary:hover { color: var(--text-primary); }
+.rowdefp { margin: 0.3rem 0 0; padding: 0.45rem 0.6rem; border-radius: 8px;
+  background: var(--bg-card); color: var(--text-secondary);
+  font-size: 0.82rem; line-height: 1.45; font-weight: 400; }
+table.kv.findings th { padding-top: 0.34rem; }
+.legendcue { display: inline-flex; width: 0.95rem; height: 0.95rem;
+  flex: 0 0 auto; color: var(--text-muted); opacity: 0.75; }
 .legendcue svg { width: 100%; height: 100%; fill: none; stroke: currentColor;
   stroke-width: 1.4; stroke-linecap: round; }
-details.legend > summary:hover .legendcue,
-details.legend[open] > summary .legendcue { color: var(--gold-ink); }
-details.legend[open] > summary { margin-bottom: 0.7rem; }
+details.rowdef > summary:hover .legendcue,
+details[open] > summary .legendcue { color: var(--gold-ink); opacity: 1; }
+details.legend { margin: -0.4rem 0 1.2rem; }
+details.legend > summary { cursor: pointer; list-style: none;
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  color: var(--text-muted); font-size: 0.8rem; }
+details.legend > summary::-webkit-details-marker { display: none; }
+details.legend > summary:hover { color: var(--gold-ink); }
+details.legend[open] > summary { margin-bottom: 0.5rem; }
 .legend-dl { margin: 0; padding: 0.8rem 1rem; border-radius: 10px;
   background: var(--bg-card); font-size: 0.85rem; line-height: 1.5; }
 .legend-dl dt { color: var(--text-primary); font-weight: 600; }
 .legend-dl dd { margin: 0.12rem 0 0.65rem; color: var(--text-secondary); }
 .legend-dl dd:last-child { margin-bottom: 0; }
-.legend-head { margin: 0 0 0.35rem; font-size: 0.72rem;
-  text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted);
-  font-weight: 600; }
-.legend-dl + .legend-head { margin-top: 0.85rem; }
 .reviewhero { max-width: 760px; margin: 2.6rem 0 2rem; }
 .reviewhero h2 { max-width: 18ch; margin: 0 0 0.8rem; font-size: 2.15rem;
   line-height: 1.12; letter-spacing: -0.025em; }
@@ -1760,11 +1765,12 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             if links:
                 detail += "<br>" + " · ".join(links)
             rows.append(
-                f"<tr><th>{esc(finding_label(scope, is_composition))}</th>"
+                f"<tr><th>{finding_row_heading(scope, is_composition)}</th>"
                 f"<td class=\"{klass}\">{detail}</td></tr>"
             )
-        main.append(findings_heading(findings, is_composition)
-                    + "<table class=\"kv\">" + "".join(rows) + "</table>")
+        main.append("<h3>Assessment findings</h3>"
+                    + "<table class=\"kv findings\">" + "".join(rows)
+                    + "</table>" + conclusions_legend(findings))
 
     derivation = assessment.get("derivation")
     if derivation:
@@ -1868,46 +1874,48 @@ def finding_label(scope, is_composition):
     return table.get(scope, scope.replace("_", " ").title())
 
 
-def findings_heading(findings, is_composition):
-    """The "Assessment findings" heading, carrying its own definitions.
+def finding_row_heading(scope, is_composition):
+    """A finding row heading that can define itself.
 
-    Scoped to what is on the page rather than the whole schema: a reader
-    opening it is asking about the table in front of them, and the optional
-    `applicable_scale` and `urban_setting` scopes appear on a small minority
-    of entries. Progressive disclosure rather than a tooltip, because a
-    hover title is invisible on a phone and undiscoverable to a verifier who
-    arrives on a record page from a sign-off link.
+    The definition belongs on the term it defines. A reader stuck on
+    "Representativeness" is looking at that row, not at the section title,
+    and the two review layers ask different questions of the same
+    machine-stable key. Progressive disclosure rather than a hover tooltip:
+    a title attribute is invisible on a phone and undiscoverable to a
+    verifier who arrives on a record page straight from a sign-off link.
     """
-    terms = []
-    for scope in findings:
-        gloss = FINDING_GLOSS.get(scope)
-        if not gloss:
-            continue
-        terms.append(
-            f"<dt>{esc(finding_label(scope, is_composition))}</dt>"
-            f"<dd>{esc(gloss[1 if is_composition else 0])}</dd>"
-        )
+    label = esc(finding_label(scope, is_composition))
+    gloss = FINDING_GLOSS.get(scope)
+    if not gloss:
+        return label
+    return (
+        "<details class=\"rowdef\"><summary>" + label
+        + f"<span class=\"legendcue\">{INFO_ICON}</span></summary>"
+        f"<p class=\"rowdefp\">{esc(gloss[1 if is_composition else 0])}</p>"
+        "</details>"
+    )
+
+
+def conclusions_legend(findings):
+    """Define the conclusions this page actually reports.
+
+    The coloured cell is as opaque as an unlabelled row: green does not say
+    whether a scope was checked or skipped, and amber does not separate
+    "the source says otherwise" from "a maintainer must choose".
+    """
     seen = {finding.get("conclusion") for finding in findings.values()}
-    verdicts = [
+    terms = [
         f"<dt>{esc(name.replace('_', ' '))}</dt>"
         f"<dd>{esc(CONCLUSION_GLOSS[name])}</dd>"
         for name in CONCLUSION_ORDER
         if name in seen
     ]
-    if not terms and not verdicts:
-        return "<h3>Assessment findings</h3>"
-    layer = "a composition review" if is_composition else "an evidence review"
-    body = f"<p class=\"legend-head\">What each row means in {layer}</p>"
-    if terms:
-        body += f"<dl class=\"legend-dl\">{''.join(terms)}</dl>"
-    if verdicts:
-        body += ("<p class=\"legend-head\">Conclusions on this page</p>"
-                 f"<dl class=\"legend-dl\">{''.join(verdicts)}</dl>")
+    if not terms:
+        return ""
     return (
-        "<details class=\"legend\"><summary><h3>Assessment findings</h3>"
-        "<span class=\"legendcue\" aria-label=\"What each row means\" "
-        f"title=\"What each row means\">{INFO_ICON}</span></summary>"
-        f"{body}</details>"
+        "<details class=\"legend\"><summary>What these conclusions mean"
+        f"<span class=\"legendcue\">{INFO_ICON}</span></summary>"
+        f"<dl class=\"legend-dl\">{''.join(terms)}</dl></details>"
     )
 
 
