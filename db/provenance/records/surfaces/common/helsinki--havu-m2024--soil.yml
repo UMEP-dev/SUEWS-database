@@ -1,21 +1,23 @@
 provenance_record: records/surfaces/common/helsinki--havu-m2024--soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:49a0eb3a46417aa6da38fccb847231f2747e742e0390bb6771e1fed9ebc92c1f
+record_revision: sha256:f7154b7557a016cbc24a3e3a2c0228ee62b110e735630fa98cd6de659f68f846
 dependency_revisions:
   sources:
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T00:40:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -28,16 +30,20 @@ assessment:
       - havu-table-b1
       note: The source uses the parameter for the same SUEWS target represented by the record.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: Table B.1 supports the broad soil depth/storage class but does not publish the complete stored
-        tuple at exact precision; hydraulic conductivity and soil density are absent.
+      - archived-grass-soil
+      note: The Zenodo SUEWS_Soil code 70 row directly stores 349 mm depth, 150 mm capacity, 0.0005
+        conductivity and 1.16 density. Table B.1 independently publishes the rounded grass depth and
+        capacity as 0.35 and 0.15 m.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The article does not contain an exact source for every stored field.
+      - archived-grass-soil
+      note: The citable Zenodo dataset is the direct source for the complete exact tuple. The associated
+        article supports its rounded depth/capacity and the observation-site context.
     place:
       conclusion: supported
       evidence_ids:
@@ -47,12 +53,16 @@ assessment:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The declared evidence reach does not exceed the source scope.
+      note: Site is the supported evidence reach because Appendix B.4 derives the grass parameterisation
+        from one urban-lawn eddy-covariance site; later Helsinki model use does not make it a city-wide
+        determination.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The transformation from published rounded soil properties to the stored tuple is not documented.
+      - archived-grass-soil
+      note: Literature records direct transcription of the citable archived input row, checked against
+        the associated publication; the database performs no transformation or refit.
     identity:
       conclusion: supported
       evidence_ids:
@@ -67,10 +77,24 @@ assessment:
       label: Table B.1, site characteristics and model parameters used for Helsinki
       url: https://doi.org/10.1016/j.ufug.2024.128261
       page: 11
-      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
-        for the Helsinki simulations.
-  scientific_note: 'The accessible paper is incomplete for this record: some soil values are corroborated,
-    but the complete tuple and exact transformation need the model input archive or curator documentation.'
-  evidence_revision: sha256:cbba054ff71aaf025c8428b2fa010d82690563d5202cad8c6daf1b7c55abb2e5
+      note: Publishes Grass soil depth 0.35 m and SWCmax 0.15 m; Appendix B.4 describes the single urban-lawn
+        observation site used for the parameterisation.
+  - id: archived-grass-soil
+    source: havu-m2024-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 70
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Stores depth 349 mm, capacity 150 mm, conductivity 0.0005 and density 1.16.
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 860 and 865
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Assigns SoilTypeCode 70 to both the Helsinki lawn and mixed-low-vegetation surface rows.
+  scientific_note: The original citable archive directly supplies the complete executable code-70 soil
+    tuple and proves its use by the Helsinki lawn and mixed-low-vegetation configurations. Table B.1
+    independently corroborates the rounded depth and capacity. No parameter value or stable identity is
+    changed; representativeness is narrowed to the observation site that supports the parameterisation.
+  evidence_revision: sha256:f564a869b3b77fe65c4c4a0d1efbeffd0d5b43630ecdce9231d5d474d4cb7acf
 verification:
   attestations: []
