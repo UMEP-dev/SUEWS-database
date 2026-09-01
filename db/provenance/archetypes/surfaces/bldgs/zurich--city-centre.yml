@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:31:58Z'
@@ -183,6 +183,6 @@ assessment:
     and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
     a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:0aea70d410f2d2bb8bf0234f682de27eb86f94693ea300826b10329a66f1065f
+  evidence_revision: sha256:7cf7ebaa6dbe2ebf3e20fab3d702eb5570cf93517b9bb7eaf16fc526ec8fb63e
 verification:
   attestations: []
