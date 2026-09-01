@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/paved/london--ward2016--emissivity: sha256:f0cffcd3bb177b2f0dcb0babd5751c9752e62ffb34c3870bf07594b6ec6de6dc
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
     records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
-    records/surfaces/paved/se-england--ward2016--water-storage: sha256:c0c01a66787193a97ce81a7f1451d3f1427dad1c3794f22259d63f734525f030
+    records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:43:17Z'
@@ -208,6 +208,6 @@ assessment:
     do not declare ward2016. The fixture identity is explicit rather than a physical construction claim;
     the other components'' own values and any ''sample run'' labels remain subject to their own evidence
     assessments, which this review does not revisit.'
-  evidence_revision: sha256:cc9c6403f3b4b79f695b3c9e217883d82516cc8837b949e6b53402ddde72506a
+  evidence_revision: sha256:757d4d3d92899d2baadbe05c6fd6c7f058410b219d8bd12e50ab1c9a2304b563
 verification:
   attestations: []
