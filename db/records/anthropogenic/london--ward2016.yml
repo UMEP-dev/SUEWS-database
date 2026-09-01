@@ -4,7 +4,7 @@ target: anthropogenic_emissions
 name: Central London
 place: london
 origin: London, UK
-representativeness: city
+representativeness: site
 source: ward2016
 legacy_id: 53240050
 parameters:

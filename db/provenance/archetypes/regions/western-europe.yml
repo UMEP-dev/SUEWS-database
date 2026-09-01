@@ -14,7 +14,7 @@ dependency_revisions:
     archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016: sha256:81734ed14e16afdb5267323ae1fefc0c9e6c928f24838ccae7c146975eb05a87
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
-    records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
+    records/anthropogenic/london--ward2016: sha256:4d91b0d594c19a3dea098349fa1b6fff53564889c1d884bb39351c912e129f33
     records/conductance/generic--ward2016: sha256:be9d6ebb9be42658cc9d407d4210b35d96d25164c99a01b6ae9c9dc44260b262
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
@@ -325,6 +325,6 @@ assessment:
     by exchanging the two records because each holds only one day-type, thirteen single-city components
     carrying a regional default, and two base temperatures declared on the composite with no recorded
     origin. These remaining questions need a curator.'
-  evidence_revision: sha256:5d2e308c28f6728c1074a6288a4aef3c138c00a11823bc382dc1c3825c3de022
+  evidence_revision: sha256:9a745bf011179cdb3cd7ca2cc214ae83314800832a4be16459b368cadb5dbcbb
 verification:
   attestations: []

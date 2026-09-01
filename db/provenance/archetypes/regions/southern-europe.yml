@@ -14,7 +14,7 @@ dependency_revisions:
     archetypes/surfaces/grass/zurich-switzerland--grass-stagakis-et-al-2024: sha256:b1f1df363bcdbb9b3cda1011702591d67d31a185f279e55192ac54d717c93918
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
-    records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
+    records/anthropogenic/london--ward2016: sha256:4d91b0d594c19a3dea098349fa1b6fff53564889c1d884bb39351c912e129f33
     records/conductance/generic--ward2016: sha256:be9d6ebb9be42658cc9d407d4210b35d96d25164c99a01b6ae9c9dc44260b262
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
@@ -326,6 +326,6 @@ assessment:
     components standing for a region and two unsourced base temperatures declared on the composite itself,
     the file needs a curator to confirm or replace the Zurich selection rather than any change to the
     components'' values.'
-  evidence_revision: sha256:d95da4f631b46d98aa91a529bedcd2044882ae2ce3f276c8808af32eb9c8fe45
+  evidence_revision: sha256:a0d384b723145ecdf30693b631514793e27db10f746970bc0c58297939cf0d43
 verification:
   attestations: []

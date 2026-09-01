@@ -17,7 +17,7 @@ dependency_revisions:
     archetypes/surfaces/grass/beijing-china--grass: sha256:421460379062cb1c1041af8fd60f51e6d99a7947b45a9c06413310031a1fd7d2
     archetypes/surfaces/paved/beijing--city-centre: sha256:93698df964bdb43e4e592980da8979cfaee0793da142f11154e1cfc0a6f3126a
     archetypes/surfaces/water/swindon-uk--water: sha256:790b5f7ac12d8cd6a75896d855bae8bd3973662978ccc0b4f0d9d51136c86ca3
-    records/anthropogenic/london--ward2016: sha256:a69626e310383c26f2e6db1367482e452cd1b63c1abe372c0d7d8431f9c6a2aa
+    records/anthropogenic/london--ward2016: sha256:4d91b0d594c19a3dea098349fa1b6fff53564889c1d884bb39351c912e129f33
     records/conductance/generic--ward2016: sha256:be9d6ebb9be42658cc9d407d4210b35d96d25164c99a01b6ae9c9dc44260b262
     records/irrigation/vancouver--unreferenced: sha256:77e762761c9f8735a8e6ec545dbdb321567564814b5efb1f96ad0673560e06cf
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
@@ -333,6 +333,6 @@ assessment:
     series and lindberg2013 only a holiday series the four cells cannot be put right by swapping them.
     The single-city representativeness and the two unsourced base temperatures round out a file that needs
     curation of its selection rather than correction of any value.
-  evidence_revision: sha256:1b0e1d600383125bb7e60c44624c615225a4df54dcb3f0d9401941530c4c2652
+  evidence_revision: sha256:f1b3f36b9f76c2f49000a2935eea7d80c8704775f649a17f488a436d2915bbb5
 verification:
   attestations: []
