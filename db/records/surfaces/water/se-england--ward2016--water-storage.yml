@@ -2,9 +2,9 @@ record: records/surfaces/water/se-england--ward2016--water-storage
 schema_version: '2026.5'
 target: land_cover.water
 name: Water
-place: se-england
+place: swindon
 origin: SE England
-representativeness: regional
+representativeness: site
 source: ward2018
 legacy_id: 43240047
 parameters:
