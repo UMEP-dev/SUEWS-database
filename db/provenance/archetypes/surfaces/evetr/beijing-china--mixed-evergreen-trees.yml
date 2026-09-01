@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
-    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
+    records/surfaces/common/beijing--zheng-y2023--biogen-co2: sha256:fe8409dd99c1473eb1c77b6c8235bdec852ba64aa82bce5169dbb5dea43f75ea
     records/surfaces/evetr/beijing--ward2016--lai: sha256:4f2da50cd4b7f932be9f7abe2ce849b8836c0ed568ca4169cc520d10828c9715
     records/surfaces/evetr/beijing--zheng-y2023--lai-power: sha256:499ec6a2d278839b2eb1aa2c6361d80992e53aa74718b4c55c16a8e050f41b79
     records/surfaces/evetr/beijing--zheng-y2023--max-conductance: sha256:e5e11d17f2310b8bece516fa99d0705e9896f2dff31043831b2b1d56c1981469
@@ -223,6 +223,6 @@ assessment:
     species site-scale value applied by the released model in Beijing, and the biogenic CO2 component is a
     Viikki site compilation inside this city-classed composite, so their scale needs explicit composition
     curation.'
-  evidence_revision: sha256:45d6573e0428fe4fa205bac72e5f8545e196ca9557d1633899fd137210ec3b4d
+  evidence_revision: sha256:4ca322942b5a977ccbd96a11230ea3af5c521df7374b2dde53dde960ed10b8ab
 verification:
   attestations: []
