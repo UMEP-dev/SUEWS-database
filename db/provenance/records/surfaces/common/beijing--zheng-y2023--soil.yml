@@ -10,7 +10,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
+    records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:9b7a7ba97161724ad573b1cd68b7150518e4a382752a5a2f210e49dbd4b2eed8
 assessment:
   status: agent_assessed
   assessed_at: '2026-09-01T22:17:45Z'
@@ -185,6 +185,6 @@ assessment:
     72 in the Beijing model, while the Havu archive selects the matching code-72 tuple for its distinct Helsinki
     street-tree surfaces. Retaining both stable records preserves those separate configuration lineages while
     the related-record link makes their shared tuple explicit. No path, origin, legacy lineage or value is changed.'
-  evidence_revision: sha256:4c8737cfcf81438bf578a1f51edd0bdb690e661fd5ef4895a39cd220d0558c14
+  evidence_revision: sha256:a75ec8f54d056dc65ddb939cbfe827ff96e8bdca2efc06622195241d5fbb3671
 verification:
   attestations: []
