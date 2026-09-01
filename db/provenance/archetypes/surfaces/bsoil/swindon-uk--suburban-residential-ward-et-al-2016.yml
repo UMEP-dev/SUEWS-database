@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:71d99f8b507c5f2a47663d322aa15ed1a2ca3d4ccbed4664a81b1239efa521dc
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
-    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:2cbc1a83b31231fd6bb5092852a2b878cfb59618bb9d9cebf5f4e6dc74805d7c
+    records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
 assessment:
@@ -218,6 +218,6 @@ assessment:
     the same place: the exported surface evidence is regional and covers both towns; the London construction
     mismatch is non-exporting but remains a composition-provenance defect. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:cc59fb89a40d798d387a3540b23e4e03e45acce293daf08179b0558abb818b47
+  evidence_revision: sha256:e0c76e015fd18d1a5b229d3f25e858696c794394a48a16744cb3aca177687ae4
 verification:
   attestations: []
