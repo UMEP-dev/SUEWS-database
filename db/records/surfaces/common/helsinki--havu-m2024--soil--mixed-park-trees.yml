@@ -5,7 +5,8 @@ name: Mixed Park trees
 place: helsinki
 origin: Helsinki
 representativeness: city
-source: havu-m2024
+source: havu-m2024-data
+method: literature
 legacy_id: 22240063
 parameters:
   soil_depth: 1000
