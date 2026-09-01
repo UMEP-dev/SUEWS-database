@@ -1,7 +1,7 @@
 record: records/surfaces/grass/se-england--havu-m2024--lai
 schema_version: '2026.5'
 target: land_cover.grass
-name: Grass (SE England)
+name: Grass
 place: helsinki
 origin: SE England
 representativeness: city
