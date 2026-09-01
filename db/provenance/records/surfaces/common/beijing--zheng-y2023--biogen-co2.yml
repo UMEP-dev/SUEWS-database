@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/common/beijing--zheng-y2023--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:618b1f7ef2c056ea2a846a695bd8b64b7d36927d25c0ca1679f5ee471efeb60e
+record_revision: sha256:fe8409dd99c1473eb1c77b6c8235bdec852ba64aa82bce5169dbb5dea43f75ea
 dependency_revisions:
   sources:
     bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
@@ -12,12 +12,13 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T16:58:31Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T21:52:31Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -44,20 +45,20 @@ assessment:
         Bellucco Table 4 publishes alpha and theta for the Helsinki local model; and Jarvi Eq. 11 documents
         the 0.6 minimum. Zheng Table 2 rounds beta to 8.4 while corroborating the respiration coefficients.'
     source:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - havu-viikki-tree-fit
       - bellucco-helsinki-light-response
       - jarvi-finnish-minimum-respiration
       - zheng-article
       - zheng-model-archive
-      note: No single publication owns the tuple. Havu et al. publish the Viikki Tilia beta and respiration
-        coefficients; Bellucco et al. publish alpha and theta for a different Helsinki EC scope; Jarvi
-        et al. document the Finnish minimum respiration; and Zheng et al. compile the row and apply it
-        in Beijing. The record schema has only one source field, so replacing zheng-y2023 with any one
-        of the parameter sources would hide the other roles.
+      note: Parameter-level provenance now assigns Havu et al. to the Viikki Tilia beta and respiration
+        coefficients, Bellucco et al. to alpha and theta, and Jarvi et al. to the Finnish minimum respiration.
+        Zheng et al. remain the record-envelope source because their archived run publishes the exact compiled
+        tuple and applies it in Beijing.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/330
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1021
     place:
       conclusion: supported
       evidence_ids:
@@ -75,15 +76,16 @@ assessment:
         for the single Viikki Tilia street-tree site; neither that fit nor the other Finnish inputs establishes
         city-wide representativeness.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - havu-viikki-tree-fit
       - bellucco-helsinki-light-response
       - jarvi-finnish-minimum-respiration
       - zheng-article
       - zheng-model-archive
-      note: The row combines fitted coefficients, an externally imposed respiration floor, and a later
-        compilation/application. One method label would collapse those distinct production roles.
+      note: The record-level literature method describes adoption of the published Zheng run configuration.
+        Parameter overrides identify the Bellucco and Havu coefficients as fitted and the Jarvi respiration
+        floor as an explicit model assumption based on winter soil-chamber observations.
     identity:
       conclusion: supported
       evidence_ids:
@@ -94,6 +96,10 @@ assessment:
   - id: havu-viikki-tree-fit
     source: havu2022
     role: parameter_source
+    parameter_paths:
+    - parameters.beta_bio_co2
+    - parameters.resp_a
+    - parameters.resp_b
     locators:
     - kind: section
       label: Sect. 2.1, Site description
@@ -109,6 +115,9 @@ assessment:
   - id: bellucco-helsinki-light-response
     source: bellucco2017
     role: parameter_source
+    parameter_paths:
+    - parameters.alpha_bio_co2
+    - parameters.theta_bio_co2
     locators:
     - kind: section
       label: Sect. 3.2 and Table 4, Helsinki local model
@@ -119,6 +128,8 @@ assessment:
   - id: jarvi-finnish-minimum-respiration
     source: jarvi2019
     role: parameter_source
+    parameter_paths:
+    - parameters.min_res_bioco2
     locators:
     - kind: equation
       label: Eq. 11 and accompanying text
@@ -168,13 +179,13 @@ assessment:
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
   scientific_note: >-
-    The active place and scope now identify the strongest supported evidence location,
-    the Viikki Tilia site in Helsinki, rather than the Beijing application. The stable Beijing path,
-    origin lineage, target, values, source and legacy identity remain unchanged. The tuple is still mixed:
-    Havu et al. publish beta and the respiration coefficients for Viikki; Bellucco et al. publish alpha
-    and theta for another Helsinki EC scope; Jarvi et al. document a central-Finland respiration floor;
-    and Zheng et al. compile and apply the row. The one-source and one-method fields cannot express those
-    roles without overclaiming, so source and method remain curation required.
-  evidence_revision: sha256:28fbd45527f4ca137416b780671db81f9a85246a11039cdcd34718e435b6e435
+    The active place and scope identify the strongest supported evidence location, the Viikki Tilia site
+    in Helsinki, rather than the Beijing application. The stable Beijing path, origin lineage, target,
+    values, envelope source and legacy identity remain unchanged. Parameter-level provenance now records
+    the mixed tuple without overclaiming: Havu et al. publish the fitted beta and respiration coefficients
+    for Viikki; Bellucco et al. publish the fitted alpha and theta for another Helsinki EC scope; Jarvi et
+    al. set the 0.6 respiration floor from winter soil-chamber evidence; and Zheng et al. compile and apply
+    the exact row in Beijing.
+  evidence_revision: sha256:07eefae1594ace28cc6c4fbb4e08e540b06dd4b53fa305b3c9536b263c8f5e2e
 verification:
   attestations: []
