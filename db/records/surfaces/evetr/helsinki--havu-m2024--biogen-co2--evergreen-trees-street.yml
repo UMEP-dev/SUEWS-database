@@ -6,6 +6,7 @@ place: helsinki
 origin: Helsinki
 representativeness: city
 source: havu-m2024
+method: literature
 legacy_id: 30240015
 parameters:
   alpha_bio_co2: 0.031
@@ -14,6 +15,37 @@ parameters:
   resp_a: 0.78
   resp_b: 0.08
   min_res_bioco2: 0.6
+parameter_provenance:
+  parameters.alpha_bio_co2:
+    source: bellucco2017
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.beta_bio_co2:
+    source: havu-m2024
+    method: fitted
+    place: finland
+    representativeness: site
+  parameters.theta_bio_co2:
+    source: bellucco2017
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.resp_a:
+    source: havu-m2024-data
+    method: literature
+    place: helsinki
+    representativeness: site
+  parameters.resp_b:
+    source: havu-m2024-data
+    method: literature
+    place: helsinki
+    representativeness: site
+  parameters.min_res_bioco2:
+    source: jarvi2019
+    method: assumed
+    place: finland
+    representativeness: site
 legacy:
   alpha_enh: -999
   beta_enh: -999
