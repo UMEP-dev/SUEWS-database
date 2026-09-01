@@ -6,6 +6,7 @@ place: helsinki
 origin: Helsinki
 representativeness: city
 source: havu-m2024
+method: literature
 legacy_id: 32240034
 parameters:
   lai:

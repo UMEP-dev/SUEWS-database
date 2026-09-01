@@ -1,76 +1,98 @@
 provenance_record: records/surfaces/dectr/helsinki--havu-m2024--lai-power
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
+record_revision: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
 dependency_revisions:
   sources:
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T01:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - havu-table-b1
+      - published-deciduous-lai
       note: The label identifies the published parameter class or model configuration.
     target:
       conclusion: supported
       evidence_ids:
-      - havu-table-b1
+      - published-deciduous-lai
+      - archived-deciduous-lai
       note: The source uses the parameter for the same SUEWS target represented by the record.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - havu-table-b1
-      note: Table B.1 supports the broad soil depth/storage class but does not publish the complete stored
-        tuple at exact precision; hydraulic conductivity and soil density are absent.
+      - published-deciduous-lai
+      - archived-deciduous-lai
+      note: Supplement Table 1 publishes the four updated deciduous-tree coefficients, and archived vegetation
+        codes 831-834 store the same values with LAIEq 1 exactly.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - havu-table-b1
-      note: The article does not contain an exact source for every stored field.
+      - published-deciduous-lai
+      - archived-deciduous-lai
+      note: Havu et al. directly publish the deciduous-tree tuple in the supplement. The citable Zenodo
+        model input independently proves that the published tuple is the one used by every Helsinki
+        deciduous-tree configuration.
     place:
       conclusion: supported
       evidence_ids:
-      - havu-table-b1
-      note: The place agrees with the source scope or is explicitly generic.
+      - archived-deciduous-lai
+      note: The archived vegetation rows identify the tuple as a Helsinki model configuration.
     representativeness:
       conclusion: supported
       evidence_ids:
-      - havu-table-b1
-      note: The declared evidence reach does not exceed the source scope.
+      - archived-deciduous-lai
+      note: City records the reach of the archived Helsinki model configuration, not a claim that the
+        coefficients were independently fitted across the city.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - havu-table-b1
-      note: The transformation from published rounded soil properties to the stored tuple is not documented.
+      - published-deciduous-lai
+      - archived-deciduous-lai
+      note: Literature records direct transcription of the published and archived parameterisation; no
+        undocumented transformation or new database fit is required.
     identity:
       conclusion: supported
       evidence_ids:
-      - havu-table-b1
+      - published-deciduous-lai
+      - archived-deciduous-lai
       note: Stable path, target, source and values identify one retained database record.
   evidence:
-  - id: havu-table-b1
+  - id: published-deciduous-lai
     source: havu-m2024
     role: parameter_source
     locators:
-    - kind: table
-      label: Table B.1, site characteristics and model parameters used for Helsinki
+    - kind: supplementary
+      label: Supplement Table 1, updated LAI parameterisation for deciduous trees
       url: https://doi.org/10.1016/j.ufug.2024.128261
-      page: 11
-      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
-        for the Helsinki simulations.
-  scientific_note: 'The accessible paper is incomplete for this record: some soil values are corroborated,
-    but the complete tuple and exact transformation need the model input archive or curator documentation.'
-  evidence_revision: sha256:c8a80c8358ab0ca6398842d888de2ef331a5be61d9337d503ce49d0462032d94
+      page: '1'
+      note: Publishes growth coefficients 0.04 and 0.002 and senescence coefficients -1.5 and 0.0005 for
+        the updated deciduous-tree parameterisation.
+  - id: archived-deciduous-lai
+    source: havu-m2024-data
+    role: validation
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, deciduous-tree codes 831-834
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Applies LAIEq 1 with growth_lai 0.04, growth_gdd 0.002, senescence_lai -1.5 and
+        senescence_sdd 0.0005 to all archived Helsinki deciduous-tree configurations.
+  scientific_note: The apparent source gap was caused by a generic audit note that discussed soil fields
+    rather than this LAI record. Havu Supplement Table 1 directly publishes the complete deciduous-tree
+    tuple, and the citable archive applies it unchanged to codes 831-834. No value, path, place or legacy
+    identity is changed.
+  evidence_revision: sha256:44f6794c0bcc54bdab8fe5621d8493ad6366a4f8ec1cf9cd0d7a41267a608010
 verification:
   attestations: []

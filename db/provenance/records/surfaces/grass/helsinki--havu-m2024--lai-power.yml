@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:8cf7e4c1e01c5b2b843f4aaba2865d1a654e829e02d04dab114d936557c070b8
+    records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-25T21:20:00Z'
@@ -93,6 +93,6 @@ assessment:
     Zenodo input explicitly applies the four values to grass, while the article explains their
     deciduous-tree lineage. Using the dataset as the record source makes both roles visible without
     inventing a grass derivation or requiring an author statement to confirm what the archived input says.
-  evidence_revision: sha256:4931369cfb90e8c959d8060f94d0a4d5beeb07507de4987c06a178b0e2fb02a6
+  evidence_revision: sha256:159d8375f03d12182024b88dfefb21e0d239a656dbdc2805d85fde72b947fc64
 verification:
   attestations: []
