@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024: sha256:5d701b680f6c6762e9c9a877b540063da3ced7523ade8c3a3429cb77fa56e535
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
-    records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation: sha256:b49b78b6fc69a49c09929d0f2a1662c258eb6b5bf73ea6f04f327fc0558d4f3b
+    records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation: sha256:63e2172abc245bee146a4959dee0783abb1dd065063b7a6a6e14331a4b9aa506
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:186a3e2a4293c1356710940d1f3db34188da2015a8411e790ce9ee519d40f71a
     records/surfaces/grass/helsinki--havu-m2024--max-conductance: sha256:6df14291eededff1bdb72916a54bf805872885ad1932b600823102b164fe480b
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
@@ -199,6 +199,6 @@ assessment:
     retain legacy SE England text, and the label sits correctly on a land_cover.grass target because grass
     is the only low-vegetation tile in the land-cover set. The drainage component is now explicitly generic
     literature evidence, with the archived Helsinki reuse recorded in its own sidecar.'
-  evidence_revision: sha256:932231ae43f5b56c350b7f1a23fbe68b1fa47e79d36651fd3fa80b241f627fc8
+  evidence_revision: sha256:f26e86152139304eca1f0dffb0b872b4445ddc251081907d0c2b2da4065d432f
 verification:
   attestations: []
