@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:016ceb6a34b9f9542130d9656ceec37ae74f6029ca327881f3e2f3713d51a898
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:870dfa98f10b10faf624b0e0f327c14e135d31dfc1af8e344557594086dc13f1
-    records/surfaces/bldgs/swindon--ward2016--albedo: sha256:4e9c4de714d48f7b591e5c4b2dd4846422695e5804f81b9931880fa071a2df9a
+    records/surfaces/bldgs/swindon--ward2016--albedo: sha256:11c0461914fd8a326abd9b18d7fb9a7193a4b326c39734d427fb82dc872c709a
     records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
 assessment:
   status: curation_required
@@ -182,6 +182,6 @@ assessment:
     a roof form, which is a maintainer''s decision and not one this review should make on resemblance.
     Nothing here requires a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:b55c1d19fce63aa043ceb44536b224cafe011ae03c3b1758b66a9e81a138276a
+  evidence_revision: sha256:b1f5b2c28d5a8b0dd80ee417a57be074f4aa4aaa478ce6a677b691e854aee859
 verification:
   attestations: []
