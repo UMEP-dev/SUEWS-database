@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/water/london--unreferenced--water-state: sha256:d5d8d0e1697ae1ff5d09de3f0f9ba7a6fe9e11f39cbb74405d3c1343fa76699f
     records/surfaces/water/london--ward2016--water-state: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
-    records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
+    records/surfaces/water/se-england--ward2016--drainage: sha256:d9e49dbeabe123d7ac1bc7718c4767e1339543ca92eaa1a54fdd0c05f2951b26
     records/surfaces/water/se-england--ward2016--emissivity: sha256:17399aeffff540adfeb938fdc3e142b33154caaa2caa80c4a16c8d95f0390525
     records/surfaces/water/se-england--ward2016--water-storage: sha256:feb52bb520718ad7bd88170804ad7984a319000e843d327ca37e8320b7785acc
 assessment:
@@ -202,6 +202,6 @@ assessment:
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:d855621c141f5878091f34e012227164cff65b7643338541884a57e1bd4229c4
+  evidence_revision: sha256:f6427d73c66436fc95b4d711114b76f3eca28fa2f1217ceaf8a97e10f7014a1e
 verification:
   attestations: []

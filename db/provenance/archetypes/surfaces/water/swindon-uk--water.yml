@@ -11,7 +11,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--water: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:9ef3c1ebaf3b579d3ad75ba398c9b4f165f7b43adb4c525b899e1724d84c167a
     records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
-    records/surfaces/water/se-england--ward2016--drainage: sha256:68106442637194364fbe96fb65bc9324422caf026966a530933ba35bcc62e39f
+    records/surfaces/water/se-england--ward2016--drainage: sha256:d9e49dbeabe123d7ac1bc7718c4767e1339543ca92eaa1a54fdd0c05f2951b26
     records/surfaces/water/se-england--ward2016--emissivity: sha256:17399aeffff540adfeb938fdc3e142b33154caaa2caa80c4a16c8d95f0390525
     records/surfaces/water/se-england--ward2016--water-storage: sha256:feb52bb520718ad7bd88170804ad7984a319000e843d327ca37e8320b7785acc
     records/surfaces/water/swindon--ward2016--water-state: sha256:341ab479d4f14db8cc46eded061580593d60c8631e6d143e5eafc8a77ea8b9f5
@@ -188,6 +188,6 @@ assessment:
     marked as unused in the study it cites. Whether such a value belongs in the database at all is a question
     for that record''s own evidence review. As a selection it is beyond argument, because it is the only
     Swindon water-state record there is and it agrees with the composite on place and class.'
-  evidence_revision: sha256:b1a4635bdb36612eb69da8d9a3cfd1293f4fe57dbf00532443f5bd763ee5e97e
+  evidence_revision: sha256:cbf842631787dceb9b3eb7f318ac387152b3a0bcac639526306ad4eaa2dd9c96
 verification:
   attestations: []
