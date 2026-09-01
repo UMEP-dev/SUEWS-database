@@ -4,7 +4,7 @@ target: land_cover.bldgs
 name: Suburban residential
 place: swindon
 origin: Swindon, UK
-representativeness: city
+representativeness: site
 source: ward2016
 legacy_id: 41240042
 parameters:
