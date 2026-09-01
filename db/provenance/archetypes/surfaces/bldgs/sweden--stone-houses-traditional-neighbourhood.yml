@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -173,6 +173,6 @@ assessment:
     its siblings either, which is consistent with a later addition. Whether the duplication is intended,
     and which of the two should change, is a curation decision; nothing here calls for a component value
     to change, and the components'' own values remain subject to their evidence assessments.'
-  evidence_revision: sha256:7ec2daf51ce76b6fb1814b67723dddb1079b94ad6b305e4af1f248c4c5b77bcb
+  evidence_revision: sha256:4e96233e07adb7e9ed4eae931472b83be25b76604f7c30d1ecde57f9aa1fcbf0
 verification:
   attestations: []

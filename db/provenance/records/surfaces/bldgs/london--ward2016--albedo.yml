@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/bldgs/london--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:f8b0eac61f764acabfc842196a2f6029401993e03d0ea6010f372c88c2dd786f
+record_revision: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -9,13 +9,14 @@ dependency_revisions:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T21:00:45Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -43,11 +44,11 @@ assessment:
       - ward-table-2
       note: The place agrees with the source scope or is explicitly generic.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      note: The record is classed site, matching the paper's use of the value at the central London evaluation
+        site; the publication does not establish city-wide evidence reach.
     method:
       conclusion: supported
       evidence_ids:
@@ -69,8 +70,9 @@ assessment:
       page: 8
       note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
         explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:7b3d4f8e6344915237224a5e8c323879cec38edd6bc3bfaf973ea240528a625b
+  scientific_note: The publication supports the albedo value used at the central London evaluation site.
+    The record is therefore classed site rather than city; emissivity rows separately need original-source
+    role separation.
+  evidence_revision: sha256:b7cd8c2d4301a8f7e593d125fbb9729357b79306a4851ea7cfc66d79b914a2bb
 verification:
   attestations: []

@@ -6,7 +6,7 @@ alb:
   ref:
     ID: ward2016
     DOI: 10.1016/j.uclim.2016.05.001
-    desc: london, city
+    desc: london, site
 emis:
   value: 0.95
   ref:
