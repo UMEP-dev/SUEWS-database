@@ -1,23 +1,25 @@
 provenance_record: records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:02b3ebf998c10d4ca984ae3cd4c3ec274a743f0c2246373298fe0ee1eba284d8
+record_revision: sha256:7c0161f18c7cc2225b24ee841c56f36b452e61c87a9f198fa297c933fa83154c
 dependency_revisions:
   sources:
     bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
   places:
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T23:10:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -35,34 +37,41 @@ assessment:
       - havu-table-b1
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: Havu Table B.1/Appendix B supports beta and respiration coefficients; Bellucco supports alpha
-        and theta; Järvi supports the 0.6 floor.
+      note: Havu Table B.1 and Appendix B.5 publish the calculated deciduous-tree and lawn beta and respiration
+        combination; Bellucco supports alpha and theta; Järvi supports the 0.6 floor.
     source:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: No single publication owns the tuple. Field-level source roles must distinguish Havu, Bellucco
-        and Järvi before sign-off.
+      note: Parameter-level provenance now assigns the calculated beta and respiration combination to Havu,
+        alpha and theta to Bellucco, and the minimum respiration floor to Järvi.
     place:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The place agrees with the source scope or is explicitly generic.
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: The calculated combination remains a Helsinki configuration; leaf overrides locate Bellucco's
+        light-response fit at its Helsinki site and the respiration floor at its central-Finland site.
     representativeness:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The declared evidence reach does not exceed the source scope.
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: The Bellucco fit and Järvi floor are site-scoped rather than inheriting the city reach of the
+        calculated Helsinki configuration.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: The tuple mixes fitted, calculated-combination and adopted literature parameters; one record-level
-        method cannot describe every field.
+      note: The record-level literature method describes adoption of the published Havu configuration.
+        Parameter overrides identify beta and respiration as calculated combinations, alpha and theta as
+        fitted, and the winter respiration floor as an explicit model assumption.
     identity:
       conclusion: supported
       evidence_ids:
@@ -77,8 +86,8 @@ assessment:
       label: Table B.1, site characteristics and model parameters used for Helsinki
       url: https://doi.org/10.1016/j.ufug.2024.128261
       page: 11
-      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
-        for the Helsinki simulations.
+      note: Publishes the combined deciduous-tree and lawn inputs; Appendix B.5 explains that these parameters
+        were calculated by weighting the component vegetation classes.
     parameter_paths:
     - parameters.beta_bio_co2
     - parameters.resp_a
@@ -91,7 +100,7 @@ assessment:
       label: Table 4, Helsinki local light-response parameters
       url: https://doi.org/10.1016/j.agrformet.2016.12.011
       page: 6
-      note: Publishes alpha 0.031 and theta 0.723 for a Helsinki EC scope.
+      note: Publishes alpha 0.031 and theta 0.723 from one Botanical Garden eddy-covariance sector in Helsinki.
     parameter_paths:
     - parameters.alpha_bio_co2
     - parameters.theta_bio_co2
@@ -103,12 +112,15 @@ assessment:
       label: Equation 11 and Appendix B, minimum respiration
       url: https://doi.org/10.1029/2018JD029576
       page: 5
-      note: Publishes the 0.6 minimum respiration floor.
+      note: Publishes the 0.6 minimum respiration floor from winter chamber measurements at a boreal-forest
+        site in central Finland.
     parameter_paths:
     - parameters.min_res_bioco2
-  scientific_note: Every field now has an original-source locator, but the canonical record still presents
-    the mixed tuple as wholly Havu-derived. Apply parameter-level source/method metadata in a separate
-    correction review.
-  evidence_revision: sha256:d5b93e969e7fc62a3ec0d34692ce774d1980d2a9479e121572992d716074d4f2
+  scientific_note: Parameter-level provenance now records the mixed tuple without changing any value or
+    stable identity. Havu publishes the calculated deciduous-tree and lawn beta and respiration combination,
+    Bellucco publishes alpha and theta for one Helsinki site, and Järvi publishes the 0.6 floor from a
+    central-Finland site. Leaf scope overrides preserve those production scopes without changing the
+    later Helsinki city configuration.
+  evidence_revision: sha256:f153e4c4a2d477a72783233893a859b372d5a6ed74885c80965d0ef8dc5232ca
 verification:
   attestations: []
