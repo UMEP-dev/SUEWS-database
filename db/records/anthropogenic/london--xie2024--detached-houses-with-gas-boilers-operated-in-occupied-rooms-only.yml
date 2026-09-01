@@ -4,8 +4,9 @@ target: anthropogenic_emissions
 name: Detached houses with gas boilers operated in occupied rooms only
 place: london
 origin: London
-representativeness: city
+representativeness: site
 source: xie2024
+method: fitted
 legacy_id: 53240014
 parameters:
   context:
