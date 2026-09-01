@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
-    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
+    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T17:31:58Z'
@@ -224,6 +224,6 @@ assessment:
     London [sample run]', a building-fabric entry with roof and wall layers, which sits oddly on a bare-soil
     surface but contributes nothing to the exported fragment, because scripts/export_record.py keeps the
     construction slot out of it.
-  evidence_revision: sha256:6a1849c9d0b157dd9a0fda38ea418c62f6934664647f7c9899eb5084e16c6278
+  evidence_revision: sha256:66c13073896f5935287fb1d8544e2339344f452d4018750338da3f3187706de7
 verification:
   attestations: []

@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
-    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
+    records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T17:31:58Z'
@@ -218,6 +218,6 @@ assessment:
     the same place: the exported surface evidence is regional and covers both towns; the London construction
     mismatch is non-exporting but remains a composition-provenance defect. It does mean that neither bare-soil
     typology rests on anything locally measured, and that a correction to any one component reaches both.'
-  evidence_revision: sha256:e0c76e015fd18d1a5b229d3f25e858696c794394a48a16744cb3aca177687ae4
+  evidence_revision: sha256:b42d30e93c730772c879e751894edf45b16e0783b3aac88305a21ccfc4780889
 verification:
   attestations: []
