@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
-    records/surfaces/dectr/se-england--ward2016--drainage: sha256:ee68ecf5fb01f073e0366ef5f1f701e7ffdce65ce5a83e382f8aa85677f3fbf9
+    records/surfaces/dectr/se-england--ward2016--drainage: sha256:5b45ef55373ff342dcfb8a87e25a04bcab1d167a218166b2be7fe007e360348d
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:4ef25b84129165ceb5be3ac8945325d577e8859546e202bf4675b1d806eec80f
@@ -217,6 +217,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:ad413e3cdcc0b479a142b2fabc678a6df98484feae5544e971f2128508b2349a
+  evidence_revision: sha256:7e8964339cd511f5c23f64f0f5c953a37b932e0cd206fe7a7550f673a5a722da
 verification:
   attestations: []
