@@ -1,7 +1,7 @@
 provenance_record: records/anthropogenic/london--xie2024--low-rise-flats-with-air-source-heat-pumps-operated-in-occupied-rooms-only
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e5c0084d4b27716be6064aded0326704aa5f99275019e35a7f9d5811a38542aa
+record_revision: sha256:5cd39c85e61e5190aedf87f3f306c7d6c1242abe9c63cbb2edea40041ed62ba6
 dependency_revisions:
   sources:
     xie2024: sha256:7f8cce92cf2b85e545cbee66b3c57f747633ff992bfc82e689884737a4c23f4e
@@ -9,13 +9,14 @@ dependency_revisions:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T00:25:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -43,16 +44,17 @@ assessment:
       - xie-table-3
       note: The place agrees with the source scope or is explicitly generic.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - xie-table-3
-      note: The coefficients describe an idealised residential neighbourhood under the named city's climate,
-        not a city-wide determination.
+      note: Site scope records the idealised residential-neighbourhood scenario under London's climate
+        without claiming a city-wide determination.
     method:
       conclusion: supported
       evidence_ids:
       - xie-table-3
-      note: The production or literature-compilation method is stated in the source.
+      note: The scenario-method sections derive the coefficients from the simulated building-energy response,
+        so fitted records the production method rather than treating them as direct measurements.
     identity:
       conclusion: supported
       evidence_ids:
@@ -70,7 +72,8 @@ assessment:
       note: Table 3 publishes four London occupied-room scenarios; other cities and whole-building cases
         are discussed but their exact coefficient tuples are not tabulated.
   scientific_note: Table 3 exactly supports the stored coefficient tuple, building/system case and London
-    climate application. Only the current city-wide evidence-reach claim requires curation.
-  evidence_revision: sha256:55c2996f4d9294acddf8ff12d3343b479de3f6b007da95a6b2c8a3b0ad658e06
+    climate application. Site representativeness records its idealised neighbourhood evidence reach without
+    presenting it as a city-wide determination.
+  evidence_revision: sha256:d9921e3ff159f24625341ebe623a67b664d3221c429792b676fca1c79c7346e7
 verification:
   attestations: []
