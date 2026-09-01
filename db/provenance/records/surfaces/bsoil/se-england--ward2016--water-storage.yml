@@ -1,21 +1,22 @@
 provenance_record: records/surfaces/bsoil/se-england--ward2016--water-storage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:52876e7c474ccd5b53146c373542aeedc2cfba42df9d9f94fb41bcc814700bab
+record_revision: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 dependency_revisions:
   sources:
     ward2018: sha256:27389a8f55237f3011250ee058d990a69331b535f1d17563c93398f702919c7c
   places:
-    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T21:26:03Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -38,17 +39,17 @@ assessment:
       - ward2018-inputs
       note: The cited source is a direct parameter publication or an explicit published model-input table.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward2018-inputs
-      note: The published inputs are for the Swindon measurement-site grid point, whereas the record claims
-        south-east England.
+      note: The record now names the Swindon measurement-site grid point for which the published inputs
+        were used.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward2018-inputs
-      note: The source calls the inputs representative of the area surrounding the Swindon site, not of
-        the region.
+      note: The record is classed site, matching the paper's description of inputs representative of the
+        area surrounding the Swindon measurement site rather than south-east England as a region.
     method:
       conclusion: supported
       evidence_ids:
@@ -70,8 +71,8 @@ assessment:
       page: 651-652
       note: Publishes drainage coefficients and the surface-specific wetness thresholds and moisture-storage
         capacities used for the Swindon grid point.
-  scientific_note: All stored values are recoverable from the original article, but the canonical place
-    and regional evidence-reach claims should be narrowed through record-specific curation.
-  evidence_revision: sha256:2147a831b4f3b3e9cd97208e93e42d461615974bdd4f7300bd4f9cd951918da4
+  scientific_note: All stored values are recoverable from the original article and apply to the Swindon
+    measurement-site grid point. The canonical place and evidence reach are therefore Swindon and site.
+  evidence_revision: sha256:5ba4815f88ba4e3407691195977e3f53d60a6fb92a1a75b2311ff57ddc94cd3a
 verification:
   attestations: []
