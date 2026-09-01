@@ -11,7 +11,7 @@ dependency_revisions:
     ? records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
     : sha256:dd41cc1b253e83f29fe5d2ff442d6853f4c1563853fda5285fc58bd913f11fd2
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
-    records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:ec3e5b28012b995b91bc16f4540b4d92940e10dd243713f95f5223b9b34810db
+    records/surfaces/grass/helsinki--havu-m2024--biogen-co2: sha256:c173d882f4b7ed8489cf229d5a18e7b8f728b2b797e94ad74cc0a7ff1dd47912
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:186a3e2a4293c1356710940d1f3db34188da2015a8411e790ce9ee519d40f71a
     records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
@@ -226,6 +226,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its irrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:343fadc11009c02abf0a4ddca1b64582723490d8ab4924c68c2fa23d45d1deae
+  evidence_revision: sha256:b9950dc490a5d5bb04cc39fc6d86d93c421ded38bb02c754de3e54c09f636fa7
 verification:
   attestations: []
