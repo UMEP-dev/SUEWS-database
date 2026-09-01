@@ -12,7 +12,7 @@ dependency_revisions:
     archetypes/surfaces/dectr/helsinki-finland--mixed-dec-jarvi-et-al-2014: sha256:b21dc9e5d8d54572d5a983b7c148996c8633621f5467ddd878332be5461b6cdb
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass: sha256:7c0161f18c7cc2225b24ee841c56f36b452e61c87a9f198fa297c933fa83154c
-    records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street: sha256:d0f626490a4bf015d63c7a6a7f56076987f4aaac7d1846cc5a6a919727183387
+    records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street: sha256:7a33e6f9c8d1329cf3b8e0d8e18a8944a954ac46729461720613cc7acc408d5e
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
@@ -207,6 +207,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:1581e509d760c119a5eef2e7c53cf07f3547a355626f034aafbb5698b62626b2
+  evidence_revision: sha256:91af085d718d432988d223f378d8b417336726c77d88cb9c60a0d52a010c0b18
 verification:
   attestations: []
