@@ -6,12 +6,26 @@ place: helsinki
 origin: Beijing
 representativeness: site
 source: zheng-y2023
+method: literature
 legacy_id: 22240058
 parameters:
   soil_depth: 1000
   soil_store_capacity: 141
   saturated_hydraulic_conductivity: 0.0005
   soil_density: 1.16
+parameter_provenance:
+  parameters.soil_depth:
+    source: havu2022
+    method: literature
+  parameters.soil_store_capacity:
+    source: havu2022
+    method: calculated
+  parameters.saturated_hydraulic_conductivity:
+    source: havu-m2024-data
+    method: literature
+  parameters.soil_density:
+    source: havu-m2024-data
+    method: literature
 legacy:
   InfiltrationRate: 10
   OBS_SMDepth: -999
