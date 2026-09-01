@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/se-england--ward2016--albedo: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
-    records/surfaces/grass/se-england--ward2016--drainage: sha256:7f99c4f4340fa9f3555d3fac9b09bced3e4ad59a1468210ffd0d05cb8abe7fcd
+    records/surfaces/grass/se-england--ward2016--drainage: sha256:5f7c6201ab21d0339d4190c95a18b2d17dcfe6686033a72b82254ae3b508d353
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
     records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
@@ -244,6 +244,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:131262f0bbf3c7115c09a77ab4952279e4933fa432ec11fad44939b095ca1286
+  evidence_revision: sha256:423b5abcc1f2f805ab1fcc38fbd543cdd2e54dcc962fd61c2c298efb8bcbecc2
 verification:
   attestations: []

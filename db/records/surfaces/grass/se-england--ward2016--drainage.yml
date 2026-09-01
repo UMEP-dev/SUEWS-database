@@ -2,9 +2,9 @@ record: records/surfaces/grass/se-england--ward2016--drainage
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass
-place: se-england
+place: swindon
 origin: SE England
-representativeness: regional
+representativeness: site
 source: ward2018
 method: literature
 legacy_id: 45240046
