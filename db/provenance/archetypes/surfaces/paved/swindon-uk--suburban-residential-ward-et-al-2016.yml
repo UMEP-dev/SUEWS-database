@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
-    records/surfaces/paved/se-england--ward2016--drainage: sha256:a2f4f8fcc956087c93b6b6838c874faf3c04200b083d449d8fc4711f57d85ce1
+    records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:c0c01a66787193a97ce81a7f1451d3f1427dad1c3794f22259d63f734525f030
     records/surfaces/paved/swindon--ward2013--drainage: sha256:8a4650f59817b6a758211381f77098e5d601d111a1c705fb099437336dde3fd1
     records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
@@ -217,6 +217,6 @@ assessment:
     only paved snowpack-limit record there is, and construction takes an archived internal fixture that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:f63b4473451e586c339e3791008821f544657f74bf6e4bbb0d8edee9e1ff02f6
+  evidence_revision: sha256:873b4572d5e721609509514678039e0644788b3b92bf37e86cf853988a6670a0
 verification:
   attestations: []
