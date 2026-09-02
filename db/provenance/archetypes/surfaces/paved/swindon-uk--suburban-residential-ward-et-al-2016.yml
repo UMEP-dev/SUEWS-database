@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
     records/surfaces/paved/swindon--ward2013--drainage: sha256:8a4650f59817b6a758211381f77098e5d601d111a1c705fb099437336dde3fd1
-    records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
+    records/surfaces/paved/swindon--ward2016--emissivity: sha256:5f7740c4818eaed41dcb9991540221defea8769a3a451a0bf1563cb41c623d23
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T08:42:00Z'
@@ -90,7 +90,9 @@ assessment:
       related_records:
       - records/surfaces/paved/swindon--ward2013--drainage
       note: 'The composite declares place swindon. The emissivity slot takes records/surfaces/paved/swindon--ward2016--emissivity,
-        place swindon. The albedo, water_storage and drainage slots take records with place se-england,
+        now correctly classed generic because Ward publishes one shared model input for London and Swindon.
+        A generic input is compatible with the Swindon assembly without claiming a local determination.
+        The albedo, water_storage and drainage slots take records with place se-england,
         which db/places.yml records as ''SE England'', subnational: true, country united-kingdom, the
         region containing Swindon, so applying them to the town is a downscaling rather than a substitution.
         The snow_lim_patch slot takes records/surfaces/paved/helsinki--jarvi2014--snow-lim, the only paved
@@ -113,9 +115,9 @@ assessment:
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite declares representativeness city. The three se-england components declare regional,
-        which is broader than the composite's scale and therefore a downscaling; records/surfaces/paved/swindon--ward2016--emissivity
-        and records/surfaces/paved/helsinki--jarvi2014--snow-lim declare city; the construction record
-        declares generic; the two OHM records declare no representativeness. No component is classed below
+        which is broader than the composite's scale and therefore a downscaling; the corrected emissivity
+        record and construction record declare generic, records/surfaces/paved/helsinki--jarvi2014--snow-lim
+        declares city, and the two OHM records declare no representativeness. No component is classed below
         city, so nothing narrower stands in for the composite's claim.
     method:
       conclusion: supported
@@ -160,8 +162,9 @@ assessment:
   - id: component-surfaces-paved-swindon--ward2016--emissivity
     record: records/surfaces/paved/swindon--ward2016--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place swindon,
-      representativeness city and source ward2016, and carries emis.
+    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place generic,
+      representativeness generic, applicable_scale land_cover, source ward2016 and method literature,
+      and carries emis 0.95. Its evidence review retains the Ward-versus-Järvi source-mapping conflict.
   - id: component-surfaces-paved-se-england--ward2016--water-storage
     record: records/surfaces/paved/se-england--ward2016--water-storage
     role: component
@@ -201,8 +204,9 @@ assessment:
       a1, a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The selection follows the study the entry is named for. archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
     declares place swindon and representativeness city, and four of its eight components declare source
-    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; albedo takes the
-    se-england row from that study, water storage takes the Järvi et al. (2011) row, and drainage takes
+    ward2016. The emissivity slot takes Ward''s shared UK model input, now correctly classed generic rather
+    than Swindon-specific; albedo takes the se-england row from that study, water storage takes the Järvi
+    et al. (2011) row, and drainage takes
     the Ward et al. (2018) SE England row, all classed regional and
     applied down to the town, which is the sound direction for a class difference. The season mapping
     is right, the Summer-labelled OHM record filling the two summer positions and the Winter-labelled
@@ -217,6 +221,6 @@ assessment:
     only paved snowpack-limit record there is, and construction takes an archived internal fixture that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:671ce0fc87b844b6a00bcb04fba7f6030d17d23bd22f8f7ef96202f2c318b93a
+  evidence_revision: sha256:87d93609976daac4b138b0b28381e5e618788ea08c444895d90bfecf47dc6062
 verification:
   attestations: []

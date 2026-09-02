@@ -2,10 +2,12 @@ record: records/surfaces/paved/swindon--ward2016--emissivity
 schema_version: '2026.5'
 target: land_cover.paved
 name: Paved
-place: swindon
+place: generic
 origin: Swindon, UK
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: ward2016
+method: literature
 legacy_id: 40240041
 parameters:
   emis: 0.95
