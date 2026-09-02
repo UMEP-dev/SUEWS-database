@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
-    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:b4cf93795fc296ca4d635cab2d8b61d56ac7c8556465a6379d751907ce9fc77a
+    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:f13cd3ae27bb99d531976bd377d4b0560f11f690d65ab0b643c4cb59197bcc5a
     records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:c220a2f96de4fd910148fd9f81f9d71cb8450350ac0b2ecf1ac81fdf2cb744c1
     records/surfaces/evetr/zurich--stagakis-s2024--max-conductance: sha256:070b5ef8c0326d83dfb688d2d7603e2d91351a84f5e62687943777b70d2c51c1
 assessment:
@@ -99,10 +99,11 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. The corrected leaf-growth-power component is
-        site-scoped to four Zurich parks, while the remaining Zurich and Helsinki rows are classed city,
-        the four SE England rows are regional, drainage and porosity are generic, and the OHM record carries
-        no class. The site-scoped component is narrower than the composite's city claim and needs maintainer
+      note: The composite declares representativeness city. The corrected leaf-growth-power and biogenic-CO2
+        components are site-scoped to four Zurich parks, while the remaining Zurich and Helsinki rows are
+        classed city, the four SE England rows are regional, drainage and porosity are generic, and the OHM
+        record carries no class. The site-scoped components are narrower than the composite's city claim
+        and need maintainer
         adjudication at composition level.
     method:
       conclusion: supported
@@ -190,10 +191,10 @@ assessment:
   - id: component-surfaces-evetr-zurich-stagakis-s2024-biogen-co2
     record: records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.evetr, place zurich and representativeness
-      city, and is named "Evergreen trees"; its source field reads stagakis-s2024. Supplement Table S3
-      supports beta_bio_co2 8.3, resp_a 0.78 and resp_b 0.08; alpha_bio_co2, theta_bio_co2 and min_res_bioco2
-      remain unresolved in the component evidence review.
+    note: Fills biogen_co2. The record declares target land_cover.evetr, place zurich, representativeness
+      site and method literature. Stagakis supports beta_bio_co2, resp_a and resp_b, while per-leaf
+      provenance assigns alpha_bio_co2 and theta_bio_co2 to Bellucco and min_res_bioco2 to Järvi. Its
+      evidence review leaves only the one-Trees-class versus two-record identity question to a maintainer.
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
@@ -211,16 +212,18 @@ assessment:
       target ohm_coefficients and is named "Mixed Forest [20]  McCaughey (1985)"; its source field reads
       grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
       representativeness.
-  scientific_note: 'The composite takes Zurich rows for the three distinctive slots, falls back to SE
-    England regional rows and Helsinki city rows only where the database holds nothing for Zurich, and
-    uses a generic coniferous-tree literature tuple for drainage. The corrected leaf-growth-power component
-    is site-scoped to four parks, so using it under this city-level composite now requires maintainer adjudication.
-    The two
+  scientific_note: 'The assembly takes Zurich rows for the three distinctive slots, falls back to SE
+    England regional rows and Helsinki city rows where the database holds nothing for Zurich, and uses
+    a generic coniferous-tree literature tuple for drainage. The corrected leaf-growth-power and biogenic-CO2
+    components are site-scoped to four Zurich parks, so using them under this city-level composite requires
+    maintainer adjudication. The two
     LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled coefficient
     record across all four OHM positions is consistent with a record that declares no season. A separate
     source-registry point remains: the label says 2024 while db/sources.yml stores stagakis-s2024 with
-    year 2025. The corrected biogen_co2 component has three values directly supported by Supplement
-    Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:96262c334e898e2094081418e7206885faab2a79398ee378324d53391635730b
+    year 2025. The corrected biogen_co2 component is fully sourced leaf by leaf, but it is site-scoped
+    to four parks and therefore narrower than this city-level composite. Its own only remaining question
+    is whether Stagakis''s one Trees column should remain represented by separate deciduous and evergreen
+    records.'
+  evidence_revision: sha256:8157d305c5f0afec94d932ea6aee261c8a3369db5a89be10c6e22157f642ee54
 verification:
   attestations: []

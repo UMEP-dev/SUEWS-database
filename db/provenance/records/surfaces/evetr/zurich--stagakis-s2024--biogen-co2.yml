@@ -1,115 +1,170 @@
 provenance_record: records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b4cf93795fc296ca4d635cab2d8b61d56ac7c8556465a6379d751907ce9fc77a
+record_revision: sha256:f13cd3ae27bb99d531976bd377d4b0560f11f690d65ab0b643c4cb59197bcc5a
 dependency_revisions:
   sources:
+    bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
+    jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
     stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
   places:
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:d798e750ede60b9eb03eb3b6d3752761d8e8d3c8d6a3d5032942f12212f657c4
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-24T17:03:07Z'
+  status: curation_required
+  assessed_at: '2026-09-02T20:47:13Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: curation_required
       evidence_ids:
       - stagakis-tree-classes
-      note: The record is named Evergreen trees, but this study parameterises trees as a single class;
-        the name draws a distinction the source does not make.
+      note: The record is named Evergreen trees, but Stagakis parameterises one Trees class. Whether
+        that class should remain represented by separate deciduous and evergreen records is a human
+        identity decision rather than a parameter-provenance gap.
+      related_records:
+      - records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
     target:
       conclusion: supported
       evidence_ids:
       - stagakis-parameter-table
-      note: Photosynthesis and respiration parameters are land_cover.evetr properties.
+      note: The stored leaves are SUEWS tree photosynthesis and respiration parameters. Whether the
+        shared Trees tuple should occupy both tree targets is recorded separately under identity.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - stagakis-parameter-table
-      note: Three of the six stored values now match the cited study's own parameter table. Table S3's
-        Trees column gives Fpho,max 8.3, ai 0.78 and bi 0.08, mapped here to beta_bio_co2, resp_a and
-        resp_b. The remaining three, alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2 0.6,
-        are not published in the article or supplement and remain unresolved.
+      - bellucco-local-fit
+      - jarvi-winter-floor
+      note: Stagakis Table S3 directly publishes beta_bio_co2 8.3, resp_a 0.78 and resp_b 0.08
+        for Trees. Bellucco Table 4 publishes alpha 0.031 and theta 0.723, and Järvi Equation 11
+        publishes the 0.6 minimum-respiration floor.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - stagakis-parameter-table
-      note: The source publishes the corrected beta_bio_co2, resp_a and resp_b values, but it does not
-        publish the stored alpha_bio_co2, theta_bio_co2 or min_res_bioco2 values.
+      - bellucco-local-fit
+      - jarvi-winter-floor
+      note: Stagakis remains the envelope source for its Zurich Trees configuration. Canonical
+        field-level overrides identify Bellucco for alpha_bio_co2 and theta_bio_co2 and Järvi for
+        min_res_bioco2.
     place:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - stagakis-scope
-      note: The corrected beta_bio_co2, resp_a and resp_b values are used for trees in the Zurich study;
-        the place basis of alpha_bio_co2, theta_bio_co2 and min_res_bioco2 remains unresolved.
+      - bellucco-local-fit
+      - jarvi-winter-floor
+      note: Zurich is the application place for the Stagakis Trees configuration. The alpha and theta
+        overrides preserve their Helsinki fit location, while the minimum-respiration override preserves
+        the Southern Finland chamber evidence instead of making those values appear Zurich-derived.
     representativeness:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - stagakis-scope
-      note: The study covers four Zurich parks rather than a city-wide determination, and the provenance
-        of three retained fields remains unresolved.
+      - bellucco-local-fit
+      - jarvi-winter-floor
+      note: Stagakis evaluates the Trees configuration at four individual parks, Bellucco fits one
+        Helsinki flux site and Järvi derives the floor from one chamber site. Site is the supported
+        evidence reach at record and overridden-field levels.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - stagakis-parameter-table
-      note: Table S3 establishes adoption of the corrected beta_bio_co2, resp_a and resp_b values, but
-        the production method for the three retained unsupported fields remains open.
+      - bellucco-local-fit
+      - jarvi-winter-floor
+      note: Literature is the record-level method because Stagakis adopts the three exact Trees values
+        in its model configuration. The alpha and theta overrides are fitted light-response coefficients,
+        and the minimum-respiration override is the measured winter chamber statistic installed as the
+        model floor.
     identity:
       conclusion: curation_required
       evidence_ids:
       - stagakis-parameter-table
       - stagakis-tree-classes
-      note: Two Zurich tree records exist under a citation that has one Trees column. Both records now
-        carry the published Trees values, but whether the deciduous-evergreen split should survive remains
-        a maintainer decision.
+      note: Stagakis publishes one Trees column, while the migrated database retains equal-valued
+        deciduous and evergreen records. A maintainer must decide whether that split should survive;
+        no numeric value or leaf source is unresolved.
       related_records:
       - records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2
   evidence:
   - id: stagakis-parameter-table
     source: stagakis-s2024
     role: parameter_source
+    parameter_paths:
+    - parameters.beta_bio_co2
+    - parameters.resp_a
+    - parameters.resp_b
     locators:
     - kind: supplementary
-      label: Supplement Table S3, Parameters used by SUEWS model
+      label: Supplement Table S3, Parameters used by SUEWS model, Trees column
       page: 3
       url: https://doi.org/10.5194/bg-22-2133-2025-supplement
-      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
-        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
-        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
-        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
-        storage capacity, no light-response alpha or theta and no minimum respiration.
+      note: Directly gives Fpho,max 8.3, ai 0.78 and bi 0.08 for the one Trees class; these map to
+        beta_bio_co2, resp_a and resp_b.
   - id: stagakis-scope
     source: stagakis-s2024
-    role: compilation
+    role: validation
     locators:
     - kind: section
-      label: Title and abstract
+      label: Abstract and Sect. 2.1, study sites
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
-      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
-        situ measurements made in those parks; it is park-scale, not a city-wide determination.
+      note: Evaluates the models against in-situ observations from lawns and trees in four urban parks
+        in Zurich; it does not establish a city-wide tree parameter fit.
   - id: stagakis-tree-classes
     source: stagakis-s2024
     role: compilation
     locators:
     - kind: section
-      label: Sect. 2.4.1, land cover map, and Supplement Table S3
+      label: Sect. 2.4.1, land-cover map, and Supplement Table S3
       page: 2140
       url: https://doi.org/10.5194/bg-22-2133-2025
-      note: The land cover map separates deciduous, mixed and evergreen trees and notes that a large majority
-        of Zurich's trees are deciduous, but the SUEWS parameter table carries a single Trees column.
-        The study does not parameterise evergreen and deciduous trees separately.
-  scientific_note: 'Supplement Table S3 now directly supports beta_bio_co2 8.3, resp_a 0.78 and resp_b
-    0.08 for its single Trees class. This correction does not settle the three fields absent from the
-    publication: alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2 0.6 remain unsupported by
-    this citation. Nor does it settle whether one published Trees class should remain represented by
-    separate deciduous and evergreen records. Those provenance and identity questions remain open.'
-  evidence_revision: sha256:031a2a5f26c358f899b8cb4342156b90a14222e7f6115223930d3f99baeec0a6
+      note: The map separates deciduous, mixed and evergreen trees, but the SUEWS parameter table has
+        one Trees column and does not parameterise evergreen and deciduous trees separately.
+  - id: bellucco-local-fit
+    source: bellucco2017
+    role: parameter_source
+    parameter_paths:
+    - parameters.alpha_bio_co2
+    - parameters.theta_bio_co2
+    locators:
+    - kind: table
+      label: Table 4, mean 200-270 degree vegetated sector
+      page: 118
+      url: https://doi.org/10.1016/j.agrformet.2016.12.011
+      note: Publishes the Helsinki local-model non-rectangular-hyperbola coefficients alpha 0.031
+        and theta 0.723, averaged over the Botanical Garden wind sector and used in the final local model.
+  - id: jarvi-winter-floor
+    source: jarvi2019
+    role: parameter_source
+    parameter_paths:
+    - parameters.min_res_bioco2
+    locators:
+    - kind: equation
+      label: Equation 11, soil and vegetation respiration
+      page: 8366
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines respiration as max(a_i exp(Tair b_i), 0.6) for each vegetated surface.
+    - kind: section
+      label: Appendix B, Estimating Minimum Soil Respiration
+      page: 8379
+      url: https://doi.org/10.1029/2018JD029576
+      note: Reports a 0.60 +/- 0.07 micromol m-2 s-1 minimum from 1,677 cold-season half-hour
+        observations measured by three automatic soil chambers in a Southern Finland boreal forest.
+  scientific_note: >-
+    The record is a mixed-source but fully traceable SUEWS Trees configuration used in Zurich.
+    Stagakis publishes the three values it used for the Zurich runs, Bellucco supplies the earlier
+    Helsinki light-response fit for alpha and theta, and Järvi supplies the separately measured winter
+    respiration floor. Per-leaf provenance preserves those source, method and place distinctions without
+    changing any numeric value. The only remaining question is whether one published Trees class should
+    remain represented by separate deciduous and evergreen records.
+  evidence_revision: sha256:5a1e2337365f1a273f14b1970d6a8e7bd78c0324066d0c7e26a8b81dbbdaffb4
 verification:
   attestations: []

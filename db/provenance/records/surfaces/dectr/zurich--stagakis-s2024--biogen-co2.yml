@@ -12,7 +12,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:b4cf93795fc296ca4d635cab2d8b61d56ac7c8556465a6379d751907ce9fc77a
+    records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2: sha256:f13cd3ae27bb99d531976bd377d4b0560f11f690d65ab0b643c4cb59197bcc5a
 assessment:
   status: curation_required
   assessed_at: '2026-09-02T20:47:13Z'
@@ -165,6 +165,6 @@ assessment:
     respiration floor. Per-leaf provenance preserves those source, method and place distinctions without
     changing any numeric value. The only remaining question is whether one published Trees class should
     remain represented by separate deciduous and evergreen records.
-  evidence_revision: sha256:459e620e6308e18fb931e0cceac83f3d1a4b3a48e15e515c3e0a1e736290d7e2
+  evidence_revision: sha256:6d716922c5bbf1be08c4a01def6de263c2a11c4f08f4c395d5513b27a6f000c7
 verification:
   attestations: []
