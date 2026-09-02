@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T16:58:31Z'
@@ -206,6 +206,6 @@ assessment:
     it is a composition decision that was never written down. A maintainer should either record why these
     transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:1a495db6ce06f612bdab381cdf7107dbf3005f271712ba0326f113cbed7a4b2f
+  evidence_revision: sha256:0e6b7c822e6eab042f5eecabe79f676af1ceb5cd9f439501b41b64fe2916441f
 verification:
   attestations: []
