@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     archetypes/surfaces/dectr/helsinki-finland--deciduous-park-trees-havu-et-al-2024: sha256:e3e5751edc28f021c5a75591c7442839cf888c82250d9c23c35d90eaf84ece44
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
-    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
@@ -78,15 +78,13 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       note: 'The composite claims place zurich, registered in db/places.yml with Köppen class Cfb, and
         four of its twelve components carry that place: the leaf area index, the leaf growth power, the
-        maximum conductance and the biogenic CO2 set. Two carry place helsinki, registered Dfb; one carries
-        place london; one carries place se-england, drainage, albedo and porosity are generic; and the
-        OHM record carries no place. Two of
-        the Helsinki imports are conditioned on climate rather than on species: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
-        supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology supplies the
-        growing- and senescing-degree-day thresholds, both set for a Nordic city and carried here into
-        a temperate one. Drainage is a generic land-cover literature tuple and creates no London-to-Zurich
-        transfer. A maintainer should still record why the Nordic snow limit and phenology stand for Zurich,
-        or replace them.'
+        maximum conductance and the biogenic CO2 set. One carries place helsinki, registered Dfb; one carries
+        place london; one carries place se-england, phenology, drainage, albedo and porosity are generic;
+        and the OHM record carries no place. The remaining Helsinki climate import is records/surfaces/dectr/helsinki--jarvi2014--snow-lim,
+        which supplies a Nordic snowpack_limit to a temperate city. The phenology tuple is now correctly
+        generic land-cover evidence with mixed Järvi 2011/2014 provenance, and drainage is generic literature
+        evidence, so neither creates a place transfer. A maintainer should still record why the Nordic
+        snow limit stands for Zurich, or replace it.'
     representativeness:
       conclusion: correction_required
       evidence_ids:
@@ -131,9 +129,11 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
-    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
-      and sdd_full, which schema/parameter_groups.yml classes as one tightly linked set.
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
@@ -201,13 +201,14 @@ assessment:
     with source unreferenced rather than a Stagakis parameter. The LAI pair agrees on lai.lai_type 1, the targets are right
     and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
-    the composite label still says 2024. And the snowpack limit and the four degree-day thresholds
-    are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
-    makes. Drainage is now explicit generic literature evidence. The corrected leaf-growth-power record
+    the composite label still says 2024. The snowpack limit is a Helsinki Dfb value standing in a Cfb
+    city, which is the same transfer the Beijing composite makes. The degree-day tuple is generic mixed-source
+    evidence; its 10-versus-11 conflict remains in the component assessment rather than creating a Zurich
+    place transfer. Drainage is now explicit generic literature evidence. The corrected leaf-growth-power record
     is site-scoped to four parks, so using it under this city-level composite is a further composition
     decision. None of these questions touches a stored value. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them. The corrected biogen_co2 component has three values directly
     supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:e9b14a3493c377aff0b0d4e284c2a4fbf11772f21bb98284d259aaf43da8e896
+  evidence_revision: sha256:960eccdfce877b36cd416f6ec13580e449f8913e2399b1d397626ae22e16698a
 verification:
   attestations: []

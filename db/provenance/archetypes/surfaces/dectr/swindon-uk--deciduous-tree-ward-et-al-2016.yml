@@ -11,7 +11,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
-    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
@@ -79,12 +79,13 @@ assessment:
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite claims place swindon, registered in db/places.yml with Köppen class Cfb. Six
         components carry place se-england, which db/places.yml marks subnational and which contains Swindon,
-        so the Ward set sits comfortably; the emissivity and porosity records are generic and likewise
-        do not overreach. Two components do not follow. The vegetation_growth slot takes records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature
+        so the Ward set sits comfortably; the emissivity, porosity and phenology records are generic and likewise
+        do not overreach geographically. The vegetation_growth slot nevertheless takes records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature
         5, base_temperature_senescence 10) although records/surfaces/dectr/se-england--ward2016--phenology
         exists with the composite's own source and region (base_temperature 6, base_temperature_senescence
         11) and is referenced by no archetype in the database; schema/parameter_groups.yml classes those
-        thresholds as a tightly linked set whose base temperature was localised for SE England. The snow_lim_patch
+        thresholds as a tightly linked set whose base temperature was localised for SE England. This is
+        a generic-versus-localized selection question rather than a Helsinki place transfer. The snow_lim_patch
         slot takes a Helsinki snowpack limit, a Dfb value, for a Cfb place. A maintainer should settle
         the phenology and the snow limit. The biogen_co2 slot also contains site-scoped respiration
         coefficients from Morgan-Monroe State Forest and a site-scoped minimum-respiration floor from
@@ -102,8 +103,8 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
       note: The composite claims representativeness city. Six components are classed regional, the SE
-        England Ward 2016 set; emissivity and porosity are generic; the two Helsinki records are classed
-        city; and the two OHM records declare no class. The biogen_co2 component has mixed scope. Ruimy's
+        England Ward 2016 set; emissivity, porosity and phenology are generic; the Helsinki snow-limit
+        record is classed city; and the two OHM records declare no class. The biogen_co2 component has mixed scope. Ruimy's
         alpha_bio_co2 and beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's
         min_res_bioco2 are site-scoped. Those site results are narrower than the city composite, and no
         published composition rationale documents the transplant, so city representativeness needs
@@ -159,9 +160,11 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
-    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
-      and sdd_full, which schema/parameter_groups.yml classes as one tightly linked set.
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
@@ -218,10 +221,9 @@ assessment:
     contains Swindon, while the emissivity component is the generic Oke literature value retained at
     its stable Swindon path. The two LAI records agree on lai.lai_type 1, and the OHM mapping is correct, the
     summer record filling both summer positions and the winter record both winter positions, each confirmed
-    by its own season_label. Two whole-record slots and one mixed-scope tuple still do not follow the
-    composite''s place. The phenology is the
-    Helsinki Järvi 2014 record even though an SE England Ward 2016 phenology record exists with the localised
-    base temperatures and is referenced by no archetype in the database, and the snowpack limit is a Helsinki
+    by its own season_label. The generic phenology tuple is selected even though an SE England Ward 2016
+    phenology record exists with localized base temperatures and is referenced by no archetype; its component
+    assessment separately retains the 10-versus-11 source conflict. The snowpack limit is a Helsinki
     value in a Cfb city. The biogen_co2 tuple combines Ruimy''s generic fit with site-scoped Schmid
     respiration coefficients and a site-scoped Järvi minimum-respiration floor without a published
     composition rationale. The larger problem is not in this file alone: the London composite is identical
@@ -229,6 +231,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology, snow
     limit and mixed-scope biogenic tuple, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:585b3976a2e36d8be1b934ed0cb0bed6f40773b77ed8028d18d7872a4fa56318
+  evidence_revision: sha256:f0c489d815be6c53b4eaa82f4cc9c28918562d50ac1f0b611a6523c270535d6a
 verification:
   attestations: []

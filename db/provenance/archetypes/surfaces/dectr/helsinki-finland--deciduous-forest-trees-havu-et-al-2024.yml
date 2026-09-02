@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2: sha256:7b17235671febd63d328c9bf03dc29aea715bd3d344d25bfecadc1bb34e5ee1e
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance: sha256:f2a8cb35a22ceb08c1a5b909406383d8f3f2d4ec1370d734fcc1bceccf66e65e
-    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
@@ -75,11 +75,11 @@ assessment:
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-helsinki-vargo2013-albedo
-      note: 'The composite claims place helsinki, and five of its twelve components carry that place, including
-        both of the climate-conditioned ones: the snowpack limit and the four degree-day thresholds are
-        Helsinki records, so nothing about the Nordic winter or the Nordic growing season has been imported.
+      note: 'The composite claims place helsinki, and four of its twelve components carry that place. The
+        snowpack limit is the Helsinki climate-conditioned record, while the four degree-day thresholds
+        are now correctly generic model options with mixed Järvi 2011/2014 provenance.
         One component carries place london (emissivity), two carry place se-england (water storage and
-        leaf area index), drainage, albedo and porosity are generic and the OHM record carries
+        leaf area index), phenology, drainage, albedo and porosity are generic and the OHM record carries
         no place. The leaf_area_index import
         is forced: db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
         shanghai and zurich and none placed at helsinki, so that slot cannot be filled from the composite''s
@@ -92,9 +92,9 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Six components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
+      note: The composite claims representativeness city. Five components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
         and records/surfaces/dectr/se-england--ward2016--lai are classed regional, the albedo record is
-        generic, drainage and porosity are generic and the OHM record declares no class. Regional and generic
+        generic, phenology, drainage and porosity are generic and the OHM record declares no class. Regional and generic
         values cover a city; no component claims a narrower scale than the composite does.
     method:
       conclusion: supported
@@ -145,9 +145,11 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
-    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
-      and sdd_full as one set; its place is the composite's own.
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
@@ -190,14 +192,15 @@ assessment:
   scientific_note: This is the cleanest of the eight deciduous-tree composites. Its label names Havu et
     al. 2024, and the three slots that carry the vegetation behaviour of a forest canopy take havu-m2024
     records placed at Helsinki, two of them named for a forest in their own right. The two climate-conditioned
-    slots, the snowpack limit and the degree-day thresholds, are Helsinki records as well, so the composite
-    does not move a Nordic winter or a Nordic growing season anywhere. The non-Helsinki inputs are the
-    emissivity from London, water storage and leaf area index from SE England, generic literature drainage,
+    slots no longer make the same place claim because the snowpack limit is a Helsinki record, while the degree-day
+    thresholds are generic assumed options with mixed Järvi 2011/2014 provenance. The non-Helsinki inputs
+    are the emissivity from London, water storage and leaf area index from SE England, generic phenology and literature drainage,
     a generic Vargo albedo, generic implementation porosity and one generic storage-heat set. The leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
     leaf-area-index record at all. The two LAI records agree on lai.lai_type 1, so the slot pair does
-    not mix equations. What is missing is only the written rationale for the imports, which no composite
+    not mix equations. The unresolved 10-versus-11 senescence threshold remains in the phenology component's
+    own assessment and does not create a composition-place mismatch. What is missing is only the written rationale for the imports, which no composite
     in this family carries and which the format expects a composition sidecar to supply. The components'
     values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:10b5a4d019e7585e5f5a3ffc75f992999d671087ecca9a059c66e79a906ea9a4
+  evidence_revision: sha256:2cef358fc3e55360f90c6b3cf68be4f6f70e8a41e7a740d27e2119ffdb6755f2
 verification:
   attestations: []

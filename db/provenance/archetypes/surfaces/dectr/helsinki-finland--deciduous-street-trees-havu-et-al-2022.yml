@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street: sha256:7a33e6f9c8d1329cf3b8e0d8e18a8944a954ac46729461720613cc7acc408d5e
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
-    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
+    records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
@@ -84,10 +84,10 @@ assessment:
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-helsinki-vargo2013-albedo
-      note: 'The composite claims place helsinki, and five of its twelve components carry that place, including
-        both climate-conditioned ones: the snowpack limit and the four degree-day thresholds are Helsinki
-        records. One carries place london (emissivity), two carry place se-england (water storage and leaf
-        area index), drainage, albedo and porosity are generic and the OHM record carries no
+      note: 'The composite claims place helsinki, and four of its twelve components carry that place. The
+        snowpack limit is the Helsinki climate-conditioned record; the four degree-day thresholds are
+        generic model options with mixed Järvi 2011/2014 provenance. One carries place london (emissivity),
+        two carry place se-england (water storage and leaf area index), phenology, drainage, albedo and porosity are generic and the OHM record carries no
         place. The leaf_area_index import
         is forced, since db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
         shanghai and zurich and none placed at helsinki.'
@@ -99,8 +99,8 @@ assessment:
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: The composite claims representativeness city. Six components are classed city, the two SE
-        England Ward 2016 records are classed regional, drainage, albedo and porosity are generic and
+      note: The composite claims representativeness city. Five components are classed city, the two SE
+        England Ward 2016 records are classed regional, phenology, drainage, albedo and porosity are generic and
         the OHM record declares no class. Regional and generic values cover a city, so no component claims
         a narrower scale than the composite does.
     method:
@@ -151,9 +151,11 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
-    note: Fills vegetation_growth. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies base_temperature, base_temperature_senescence, gdd_full
-      and sdd_full as one set; its place is the composite's own.
+    note: Fills vegetation_growth. The record declares target land_cover.dectr, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
@@ -193,10 +195,11 @@ assessment:
     note: Fills water_storage. The record declares target land_cover.dectr, place se-england and representativeness
       regional. It carries source jarvi2011 and is the store_min and store_max entry of every deciduous-tree
       composite.
-  scientific_note: 'The assembly itself is sound: Helsinki places for the climate-conditioned slots, a
-    consistent LAI equation across the two LAI slots, transparent regional and generic imports for the
+  scientific_note: 'The assembly itself is sound: a Helsinki snowpack limit, generic mixed-source phenology,
+    a consistent LAI equation across the two LAI slots, transparent regional and generic imports for the
     hydrological and canopy-structure slots, a generic Vargo albedo, and a generic mixed-forest storage-heat
-    set in all four OHM positions.
+    set in all four OHM positions. The phenology component separately retains its 10-versus-11 source
+    conflict for curator decision.
     The label is what does not hold up. It cites Havu et al. 2022, and no such key exists in db/sources.yml,
     which carries havu-m2024 alone; all three Havu components here declare that 2024 key. Nothing in the
     repository establishes that a 2022 Havu publication is the source of anything in this composite, and
@@ -207,6 +210,6 @@ assessment:
     question, and it is cheap for a maintainer to settle by reading the two typologies against the publication.
     The components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:91af085d718d432988d223f378d8b417336726c77d88cb9c60a0d52a010c0b18
+  evidence_revision: sha256:7f986ce464d092151b5f5f090c788be6d776c961102c4a3c9530c16dd54cfb76
 verification:
   attestations: []
