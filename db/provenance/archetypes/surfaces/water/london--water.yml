@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/water/helsinki--jarvi2014--water-state: sha256:25f3dd1e885c1ce5706a7edf885c9c22a0cc049010aa44a24e79a4af5f00c68e
     records/surfaces/water/london--unreferenced--water-state: sha256:d5d8d0e1697ae1ff5d09de3f0f9ba7a6fe9e11f39cbb74405d3c1343fa76699f
     records/surfaces/water/london--ward2016--water-state: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
-    records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
+    records/surfaces/water/se-england--ward2016--albedo: sha256:290f47b002706f6c1056514d13459951419fe7bdf2b99fe1e35112e27e38c0ea
     records/surfaces/water/se-england--ward2016--drainage: sha256:d9e49dbeabe123d7ac1bc7718c4767e1339543ca92eaa1a54fdd0c05f2951b26
     records/surfaces/water/se-england--ward2016--emissivity: sha256:17399aeffff540adfeb938fdc3e142b33154caaa2caa80c4a16c8d95f0390525
     records/surfaces/water/se-england--ward2016--water-storage: sha256:931022a319aab78ebabd04f1cf1a5b2801c3263a46876a14c2a8ef0c0939d7fa
@@ -85,10 +85,10 @@ assessment:
       - component-ohm-generic--ward2016--water--code-60-x-multiplier-for-winter-602
       note: 'The composite declares place london. The water_state slot takes records/surfaces/water/london--ward2016--water-state,
         place london, so the one slot that is genuinely site-specific carries the city''s own row. The
-        albedo, water_storage and drainage slots take records with place se-england, which
+        water_storage and drainage slots take records with place se-england, which
         db/places.yml records as ''SE England'', subnational: true, country united-kingdom, the region
         containing London, so applying them to the city is a downscaling rather than a substitution. The
-        emissivity slot takes a generic record, and the two OHM records declare no place.'
+        albedo and emissivity slots take generic records, and the two OHM records declare no place.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -105,8 +105,8 @@ assessment:
       note: The composite declares representativeness city. records/surfaces/water/london--ward2016--water-state
         declares representativeness site and is named 'London (River Thames), UK', so a single-river state_limit
         stands in for a city-scale water default and the composite claims wider applicability than the
-        component supports. The three se-england components declare regional and the emissivity record
-        declares generic, each broader than the composite and therefore a downscaling rather than an
+        component supports. The two se-england components declare regional and the albedo and emissivity
+        records declare generic, each broader than the composite and therefore a downscaling rather than an
         over-claim; the two OHM records declare no representativeness. The database holds two other water-state
         records. records/surfaces/water/london--unreferenced--water-state is an archived London small-fountain
         configuration with no representativeness claim, source unreferenced and method assumed;
@@ -149,8 +149,9 @@ assessment:
   - id: component-surfaces-water-se-england--ward2016--albedo
     record: records/surfaces/water/se-england--ward2016--albedo
     role: component
-    note: Fills the albedo slot. The record declares target land_cover.water, name Water, place se-england,
-      representativeness regional and source ward2016, and carries alb.
+    note: Fills the albedo slot. The record declares target land_cover.water, name Water, place generic,
+      representativeness generic, source jarvi2011, method literature and applicable_scale land_cover,
+      and carries alb.
   - id: component-surfaces-water-se-england--ward2016--emissivity
     record: records/surfaces/water/se-england--ward2016--emissivity
     role: component
@@ -188,20 +189,20 @@ assessment:
       name 'Code 60 x Multiplier for winter [602]', season_label Winter and source ward2016, carries a1,
       a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The assembly is coherent and its one problem is a matter of scale, not of place. archetypes/surfaces/water/london--water
-    declares place london and takes its albedo from a ward2016 se-england row, emissivity from a generic
-    jarvi2011 literature record, water storage and drainage from ward2018 se-england rows, and its state_limit from London''s own
+    declares place london and takes its albedo and emissivity from generic jarvi2011 literature records,
+    water storage and drainage from ward2018 se-england rows, and its state_limit from London''s own
     row. The mapping is right throughout: the drainage slot supplies wet_threshold and no drainage equation
     because the component holds DrainageEq, DrainageCoef1 and DrainageCoef2 in legacy as -999, and the
     Summer-labelled and Winter-labelled OHM records fill their own seasons. The finding is that records/surfaces/water/london--ward2016--water-state
     declares representativeness site and is named ''London (River Thames), UK'', so a city-scale entry
     publishes a state_limit derived for one river. That is the direction of class mismatch that matters,
-    because the composite claims more than its component does, unlike the se-england rows, which claim
-    more than the composite and are simply applied down. Re-pointing the slot is not an obvious improvement:
+    because the composite claims more than its component does, unlike the regional and generic rows, which
+    claim more than the composite and are simply applied down. Re-pointing the slot is not an obvious improvement:
     the only other London water-state record is an archived small-fountain configuration with no representativeness
     claim, source unreferenced and method assumed,
     and the remaining alternative belongs to Helsinki. So the decision is between keeping the Thames row
     and accepting that this entry is really a Thames typology, and relabelling the composite''s class
     to match what its evidence supports. A maintainer should make that choice explicitly.'
-  evidence_revision: sha256:4ad868a77894a5bf87003a0af13b9bec0a96387fb45efb4f63ea5c6b81e09503
+  evidence_revision: sha256:be5911a0f192d9c4e40456f2fbf5c9dccdd833cbcc9b43f99cfc94ba980a49c5
 verification:
   attestations: []

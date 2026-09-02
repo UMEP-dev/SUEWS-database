@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/water/london--water: sha256:26bee01af7f979fdbcd0d361bbd9429287b50197965ec45e3c69583dd040b3c6
     records/ohm/generic--ward2016--water: sha256:74daa6c185147224c3add48955dc96708059c83a10c591d9a7b106588728e1ef
     records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602: sha256:9ef3c1ebaf3b579d3ad75ba398c9b4f165f7b43adb4c525b899e1724d84c167a
-    records/surfaces/water/se-england--ward2016--albedo: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
+    records/surfaces/water/se-england--ward2016--albedo: sha256:290f47b002706f6c1056514d13459951419fe7bdf2b99fe1e35112e27e38c0ea
     records/surfaces/water/se-england--ward2016--drainage: sha256:d9e49dbeabe123d7ac1bc7718c4767e1339543ca92eaa1a54fdd0c05f2951b26
     records/surfaces/water/se-england--ward2016--emissivity: sha256:17399aeffff540adfeb938fdc3e142b33154caaa2caa80c4a16c8d95f0390525
     records/surfaces/water/se-england--ward2016--water-storage: sha256:931022a319aab78ebabd04f1cf1a5b2801c3263a46876a14c2a8ef0c0939d7fa
@@ -83,10 +83,10 @@ assessment:
       - component-ohm-generic--ward2016--water--code-60-x-multiplier-for-winter-602
       note: 'The composite declares place swindon. The water_state slot takes records/surfaces/water/swindon--ward2016--water-state,
         place swindon, so the one slot that is genuinely site-specific carries the town''s own row. The
-        albedo, water_storage and drainage slots take records with place se-england, which
+        water_storage and drainage slots take records with place se-england, which
         db/places.yml records as ''SE England'', subnational: true, country united-kingdom, the region
         containing Swindon, so applying them to the town is a downscaling rather than a substitution.
-        The emissivity slot takes a generic record, and the two OHM records declare no place.'
+        The albedo and emissivity slots take generic records, and the two OHM records declare no place.'
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -98,8 +98,8 @@ assessment:
       - component-ohm-generic--ward2016--water
       - component-ohm-generic--ward2016--water--code-60-x-multiplier-for-winter-602
       note: The composite declares representativeness city. records/surfaces/water/swindon--ward2016--water-state
-        declares city, matching it exactly. The three se-england components declare regional and the
-        emissivity record declares generic, each broader than the composite and therefore downscaled rather
+        declares city, matching it exactly. The two se-england components declare regional and the albedo
+        and emissivity records declare generic, each broader than the composite and therefore downscaled rather
         than over-claimed; the two OHM records declare no representativeness. No component is classed below
         the composite's scale.
     method:
@@ -137,8 +137,9 @@ assessment:
   - id: component-surfaces-water-se-england--ward2016--albedo
     record: records/surfaces/water/se-england--ward2016--albedo
     role: component
-    note: Fills the albedo slot. The record declares target land_cover.water, name Water, place se-england,
-      representativeness regional and source ward2016, and carries alb.
+    note: Fills the albedo slot. The record declares target land_cover.water, name Water, place generic,
+      representativeness generic, source jarvi2011, method literature and applicable_scale land_cover,
+      and carries alb.
   - id: component-surfaces-water-se-england--ward2016--emissivity
     record: records/surfaces/water/se-england--ward2016--emissivity
     role: component
@@ -177,8 +178,8 @@ assessment:
       a2 and a3, and declares no place and no representativeness.
   scientific_note: 'Every check this review can make comes out clean. archetypes/surfaces/water/swindon-uk--water
     declares place swindon and representativeness city; its water_state component declares exactly that
-    place and that class. Its albedo comes from a ward2016 se-england row, emissivity from a generic jarvi2011
-    literature record, and water storage and drainage from ward2018 se-england rows; the regional rows cover
+    place and that class. Its albedo and emissivity come from generic jarvi2011 literature records, while
+    water storage and drainage come from ward2018 se-england rows; the regional and generic rows cover
     Swindon and are applied down to the town. The
     season mapping follows the components'' own season_label fields, the drainage slot supplies wet_threshold
     and no drainage equation because the component holds the drainage coefficients in legacy as -999,
@@ -188,6 +189,6 @@ assessment:
     marked as unused in the study it cites. Whether such a value belongs in the database at all is a question
     for that record''s own evidence review. As a selection it is beyond argument, because it is the only
     Swindon water-state record there is and it agrees with the composite on place and class.'
-  evidence_revision: sha256:14c26ab8093ba3cdbe675f45f1b1a47e637456e18a05ad962a748282a027cc47
+  evidence_revision: sha256:ac567c104b65cb3c9758981f8fa422ba1b0b8c7b0a07acad67a773fa248f3eff
 verification:
   attestations: []
