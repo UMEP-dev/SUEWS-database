@@ -1,98 +1,171 @@
 provenance_record: records/surfaces/common/se-england--ruimy1995--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+record_revision: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
 dependency_revisions:
   sources:
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
     ruimy1995: sha256:74f90331affe9963a4ae7f540102748417c53b2234073d8e44389afe6ff9fac2
+    schmid2000: sha256:4e02bb5e75791ffd681704c6bbff94768f7bf91d9d7daa9a4f98f817b467130b
+    umep-dev2025-database: sha256:fb2d28803bba5fab5e9c100a315425844f659feff607aa6393c14593f236831b
   places:
-    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
+    morgan-monroe-state-forest: sha256:f1b150ced53afa134cd6553b7c2c4e338c9817e48476caa44e5825eda6ae4727
   records: {}
 assessment:
-  status: source_inaccessible
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T08:42:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/373
+  method: fitted
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      note: The label identifies the published parameter class or model configuration.
+      - ruimy-grouped-fit
+      - migration-row-30240007
+      note: Ruimy et al. analyse CO2 flux over closed plant canopies, and the migrated row preserves
+        the concise name Plant canopies.
     target:
       conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - ruimy-grouped-fit
+      - migration-row-30240007
+      note: The publication fits a surface-agnostic response across closed plant canopies, matching
+        the migrated land_cover.common target.
     values:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      - jarvi-floor
-      note: Only the later 0.6 floor is verified; the Ruimy light-response values and complete tuple remain
-        unread.
+      - ruimy-grouped-fit
+      - schmid-respiration
+      - jarvi-winter-floor
+      - migration-row-30240007
+      note: Ruimy Table 2.1 and Eq. 29 directly give alpha 0.044 and beta 43.35. Schmid Eq. 5
+        directly gives resp_a 1.08 and resp_b 0.064. Järvi Eq. 11 and Appendix B publish the later
+        0.60 minimum-respiration floor. The pre-migration row is the exact five-value compilation.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - ruimy-grouped-fit
+      - schmid-respiration
+      - jarvi-winter-floor
+      - migration-row-30240007
+      note: Ruimy is the source for alpha and beta only. Parameter-level overrides identify Schmid
+        for the respiration pair and Järvi for the minimum floor; the workbook records compilation
+        lineage rather than supplying scientific evidence.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/373
-    source:
-      conclusion: source_inaccessible
-      evidence_ids:
-      - ruimy-doi
-      - jarvi-floor
-      note: The tuple combines roles, and the cited chapter could not be read to verify its fields.
     place:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      note: The unread chapter has not been shown to support a south-east England scope.
+      - ruimy-grouped-fit
+      - schmid-site
+      - jarvi-winter-floor
+      note: Ruimy pools heterogeneous closed-canopy datasets from many sites and vegetation classes,
+        so the envelope is generic rather than south-east England evidence. The Schmid and Järvi leaf
+        overrides preserve their separate Indiana and Finland study sites.
     representativeness:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      note: Regional evidence reach cannot be checked without the chapter.
+      - ruimy-grouped-fit
+      - schmid-site
+      - jarvi-winter-floor
+      note: Ruimy offers the grouped fit as a general closed-canopy relationship, while the borrowed
+        respiration fit and winter floor each remain explicitly site-scoped at leaf level.
     method:
-      conclusion: source_inaccessible
+      conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      - jarvi-floor
-      note: The complete tuple's production method cannot be established without the chapter.
+      - ruimy-grouped-fit
+      - schmid-respiration
+      - jarvi-winter-floor
+      note: Ruimy and Schmid publish fitted coefficients. The Järvi override records the later measured
+        chamber statistic used as the minimum-respiration floor.
     identity:
       conclusion: supported
       evidence_ids:
-      - ruimy-doi
-      note: Stable path, target, source and values identify one retained database record.
+      - migration-row-30240007
+      note: Biogen CO2 row 30240007 preserves the exact name, origin, five active values, three -999
+        inactive fields and reference ID 90240043. The stable path and verbatim origin retain that
+        migration identity while place and representativeness now describe the actual evidence reach.
   evidence:
-  - id: ruimy-doi
+  - id: ruimy-grouped-fit
     source: ruimy1995
-    role: validation
-    locators:
-    - kind: text
-      label: Ruimy et al. review chapter landing record
-      url: https://doi.org/10.1016/S0065-2504(08)60063-X
-      note: Confirms the review chapter identity but not the exact mixed light-response/respiration tuple.
-  - id: jarvi-floor
-    source: jarvi2019
     role: parameter_source
+    parameter_paths:
+    - parameters.alpha_bio_co2
+    - parameters.beta_bio_co2
+    locators:
+    - kind: table
+      label: Table 2.1, instantaneous all-data-set rectangular-hyperbola fit
+      page: 24
+      url: https://doi.org/10.1016/S0065-2504(08)60063-X
+      note: For 1,362 observations across the complete grouped closed-canopy dataset, the table gives
+        F-infinity 43.35, apparent quantum yield alpha 0.044 and dark-respiration intercept 4.29.
+    - kind: equation
+      label: Eq. 29, complete instantaneous closed-canopy dataset
+      page: 37
+      url: https://doi.org/10.1016/S0065-2504(08)60063-X
+      note: Publishes the rectangular-hyperbola numerator and denominator with alpha 0.044 and
+        saturation parameter 43.35; the separate fitted intercept is 4.29 and is not the stored
+        temperature-response pair.
+  - id: schmid-respiration
+    source: schmid2000
+    role: parameter_source
+    parameter_paths:
+    - parameters.resp_a
+    - parameters.resp_b
     locators:
     - kind: equation
-      label: Equation 11 and Appendix B, 0.6 respiration floor
-      url: https://doi.org/10.1029/2018JD029576
-      page: 5
-      note: Separately supports only the later 0.6 minimum-respiration field.
+      label: Eq. 5, ecosystem respiration versus soil temperature
+      page: 369
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Publishes RE = 1.08 exp(0.064 Ts), the exact respiration pair mechanically reused in this
+        compiled plant-canopy tuple.
+  - id: schmid-site
+    source: schmid2000
+    role: validation
+    locators:
+    - kind: section
+      label: Sect. 2, Site and instrumentation
+      page: 358
+      url: https://doi.org/10.1016/S0168-1923(00)00140-4
+      note: Locates the respiration fit at the Morgan-Monroe State Forest tower in south-central Indiana.
+  - id: jarvi-winter-floor
+    source: jarvi2019
+    role: parameter_source
     parameter_paths:
     - parameters.min_res_bioco2
-  scientific_note: The 0.6 floor is a later Järvi parameter and must not be attributed to Ruimy. The remaining
-    tuple requires the original chapter before field-level provenance can be completed.
-  attempted_sources:
-  - source: ruimy1995
-    attempted_at: '2026-08-26T20:30:00Z'
-    outcome: inaccessible
-    note: DOI metadata was verified, but no usable full-text manifestation was available in the literature
-      library.
-    url: https://doi.org/10.1016/S0065-2504(08)60063-X
-  evidence_revision: sha256:32fd46285ca8ee5c7bc855b7aa0453ea4505ba212c872d01010e4cdaf4caf0bb
+    locators:
+    - kind: equation
+      label: Eq. 11, soil and vegetation respiration
+      page: 8366
+      url: https://doi.org/10.1029/2018JD029576
+      note: Defines respiration as max(a_i exp(Tair b_i), 0.6) for each vegetated surface.
+    - kind: section
+      label: Appendix B, Estimating Minimum Soil Respiration
+      page: 8379
+      url: https://doi.org/10.1029/2018JD029576
+      note: Reports the 0.60 minimum from chamber observations in a southern Finland boreal forest.
+  - id: migration-row-30240007
+    source: umep-dev2025-database
+    role: compilation
+    locators:
+    - kind: dataset
+      label: database.xlsx, Biogen CO2 sheet, row ID 30240007
+      url: https://github.com/UMEP-dev/SUEWS-database/blob/746dcd5cc45044488d412c6a21b8bd4c021fd6f5/database.xlsx
+      note: Carries Plant canopies, origin UK, SE England, alpha 0.044, beta 43.35, resp_a 1.08,
+        resp_b 0.064, min_respi 0.6, three -999 inactive fields and Ref 90240043 in one compiled row.
+  scientific_note: >-
+    The stored tuple is traceable but is not one publication's result. Ruimy et al. supply the generic
+    closed-canopy light-response fit; Schmid et al. supply the temperature-response pair from an Indiana
+    hardwood forest; Järvi et al. later supply the 0.6 winter floor from Finnish chamber observations;
+    and the pre-migration workbook combines them. Field-level provenance now preserves those roles
+    without changing any value, raw legacy origin, stable path or legacy identity. The former south-east
+    England evidence scope was a workbook attribution, not a claim supported by Ruimy et al.
+  evidence_revision: sha256:9309c977da8dc8f1c02caa94c30b4314c9ce638f89dd2f465a2b386f579d9cc6
 verification:
   attestations: []

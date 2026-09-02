@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/dectr/london-uk--deciduous-tree-ward-et-al-2016: sha256:ee9703069152b5adb93085f1e95de0f01bdbfe625312ebbc79cdfcf28202b64f
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
-    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
@@ -76,7 +76,7 @@ assessment:
       - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-swindon-ward2016-emissivity
-      note: The composite claims place swindon, registered in db/places.yml with Köppen class Cfb. Seven
+      note: The composite claims place swindon, registered in db/places.yml with Köppen class Cfb. Six
         components carry place se-england, which db/places.yml marks subnational and which contains Swindon,
         so the Ward set sits comfortably; the emissivity and porosity records are generic and likewise
         do not overreach. Two components do not follow. The vegetation_growth slot takes records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature
@@ -96,9 +96,9 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: The composite claims representativeness city. Seven components are classed regional, the SE
-        England Ward 2016 set and the Ruimy biogenic record; the two Helsinki records are classed city;
-        emissivity and porosity are generic; and the two OHM records declare no class. Regional and generic
+      note: The composite claims representativeness city. Six components are classed regional, the SE
+        England Ward 2016 set; the Ruimy biogenic record, emissivity and porosity are generic; the two
+        Helsinki records are classed city; and the two OHM records declare no class. Regional and generic
         values cover a city, and no component claims a narrower scale than the composite does.
     method:
       conclusion: supported
@@ -142,8 +142,8 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place se-england and representativeness
-      regional. It is named "Plant canopies" and carries source ruimy1995; docs/FORMAT.md defines land_cover.common
+    note: Fills biogen_co2. The record declares target land_cover.common, place generic and representativeness
+      generic. It is named "Plant canopies" and carries source ruimy1995; docs/FORMAT.md defines land_cover.common
       as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
@@ -203,7 +203,7 @@ assessment:
     note: Fills emissivity. The record declares target land_cover.dectr, place generic and representativeness
       generic. It is named "Deciduous trees", carries source oke1987 and declares method literature; its
       stable path retains the Swindon migration lineage.
-  scientific_note: 'Seven SE England components are regional application records for the region that
+  scientific_note: 'Six SE England components are regional application records for the region that
     contains Swindon, while the emissivity component is the generic Oke literature value retained at
     its stable Swindon path. The two LAI records agree on lai.lai_type 1, and the OHM mapping is correct, the
     summer record filling both summer positions and the winter record both winter positions, each confirmed
@@ -215,6 +215,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology and the
     snow limit, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:e085f91959cece58e3a0b39548a54f8748b01594323dff14fe8c5e8cec67063f
+  evidence_revision: sha256:c7249e4d9d3bb2433240be1ce893052001dca25d24a32836ac5b403fcb4326b6
 verification:
   attestations: []
