@@ -2,10 +2,11 @@ record: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass, irrigated
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
-source: jarvi2014
+representativeness: generic
+source: jarvi2011
+method: literature
 legacy_id: 45240015
 parameters:
   storage_drain_params:
@@ -13,3 +14,6 @@ parameters:
     drain_coef_1: 10
     drain_coef_2: 0.013
   wet_threshold: 1.9
+parameter_provenance:
+  parameters.storage_drain_params.drain_eq:
+    source: umep-dev2020a-docs

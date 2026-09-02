@@ -1,116 +1,140 @@
 provenance_record: records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:cbf99e4d3a6381833c24b4156703e9981c8e01e22c88254090d037869ea681b1
+record_revision: sha256:6324318373f921d47dd49ac86cc4a3df1c5d47cece30f24f9df0d88bd1053967
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2020a-docs: sha256:f1644d69483c7f8dd4878a8662885d01f4d3ff6293c9c4512a0cd36792b7437d
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-23T08:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T11:27:35Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Grass, irrigated matches Table 4a's Irr. veg column.
+      - jarvi2011-table-2a
+      note: Järvi et al. label the source surface Irrigated grass.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Drainage coefficients and a wet threshold are land_cover.grass properties.
+      - jarvi2011-table-2a
+      - jarvi2011-equation-19
+      - suews2020a-drainage-selector
+      note: The table and drainage equation publish storage and drainage parameters for the irrigated-grass
+        SUEWS surface, matching land_cover.grass.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
+      - jarvi2011-table-2a
+      - jarvi2011-equation-19
       issue_urls:
-      - https://github.com/UMEP-dev/SUEWS-database/issues/185
-      note: Table 4a's Irr. veg column gives D0,i 10 and b 0.013, matching the two stored drainage coefficients.
-        The Irr. veg cell of the Si row is blank, however, so the stored wet threshold of 1.9 mm is the
-        Grass column's figure rather than one published for irrigated vegetation. Column alignment was
-        verified by character position.
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1087
+      note: Table 2(a) gives irrigated grass Si 1.9 mm, D0,i 10 and b 0.013, while Section 2.5 assigns
+        irrigated vegetation to Eq. 19's power-law form. The official v2020a documentation separately
+        pairs DrainageEq 3 with irrigated grass. Every stored value is therefore covered without treating
+        a paper equation number as an interface selector.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
+      - jarvi2011-table-2a
+      - jarvi2014-table-4a
+      - suews2020a-drainage-selector
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1087
+      note: Järvi et al. (2011) directly publish the three physical parameters and drainage form. The
+        source-only parameter override attributes the interface selector to the official v2020a documentation.
+        Järvi et al. (2014) is retained only as compilation evidence; its Table 4(a) repeats D0,i and b
+        but leaves the irrigated-vegetation Si cell blank, which does not supersede the original table.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is the study location; the drainage values are inherited rather than determined there.
+      - jarvi2011-table-2a
+      note: The original table presents a surface-type parameter rather than a Helsinki determination.
+        Generic is therefore the supported evidence place; origin Helsinki preserves migration lineage.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi2011-table-2a
+      note: The publication presents the tuple by surface type without a site-specific derivation, supporting
+        generic rather than city representativeness.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: The corrected drainage pair is transcribed from Table 4a. How the wet threshold was selected
-        remains open because the irrigated-vegetation cell is blank.
+      - jarvi2011-table-2a
+      - jarvi2011-equation-19
+      - suews2020a-drainage-selector
+      note: Literature accurately describes direct transcription of the published physical parameters,
+        equation form and documented interface selector.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: An irrigated grass record separate from the unirrigated one follows the source, which gives
-        Irr. veg its own column.
+      - jarvi2011-table-2a
       related_records:
       - records/surfaces/grass/helsinki--jarvi2014--drainage
+      note: The original table distinguishes irrigated grass from grass and publishes different drainage
+        forms and coefficients for them. The stable Helsinki path and origin retain migration identity.
   evidence:
-  - id: jarvi-table-4a
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.storage_drain_params.drain_coef_1
+    - parameters.storage_drain_params.drain_coef_2
+    - parameters.wet_threshold
+    locators:
+    - kind: table
+      label: Table 2(a), model parameter values by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes Si 1.9 mm, D0,i 10 and b 0.013 in the Irrigated grass column. The same table explicitly
+        labels site-specific initial states elsewhere, while these surface parameters carry no city label.
+  - id: jarvi2011-equation-19
+    source: jarvi2011
+    role: validation
+    locators:
+    - kind: equation
+      label: Section 2.5, Equation 19
+      page: 224-225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that paved surfaces, roofs and irrigated vegetation use the power-law drainage equation
+        Di = D0,i(Ci,t-1)^b. It establishes the scientific form but does not print the SUEWS interface selector.
+  - id: suews2020a-drainage-selector
+    source: umep-dev2020a-docs
+    role: parameter_source
+    parameter_paths:
+    - parameters.storage_drain_params.drain_eq
+    locators:
+    - kind: section
+      label: DrainageCoef1 configuration, SUEWS_Veg.txt example values
+      page: 62
+      url: https://suews.readthedocs.io/_/downloads/en/2020a/pdf/
+      note: Explicitly pairs DrainageEq 3 and DrainageCoef1 10 with Grass (irrigated). This evidence is
+        scoped only to drain_eq; the exact physical coefficients remain sourced to Järvi et al. (2011).
+  - id: jarvi2014-table-4a
     source: jarvi2014
     role: compilation
     locators:
     - kind: table
-      label: Table 4a, parameters used in SUEWS by surface
+      label: Table 4(a), parameters used in SUEWS by surface
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
-        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
-        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
-        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
-        marks Vargo et al. (2013).'
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'The irrigated drainage pair now matches Table 4a: D0,i 10 and b 0.013. This is the
-    mirror image of the vegetated columns, but it is what the source prints. The wet threshold has a separate
-    unresolved problem: the cell the record needs is blank, and 1.9 mm comes from the Grass column, so
-    it is borrowed rather than published for this surface.'
-  evidence_revision: sha256:476310959002a1ee9d060474b00b9e30db67893f49fcf1ea23d835af80749a7e
+      note: The later compilation repeats irrigated-vegetation D0,i 10 and b 0.013 but leaves Si blank.
+        Its caption points unfootnoted parameters back to Järvi et al. (2011).
+  scientific_note: 'The previous unresolved finding came from treating a blank in the later Järvi et al.
+    (2014) compilation as missing original evidence. Järvi et al. (2011) publishes the three physical parameters
+    and equation directly; official SUEWS documentation establishes the separate selector mapping. The source
+    and scope metadata are corrected without changing any parameter, target, stable path, origin or legacy ID.'
+  evidence_revision: sha256:f553dad3b50d1638aea1d96cbe0094c1dbad9acd73fbba52fa758f3c8d730e3f
 verification:
   attestations: []

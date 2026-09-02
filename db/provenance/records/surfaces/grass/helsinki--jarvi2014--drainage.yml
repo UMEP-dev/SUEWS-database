@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated: sha256:cbf99e4d3a6381833c24b4156703e9981c8e01e22c88254090d037869ea681b1
+    records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated: sha256:6324318373f921d47dd49ac86cc4a3df1c5d47cece30f24f9df0d88bd1053967
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T08:33:00Z'
@@ -109,6 +109,6 @@ assessment:
     drain_eq 2, is not in Table 4a at all, so that part of the record is unverified even though the coefficients
     are sound. As elsewhere in this table, the caption makes the values inherited rather than determined
     here.
-  evidence_revision: sha256:e4b303561175a48025a83e1c13fcd61834f0af992309b0f4cdb673db847a72a3
+  evidence_revision: sha256:fcfceca82f3e96f4e4d89f5d239e74e31bbf82b898136bcce6a35d8edeefcb25
 verification:
   attestations: []
