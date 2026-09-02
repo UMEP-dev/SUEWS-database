@@ -1,110 +1,116 @@
 provenance_record: records/surfaces/paved/helsinki--jarvi2014--water-storage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
+record_revision: sha256:6897dd69061f655c953333d3fcbbf46fbf6e0824d5598bf2bd9ecc44307d77d0
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T19:16:47Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Paved matches the surface column the value is read from.
+      - jarvi2011-pavement-storage
+      note: Paved identifies the pavement-surface column in Table 2(a).
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: A surface water storage capacity is a land_cover.paved property.
+      - jarvi2011-pavement-storage
+      note: Table 2(a) publishes values by SUEWS surface type, including Pavement.
     values:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Table 4a gives Si as 0.48 mm in the Pav column, which is the stored store_min and store_max.
-        The table gives one value where the record stores a minimum and a maximum, so the pair is the
-        single published figure repeated.
+      - jarvi2011-pavement-storage
+      note: The Pavement column gives Si = 0.48 mm, exactly matching both stored storage bounds.
+        The source publishes one value, which the record faithfully repeats as its minimum and maximum.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
+      - jarvi2011-pavement-storage
+      - jarvi2014-helsinki-application
+      note: Järvi et al. (2011) are the earliest checked publication that states the exact 0.48 mm
+        SUEWS pavement storage capacity. Järvi et al. (2014) later reuse it as an inherited value.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is where the study ran, but this cell is an inherited value rather than a Helsinki
-        determination.
+      - jarvi2011-pavement-storage
+      - jarvi2014-helsinki-application
+      note: The parameter is published by generic surface type, not as a Helsinki observation. Järvi et al.
+        later use the same inherited value in Helsinki.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi2011-pavement-storage
+      note: Generic scope reflects a literature parameter offered for the SUEWS Pavement class, without
+        a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-pavement-storage
+      note: Table 2(a) defines the value for the Pavement land-cover class rather than for a whole
+        neighbourhood, an individual facet, or a material specimen.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: A value carried forward from an earlier publication, so the production method belongs to that
-        publication rather than to this one.
+      - jarvi2011-pavement-storage
+      note: Järvi et al. adopt and publish the literature value in their SUEWS parameter table.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: The value occupies its own cell in Table 4a, distinct from the other surface columns.
+      - jarvi2011-pavement-storage
+      - jarvi2014-helsinki-application
+      note: The stable path, Helsinki origin and legacy ID preserve the migrated application-row identity;
+        they do not recast the generic parameter as a Helsinki determination.
   evidence:
-  - id: jarvi-table-4a
+  - id: jarvi2011-pavement-storage
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Pavement column
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 0.48 mm for Pavement. Footnote b attributes the adopted value to Davies and
+        Hollis (1981), while Järvi et al. publish the exact SUEWS parameter.
+    - kind: table
+      label: Table 3, site characteristics
+      page: 225
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: The evaluation sites are in Vancouver and Los Angeles, not Helsinki.
+  - id: jarvi2014-helsinki-application
     source: jarvi2014
     role: compilation
     locators:
     - kind: table
-      label: Table 4a, parameters used in SUEWS by surface
+      label: Table 4(a), Pav column
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
-        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
-        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
-        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
-        marks Vargo et al. (2013).'
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
+      note: Reuses Si = 0.48 mm for Pav in the cold-climate SUEWS table.
     - kind: text
       label: Table 4 caption
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: The 0.48 mm is exactly what Table 4a publishes for pavement. Two smaller points sit
-    with it. The table gives one storage figure and the record splits it into a minimum and a maximum,
-    which is a faithful but not identical representation. And the caption makes this an inherited value,
-    so the citation names the compiler.
-  evidence_revision: sha256:a0a322a9d6fbfd4095e476ce619cb01611d0298ac9f76f93a32e586c5c6962cc
+      note: States that values are sourced from Järvi et al. (2011) unless otherwise indicated; this
+        unfootnoted Pavement storage value is inherited rather than determined in Helsinki.
+  scientific_note: 'Järvi et al. (2011) publish the exact 0.48 mm Pavement storage capacity as a generic
+    SUEWS land-cover value. Their Table 2 footnote names Davies and Hollis (1981), but the cited conference
+    paper, pages 434-443 of the Second International Conference on Urban Storm Drainage proceedings,
+    remains unread. The accessible same-author 1981 doctoral thesis instead reports 1.00 mm for the road
+    surface (UCL Discovery 1317854: https://discovery.ucl.ac.uk/id/eprint/1317854/). Davies and Hollis
+    therefore must not be claimed as the exact 0.48 mm parameter source without checking the conference
+    paper. Järvi et al. (2014) later reuse the value in Helsinki. The stable path, Helsinki origin, legacy
+    ID and values remain unchanged.'
+  evidence_revision: sha256:6eba50b556b855675b3401ddbd717f61422ef04737cf2da0344fba2489e8213d
 verification:
   attestations: []
