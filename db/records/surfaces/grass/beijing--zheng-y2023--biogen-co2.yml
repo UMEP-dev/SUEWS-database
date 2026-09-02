@@ -6,6 +6,7 @@ place: espoo
 origin: Beijing
 representativeness: site
 source: zheng-y2023
+method: literature
 legacy_id: 30240001
 parameters:
   alpha_bio_co2: 0.031
@@ -13,6 +14,28 @@ parameters:
   resp_a: 2.1
   resp_b: 0.06
   min_res_bioco2: 0.6
+parameter_provenance:
+  parameters.alpha_bio_co2:
+    source: zheng-y2023
+    method: literature
+  parameters.beta_bio_co2:
+    source: zheng-y2023
+    method: fitted
+  parameters.resp_a:
+    source: jarvi2019
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.resp_b:
+    source: jarvi2019
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.min_res_bioco2:
+    source: jarvi2019
+    method: assumed
+    place: finland
+    representativeness: site
 legacy:
   theta: -999
   alpha_enh: -999

@@ -8,7 +8,7 @@ dependency_revisions:
     beijing: sha256:405773637c27f920f15983517ea2df18402e91477d64565508eae8aed32ba22a
   records:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
-    records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:fe389781a76fde33a90c8205df294018f56a1f3b49232dd4f30d5742c70a72bb
+    records/surfaces/grass/beijing--zheng-y2023--biogen-co2: sha256:bae1dcfe65f75707f689edb76f7e7bb731e6554b5a7da47da73216132afa2985
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
@@ -206,6 +206,6 @@ assessment:
     evidence inside this city-classed composite, which requires explicit composition curation rather
     than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:6b0204337f6bd9419344c3790e0b32bf994854ee31d540c03651248574cd9fc8
+  evidence_revision: sha256:feb81e7ac6badcb34dc1e49ff0a0609fed2a5723c8762c0124e427e86cb2be4f
 verification:
   attestations: []

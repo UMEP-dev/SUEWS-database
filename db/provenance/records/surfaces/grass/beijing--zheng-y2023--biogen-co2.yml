@@ -1,21 +1,24 @@
 provenance_record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:fe389781a76fde33a90c8205df294018f56a1f3b49232dd4f30d5742c70a72bb
+record_revision: sha256:bae1dcfe65f75707f689edb76f7e7bb731e6554b5a7da47da73216132afa2985
 dependency_revisions:
   sources:
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
     zheng-y2023: sha256:2f35517cafbe604358ba0d6b92d9c0d82ee1718b387d32aa0d35042f6dce82e0
   places:
     espoo: sha256:8422350b58a339e581f10636e9338efc11ddaee9b84c668f2f5b328371d0c1e9
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
+    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T17:10:04Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T22:14:35Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -41,15 +44,15 @@ assessment:
         alpha appears only in the archive, and the quarantined theta of -999 matches the archive's empty
         column.
     source:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - zheng-article
       - zheng-model-archive
       - jarvi-grass-respiration
-      note: The roles are mixed. Zheng et al. publish the Espoo beta fit and compile the Beijing input,
-        while Järvi et al. publish the adopted Kumpula grass respiration terms and Finnish respiration
-        floor. Alpha is recoverable only from the archived compilation. The schema has one source field,
-        so replacing zheng-y2023 with jarvi2019 would misattribute beta and hide the compilation role.
+      note: Parameter-level provenance now keeps Zheng et al. as the source for the archive-only alpha
+        and their fitted Espoo beta, while assigning Järvi et al. to the adopted Torni grass respiration
+        coefficients and Finnish respiration floor. Zheng remains the record-envelope source for the
+        exact Beijing run configuration.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/331
     place:
@@ -57,24 +60,25 @@ assessment:
       evidence_ids:
       - zheng-article
       - zheng-model-archive
-      note: The active place is now Espoo. Appendix D locates the 0.7 ha eddy-covariance lawn at 60 deg
-        11 min 16.02 sec N, 24 deg 49 min 56.85 sec E in Espoo and states that its fitted Fpho,max is then
-        used in Beijing. The stable Beijing path and origin retain that application lineage.
+      note: The envelope place is Espoo, where Appendix D fits beta. Parameter overrides locate the adopted
+        respiration pair at Torni in Helsinki and the minimum floor at its central-Finland chamber site.
+        The stable Beijing path and origin retain the later application lineage.
     representativeness:
       conclusion: supported
       evidence_ids:
       - zheng-article
-      note: Site is the supported scope because Appendix D fits the grass parameter to observations from
-        one 0.7 ha urban lawn; it supplies no city-wide evidence for either Espoo or Beijing.
+      note: >-
+        Site is the supported scope for every leaf: Appendix D uses one 0.7 ha Espoo lawn, Table A1
+        reports the Torni site fit, and the floor comes from one central-Finland chamber site.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - zheng-article
       - zheng-model-archive
       - jarvi-grass-respiration
-      note: beta is a nonlinear least-squares fit with bootstrapping described in Appendix D, while ai
-        and bi and the respiration floor are inherited literature values and alpha is archive-only, so
-        no single method describes the row.
+      note: The record-level literature method describes adoption of the published Zheng run configuration.
+        Parameter overrides identify beta and the Järvi respiration coefficients as fitted, the respiration
+        floor as an explicit model assumption, and the archive-only alpha as a literature configuration value.
     identity:
       conclusion: supported
       evidence_ids:
@@ -102,6 +106,8 @@ assessment:
   - id: zheng-article
     source: zheng-y2023
     role: parameter_source
+    parameter_paths:
+    - parameters.beta_bio_co2
     locators:
     - kind: table
       label: Table 2, SUEWS biogenic model parameters used for all case runs
@@ -120,6 +126,17 @@ assessment:
       note: Locates the eddy covariance lawn in Espoo, Finland, describes the nonlinear least-squares
         and bootstrap fit, reports Fpho,max = 5.497 +/- 0.110 umol m-2 s-1, and states that this value
         is used for grass and lawn in the Beijing simulation.
+  - id: zheng-archive-alpha
+    source: zheng-y2023
+    role: parameter_source
+    parameter_paths:
+    - parameters.alpha_bio_co2
+    locators:
+    - kind: dataset
+      label: ModelRuns/Input/SUEWS_BiogenCO2.txt, code 33, alpha column
+      url: https://doi.org/10.5281/zenodo.8012194
+      note: The pinned model input is the only located artifact that states alpha 0.031 for this exact
+        grass row; the journal article does not publish alpha.
   - id: zheng-domain
     source: zheng-y2023
     role: compilation
@@ -133,13 +150,17 @@ assessment:
   - id: jarvi-grass-respiration
     source: jarvi2019
     role: parameter_source
+    parameter_paths:
+    - parameters.resp_a
+    - parameters.resp_b
+    - parameters.min_res_bioco2
     locators:
     - kind: table
       label: Table A1, grass respiration parameters for Torni
       page: 15
       url: https://doi.org/10.1029/2018JD029576
-      note: Publishes agrass = 2.1 +/- 0.8 and bgrass = 0.06 +/- 0.03 for the Torni/Kumpula Helsinki
-        application adopted by Zheng.
+      note: Publishes agrass = 2.1 +/- 0.8 and bgrass = 0.06 +/- 0.03 for the Torni Helsinki site,
+        which Zheng adopts in its released configuration.
     - kind: equation
       label: Eq. 11 and accompanying text
       page: 5
@@ -147,12 +168,13 @@ assessment:
       note: Sets the 0.6 umol m-2 s-1 floor from winter soil-chamber measurements in a boreal forest
         in central Finland.
   scientific_note: >-
-    The active place and scope now identify the Espoo lawn where Zheng et al. fitted beta, rather than
-    the Beijing application. The stable Beijing path, origin lineage, target, values, source and legacy
-    identity remain unchanged. The tuple is still mixed: Zheng et al. publish the Espoo beta fit and
-    compile the row; Järvi et al. publish the adopted Kumpula grass respiration terms and Finnish floor;
-    and alpha is only present in the archive. The one-source and one-method fields cannot express those
-    roles without overclaiming, so source and method remain curation required.
-  evidence_revision: sha256:7a515aebc5eb729e5edfda9af205ef9f6aa72e9a0253f09997b08c171fcf8b06
+    The active place and scope identify the Espoo lawn where Zheng et al. fitted beta, rather than the
+    Beijing application. The stable Beijing path, origin lineage, target, values, envelope source and
+    legacy identity remain unchanged. Parameter-level provenance now records the mixed tuple without
+    overclaiming: Zheng et al. publish the fitted Espoo beta and the archive-only alpha in their released
+    configuration, while Järvi et al. publish the adopted Torni respiration coefficients and set the
+    0.6 respiration floor from a central-Finland winter soil-chamber site. Leaf-level place and scope
+    overrides keep those production sites distinct from the Espoo beta fit.
+  evidence_revision: sha256:39a43153447dd1c6935054f572468af3741503dab3931aff4631eaac7bd5dbfc
 verification:
   attestations: []
