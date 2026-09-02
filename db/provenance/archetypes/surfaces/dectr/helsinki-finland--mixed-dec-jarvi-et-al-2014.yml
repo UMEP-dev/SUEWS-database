@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance: sha256:f2a8cb35a22ceb08c1a5b909406383d8f3f2d4ec1370d734fcc1bceccf66e65e
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
-    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--jarvi2011--drainage: sha256:0d44c78e8bbc720e82e4c4ba789d4c6fc0c7d3c63e8ebd0503ec9b3540d66bfc
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
@@ -71,7 +71,7 @@ assessment:
         for this typology. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
       - component-surfaces-dectr-helsinki-jarvi2014-phenology
@@ -80,10 +80,11 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: 'The composite claims place helsinki, and four of its twelve components carry that place,
-        including both climate-conditioned ones: the snowpack limit and the four degree-day thresholds
-        are Helsinki records. One component carries place london, two carry place se-england, and four
-        are generic: conductance, albedo, drainage and porosity. The OHM record carries no place. The
+      note: 'The composite claims place helsinki, and three of its twelve components carry that place.
+        The degree-day thresholds are a Helsinki record, while snowpack limit is a generic Järvi land-cover
+        default. One component carries place swindon, one carries place se-england, and six
+        are generic. The OHM record carries no place. The site-scoped Swindon water-storage import needs
+        an explicit composition rationale. The
         leaf_area_index import is forced, since db/records/surfaces/dectr holds leaf-area-index records
         placed at beijing, se-england, shanghai and zurich and none placed at helsinki. The drainage
         component is now correctly classed as the generic Järvi literature tuple; its stable London path
@@ -95,9 +96,10 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water
-      note: The composite claims representativeness city. Five components are classed city, two regional
-        and four generic; those broader regional and generic values do not over-claim a city scale. The
-        remaining OHM component declares no representativeness, carries source unreferenced and states
+      note: The composite claims representativeness city. Three components are city, one is regional,
+        six are generic, the Swindon water-storage record is site-scoped and the remaining OHM component
+        declares no representativeness. The site result is narrower than the city archetype. The OHM
+        record carries source unreferenced and states
         in its own name that it averages codes including soil and water. A maintainer should decide whether
         that unclassified component is acceptable in a city composite or replace it.
       related_records:
@@ -152,9 +154,9 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies snowpack_limit; its place is the composite's own,
-      so the snow climate it was set for is the right one.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.dectr, place generic, representativeness generic, applicable_scale
+      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover default.
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
@@ -198,20 +200,21 @@ assessment:
       and its source is breuer2003, registered in db/sources.yml as "Plant parameter values for models
       in Temperate climates", so the entry is a literature value rather than a Vancouver measurement.
   scientific_note: 'This composite is the least internally consistent of the four placed at Helsinki.
-    Its label names Järvi et al. 2014, and the two slots that do declare source jarvi2014, the snowpack
-    limit and the degree-day thresholds, are the two that a Nordic city typology most needs; both are
-    placed at helsinki, so the place claim holds. Everything that describes the canopy comes from elsewhere.
+    Its label names Järvi et al. 2014, and two slots declare source jarvi2014: snowpack limit is a generic
+    land-cover default, while the degree-day thresholds are placed at Helsinki. Both are compatible with
+    the composite''s place claim without importing evidence from another named place. Everything that describes the canopy comes from elsewhere.
     The leaf growth power and the biogenic CO2 set are havu-m2024 records, the maximum conductance is
     a breuer2003 literature value classed generic, the albedo is a generic Vargo literature constant,
     porosity is a generic implementation assumption, and the four storage-heat positions take
     an unreferenced average that its own name says includes soil and water. Two of those choices bear
     directly on what the composite claims to be: the unreferenced OHM average has no representativeness,
     and the mixed-deciduous typology takes the biogenic record named for street trees while the street-trees
-    typology takes the one named for trees plus grass. The generic conductance, albedo and porosity are broader
+    typology takes the one named for trees plus grass. The site-scoped Swindon water-storage import also
+    lacks a composition rationale. The generic snowpack limit, conductance, albedo and porosity are broader
     than a city and do not create a scale contradiction. The unresolved component choices cannot be settled
     from the entries and are not faults in the stored values. A maintainer should read the two Helsinki
     typologies against their publications together, since a swap in one implies the other. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:14a2ded64f7ee6f52d67b71bef1b4ae1e663187644927416d6dc74fc57a39969
+  evidence_revision: sha256:711e6249028589f5bcbf3277aa84415b79a3166568728deafbea89c79f3b6193
 verification:
   attestations: []

@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--havu-m2024--lai-power: sha256:84125eb22856dab494e985356ecf19d2588c12b4e20b74197b931f20be6f1c96
     records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree: sha256:07b941c46e3c9008fbb496b51262d347ea3cf2cf599ca27d50d0757b6b06fb5f
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
-    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
@@ -71,29 +71,28 @@ assessment:
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-helsinki-vargo2013-albedo
-      note: The composite claims place helsinki, and five of its twelve components carry that place, including
-        both climate-conditioned ones, the snowpack limit and the four degree-day thresholds. One carries
-        place london, one carries place se-england, one carries place zurich, drainage, albedo and porosity
-        are generic, and the OHM record carries no place. The exception
-        that needs a decision is the leaf_area_index slot, which takes an archived Zurich sample with
+      note: The composite claims place helsinki, and four of its twelve components carry that place. The
+        degree-day thresholds are a Helsinki record, while snowpack limit is a generic Järvi land-cover default.
+        One component carries place swindon, one carries place zurich, five are generic, and the OHM
+        record carries no place. Two imports need a decision—the leaf_area_index slot takes an archived Zurich sample with
         source unreferenced and method assumed. The database holds no Helsinki deciduous-tree
         leaf-area-index record, so that slot has to import from somewhere, but this import is a third
         city's configuration without scientific provenance, while its two Havu 2024 siblings import
         records/surfaces/dectr/se-england--ward2016--lai instead. Which import belongs in a Helsinki park
-        typology is a curation decision the entries do not settle.
+        typology is a curation decision the entries do not settle; the water-storage slot takes site-scoped
+        evidence from Swindon and likewise lacks a recorded Helsinki composition rationale.
       related_records:
       - records/surfaces/dectr/se-england--ward2016--lai
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
-      note: The composite claims representativeness city. Seven components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional, drainage, albedo and porosity are generic and the OHM record declares no
-        class. Regional and generic values cover a city, so no component claims a narrower scale than
-        the composite does.
+      note: The composite claims representativeness city. Five components are city, five are generic,
+        the Swindon water-storage record is site-scoped and the OHM record declares no class. The site
+        result is narrower than the city archetype and needs composition-level adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -148,9 +147,9 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies snowpack_limit; its place is the composite's own,
-      so the snow climate it was set for is the right one.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.dectr, place generic, representativeness generic, applicable_scale
+      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover default.
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
@@ -187,17 +186,19 @@ assessment:
       Table S3 Trees 0.66/4.8, and it declares lai.lai_type 1.
   scientific_note: The park typology is coherent in its vegetation slots. Its leaf growth power, maximum
     conductance and biogenic CO2 set all come from havu-m2024 records placed at Helsinki, and the biogenic
-    record is named for deciduous trees plus grass, which is what a park canopy is. The climate-conditioned
-    slots are Helsinki records, so nothing about the Nordic winter or growing season has been moved. One
-    slot does not fit that pattern. The leaf area index is taken from an archived Zurich sample with
+    record is named for deciduous trees plus grass, which is what a park canopy is. The degree-day thresholds
+    are a Helsinki record and snowpack limit is a generic Järvi land-cover default, so neither imports
+    evidence from another named place. One
+    Two slots do not fit that pattern. The leaf area index is taken from an archived Zurich sample with
     source unreferenced and method assumed, where the two sibling Havu 2024 composites take
     the SE England Ward 2016 record. Since the database holds no Helsinki leaf-area-index record for deciduous
     trees, some import was necessary; what is not settled is why this one. It also matters more here than
     it would elsewhere, because the leaf_area_index slot is the only thing distinguishing this composite
     from the street-trees composite, which shares its other eleven components. A maintainer should decide
     whether the archived Zurich sample is the intended park leaf area index and, if it is, record why.
+    The site-scoped Swindon water-storage import needs the same kind of explicit rationale.
     The components' values remain subject to their own evidence assessments; this review does not revisit
     them.
-  evidence_revision: sha256:5b8768919a0bcc8a357ee2d2cae6455ebe6af6eff8bec1917990230a1e6480eb
+  evidence_revision: sha256:3cf25125fbcb00a19522d922ca658051fc41bbd133adc9d57466b26f5d9481fd
 verification:
   attestations: []

@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/dectr/beijing--zheng-y2023--lai-power: sha256:309d2e790f7ed2af64375b6be7d4766cacf4b3c8e4952c3acbd616e25ebf08de
     records/surfaces/dectr/beijing--zheng-y2023--max-conductance: sha256:ea17f3ff89e9ee78e91e3aded8c339ab5fdf2a62d59417616fc74b38304cc422
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
-    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
@@ -76,15 +76,15 @@ assessment:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-common-beijing-zheng-y2023-biogen-co2
       note: 'The composite claims place beijing, registered in db/places.yml with Koppen class Dwa, but
-        only two of its twelve components carry that place. Three carry place helsinki, registered Dfb;
-        one carries place london, registered Cfb; one carries place se-england, four are generic; and the
+        only two of its twelve components carry that place. Two carry place helsinki, registered Dfb;
+        one carries place swindon, registered Cfb; six are generic; and the
         OHM record carries no place at all. The newly explicit Helsinki component is the Viikki Tilia
-        biogenic fit applied by Zheng in Beijing. Two other Helsinki imports are conditioned on climate rather than on species:
-        records/surfaces/dectr/helsinki--jarvi2014--snow-lim supplies snowpack_limit and records/surfaces/dectr/helsinki--jarvi2014--phenology
-        supplies the growing- and senescing-degree-day thresholds, both set for a cold-climate Nordic
-        city and carried here into a monsoon-influenced continental one. Drainage is now correctly declared
-        generic land-cover literature evidence, so it creates no London-to-Beijing transfer. The two climate-conditioned
-        imports still need an explicit composition rationale or replacement.'
+        biogenic fit applied by Zheng in Beijing. The remaining Helsinki climate import is
+        records/surfaces/dectr/helsinki--jarvi2014--phenology, which supplies growing- and senescing-degree-day
+        thresholds set for a cold-climate Nordic city and carried here into a monsoon-influenced continental
+        one. Snowpack limit and drainage are generic land-cover literature inputs and create no Helsinki-
+        or London-to-Beijing transfer. The phenology import still needs an explicit composition rationale
+        or replacement.'
     representativeness:
       conclusion: correction_required
       evidence_ids:
@@ -94,13 +94,11 @@ assessment:
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
       - component-surfaces-common-beijing-zheng-y2023-biogen-co2
-      note: The composite claims representativeness city, but its leaf_growth_power component is now
-        correctly classed site because the coefficients were fitted to one park, and its biogenic CO2
-        component is site evidence from Viikki. A city archetype therefore contains two narrower site-only
-        fits. Whether to retain them knowingly or narrow the composite is
-        a separate composition-curation decision. The regional water-storage record is broader than
-        the composite and the generic drainage, albedo and porosity records are broader still, so none creates the
-        same over-claim; the OHM record declares no class.
+      note: The composite claims representativeness city. Six components are generic, two are city,
+        and three are site-scoped—the Beijing leaf-growth fit, the Viikki biogenic tuple and the Swindon
+        water-storage record. The OHM component declares no class. All three site results are narrower
+        than the city archetype; whether to retain them knowingly or narrow the composite is a composition-curation
+        decision.
     method:
       conclusion: supported
       evidence_ids:
@@ -158,9 +156,9 @@ assessment:
   - id: component-surfaces-dectr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/dectr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.dectr, place helsinki and representativeness
-      city. It carries source jarvi2014 and supplies snowpack_limit, a quantity conditioned on the snow
-      climate it was set for.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.dectr, place generic, representativeness generic, applicable_scale
+      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover default.
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
@@ -197,15 +195,16 @@ assessment:
     both records declaring lai.lai_type
     0, and the targets and the OHM mapping are sound. The leaf_growth_power component is a one-park site
     fit inside this city-classed composite, which now requires explicit composition curation. The biogenic
-    site transfer creates the same explicit scale question. Of the other imports, two
-    them matter more than the rest: the snowpack limit and the four degree-day thresholds both come from
-    Helsinki, a Dfb city, into a composite placed at Beijing, a Dwa city, and both quantities describe
-    when snow accumulates and when leaves appear and fall rather than what a deciduous tree is. Drainage
-    is openly generic literature evidence and no longer compounds that transfer question. The remaining
-    climate-conditioned choices cannot be settled from the entries and are not defects in component values;
-    it is a composition decision that was never written down. A maintainer should either record why these
-    transfers are acceptable for Beijing or replace the two climate-conditioned slots. The components''
+    site transfer creates the same explicit scale question, as does the site-scoped Swindon water-storage
+    import. Of the other imports, two
+    them matter more than the rest: the four degree-day thresholds come from Helsinki, a Dfb city, into
+    a composite placed at Beijing, a Dwa city, and describe when leaves appear and fall rather than what
+    a deciduous tree is. Snowpack limit and drainage are openly generic literature evidence and do not
+    compound that transfer question. The remaining climate-conditioned choice cannot be settled from
+    the entries and is not a defect in the component value; it is a composition decision that was never
+    written down. A maintainer should either record why the phenology transfer is acceptable for Beijing
+    or replace that slot. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:0e6b7c822e6eab042f5eecabe79f676af1ceb5cd9f439501b41b64fe2916441f
+  evidence_revision: sha256:f6c4dd6992f5fb3446bde912aeff0a3505242963e36b595afbcd1ed84d398451
 verification:
   attestations: []
