@@ -1,81 +1,120 @@
 provenance_record: records/profiles/traffic/helsinki--jarvi2019--traffic
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b2b5c4d2c1b79f0495cb13e71b848346aae327e86c8fc018570ae4594d8a239e
+record_revision: sha256:b10ba1b44f1aa2151c1b935614001d5a671df2a04e202d98db6a60102fbcca57
 dependency_revisions:
   sources:
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
+    jarvi2019-data: sha256:977d9269b0fa5611e9205a27576073aeca9ccf6c53b3f5c7db607338f4e9eaf0
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T09:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/319
+  method: literature
   findings:
     name:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The record says only Traffic although the plotted series is the Kumpula, not Torni, profile.
+      - kumpula-traffic-rows
+      - site-profile-identity
+      note: The archive labels rows 701/702 Helsinki Traffic, while the article distinguishes the plotted
+        Kumpula traffic curve from the separate Torni curve. The active name now states the Kumpula identity.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - kumpula-traffic-rows
+      - kumpula-profile-selectors
+      note: The archive selects rows 701/702 through TrafficProfWD and TrafficProfWE, matching the
+        anthropogenic_emissions.co2.traffprof_24hr attachment point.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: Figure 1 supports the curve and Kumpula identity, but exact hourly values cannot be verified
-        numerically from the plot alone.
+      - kumpula-traffic-rows
+      note: Rows 701/702 publish the exact weekday and weekend cycles under hour columns 0 through 23.
+        The corrected record maps those columns directly to supy's HourlyProfile keys 1 through 24;
+        the previous record had moved archive hour 0 to key 24.
     source:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The paper is the direct publication of the Kumpula traffic profile.
+      - kumpula-traffic-rows
+      - site-profile-identity
+      note: The Zenodo configuration is the direct numeric parameter source. The associated paper explains
+        the Kumpula and Torni scientific identities but does not tabulate all 24 values.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/319
     place:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The place agrees with the source scope or is explicitly generic.
+      - site-profile-identity
+      note: The paper identifies Kumpula as one of the two Helsinki study areas, so place helsinki is the
+        correct enclosing registry entry.
     representativeness:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The declared evidence reach does not exceed the source scope.
+      - site-profile-identity
+      note: The profile belongs to the Kumpula study area rather than Helsinki as a whole; site is the
+        supported evidence reach.
     method:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The production or literature-compilation method is stated in the source.
+      - kumpula-traffic-rows
+      - site-profile-identity
+      note: The database adopts the published model-input profile without performing a new fit or calculation.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: Stable path, target, source and values identify one retained database record.
+      - kumpula-traffic-rows
+      - kumpula-profile-selectors
+      - site-profile-identity
+      note: Stable path, attachment point and legacy IDs preserve the migrated pair, while the corrected
+        name and hour order distinguish the Kumpula rows from Torni codes 703/704.
     urban_setting:
       conclusion: supported
       evidence_ids:
-      - jarvi-figure-1
-      note: The source explicitly describes this urban setting.
+      - site-profile-identity
+      note: The article describes Kumpula as the suburban study area, supporting the stored urban setting.
   evidence:
-  - id: jarvi-figure-1
-    source: jarvi2019
+  - id: kumpula-traffic-rows
+    source: jarvi2019-data
     role: parameter_source
     locators:
-    - kind: figure
-      label: Figure 1, weekday and weekend traffic profiles
-      url: https://doi.org/10.1029/2018JD029576
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_Profiles.txt, rows 701 and 702
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: Rows labelled Helsinki Traffic Weekday and Weekend publish 24 values under hour columns 0
+        through 23. The weekday begins 0.30, 0.19 and ends 0.40; the weekend begins 0.50, 0.55 and ends 0.58.
+  - id: kumpula-profile-selectors
+    source: jarvi2019-data
+    role: validation
+    locators:
+    - kind: dataset
+      label: SpatialRun_input.zip/Input/SUEWS_AnthropogenicEmission.txt, Kumpula configurations
+      url: https://doi.org/10.5281/zenodo.2572472
+      note: The Kumpula anthropogenic-emission configurations select profile codes 701 and 702 through
+        TrafficProfWD and TrafficProfWE.
+  - id: site-profile-identity
+    source: jarvi2019
+    role: validation
+    locators:
+    - kind: section
+      label: Sect. 3 and Figure 1, Kumpula and Torni traffic profiles
       page: 8369
-      note: The black Kumpula curves agree visually with the stored weekday and weekend series, but the
-        exact 24 hourly numbers are not tabulated.
-  scientific_note: The publication supports the profile family and site, but exact point values need the
-    underlying plotted data or model input table before sign-off.
-  evidence_revision: sha256:493c98d3448752c881f0bc960932719f6b148dec38bd0514053d7055fa47220d
+      url: https://doi.org/10.1029/2018JD029576
+      note: Presents distinct weekday/weekend traffic cycles for suburban Kumpula and city-centre Torni;
+        the stored numeric rows are the Kumpula pair, while archive codes 703/704 are Torni.
+  scientific_note: >-
+    The publication and open archive together settle both identity and exact values. The previous record
+    contained the correct cyclic sequence but rotated the archive's hour-0 value into key 24, contrary to
+    the repository's documented mapping from source columns 0..23 to supy HourlyProfile keys 1..24. The
+    corrected record now names Kumpula, cites the numeric dataset directly and restores the source order;
+    stable path, Helsinki place, site reach, suburban setting and legacy IDs are retained.
+  evidence_revision: sha256:23bdbc1e204ca4e2e04118d6b81783511fe36d2e53d32c5b604bbeabca13ea61
 verification:
   attestations: []
