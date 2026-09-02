@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
     records/surfaces/grass/zurich--ao2018--lai: sha256:446974f3fd26a7b144e9c849ce8cdeb9b0c36d15dd5bd48883aee28b1058c0a8
     records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:dbe3dd4de133f3738c597e933bf61120cd4d3615ab9b0e74b8b43aa64ba1809b
-    records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
+    records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:d66c9be2aee4c3790252ee64e1a02358be89ad96cd217e73dfd523195b198f59
     records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:dc1654866786d1b26bf067964998dc5e0894bf0e7fb668b7dc0fad485c8400d2
 assessment:
   status: agent_assessed
@@ -105,9 +105,9 @@ assessment:
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
       note: >-
-        The composite declares representativeness site, matching the narrowest evidence-bearing
-        component: the biogenic CO2 tuple applied and evaluated at four Zurich park sites. Other components
-        declare city, regional or generic reach, while the OHM component carries no representativeness.
+        The composite declares representativeness site, matching its narrowest evidence-bearing
+        components: the biogenic CO2 and LAI-power tuples applied and evaluated at four Zurich park sites.
+        Other components declare city, regional or generic reach, while the OHM component carries no representativeness.
         The composite therefore does not advertise a broader evidence reach than any of its components.
     method:
       conclusion: supported
@@ -186,8 +186,10 @@ assessment:
   - id: component-surfaces-grass-zurich-stagakis-s2024-lai-power
     record: records/surfaces/grass/zurich--stagakis-s2024--lai-power
     role: component
-    note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass,
-      LaiEq = 1", place zurich, representativeness city and source stagakis-s2024.
+    note: Fills the leaf_growth_power slot. The literature record declares target land_cover.grass, name
+      "Grass, LaiEq = 1", place zurich, representativeness site and source stagakis-s2024. Supplement Table
+      S3 publishes the exact mixed Lawn tuple; field-level provenance traces three inherited leaves to
+      Järvi et al. and retains Stagakis for the modified senescence_sdd leaf.
   - id: component-surfaces-grass-zurich-stagakis-s2024-max-conductance
     record: records/surfaces/grass/zurich--stagakis-s2024--max-conductance
     role: component
@@ -196,7 +198,8 @@ assessment:
   scientific_note: 'This is the best-localised of the nine grass composites. Four of its twelve components
     declare place zurich and they are every Zurich grass record the database holds. Three cite stagakis-s2024,
     the study the label names, for leaf area index, leaf-growth power and the directly stated parts of the
-    biogenic CO2 configuration; the biogenic record separately preserves Bellucco and Järvi field provenance,
+    biogenic CO2 configuration; the LAI-power record separately preserves Järvi provenance for its inherited
+    leaves, the biogenic record preserves Bellucco and Järvi field provenance,
     and maximum conductance is the Havu et al. literature value. Together they fill the four slots that distinguish the entry
     from its neighbours. The rest are transparent transfers: a generic literature albedo, the snowpack
     limit and phenology from Helsinki, generic literature drainage, emissivity and water storage from SE England,
@@ -205,7 +208,8 @@ assessment:
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
     and the source key read 2024, which is a source registry matter. The drainage component is openly generic
     literature evidence rather than a Zurich observation. The composite now uses site representativeness
-    because its biogenic CO2 component is supported at the four studied park sites rather than city-wide.'
-  evidence_revision: sha256:87d1853631a748adfb3dd58ca7364492e0d690efd6d27ec7d03daa7f6c5bacbf
+    because its biogenic CO2 and LAI-power components are supported at the four studied park sites rather
+    than city-wide.'
+  evidence_revision: sha256:eb3c6504563f01f2aeb5eecb5cedeffadbd4bf5991731042f2d9ae25670954dd
 verification:
   attestations: []
