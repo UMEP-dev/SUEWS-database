@@ -1,75 +1,139 @@
 provenance_record: records/surfaces/evetr/se-england--ward2016--lai-power
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
+record_revision: sha256:a77ba019fe475460c0bbeb9155b9a8c21e61a5ba75a5eeefa1b6845b08c67b9b
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
+    umep-dev2020a-docs: sha256:f1644d69483c7f8dd4878a8662885d01f4d3ff6293c9c4512a0cd36792b7437d
+    ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T18:14:48Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: fitted
   findings:
     name:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The label identifies the published parameter class or model configuration.
+      - suews2020a-laieq
+      note: The label identifies the evergreen-tree UK application of the Järvi LAI-power formulation;
+        the official documentation identifies its selector as LAIEq 1.
     target:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - suews2016a-uk-codes
+      note: The Järvi formulation is published for vegetated SUEWS surfaces, and the v2016a application
+        table assigns this exact tuple to the London and Swindon evergreen-tree codes.
     values:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The cited locator publishes the stored values at the available precision.
+      - suews2020a-laieq
+      - suews2016a-uk-codes
+      note: Appendix A publishes all four power coefficients, the official documentation identifies
+        selector 1, and the v2016a codes preserve the complete five-field tuple for both UK sites.
     source:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - suews2020a-laieq
+      note: Järvi et al. are the original source of the four fitted coefficients. The selector is separately
+        attributed to the official SUEWS documentation rather than being folded into the paper citation.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-appendix-a
-      note: The coefficients are published for Helsinki and Montreal, not as a south-east England determination.
+      - suews2016a-uk-codes
+      - ward2016-uk-application
+      note: The SE England envelope records the exact London and Swindon application preserved by v2016a
+        and evaluated by Ward et al.; it does not claim the coefficients were derived regionally.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
+      evidence_ids:
+      - ward2016-uk-application
+      note: Ward et al. evaluate the formulation at the two neighbourhood-scale study sites, so site
+        is the supported application reach; regional determination is not established.
+    applicable_scale:
+      conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The paper does not establish regional evidence reach for south-east England.
+      note: Equation A1 defines LAI for surface type i, so the coefficients describe a SUEWS land-cover
+        class rather than a whole neighbourhood or individual specimen.
     method:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: The production or literature-compilation method is stated in the source.
+      note: Järvi et al. changed the coefficients after comparing simulated leaf-on and leaf-off timing
+        with visual surveys, explicitly noting that no direct LAI measurements were available; fitted
+        records this calibration-like origin.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi-appendix-a
-      note: Stable path, target, source and values identify one retained database record.
+      - suews2016a-uk-codes
+      note: The stable path and legacy ID retain the UK evergreen-tree application identity while the
+        split selector provenance preserves the source-coherent scientific tuple.
   evidence:
   - id: jarvi-appendix-a
     source: jarvi2014
     role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_power.growth_lai
+    - parameters.lai.lai_power.growth_gdd
+    - parameters.lai.lai_power.senescence_lai
+    - parameters.lai.lai_power.senescence_sdd
     locators:
-    - kind: table
-      label: Appendix A, leaf area index parameterisation
+    - kind: equation
+      label: Appendix A, Leaf area index, Equation A1
       url: https://doi.org/10.5194/gmd-7-1691-2014
       page: 1707
-      note: Publishes growth coefficients 0.04 and 0.001 and senescence coefficients -1.5 and 0.0015 used
-        at the two study cities.
-  scientific_note: The values and source are exact, but their later south-east England application is
-    not provenance for a regional determination. Preserve values pending a place/scope decision.
-  evidence_revision: sha256:d1da13dc7a1d574152a1dc9cde863a9085cdf38751a09c8a2d5c4085495dae14
+      note: Publishes growth coefficients 0.04 and 0.001 and senescence coefficients -1.5 and 0.0015,
+        changed after comparison with visual leaf-on and leaf-off timing at Helsinki and Montreal.
+  - id: suews2020a-laieq
+    source: umep-dev2020a-docs
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_type
+    locators:
+    - kind: section
+      label: LAIEq and Leaf Growth/Off Power entries
+      url: https://suews.readthedocs.io/_/downloads/en/2020a/pdf/
+      page: 88
+      note: Defines LAIEq 1 as the Järvi et al. 2014 formulation and lists its characteristic power
+        coefficients, distinguishing it from LAIEq 0.
+  - id: suews2016a-uk-codes
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a release workbook, SUEWS_Veg sheet, codes 551 and 661
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: Stores the exact selector and four coefficients for the Swindon and London evergreen-tree
+        applications.
+  - id: ward2016-uk-application
+    source: ward2016
+    role: validation
+    locators:
+    - kind: section
+      label: Section 4.1, Seasonal cycle of vegetation phenology
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 7
+      note: Evaluates the Järvi 2014 phenology formulation using vegetation photographs at London and
+        Swindon and changes the UK base temperatures, not the four LAI-power coefficients.
+  scientific_note: Järvi et al. publish the four fitted LAI-power coefficients; the official SUEWS
+    documentation establishes selector 1; and the v2016a table plus Ward et al. document their exact
+    London and Swindon application. The record retains SE England as the shared application geography
+    but narrows evidence reach to site and records land-cover applicability. No value, stable path, name,
+    target, origin or legacy ID changes.
+  evidence_revision: sha256:d6a778efd5427b0b45c1dc4de0e093c0f2353c436e3b3d7c0c5190b7f3465fb7
 verification:
   attestations: []

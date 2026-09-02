@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--drainage: sha256:9271895dc36ee103a1ef407655f92d9870a11a448aed10f3e9ed6646e33a13a1
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
-    records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
+    records/surfaces/evetr/se-england--ward2016--lai-power: sha256:a77ba019fe475460c0bbeb9155b9a8c21e61a5ba75a5eeefa1b6845b08c67b9b
     records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:55e0cb9863f351fe6802a49505a0f764f0daf8be82f87be43946949751a772d9
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 assessment:
@@ -115,10 +115,11 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
       note: The composite declares representativeness city. Four record-level components are generic,
-        three are regional, two are site-scoped to Swindon, two are city-scoped to Helsinki, and the two
-        OHM records carry no representativeness. The biogen_co2 component has mixed scope. Ruimy's alpha_bio_co2 and
+        two are regional, the LAI-power record and two Swindon records are site-scoped, two are city-scoped
+        to Helsinki, and the two OHM records carry no representativeness. The biogen_co2 component has
+        mixed scope. Ruimy's alpha_bio_co2 and
         beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's min_res_bioco2 are
-        site-scoped. Those site results are narrower than the city composite, and no published composition
+        site-scoped. The LAI-power record and those site results are narrower than the city composite, and no published composition
         rationale documents the transplant, so city representativeness needs maintainer adjudication.
     method:
       conclusion: supported
@@ -195,8 +196,9 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-lai-power
     record: records/surfaces/evetr/se-england--ward2016--lai-power
     role: component
-    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen Tree (SE England)"; its source field reads ward2016.
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place se-england,
+      representativeness site, source jarvi2014 and method fitted. Official SUEWS documentation supplies
+      the lai.lai_type 1 selector, matching the leaf_area_index component.
   - id: component-surfaces-evetr-se-england-ward2016-drainage
     record: records/surfaces/evetr/se-england--ward2016--drainage
     role: component
@@ -257,6 +259,6 @@ assessment:
     deciduous-tree and grass classes. All three questions are about selection, not about any component''s
     value, and are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:1f4a71847eb5bd15fb5ca730753bc7da19d2dc874c0087cc162bd81c99fc488b
+  evidence_revision: sha256:b4fdab5d0e681e4ec4e13aae17ac7f0a331d19e64e9b3b52f7dbd1bed5fa7ae4
 verification:
   attestations: []
