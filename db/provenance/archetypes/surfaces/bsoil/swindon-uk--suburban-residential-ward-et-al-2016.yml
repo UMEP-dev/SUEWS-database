@@ -147,9 +147,10 @@ assessment:
         in the same eleven positions, and neither entry declares parameters of its own, so the two export
         the same fragment. They are not duplicates in the sense the other entry could be deleted, because
         they declare different places, swindon and london. The construction now supports London but not
-        Swindon, while the exported surface components declare se-england or helsinki and the same regional
-        surface evidence legitimately covers both. What the sharing does mean is that neither entry carries
-        any locally derived value, and that any correction to one component reaches both. records/surfaces/bsoil/se-england--ward2016--water-state
+        Swindon. Three exported SE England components are regional, while the shared Ward albedo is
+        site-scoped and therefore does not automatically support either city claim; that question is
+        recorded under representativeness. Sharing still means that any correction to one component
+        reaches both. records/surfaces/bsoil/se-england--ward2016--water-state
         carries state_limit and is referenced by no archetype, but no land_cover.bsoil archetype declares
         a water_state slot, so that is a target-wide design question rather than an omission in this entry.'
   evidence:
@@ -220,6 +221,6 @@ assessment:
     the same place: most exported surface evidence is regional and covers both towns, while the shared
     site-scoped albedo has to be adjudicated for each city claim. The London construction mismatch is
     non-exporting but remains a composition-provenance defect. A correction to any one component reaches both.'
-  evidence_revision: sha256:963669a057741b49447012e28654907e2c366b2c510b5d071ae2a7bb4dbec442
+  evidence_revision: sha256:ccda1a77a72ce6da6fa181f50a34187571fae9935ca20486211bf635eed58439
 verification:
   attestations: []
