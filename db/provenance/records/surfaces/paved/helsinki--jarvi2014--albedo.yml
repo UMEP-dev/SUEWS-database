@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/helsinki--jarvi2014--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
+record_revision: sha256:51567ff980f3f6acdcf05b3eaddfb8ab5a560c46bb1ec5b930a0f4bacf5f3797
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -9,12 +9,13 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T12:11:02Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -45,19 +46,18 @@ assessment:
       note: The footnote ties the optimisation to Helsinki data, and Table 1 places three of the study's
         five sites there.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      note: The optimisation uses Helsinki data from neighbourhood-scale sites. Site is the supported
+        reach and avoids claiming that one fitted value represents the whole city.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: The footnote says optimised without naming what was optimised against or over what period,
-        so the value is neither a plain measurement nor a documented fit. Whether the database should
-        record it as fitted is a maintainer decision.
+      note: The source explicitly says the value was optimised using Helsinki data. Under the database
+        method definitions, a value fitted to observations or another dataset is fitted even when the
+        paper does not report the objective function or optimisation period.
     identity:
       conclusion: supported
       evidence_ids:
@@ -90,11 +90,11 @@ assessment:
         in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
         are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
         address and in a publisher''s address in the reference list.'
-  scientific_note: This is the strongest record in the group. The value is in Table 4a, and its footnote
-    marks it as optimised using Helsinki data, which makes this study the parameter publication rather
-    than a compiler, unlike almost every other cell in the same table. What the footnote does not say
-    is what the optimisation minimised or over which period, so the method behind the number is thinner
-    than the attribution. City representativeness still overstates a study whose footprints are 1 km circles.
-  evidence_revision: sha256:e541ebed1c0abdc272c2bca652f417e4b571ccbd7d311aae03040d8764a844f6
+  scientific_note: The value is in Table 4a, and its footnote marks it as optimised using Helsinki data,
+    making this study the parameter publication rather than a compiler for this cell. The word optimised
+    establishes a fitted method even though the paper does not name the objective function or period.
+    Site reach reflects the neighbourhood-scale evidence without changing the value, place, stable path,
+    target, origin or legacy ID.
+  evidence_revision: sha256:1e3d439632c3dfb93aa03f732bc96f47b14cc9247daef55c321fa1983d7c6908
 verification:
   attestations: []
