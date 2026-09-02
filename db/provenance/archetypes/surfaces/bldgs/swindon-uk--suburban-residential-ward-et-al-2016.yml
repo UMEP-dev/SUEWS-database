@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:1b561a7e76c6a05efd95faf4cda9b441193e8909982187e7c1d9a1fbb2bb24b6
-    records/surfaces/bldgs/swindon--ward2016--albedo: sha256:11c0461914fd8a326abd9b18d7fb9a7193a4b326c39734d427fb82dc872c709a
+    records/surfaces/bldgs/swindon--ward2016--albedo: sha256:09fb8e757f0b95d9b0f1eff5d4c4ef050f0df1aa8397f19a18bd5a9b074d8ee1
     records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
 assessment:
   status: curation_required
@@ -97,11 +97,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-ward2016-buildings
       - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
-      note: The composite declares representativeness city. The albedo, emissivity, construction and snow
-        limit components declare representativeness city; the water storage and drainage components declare
-        representativeness regional, which is broader than the composite's claim rather than narrower,
-        so no component is stretched past its stated reach. The two ohm records declare no representativeness,
-        leaving how far their coefficients were meant to travel undeclared on the records themselves.
+      note: The composite declares representativeness city. The albedo is site evidence, emissivity is
+        generic, construction and snow limit are city records, and water storage and drainage are regional.
+        Extending the fitted site albedo to the city composite requires curation. The two OHM records declare
+        no representativeness, leaving how far their coefficients were meant to travel undeclared.
     method:
       conclusion: supported
       evidence_ids:
@@ -129,7 +128,7 @@ assessment:
     record: records/surfaces/bldgs/swindon--ward2016--albedo
     role: component
     note: Fills albedo. The record is named 'Suburban residential', declares target land_cover.bldgs,
-      place swindon and representativeness city.
+      place swindon, representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-swindon-ward2016-emissivity
     record: records/surfaces/bldgs/swindon--ward2016--emissivity
     role: component
@@ -170,8 +169,9 @@ assessment:
     note: Fills ohm.winter_wet and ohm.winter_dry. The record is named 'Code 798 x Multiplier for winter
       [7982]', declares target ohm_coefficients and season_label Winter, and declares no place and no
       representativeness.
-  scientific_note: 'Most of this composite is anchored in the place it claims. Its albedo and emissivity
-    are Swindon rows named ''Suburban residential'', its water storage and drainage are SE England rows,
+  scientific_note: 'Most of this composite is anchored in the place it claims. Its fitted albedo is a
+    site-scoped Swindon row named ''Suburban residential'', emissivity is a generic jarvi2011 literature
+    value, and its water storage and drainage are SE England rows,
     and its OHM mapping is confirmed by the components themselves: the summer positions take the record
     declaring season_label Summer and the winter positions the record declaring season_label Winter. The
     one component from outside the United Kingdom, the Helsinki snow limit, is the only building snowpack_limit
@@ -180,8 +180,9 @@ assessment:
     a record that names a different settlement type and flags itself as a sample run, while twelve uk--hertwig2024a
     residential construction records sit unused. Choosing among those means choosing a build period and
     a roof form, which is a maintainer''s decision and not one this review should make on resemblance.
-    Nothing here requires a component value to change, and the components'' own values remain subject
+    The city-wide use of a site-fitted albedo is a second explicit curation question. Nothing here requires
+    a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:9041cac080c7ae9dc4e11224f3d0fcc66d960938eec9e72c0516fa6b4111ab1f
+  evidence_revision: sha256:3b5960103733372ef237fab07076e877f97844751058e03f3cc74a97dbb18e76
 verification:
   attestations: []
