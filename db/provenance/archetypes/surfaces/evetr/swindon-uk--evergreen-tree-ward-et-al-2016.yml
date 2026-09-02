@@ -81,6 +81,7 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-se-england-ward2016-albedo
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite claims swindon, and seven components carry place se-england; db/places.yml records
         se-england as a subnational place in united-kingdom and swindon as a united-kingdom place, and
         schema/origins_map.yml resolves the legacy origin string "SE England" to that slug with
@@ -95,9 +96,11 @@ assessment:
         selected by no archetype in the database. schema/parameter_groups.yml classes the degree-day thresholds
         as a tight group whose members have to be chosen consistently, so a Ward et al. (2016) composite
         taking Helsinki base temperatures while its own region's record goes unused is a selection a maintainer
-        should confirm or correct.
+        should confirm or correct. The biogen_co2 slot likewise combines Ruimy's generic light-response pair
+        with Schmid's site-scoped Morgan-Monroe respiration pair and Järvi's site-scoped Finnish minimum
+        respiration floor, so those cross-site selections also need adjudication.
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-se-england-ward2016-emissivity
@@ -113,8 +116,11 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for
       note: The composite declares representativeness city. Seven se-england evergreen rows are classed
-        regional; the plant-canopy biogenic CO2 row and porosity record are generic; the two Helsinki
-        rows are classed city; and the two OHM records carry no representativeness at all.
+        regional; porosity is generic; the two Helsinki rows are classed city; and the two OHM records
+        carry no representativeness. The biogen_co2 component has mixed scope. Ruimy's alpha_bio_co2 and
+        beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's min_res_bioco2 are
+        site-scoped. Those site results are narrower than the city composite, and no published composition
+        rationale documents the transplant, so city representativeness needs maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -210,8 +216,10 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place generic and representativeness
-      generic, and is named "Plant canopies"; its source field reads ruimy1995.
+    note: Fills biogen_co2. The record declares target land_cover.common and mixed leaf-level provenance.
+      Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped Morgan-Monroe
+      respiration pair, and Järvi supplies the site-scoped Finnish minimum-respiration floor. It is named
+      "Plant canopies"; the cross-site selection remains a composition-level curation question.
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
@@ -247,6 +255,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:550704807dc72cdd4ea80795ce80dd1f6cac9ece5cd4b1eb6f967ec22726833d
+  evidence_revision: sha256:103d242a8e436ae3c70cc3bc86720c6494c59354bb0d6e1f8a73cd6e35ea420d
 verification:
   attestations: []

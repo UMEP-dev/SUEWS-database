@@ -42,7 +42,7 @@ assessment:
       note: The composite's name reads "Grass Ward et al. (2016)", its place reads london and its origin
         reads London, UK. Three of the thirteen components declare source ward2016, filling albedo and
         both ohm positions. The other ten use independently declared sources; ward2018 for drainage,
-        breuer2003 for max_vegetation_conductance, ruimy1995 for biogen_co2, jarvi2014 for snow_lim_patch,
+        breuer2003 for max_vegetation_conductance, a Ruimy-Schmid-Järvi compilation for biogen_co2, jarvi2014 for snow_lim_patch,
         vegetation_growth and leaf_growth_power, jarvi2011 for emissivity, leaf_area_index and
         water_storage, and unreferenced for porosity.
         The name field is identical to that of archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016,
@@ -102,8 +102,10 @@ assessment:
       note: The composite declares place london, which db/places.yml gives as lat 51.51, lon -0.13, koppen
         Cfb. Five of the thirteen components declare place se-england, which db/places.yml gives as lat
         51.2, lon -0.8, koppen Cfb and subnational true, a region containing London and sharing its koppen
-        class; porosity, emissivity, leaf_area_index and biogen_co2 declare place generic, and the two ohm components
-        carry no place field. The remaining
+        class; porosity, emissivity and leaf_area_index declare place generic, and the two ohm components
+        carry no place field. The biogen_co2 slot has mixed leaf-level scope. Its Ruimy light-response
+        pair is generic, its Schmid respiration pair is from Morgan-Monroe State Forest, and its Järvi
+        minimum-respiration floor is site-scoped in Finland. The remaining
         two slots, snow_lim_patch and vegetation_growth, take Helsinki records (koppen Dfb). For snow_lim_patch
         that is forced, because records/surfaces/grass/helsinki--jarvi2014--snow-lim is the only grass
         record in the database carrying snowpack_limit. For vegetation_growth it is not. records/surfaces/grass/se-england--ward2016--phenology
@@ -114,17 +116,21 @@ assessment:
         Helsinki phenology inside a Ward et al. (2016) SE England composite is deliberate or an artefact
         of the migration, and settle the question for both this entry and its counterpart at once.
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-se-england-ward2016-lai
       - component-surfaces-grass-helsinki-jarvi2014-phenology
       - component-surfaces-grass-generic-unreferenced-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: 'The composite declares representativeness city. Five components declare regional, two declare
-        city, being the Helsinki snow_lim_patch and vegetation_growth records; porosity, emissivity,
-        leaf_area_index and biogen_co2 declare generic; and the two ohm components carry no representativeness field.
-        No component is classed narrower than the composite, so nothing site-specific is offered as a
-        city typology. The two city archetypes use the same shared component set and carry nothing specific
+        city, being the Helsinki snow_lim_patch and vegetation_growth records; porosity, emissivity and
+        leaf_area_index declare generic; and the two ohm components carry no representativeness field.
+        The biogen_co2 component is mixed-scope: Ruimy''s alpha_bio_co2 and beta_bio_co2 are generic,
+        but Schmid''s resp_a and resp_b and Järvi''s min_res_bioco2 are site-scoped. Those site results
+        are narrower than the city composite, and no published composition rationale documents the
+        transplant, so city representativeness needs maintainer adjudication. The two city archetypes
+        use the same shared component set and carry nothing specific
         to London, which is what
         makes it indistinguishable from archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016; that
         is taken under identity.'
@@ -172,9 +178,11 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills the biogen_co2 slot. The record declares target land_cover.common, name "Plant canopies",
-      place generic, representativeness generic and source ruimy1995. It is the only component declaring
-      the surface-agnostic land_cover.common target.
+    note: Fills the biogen_co2 slot. The record declares target land_cover.common and mixed leaf-level
+      provenance. Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped
+      Morgan-Monroe respiration pair, and Järvi supplies the site-scoped Finnish minimum-respiration
+      floor. It is the only component declaring the surface-agnostic land_cover.common target; its
+      cross-site selection remains a composition-level curation question.
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
@@ -233,7 +241,8 @@ assessment:
     ward2016; maximum conductance is a Breuer et al. literature value applied through an SE England record,
     while emissivity, leaf_area_index and water_storage cite Järvi et al. (2011). Five components declare
     place se-england, a region that contains London and shares its koppen class
-    Cfb, and the ohm season mapping is right, the summer-labelled code 201 set filling summer_wet and
+    Cfb. The biogen_co2 slot combines a generic Ruimy light-response fit with site-scoped Schmid and
+    Järvi fields, which requires composition-level adjudication. The ohm season mapping is right, the summer-labelled code 201 set filling summer_wet and
     summer_dry and the winter-labelled set filling winter_wet and winter_dry. Two questions need a maintainer.
     The first is the vegetation_growth slot, which takes records/surfaces/grass/helsinki--jarvi2014--phenology
     although records/surfaces/grass/se-england--ward2016--phenology is an available regional record
@@ -244,6 +253,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:7cc7b8edec7f8719f0d82c9cf5fa8637247a60f5492a62bca9e156240c4ce6af
+  evidence_revision: sha256:283dc5d2e2f723b9a66e08715555c2424b92ad9c0d49c3d45d56360f6aab4c89
 verification:
   attestations: []

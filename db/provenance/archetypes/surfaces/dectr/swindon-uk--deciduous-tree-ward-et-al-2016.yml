@@ -76,6 +76,7 @@ assessment:
       - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-swindon-ward2016-emissivity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite claims place swindon, registered in db/places.yml with Köppen class Cfb. Six
         components carry place se-england, which db/places.yml marks subnational and which contains Swindon,
         so the Ward set sits comfortably; the emissivity and porosity records are generic and likewise
@@ -85,21 +86,28 @@ assessment:
         11) and is referenced by no archetype in the database; schema/parameter_groups.yml classes those
         thresholds as a tightly linked set whose base temperature was localised for SE England. The snow_lim_patch
         slot takes a Helsinki snowpack limit, a Dfb value, for a Cfb place. A maintainer should settle
-        the phenology and the snow limit.
+        the phenology and the snow limit. The biogen_co2 slot also contains site-scoped respiration
+        coefficients from Morgan-Monroe State Forest and a site-scoped minimum-respiration floor from
+        Finland, although its Ruimy light-response pair is generic. A maintainer should settle these
+        cross-site selections.
       related_records:
       - records/surfaces/dectr/se-england--ward2016--phenology
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-albedo
       - component-surfaces-dectr-swindon-ward2016-emissivity
       - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
       note: The composite claims representativeness city. Six components are classed regional, the SE
-        England Ward 2016 set; the Ruimy biogenic record, emissivity and porosity are generic; the two
-        Helsinki records are classed city; and the two OHM records declare no class. Regional and generic
-        values cover a city, and no component claims a narrower scale than the composite does.
+        England Ward 2016 set; emissivity and porosity are generic; the two Helsinki records are classed
+        city; and the two OHM records declare no class. The biogen_co2 component has mixed scope. Ruimy's
+        alpha_bio_co2 and beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's
+        min_res_bioco2 are site-scoped. Those site results are narrower than the city composite, and no
+        published composition rationale documents the transplant, so city representativeness needs
+        maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -142,9 +150,12 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place generic and representativeness
-      generic. It is named "Plant canopies" and carries source ruimy1995; docs/FORMAT.md defines land_cover.common
-      as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
+    note: Fills biogen_co2. The record declares target land_cover.common and uses mixed leaf-level
+      provenance. Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped
+      Morgan-Monroe respiration pair, and Järvi supplies the site-scoped Finnish minimum-respiration
+      floor. It is named "Plant canopies"; docs/FORMAT.md defines land_cover.common as the
+      surface-agnostic target, so it is structurally admissible in a deciduous-tree composite, while the
+      cross-site selection remains a composition-level curation question.
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
@@ -215,6 +226,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology and the
     snow limit, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:c7249e4d9d3bb2433240be1ce893052001dca25d24a32836ac5b403fcb4326b6
+  evidence_revision: sha256:d7674da1bdeaa54e60491567e65d82b6898adf524393ac6e31d5568dc66feec5
 verification:
   attestations: []
