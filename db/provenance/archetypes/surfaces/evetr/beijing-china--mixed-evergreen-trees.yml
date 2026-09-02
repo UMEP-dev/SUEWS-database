@@ -16,12 +16,12 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
-    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 assessment:
   status: curation_required
-  assessed_at: '2026-08-24T17:27:04Z'
+  assessed_at: '2026-09-02T16:17:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -74,20 +74,17 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-surfaces-common-beijing-zheng-y2023-biogen-co2
-      note: 'The composite declares place beijing. Two components declare Beijing, while the generic
-        land-cover drainage and leaf-area-index tuples are openly literature defaults rather than Beijing
-        fits. Albedo, emissivity
-        and water storage take SE England rows because no Beijing alternatives exist; the Helsinki snow
-        limit is the only evergreen-tree snow limit in the database, no Beijing phenology record exists,
-        and the biogenic CO2 component is site evidence from Viikki, Helsinki. These transfers are explicit
-        and do not misstate their evidence as local.'
+      note: 'The composite declares place beijing. Two components declare Beijing; albedo, emissivity,
+        leaf area index, drainage and porosity are generic; water storage is a site-scoped Swindon value;
+        and snow limit, phenology and biogenic CO2 come from Helsinki. The Swindon and Helsinki site
+        transfers have no published composition rationale and require human curation.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -101,8 +98,8 @@ assessment:
         CO2 component is site evidence from Viikki. Retaining those components in a city archetype requires
         an explicit composition decision. leaf_area_index is now explicitly generic Järvi literature at
         land-cover scale rather than sample or Beijing evidence; it is broader than the composite and creates
-        no city over-claim. The SE England records are regional and therefore broader than the composite;
-        porosity is generic.'
+        no city over-claim. Albedo, emissivity, drainage and porosity are also generic. Water storage
+        is site-scoped to Swindon, adding another site-to-city transfer that needs the same curation.'
     method:
       conclusion: supported
       evidence_ids:
@@ -145,8 +142,9 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-albedo
     record: records/surfaces/evetr/se-england--ward2016--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills albedo. The stable SE England-path record declares target land_cover.evetr, place generic,
+      representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its path and origin preserve later UK application lineage.
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
@@ -213,9 +211,9 @@ assessment:
     the generic coniferous-tree literature set published by Järvi et al., with its Beijing path retained only
     as migration lineage.
     Biogenic CO2 retains its stable Beijing path and Zheng source but is now correctly scoped to its Viikki,
-    Helsinki site evidence. The radiative, storage, snow and phenology slots borrow from SE England and
-    Helsinki because the database holds no Beijing rows for them. The drainage and leaf-area-index components
-    are correctly explicit as generic land-cover literature evidence; the drainage sidecar records Havu''s
+    Helsinki site evidence. Albedo, emissivity, drainage and leaf area index are generic literature inputs;
+    water storage is a Swindon site result; and snow and phenology come from Helsinki because the database
+    holds no Beijing rows for those slots. The drainage sidecar records Havu''s
     Helsinki configuration only as later application. Everything else in the assembly is coherent: the slot set is complete,
     the two LAI components agree on lai_type 0, and the single OHM set across all four season and wetness
     positions matches a coefficient record that declares no season. This review does not revisit any component''s
@@ -223,6 +221,6 @@ assessment:
     species site-scale value applied by the released model in Beijing, and the biogenic CO2 component is a
     Viikki site compilation inside this city-classed composite, so their scale needs explicit composition
     curation.'
-  evidence_revision: sha256:f11fa441c7628a556845f30238f3e277b332fe510fe4d91d78b4d8528dbd2f27
+  evidence_revision: sha256:7fdee8c8dcb3a19002735a2a2a31546c079c2cd6cfe6150271a9b331b4dd9a8d
 verification:
   attestations: []

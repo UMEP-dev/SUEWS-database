@@ -1,21 +1,22 @@
 provenance_record: records/surfaces/evetr/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+record_revision: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
-    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T15:58:31Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -30,47 +31,78 @@ assessment:
     values:
       conclusion: supported
       evidence_ids:
+      - jarvi-table-2a
       - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      note: Järvi et al. Table 2(a) publishes coniferous-tree albedo 0.10, and Ward et al. carry the same
+        0.10 minimum and maximum into their UK application without adjustment.
     source:
       conclusion: supported
       evidence_ids:
+      - jarvi-table-2a
       - ward-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      note: Järvi et al. are the checked parameter publication for the exact coniferous-tree value. Ward
+        et al. later reuse it unchanged in the UK configuration.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
+      - jarvi-table-2a
       - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      note: Generic records a literature model default rather than a location-specific determination.
+        The stable path and origin retain the later SE England application lineage.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
+      - jarvi-table-2a
       - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      note: The value is a general SUEWS coniferous-tree input reused unchanged at London and Swindon;
+        neither paper presents it as a site, city or regional empirical determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-2a
+      note: Järvi et al. tabulate the value for the coniferous-tree land-cover class, so land_cover is
+        the supported application scale.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - jarvi-table-2a
+      note: The database adopts the published land-cover parameter directly without performing a new
+        measurement or fit.
     identity:
       conclusion: supported
       evidence_ids:
+      - jarvi-table-2a
       - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      note: The record preserves one migrated SE England application row while its evidence fields now
+        describe the generic coniferous-tree value it actually reuses. Stable path, origin and legacy ID
+        remain migration identity rather than evidence-scope claims.
   evidence:
-  - id: ward-table-2
-    source: ward2016
+  - id: jarvi-table-2a
+    source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2, adjusted albedo and emissivity model inputs
+      label: Table 2(a), SUEWS parameters by surface type
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: The Conif. Trees column publishes albedo alpha_i = 0.10. Footnote f cites Oke (1987) as the
+        upstream literature source for the surface radiative properties.
+  - id: ward-table-2
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, original and adjusted albedo model inputs
       url: https://doi.org/10.1016/j.uclim.2016.05.001
       page: 8
-      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
-        explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:8ec93741f2df40d19ce9e82cb6312867011a6315bd2a9dfec88959c7dc7a0fdb
+      note: Shows evergreen-tree albedo as 0.10 in both the original and adjusted columns. Section 4.2.2
+        explains that evergreen seasonal variation was neglected because its cover was negligible at
+        the two UK sites; Ward et al. did not derive or adjust this value.
+  scientific_note: Järvi et al. Table 2(a) publishes coniferous-tree albedo 0.10. Ward et al. later carry
+    it unchanged as both minimum and maximum in the London and Swindon configuration; they do not adjust
+    or independently evaluate an evergreen albedo. The record now describes this as a generic land-cover
+    literature parameter while preserving its stable path, raw origin and legacy identity. Neither value
+    changes.
+  evidence_revision: sha256:8d4047ae6b7eee2db7f2fc85a49c98dde4cf44319905b276ec1ee6591b5095a1
 verification:
   attestations: []

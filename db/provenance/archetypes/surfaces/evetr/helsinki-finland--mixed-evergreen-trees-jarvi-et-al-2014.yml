@@ -17,14 +17,14 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:fa50f1584a2e5f7624a500f1d6d30383bfec6f54eeac147de6ef4720862384ca
-    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
     records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T01:20:00Z'
+  assessed_at: '2026-09-02T16:17:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -40,10 +40,10 @@ assessment:
       note: 'The composite is named "Mixed Evergreen Trees, Järvi et al (2014)" and declares place helsinki.
         Three of its thirteen components declare source jarvi2014: snow_lim_patch, vegetation_growth and
         leaf_growth_power.
-        The others declare ward2016 for albedo, emissivity, water_storage and leaf_area_index, havu-m2024
-        for biogen_co2, jarvi2011 for drainage, breuer2003 for max_vegetation_conductance,
-        grimmond1991b for the coefficient record filling summer_wet, and unreferenced for porosity and
-        for the coefficient record filling the other three OHM positions. The biogen_co2 slot in particular
+        Albedo, emissivity and leaf_area_index declare jarvi2011; water_storage declares ward2018; biogen_co2
+        declares havu-m2024; drainage declares jarvi2011; and max_vegetation_conductance declares breuer2003.
+        Grimmond1991b supplies the coefficient record filling summer_wet; unreferenced supplies porosity
+        and the coefficient record filling the other three OHM positions. The biogen_co2 slot in particular
         takes records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street, a record
         named "Evergreen trees - street", in a composite labelled mixed. Whether the label is an inherited
         typology name or a claim about where the values came from is not something the entries settle.'
@@ -75,7 +75,7 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-london-jarvi2011-drainage
       - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
@@ -84,19 +84,18 @@ assessment:
         snow_lim_patch and vegetation_growth. drainage takes records/surfaces/evetr/london--jarvi2011--drainage,
         which now correctly declares place generic, representativeness generic and applicable_scale land_cover;
         its retained London origin records later application rather than parameter location. max_vegetation_conductance
-        also takes a generic record. albedo, water_storage and leaf_area_index take se-england regional
-        rows, while emissivity is generic. Every place-specific or generic land-cover component can therefore
-        travel to the declared Helsinki city application; the separate OHM-selection question is recorded
+        also takes a generic record. Albedo and emissivity are generic, leaf_area_index is regional,
+        and water_storage is a site-scoped Swindon value. Moving that site result into a Helsinki city
+        archetype needs an explicit composition decision; the separate OHM-selection question is recorded
         under target.'
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-london-jarvi2011-drainage
-      note: 'The composite declares representativeness city. The Helsinki rows are classed city; albedo,
-        water_storage and leaf_area_index are regional; and emissivity, drainage, max_vegetation_conductance
-        and porosity are generic. Those land-cover components match or exceed the reach of the city composite;
-        the corrected drainage row is a generic literature tuple applicable to the evergreen-tree land-cover
-        class.'
+      note: 'The composite declares representativeness city. The Helsinki rows are city; albedo, emissivity,
+        drainage, max_vegetation_conductance and porosity are generic; leaf_area_index is regional; and
+        water_storage is a site-scoped Swindon result. The site-to-city water-storage transfer needs human
+        curation.'
     method:
       conclusion: supported
       evidence_ids:
@@ -144,8 +143,9 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-albedo
     record: records/surfaces/evetr/se-england--ward2016--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills albedo. The stable SE England-path record declares target land_cover.evetr, place generic,
+      representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its path and origin preserve later UK application lineage.
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
@@ -221,6 +221,6 @@ assessment:
     later application history. What is sound is the slot set, which is complete, the LAI pair, which agrees
     on lai_type 1, and the generic drainage and maximum-conductance rows. The remaining questions are about
     selection and mapping, so they can be settled inside the composite without touching any record.'
-  evidence_revision: sha256:b295643fbada30addf20bd7b0403e35c99993e581cd506ef45d4d81dc7f76583
+  evidence_revision: sha256:255494809f706ad0fed9c8328596e5a5d8c953295c66ed5e77fa9afc8f74d769
 verification:
   attestations: []
