@@ -1,75 +1,102 @@
 provenance_record: records/irrigation/se-england--ward2016
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:83250d85c08413428a6028965226d53ffd7ed702a3435bcf461840895403c0d2
+record_revision: sha256:ad3b3543967fa10b9d3afe71dd37cd8f2cf0d9f2c2c797c4bb9d80fd1f76dedf
 dependency_revisions:
   sources:
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T09:30:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/1075
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The label identifies the published parameter class or model configuration.
+      - v2016a-irrigation-rows
+      - ward-no-irrigation
+      note: The v2016a input table labels both selected rows No Irrigation, and Ward et al. state that
+        irrigation was assumed zero for both UK simulations.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - v2016a-irrigation-rows
+      note: The immutable SUEWS_Irrigation.txt fixture publishes the tuple in the irrigation input table.
     values:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The cited locator publishes the stored values at the available precision.
+      - v2016a-irrigation-rows
+      note: Rows 550 and 660 publish the same all-year, zero-water-use schedule and retained legacy
+        controls as the record, at the available precision.
     source:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - v2016a-irrigation-rows
+      - ward-no-irrigation
+      note: The pinned v2016a input is the direct source for the exact tuple. Ward et al. support the
+        modelling rationale that both UK sites used no irrigation, but do not publish every stored field.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1075
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - v2016a-irrigation-rows
+      - ward-no-irrigation
+      note: The shared record represents the same no-irrigation configuration applied at the London and
+        Swindon sites. The stable se-england place describes that two-site application geography rather
+        than a regional measurement.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - v2016a-irrigation-rows
+      - ward-no-irrigation
+      note: The configuration is documented for two site simulations, so site is the supported evidence
+        reach; neither source establishes a regional determination.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: The production or literature-compilation method is stated in the source.
+      - ward-no-irrigation
+      note: Ward et al. explicitly describe irrigation as assumed zero, matching method assumed.
     identity:
       conclusion: supported
       evidence_ids:
-      - ward-irrigation
-      note: Stable path, target, source and values identify one retained database record.
+      - v2016a-irrigation-rows
+      note: Stable path, target, origin, legacy ID and all parameter values are retained. The two identical
+        v2016a site rows explain why one migrated SE England record represents both applications.
   evidence:
-  - id: ward-irrigation
-    source: ward2016
+  - id: v2016a-irrigation-rows
+    source: umep-dev2016a
     role: parameter_source
+    locators:
+    - kind: dataset
+      label: SUEWS v2016a SUEWS_Irrigation.txt, rows 550 and 660
+      url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Irrigation.txt#L2-L6
+      note: Publishes the exact No Irrigation tuples selected for the London and Swindon configurations,
+        including the day range, zero schedule, faut and retained legacy controls.
+  - id: ward-no-irrigation
+    source: ward2016
+    role: validation
     locators:
     - kind: section
       label: Section 3.2, model setup
       url: https://doi.org/10.1016/j.uclim.2016.05.001
       page: 6
-      note: States that irrigation was assumed to be zero at the two UK sites.
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:44f170543ac6cc120956fa32970a26f614394542b57b70eab0c584e681326cb0
+      note: States that irrigation was assumed to be zero at the two UK sites; this supports the modelling
+        choice but is not the direct table for every field in the tuple.
+  scientific_note: >-
+    The record is an assumed model-input configuration, not a regional empirical irrigation estimate.
+    The pinned v2016a input table supplies the exact fields, while Ward et al. document why zero irrigation
+    was used for the London and Swindon evaluations. The correction separates numeric source from scientific
+    rationale without changing any value, stable path, raw origin or legacy identity.
+  evidence_revision: sha256:6162c1b1859ebe3ac3f31c5bda3de0afe7c7989679c786ffb4e71e541931b98e
 verification:
   attestations: []
