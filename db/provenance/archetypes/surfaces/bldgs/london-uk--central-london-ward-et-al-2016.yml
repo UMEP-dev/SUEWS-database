@@ -12,7 +12,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
     records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:1b561a7e76c6a05efd95faf4cda9b441193e8909982187e7c1d9a1fbb2bb24b6
@@ -106,9 +106,9 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-ward2016-buildings-summer
       - component-ohm-generic-ward2016-buildings-winter
-      note: The composite is classed city. The two London radiative rows, the London construction and
-        the Helsinki snowpack limit are classed city; the two SE England water rows are regional, which
-        is broader than the composite. The two OHM rows declare no representativeness
+      note: The composite is classed city. The London construction and Helsinki snowpack limit are classed
+        city; the London albedo is site evidence, the emissivity is generic, and the two SE England water
+        rows are regional. Extending the site albedo to the city composite requires curation. The two OHM rows declare no representativeness
         field at all, so for a quarter of the assembly the scale the composite claims cannot be checked
         against the component. That is not universal among generic rows, since records/ohm/generic--unreferenced--paved--asphalt-902
         does declare both place and representativeness, so a maintainer should decide whether an OHM row
@@ -139,7 +139,7 @@ assessment:
     record: records/surfaces/bldgs/london--ward2016--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
-      representativeness city and source ward2016.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-london-ward2016-emissivity
     record: records/surfaces/bldgs/london--ward2016--emissivity
     role: component
@@ -179,24 +179,21 @@ assessment:
     note: Fills the winter_wet and winter_dry ohm slots. The record declares target ohm_coefficients,
       name 'Code 798 x Multiplier for winter [7982]', season_label Winter and source ward2016, and declares
       neither place nor representativeness.
-  scientific_note: 'This is the most internally coherent composite in the batch on source and the most
-    consequential on reach. Four of its eight components declare source ward2016; the water-storage component
-    declares source jarvi2011 and the drainage component declares source ward2018. The albedo and emissivity
-    rows are placed in London, the water rows in SE England, and the seasonal OHM mapping is genuinely
-    correct: the summer-labelled row fills both summer slots and the winter-labelled row fills both winter
-    slots, with no wet or dry distinction in either record to honour. Two slots need a maintainer. The
-    construction is records/constructions/uk--lindberg-f2020--central-london-sample-run, whose own name
-    reads ''Central London [sample run]'' and whose mapped layers use sample-run materials while roof
-    layer three has no proven material record, so the
-    thermal stack of the Central London default of this database is a sample configuration rather than
-    a surveyed one, and sample-run names are precisely the class the repository checks raise for human
-    adjudication. And the two OHM rows declare neither place nor representativeness, so for a quarter
-    of the assembly the London and city claims cannot be checked against the component at all. Both matter
-    more than they would in an isolated archetype, because twelve region archetypes take this composite
-    as their buildings default, covering the Middle East, most of Africa, North America and most of Latin
-    America. The snowpack limit reaching to Helsinki is a third-order concern by comparison, and it is
-    forced, since no other buildings snowpack_limit record exists. This review does not revisit any component
-    value.'
-  evidence_revision: sha256:5ccf8ffac256e8c61af2e6938ff1a35cdbfc95af2bb53ca6a7f681ce13c4dbae
+  scientific_note: >-
+    This is the most internally coherent composite in the batch on source and the most consequential on
+    reach. Three of its eight components declare source ward2016: the fitted London albedo and the two OHM
+    rows. Emissivity and water storage trace to generic jarvi2011 literature values, while drainage declares
+    source ward2018. The seasonal OHM mapping is genuinely correct: the summer-labelled row fills both
+    summer slots and the winter-labelled row fills both winter slots, with no wet or dry distinction in
+    either record to honour. Three points need a maintainer. The fitted albedo is site evidence applied
+    to a city composite. The construction is records/constructions/uk--lindberg-f2020--central-london-sample-run,
+    whose own name reads 'Central London [sample run]' and whose mapped layers use sample-run materials
+    while roof layer three has no proven material record, so the thermal stack of the Central London default
+    is a sample configuration rather than surveyed stock. And the two OHM rows declare neither place nor
+    representativeness, so for a quarter of the assembly the London and city claims cannot be checked against
+    the component. These matter beyond one archetype because twelve region archetypes take this composite
+    as their buildings default. The Helsinki snowpack-limit transfer is forced because no other buildings
+    snowpack_limit record exists. This review does not revisit any component value.
+  evidence_revision: sha256:3192dc9a5bc91975857cd4f82797001ebc942ba6bd133446f1ccd4a966c38ef3
 verification:
   attestations: []
