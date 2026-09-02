@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation: sha256:63e2172abc245bee146a4959dee0783abb1dd065063b7a6a6e14331a4b9aa506
     records/surfaces/grass/helsinki--havu-m2024--lai-power: sha256:186a3e2a4293c1356710940d1f3db34188da2015a8411e790ce9ee519d40f71a
     records/surfaces/grass/helsinki--havu-m2024--max-conductance: sha256:6df14291eededff1bdb72916a54bf805872885ad1932b600823102b164fe480b
-    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:bc13e6a60a80122ac2a2c7730de50e3c199ad4d3d2213eef5a56d4f908b8ec3b
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
@@ -87,8 +87,8 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-london-havu-m2024-drainage
       note: The composite declares place helsinki, which db/places.yml gives as lat 60.17, lon 24.94,
-        koppen Dfb. Six components declare place helsinki, two declare se-england, and drainage, albedo
-        and porosity are generic literature values; the ohm component carries no place field. The leaf_area_index
+        koppen Dfb. Five components declare place helsinki, two declare se-england, and drainage, albedo,
+        porosity and phenology are generic; the ohm component carries no place field. The leaf_area_index
         component's stable path and origin retain legacy SE England text although its active place is Helsinki.
         The selected generic grass drainage tuple is published by Järvi et al. and reused in Havu's archived
         Helsinki configuration, so it is compatible with this slot without being presented as a Helsinki fit.
@@ -100,8 +100,8 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: The composite declares representativeness city. Seven components declare city, two declare
-        regional, the albedo and porosity records declare generic and the ohm
+      note: The composite declares representativeness city. Six components declare city, two declare
+        regional, the albedo, porosity and phenology records declare generic and the ohm
         component carries no representativeness field. No component is classed narrower than the composite,
         so nothing site-specific is offered as a city typology, and the two regional components are
         classed broader, the direction that does not over-claim on scale.
@@ -157,8 +157,11 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
-    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
-      place helsinki, representativeness city and source jarvi2014.
+    note: Fills vegetation_growth. The record declares target land_cover.grass, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
@@ -193,12 +196,12 @@ assessment:
   scientific_note: 'The entry is the mixed-low-vegetation sibling of archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024
     and differs from it in one slot only, biogen_co2, where it takes records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation
     rather than the lawn record. That is a deliberate split rather than a duplication, and the names carry
-    it. Everything else reads as it should: six of twelve components declare place helsinki, four declare
+    it. Everything else reads as it should: five of twelve components declare place helsinki, four declare
     source havu-m2024 and the Järvi-sourced drainage record appears in Havu''s archive. The leaf-area slot
     takes that study''s Helsinki record whose stable path and label
     retain legacy SE England text, and the label sits correctly on a land_cover.grass target because grass
     is the only low-vegetation tile in the land-cover set. The drainage component is now explicitly generic
     literature evidence, with the archived Helsinki reuse recorded in its own sidecar.'
-  evidence_revision: sha256:f26e86152139304eca1f0dffb0b872b4445ddc251081907d0c2b2da4065d432f
+  evidence_revision: sha256:00d2789de8ba93fd8aae95060fbad6c362cca8820d9f9e45729800f2333d2fd4
 verification:
   attestations: []

@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
-    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:bc13e6a60a80122ac2a2c7730de50e3c199ad4d3d2213eef5a56d4f908b8ec3b
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:e32a48d742db6022eb20954c6ec4b1dd2fb658489ded6cff06c3f61c52fca571
     records/surfaces/grass/london--jarvi2011--drainage: sha256:87648d59fda7ebf35e4595c33e9c3ace309638d4c4ce929c64b996194ca38718
@@ -91,8 +91,8 @@ assessment:
         koppen Cfb. No component declares place vancouver. The leaf_growth_power record and the two conductance
         files whose paths begin vancouver--jarvi2011 declare place generic; this composite uses the LAI
         equation and the irrigated conductance records. Three declare place se-england, filling albedo, emissivity
-        and water_storage, three declare place helsinki, filling leaf_area_index, snow_lim_patch and vegetation_growth,
-        one declares place london, filling drainage, porosity declares place generic and the ohm component
+        and water_storage, two declare place helsinki, filling leaf_area_index and snow_lim_patch,
+        one declares place london, while porosity and phenology declare place generic and the ohm component
         carries no place field. The slot that needs settling is biogen_co2. It takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
         which declares place lethbridge, given in db/places.yml as lat 49.69, lon -112.83, koppen BSk,
         origin "Lethbridge, Alberta, Canada", name "Temperate grassland" and representativeness site:
@@ -108,8 +108,8 @@ assessment:
       - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
       - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: 'The composite declares representativeness city. Four components declare city, three declare
-        regional, porosity, leaf_growth_power and max_vegetation_conductance declare generic, and one declares
+      note: 'The composite declares representativeness city. Three components declare city, three declare
+        regional, porosity, phenology, leaf_growth_power and max_vegetation_conductance declare generic, and one declares
         site; the ohm component carries no representativeness field. The site-classed component is records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
         and it is the only component in any of the nine grass composites classed narrower than the composite
         carrying it. A single-site flux measurement inside a city typology is exactly what the representativeness
@@ -152,8 +152,11 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
-    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
-      place helsinki, representativeness city and source jarvi2014.
+    note: Fills vegetation_growth. The record declares target land_cover.grass, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
@@ -207,8 +210,8 @@ assessment:
     "Grass [sample run]". The mapping itself is sound, every slot receiving a component declared for it
     and the ohm slot taking the grass-specific "Short grass [30]" set. None of the twelve components declares
     place vancouver; leaf_growth_power and max_vegetation_conductance are generic Järvi literature parameters
-    whose stable paths retain Vancouver. Three components come from SE England, three from Helsinki, one
-    from London and one from Lethbridge, three are generic, and the unreferenced coefficient set carries
+    whose stable paths retain Vancouver. Three components come from SE England, two from Helsinki, one
+    from London and one from Lethbridge, four are generic, and the unreferenced coefficient set carries
     no place. Two things need a maintainer. The biogen_co2 slot takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
     a site-classed temperate grassland record from a semi-arid prairie location (koppen BSk) filling a
     slot in a marine west-coast city composite (koppen Cfb), and it is the only component across these
@@ -217,6 +220,6 @@ assessment:
     local, so the choice between two transplants is a maintainer''s and not a correction. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:b8244048efb5faa2b83678bcd177254107d3c4f6ceca94ec174a8fc7999161f1
+  evidence_revision: sha256:1e22b71eddcd3a11c1892085d2f3565f45a117dc58caf953d2144a08ba2fd872
 verification:
   attestations: []

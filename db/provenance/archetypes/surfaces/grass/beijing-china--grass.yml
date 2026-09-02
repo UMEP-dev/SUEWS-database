@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/grass/beijing--zheng-y2023--lai-power: sha256:93ac2c4ac118660c4841ee1a48d16231e6d6febaec9424da604549bb93a25d98
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
-    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:bc13e6a60a80122ac2a2c7730de50e3c199ad4d3d2213eef5a56d4f908b8ec3b
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
@@ -86,10 +86,9 @@ assessment:
       note: The composite declares place beijing, which db/places.yml gives as lat 39.9, lon 116.41, koppen
         Dwa. Two of the twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance;
         biogen_co2 declares place espoo for its fitted lawn evidence, and no unused Beijing grass record
-        exists for any remaining slot. Two declare
-        place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and one declares place
-        se-england (koppen Cfb, subnational), filling water_storage; drainage, albedo, emissivity,
-        leaf_area_index and porosity declare place generic; and the ohm component carries
+        exists for any remaining slot. One declares place helsinki (koppen Dfb), filling snow_lim_patch,
+        and one declares place se-england (koppen Cfb, subnational), filling water_storage; phenology,
+        drainage, albedo, emissivity, leaf_area_index and porosity declare place generic; and the ohm component carries
         no place field. Ten of twelve slots
         are therefore filled from outside China because the database offers nothing closer, which is a
         transparent transfer rather than a defect. The drainage component is a generic grass parameter
@@ -108,7 +107,7 @@ assessment:
         correctly classed site because the coefficients were fitted to one park, and its biogenic CO2
         component is site evidence from one Espoo lawn. A city archetype therefore contains two narrower
         site-only fits. Whether to retain them knowingly or narrow the composite is
-        a separate composition-curation decision; the regional water-storage component and the five
+        a separate composition-curation decision; the regional water-storage component and the six
         generic components are broader than the composite and do not create the same over-claim.
     method:
       conclusion: supported
@@ -160,8 +159,11 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
-    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
-      place helsinki, representativeness city and source jarvi2014.
+    note: Fills vegetation_growth. The record declares target land_cover.grass, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
@@ -197,15 +199,15 @@ assessment:
     a Beijing set. Two of its twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance
     from zheng-y2023. The Zheng-sourced biogen_co2 component retains its stable Beijing path but is now
     correctly scoped to the Espoo lawn where beta was fitted, so the other ten slots have no Beijing evidence.
-    The radiative and hydrological slots come from
-    generic literature, Helsinki, London and SE England, and the ohm slot from an unreferenced generic set named "Short grass [30]".
-    A reader should treat the composite as the phenology and conductance parameters zheng-y2023 fitted
+    The radiative and hydrological slots come from generic literature, Helsinki, London and SE England;
+    phenology is a generic mixed-source assumed tuple, and the ohm slot comes from an unreferenced generic set named "Short grass [30]".
+    A reader should treat the composite as the conductance parameters zheng-y2023 fitted
     for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
     component''s own place is declared on its record, so the transfer is visible rather than hidden. The
     leaf_growth_power component is a one-park site fit and the biogenic CO2 component is one-lawn site
     evidence inside this city-classed composite, which requires explicit composition curation rather
-    than being treated as city-wide evidence. The drainage component
-    is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:feb81e7ac6badcb34dc1e49ff0a0609fed2a5723c8762c0124e427e86cb2be4f
+    than being treated as city-wide evidence. The phenology component separately retains its 10-versus-11
+    source conflict, and drainage is openly generic literature evidence rather than a Beijing observation.'
+  evidence_revision: sha256:d33bb998c3b5d67bba19e1b1e8a9fd581ece4e7481d39c68612080ebfde0dbf0
 verification:
   attestations: []

@@ -10,7 +10,7 @@ dependency_revisions:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:c420e16d7a8308f180e6514dd0bd0f20ffe4191b741f388fd34809c49ceb2393
-    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:bc13e6a60a80122ac2a2c7730de50e3c199ad4d3d2213eef5a56d4f908b8ec3b
 assessment:
   status: curation_required
   assessed_at: '2026-09-02T19:15:00Z'
@@ -157,6 +157,6 @@ assessment:
     The record retains 10 and its stable migrated identity until a curator decides which published version
     should govern. Generic place and representativeness describe shared run options rather than Helsinki
     evidence, while land_cover reflects their application to each vegetation type.
-  evidence_revision: sha256:387ca115cfad46a5b782110c9cfad02a4606270f511398b728f1904b839ea339
+  evidence_revision: sha256:33e8570f366dafa4e5a1cc66b300f5542c56e21a9f785d7de64b021ad732d6df
 verification:
   attestations: []

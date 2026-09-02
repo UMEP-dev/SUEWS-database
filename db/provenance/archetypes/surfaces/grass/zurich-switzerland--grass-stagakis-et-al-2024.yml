@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
-    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
+    records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:bc13e6a60a80122ac2a2c7730de50e3c199ad4d3d2213eef5a56d4f908b8ec3b
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
@@ -89,9 +89,9 @@ assessment:
       note: 'The composite declares place zurich, which db/places.yml gives as lat 47.37, lon 8.54, koppen
         Cfb. Four of the twelve components declare place zurich, filling leaf_area_index, leaf_growth_power,
         max_vegetation_conductance and biogen_co2, and they are every Zurich grass record the database
-        holds. Two declare place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and
+        holds. One declares place helsinki (koppen Dfb), filling snow_lim_patch, and
         two declare place se-england (koppen Cfb), filling emissivity and water_storage; drainage, albedo
-        and porosity declare place generic; and the ohm component carries no place field. The leaf-area
+        porosity and phenology declare place generic; and the ohm component carries no place field. The leaf-area
         component now cites Stagakis et al.''s exact SUEWS Lawn values for four Zurich parks, resolving
         its former mismatch between a Zurich place and a Shanghai source. The drainage component is a
         generic grass parameter published by Järvi et al.; its Havu archive locator records later reuse
@@ -143,8 +143,11 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
-    note: Fills the vegetation_growth slot. The record declares target land_cover.grass, name "Grass",
-      place helsinki, representativeness city and source jarvi2014.
+    note: Fills vegetation_growth. The record declares target land_cover.grass, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
@@ -199,13 +202,13 @@ assessment:
     biogenic CO2 configuration; the biogenic record separately preserves Bellucco and Järvi field provenance,
     and maximum conductance is the Havu et al. literature value. Together they fill the four slots that distinguish the entry
     from its neighbours. The rest are transparent transfers: a generic literature albedo, the snowpack
-    limit and phenology from Helsinki, generic literature drainage, emissivity and water storage from SE England,
+    limit from Helsinki, generic mixed-source phenology and literature drainage, emissivity and water storage from SE England,
     porosity from an unreferenced dummy record
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Two observations belong to
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
     and the source key read 2024, which is a source registry matter. The drainage component is openly generic
     literature evidence rather than a Zurich observation. The composite now uses site representativeness
     because its biogenic CO2 component is supported at the four studied park sites rather than city-wide.'
-  evidence_revision: sha256:87d1853631a748adfb3dd58ca7364492e0d690efd6d27ec7d03daa7f6c5bacbf
+  evidence_revision: sha256:50db8a4ed9f8384e0a30dc083a78a5e077244475fcb6b4a2ffb2d9132d37ac9b
 verification:
   attestations: []
