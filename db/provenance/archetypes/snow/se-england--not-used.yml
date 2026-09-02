@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/suews--no-snow: sha256:abbe39b7de9b84f5e668e062d252f18cec73acb299830aea50120721f0b53a96
     records/ohm/helsinki--jarvi2014--snow: sha256:c33b6182ea7f11eb08c17412de2ab722028d67827098931a53879ea930b9d500
-    records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
+    records/snow/helsinki--jarvi2014--albedo: sha256:cc807ff4d1a0b11ad9d53cf29c7545ed9a3455ad94e1472db2599b750f5c29c8
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
     records/snow/se-england--ward2016--albedo: sha256:2ed6bafe1e4c20f4c28ddf54679ffb2a62c49e29ac4850eec312d43878158324
 assessment:
@@ -123,8 +123,8 @@ assessment:
     record: records/snow/helsinki--jarvi2014--albedo
     role: component
     note: Fills the albedo slot. The record declares target snow, name Snow, place montreal-suburban,
-      representativeness site and source jarvi2014, and carries snow_albedo_min and snow_albedo_max. Its
-      stable path and origin retain legacy Helsinki migration text.
+      representativeness site, source jarvi2014 and method fitted, and carries snow_albedo_min and snow_albedo_max.
+      Its stable path and origin retain legacy Helsinki migration text.
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
@@ -157,6 +157,6 @@ assessment:
     The choice is not free either way: no SE
     England snow emissivity record exists, but the remaining emissivity is now correctly identified as
     generic rather than Helsinki evidence. A maintainer should settle the albedo selection knowingly.'
-  evidence_revision: sha256:79f54e040a00e5bb60c353e787163916b7abc118d09e985b161eac8b7fc0b207
+  evidence_revision: sha256:1b71d1974d5256f3231f71618adad80abf88968f3899d3d70f8757926983ba28
 verification:
   attestations: []

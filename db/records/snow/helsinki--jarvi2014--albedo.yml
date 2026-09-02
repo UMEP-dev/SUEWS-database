@@ -5,7 +5,9 @@ name: Snow
 place: montreal-suburban
 origin: Helsinki
 representativeness: site
+applicable_scale: neighborhood
 source: jarvi2014
+method: fitted
 legacy_id: 41240016
 parameters:
   snow_albedo_min: 0.18
