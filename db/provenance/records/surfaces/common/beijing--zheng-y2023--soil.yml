@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/common/beijing--zheng-y2023--soil
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:cdec0b7e038fc5455eeb31e8d7a96295a13838707bfeb8d7a22755ce5d167e3f
+record_revision: sha256:e890f730f0544ae389d9c9d09cc47f26f5455fd9256fa63a774a7a6d499445d7
 dependency_revisions:
   sources:
     havu2022: sha256:a3279510f3c601e95ee46e1d391eb4efa617df1244f2d3a07eeded647d789be9
@@ -12,12 +12,13 @@ dependency_revisions:
   records:
     records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees: sha256:b19be654080e312fd119f06fb6251434b608089cba38ad4b025623c775788211
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-24T18:54:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T22:17:45Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -45,15 +46,15 @@ assessment:
         for the maintainer: Table 2 lists 349 mm for grass and lawn, while the released run applies the
         1000 mm row to the grass surface as well, so the record follows the archive rather than the table.'
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - havu-viikki-soil
       - zheng-article
       - zheng-model-archive
-      note: Havu et al. directly publish the Viikki depth and storage capacity, while Zheng's archive is
-        the only located source for the complete five-field row. Changing the single source field to Havu
-        would wrongly attribute the carried hydraulic conductivity, density and infiltration rate to that
-        paper, so the complete lineage remains unresolved under the current schema.
+      note: Parameter-level provenance now assigns the Viikki depth and calculated storage capacity to
+        Havu et al. and the exact hydraulic conductivity and density to the Havu model-input archive.
+        Zheng remains the record-envelope source for the complete Beijing run configuration without being
+        presented as the origin of every soil property.
     place:
       conclusion: supported
       evidence_ids:
@@ -69,11 +70,14 @@ assessment:
       note: The depth and storage capacity were determined for two constructed street-tree sites in Viikki,
         so site scale is the supported scope rather than either Helsinki-wide or Beijing city evidence.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
+      - havu-viikki-soil
+      - havu-archived-soil-properties
       - zheng-model-archive
-      note: A reused parameter row rather than an independent determination; the production method belongs
-        to the study that characterised the Viikki soil.
+      note: The record-level literature method describes reuse of the published configuration. Parameter
+        overrides preserve Havu's calculated storage capacity and identify the remaining adopted site and
+        archive values as literature configuration inputs.
     identity:
       conclusion: supported
       evidence_ids:
@@ -89,7 +93,10 @@ assessment:
   evidence:
   - id: havu-viikki-soil
     source: havu2022
-    role: input_data
+    role: parameter_source
+    parameter_paths:
+    - parameters.soil_depth
+    - parameters.soil_store_capacity
     locators:
     - kind: section
       label: Sect. 2.1, Site description
@@ -137,6 +144,18 @@ assessment:
       label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 832 and 842
       url: https://doi.org/10.5281/zenodo.10572180
       note: Assigns SoilTypeCode 72 to the distinct Helsinki deciduous- and evergreen-street-tree surface rows.
+  - id: havu-archived-soil-properties
+    source: havu-m2024-data
+    role: parameter_source
+    parameter_paths:
+    - parameters.saturated_hydraulic_conductivity
+    - parameters.soil_density
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 72
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: The independently released Helsinki model input states saturated hydraulic conductivity
+        0.0005 and soil density 1.16 for the Viikki street-tree soil row.
   - id: zheng-article
     source: zheng-y2023
     role: compilation
@@ -158,15 +177,14 @@ assessment:
       url: https://doi.org/10.5194/gmd-16-4551-2023
       note: The model domain is a 1 km circle around the IAP tower, covering roughly 80 % of the accumulated
         flux footprint; no city-wide domain is modelled.
-  scientific_note: 'The numbers are exactly what the released Beijing run used. Havu et al. directly
-    publish the 1 m / 0.141 m pair for two Viikki street-tree sites, which settles the active name, Helsinki
-    place and site representativeness. The complete row''s provenance is not settled: Zheng carries three
-    other SUEWS properties that Havu does not publish, so the one-source record schema cannot credit Havu
-    without over-attributing those values. The exact duplicate is intentional configuration reuse, not
-    a second parameter determination: the Zheng archive applies code 72 in the Beijing model, while the
-    Havu archive selects the matching code-72 tuple for its distinct Helsinki street-tree surfaces. Retaining
-    both stable records preserves those separate configuration lineages while the related-record link makes
-    their shared tuple explicit. No path, origin, legacy lineage or value is changed.'
-  evidence_revision: sha256:48729741bf5b6dfff9e3671153f3bce17544012efbefea2866d4fe294a72f2f2
+  scientific_note: 'The numbers are exactly what the released Beijing run used. Havu et al. publish the
+    1 m depth and calculated 0.141 m storage capacity for two Viikki street-tree sites, while the independently
+    released Havu input row supplies the exact hydraulic conductivity and density. Parameter-level provenance
+    records those roles without over-attributing the complete row to one source. The exact duplicate remains
+    intentional configuration reuse, not a second parameter determination: the Zheng archive applies code
+    72 in the Beijing model, while the Havu archive selects the matching code-72 tuple for its distinct Helsinki
+    street-tree surfaces. Retaining both stable records preserves those separate configuration lineages while
+    the related-record link makes their shared tuple explicit. No path, origin, legacy lineage or value is changed.'
+  evidence_revision: sha256:4c8737cfcf81438bf578a1f51edd0bdb690e661fd5ef4895a39cd220d0558c14
 verification:
   attestations: []
