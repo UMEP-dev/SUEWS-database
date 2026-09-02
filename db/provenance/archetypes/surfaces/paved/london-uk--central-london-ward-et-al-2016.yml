@@ -12,7 +12,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
-    records/surfaces/paved/london--ward2016--emissivity: sha256:f0cffcd3bb177b2f0dcb0babd5751c9752e62ffb34c3870bf07594b6ec6de6dc
+    records/surfaces/paved/london--ward2016--emissivity: sha256:276f43f7724d8ae703139724eb05306bf89e6f83a03476658241307306de5ac1
     records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
     records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
@@ -87,7 +87,8 @@ assessment:
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: 'The composite declares place london. The emissivity slot takes records/surfaces/paved/london--ward2016--emissivity,
-        place london. The albedo, water_storage and drainage slots take records with place se-england,
+        which is generic land-cover literature evidence rather than a London determination. The albedo,
+        water_storage and drainage slots take records with place se-england,
         which db/places.yml records as ''SE England'', subnational: true, country united-kingdom, so they
         are the region containing the city and applying them to London is a downscaling rather than a
         substitution. The snow_lim_patch slot takes records/surfaces/paved/helsinki--jarvi2014--snow-lim,
@@ -105,9 +106,9 @@ assessment:
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite declares representativeness city. The three se-england components declare regional,
-        which is broader than the composite's scale and therefore a downscaling; records/surfaces/paved/london--ward2016--emissivity
-        and records/surfaces/paved/helsinki--jarvi2014--snow-lim declare city; the construction record
-        declares generic; the two OHM records declare no representativeness. No component is classed below
+        which is broader than the composite's scale and therefore a downscaling; emissivity and construction
+        are generic; records/surfaces/paved/helsinki--jarvi2014--snow-lim declares city; the two OHM records
+        declare no representativeness. No component is classed below
         city, so nothing narrower stands in for the composite's claim.
     method:
       conclusion: supported
@@ -152,8 +153,10 @@ assessment:
   - id: component-surfaces-paved-london--ward2016--emissivity
     record: records/surfaces/paved/london--ward2016--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target land_cover.paved, name 'Central London',
-      place london, representativeness city and source ward2016, and carries emis.
+    note: Fills emissivity. The record declares target land_cover.paved, place generic, representativeness
+      generic, applicable_scale land_cover, source ward2016 and method literature. Ward Table 2 directly
+      publishes Paved 0.95, while the record assessment retains the conflict with the reversed Järvi
+      2011 pavement/building mapping.
   - id: component-surfaces-paved-se-england--ward2016--water-storage
     record: records/surfaces/paved/se-england--ward2016--water-storage
     role: component
@@ -194,9 +197,10 @@ assessment:
   scientific_note: 'This entry does what a study-named composite should. archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016
     declares place london and representativeness city, and four of its eight components declare source
     ward2016, the study its name cites. Its water-storage component is published by Järvi et al. (2011),
-    and its drainage component is the Ward et al. (2018) publication of the SE England tuple. Where the
-    named study reports a London value the composite takes it,
-    in the emissivity slot; where it reports a value for the wider region the composite takes the se-england
+    and its drainage component is the Ward et al. (2018) publication of the SE England tuple. The emissivity
+    slot takes Ward''s shared Paved model input as generic literature evidence rather than presenting it
+    as a London determination; its Ward-versus-Järvi mapping conflict remains in the component assessment.
+    Where the study reports a value for the wider region the composite takes the se-england
     row, classed regional, and applies it down to the city, which is the sound direction for a class mismatch.
     The season mapping is right: the OHM record labelled Summer fills the two summer positions and the
     one labelled Winter fills the two winter positions, and since neither record carries a wetness label
@@ -208,6 +212,6 @@ assessment:
     do not declare ward2016. The fixture identity is explicit rather than a physical construction claim;
     the other components'' own values and any ''sample run'' labels remain subject to their own evidence
     assessments, which this review does not revisit.'
-  evidence_revision: sha256:757d4d3d92899d2baadbe05c6fd6c7f058410b219d8bd12e50ab1c9a2304b563
+  evidence_revision: sha256:e89246f6dbf5fe82b0ffac53760cdee2d86abd3e73fea880beb605ca1d792ca6
 verification:
   attestations: []
