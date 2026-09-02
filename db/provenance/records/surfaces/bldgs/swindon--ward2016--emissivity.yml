@@ -1,88 +1,115 @@
 provenance_record: records/surfaces/bldgs/swindon--ward2016--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
+record_revision: sha256:15d48c8da23fc02126b8fb5999065a0cdfb6447e70435491487f0e87370bbab4
 dependency_revisions:
   sources:
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
-    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
   status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  assessed_at: '2026-09-02T19:49:18Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The label identifies the published parameter class or model configuration.
+      - ward2016-table-2
+      note: Suburban residential is retained as the record's stable application and migration label.
+        Ward et al. apply the same emissivity table to both UK sites, while the active generic scope
+        prevents the label from being read as a Swindon-specific determination.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - ward2016-table-2
+      note: Ward et al. publish 0.91 in the Bldgs row, matching land_cover.bldgs.
     values:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - ward2016-table-2
+      note: Ward et al. Table 2 explicitly publishes Building emissivity 0.91, the value stored here.
     source:
       conclusion: curation_required
       evidence_ids:
-      - ward-table-2
-      - jarvi-emissivity
-      note: Ward et al. publish the UK configuration but explicitly identify Järvi et al. (2011) as the
-        original source of these emissivities; the canonical source role should be separated.
+      - ward2016-table-2
+      - jarvi2011-table-2a
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/990
+      note: Ward et al. are the exact parameter source for Building 0.91, but their Table 2 caption says
+        the UK emissivities came from Järvi et al. (2011). Järvi et al. instead publish Building 0.95
+        and Pavement 0.91, the reverse of Ward's Building 0.91 and Paved 0.95. The record therefore
+        honestly cites Ward while a curator decides whether Ward reports an intentional UK configuration
+        or a transposition.
     place:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The place agrees with the source scope or is explicitly generic.
+      - ward2016-table-2
+      note: Ward et al. use one emissivity table for both UK sites and report no Swindon-specific determination,
+        so generic is the supported active evidence scope. Swindon remains in origin and the stable path
+        as application history.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - ward2016-table-2
+      note: The value is a shared literature parameter rather than an empirical site, city or regional
+        estimate, so generic is the supported evidence reach.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward2016-table-2
+      note: Ward et al. tabulate the value for the Building surface class, so land_cover is the supported
+        application scale.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - ward2016-table-2
+      note: The database adopts the published Ward model input without a new measurement or fit, so
+        literature is the supported method.
     identity:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      - ward2016-table-2
+      note: Ward et al. publish separate Building and Paved cells. This record retains the Building 0.91
+        application configuration under its stable path, origin and legacy identity while the source-lineage
+        conflict remains explicit for curation.
   evidence:
-  - id: ward-table-2
+  - id: ward2016-table-2
     source: ward2016
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 2, adjusted albedo and emissivity model inputs
-      url: https://doi.org/10.1016/j.uclim.2016.05.001
-      page: 8
-      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
-        explicitly carried forward from Järvi et al. (2011).
-  - id: jarvi-emissivity
-    source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, emissivity values by surface type
+      label: Table 2, Original and adjusted albedo values and emissivity values
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 8
+      note: Publishes Bldgs emissivity 0.91 and Paved emissivity 0.95 as inputs used at both UK sites.
+        Its caption simultaneously says that, in the absence of additional information, emissivity
+        values from Järvi et al. (2011) were used for the UK sites.
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 2(a), emissivity values by surface type
       url: https://doi.org/10.1016/j.jhydrol.2011.10.001
       page: 223
-      note: Original table identified by Ward et al. as the source of the UK emissivities.
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:7745a3b69494a3e0de1f92f3ec3a80cf77473e762c43c2a387644e17de5561a6
+      note: The upstream table named by Ward's Ja11 statement gives Building emissivity 0.95 and Pavement
+        emissivity 0.91, reversing Ward's class mapping. It is contextual input evidence, not the exact
+        source of this record's Building 0.91 mapping.
+  scientific_note: Ward et al. Table 2 is the exact publication-level source for the stored Building
+    0.91 input and therefore remains canonical. The same table says its UK emissivities came from Järvi
+    et al. (2011), but Järvi's Table 2(a) maps 0.95 to Building and 0.91 to Pavement. Available evidence
+    cannot decide whether Ward intentionally used a different UK mapping or transposed the two surface
+    classes. This is the sole curation question. Active place and representativeness are generic because
+    Ward used the same table at London and Swindon; origin, path, name and legacy ID preserve application
+    history. No value changes.
+  evidence_revision: sha256:387d7d2b9ff36c1b766e809e91b866e8de3ec88f16495a07fe961e30400e44e5
 verification:
   attestations: []

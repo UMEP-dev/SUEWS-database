@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:1b561a7e76c6a05efd95faf4cda9b441193e8909982187e7c1d9a1fbb2bb24b6
     records/surfaces/bldgs/swindon--ward2016--albedo: sha256:09fb8e757f0b95d9b0f1eff5d4c4ef050f0df1aa8397f19a18bd5a9b074d8ee1
-    records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:e5154665c3a9444d4ea00b23fe9d0c59b5d0d0eb3f51e94963f4938055cbf33e
+    records/surfaces/bldgs/swindon--ward2016--emissivity: sha256:15d48c8da23fc02126b8fb5999065a0cdfb6447e70435491487f0e87370bbab4
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:31:58Z'
@@ -33,8 +33,10 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       note: The composite is named 'Suburban residential, Ward et al. (2016)'. Its albedo and emissivity
         slots take records/surfaces/bldgs/swindon--ward2016--albedo and records/surfaces/bldgs/swindon--ward2016--emissivity,
-        both named 'Suburban residential', both place swindon and both sourced to ward2016, so the label
-        matches those slots exactly. The construction slot takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
+        both named 'Suburban residential' and sourced to ward2016. The albedo declares place swindon;
+        emissivity is generic and retains Swindon in its path and origin as application lineage, so the
+        label still matches those selections without claiming a Swindon-specific emissivity determination.
+        The construction slot takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
         named 'Central London [sample run]', which names a different settlement type from the one the
         composite claims and marks itself as a sample run, while records/constructions holds twelve uk--hertwig2024a
         residential records, several of them pitched-roof terraced, detached and semi-detached sets. Which
@@ -78,8 +80,9 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-ward2016-buildings
       - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
-      note: The composite claims place swindon. The albedo and emissivity components declare place swindon;
-        the water storage and drainage components declare place se-england, which db/places.yml marks
+      note: The composite claims place swindon. The albedo component declares place swindon; emissivity
+        is a generic land-cover literature parameter; and the water storage and drainage components
+        declare place se-england, which db/places.yml marks
         subnational within country united-kingdom. The construction declares place london and is named
         ''Central London [sample run]'', so it does not support the Swindon claim; selecting another construction
         remains a separate curation decision. The two ohm records declare no place. The one component
@@ -133,7 +136,8 @@ assessment:
     record: records/surfaces/bldgs/swindon--ward2016--emissivity
     role: component
     note: Fills emissivity. The record is named 'Suburban residential', declares target land_cover.bldgs,
-      place swindon and representativeness city.
+      place generic, representativeness generic, applicable_scale land_cover, source ward2016 and method
+      literature. Its path and Swindon origin preserve application lineage.
   - id: component-surfaces-bldgs-se-england-ward2016-water-storage
     record: records/surfaces/bldgs/se-england--ward2016--water-storage
     role: component
@@ -170,8 +174,9 @@ assessment:
       [7982]', declares target ohm_coefficients and season_label Winter, and declares no place and no
       representativeness.
   scientific_note: 'Most of this composite is anchored in the place it claims. Its fitted albedo is a
-    site-scoped Swindon row named ''Suburban residential'', emissivity is a generic jarvi2011 literature
-    value, and its water storage and drainage are SE England rows,
+    site-scoped Swindon row named ''Suburban residential'', emissivity is a generic Ward literature
+    parameter retained under a Swindon application path with its Ward-versus-Järvi mapping conflict
+    explicit, and its water storage and drainage are SE England rows,
     and its OHM mapping is confirmed by the components themselves: the summer positions take the record
     declaring season_label Summer and the winter positions the record declaring season_label Winter. The
     one component from outside the United Kingdom, the Helsinki snow limit, is the only building snowpack_limit
@@ -183,6 +188,6 @@ assessment:
     The city-wide use of a site-fitted albedo is a second explicit curation question. Nothing here requires
     a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:3b5960103733372ef237fab07076e877f97844751058e03f3cc74a97dbb18e76
+  evidence_revision: sha256:751428306b3642640994e61a1cf5e05ca2194f0999be13639a9b3560b57a3b45
 verification:
   attestations: []
