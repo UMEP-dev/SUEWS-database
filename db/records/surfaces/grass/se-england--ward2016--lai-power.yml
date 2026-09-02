@@ -4,8 +4,10 @@ target: land_cover.grass
 name: Grass (SE England)
 place: se-england
 origin: SE England
-representativeness: regional
+representativeness: site
+applicable_scale: land_cover
 source: jarvi2014
+method: fitted
 legacy_id: 32240046
 parameters:
   lai:
@@ -15,3 +17,7 @@ parameters:
       senescence_lai: -1.5
       senescence_sdd: 0.0015
     lai_type: 1
+parameter_provenance:
+  parameters.lai.lai_type:
+    source: umep-dev2020a-docs
+    method: literature
