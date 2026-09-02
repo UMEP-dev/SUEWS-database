@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
     records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
     records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
 assessment:
@@ -228,6 +228,6 @@ assessment:
     a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
     value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
     should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
-  evidence_revision: sha256:db3ecaa8089bcbd4670f54084a3eef498c136285fbe6a9fccac8a3bf7fc0fe67
+  evidence_revision: sha256:00ca79a4f766cad006138dfb063c071ff8db2fb4d76397c86ea9e90f8c90bc7f
 verification:
   attestations: []

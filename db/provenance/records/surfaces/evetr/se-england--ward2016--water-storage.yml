@@ -1,76 +1,78 @@
 provenance_record: records/surfaces/evetr/se-england--ward2016--water-storage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
+record_revision: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 dependency_revisions:
   sources:
-    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    ward2018: sha256:27389a8f55237f3011250ee058d990a69331b535f1d17563c93398f702919c7c
   places:
-    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+    swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T01:25:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: The label identifies the published parameter class or model configuration.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: The source uses the parameter for the same SUEWS target represented by the record.
     values:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: The cited locator publishes the stored values at the available precision.
     source:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: The cited source is a direct parameter publication or an explicit published model-input table.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The table is a Vancouver/Los Angeles model parameter compilation and does not establish the
-        record's London or south-east England place claim.
+      - ward2018-inputs
+      note: The record now names the Swindon measurement-site grid point for which the published inputs
+        were used.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The publication does not establish city or regional evidence reach for the later UK application.
+      - ward2018-inputs
+      note: Site matches the paper's description of inputs representative of the area surrounding the
+        Swindon measurement site rather than south-east England as a region.
     method:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: The production or literature-compilation method is stated in the source.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
+      - ward2018-inputs
       note: Stable path, target, source and values identify one retained database record.
   evidence:
-  - id: jarvi-table-2
-    source: jarvi2011
+  - id: ward2018-inputs
+    source: ward2018
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, model parameter values by surface type
-      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
-      page: 223
-      note: Publishes the stored surface storage and drainage values in the Vancouver/Los Angeles model
-        parameter table.
-  scientific_note: The values are exact literature values, but the UK place/evidence-reach assignment
-    is a later application not supported by this source.
-  evidence_revision: sha256:c8a8957f37ee85c222a7fe47b264fcab93e618b19c7e0278f7e8f0a51da29222
+      label: Equations 3-4 and Table 1, Swindon model inputs
+      url: https://doi.org/10.1002/joc.5200
+      page: 651-652
+      note: Publishes the surface-specific moisture-storage capacities used for the Swindon grid point.
+  scientific_note: The stored evergreen-tree capacity is recoverable from the original Ward et al. article
+    and applies to the Swindon measurement-site grid point. The canonical place and evidence reach are
+    therefore Swindon and site; the stable SE England path and origin preserve migration lineage.
+  evidence_revision: sha256:09989b49cba79d7d42c77d746cad5703f4124d1b8071bafc4567c47b3d6cd680
 verification:
   attestations: []

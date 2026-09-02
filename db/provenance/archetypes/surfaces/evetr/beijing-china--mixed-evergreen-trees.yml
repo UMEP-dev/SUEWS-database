@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:27:04Z'
@@ -223,6 +223,6 @@ assessment:
     species site-scale value applied by the released model in Beijing, and the biogenic CO2 component is a
     Viikki site compilation inside this city-classed composite, so their scale needs explicit composition
     curation.'
-  evidence_revision: sha256:4ca322942b5a977ccbd96a11230ea3af5c521df7374b2dde53dde960ed10b8ab
+  evidence_revision: sha256:f11fa441c7628a556845f30238f3e277b332fe510fe4d91d78b4d8528dbd2f27
 verification:
   attestations: []
