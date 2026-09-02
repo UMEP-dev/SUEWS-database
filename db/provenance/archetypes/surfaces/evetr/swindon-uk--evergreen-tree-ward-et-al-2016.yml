@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--lai-power: sha256:f1e9775f2bdea13da8bf678c0e56f75f0a6b3e8eb09ab29a95123f86ceed8efc
     records/surfaces/evetr/se-england--ward2016--max-conductance: sha256:55e0cb9863f351fe6802a49505a0f764f0daf8be82f87be43946949751a772d9
-    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:690083b82d78fae137de6beb963270918da903a88f4c0ca9dae76e35e060f30b
+    records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -248,6 +248,6 @@ assessment:
     deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
     and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:588dd52871035baca08301bd80ce7b88c337e92fcb326de69ebe19c901ee0d00
+  evidence_revision: sha256:3f9e79ed47aca6a990cc98bd1b83945fed5b4c15cc4197a5e86a0762175f1919
 verification:
   attestations: []
