@@ -2,10 +2,12 @@ record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Building
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
-source: jarvi2014
+representativeness: generic
+applicable_scale: land_cover
+source: jarvi2011
+method: literature
 legacy_id: 40240005
 parameters:
   emis: 0.95

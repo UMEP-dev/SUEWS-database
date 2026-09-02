@@ -10,9 +10,9 @@ alb:
 emis:
   value: 0.95
   ref:
-    ID: jarvi2014
-    DOI: 10.5194/gmd-7-1691-2014
-    desc: helsinki, city
+    ID: jarvi2011
+    DOI: 10.1016/j.jhydrol.2011.10.001
+    desc: generic, generic, land_cover
 storage_drain_params:
   store_min:
     value: 0.25

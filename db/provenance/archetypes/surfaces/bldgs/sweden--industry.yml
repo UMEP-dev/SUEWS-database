@@ -17,7 +17,7 @@ dependency_revisions:
     records/ohm/generic--jarvi2014--buildings: sha256:20f2b1bbd07070e97663009407d4805eb79195b5e57f61d49c5878a8ffe6a322
     records/surfaces/bldgs/gothenburg--oke1987--albedo: sha256:8d51b71b7fa63fa654b73e1b6169388b232c5f0b018693b2110c858dda122272
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
 assessment:
@@ -75,9 +75,9 @@ assessment:
       - component-constructions-sweden-unreferenced-industrial
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-jarvi2014-buildings
-      note: The composite claims place sweden. The construction declares place sweden, while the albedo is
-        generic and retains Gothenburg only as origin history. Emissivity and the snow limit take records declaring place helsinki,
-        which db/places.yml resolves to country finland; water storage and drainage are generic; and the four ohm positions take
+      note: The composite claims place sweden. The construction declares place sweden, while the albedo
+        and emissivity are generic and retain Gothenburg and Helsinki only as origin history. The snow
+        limit declares place helsinki, which db/places.yml resolves to country finland; water storage and drainage are generic; and the four ohm positions take
         records/ohm/generic--jarvi2014--buildings, which declares no place at all. The database holds
         no Swedish record for any of those quantities, so the Helsinki substitution is forced rather than
         careless. The generic drainage selection needs no place transfer, but neither the Helsinki substitutions
@@ -94,10 +94,10 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-jarvi2014-buildings
       note: The composite declares representativeness regional. The construction is the only component
-        of that class. Emissivity and the snow limit are city records; albedo, water storage and drainage
+        of that class. The snow limit is a city record; albedo, emissivity, water storage and drainage
         are generic; and records/ohm/generic--jarvi2014--buildings declares no representativeness at all
         while naming itself 'Archived code-799 roof average'. A country-scale default therefore rests on
-        two city rows, three generic rows and one archived legacy row whose reach is undeclared.
+        one city row, four generic rows and one archived legacy row whose reach is undeclared.
     method:
       conclusion: supported
       evidence_ids:
@@ -134,8 +134,8 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place helsinki
-      and representativeness city.
+    note: Fills emissivity. The record is named Building, declares target land_cover.bldgs, place generic,
+      representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
   - id: component-surfaces-bldgs-helsinki-ward2016-water-storage
     record: records/surfaces/bldgs/helsinki--ward2016--water-storage
     role: component
@@ -168,9 +168,9 @@ assessment:
   scientific_note: 'The two slots that make this an industrial typology remain coherent as archived
     configuration choices: the construction is records/constructions/sweden--unreferenced--industrial,
     place sweden, and the albedo is a generic, unreferenced configuration named ''Industry, dark roofs''
-    whose Gothenburg origin is migration history. Emissivity and the snow limit come
-    from Helsinki, which the record set forces, since the database holds no Swedish row for those building
-    properties; water storage and drainage are generic. What deserves a maintainer''s attention is the coefficient slot.
+    whose Gothenburg origin is migration history. The snow limit comes from Helsinki, which the record
+    set forces because it is the only building snow-limit row; emissivity, water storage and drainage
+    are generic. What deserves a maintainer''s attention is the coefficient slot.
     All four ohm positions take records/ohm/generic--jarvi2014--buildings, an archived code-799 record
     that declares neither place nor representativeness, where every other Swedish building composite
     takes records/ohm/helsinki--jarvi2014--buildings. A country-scale default resting on that placeless
@@ -178,6 +178,6 @@ assessment:
     than something this review can settle. The same is true of the composite''s declared
     regional reach, which no component except the construction supports. Neither question requires a component
     value to change; both live in the composite.'
-  evidence_revision: sha256:eefdaeffab70288d5b69bddbb623ac2cb2b01c52d0d463f5fa4560a7e47ef2de
+  evidence_revision: sha256:1b8ee963be47d6dfd8c492bb0e4e13b57653f7873ceb1d74dd06e1e1bce3f5b3
 verification:
   attestations: []

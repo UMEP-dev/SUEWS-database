@@ -10,7 +10,7 @@ dependency_revisions:
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
+    records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
 assessment:
   status: agent_assessed
   assessed_at: '2026-09-02T16:29:17Z'
@@ -82,7 +82,7 @@ assessment:
       - jarvi-table-4a
       note: Järvi et al. publish separate pavement and building emissivity cells, so two records are correct.
         The pavement record now carries the exact 0.91 cell and original parameter source; the building
-        sibling remains a separate provenance task.
+        sibling carries the corresponding 0.95 cell and its own original parameter source.
       related_records:
       - records/surfaces/bldgs/helsinki--jarvi2014--emissivity
   evidence:
@@ -125,6 +125,6 @@ assessment:
     parameter source. Järvi et al. (2014) later repeat 0.91 in the pavement column. The record now describes
     a generic land-cover literature parameter while preserving its stable path, origin and legacy identity.
     No value changes.
-  evidence_revision: sha256:0edb41d665a8edf38b54afc10d94c793c8e6cc5e7cf149a8b7709a5ad6261e4f
+  evidence_revision: sha256:271ccd41d108f1df6fd7fb331a57b5485f13b815fa0245184745e44a87d92c11
 verification:
   attestations: []
