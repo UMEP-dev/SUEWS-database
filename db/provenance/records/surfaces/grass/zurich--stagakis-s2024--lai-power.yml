@@ -12,7 +12,7 @@ dependency_revisions:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:720c62cdb681b4577473d261f8563bc7f70e6ebe5466e4d89b0f2c84c6b4234d
-    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
+    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:c220a2f96de4fd910148fd9f81f9d71cb8450350ac0b2ecf1ac81fdf2cb744c1
 assessment:
   status: agent_assessed
   assessed_at: '2026-09-02T19:39:40Z'
@@ -161,6 +161,6 @@ assessment:
     Table A1 and the official v2020a LAIEq definition together establish selector 1. The exact values,
     stable path, target, origin and legacy ID are unchanged. The active envelope reach is narrowed from
     city to site because the study covers four parks.
-  evidence_revision: sha256:d5d8ef8342337c13ca284b16cb9ebded0eadc48c0748b880cd5b7370b4145ce6
+  evidence_revision: sha256:bce4f997c87798f8baadcf9d71510555e0978c9f9d55b41651f8aa1cf49d6984
 verification:
   attestations: []

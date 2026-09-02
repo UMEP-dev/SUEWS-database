@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
     records/surfaces/evetr/vancouver--jarvi2011--max-conductance: sha256:12cd9fe96f1d725b9187a1630d333cce27dddb8bf3836d84a8d334fb8196069e
-    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
+    records/surfaces/evetr/zurich--stagakis-s2024--lai-power: sha256:c220a2f96de4fd910148fd9f81f9d71cb8450350ac0b2ecf1ac81fdf2cb744c1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -99,10 +99,10 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
       note: 'The composite declares representativeness regional, the class this database uses for a value
-        offered as typical of a region. Three of its thirteen components are classed city and one is classed
-        site, so they stand in for a regional default: records/surfaces/evetr/zurich--stagakis-s2024--lai-power,
-        records/surfaces/evetr/helsinki--jarvi2014--snow-lim and records/surfaces/evetr/helsinki--jarvi2014--phenology.
-        The site-only component is records/surfaces/common/midwest-usa--schmid2000--biogen-co2.
+        offered as typical of a region. Two of its thirteen components are classed city and two are classed
+        site, so they stand in for a regional default. The Helsinki snow-limit and phenology records are
+        city-classed; records/surfaces/evetr/zurich--stagakis-s2024--lai-power and records/surfaces/common/midwest-usa--schmid2000--biogen-co2
+        are site-only.
         Four more are classed generic, including drainage, and the two OHM records carry no representativeness,
         which leaves three regional rows to carry the regional claim. Correcting drainage removes one city-to-regional
         extrapolation but does not establish the composite''s tropical regional scope.'
@@ -171,8 +171,9 @@ assessment:
   - id: component-surfaces-evetr-zurich-stagakis-s2024-lai-power
     record: records/surfaces/evetr/zurich--stagakis-s2024--lai-power
     role: component
-    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place zurich and representativeness
-      city, and is named "Evergreen Tree, LaiEq = 1"; its source field reads stagakis-s2024.
+    note: Fills leaf_growth_power. The record declares target land_cover.evetr, place zurich, representativeness
+      site and method literature. It is named "Evergreen Tree, LaiEq = 1" and carries the exact Stagakis
+      tuple with per-leaf Järvi and SUEWS-documentation provenance.
   - id: component-surfaces-evetr-london-jarvi2011-drainage
     record: records/surfaces/evetr/london--jarvi2011--drainage
     role: component
@@ -220,14 +221,14 @@ assessment:
     and representativeness regional, while its place-specific components are mid-latitude rows: SE England
     for albedo, emissivity, water storage and leaf area index, Zurich for leaf growth power, Helsinki for
     the snow limit and the phenology, and Morgan–Monroe State Forest in Indiana for biogenic CO2. Drainage,
-    maximum conductance and porosity are generic rows. Three place-specific components are classed city
-    and one is classed site, and they stand in for a regional default, which is the substitution the scale
+    maximum conductance and porosity are generic rows. Two place-specific components are classed city
+    and two are classed site, and they stand in for a regional default, which is the substitution the scale
     test exists to catch. The corrected generic drainage row no longer compounds that problem. The OHM
     mapping does: the summer positions take a record that declares
     season_label Summer and the winter positions a record that declares no season at all, in a place where
     a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
     value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
     should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
-  evidence_revision: sha256:00ca79a4f766cad006138dfb063c071ff8db2fb4d76397c86ea9e90f8c90bc7f
+  evidence_revision: sha256:a0d02267691be7ebb1427f4e4233a17f6ddf50208f9fcac4d2450276a1b17482
 verification:
   attestations: []
