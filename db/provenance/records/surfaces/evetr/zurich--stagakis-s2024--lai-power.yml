@@ -1,112 +1,166 @@
 provenance_record: records/surfaces/evetr/zurich--stagakis-s2024--lai-power
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5c4154048c8219a2f24e6f7f30cccab8f7bc88c025ffed79115065f6dd530b65
+record_revision: sha256:c220a2f96de4fd910148fd9f81f9d71cb8450350ac0b2ecf1ac81fdf2cb744c1
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
     stagakis-s2024: sha256:184d3eaffbf3877b3d5ca00f289ceffe7380cfd11b749de4eebf22aee5433f25
+    umep-dev2020a-docs: sha256:f1644d69483c7f8dd4878a8662885d01f4d3ff6293c9c4512a0cd36792b7437d
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:720c62cdb681b4577473d261f8563bc7f70e6ebe5466e4d89b0f2c84c6b4234d
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:d66c9be2aee4c3790252ee64e1a02358be89ad96cd217e73dfd523195b198f59
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T01:50:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T11:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: The name asserts LaiEq = 1 and the record stores lai_type 1. Table S3 publishes the four power
-        coefficients but never states which form of the LAI equation SUEWS was run with, so the selector
-        in both the name and the parameters is unverified.
+      - stagakis-table-a1
+      - suews2020a-laieq
+      note: Stagakis et al. print the Järvi-style power phenology equation used by SUEWS, and the official
+        v2020a documentation maps that formulation to LAIEq 1. The retained name therefore describes the
+        published model configuration.
     target:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: LAI power coefficients are a land_cover.evetr property, and Table S3 assigns the same set
-        to the vegetation classes.
+      - stagakis-table-s3
+      note: Supplement Table S3 assigns the four LAI-power coefficients to its Trees column, matching
+        land_cover.evetr in this retained evergreen-tree record.
     values:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: 'All four coefficients appear verbatim in Table S3, identically in the Trees and Lawn columns:
-        omega1,GDD 0.04, omega2,GDD 0.0005, omega1,SDD -1.5 and omega2,SDD 0.0025. The table labels its
-        fourth LAI row omega1,SDD a second time, which is a typographical slip; the row order and the
-        values make the intended omega2,SDD unambiguous.'
+      - stagakis-table-s3
+      - jarvi2014-appendix-a
+      - jarvi2011-equation-4
+      note: Table S3 publishes the complete stored tuple 0.04, 0.0005, -1.5 and 0.0025. Järvi et al.
+        publish the inherited leaves; Stagakis et al. explicitly mark the final 0.0025 senescence factor
+        as a modification of the Järvi 2014 value.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: Table S3 credits omega1,GDD and omega1,SDD to Järvi et al. (2014), omega2,GDD to Järvi et
-        al. (2011), and omega2,SDD to Järvi et al. (2014) modified. Stagakis et al. compile and in one
-        case adjust these coefficients; they do not derive them.
+      - stagakis-table-s3
+      - jarvi2014-appendix-a
+      - jarvi2011-equation-4
+      note: The envelope source remains the publication that reports and applies the exact mixed tuple.
+        Parameter-level provenance now attributes growth_lai and senescence_lai to Järvi 2014, growth_gdd
+        to Järvi 2011, and the selector semantics to the official v2020a documentation; Stagakis remains
+        the source of the modified senescence_sdd leaf.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
       - stagakis-scope
-      note: Zurich is where the coefficients were applied. Table S3 traces them to earlier publications,
-        so no Zurich determination stands behind them.
+      - stagakis-table-s3
+      note: Zurich is the documented application location for the exact mixed tuple. The parameter-level
+        overrides distinguish publication sources but do not claim place-free reach for the inherited
+        leaves; every leaf retains the Zurich site application envelope.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
       - stagakis-scope
-      note: The record claims city representativeness. The study covers four urban parks in Zurich and
-        evaluates against measurements made in those parks.
+      note: The study evaluates SUEWS in four named Zurich parks, not as a city-wide determination. Site
+        is therefore the supported envelope reach.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: Three coefficients are taken unchanged from earlier work and one is marked modified without
-        the modification being described, so no single production method describes the set.
+      - stagakis-table-s3
+      note: Literature records direct adoption of the exact parameterisation published in Table S3; the
+        database performs no new fit or transformation.
     identity:
       conclusion: supported
       evidence_ids:
-      - stagakis-parameter-table
-      note: This record holds the same four coefficients as its two siblings. That is what the source
-        prescribes rather than an accidental duplication, because Table S3 gives one identical LAI set
-        for both its Trees and Lawn columns.
+      - stagakis-table-s3
+      - stagakis-table-a1
+      note: The stable path, target and legacy ID identify the Zurich evergreen-tree configuration. The
+        source gives one Trees tuple, so identical tree coefficients in the sibling target records are
+        intentional rather than accidental duplicates.
       related_records:
       - records/surfaces/dectr/zurich--stagakis-s2024--lai-power
       - records/surfaces/grass/zurich--stagakis-s2024--lai-power
   evidence:
-  - id: stagakis-parameter-table
+  - id: stagakis-table-s3
     source: stagakis-s2024
-    role: compilation
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_power.senescence_sdd
     locators:
     - kind: supplementary
-      label: Supplement Table S3, Parameters used by SUEWS model
+      label: Supplement Table S3, Parameters used by SUEWS model, Trees column
       page: 3
       url: https://doi.org/10.5194/bg-22-2133-2025-supplement
-      note: One Trees column and one Lawn column. It gives Fpho,max 8.3 and 8.92, ai 0.78 and 1.7, bi
-        0.08 and 0.06, LAImax 4.8 and 3, LAImin 0.66 and 1.6, G2-G6, TL, TH, dtheta_WP 132.5 and 143 mm,
-        Kdown,max 1200, GDD 300, SDD -300, Tbase,GDD 5, Tbase,SDD 10, and the four LAI power coefficients
-        0.04, 0.0005, -1.5 and 0.0025. It gives no maximum conductance, no G1, no soil depth, no soil
-        storage capacity, no light-response alpha or theta and no minimum respiration.
+      note: Publishes growth_lai 0.04, growth_gdd 0.0005, senescence_lai -1.5 and senescence_sdd 0.0025.
+        The reference column credits the first three to Järvi et al. 2011/2014 and identifies the final
+        Järvi 2014 coefficient as modified.
+  - id: stagakis-table-a1
+    source: stagakis-s2024
+    role: validation
+    locators:
+    - kind: table
+      label: Table A1, SUEWS phenology equation
+      page: 2155
+      url: https://doi.org/10.5194/bg-22-2133-2025
+      note: Prints the power-form daily LAI equation used by SUEWS in the Zurich model comparison.
   - id: stagakis-scope
     source: stagakis-s2024
-    role: compilation
+    role: validation
     locators:
     - kind: section
-      label: Title and abstract
+      label: Title, abstract and Section 2.1
       page: 2133
       url: https://doi.org/10.5194/bg-22-2133-2025
-      note: The study covers four urban parks in the city of Zurich and evaluates the models against in
-        situ measurements made in those parks; it is park-scale, not a city-wide determination.
-  scientific_note: 'The four coefficients are exactly right: they sit in Table S3 verbatim, and the fact
-    that all three vegetation records carry the same set is what the source prescribes. Two things around
-    them are not settled. Table S3 credits every coefficient to Järvi et al., one of them as modified,
-    so Stagakis et al. is the compiler rather than the parameter publication, and citing it as the source
-    credits this study with coefficients it inherited. And the record claims Zurich city representativeness
-    for a four-park study whose parameters are not Zurich determinations at all. The LaiEq = 1 selector,
-    carried in both the name and lai_type, is nowhere in the article or the supplement and should not
-    be treated as verified.'
-  evidence_revision: sha256:6381783c8d83828c2d1d579afdc306df0b56d71ea384dfa51f6773914717d604
+      note: Defines the study domain as four urban parks in Zurich and identifies the park-level evaluation.
+  - id: jarvi2014-appendix-a
+    source: jarvi2014
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_power.growth_lai
+    - parameters.lai.lai_power.senescence_lai
+    locators:
+    - kind: equation
+      label: Appendix A, Leaf area index, Equation A1
+      page: 1707
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: Publishes the modified LAI power formulation, including growth_lai 0.04, senescence_lai -1.5
+        and the original senescence_sdd factor 0.0015.
+  - id: jarvi2011-equation-4
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_power.growth_gdd
+    locators:
+    - kind: equation
+      label: Section 2.2, Leaf area index, Equation 4
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the 0.0005 degree-day factor inherited as growth_gdd in Table S3.
+  - id: suews2020a-laieq
+    source: umep-dev2020a-docs
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.lai_type
+    locators:
+    - kind: section
+      label: LAIEq and Leaf Growth/Off Power entries
+      page: 88
+      url: https://suews.readthedocs.io/_/downloads/en/2020a/pdf/
+      note: Defines LAIEq 1 as the Järvi et al. 2014 formulation and lists its characteristic 0.04 and
+        -1.5 power coefficients, distinguishing it from LAIEq 0.
+  scientific_note: >-
+    The apparent blocker came from treating a mixed published tuple as if every leaf had one origin. Stagakis
+    et al. publish and apply the exact four-value tuple in Zurich. Their reference column traces three
+    leaves to Järvi et al. and marks the fourth as modified; parameter_provenance now preserves those roles.
+    Table A1 and the official v2020a LAIEq definition together establish selector 1. The exact values,
+    stable path, target, origin and legacy ID are unchanged. The active envelope reach is narrowed from
+    city to site because the study covers four parks.
+  evidence_revision: sha256:5f8f74fca23d4504a551677a80e893a03670ca4d5d545e24e5f54e8342e215f4
 verification:
   attestations: []
