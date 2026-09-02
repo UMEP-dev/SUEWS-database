@@ -1,23 +1,26 @@
 provenance_record: records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d0f626490a4bf015d63c7a6a7f56076987f4aaac7d1846cc5a6a919727183387
+record_revision: sha256:7a33e6f9c8d1329cf3b8e0d8e18a8944a954ac46729461720613cc7acc408d5e
 dependency_revisions:
   sources:
     bellucco2017: sha256:8ec60843e168489aa4ce491f79aaf0c47a7004c812918192a65872968c6cb55b
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu2022: sha256:a3279510f3c601e95ee46e1d391eb4efa617df1244f2d3a07eeded647d789be9
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
   places:
+    finland: sha256:d019fee6965fbbd6e2d78764962aea1cf5d35af62b537d61d1ef6bdb26f20821
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-01T23:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -33,36 +36,48 @@ assessment:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
+      - havu-viikki-tree-fit
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: Havu Table B.1/Appendix B supports beta and respiration coefficients; Bellucco supports alpha
-        and theta; Järvi supports the 0.6 floor.
+      note: Havu et al. (2022) Table 2 publishes the exact fitted beta and respiration coefficients for
+        the Viikki Tilia street-tree site; the later Havu configuration reproduces them. Bellucco supports
+        alpha and theta; Järvi supports the 0.6 floor.
     source:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - havu-table-b1
+      - havu-viikki-tree-fit
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: No single publication owns the tuple. Field-level source roles must distinguish Havu, Bellucco
-        and Järvi before sign-off.
+      note: Parameter-level provenance now assigns beta and respiration to Havu et al. (2022), alpha and
+        theta to Bellucco, and the minimum respiration floor to Järvi. Havu et al. (2024) remains the
+        record-envelope source for the released Helsinki configuration.
     place:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The place agrees with the source scope or is explicitly generic.
+      - havu-viikki-tree-fit
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: The fitted street-tree leaves come from the Viikki Tilia site, Bellucco's light-response fit
+        comes from another Helsinki site, and the respiration floor comes from central Finland.
     representativeness:
       conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The declared evidence reach does not exceed the source scope.
-    method:
-      conclusion: curation_required
-      evidence_ids:
-      - havu-table-b1
+      - havu-viikki-tree-fit
       - bellucco-light-response
       - jarvi-respiration-floor
-      note: The tuple mixes fitted, calculated-combination and adopted literature parameters; one record-level
-        method cannot describe every field.
+      note: Each production source is site-scoped; no fitted or assumed leaf inherits the city reach of
+        the later Helsinki configuration.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - havu-viikki-tree-fit
+      - bellucco-light-response
+      - jarvi-respiration-floor
+      note: The record-level literature method describes adoption of the released Havu configuration.
+        Parameter overrides identify the photosynthesis and respiration coefficients as fitted and the
+        winter respiration floor as an explicit model assumption.
     identity:
       conclusion: supported
       evidence_ids:
@@ -71,7 +86,7 @@ assessment:
   evidence:
   - id: havu-table-b1
     source: havu-m2024
-    role: parameter_source
+    role: input_data
     locators:
     - kind: table
       label: Table B.1, site characteristics and model parameters used for Helsinki
@@ -79,6 +94,16 @@ assessment:
       page: 11
       note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
         for the Helsinki simulations.
+  - id: havu-viikki-tree-fit
+    source: havu2022
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2, model parameters for the Viikki street-tree site
+      url: https://doi.org/10.5194/bg-19-2121-2022
+      page: 2127
+      note: Publishes the fitted beta 8.3463 and respiration coefficients 0.78 and 0.08 used for the
+        Viikki Tilia street-tree site.
     parameter_paths:
     - parameters.beta_bio_co2
     - parameters.resp_a
@@ -91,7 +116,7 @@ assessment:
       label: Table 4, Helsinki local light-response parameters
       url: https://doi.org/10.1016/j.agrformet.2016.12.011
       page: 6
-      note: Publishes alpha 0.031 and theta 0.723 for a Helsinki EC scope.
+      note: Publishes alpha 0.031 and theta 0.723 from one Botanical Garden eddy-covariance sector in Helsinki.
     parameter_paths:
     - parameters.alpha_bio_co2
     - parameters.theta_bio_co2
@@ -103,12 +128,15 @@ assessment:
       label: Equation 11 and Appendix B, minimum respiration
       url: https://doi.org/10.1029/2018JD029576
       page: 5
-      note: Publishes the 0.6 minimum respiration floor.
+      note: Publishes the 0.6 minimum respiration floor from winter chamber measurements at a boreal-forest
+        site in central Finland.
     parameter_paths:
     - parameters.min_res_bioco2
-  scientific_note: Every field now has an original-source locator, but the canonical record still presents
-    the mixed tuple as wholly Havu-derived. Apply parameter-level source/method metadata in a separate
-    correction review.
-  evidence_revision: sha256:0bb5b90e23497c08f2fe7a9bb2de2068bf476850a0905e9ccc9a377ad92494da
+  scientific_note: Parameter-level provenance now records the mixed tuple without changing any value or
+    stable identity. Havu et al. (2022) publish the fitted beta and respiration coefficients for the Viikki
+    street-tree site; Havu et al. (2024) reproduce that configuration; Bellucco publishes alpha and theta
+    for another Helsinki site; and Järvi publishes the 0.6 floor from central-Finland site evidence. Leaf
+    scope overrides prevent those production sites from inheriting the later Helsinki city configuration.
+  evidence_revision: sha256:67856d5dc5d66fbf6903c88f91fc1d528bae2ca5e1c59713244c9e81f3d1b0d1
 verification:
   attestations: []
