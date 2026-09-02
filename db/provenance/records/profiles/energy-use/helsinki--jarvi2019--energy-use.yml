@@ -1,7 +1,7 @@
 provenance_record: records/profiles/energy-use/helsinki--jarvi2019--energy-use
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
+record_revision: sha256:8e4f48d2c93824d17f58008faec623ddf0cba1671314ba953024453e712a24db
 dependency_revisions:
   sources:
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
@@ -11,12 +11,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T12:26:22Z'
+  assessed_at: '2026-09-02T09:45:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/317
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/1077
   method: literature
   findings:
     name:
@@ -38,8 +38,9 @@ assessment:
       conclusion: supported
       evidence_ids:
       - helsinki-qf-profile
-      note: Archive rows 44 and 45 supply the same 24-value working-day and weekend cycles. The record retains
-        the migrated legacy ordering, which stores archive hours 1 through 23 followed by hour 0.
+      note: Archive rows 44 and 45 supply the 24-value working-day and weekend cycles under columns 0
+        through 23. Those columns now map directly and in order to record keys 1 through 24, as required
+        by the profile schema and migration code.
     source:
       conclusion: supported
       evidence_ids:
@@ -47,6 +48,8 @@ assessment:
       - unpartitioned-ah-role
       note: The Zenodo configuration directly publishes the full numeric rows; the associated article defines
         their scientific role but does not print all 24 values.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1077
     place:
       conclusion: supported
       evidence_ids:
@@ -98,8 +101,9 @@ assessment:
         into separate emission sources.
   scientific_note: The legacy table called the ahprof_24hr selector EnergyUseProfWD/WE, which caused the
     migrated Energy Use label. The article and the archive together show that the selected curve is the older
-    total anthropogenic-heat profile, not a building-energy-use profile. The stable path, legacy IDs, attachment
-    point and 24-value cycles remain unchanged; only the active scientific identity and direct source are corrected.
-  evidence_revision: sha256:f225a0ed1c2721e552b7bde4f4a1ff50c419f6f2b20a0b16e062b5f3afbc832d
+    total anthropogenic-heat profile, not a building-energy-use profile. The stable path, legacy IDs and attachment
+    point remain unchanged. The cycle values are now restored from the checksum-verified archive in direct
+    source-hour order, correcting the inherited one-hour rotation.
+  evidence_revision: sha256:35677caf70d42dc3183f5050ef925ba28e5dbaebd3917c16640dfc2473f35202
 verification:
   attestations: []
