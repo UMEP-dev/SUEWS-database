@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/surfaces/common/helsinki--havu-m2024--soil: sha256:49a0eb3a46417aa6da38fccb847231f2747e742e0390bb6771e1fed9ebc92c1f
+    records/surfaces/common/helsinki--havu-m2024--soil: sha256:f7154b7557a016cbc24a3e3a2c0228ee62b110e735630fa98cd6de659f68f846
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T18:33:00Z'
@@ -121,6 +121,6 @@ assessment:
     preserves those separate selections while the sidecar makes their shared evidence explicit. Values and
     identity remain unchanged; representativeness is narrowed from city to the observation site that supports
     the parameterisation.
-  evidence_revision: sha256:9d16ee856c38285cd55dd53fcee81a61b58335eb4477d6035b00479e4b1a0215
+  evidence_revision: sha256:6b96714cbe6c89268c86d408ae55a0f09952e4fb1b9fbdabb15d173fa526d96d
 verification:
   attestations: []
