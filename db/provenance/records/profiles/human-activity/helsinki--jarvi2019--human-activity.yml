@@ -1,7 +1,7 @@
 provenance_record: records/profiles/human-activity/helsinki--jarvi2019--human-activity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:600c9b2c4af4eb28de5d2ec2ddb00c9e23330292d0208d61396833b73a203d5b
+record_revision: sha256:1510aac869efa94641757bb8589068dd6385fd7398aac32168ae61f00358069d
 dependency_revisions:
   sources:
     jarvi2019: sha256:79262420cf57b7ea82d6c9c46833a86834a0606c845b5fb4b816d9b2ac62e5aa
@@ -11,12 +11,12 @@ dependency_revisions:
   records: {}
 assessment:
   status: agent_assessed
-  assessed_at: '2026-08-24T10:30:00Z'
+  assessed_at: '2026-09-02T09:50:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/25
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/1078
   method: literature
   findings:
     name:
@@ -35,8 +35,9 @@ assessment:
       conclusion: supported
       evidence_ids:
       - helsinki-profile-rows
-      note: Archive rows 55771 and 55772 supply the exact weekday and weekend values for source hours
-        0 through 23, mapped in order to database keys 1 through 24.
+      note: Archive rows 55771 and 55772 supply the weekday and weekend values for source hours 0 through
+        23, mapped in order to database keys 1 through 24. The weekend tail now restores source hours
+        22 and 23 as 2.0 and 1.5 at keys 23 and 24.
     source:
       conclusion: supported
       evidence_ids:
@@ -44,6 +45,8 @@ assessment:
       - activity-profile-role
       note: The Zenodo data repository directly publishes the exact configuration rows; the associated
         article explains their scientific role but does not print all 24 values.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1078
     place:
       conclusion: supported
       evidence_ids:
@@ -96,9 +99,10 @@ assessment:
       note: Distinguishes activity HA,d from population HP,d and states that activity rises one hour before
         population movement and remains elevated one hour after people return home.
   scientific_note: The migrated values previously matched the archive's UK weekday activity row. The
-    working-day values now match Helsinki row 55771; the weekend values already matched Helsinki row 55772.
-    The source columns 0 through 23 map directly and in order to database profile keys 1 through 24. The
-    exact configuration dataset is the active source, while the paper documents the profile role and timing.
-  evidence_revision: sha256:7f9114e0a9777b5324bad6e01d8a74c269011767b7ee21ae3577fe8993c8f4d1
+    working-day values now match Helsinki row 55771, and the corrected weekend tail completes the match
+    to Helsinki row 55772. The source columns 0 through 23 map directly and in order to database profile
+    keys 1 through 24. The exact configuration dataset is the active source, while the paper documents
+    the profile role and timing.
+  evidence_revision: sha256:46bba7c6602ee5b03af12d932e26d02432e03030202e82274ae30299572e1088
 verification:
   attestations: []
