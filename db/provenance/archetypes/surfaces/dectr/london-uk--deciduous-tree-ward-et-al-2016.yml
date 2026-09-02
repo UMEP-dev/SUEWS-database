@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/surfaces/dectr/swindon-uk--deciduous-tree-ward-et-al-2016: sha256:38f3ce959a62e50c9416b30e99bd539fae7779db6e41cd23672cbb7b02c3ceee
     records/ohm/generic--ward2016--all-vegetation: sha256:bb273913489ca97578418fcda9744bbe5ded96fae600f4d2657d56f815bc46cd
     records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012: sha256:f86b56498a5ba79b61934415cffe25b859072ef13a4b0670008e879bf1ab644f
-    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:bc3771ce0eb20c6d1256fa071b11625cf65a6bc224a2940e06dad4fd3b470c47
+    records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
@@ -76,8 +76,9 @@ assessment:
       - component-surfaces-dectr-helsinki-jarvi2014-phenology
       - component-surfaces-dectr-helsinki-jarvi2014-snow-lim
       - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: The composite claims place london, registered in db/places.yml with Köppen class Cfb, but
-        no component carries that place. Seven carry place se-england, which db/places.yml marks subnational
+        no component carries that place. Six carry place se-england, which db/places.yml marks subnational
         and which contains London, so those sit comfortably; emissivity and porosity are generic and likewise
         do not overreach. Two slots still do not follow. The vegetation_growth slot takes
         records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature 5, base_temperature_senescence
@@ -85,21 +86,27 @@ assessment:
         own source and region (base_temperature 6, base_temperature_senescence 11) and is referenced by
         no archetype in the database; schema/parameter_groups.yml classes those thresholds as a tightly
         linked set whose base temperature was localised for SE England. The snow_lim_patch slot takes
-        a Helsinki snowpack limit, a Dfb value, for a Cfb place. A maintainer should settle both.
+        a Helsinki snowpack limit, a Dfb value, for a Cfb place. The biogen_co2 slot also contains
+        site-scoped respiration coefficients from Morgan-Monroe State Forest and a site-scoped minimum
+        respiration floor from Finland, although its Ruimy light-response pair is generic. A maintainer
+        should settle these cross-site selections.
       related_records:
       - records/surfaces/dectr/se-england--ward2016--phenology
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
+      - component-surfaces-common-se-england-ruimy1995-biogen-co2
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: The composite claims representativeness city. Seven components are classed regional, the SE
-        England Ward 2016 set and the Ruimy biogenic record; the two Helsinki records are classed city;
-        emissivity and porosity are generic; and the two OHM records declare no class. Regional and generic
-        values cover a city, which is the direction that does not overreach, and no component claims a
-        narrower scale than the composite does.
+      note: The composite claims representativeness city. Six components are classed regional, the SE
+        England Ward 2016 set; emissivity and porosity are generic; the two Helsinki records are classed
+        city; and the two OHM records declare no class. The biogen_co2 component has mixed scope. Ruimy's
+        alpha_bio_co2 and beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's
+        min_res_bioco2 are site-scoped. Those site results are narrower than the city composite, and no
+        published composition rationale documents the transplant, so city representativeness needs
+        maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -142,9 +149,12 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common, place se-england and representativeness
-      regional. It is named "Plant canopies" and carries source ruimy1995; docs/FORMAT.md defines land_cover.common
-      as the surface-agnostic target, so it is admissible in a deciduous-tree composite.
+    note: Fills biogen_co2. The record declares target land_cover.common and uses mixed leaf-level
+      provenance. Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped
+      Morgan-Monroe respiration pair, and Järvi supplies the site-scoped Finnish minimum-respiration
+      floor. It is named "Plant canopies"; docs/FORMAT.md defines land_cover.common as the
+      surface-agnostic target, so it is structurally admissible in a deciduous-tree composite, while the
+      cross-site selection remains a composition-level curation question.
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
@@ -204,19 +214,22 @@ assessment:
       generic. It is named "Deciduous trees", carries source oke1987 and declares method literature; its
       stable path retains the Swindon migration lineage.
   scientific_note: Three of the thirteen components come from Ward et al. 2016, the study the label names,
-    while seven components are placed at se-england, which contains London; maximum conductance is a Breuer
+    while six components are placed at se-england, which contains London; maximum conductance is a Breuer
     literature value applied there; the two LAI records agree on lai.lai_type
     1; and the OHM mapping is the best in this family, with the summer record in both summer positions
     and the winter record in both winter positions, each confirmed by its own season_label. The emissivity
     component carries the generic Oke literature value, so its stable Swindon path does not create a place
-    mismatch or distinguish this composition from its Swindon counterpart. Two slots do not follow. The
+    mismatch or distinguish this composition from its Swindon counterpart. Two whole-record slots and
+    one mixed-scope tuple do not follow. The
     phenology comes from Helsinki when an SE England Ward 2016 phenology record exists, carries the localised base temperatures,
-    and is referenced by no archetype at all. The snowpack limit is a Helsinki value in a Cfb city. Separately,
+    and is referenced by no archetype at all. The snowpack limit is a Helsinki value in a Cfb city. The
+    biogen_co2 tuple combines Ruimy's generic fit with site-scoped Schmid respiration coefficients and
+    a site-scoped Järvi minimum-respiration floor without a published composition rationale. Separately,
     this composite and the Swindon one are identical in every component and in their name, differing only
     in place, origin and legacy_id, so nothing in the data tells the two UK sites apart. None of this
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:6fd6169fe728421605fbeebad4016729a5560c8d60fb0980661c75badb1cc6c4
+  evidence_revision: sha256:83842742ea0a1560876775d8353f04aca48eb290e32a9fdb8c7d727de6b2d09b
 verification:
   attestations: []
