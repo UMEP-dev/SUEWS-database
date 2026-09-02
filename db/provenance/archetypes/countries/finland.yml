@@ -9,7 +9,7 @@ dependency_revisions:
     records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
     records/profiles/human-activity/helsinki--jarvi2019--human-activity: sha256:600c9b2c4af4eb28de5d2ec2ddb00c9e23330292d0208d61396833b73a203d5b
     records/profiles/population/helsinki--jarvi2019--population-profile: sha256:b51df3c36cf6ad91bb335c253981794154347dfe2f2f11925a8e33f779c7734c
-    records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:b2b5c4d2c1b79f0495cb13e71b848346aae327e86c8fc018570ae4594d8a239e
+    records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:b10ba1b44f1aa2151c1b935614001d5a671df2a04e202d98db6a60102fbcca57
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-24T12:26:22Z'
@@ -98,6 +98,6 @@ assessment:
     for a country-scale value. Each slot takes a component declared for the field that slot fills, so
     the mapping itself is sound. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:ef9888c03db38154e12d56544393dfc0af6ac9348e95a7c0b5a01ed9f10875c8
+  evidence_revision: sha256:ed362ad4fe5fcf3afdca7be67ea76a81aa279560d2837fe771f26514a8ec8f31
 verification:
   attestations: []
