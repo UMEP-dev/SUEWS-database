@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:10:04Z'
@@ -206,6 +206,6 @@ assessment:
     evidence inside this city-classed composite, which requires explicit composition curation rather
     than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:7f7ba9cdfd87741cd9f3d8efc13574c717f1d4293ee17b740cf4169f565e2805
+  evidence_revision: sha256:6b0204337f6bd9419344c3790e0b32bf994854ee31d540c03651248574cd9fc8
 verification:
   attestations: []

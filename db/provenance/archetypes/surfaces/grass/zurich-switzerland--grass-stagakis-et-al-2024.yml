@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
     records/surfaces/grass/zurich--ao2018--lai: sha256:446974f3fd26a7b144e9c849ce8cdeb9b0c36d15dd5bd48883aee28b1058c0a8
     records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:dbe3dd4de133f3738c597e933bf61120cd4d3615ab9b0e74b8b43aa64ba1809b
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
@@ -206,6 +206,6 @@ assessment:
     and the source key read 2024, which is a source registry matter. The drainage component is openly generic
     literature evidence rather than a Zurich observation. The composite now uses site representativeness
     because its biogenic CO2 component is supported at the four studied park sites rather than city-wide.'
-  evidence_revision: sha256:06967dfd5653206e1dff39b510423802ae1de8a32e4dee4039c5ae25d67219ed
+  evidence_revision: sha256:87d1853631a748adfb3dd58ca7364492e0d690efd6d27ec7d03daa7f6c5bacbf
 verification:
   attestations: []

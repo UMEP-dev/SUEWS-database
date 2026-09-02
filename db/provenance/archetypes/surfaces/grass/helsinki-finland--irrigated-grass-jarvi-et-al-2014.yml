@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:96509a43993223e0b857d8386771de663c50062c0aa202016eb3bac6b3253ab2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
     records/surfaces/grass/vancouver--jarvi2011--max-conductance: sha256:7d1cc1897bf26bf1d29a68b2dbc392cdd1ecb6e5bca6e59bb9e246329325ac55
 assessment:
   status: curation_required
@@ -222,6 +222,6 @@ assessment:
     grass composites take the grass-specific "Short grass [30]" set instead. Only this entry and its unirrigated
     sibling take the average. Changing it would change a model input, so the decision is a maintainer''s
     and should be taken for both entries at once.'
-  evidence_revision: sha256:c4e4358ec02b84d961f1135c676850d63761f73fd598bea18b336510c250029c
+  evidence_revision: sha256:9bb5a8a0ea5ccbbfe60d31eb2260347704bba80baad1ec478416473193a1a9f2
 verification:
   attestations: []

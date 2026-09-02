@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:96509a43993223e0b857d8386771de663c50062c0aa202016eb3bac6b3253ab2
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
-    records/surfaces/grass/se-england--ward2016--water-storage: sha256:25864c4d8b957a2fb3f866ceb747d787bb7021033255ae5f0dcee93f01106244
+    records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-23T00:36:42Z'
@@ -205,6 +205,6 @@ assessment:
     crediting the original Järvi source. This entry and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024
     differ in one slot only, which is the lawn against mixed-low-vegetation distinction their names carry;
     the drainage component is now explicitly generic literature evidence with archived Helsinki reuse.'
-  evidence_revision: sha256:2a70d145f55613d3cb4f619efae96c0452beee7d8f883342f36a46415498e800
+  evidence_revision: sha256:86a9f1c6ed7ddef4658fa96a34baf8e78e36c7b4fd1c9af89e5c3f044b26442e
 verification:
   attestations: []
