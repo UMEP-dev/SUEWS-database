@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/zurich--ao2018--lai: sha256:446974f3fd26a7b144e9c849ce8cdeb9b0c36d15dd5bd48883aee28b1058c0a8
     records/surfaces/grass/zurich--stagakis-s2024--biogen-co2: sha256:dbe3dd4de133f3738c597e933bf61120cd4d3615ab9b0e74b8b43aa64ba1809b
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:d66c9be2aee4c3790252ee64e1a02358be89ad96cd217e73dfd523195b198f59
-    records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:dc1654866786d1b26bf067964998dc5e0894bf0e7fb668b7dc0fad485c8400d2
+    records/surfaces/grass/zurich--stagakis-s2024--max-conductance: sha256:e63d8bccfa4cfef78d1a69f907a9af5aa1f3bf09a351866e0f64092b9877f6a4
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-25T15:42:23Z'
@@ -37,9 +37,10 @@ assessment:
       - component-surfaces-grass-zurich-ao2018-lai
       note: 'The composite''s name reads "Grass Stagakis et al. 2024", its place reads zurich and its
         origin reads Zurich, Switzerland. Three of the twelve components declare source stagakis-s2024,
-        filling leaf_area_index, leaf_growth_power and biogen_co2; one further Zurich-placed record fills
-        max_vegetation_conductance and records its earlier havu-m2024 parameter source.
-        These four locally placed slots distinguish this entry from its neighbours. One discrepancy is
+        filling leaf_area_index, leaf_growth_power and biogen_co2. The max_vegetation_conductance record
+        retains Zurich in its path and origin as application lineage, but its active place, source and
+        method now follow the Helsinki/Havu fit. These four selected slots distinguish this entry from
+        its neighbours without claiming four independent Zurich determinations. One discrepancy is
         worth recording without treating it as a composition
         defect: db/sources.yml gives stagakis-s2024 the year 2025 and the doi 10.5194/bg-22-2133-2025,
         while the composite''s label and the source key itself read 2024. Which year is right is a question
@@ -81,25 +82,24 @@ assessment:
         none. Each component's own source belongs to that component's evidence assessment.
     place:
       conclusion: supported
-      evidence_ids:
-      - component-surfaces-grass-zurich-ao2018-lai
-      - component-surfaces-grass-zurich-stagakis-s2024-biogen-co2
-      - component-surfaces-grass-helsinki-vargo2013-albedo
-      - component-surfaces-grass-london-havu-m2024-drainage
+      evidence_ids: *id001
       note: 'The composite declares place zurich, which db/places.yml gives as lat 47.37, lon 8.54, koppen
-        Cfb. Four of the twelve components declare place zurich, filling leaf_area_index, leaf_growth_power,
-        max_vegetation_conductance and biogen_co2, and they are every Zurich grass record the database
-        holds. Two declare place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and
-        two declare place se-england (koppen Cfb), filling emissivity and water_storage; drainage, albedo
-        and porosity declare place generic; and the ohm component carries no place field. The leaf-area
+        Cfb. Three of the twelve components declare place zurich, filling leaf_area_index, leaf_growth_power
+        and biogen_co2. Three declare place helsinki (koppen Dfb), filling max_vegetation_conductance,
+        snow_lim_patch and vegetation_growth. Water_storage declares place se-england (koppen Cfb);
+        emissivity, drainage, albedo and porosity declare place generic; and the ohm component carries
+        no place field. The leaf-area
         component now cites Stagakis et al.''s exact SUEWS Lawn values for four Zurich parks, resolving
         its former mismatch between a Zurich place and a Shanghai source. The drainage component is a
         generic grass parameter published by Järvi et al.; its Havu archive locator records later reuse
-        rather than a Zurich fit.'
+        rather than a Zurich fit. The max-conductance record similarly retains Zurich only as application
+        lineage while its active Helsinki place follows the Havu fit.'
     representativeness:
       conclusion: supported
       evidence_ids:
       - component-surfaces-grass-zurich-stagakis-s2024-biogen-co2
+      - component-surfaces-grass-zurich-stagakis-s2024-lai-power
+      - component-surfaces-grass-zurich-stagakis-s2024-max-conductance
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-helsinki-vargo2013-albedo
@@ -107,8 +107,11 @@ assessment:
       note: >-
         The composite declares representativeness site, matching its narrowest evidence-bearing
         components: the biogenic CO2 and LAI-power tuples applied and evaluated at four Zurich park sites.
-        Other components declare city, regional or generic reach, while the OHM component carries no representativeness.
-        The composite therefore does not advertise a broader evidence reach than any of its components.
+        Other components declare city, regional or generic reach, while the OHM component carries no
+        representativeness.
+        The Helsinki/Havu conductance component is city evidence and therefore broader than the composite's
+        site claim. The composite does not advertise a broader evidence reach than any component that
+        declares one.
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -126,7 +129,8 @@ assessment:
         database and no other archetype repeats its uses block; the three nearest entries, archetypes/surfaces/grass/beijing-china--grass,
         archetypes/surfaces/grass/helsinki-finland--grass-havu-et-al-2024 and archetypes/surfaces/grass/helsinki-finland--low-vegetation-havu-et-al-2024,
         each differ from it in the leaf_area_index, leaf_growth_power, max_vegetation_conductance and
-        biogen_co2 slots, which are the slots each local study supplies.
+        biogen_co2 slots. The Zurich study supplies evidence for three of those selections; max_vegetation_conductance
+        is the retained Zurich application instance of the Helsinki/Havu fit.
   evidence:
   - id: component-ohm-generic-unreferenced-grass
     record: records/ohm/generic--unreferenced--grass
@@ -194,22 +198,23 @@ assessment:
     record: records/surfaces/grass/zurich--stagakis-s2024--max-conductance
     role: component
     note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
-      "Grass", place zurich, representativeness city, source havu-m2024 and method literature.
-  scientific_note: 'This is the best-localised of the nine grass composites. Four of its twelve components
-    declare place zurich and they are every Zurich grass record the database holds. Three cite stagakis-s2024,
-    the study the label names, for leaf area index, leaf-growth power and the directly stated parts of the
-    biogenic CO2 configuration; the LAI-power record separately preserves Järvi provenance for its inherited
-    leaves, the biogenic record preserves Bellucco and Järvi field provenance,
-    and maximum conductance is the Havu et al. literature value. Together they fill the four slots that distinguish the entry
-    from its neighbours. The rest are transparent transfers: a generic literature albedo, the snowpack
-    limit and phenology from Helsinki, generic literature drainage, emissivity and water storage from SE England,
-    porosity from an unreferenced dummy record
+      "Grass", place helsinki, representativeness city, source havu-m2024 and method fitted. Its path
+      and Zurich origin preserve later application lineage rather than an independent Zurich determination.
+  scientific_note: 'Three of the twelve components declare place zurich and cite stagakis-s2024 for
+    leaf area index, leaf-growth power and the directly stated parts of the biogenic CO2 configuration;
+    the LAI-power record separately preserves Järvi provenance for its inherited leaves, and the biogenic
+    record preserves Bellucco and Järvi field provenance. The maximum-conductance component retains Zurich
+    in its path and origin but is now explicitly the fitted Helsinki/Havu value.
+    Together these four selected records distinguish the entry from its neighbours without claiming four
+    local determinations. The rest are transparent transfers: generic literature albedo, emissivity and
+    drainage, a generic dummy porosity adapter, water storage from SE England, the snowpack limit and
+    phenology from Helsinki,
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Two observations belong to
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
     and the source key read 2024, which is a source registry matter. The drainage component is openly generic
     literature evidence rather than a Zurich observation. The composite now uses site representativeness
     because its biogenic CO2 and LAI-power components are supported at the four studied park sites rather
     than city-wide.'
-  evidence_revision: sha256:eb3c6504563f01f2aeb5eecb5cedeffadbd4bf5991731042f2d9ae25670954dd
+  evidence_revision: sha256:8d861cff9e6bf4304c6cedaa868ce373a4d4d55c644a130d31206f712cbabea3
 verification:
   attestations: []
