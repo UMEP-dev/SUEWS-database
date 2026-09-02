@@ -1,76 +1,122 @@
 provenance_record: records/surfaces/grass/london--jarvi2011--drainage
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:87648d59fda7ebf35e4595c33e9c3ace309638d4c4ce929c64b996194ca38718
+record_revision: sha256:2e4030e0bec64221184c856dc7b97fab73896a1024fd7d8295cacebca23e570c
 dependency_revisions:
   sources:
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
   places:
-    london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T20:38:03Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The label identifies the published parameter class or model configuration.
+      - jarvi-grass-drainage
+      - suews2016a-london-grass
+      note: Järvi et al. identify the surface category as grass, and the later release workbook labels
+        the matching row Grass. The active name removes the unsupported sample-run qualifier without
+        changing the stable path or legacy identity.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - jarvi-grass-drainage
+      note: Table 2(a) publishes the values by SUEWS surface type, including grass.
     values:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - jarvi-grass-drainage
+      - suews2016a-london-grass
+      note: The grass column gives a storage threshold of 1.9 mm, maximum drainage rate 0.013 mm
+        and coefficient 1.71. Section 2.5 assigns unirrigated vegetation the exponential drainage
+        equation, and the later London release row repeats the complete stored tuple, including
+        drainage equation selector 2.
     source:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - jarvi-grass-drainage
+      - suews2016a-london-grass
+      note: Järvi et al. publish the complete stored grass drainage tuple. The v2016a workbook is
+        later application and migration-lineage evidence, not a London measurement or fit.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The table is a Vancouver/Los Angeles model parameter compilation and does not establish the
-        record's London or south-east England place claim.
+      - jarvi-grass-drainage
+      - suews2016a-london-grass
+      note: Järvi et al. present the values by generic surface type, not as London observations.
+        London is retained only in origin and the stable path because the later release workbook
+        applies the tuple in its London Grass row.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The publication does not establish city or regional evidence reach for the later UK application.
+      - jarvi-grass-drainage
+      note: Generic scope reflects a literature parameter set offered for the SUEWS grass class,
+        without a city- or site-specific determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-grass-drainage
+      note: Table 2(a) defines the tuple for the grass land-cover class rather than for a whole
+        neighbourhood, an individual plant or a material specimen.
     method:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - jarvi-grass-drainage
+      note: Section 2.5 states that the maximum drainage rates and coefficients are taken from the
+        literature, and Table 2(a) footnotes the values to earlier publications.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      - jarvi-grass-drainage
+      - suews2016a-london-grass
+      note: The stable path, origin London and legacy ID preserve the migrated row identity. The
+        v2016a SUEWS_Veg London Grass row repeats the exact values and equation selector.
   evidence:
-  - id: jarvi-table-2
+  - id: jarvi-grass-drainage
     source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, model parameter values by surface type
-      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      label: Table 2(a), Grass column
       page: 223
-      note: Publishes the stored surface storage and drainage values in the Vancouver/Los Angeles model
-        parameter table.
-  scientific_note: The values are exact literature values, but the UK place/evidence-reach assignment
-    is a later application not supported by this source.
-  evidence_revision: sha256:3de0bffb66fe14335bde8bcaaf80c3f5690ae9c4f9e226c7f70fe25427fb2b94
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Gives Si = 1.9 mm, D0,i = 0.013 mm and b = 1.71 for grass. The footnotes identify
+        these as literature values rather than a fit to an evaluation city.
+    - kind: section
+      label: Section 2.5, Equations 18 and 19
+      page: 224
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Assigns the exponential drainage form to unirrigated vegetation and states that the
+        maximum rates and coefficients are taken from the literature in Table 2.
+    note: This is the parameter publication. It supports the exact grass tuple, literature method,
+      generic place and land-cover applicability; it does not make London the evidence location.
+  - id: suews2016a-london-grass
+    source: umep-dev2016a
+    role: compilation
+    locators:
+    - kind: dataset
+      label: SUEWS_Veg, London Grass row 12, cells A12:AF12
+      url: https://github.com/UMEP-dev/SUEWS/blob/a234969dc859b6728767135322b9d9fb4b11bba2/SUEWS_SiteInfo18_Lo.xlsm
+      note: The row labels the surface Grass and origin London and repeats wet threshold 1.9,
+        drainage equation 2, D0 0.013 and b 1.71. The workbook bytes have SHA-256
+        e1a34632b0ab6b1aa379b8329a92ee584d130f54941c3d9eeca3e3303cde1d42.
+    note: The release artifact preserves the London application and migrated-row identity; it does
+      not make the generic literature tuple a London measurement.
+  scientific_note: Järvi et al. publish this tuple as a generic SUEWS grass land-cover parameter
+    set assembled from literature. The later v2016a workbook applies the unchanged tuple in its
+    London Grass row. London therefore remains as stable-path and origin lineage, while active place
+    and representativeness describe the generic evidence. No parameter, target, source, legacy
+    identity, origin or record path has changed.
+  evidence_revision: sha256:c02c845526750f17be8e5b049381d06e37f16335d2c427c2be27003b62fa75cc
 verification:
   attestations: []
