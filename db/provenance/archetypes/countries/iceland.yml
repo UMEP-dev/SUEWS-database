@@ -6,7 +6,7 @@ dependency_revisions:
   sources: {}
   places: {}
   records:
-    records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:37b1a00ef75ad35a3dcb414431b2f3371c7488ec6c8230f1497af05542b861d8
+    records/profiles/energy-use/helsinki--jarvi2019--energy-use: sha256:8e4f48d2c93824d17f58008faec623ddf0cba1671314ba953024453e712a24db
     records/profiles/human-activity/lucy/iceland: sha256:f656158f1792557acff78cb1179b83baa11e3dcdbf36fa4bad0c96e4fbb356e1
     records/profiles/traffic/lucy/iceland: sha256:711f46e625ff733a7ba147653647d3536d05a2dadf694c0130252122e3784b44
 assessment:
@@ -93,6 +93,6 @@ assessment:
     no working_day counterpart, and the population profile falls back to supy''s uniform default. The
     components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:f4117a9e08d96a3e0a12624a0cf0992d444b9657fe1d6f320efdfccee4fc7e0b
+  evidence_revision: sha256:a1f1f067283103e3e4c2358cf9b0b3bdf76084899d3aed0bc7a9a350b0d6cdf1
 verification:
   attestations: []
