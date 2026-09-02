@@ -4,8 +4,9 @@ target: irrigation
 name: No Irrigation
 place: se-england
 origin: SE England
-representativeness: regional
-source: ward2016
+representativeness: site
+source: umep-dev2016a
+method: assumed
 legacy_id: 61240050
 parameters:
   ie_start: 1
