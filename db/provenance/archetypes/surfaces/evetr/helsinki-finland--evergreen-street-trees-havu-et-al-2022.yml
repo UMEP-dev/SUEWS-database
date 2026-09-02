@@ -12,7 +12,7 @@ dependency_revisions:
     archetypes/surfaces/evetr/helsinki-finland--mixed-evergreen-trees-jarvi-et-al-2014: sha256:a8bf046b569435dd483dff0e9506450e400e901ffb0562271b3cfe12d4e792da
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
-    records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street: sha256:9dc5ba04fd5506c034a2dd41ee4a932a94e6d024cf44af5cdfd5da2354b0878a
+    records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street: sha256:8569731d017f27d91401e5a477ff7a156f6e136bce644f5f0e6a6fcc9d1100a7
     records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
@@ -221,6 +221,6 @@ assessment:
     and db/sources.yml holds no source dated 2022, so either the label's year is wrong or a source was never
     registered. Drainage is now explicitly generic land-cover literature evidence, with Havu's later Helsinki
     application recorded in its own sidecar.
-  evidence_revision: sha256:4bf51518cdf55e758ef092449129254d713f71dcb21d4fc4a66cd573c6d15aed
+  evidence_revision: sha256:816d99ca6ee04244bd7a472a98034fe8d014ef8ffb1e34fda241d6abc9c2251c
 verification:
   attestations: []
