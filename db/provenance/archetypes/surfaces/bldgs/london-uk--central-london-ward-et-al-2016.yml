@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
-    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:870dfa98f10b10faf624b0e0f327c14e135d31dfc1af8e344557594086dc13f1
+    records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:1b561a7e76c6a05efd95faf4cda9b441193e8909982187e7c1d9a1fbb2bb24b6
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:31:58Z'
@@ -197,6 +197,6 @@ assessment:
     America. The snowpack limit reaching to Helsinki is a third-order concern by comparison, and it is
     forced, since no other buildings snowpack_limit record exists. This review does not revisit any component
     value.'
-  evidence_revision: sha256:8d7343bc8389e0dd050a0541a20857718214d6cd418202daaefb7ceea74ad25e
+  evidence_revision: sha256:5ccf8ffac256e8c61af2e6938ff1a35cdbfc95af2bb53ca6a7f681ce13c4dbae
 verification:
   attestations: []
