@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
     records/surfaces/dectr/vancouver--jarvi2011--max-conductance: sha256:f4571a9f8f86075e0df82cd8e605b30d659bc63c3488a6e50fa17f4003e69fcb
 assessment:
   status: curation_required
@@ -212,6 +212,6 @@ assessment:
     from the entries and are not faults in the stored values. A maintainer should read the two Helsinki
     typologies against their publications together, since a swap in one implies the other. The components''
     values remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:c7fc6b4cbc643d97dce4f704f5c490914a37228752b11cbc8d906a11d2508adf
+  evidence_revision: sha256:2497ff96e245d78c04cce8e14b4e60e441be6d23b24f72c389ff033f86bc34c3
 verification:
   attestations: []

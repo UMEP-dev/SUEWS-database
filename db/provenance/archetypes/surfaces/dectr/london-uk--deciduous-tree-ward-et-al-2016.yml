@@ -20,7 +20,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:4ef25b84129165ceb5be3ac8945325d577e8859546e202bf4675b1d806eec80f
     records/surfaces/dectr/se-england--ward2016--phenology: sha256:6e03c06ccebb5437ba7064249124e980afd4fd1d60238a7457fb29850640a16c
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
     records/surfaces/dectr/swindon--ward2016--emissivity: sha256:ce9e14157c1915bb42687e731c8248ab4940dbebbe8f9d84704a9a5fe7051eed
 assessment:
   status: curation_required
@@ -217,6 +217,6 @@ assessment:
     questions a stored value; all of it is selection and mapping, which is where a composition review
     can act. The components' values remain subject to their own evidence assessments; this review does
     not revisit them.
-  evidence_revision: sha256:7e8964339cd511f5c23f64f0f5c953a37b932e0cd206fe7a7550f673a5a722da
+  evidence_revision: sha256:6fd6169fe728421605fbeebad4016729a5560c8d60fb0980661c75badb1cc6c4
 verification:
   attestations: []

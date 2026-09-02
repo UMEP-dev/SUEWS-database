@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
     records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
-    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:a90b65fb46046edf16a586d7ace897dcc2682347d044955fac27e68e40495ccf
+    records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:669ffe9b3871af7ee48bb73c4a54443b4ce339d868e3ce7eed447eb90e789fe2
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
     records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
@@ -204,6 +204,6 @@ assessment:
     decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them. The corrected biogen_co2 component has three values directly
     supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:b94dbed93935abca305b85d40c9f6c748c1d6974a83c4a89d52a861accd995db
+  evidence_revision: sha256:0e43eb79d301a8cc846fdf595d53a50665bf3ac9fb03d8d2d7c30eae93b6af25
 verification:
   attestations: []
