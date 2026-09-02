@@ -1,21 +1,23 @@
 provenance_record: records/surfaces/dectr/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c373053133d2bd2c6e2491b2628f482569fe00131a3382774f6cb14d79061765
+record_revision: sha256:6081a2375d5404d1fb6e687e852feeb81a6ddae44e29ffabde5db5110b8df83a
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T12:27:37Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -31,28 +33,46 @@ assessment:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - jarvi2011-table-2a
+      note: Table 2 publishes adjusted deciduous-tree albedo 0.12 for leaf-off and 0.18 for leaf-on,
+        exactly matching the stored minimum and maximum. Ward changes the minimum; the maximum remains
+        the exact Järvi et al. (2011) literature value.
     source:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - jarvi2011-table-2a
+      note: Ward et al. directly publish and evaluate the adjusted minimum for the two UK model sites;
+        the per-leaf override retains Järvi et al. (2011) as the exact source of the unchanged maximum.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - jarvi2011-table-2a
+      note: The fitted minimum retains the shared se-england application geography containing London
+        and Swindon. The unchanged literature maximum is generic under its per-leaf override.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - jarvi2011-table-2a
+      note: The adjusted minimum is evaluated against local radiometer observations at two neighbourhood-scale
+        sites, so site is its supported reach. The unchanged literature maximum is generic.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      - jarvi2011-table-2a
+      note: Both publications assign the values to the deciduous-tree land-cover class, so land_cover
+        is the supported application scale for both leaves.
     method:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - jarvi2011-table-2a
+      note: Ward et al. manually reduce the leaf-off minimum to reflect the observed seasonal change
+        and evaluate it against local outgoing-shortwave observations, so the envelope method is fitted.
+        The unchanged maximum has a per-leaf literature override.
     identity:
       conclusion: supported
       evidence_ids:
@@ -62,6 +82,8 @@ assessment:
   - id: ward-table-2
     source: ward2016
     role: parameter_source
+    parameter_paths:
+    - parameters.alb_min
     locators:
     - kind: table
       label: Table 2, adjusted albedo and emissivity model inputs
@@ -69,8 +91,30 @@ assessment:
       page: 8
       note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
         explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:089d3a0f42890bda925fe01b482c034a92ed33a755edb8f4e5aa2838fc8b13d3
+    - kind: section
+      label: Section 4.2.2, Outgoing shortwave radiation
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 7
+      note: Explains that the deciduous-tree minimum was reduced to reflect the large observed leaf-on
+        to leaf-off change and that the adjusted albedos improve model agreement with observations at
+        the two sites.
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.alb_max
+    locators:
+    - kind: table
+      label: Table 2(a), Deciduous trees column, albedo row
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      page: 223
+      note: Publishes deciduous-tree albedo 0.18, the unchanged maximum retained by Ward et al. and by
+        this record.
+  scientific_note: Ward et al. reduce the deciduous-tree leaf-off minimum to 0.12 in response to the
+    observed seasonal change and evaluate it against local radiometer data, so alb_min is fitted evidence
+    with site reach. The leaf-on maximum remains the exact Järvi et al. (2011) literature value 0.18,
+    recorded through per-leaf provenance with generic reach. The stable path, values, target, origin and
+    legacy identity do not change.
+  evidence_revision: sha256:3dc099edd605d59f9d2762efe74282887d9106dc85e507060d5e75f6b00fac19
 verification:
   attestations: []
