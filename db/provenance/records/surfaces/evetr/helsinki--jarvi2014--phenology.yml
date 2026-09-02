@@ -1,114 +1,162 @@
 provenance_record: records/surfaces/evetr/helsinki--jarvi2014--phenology
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+record_revision: sha256:c420e16d7a8308f180e6514dd0bd0f20ffe4191b741f388fd34809c49ceb2393
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-09-02T19:40:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: assumed
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: Evergreen Tree matches the record's land_cover.evetr target.
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      note: Evergreen Tree matches the land_cover.evetr vegetation type to which both papers apply the
+        phenology controls.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: Growing and senescence degree-day thresholds are land_cover.evetr phenology properties.
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      note: The equations apply growing- and senescence-degree-day controls to the daily leaf area index
+        of each vegetation surface type.
     values:
-      conclusion: supported
-      evidence_ids:
-      - jarvi-table-4b
-      note: 'All four are in Table 4b exactly: TBaseGDD 5 degC, TBaseSDD 10 degC, GDD 300 and SDD -450.
-        Table 4b is headed overall area parameter values, so it gives one set for the whole area rather
-        than per vegetation type, which is why the three vegetation records here are identical.'
-    source:
-      conclusion: correction_required
-      evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
-    place:
-      conclusion: correction_required
-      evidence_ids:
-      - jarvi-sites
-      note: Helsinki is where the study ran; these thresholds are carried forward from earlier work rather
-        than determined there.
-    representativeness:
-      conclusion: correction_required
-      evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
-    method:
       conclusion: curation_required
       evidence_ids:
-      - jarvi-table-caption
-      note: Inherited from an earlier publication, so the production method is not this study's.
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/990
+      note: Järvi et al. (2011) directly publish TBaseGDD 5 degrees C, GDD 300 and SDD -450, but publish
+        TBaseSDD 11 degrees C. Järvi et al. (2014) publish the stored TBaseSDD 10 degrees C while their
+        Table 4 caption says unfootnoted values come from the 2011 paper. A curator must decide whether
+        10 is an intentional cold-climate choice or a table or caption error; no parameter value is changed
+        here.
+    source:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      - jarvi2014-compilation
+      note: Parameter-level overrides identify Järvi et al. (2011) as the original exact publication
+        for base_temperature, gdd_full and sdd_full. Järvi et al. (2014) remains the parameter source
+        for the stored base_temperature_senescence value 10 and is a later compilation for the other
+        three leaves.
+    place:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-phenology
+      - jarvi2014-compilation
+      note: Generic describes shared model-run options rather than a determination made for Helsinki.
+        Järvi et al. (2011) list the values as general run options, and Järvi et al. (2014) place them
+        in the overall-area table without a site qualifier.
+    representativeness:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-phenology
+      - jarvi2014-compilation
+      note: The sources use one shared option set rather than establishing city-wide Helsinki evidence,
+        so generic avoids the former unsupported city reach.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      note: Both LAI equations apply the controls to vegetation surface type i, establishing land_cover
+        scale even though one numeric set is shared between the vegetation classes.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-phenology
+      - jarvi2014-tbase-sdd
+      note: Both tables publish model options, and neither documents a fit that yields these four exact
+        thresholds. Assumed records their role as model choices without claiming an unsupported measurement
+        or optimization.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4b
-      note: The three vegetation phenology records hold the same four thresholds because Table 4b publishes
-        one area-wide set, not three.
+      - jarvi2014-tbase-sdd
+      note: Stable path, origin and legacy ID preserve the migrated Helsinki application row. The same
+        overall option set is mapped to evergreen, deciduous and grass targets, so the matching sibling
+        tuples are not independent determinations.
       related_records:
       - records/surfaces/dectr/helsinki--jarvi2014--phenology
       - records/surfaces/grass/helsinki--jarvi2014--phenology
   evidence:
-  - id: jarvi-table-4b
+  - id: jarvi2011-phenology
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.base_temperature
+    - parameters.lai.gdd_full
+    - parameters.lai.sdd_full
+    locators:
+    - kind: equation
+      label: Equation 4, daily LAI by vegetation type
+      page: 221
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Defines daily LAI for vegetation type i using growing and senescence degree days and their
+        base temperatures.
+    - kind: table
+      label: Table 2(b), general model run options
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Directly publishes TBaseGDD 5 degrees C, GDD 300 and SDD -450. It publishes TBaseSDD 11
+        degrees C, so it does not support the stored value 10 for that leaf.
+  - id: jarvi2014-tbase-sdd
     source: jarvi2014
-    role: compilation
+    role: parameter_source
+    parameter_paths:
+    - parameters.lai.base_temperature_senescence
     locators:
     - kind: table
-      label: Table 4b, overall area parameter values
+      label: Table 4(b), overall area parameter values
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: Gives alpha_s,min 0.18, alpha_s,max 0.85, epsilon_s 0.99, a0 0.1, a1 9.9 x 10^3 as printed,
-        a2 0.0102, GDD 300, SDD -450, TBaseGDD 5 degC, TBaseSDD 10 degC, TBaseQF 18.2 degC, Ks 0.0005
-        mm s-1, a_r 0.0016 mm W-1 h-1 and T_lim 2.2 degC, among others. It is a single set for the whole
-        area.
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
+      note: Directly publishes the stored TBaseSDD 10 degrees C. The value has no footnote even though
+        the caption says unfootnoted values come from Järvi et al. (2011), whose Table 2(b) instead gives
+        11 degrees C.
+    - kind: section
+      label: Appendix A, Leaf area index
+      page: 1707
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
+      note: Applies TBaseSDD within the revised cold-climate LAI equation but explains changes to other
+        rate coefficients, not why this threshold differs from the 2011 value.
+  - id: jarvi2014-compilation
     source: jarvi2014
     role: compilation
+    parameter_paths:
+    - parameters.lai.base_temperature
+    - parameters.lai.gdd_full
+    - parameters.lai.sdd_full
     locators:
     - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
+      label: Table 4(b), overall area parameter values and caption
+      page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'The four thresholds are in Table 4b verbatim and the triplication across deciduous,
-    evergreen and grass is what the source prescribes: Table 4b gives one area-wide set rather than a
-    set per vegetation type. What the record overstates is provenance. The caption makes these inherited
-    values, so citing this paper credits it with thresholds it carried forward, and Helsinki city representativeness
-    does not follow from a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:e620cad41ec98608d302853ddec419581bc3765362951c3598ea92b2323f6660
+      note: Repeats TBaseGDD 5 degrees C, GDD 300 and SDD -450 and states that unfootnoted values come
+        from Järvi et al. (2011). These values have no site marker and are one shared overall-area set.
+  scientific_note: The safe provenance correction separates the three unchanged Järvi et al. (2011)
+    options from the one value first found at its stored precision in Järvi et al. (2014). The 2014
+    paper prints TBaseSDD 10 degrees C but simultaneously attributes unfootnoted Table 4 values to the
+    2011 paper, which prints 11 degrees C. That contradiction is the sole remaining curation question.
+    The record retains 10 and its stable migrated identity until a curator decides which published version
+    should govern. Generic place and representativeness describe shared run options rather than Helsinki
+    evidence, while land_cover reflects their application to each vegetation type.
+  evidence_revision: sha256:cdb2c1ca8109723f226a74ef3ac3c019410c817d8b010c9620a8a1148d1321ec
 verification:
   attestations: []

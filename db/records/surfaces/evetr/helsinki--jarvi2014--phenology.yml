@@ -2,10 +2,12 @@ record: records/surfaces/evetr/helsinki--jarvi2014--phenology
 schema_version: '2026.5'
 target: land_cover.evetr
 name: Evergreen Tree
-place: helsinki
+place: generic
 origin: Helsinki
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: jarvi2014
+method: assumed
 legacy_id: 35240001
 parameters:
   lai:
@@ -13,3 +15,10 @@ parameters:
     base_temperature_senescence: 10
     gdd_full: 300
     sdd_full: -450
+parameter_provenance:
+  parameters.lai.base_temperature:
+    source: jarvi2011
+  parameters.lai.gdd_full:
+    source: jarvi2011
+  parameters.lai.sdd_full:
+    source: jarvi2011

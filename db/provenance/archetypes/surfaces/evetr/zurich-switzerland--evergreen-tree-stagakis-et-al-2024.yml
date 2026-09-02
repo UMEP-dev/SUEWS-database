@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985: sha256:115208d61458532f99020d3cf9f2b499959d85fe861d66bd2898090034bbc439
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
-    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:c420e16d7a8308f180e6514dd0bd0f20ffe4191b741f388fd34809c49ceb2393
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
@@ -82,7 +82,7 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       note: 'Three distinctive slots take Zurich rows. Albedo, emissivity, water storage and leaf area
         index take SE England rows because no Zurich alternatives exist; the Helsinki snow limit is the
-        only evergreen-tree snow limit, and no Zurich phenology record exists. Drainage is a generic
+        only evergreen-tree snow limit, while phenology is a generic fallback because no Zurich record exists. Drainage is a generic
         land-cover literature tuple, so it is compatible with this slot without being presented as a Zurich fit.'
     representativeness:
       conclusion: supported
@@ -99,8 +99,8 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. The Zurich and Helsinki rows are classed city,
-        the four SE England rows regional, drainage and porosity generic, and the OHM record carries no
+      note: The composite declares representativeness city. The Zurich rows and Helsinki snow-limit row are classed city,
+        the four SE England rows regional, drainage, porosity and phenology generic, and the OHM record carries no
         representativeness. No component is narrower than the composite.
     method:
       conclusion: supported
@@ -198,8 +198,11 @@ assessment:
   - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
     record: records/surfaces/evetr/helsinki--jarvi2014--phenology
     role: component
-    note: Fills vegetation_growth. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+    note: Fills vegetation_growth. The record declares target land_cover.evetr, place generic, representativeness
+      generic and applicable_scale land_cover. It carries source jarvi2014 and method assumed; parameter-level
+      provenance attributes base_temperature, gdd_full and sdd_full to jarvi2011, while jarvi2014 is the
+      exact publication for the stored base_temperature_senescence 10. Its own assessment retains the
+      unresolved 10-versus-11 source conflict for curator decision.
   - id: component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
     record: records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985
     role: component
@@ -208,13 +211,13 @@ assessment:
       grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
       representativeness.
   scientific_note: 'The composite does what a city archetype should: it takes Zurich rows for the three
-    distinctive slots, falls back to SE England regional rows and Helsinki city rows only where the database
+    distinctive slots, falls back to SE England regional rows, the Helsinki city snow-limit row and generic rows only where the database
     holds nothing for Zurich, and uses a generic coniferous-tree literature tuple for drainage. The two
     LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled coefficient
     record across all four OHM positions is consistent with a record that declares no season. A separate
     source-registry point remains: the label says 2024 while db/sources.yml stores stagakis-s2024 with
     year 2025. The corrected biogen_co2 component has three values directly supported by Supplement
     Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:f678faee124525df98a9834e0e817ce5adffda93e0a4d6bbf6e909ef2a2ae9de
+  evidence_revision: sha256:d07e934a3ced77a617bdd9f813bb07cbf2e0d7ce2600d4c728905cd7f474a62f
 verification:
   attestations: []

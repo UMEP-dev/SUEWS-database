@@ -9,7 +9,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:7b4ef7d7a7e8a39a01266815da5856f12888fd841ee2b11214dfdfc23a5621a8
-    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
+    records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:c420e16d7a8308f180e6514dd0bd0f20ffe4191b741f388fd34809c49ceb2393
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T02:15:00Z'
@@ -109,6 +109,6 @@ assessment:
     set per vegetation type. What the record overstates is provenance. The caption makes these inherited
     values, so citing this paper credits it with thresholds it carried forward, and Helsinki city representativeness
     does not follow from a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:4b2a01ded5b4601afa41eabd8fa75833f425f8fc080c808c696df195ae578d44
+  evidence_revision: sha256:91726617f7f883bb5728b6f5f6585e9213bea05b201b1b45a5ba5d6319b5ae36
 verification:
   attestations: []
