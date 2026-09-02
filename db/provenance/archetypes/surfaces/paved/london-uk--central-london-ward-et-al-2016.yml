@@ -13,11 +13,11 @@ dependency_revisions:
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/london--ward2016--emissivity: sha256:f0cffcd3bb177b2f0dcb0babd5751c9752e62ffb34c3870bf07594b6ec6de6dc
-    records/surfaces/paved/se-england--ward2016--albedo: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
+    records/surfaces/paved/se-england--ward2016--albedo: sha256:41cb05354813583a58eb85cfb36c0ce31a75c4f64d1e0cdea3f9ed3d1abbe563
     records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
 assessment:
-  status: agent_assessed
+  status: curation_required
   assessed_at: '2026-08-23T00:43:17Z'
   assessor:
     kind: agent
@@ -94,7 +94,7 @@ assessment:
         place helsinki, which is forced: it is the only paved snow_lim record in the database. The construction
         record declares place generic and the two OHM records declare no place.'
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-paved-se-england--ward2016--albedo
       - component-surfaces-paved-london--ward2016--emissivity
@@ -104,11 +104,10 @@ assessment:
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
-      note: The composite declares representativeness city. The three se-england components declare regional,
-        which is broader than the composite's scale and therefore a downscaling; records/surfaces/paved/london--ward2016--emissivity
-        and records/surfaces/paved/helsinki--jarvi2014--snow-lim declare city; the construction record
-        declares generic; the two OHM records declare no representativeness. No component is classed below
-        city, so nothing narrower stands in for the composite's claim.
+      note: The composite declares representativeness city. Water storage and drainage are regional,
+        emissivity and snow limit are city, construction is generic, and the OHM records declare no
+        representativeness. The albedo is fitted site evidence from the Ward et al. study locations;
+        extending that narrower evidence to a city claim requires human curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -148,7 +147,7 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place se-england,
-      representativeness regional and source ward2016, and carries alb.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted, and carries alb.
   - id: component-surfaces-paved-london--ward2016--emissivity
     record: records/surfaces/paved/london--ward2016--emissivity
     role: component
@@ -195,9 +194,9 @@ assessment:
     declares place london and representativeness city, and four of its eight components declare source
     ward2016, the study its name cites. Its water-storage component is published by Järvi et al. (2011),
     and its drainage component is the Ward et al. (2018) publication of the SE England tuple. Where the
-    named study reports a London value the composite takes it,
-    in the emissivity slot; where it reports a value for the wider region the composite takes the se-england
-    row, classed regional, and applies it down to the city, which is the sound direction for a class mismatch.
+    named study reports a London value the composite takes it in the emissivity slot. Water storage and
+    drainage use regional rows, while albedo uses the fitted site-scoped SE England row. That albedo-to-city
+    extrapolation remains a human curation question even though the selected value belongs to the named study.
     The season mapping is right: the OHM record labelled Summer fills the two summer positions and the
     one labelled Winter fills the two winter positions, and since neither record carries a wetness label
     the wet and dry positions within a season taking the same coefficients contradicts nothing. Two slots
@@ -208,6 +207,6 @@ assessment:
     do not declare ward2016. The fixture identity is explicit rather than a physical construction claim;
     the other components'' own values and any ''sample run'' labels remain subject to their own evidence
     assessments, which this review does not revisit.'
-  evidence_revision: sha256:757d4d3d92899d2baadbe05c6fd6c7f058410b219d8bd12e50ab1c9a2304b563
+  evidence_revision: sha256:c444b1617cb8b09bf9cb8ae14f0c70abe595cebae19f156a64a71337dd626283
 verification:
   attestations: []

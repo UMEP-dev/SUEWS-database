@@ -4,8 +4,10 @@ target: land_cover.paved
 name: Paved
 place: se-england
 origin: UK, SE England
-representativeness: regional
+representativeness: site
+applicable_scale: land_cover
 source: ward2016
+method: fitted
 legacy_id: 41240041
 parameters:
   alb: 0.1
