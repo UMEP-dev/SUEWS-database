@@ -2,10 +2,12 @@ record: records/surfaces/bldgs/london--ward2016--emissivity
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Central London
-place: london
+place: generic
 origin: London, UK
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: ward2016
+method: literature
 legacy_id: 40240052
 parameters:
   emis: 0.91
