@@ -4,8 +4,9 @@ target: land_cover.dectr
 name: Deciduous trees
 place: zurich
 origin: Zurich
-representativeness: city
+representativeness: site
 source: stagakis-s2024
+method: literature
 legacy_id: 30240101
 parameters:
   alpha_bio_co2: 0.031
@@ -17,3 +18,19 @@ parameters:
 legacy:
   alpha_enh: -999
   beta_enh: -999
+parameter_provenance:
+  parameters.alpha_bio_co2:
+    source: bellucco2017
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.theta_bio_co2:
+    source: bellucco2017
+    method: fitted
+    place: helsinki
+    representativeness: site
+  parameters.min_res_bioco2:
+    source: jarvi2019
+    method: measured
+    place: finland
+    representativeness: site

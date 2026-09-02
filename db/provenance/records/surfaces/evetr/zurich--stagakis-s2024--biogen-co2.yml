@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
+    records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:d798e750ede60b9eb03eb3b6d3752761d8e8d3c8d6a3d5032942f12212f657c4
 assessment:
   status: unresolved
   assessed_at: '2026-08-24T17:03:07Z'
@@ -110,6 +110,6 @@ assessment:
     publication: alpha_bio_co2 0.031, theta_bio_co2 0.723 and min_res_bioco2 0.6 remain unsupported by
     this citation. Nor does it settle whether one published Trees class should remain represented by
     separate deciduous and evergreen records. Those provenance and identity questions remain open.'
-  evidence_revision: sha256:a02fd0f1113c324d36ebeef33330ab049c73a77138c257574cdf09b0682cf32c
+  evidence_revision: sha256:031a2a5f26c358f899b8cb4342156b90a14222e7f6115223930d3f99baeec0a6
 verification:
   attestations: []
