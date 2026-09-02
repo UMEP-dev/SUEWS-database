@@ -14,7 +14,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--buildings: sha256:f373e9fb5425a870ac8f6a7f413484340f7bd5d7044751c77a6de6d414ab5db7
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
@@ -73,17 +73,10 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
-      note: 'The composite claims place zurich, which db/places.yml resolves to country switzerland. Not
-        one component carries a Swiss place. The albedo declares place london; emissivity, water storage and
-        drainage are generic; the snow limit declares place helsinki; the construction declares place london and
-        is named ''Central London [sample run]''; and all four ohm positions take records/ohm/beijing--zheng-y2023--buildings,
-        place beijing. Substitution is unavoidable because the database holds no Swiss building record,
-        but the ohm choice was not forced: twenty records under records/ohm carry buildings in their path,
-        among them records/ohm/helsinki--jarvi2014--buildings, the calculated rooftop average at
-        records/ohm/generic--unreferenced--buildings, the two seasonal records/ohm/generic--ward2016--buildings
-        rows and eight records/ohm/london--xie2024--buildings rows. A Zurich typology assembled from London,
-        Helsinki, generic and Beijing records, with a Beijing row taken over every European alternative and no
-        reason recorded, is something only a maintainer can settle.'
+      note: The composite claims place zurich, but no selected component carries a Swiss place. Albedo and construction declare place london; emissivity, water storage, drainage and snow_lim_patch
+        place generic; and OHM place beijing. Substitution remains unavoidable because
+        the database holds no Swiss building record, while the unexplained Beijing OHM choice remains
+        the curation question.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -94,9 +87,10 @@ assessment:
       - component-constructions-uk-lindberg-f2020-central-london-sample-run
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-beijing-zheng-y2023-buildings
-      note: The composite declares representativeness city. Three components declare representativeness
-        city, the London albedo is site evidence, and emissivity, water storage and drainage are generic.
-        Extending the site albedo to a city composite requires curation in addition to the place mismatch.
+      note: The composite is classed city. The albedo declares site; construction and OHM declare city; and emissivity,
+        water storage, drainage and snow_lim_patch declare generic. The site-scale albedo
+        is narrower than the city reach claimed by the composite. This site-to-city extrapolation requires
+        curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -156,9 +150,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
-      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
-      for buildings.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-beijing-zheng-y2023-buildings
     record: records/ohm/beijing--zheng-y2023--buildings
     role: component
@@ -170,8 +165,8 @@ assessment:
     role: related
     note: A generic calculated rooftop average available as an alternative building OHM record; it is
       not selected by this Zurich composite.
-  scientific_note: 'Zurich''s city centre is assembled without a single Swiss component. Its albedo is
-    a London row, emissivity, water storage and drainage are generic, its snow limit is a Helsinki row, and its construction
+  scientific_note: 'Zurich''s city centre is assembled without a single Swiss component. Its albedo is a London row, while emissivity, water storage, drainage and snowpack_limit are generic;
+    its construction
     is a London record named ''Central London [sample run]'', and all four OHM positions take
     a Beijing roof-average row. Some substitution is unavoidable, because the database holds no Swiss
     building record at all, but the particular substitutions were not forced: twenty building OHM records
@@ -179,10 +174,11 @@ assessment:
     The consequence shows in the composite''s identity. Slot for slot it is archetypes/surfaces/bldgs/helsinki--kumpula
     with the OHM record swapped and archetypes/surfaces/bldgs/beijing--city-centre with the albedo swapped,
     so what separates a Zurich city centre from those two entries is one coefficient record chosen for
-    Beijing. Both questions live in the composite and can be settled without changing any component value,
-    and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
-    a separate identity once that is decided. The components'' own values remain subject to their evidence
+    Beijing. The Central London albedo is site evidence used in a city composite. These place, evidence-reach
+    and identity questions live in the composite and can be settled without changing any component value.
+    A maintainer must decide which records should stand in for Zurich, whether their reach supports a
+    city composite and whether the entry earns a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:1b913febe6875583bd1169b83fd6ee3f5cee93f446cca0de3a1c611eea44ab11
+  evidence_revision: sha256:c5836385be9860b2fdb6c1b3efa09f50194ee56280d65ae21bb435525ced80ab
 verification:
   attestations: []

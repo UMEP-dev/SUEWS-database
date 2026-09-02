@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
@@ -80,21 +80,10 @@ assessment:
       - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite claims place sweden, whose registry entry reads kind country. Exactly one of
-        the seven components is in Sweden: records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
-        place gothenburg, origin ''Gothenburg, Sweden''. The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo,
-        place london; the snowpack-limit and OHM slots take Helsinki records, place helsinki, country
-        finland; and emissivity, water storage and drainage take generic building-class records. The database
-        does hold two generic archived buildings albedo rows with Gothenburg lineage:
-        records/surfaces/bldgs/gothenburg--oke1987--albedo--wood, named Wood, and records/surfaces/bldgs/gothenburg--oke1987--albedo,
-        named ''Industry, dark roofs''. Other Swedish buildings archetypes do use them, but neither
-        describes brick masonry, and nothing in the files records why a Central London city-centre albedo
-        was taken instead. Part of the Helsinki borrowing is forced, since records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
-        is the only buildings snowpack_limit record in the database. The generic emissivity, water-storage
-        and drainage rows need no Swedish substitute, but the composite as a whole
-        rests on one Swedish record out of seven
-        while claiming to be a Swedish typology, and a maintainer should decide whether that is a defensible
-        national default.'
+      note: The composite claims Sweden. Construction is the sole Swedish component, with place gothenburg.
+        Albedo declares london; OHM declares helsinki; emissivity, water storage, drainage and snow_lim_patch
+        are generic. The snow default is forced because it is the only buildings snowpack_limit record; the
+        London albedo choice and predominantly non-Swedish assembly remain the curation questions.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -105,16 +94,9 @@ assessment:
       - component-constructions-gothenburg-bjork2002-traditional-neighbourhood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite is classed regional, at the scale of Sweden. Three components are classed city:
-        the Helsinki snow-limit and OHM rows and records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s,
-        which declares place gothenburg and representativeness city. The London albedo is site evidence;
-        emissivity, water storage and drainage are generic. A country-scale
-        default assembled mostly from city evidence is the case this review is asked to treat as a finding,
-        and it cannot be fixed
-        inside the composite: either the class the composite declares is too broad for what it holds,
-        or the slots need country-scale rows that do not yet exist. The same pattern runs through the
-        Swedish buildings family, so a maintainer should settle it once for the family rather than archetype
-        by archetype.'
+      note: The regional composite has one site component, albedo; two city components, OHM and construction; and four generic components,
+        emissivity, water storage, drainage and snow_lim_patch.
+        None is regional, so the national-scale composition remains a curation decision.
     method:
       conclusion: supported
       note: An assembly of existing records into slots; the composite produces no value of its own.
@@ -171,8 +153,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.bldgs, name 'Buildings', place helsinki
-      and representativeness city, and is the only buildings snowpack_limit record in the database.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-helsinki-jarvi2014-buildings
     record: records/ohm/helsinki--jarvi2014--buildings
     role: component
@@ -188,13 +172,12 @@ assessment:
     named for stone. That is a striking pattern but it is not proof of a swap, and this review will not
     assert one: what is established is that the label and the selected construction disagree, and a maintainer
     must decide whether to rename the archetype or reselect its construction. The second problem is scale
-    and place together. The composite claims to be a Swedish regional typology, yet exactly one of its
-    seven components is Swedish; three are classed city, the London albedo is site evidence, and emissivity,
-    water storage and drainage are generic, so a country default is assembled from narrower evidence.
-    Some of that is forced by what
+    and place together. The composite claims a Swedish regional typology, yet exactly one component is
+    Swedish; one component is site evidence, two are city evidence and four are generic, so the country
+    default remains assembled from narrower or non-Swedish evidence. Some of that is forced by what
     the database holds, but the albedo is not: two generic archived configurations with Gothenburg lineage
     exist, Wood and ''Industry, dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
     be settled once rather than seven times. This review does not revisit any component value.'
-  evidence_revision: sha256:f4d3cfb4fe312ba63afbc5771d4933c949fcd368345ac0d2f93f879c9c00dc70
+  evidence_revision: sha256:b5b54f2ed6390666b49e89f1e86b34a54d52eaa3213ee0c89a2f8a0bc40bd7e3
 verification:
   attestations: []

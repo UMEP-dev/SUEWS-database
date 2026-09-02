@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/gothenburg--oke1987--albedo--wood: sha256:e3e4dbff772b33c6ef5a9f31b2df19011a79a86be1c1284fc173b7955c615aba
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
 assessment:
   status: curation_required
@@ -70,15 +70,9 @@ assessment:
       - component-constructions-sweden-bjork2002-detached-houses-wood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite claims place sweden. The construction and the albedo are generic, with the
-        latter retaining Gothenburg only as origin history. Two components, filling the snow limit and
-        all four ohm positions, declare place helsinki, which db/places.yml resolves to country finland;
-        emissivity, water storage and drainage are also generic. The database holds no Swedish record for the
-        Helsinki-sourced quantities, and records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
-        is the only building snowpack_limit record there is. The substitution is therefore forced by the
-        record set rather than chosen carelessly, but a Swedish national default assembled mostly from
-        Finnish city measurements carries no recorded justification, and only a maintainer can decide
-        whether that substitution is intended and should be stated on the composite.'
+      note: The composite claims Sweden. Construction declares sweden; OHM declares helsinki;
+        albedo, emissivity, water storage, drainage and snow_lim_patch are generic. The available record set forces the
+        non-Swedish and default substitutions, whose national-scale use remains a curation decision.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -89,11 +83,9 @@ assessment:
       - component-constructions-sweden-bjork2002-detached-houses-wood
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: The composite declares representativeness regional, but none of its components now carries that
-        class. The construction, albedo, emissivity, water storage and drainage are generic, while the snow
-        limit and OHM components are city records. Two of the seven components are therefore city rows
-        standing in for a country-scale default, and the archived construction no longer supplies even a
-        regional evidence-reach claim.
+      note: The regional composite rests on one city component, OHM, and six generic
+        components; no selected component declares regional. Their national-scale use remains a curation
+        decision.
     method:
       conclusion: supported
       evidence_ids:
@@ -143,9 +135,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
-      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
-      for buildings.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-helsinki-jarvi2014-buildings
     record: records/ohm/helsinki--jarvi2014--buildings
     role: component
@@ -157,15 +150,14 @@ assessment:
     retains a Swedish application identity and mostly wood layers but is now explicitly an unreferenced,
     assumed configuration with generic reach. The albedo is likewise a generic, unreferenced archived row
     named Wood whose Gothenburg origin is migration history, so neither identity-bearing slot provides
-    regional evidence. The snow limit and all four OHM positions come from Helsinki records, because
-    the database contains no Swedish record for those quantities and only one building snowpack_limit
-    record in total; emissivity, water storage and drainage are generic. That substitution is forced rather
+    regional evidence. OHM comes from Helsinki; albedo, emissivity, snowpack_limit, water storage and drainage are generic, because the database contains no Swedish record for those quantities and only
+    one building snowpack_limit record in total. That substitution is forced rather
     than careless, but it is nowhere stated, and it leaves a composite declaring representativeness
-    regional resting on two city rows and five generic components. Both questions live in the composite and can be settled without
+    regional resting on one city row and six generic components. Both questions live in the composite and can be settled without
     touching a component value: a maintainer should either record that Nordic cross-border substitution
     is the intended policy for these typologies, or narrow what the composite claims to what its components
     support. The components'' own values remain subject to their evidence assessments; this review does
     not revisit them.'
-  evidence_revision: sha256:96efe23930966d62968d154eb395836032e40969766a146834b5671f24715f81
+  evidence_revision: sha256:319817046d663dab70aa71a94da4c0ff8113202f75a756fc7e07e26e89bf34e1
 verification:
   attestations: []

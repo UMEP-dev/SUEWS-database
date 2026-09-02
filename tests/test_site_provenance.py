@@ -29,7 +29,7 @@ MIXED = (
     "mixed-forest-20-mccaughey-1985"
 )
 KYOTO = "records/ohm/tokyo--unreferenced--buildings"
-CURATION = "records/surfaces/bldgs/helsinki--jarvi2014--snow-lim"
+CURATION = "records/surfaces/bsoil/helsinki--jarvi2014--snow-lim"
 COMPOSITE = "archetypes/surfaces/evetr/tropics--broad-leaf"
 REGION = "archetypes/regions/central-africa"
 UNIQUE_REGION = "archetypes/regions/eastern-europe"

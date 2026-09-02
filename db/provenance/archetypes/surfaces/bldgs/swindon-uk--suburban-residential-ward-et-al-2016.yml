@@ -11,7 +11,7 @@ dependency_revisions:
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
     records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
     records/surfaces/bldgs/se-england--ward2016--water-storage: sha256:1b561a7e76c6a05efd95faf4cda9b441193e8909982187e7c1d9a1fbb2bb24b6
     records/surfaces/bldgs/swindon--ward2016--albedo: sha256:09fb8e757f0b95d9b0f1eff5d4c4ef050f0df1aa8397f19a18bd5a9b074d8ee1
@@ -82,10 +82,9 @@ assessment:
         the water storage and drainage components declare place se-england, which db/places.yml marks
         subnational within country united-kingdom. The construction declares place london and is named
         ''Central London [sample run]'', so it does not support the Swindon claim; selecting another construction
-        remains a separate curation decision. The two ohm records declare no place. The one component
-        from outside the United Kingdom is records/surfaces/bldgs/helsinki--jarvi2014--snow-lim, place helsinki, and
-        it is the only record in the database declaring snowpack_limit for buildings, so no closer alternative
-        existed to select.
+        remains a separate curation decision. The two ohm records declare no place. The snow-limit component
+        is the database's sole buildings snowpack_limit record and is now correctly documented as a generic
+        Järvi land-cover default; its Helsinki path and origin retain migration lineage.
     representativeness:
       conclusion: supported
       evidence_ids:
@@ -97,8 +96,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-ward2016-buildings
       - component-ohm-generic-ward2016-buildings-code-798-x-multiplier-for-winter-7982
-      note: The composite declares representativeness city. The albedo is site evidence, emissivity is
-        generic, construction and snow limit are city records, and water storage and drainage are regional.
+      note: The composite declares representativeness city. The albedo is site evidence; emissivity and
+        snow limit are generic; construction is city; and water storage and drainage are regional.
         Extending the fitted site albedo to the city composite requires curation. The two OHM records declare
         no representativeness, leaving how far their coefficients were meant to travel undeclared.
     method:
@@ -154,9 +153,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
-      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
-      for buildings.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-generic-ward2016-buildings
     record: records/ohm/generic--ward2016--buildings
     role: component
@@ -173,9 +173,8 @@ assessment:
     site-scoped Swindon row named ''Suburban residential'', emissivity is a generic jarvi2011 literature
     value, and its water storage and drainage are SE England rows,
     and its OHM mapping is confirmed by the components themselves: the summer positions take the record
-    declaring season_label Summer and the winter positions the record declaring season_label Winter. The
-    one component from outside the United Kingdom, the Helsinki snow limit, is the only building snowpack_limit
-    record the database has, so that slot could not have been filled otherwise. What does not follow is
+    declaring season_label Summer and the winter positions the record declaring season_label Winter. The generic Järvi snowpack default is the only buildings snowpack_limit record, so that slot could not
+    have been filled otherwise. What does not follow is
     the construction. A composite labelled suburban residential takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
     a record that names a different settlement type and flags itself as a sample run, while twelve uk--hertwig2024a
     residential construction records sit unused. Choosing among those means choosing a build period and
@@ -183,6 +182,6 @@ assessment:
     The city-wide use of a site-fitted albedo is a second explicit curation question. Nothing here requires
     a component value to change, and the components'' own values remain subject
     to their evidence assessments.'
-  evidence_revision: sha256:3b5960103733372ef237fab07076e877f97844751058e03f3cc74a97dbb18e76
+  evidence_revision: sha256:c6f1b53ccb3234d53a6a26f1faae1400bc5143af9273238babe32ab0da85fc96
 verification:
   attestations: []
