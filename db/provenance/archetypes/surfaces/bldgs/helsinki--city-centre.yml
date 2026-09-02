@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -129,7 +129,7 @@ assessment:
     record: records/surfaces/bldgs/london--ward2016--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
-      representativeness city and source ward2016.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -181,6 +181,6 @@ assessment:
     jarvi2014, while the emissivity row now traces its generic literature value to jarvi2011. And this city-scale composite
     is the buildings default for two region archetypes, western Europe and northern Europe, which stretches
     one Helsinki city centre across a continent. This review does not revisit any component value.'
-  evidence_revision: sha256:c78db87fe2a2f7ef094a2ebd5a36efa51f0d521a9987d02aab3277fa9cd6a943
+  evidence_revision: sha256:5c23f16c60d985880cc6aa1e12df0f0ad68cb72045ba693230462bffb11e3a96
 verification:
   attestations: []

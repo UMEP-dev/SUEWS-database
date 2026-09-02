@@ -5,7 +5,9 @@ name: Central London
 place: london
 origin: London, UK
 representativeness: site
+applicable_scale: land_cover
 source: ward2016
+method: fitted
 legacy_id: 41240052
 parameters:
   alb: 0.12

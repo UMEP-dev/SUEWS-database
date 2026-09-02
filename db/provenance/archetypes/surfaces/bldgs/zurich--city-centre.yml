@@ -16,7 +16,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
   status: curation_required
   assessed_at: '2026-08-24T17:31:58Z'
@@ -129,7 +129,7 @@ assessment:
     record: records/surfaces/bldgs/london--ward2016--albedo
     role: component
     note: Fills albedo. The record is named 'Central London', declares target land_cover.bldgs, place
-      london and representativeness city.
+      london, representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -183,6 +183,6 @@ assessment:
     and both need a maintainer: which records should stand in for Zurich, and whether the entry earns
     a separate identity once that is decided. The components'' own values remain subject to their evidence
     assessments; this review does not revisit them.'
-  evidence_revision: sha256:23a7e8a19dd2566c93fe35e10241328f9d41fd727d170012bf6fee9dadc54498
+  evidence_revision: sha256:1b913febe6875583bd1169b83fd6ee3f5cee93f446cca0de3a1c611eea44ab11
 verification:
   attestations: []

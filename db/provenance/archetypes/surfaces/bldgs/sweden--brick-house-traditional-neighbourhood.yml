@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -144,7 +144,7 @@ assessment:
     record: records/surfaces/bldgs/london--ward2016--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
-      representativeness city and source ward2016.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -195,6 +195,6 @@ assessment:
     the database holds, but the albedo is not: two generic archived configurations with Gothenburg lineage
     exist, Wood and ''Industry, dark roofs'', and neither was taken. The whole Swedish buildings family shares this shape, so it should
     be settled once rather than seven times. This review does not revisit any component value.'
-  evidence_revision: sha256:cbea919ddd6e6eb29d255bf5f58dd51ffc2c1ecdebdeb2d2728b2728aad770a6
+  evidence_revision: sha256:f4d3cfb4fe312ba63afbc5771d4933c949fcd368345ac0d2f93f879c9c00dc70
 verification:
   attestations: []

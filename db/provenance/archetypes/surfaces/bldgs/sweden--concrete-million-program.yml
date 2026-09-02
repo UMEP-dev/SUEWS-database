@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
-    records/surfaces/bldgs/london--ward2016--albedo: sha256:ea25d5e9eb28fecbbf75501d2f22a1503ebd368ec2f67ad167468a9a9e13ce91
+    records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T01:20:00Z'
@@ -133,7 +133,7 @@ assessment:
     record: records/surfaces/bldgs/london--ward2016--albedo
     role: component
     note: Fills albedo. The record declares target land_cover.bldgs, name 'Central London', place london,
-      representativeness city and source ward2016.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted.
   - id: component-surfaces-bldgs-helsinki-jarvi2014-emissivity
     record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
     role: component
@@ -172,16 +172,15 @@ assessment:
     tiles as its outermost wall layer, so the label, place and scale of the composite all hold for the
     component that actually distinguishes it from its siblings. Everything else is borrowed. The snowpack
     limit and OHM coefficients are Helsinki city rows; emissivity, water storage and drainage are generic,
-    and the
-    albedo is records/surfaces/bldgs/london--ward2016--albedo, a Central London city row. Two consequences
-    follow. The composite claims regional but five of its seven components are classed city, so a national
-    default rests on city measurements, which is not correctable inside the composite and needs either
+    and the albedo is records/surfaces/bldgs/london--ward2016--albedo, a Central London site row. Two consequences
+    follow. The composite claims regional while two components are city evidence and one is site evidence,
+    so a national default rests on narrower measurements, which is not correctable inside the composite and needs either
     a narrower class or country-scale rows that do not yet exist. And the albedo selection is the one
     borrowing that was not forced: two generic archived configurations with Gothenburg lineage exist, Wood
     and ''Industry, dark roofs'',
     neither describing a concrete-tile facade, and no file records why the London row was preferred to
     either. Both points recur across the Swedish buildings family and should be settled once for the family.
     This review does not revisit any component value.'
-  evidence_revision: sha256:b147a10a90a478ea9cda17e2a531d952a174a2f60872059d88f4187d74e1e27a
+  evidence_revision: sha256:394d56aa91a59b48f470493288e00cf2ae2cf316e8c9b0e8a7f53ec4ce59f787
 verification:
   attestations: []
