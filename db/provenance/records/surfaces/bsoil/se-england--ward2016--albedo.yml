@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/bsoil/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
+record_revision: sha256:7ad3e469a32ddac7f76147aaddc02b62888ce22f1035372a5da2b9dd138a289b
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -9,13 +9,14 @@ dependency_revisions:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T10:00:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/1081
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -37,27 +38,31 @@ assessment:
       evidence_ids:
       - ward-table-2
       note: The cited source is a direct parameter publication or an explicit published model-input table.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1081
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      note: The shared se-england place describes the two-site application geography containing London
+        and Swindon; it is not used as a claim of regional empirical determination.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      note: The albedo is published as an adjusted input for the two local site evaluations, so site is
+        the supported evidence reach; city or regional determination is not established.
     method:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      note: The database adopts the adjusted value directly from Ward et al. Table 2 without a new fit.
     identity:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      note: Stable path, target, source, place, origin, legacy ID and both stored 0.18 values identify one
+        retained record shared by the two UK site applications.
   evidence:
   - id: ward-table-2
     source: ward2016
@@ -69,8 +74,9 @@ assessment:
       page: 8
       note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
         explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:7a639375347360281d5b273b20e0e321dbd4bf82deda55d35350b95f96518051
+  scientific_note: Ward et al. directly publish bare-soil albedo 0.18 as an adjusted model input for the
+    London and Swindon evaluations. The record retains the shared SE England application geography but
+    now limits evidence reach to site, without changing the value, source, stable path or legacy identity.
+  evidence_revision: sha256:e15aff2727f9fe6593b07ac47cde65e240f213eb17178ccfca165e9b77caea4b
 verification:
   attestations: []

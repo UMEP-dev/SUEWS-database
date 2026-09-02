@@ -13,7 +13,7 @@ dependency_revisions:
     records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552: sha256:71d99f8b507c5f2a47663d322aa15ed1a2ca3d4ccbed4664a81b1239efa521dc
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/london--ward2016--albedo: sha256:ff01a426a83b92ab88b11999233874c081ee83726361d435218eb0f6bcc72219
-    records/surfaces/bsoil/se-england--ward2016--albedo: sha256:ea9959e5ecf8f17d99b24480196dc947e71a603f35b20ff1d207402782802614
+    records/surfaces/bsoil/se-england--ward2016--albedo: sha256:7ad3e469a32ddac7f76147aaddc02b62888ce22f1035372a5da2b9dd138a289b
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
@@ -101,7 +101,7 @@ assessment:
         which is forced, since it is the only bare-soil snow_lim record in the database, and the construction
         slot takes a record with place london.'
     representativeness:
-      conclusion: supported
+      conclusion: correction_required
       evidence_ids:
       - component-surfaces-bsoil-se-england--ward2016--albedo
       - component-surfaces-bsoil-se-england--ward2016--emissivity
@@ -111,10 +111,11 @@ assessment:
       - component-surfaces-bsoil-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--bare-soil
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
-      note: The composite declares representativeness city. The four se-england components declare regional,
-        which is broader than the composite's scale and therefore a downscaling; the construction and
-        records/surfaces/bsoil/helsinki--jarvi2014--snow-lim declare city; the two OHM records declare no representativeness. No component is classed below
-        city, so nothing narrower stands in for the composite's claim.
+      note: The composite declares representativeness city. Three se-england components declare regional,
+        while the Ward albedo component is site-scoped; the construction and
+        records/surfaces/bsoil/helsinki--jarvi2014--snow-lim declare city; the two OHM records declare no
+        representativeness. The site-scoped albedo is narrower than the composite's city claim, so its
+        use in this city typology needs maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -159,13 +160,13 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.bsoil, name 'Bare soil', place
-      se-england, representativeness regional and source ward2016, and carries alb.
+      se-england, representativeness site, source ward2016 and method literature, and carries alb.
   - id: related-surfaces-bsoil-london--ward2016--albedo
     record: records/surfaces/bsoil/london--ward2016--albedo
     role: related
     note: This unselected alternative retains the original bare-soil albedo 0.21 as generic literature
       evidence. Ward's adjusted UK value and the pinned London application are both 0.18, matching the
-      selected regional component instead.
+      selected site-scoped component instead.
   - id: component-surfaces-bsoil-se-england--ward2016--emissivity
     record: records/surfaces/bsoil/se-england--ward2016--emissivity
     role: component
@@ -216,7 +217,8 @@ assessment:
     and drainage take ward2018 se-england rows,
     classed regional and applied down to a city inside that region, which is the sound direction for a
     class difference and the closest the database offers. The selected albedo is Ward's adjusted UK value
-    0.18. The unselected stable London-path record is now documented as the generic original value 0.21,
+    0.18 but is site-scoped, so its use in a city typology remains a composition-level curation question.
+    The unselected stable London-path record is now documented as the generic original value 0.21,
     while the pinned London application also uses 0.18, so it is not a closer London alternative. Two
     further observations change no number. The snow_lim_patch
     slot leaves the UK entirely because records/surfaces/bsoil/helsinki--jarvi2014--snow-lim is the only
@@ -224,6 +226,6 @@ assessment:
     London [sample run]', a building-fabric entry with roof and wall layers, which sits oddly on a bare-soil
     surface but contributes nothing to the exported fragment, because scripts/export_record.py keeps the
     construction slot out of it.
-  evidence_revision: sha256:66c13073896f5935287fb1d8544e2339344f452d4018750338da3f3187706de7
+  evidence_revision: sha256:94487a8f56cd21fb4268f2ee569ca4e475d9938c4da9bf35d6e87e27f1dd349a
 verification:
   attestations: []
