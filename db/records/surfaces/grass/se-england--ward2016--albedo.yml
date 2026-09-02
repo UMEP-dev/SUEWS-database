@@ -4,8 +4,17 @@ target: land_cover.grass
 name: Grass
 place: se-england
 origin: UK, SE England
-representativeness: regional
+representativeness: site
+applicable_scale: land_cover
 source: ward2016
+method: fitted
+parameter_provenance:
+  parameters.alb_max:
+    source: jarvi2011
+    method: literature
+    place: generic
+    representativeness: generic
+    applicable_scale: land_cover
 legacy_id: 41240046
 parameters:
   alb_min: 0.18

@@ -1,21 +1,23 @@
 provenance_record: records/surfaces/grass/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:3b81f24cd94855aefa25d67d37933195d14b1f925affd2323ef12868a2487ee9
+record_revision: sha256:e445c0899d166e2ba3370eed007cd8a93c1f40757874ab5b773e3f732e4c2e1f
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T12:53:31Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -31,28 +33,46 @@ assessment:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - jarvi2011-table-2a
+      note: Ward et al. Table 2 publishes adjusted grass albedo 0.18-0.21 for leaf-off and leaf-on periods,
+        exactly matching the stored minimum and maximum. Ward introduces the minimum; the maximum remains
+        the exact Järvi et al. (2011) literature value.
     source:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - jarvi2011-table-2a
+      note: Ward et al. directly publish and evaluate the adjusted minimum used at the two UK sites;
+        the per-leaf override retains Järvi et al. (2011) as the exact source of the unchanged maximum.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - jarvi2011-table-2a
+      note: The fitted minimum retains the shared se-england application geography containing London
+        and Swindon. The unchanged literature maximum is generic under its per-leaf override.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - jarvi2011-table-2a
+      note: The adjusted minimum is evaluated against local radiometer observations at two neighbourhood-scale
+        sites, so site is its supported reach. The unchanged literature maximum is generic.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-table-2
+      - jarvi2011-table-2a
+      note: Both publications assign the values to the grass land-cover class, so land_cover is the
+        supported application scale for both leaves.
     method:
       conclusion: supported
       evidence_ids:
       - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - jarvi2011-table-2a
+      note: Ward et al. introduce seasonal grass albedo and evaluate the adjusted minimum against local
+        outgoing-shortwave observations, so the envelope method is fitted. The unchanged maximum has
+        a per-leaf literature override.
     identity:
       conclusion: supported
       evidence_ids:
@@ -62,6 +82,8 @@ assessment:
   - id: ward-table-2
     source: ward2016
     role: parameter_source
+    parameter_paths:
+    - parameters.alb_min
     locators:
     - kind: table
       label: Table 2, adjusted albedo and emissivity model inputs
@@ -69,8 +91,27 @@ assessment:
       page: 8
       note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
         explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:068af14175ae889bd936ea59a917e07818d0cfddf3a95f4b59bac5c5102b01ff
+    - kind: section
+      label: Section 4.2.2, Outgoing shortwave radiation
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 7
+      note: Explains that seasonal grass albedo was introduced and that the adjusted albedos improve
+        agreement with outgoing-shortwave observations at the two sites.
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: parameter_source
+    parameter_paths:
+    - parameters.alb_max
+    locators:
+    - kind: table
+      label: Table 2(a), grass columns, albedo row
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      page: 223
+      note: Publishes grass albedo 0.21, the unchanged maximum retained by Ward et al. and by this record.
+  scientific_note: Ward et al. introduce a seasonal grass minimum of 0.18 and evaluate the adjusted
+    albedo against local radiometer data, so alb_min is fitted evidence with site reach. The maximum
+    remains the exact Järvi et al. (2011) literature value 0.21, recorded through per-leaf provenance
+    with generic reach. The stable path, values, target, origin and legacy identity do not change.
+  evidence_revision: sha256:8a7b44b2c92cab799ef95790f1f77ee06e0414a0acc2fab53abc8d76143a7110
 verification:
   attestations: []
