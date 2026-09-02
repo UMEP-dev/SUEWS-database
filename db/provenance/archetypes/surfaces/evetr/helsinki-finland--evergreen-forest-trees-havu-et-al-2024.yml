@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--havu-m2024--max-conductance: sha256:1e86ac3f77f74891f49a9256cdb18ac32d879e1f7a6944890efd3ba5add930ea
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
-    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:8d2ef843e57cc68d2fc0b47b5ccf70a0ff642625bf640322f49cc16498374140
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
@@ -75,7 +75,7 @@ assessment:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-se-england-ward2016-lai
-      note: 'Five components take Helsinki rows. Albedo, emissivity and drainage are generic literature
+      note: 'Four components take Helsinki rows. Albedo, emissivity, drainage and snow limit are generic literature
         parameters, and leaf area index is a regional SE England row. Water storage is a site-scoped
         Swindon value; using that site result in a Helsinki city archetype needs an explicit composition
         decision because the database records no Helsinki alternative or published transfer rationale.'
@@ -94,8 +94,8 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. Five Helsinki rows are city, albedo, emissivity,
-        drainage and porosity are generic, leaf area index is regional, and water storage is a site-scoped
+      note: The composite declares representativeness city. Four Helsinki rows are city; albedo, emissivity,
+        drainage, snow limit and porosity are generic; leaf area index is regional; and water storage is a site-scoped
         Swindon result. That site-to-city transfer requires human curation; the OHM record carries no
         representativeness.
     method:
@@ -191,8 +191,9 @@ assessment:
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.evetr, name "Evergreen Tree", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
     record: records/surfaces/evetr/helsinki--jarvi2014--phenology
     role: component
@@ -208,10 +209,10 @@ assessment:
   scientific_note: 'This is a well-formed Helsinki composite. The slots that carry the typology, leaf
     growth power, maximum conductance and biogenic CO2 all take Helsinki rows sourced to havu-m2024,
     the biogenic CO2 record is the one named for forest. Slots without Helsinki rows use generic albedo
-    and emissivity, regional SE England leaf area index, and site-scoped Swindon water storage; the last
+    albedo, emissivity and snow limit, regional SE England leaf area index, and site-scoped Swindon water storage; the last
     transfer requires curation. The two LAI components agree on lai_type 1, the slot set is
     complete, and one unlabelled coefficient record fills all four OHM positions. Drainage is openly
     generic land-cover literature evidence, while its sidecar records Havu''s later Helsinki application.'
-  evidence_revision: sha256:13174f84edebf5006cf63f828f61695d6df3b9e82ee1169ab2fcf5d9993716ae
+  evidence_revision: sha256:87a737bd8fc757bf47cd1a3ae0d1b4241759a4616afd8c70c2103cd76d28287c
 verification:
   attestations: []
