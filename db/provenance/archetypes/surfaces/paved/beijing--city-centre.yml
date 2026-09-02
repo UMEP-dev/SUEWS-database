@@ -9,7 +9,7 @@ dependency_revisions:
   records:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/beijing--zheng-y2023--paved: sha256:d3840fc8c87eb3ee72d03958f65962a9315bb1b1ae50e4f88b6ec7cd58fb6990
-    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/paved/shanghai--ao2016--emissivity: sha256:11545d4292418609ee4470ad16f3c310d51f8b47498784dbdc3cc0d7eee02b44
 assessment:
   status: curation_required
-  assessed_at: '2026-08-25T16:01:28Z'
+  assessed_at: '2026-09-02T16:29:17Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -84,12 +84,12 @@ assessment:
       note: 'The composite declares place beijing, but none of its components carries that place. The
         OHM slot takes records/ohm/beijing--zheng-y2023--paved, site evidence from Alland; the albedo slot
         takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
-        the emissivity, water_storage and snow_lim_patch slots take records with place helsinki; the drainage
-        and construction slots take records with place generic. Most of that borrowing is forced, because the database
+        emissivity is a generic literature record; water_storage and snow_lim_patch take records with
+        place helsinki; and drainage and construction are generic. Most of that borrowing is forced, because the database
         holds no paved surface record with place beijing. The related record records/surfaces/paved/shanghai--ao2016--emissivity
         is now documented as generic Asphalt-road literature evidence from Oke (1987), with Shanghai retained
         only as its migrated origin. It is not a matched Shanghai CBD pair with the selected albedo and does not
-        settle the Helsinki emissivity selection.'
+        settle the selected generic pavement emissivity.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -100,8 +100,8 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-beijing--zheng-y2023--paved
-      note: The composite declares representativeness city. Three components declare city, while the drainage
-        and construction records declare generic, but the albedo is site evidence from a Shanghai central business district and
+      note: The composite declares representativeness city. Two components declare city, while emissivity,
+        drainage and construction are generic; the albedo is site evidence from a Shanghai central business district and
         the OHM tuple is site evidence from one road in Alland. Extending either site value to a Beijing
         city composite is an unsupported extrapolation that needs curation.
     method:
@@ -144,8 +144,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
     record: records/surfaces/paved/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place helsinki,
-      representativeness city and source jarvi2014, and carries emis.
+    note: Fills the emissivity slot. The stable Helsinki-path record declares target land_cover.paved,
+      name Paved, place generic, representativeness generic, applicable_scale land_cover, source jarvi2011
+      and method literature, and carries emis. Its path and origin preserve later Helsinki application lineage.
   - id: component-surfaces-paved-helsinki--jarvi2014--water-storage
     record: records/surfaces/paved/helsinki--jarvi2014--water-storage
     role: component
@@ -183,18 +184,18 @@ assessment:
     to all four season
     and wetness positions, and since it declares no season_label and is named ''Archived AN99 all-year
     paved configuration'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
-    albedo from a site in a Shanghai central business district, emissivity, water storage and snowpack
-    limit from Helsinki, drainage from London,
+    albedo from a site in a Shanghai central business district, generic emissivity, water storage and snowpack
+    limit from Helsinki, generic drainage,
     and the construction reference from an archived internal construction fixture. The database holds no paved surface
     record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
     The related records/surfaces/paved/shanghai--ao2016--emissivity is no longer a paired Shanghai site record:
     it is generic Oke (1987) Asphalt-road literature evidence, with Shanghai retained only as migrated origin.
-    It therefore does not settle the selected Helsinki emissivity. The drainage component is now documented as generic literature evidence; the construction
+    It therefore does not settle the selected generic pavement emissivity. The drainage component is now documented as generic literature evidence; the construction
     component is explicitly retained as an archived internal fixture rather than an evidence-backed physical
     assembly. The construction reference changes no exported number in
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:f0f9fe83a4026e6fed644aaa7dc56b397dc549e2aad8913f043fb55d54d26d7e
+  evidence_revision: sha256:1899c4237acb15fe6bffca45108d28cc93b44d6b7fc64c0b5adfdec19b4f2f04
 verification:
   attestations: []

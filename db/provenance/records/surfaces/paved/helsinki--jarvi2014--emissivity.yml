@@ -1,21 +1,24 @@
 provenance_record: records/surfaces/paved/helsinki--jarvi2014--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
+record_revision: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T16:29:17Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -30,6 +33,7 @@ assessment:
     values:
       conclusion: supported
       evidence_ids:
+      - jarvi2011-table-2a
       - jarvi-table-4a
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/184
@@ -38,40 +42,60 @@ assessment:
         so the two surfaces carried each other's emissivity. Column identity was verified by character
         position in a layout-preserving extraction, not read off a flattened dump.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
+      - jarvi2011-table-2a
+      - jarvi-table-4a
+      - oke1987-table-8-2
+      note: Järvi et al. (2011) are the earliest checked publication of the exact pavement value 0.91.
+        Their footnote points to Oke (1987), whose urban-material table gives asphalt emissivity 0.95,
+        not 0.91; Järvi et al. (2014) later repeat the exact 0.91.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is the study location; the emissivity is an inherited value rather than a Helsinki
-        determination.
+      - jarvi2011-table-2a
+      - oke1987-table-8-2
+      note: Both publications present material or model-class properties rather than a Helsinki determination,
+        so generic is the supported evidence scope. The stable path and origin retain migration lineage.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi2011-table-2a
+      - oke1987-table-8-2
+      note: The evidence supports a generic pavement parameter, not a site, city or regional empirical
+        determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table-2a
+      note: Järvi et al. tabulate the value for the Pavement surface class, so land_cover is the supported
+        application scale.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: A literature value carried into the model parameter table; the article performs no emissivity
-        measurement, so the production method belongs to whichever publication it came from.
+      - jarvi2011-table-2a
+      note: The database adopts an exact published model parameter without performing a new measurement
+        or fit.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: Table 4a gives buildings and pavement separate emissivity cells, so two records are correct
-        even though their values are the wrong way round.
+      note: Järvi et al. publish separate pavement and building emissivity cells, so two records are correct.
+        The pavement record now carries the exact 0.91 cell and original parameter source; the building
+        sibling remains a separate provenance task.
       related_records:
       - records/surfaces/bldgs/helsinki--jarvi2014--emissivity
   evidence:
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Pavement column, emissivity row
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the exact SUEWS pavement emissivity epsilon_i = 0.91 and marks the cell with footnote
+        f to Oke (1987).
   - id: jarvi-table-4a
     source: jarvi2014
     role: compilation
@@ -86,36 +110,21 @@ assessment:
         0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
         and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
         marks Vargo et al. (2013).'
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
+  - id: oke1987-table-8-2
+    source: oke1987
     role: compilation
     locators:
     - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'Table 4a gives 0.91 in its Pav column and this record now stores it. It previously
-    stored 0.95, the value published for the Bldg column, while its paired record held the reverse: the
-    two emissivities were transposed. Both are plausible urban values, which is exactly why the swap survived
-    casual reading, and why it was corrected on the strength of the table rather than of any single reading
-    of it. Column alignment was verified by character position, because a flattened extraction of a seven-column
-    table cannot be trusted for it. What remains open is provenance rather than value: the Table 4 caption
-    makes every unfootnoted cell an inherited value, so the citation names a compiler, and the record
-    still claims city representativeness for a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:dedae2d5e08604c07d169cee04a735512e229b361390c3acc2d2fede50a24592
+      label: Table 8.2, radiative properties of typical urban materials and areas
+      page: 281
+      note: Gives Roads — Asphalt emissivity 0.95. It is relevant upstream material evidence but does
+        not publish the exact SUEWS pavement selection 0.91 found in Järvi et al. (2011).
+  scientific_note: Järvi et al. (2011) Table 2(a) is the earliest checked publication of the exact SUEWS
+    pavement emissivity 0.91. Its Oke (1987) footnote is an upstream literature pointer, but Oke Table
+    8.2 gives asphalt emissivity 0.95 rather than 0.91 and therefore cannot be substituted as the exact
+    parameter source. Järvi et al. (2014) later repeat 0.91 in the pavement column. The record now describes
+    a generic land-cover literature parameter while preserving its stable path, origin and legacy identity.
+    No value changes.
+  evidence_revision: sha256:0edb41d665a8edf38b54afc10d94c793c8e6cc5e7cf149a8b7709a5ad6261e4f
 verification:
   attestations: []

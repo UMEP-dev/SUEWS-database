@@ -8,10 +8,10 @@ dependency_revisions:
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
-    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  assessed_at: '2026-09-02T16:29:17Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -67,8 +67,10 @@ assessment:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: Table 4a gives buildings and pavement separate emissivity cells, so two records are correct
-        even though their values are the wrong way round.
+      note: >-
+        Table 4a gives buildings and pavement separate emissivity cells, so two records are correct.
+        The earlier transposition has been corrected: the building record carries 0.95 and the pavement
+        sibling carries 0.91.
       related_records:
       - records/surfaces/paved/helsinki--jarvi2014--emissivity
   evidence:
@@ -116,6 +118,6 @@ assessment:
     table cannot be trusted for it. What remains open is provenance rather than value: the Table 4 caption
     makes every unfootnoted cell an inherited value, so the citation names a compiler, and the record
     still claims city representativeness for a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:d1e6d86ec66433748be0dfab204352639752bdd257e3bd932412ec7fa210da5b
+  evidence_revision: sha256:99b7425816350caa216ec6d340558455c71e48b140cca205bc65745194bc3ac5
 verification:
   attestations: []
