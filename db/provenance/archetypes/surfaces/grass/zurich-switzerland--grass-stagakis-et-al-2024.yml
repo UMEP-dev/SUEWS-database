@@ -10,7 +10,7 @@ dependency_revisions:
     records/ohm/generic--unreferenced--grass: sha256:cbc7a879d6bca55549668ed974825618db00e187281040aaf1cac90472c5c33b
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
-    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:a231ae2f6b10bcaa9796cd2c0c39dfb7d43f4565fcc79ddbde25358997bc19c5
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
@@ -85,9 +85,9 @@ assessment:
       evidence_ids: *id001
       note: 'The composite declares place zurich, which db/places.yml gives as lat 47.37, lon 8.54, koppen
         Cfb. Three of the twelve components declare place zurich, filling leaf_area_index, leaf_growth_power
-        and biogen_co2. Three declare place helsinki (koppen Dfb), filling max_vegetation_conductance,
-        snow_lim_patch and vegetation_growth. Water_storage declares place se-england (koppen Cfb);
-        emissivity, drainage, albedo and porosity declare place generic; and the ohm component carries
+        and biogen_co2. Two declare place helsinki (koppen Dfb), filling max_vegetation_conductance and
+        vegetation_growth. Water_storage declares place se-england (koppen Cfb); emissivity, drainage,
+        albedo, porosity and snow_lim_patch declare place generic; and the ohm component carries
         no place field. The leaf-area
         component now cites Stagakis et al.''s exact SUEWS Lawn values for four Zurich parks, resolving
         its former mismatch between a Zurich place and a Shanghai source. The drainage component is a
@@ -136,7 +136,7 @@ assessment:
     record: records/ohm/generic--unreferenced--grass
     role: component
     note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
-      declares target ohm_coefficients, name "Short grass [30]" and source unreferenced; it carries no
+      declares target ohm_coefficients, name "Short grass [30]" and source grimmond1991b; it carries no
       place or representativeness field. It declares no season_label, so one set fills all four positions.
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
@@ -152,8 +152,9 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
-      helsinki, representativeness city and source jarvi2014.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.grass, name "Grass", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-grass-helsinki-vargo2013-albedo
     record: records/surfaces/grass/helsinki--vargo2013--albedo
     role: component
@@ -172,8 +173,9 @@ assessment:
   - id: component-surfaces-grass-se-england-ward2016-water-storage
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
-    note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source jarvi2011.
+    note: Fills the water_storage slot. The stable path retains SE England migration lineage, while the
+      record declares target land_cover.grass, name "Grass", place swindon, representativeness site,
+      source ward2018 and method literature.
   - id: component-surfaces-grass-zurich-ao2018-lai
     record: records/surfaces/grass/zurich--ao2018--lai
     role: component
@@ -207,7 +209,7 @@ assessment:
     in its path and origin but is now explicitly the fitted Helsinki/Havu value.
     Together these four selected records distinguish the entry from its neighbours without claiming four
     local determinations. The rest are transparent transfers: generic literature albedo, emissivity and
-    drainage, a generic dummy porosity adapter, water storage from SE England, the snowpack limit and
+    drainage and snowpack limit, a generic dummy porosity adapter, water storage from SE England and
     phenology from Helsinki,
     and the ohm coefficients from the unreferenced "Short grass [30]" set. Two observations belong to
     other reviews rather than this one. db/sources.yml gives stagakis-s2024 the year 2025 while the label
@@ -215,6 +217,6 @@ assessment:
     literature evidence rather than a Zurich observation. The composite now uses site representativeness
     because its biogenic CO2 and LAI-power components are supported at the four studied park sites rather
     than city-wide.'
-  evidence_revision: sha256:8d861cff9e6bf4304c6cedaa868ce373a4d4d55c644a130d31206f712cbabea3
+  evidence_revision: sha256:a87bb21ed01d01f01abf9bb33fc8ae2edc060c2061ca681dd8446474874215f6
 verification:
   attestations: []

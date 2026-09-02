@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
-    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:a231ae2f6b10bcaa9796cd2c0c39dfb7d43f4565fcc79ddbde25358997bc19c5
     records/surfaces/grass/se-england--ward2016--albedo: sha256:e445c0899d166e2ba3370eed007cd8a93c1f40757874ab5b773e3f732e4c2e1f
     records/surfaces/grass/se-england--ward2016--drainage: sha256:5f7c6201ab21d0339d4190c95a18b2d17dcfe6686033a72b82254ae3b508d353
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
@@ -104,14 +104,13 @@ assessment:
       note: The composite declares place london, which db/places.yml gives as lat 51.51, lon -0.13, koppen
         Cfb. Three of the thirteen components declare place se-england, which db/places.yml gives as lat
         51.2, lon -0.8, koppen Cfb and subnational true, a region containing London and sharing its koppen
-        class. Drainage and water_storage are site-scoped Swindon records; porosity, emissivity and leaf_area_index
-        declare place generic, and the two ohm components
-        carry no place field. The biogen_co2 slot has mixed leaf-level scope. Its Ruimy light-response
+        class. Drainage and water_storage are site-scoped Swindon records, the phenology record carries
+        place helsinki, five components are generic and the two OHM components carry no place. The Swindon
+        imports and Helsinki phenology need explicit London composition rationales. Snowpack limit is a
+        generic Järvi literature default. The biogen_co2 slot has mixed leaf-level scope. Its Ruimy light-response
         pair is generic, its Schmid respiration pair is from Morgan-Monroe State Forest, and its Järvi
         minimum-respiration floor is site-scoped in Finland. The remaining
-        two slots, snow_lim_patch and vegetation_growth, take Helsinki records (koppen Dfb). For snow_lim_patch
-        that is forced, because records/surfaces/grass/helsinki--jarvi2014--snow-lim is the only grass
-        record in the database carrying snowpack_limit. For vegetation_growth it is not. records/surfaces/grass/se-england--ward2016--phenology
+        vegetation_growth takes the Helsinki record. records/surfaces/grass/se-england--ward2016--phenology
         exists, declaring target land_cover.grass, place se-england, representativeness regional and source
         ward2016. No archetype in the database references it, while all nine grass composites
         take the Helsinki phenology record instead. The two records hold different values, so exchanging
@@ -129,15 +128,15 @@ assessment:
       - component-surfaces-grass-generic-unreferenced-porosity
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       note: 'The composite declares representativeness city. One component declares regional, four declare
-        site (albedo, drainage, LAI-power and water storage), and two declare city, being the Helsinki
-        snow_lim_patch and vegetation_growth records; porosity, emissivity and leaf_area_index declare
-        generic; and the two ohm components carry no representativeness field. The biogen_co2 component
+        site (albedo, drainage, LAI-power and water storage), the phenology record declares city, and five
+        components, including snow limit, declare generic; the two OHM components carry no
+        representativeness field. The biogen_co2 component
         is mixed-scope: Ruimy''s alpha_bio_co2 and beta_bio_co2 are generic, but Schmid''s resp_a and resp_b
         and Järvi''s min_res_bioco2 are site-scoped. The site-scoped records and mixed-scope biogenic input
         are narrower than the city composite, and no published composition rationale documents the
         transplant, so city representativeness needs maintainer adjudication. The two city archetypes
-        use the same shared component set and carry nothing specific
-        to London, which is what
+        use the same complete component set, including the same two Swindon site-scoped hydrological
+        inputs; no component differentiates London from Swindon, which is what
         makes it indistinguishable from archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016; that
         is taken under identity.'
     method:
@@ -204,8 +203,9 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
-      helsinki, representativeness city and source jarvi2014.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.grass, name "Grass", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-grass-se-england-ward2016-albedo
     record: records/surfaces/grass/se-england--ward2016--albedo
     role: component
@@ -251,19 +251,21 @@ assessment:
     ward2016; maximum conductance is a Breuer et al. literature value applied through an SE England record,
     while emissivity and leaf_area_index cite Järvi et al. (2011), and drainage and water storage cite
     Ward et al. (2018). Three components declare place se-england, a region that contains London, while
-    drainage and water storage are site-scoped Swindon inputs. The biogen_co2 slot combines a generic
+    drainage and water storage are site-scoped Swindon inputs, snowpack limit is generic and phenology
+    carries place Helsinki. The biogen_co2 slot combines a generic
     Ruimy light-response fit with site-scoped Schmid and
     Järvi fields, which requires composition-level adjudication. The ohm season mapping is right, the summer-labelled code 201 set filling summer_wet and
     summer_dry and the winter-labelled set filling winter_wet and winter_dry. Two questions need a maintainer.
     The first is the vegetation_growth slot, which takes records/surfaces/grass/helsinki--jarvi2014--phenology
     although records/surfaces/grass/se-england--ward2016--phenology is an available regional record
-    referenced by no archetype at all; the snow_lim_patch slot beside it is forced, the Helsinki record being the only
-    grass record carrying snowpack_limit, but the phenology slot is not. The second is that this entry
+    referenced by no archetype at all; snow_lim_patch beside it is the generic Järvi default, while the
+    phenology slot is not forced. The second is that this entry
     and archetypes/surfaces/grass/swindon-uk--grass-ward-et-al-2016 carry byte-identical uses blocks and
-    the identical name field and no city-specific component. The same duplication runs through the bsoil, dectr and
+    the identical name field. Both include the same two Swindon site-scoped hydrological inputs, and no
+    component differentiates the two city entries. The same duplication runs through the bsoil, dectr and
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:30d37f56251d14dec4529c493b703622f89cf19649189d3730a346ed42a15d73
+  evidence_revision: sha256:e28553c63e2a69cc14043e014d1cb22faf22b7241bac6ebf9a129d045a40a9c7
 verification:
   attestations: []

@@ -11,7 +11,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
-    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:a231ae2f6b10bcaa9796cd2c0c39dfb7d43f4565fcc79ddbde25358997bc19c5
     records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:e32a48d742db6022eb20954c6ec4b1dd2fb658489ded6cff06c3f61c52fca571
     records/surfaces/grass/london--jarvi2011--drainage: sha256:2e4030e0bec64221184c856dc7b97fab73896a1024fd7d8295cacebca23e570c
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:96509a43993223e0b857d8386771de663c50062c0aa202016eb3bac6b3253ab2
@@ -87,13 +87,11 @@ assessment:
       - component-surfaces-grass-london-jarvi2011-drainage
       related_records:
       - records/surfaces/common/se-england--ruimy1995--biogen-co2
-      note: 'The composite declares place vancouver, which db/places.yml gives as lat 49.28, lon -123.12,
-        koppen Cfb. No component declares place vancouver. The leaf_growth_power record and the two conductance
-        files whose paths begin vancouver--jarvi2011 declare place generic; this composite uses the LAI
-        equation and the irrigated conductance records. Albedo declares place se-england, water_storage
-        declares place swindon, three declare place helsinki, filling leaf_area_index, snow_lim_patch and vegetation_growth,
-        while drainage, porosity and emissivity declare place generic and the OHM component carries no place
-        field. The slot that needs settling is biogen_co2. It takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+      note: 'The composite declares place vancouver, but no component carries that place. One component
+        carries place se-england, one carries swindon, two carry helsinki, one carries lethbridge, six are
+        generic and the OHM record carries no place. Snowpack limit is one of the generic Järvi inputs.
+        Three site-scoped slots need settling: albedo imports SE England evidence, water_storage imports
+        Swindon evidence, and biogen_co2 takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
         which declares place lethbridge, given in db/places.yml as lat 49.69, lon -112.83, koppen BSk,
         origin "Lethbridge, Alberta, Canada", name "Temperate grassland" and representativeness site:
         a semi-arid prairie grassland standing in for irrigated urban grass in a marine west-coast city,
@@ -106,11 +104,11 @@ assessment:
       conclusion: curation_required
       evidence_ids:
       - component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
-      - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-se-england-ward2016-water-storage
+      - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: 'The composite declares representativeness city. Three components declare city; drainage,
-        porosity, emissivity, leaf_growth_power and max_vegetation_conductance declare generic; and three
+      note: 'The composite declares representativeness city. Two components declare city; drainage,
+        porosity, emissivity, snow limit, leaf_growth_power and max_vegetation_conductance declare generic; and three
         declare site. The OHM component carries no representativeness field. The site-classed components
         are records/surfaces/grass/lethbridge--flanagan2002--biogen-co2, the Ward grass albedo record and
         the Ward 2018 water-storage record. Single-site evidence inside a city typology is exactly what the representativeness
@@ -142,7 +140,7 @@ assessment:
     record: records/ohm/generic--unreferenced--grass
     role: component
     note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
-      declares target ohm_coefficients, name "Short grass [30]" and source unreferenced; it carries no
+      declares target ohm_coefficients, name "Short grass [30]" and source grimmond1991b; it carries no
       place or representativeness field. It declares no season_label, so one set fills all four positions.
   - id: component-surfaces-grass-generic-unreferenced-porosity
     record: records/surfaces/grass/generic--unreferenced--porosity
@@ -158,8 +156,9 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
-      helsinki, representativeness city and source jarvi2014.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.grass, name "Grass", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-grass-lethbridge-flanagan2002-biogen-co2
     record: records/surfaces/grass/lethbridge--flanagan2002--biogen-co2
     role: component
@@ -212,16 +211,18 @@ assessment:
     and the ohm slot taking the grass-specific "Short grass [30]" set. None of the twelve components declares
     place vancouver; drainage, leaf_growth_power and max_vegetation_conductance are generic Järvi literature
     parameters whose stable paths retain application lineage. Albedo comes from SE England, water storage
-    from Swindon, three components from Helsinki and one from Lethbridge; drainage, porosity, emissivity,
-    leaf-growth power and maximum conductance are generic, and the unreferenced coefficient set carries
-    no place. Two things need a maintainer. The biogen_co2 slot takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+    from Swindon, two components from Helsinki and one from Lethbridge; drainage, porosity, emissivity,
+    snow limit, leaf-growth power and maximum conductance are generic, and the unreferenced coefficient set
+    carries no place. Three things need a maintainer. The biogen_co2 slot takes
+    records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
     a site-classed temperate grassland record from a semi-arid prairie location (koppen BSk) filling a
     slot in a marine west-coast city composite (koppen Cfb). The Ward grass albedo and Ward 2018 water
     storage are also site-scoped, so all three are narrower than the composite. The alternative the London
     and Swindon composites take, records/surfaces/common/se-england--ruimy1995--biogen-co2, is no more
-    local, so the choice between two transplants is a maintainer''s and not a correction. And whether
+    local, so the choice between two transplants is a maintainer''s and not a correction. The Swindon
+    site water-storage import needs a Vancouver composition rationale. And whether
     a sample-run configuration belongs in the published archetype set beside descriptions of real sites
     is a curation decision of the same kind.'
-  evidence_revision: sha256:442e30e8eac3b2130fb11fd6c2a32919423546d7aad94feebb0f4a5b098431da
+  evidence_revision: sha256:a3832516f4cf3ebe276f5a80420fd46d0d18bc5f55a7530a638d9374d39d5d83
 verification:
   attestations: []
