@@ -1,21 +1,23 @@
 provenance_record: records/surfaces/common/helsinki--havu-m2024--soil--mixed-park-trees
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:f9ff4b6ea9e24b0d3c67918b851bffb4fe2f7be7126d3d1f5d2e62d01eab892a
+record_revision: sha256:4a9eac2d92a5c15cb4ad146605948409acec43cc82d789bdc25e6938549cca34
 dependency_revisions:
   sources:
     havu-m2024: sha256:a25f04d6f232403d69a0ef9afd1e7ecd1709ce5fc697b7ea2c29675304cc5611
+    havu-m2024-data: sha256:d6b7854dbc4fbd25452c77d23e0da254bcc227da21a4bc1b1719bc05c641c124
   places:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records: {}
 assessment:
-  status: unresolved
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T00:45:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
     run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
@@ -28,16 +30,20 @@ assessment:
       - havu-table-b1
       note: The source uses the parameter for the same SUEWS target represented by the record.
     values:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: Table B.1 supports the broad soil depth/storage class but does not publish the complete stored
-        tuple at exact precision; hydraulic conductivity and soil density are absent.
+      - archived-park-soil
+      note: The Zenodo SUEWS_Soil code 73 row directly stores 1000 mm depth, 229 mm capacity, 0.0005
+        conductivity and 1.16 density. Table B.1 independently corroborates the rounded 1.0 m depth and
+        0.23 m park-tree capacity.
     source:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The article does not contain an exact source for every stored field.
+      - archived-park-soil
+      note: The citable Zenodo dataset is the direct source for the complete exact tuple and its surface
+        selections. The journal article separately validates the rounded depth and capacity.
     place:
       conclusion: supported
       evidence_ids:
@@ -49,10 +55,12 @@ assessment:
       - havu-table-b1
       note: The declared evidence reach does not exceed the source scope.
     method:
-      conclusion: unresolved
+      conclusion: supported
       evidence_ids:
       - havu-table-b1
-      note: The transformation from published rounded soil properties to the stored tuple is not documented.
+      - archived-park-soil
+      note: Literature records direct transcription of the citable archived configuration, checked against
+        the associated publication; the database performs no transformation or refit.
     identity:
       conclusion: supported
       evidence_ids:
@@ -67,10 +75,23 @@ assessment:
       label: Table B.1, site characteristics and model parameters used for Helsinki
       url: https://doi.org/10.1016/j.ufug.2024.128261
       page: 11
-      note: Publishes vegetation-class soil, photosynthesis, conductance, LAI and respiration inputs used
-        for the Helsinki simulations.
-  scientific_note: 'The accessible paper is incomplete for this record: some soil values are corroborated,
-    but the complete tuple and exact transformation need the model input archive or curator documentation.'
-  evidence_revision: sha256:d34c7736d342eab27484116a63d2b1c259058ef825f6d6749c17e069f8a6556e
+      note: Publishes 1.0 m depth and 0.23 m maximum soil-water capacity for the park-tree configuration.
+  - id: archived-park-soil
+    source: havu-m2024-data
+    role: parameter_source
+    locators:
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Soil.txt, code 73
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Stores depth 1000 mm, capacity 229 mm, conductivity 0.0005 and density 1.16.
+    - kind: dataset
+      label: Zenodo Input_met.zip/Input_met/SUEWS_Veg.txt, codes 833, 834, 843 and 844
+      url: https://doi.org/10.5281/zenodo.10572180
+      note: Assigns SoilTypeCode 73 to the deciduous and evergreen park-tree surface rows with lawn or
+        mixed-low vegetation.
+  scientific_note: The original citable archive directly supplies the complete executable code-73 soil
+    tuple and proves its use by all four Helsinki park-tree surface configurations. Table B.1 independently
+    corroborates its rounded depth and capacity. No parameter value, stable path or legacy identity is changed.
+  evidence_revision: sha256:53ea1ac0ea3bef0bb2f14f0498480d479f979b5f2d97544908a481fcdadc7290
 verification:
   attestations: []
