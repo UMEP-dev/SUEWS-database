@@ -14,7 +14,7 @@ dependency_revisions:
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:7ad3e469a32ddac7f76147aaddc02b62888ce22f1035372a5da2b9dd138a289b
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
-    records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
+    records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:8e422053541b6f7a7b3ad5466257a8c3d3e54a85f3fbb49b9ef331a5b8a6c9bb
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 assessment:
   status: agent_assessed
@@ -87,10 +87,12 @@ assessment:
       - component-ohm-generic--ward2016--bare-soil
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
       note: 'The composite declares place swindon. No component declares that place, and none could: the
-        database holds no bare-soil record for Swindon. The albedo, emissivity, water_storage and drainage
+        database holds no bare-soil record for Swindon. The albedo, water_storage and drainage
         slots take records with place se-england, which db/places.yml records as ''SE England'', subnational:
         true, country united-kingdom, the region containing Swindon, so applying them to the town is a
-        downscaling rather than a substitution and it is the closest the database offers. The snow_lim_patch
+        downscaling rather than a substitution and it is the closest the database offers. The site-scoped
+        emissivity is documented for both London and Swindon, so its se-england place includes this application
+        but does not establish city-wide reach. The snow_lim_patch
         slot takes records/surfaces/bsoil/helsinki--jarvi2014--snow-lim, place helsinki, the only bare-soil
         snow_lim record there is. The construction slot takes records/constructions/uk--lindberg-f2020--central-london-sample-run,
         whose corrected place is london and representativeness is city; neither supports the Swindon place
@@ -109,11 +111,11 @@ assessment:
       - component-surfaces-bsoil-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--bare-soil
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
-      note: The composite declares representativeness city. Three se-england components declare regional,
-        while the Ward albedo component is site-scoped; the construction and
+      note: The composite declares representativeness city. Two se-england components declare regional,
+        while the Ward albedo and emissivity components are site-scoped; the construction and
         records/surfaces/bsoil/helsinki--jarvi2014--snow-lim declare city; the two OHM records declare no
-        representativeness. The site-scoped albedo is narrower than the composite's city claim, so its
-        use in this city typology needs maintainer adjudication.
+        representativeness. The site-scoped albedo and emissivity are narrower than the composite's city
+        claim, so their use in this city typology needs maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -147,8 +149,8 @@ assessment:
         in the same eleven positions, and neither entry declares parameters of its own, so the two export
         the same fragment. They are not duplicates in the sense the other entry could be deleted, because
         they declare different places, swindon and london. The construction now supports London but not
-        Swindon. Three exported SE England components are regional, while the shared Ward albedo is
-        site-scoped and therefore does not automatically support either city claim; that question is
+        Swindon. Two exported SE England components are regional, while the shared Ward albedo and emissivity
+        are site-scoped and therefore do not automatically support either city claim; that question is
         recorded under representativeness. Sharing still means that any correction to one component
         reaches both. records/surfaces/bsoil/se-england--ward2016--water-state
         carries state_limit and is referenced by no archetype, but no land_cover.bsoil archetype declares
@@ -163,7 +165,7 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target land_cover.bsoil, name 'Bare soil', place
-      se-england, representativeness regional and source ward2016, and carries emis.
+      se-england, representativeness site, source ward2016 and method literature, and carries emis.
   - id: component-surfaces-bsoil-se-england--ward2016--water-storage
     record: records/surfaces/bsoil/se-england--ward2016--water-storage
     role: component
@@ -206,9 +208,9 @@ assessment:
   scientific_note: 'Nothing in this assembly can be improved by re-pointing a slot. archetypes/surfaces/bsoil/swindon-uk--suburban-residential-ward-et-al-2016
     declares place swindon and representativeness city, and the database holds no bare-soil record for
     Swindon at all, so its albedo and emissivity come from ward2016 se-england rows, while water storage
-    and drainage come from ward2018 se-england rows. The latter three regional records cover the town and
-    are applied down; the albedo is site-scoped, so its use in a city typology remains a composition-level
-    curation question. The season mapping follows
+    and drainage come from ward2018 se-england rows. The latter two regional records cover the town and
+    are applied down; the albedo and emissivity are site-scoped, so their use in a city typology remains
+    a composition-level curation question. The season mapping follows
     the components'' own season_label fields, and every slot takes a record declaring the target that
     slot fills. Two things are worth a reader''s attention without being defects in the selection. The
     snow_lim_patch slot leaves the UK entirely, because records/surfaces/bsoil/helsinki--jarvi2014--snow-lim
@@ -219,8 +221,9 @@ assessment:
     fragment. The entry shares every component with archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
     and exports the same fragment, which is defensible here in a way it would not be for two entries claiming
     the same place: most exported surface evidence is regional and covers both towns, while the shared
-    site-scoped albedo has to be adjudicated for each city claim. The London construction mismatch is
+    site-scoped albedo and emissivity have to be adjudicated for each city claim. The London construction
+    mismatch is
     non-exporting but remains a composition-provenance defect. A correction to any one component reaches both.'
-  evidence_revision: sha256:ccda1a77a72ce6da6fa181f50a34187571fae9935ca20486211bf635eed58439
+  evidence_revision: sha256:10c28b34e1baf5e1cf1796778b4747c9de036653758cd2647fe7133f31e1ec5c
 verification:
   attestations: []

@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/bsoil/london--ward2016--albedo: sha256:ff01a426a83b92ab88b11999233874c081ee83726361d435218eb0f6bcc72219
     records/surfaces/bsoil/se-england--ward2016--albedo: sha256:7ad3e469a32ddac7f76147aaddc02b62888ce22f1035372a5da2b9dd138a289b
     records/surfaces/bsoil/se-england--ward2016--drainage: sha256:6331b3bb9e8b2f1cda3871a9d5afab11daf7a83f612cf86ebb444648617c4d5c
-    records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
+    records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:8e422053541b6f7a7b3ad5466257a8c3d3e54a85f3fbb49b9ef331a5b8a6c9bb
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 assessment:
   status: agent_assessed
@@ -90,11 +90,13 @@ assessment:
       - related-surfaces-bsoil-london--ward2016--albedo
       related_records:
       - records/surfaces/bsoil/london--ward2016--albedo
-      note: 'The composite declares place london and only its construction component does. The emissivity,
+      note: 'The composite declares place london and only its construction component does. The albedo,
         water_storage and drainage slots take records with place se-england, which db/places.yml records
         as ''SE England'', subnational: true, country united-kingdom, the region containing London, so
         applying them to the city is a downscaling and no London-specific adjusted surface record exists
-        to displace them. The selected albedo record is the Ward adjusted UK value 0.18. The unused stable
+        to displace them. The site-scoped emissivity is likewise documented for both London and Swindon,
+        so its se-england place includes this application but does not establish city-wide reach. The
+        selected albedo record is the Ward adjusted UK value 0.18. The unused stable
         London-path record is now correctly documented as generic original-value evidence at 0.21, while
         the pinned London application also uses 0.18; it is therefore not a closer London alternative.
         The snow_lim_patch slot takes records/surfaces/bsoil/helsinki--jarvi2014--snow-lim, place helsinki,
@@ -111,11 +113,11 @@ assessment:
       - component-surfaces-bsoil-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--bare-soil
       - component-ohm-generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552
-      note: The composite declares representativeness city. Three se-england components declare regional,
-        while the Ward albedo component is site-scoped; the construction and
+      note: The composite declares representativeness city. Two se-england components declare regional,
+        while the Ward albedo and emissivity components are site-scoped; the construction and
         records/surfaces/bsoil/helsinki--jarvi2014--snow-lim declare city; the two OHM records declare no
-        representativeness. The site-scoped albedo is narrower than the composite's city claim, so its
-        use in this city typology needs maintainer adjudication.
+        representativeness. The site-scoped albedo and emissivity are narrower than the composite's city
+        claim, so their use in this city typology needs maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -149,9 +151,9 @@ assessment:
         eight records in the same eleven positions, and neither entry declares parameters of its own,
         so the two export the same fragment. They are not duplicates in the sense the other entry could
         be deleted, because they declare different places, london and swindon. The construction now supports
-        London but not Swindon. Three exported SE England components are regional, while the shared Ward
-        albedo is site-scoped and therefore does not automatically support either city claim; that question
-        is recorded under representativeness. Sharing still means that any correction to one component
+        London but not Swindon. Two exported SE England components are regional, while the shared Ward
+        albedo and emissivity are site-scoped and therefore do not automatically support either city claim;
+        that question is recorded under representativeness. Sharing still means that any correction to one component
         reaches both. records/surfaces/bsoil/se-england--ward2016--water-state
         carries state_limit and is referenced by no archetype, but no land_cover.bsoil archetype declares
         a water_state slot, so that is a target-wide design question rather than an omission in this entry.'
@@ -171,7 +173,7 @@ assessment:
     record: records/surfaces/bsoil/se-england--ward2016--emissivity
     role: component
     note: Fills the emissivity slot. The record declares target land_cover.bsoil, name 'Bare soil', place
-      se-england, representativeness regional and source ward2016, and carries emis.
+      se-england, representativeness site, source ward2016 and method literature, and carries emis.
   - id: component-surfaces-bsoil-se-england--ward2016--water-storage
     record: records/surfaces/bsoil/se-england--ward2016--water-storage
     role: component
@@ -213,11 +215,11 @@ assessment:
       a2 and a3, and declares no place and no representativeness.
   scientific_note: The mapping and selection are sound. archetypes/surfaces/bsoil/london-uk--central-london-ward-et-al-2016
     declares place london and representativeness city, and takes four of its eight components from ward2016,
-    the study its name cites. The emissivity slot takes a ward2016 se-england row, while water storage
-    and drainage take ward2018 se-england rows,
-    classed regional and applied down to a city inside that region, which is the sound direction for a
-    class difference and the closest the database offers. The selected albedo is Ward's adjusted UK value
-    0.18 but is site-scoped, so its use in a city typology remains a composition-level curation question.
+    the study its name cites. Water storage and drainage take ward2018 se-england rows, classed regional
+    and applied down to a city inside that region, which is the sound direction for a class difference and
+    the closest the database offers. The selected albedo is Ward's adjusted UK value 0.18 and the emissivity
+    is Ward's BSoil value 0.94; both are site-scoped, so their use in a city typology remains a composition-level
+    curation question.
     The unselected stable London-path record is now documented as the generic original value 0.21,
     while the pinned London application also uses 0.18, so it is not a closer London alternative. Two
     further observations change no number. The snow_lim_patch
@@ -226,6 +228,6 @@ assessment:
     London [sample run]', a building-fabric entry with roof and wall layers, which sits oddly on a bare-soil
     surface but contributes nothing to the exported fragment, because scripts/export_record.py keeps the
     construction slot out of it.
-  evidence_revision: sha256:45d07e619ee6804a3a7da830c8d38b1dafdb567409f92b1bcb233f1785bb5b11
+  evidence_revision: sha256:4a4f54c4018f326755d444fa0e113ad23ab11adb0d2756ebf69a63d422d0a033
 verification:
   attestations: []

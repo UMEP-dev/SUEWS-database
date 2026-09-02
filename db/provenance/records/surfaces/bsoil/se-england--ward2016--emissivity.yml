@@ -1,88 +1,106 @@
 provenance_record: records/surfaces/bsoil/se-england--ward2016--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:c5e942b53624396b33abced616dd6407e0d936dd8be5b2cb4de2e48563d41b48
+record_revision: sha256:8e422053541b6f7a7b3ad5466257a8c3d3e54a85f3fbb49b9ef331a5b8a6c9bb
 dependency_revisions:
   sources:
-    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T10:15:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/1083
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The label identifies the published parameter class or model configuration.
+      - ward2016-table2
+      note: Ward et al. label the newly implemented surface class BSoil, matching the retained bare-soil
+        label.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - ward2016-table2
+      note: Table 2 assigns the emissivity to BSoil, matching land_cover.bsoil.
     values:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - ward2016-table2
+      - oke1987-table1-1
+      note: Ward et al. publish the exact BSoil emissivity 0.94. Oke gives soils a 0.90 to 0.98 range,
+        supporting the range from which Ward selected the value but not by itself identifying 0.94.
     source:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      - jarvi-emissivity
-      note: Ward et al. publish the UK configuration but explicitly identify Järvi et al. (2011) as the
-        original source of these emissivities; the canonical source role should be separated.
+      - ward2016-table2
+      - oke1987-table1-1
+      note: Ward et al. are the checked source that introduces the BSoil class and publishes its exact
+        0.94 value. Oke is the stated upstream range evidence, not the exact parameter source.
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/1083
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - ward2016-table2
+      note: Ward et al. use the BSoil parameter in their London and Swindon configurations. The shared
+        se-england place records that documented application geography without claiming a regional determination.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - ward2016-table2
+      note: Ward et al. document the value for two specific study-site configurations, not as a regional
+        determination. Site is therefore the supported evidence reach.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - ward2016-table2
+      - oke1987-table1-1
+      note: Ward et al. select the value from Oke's published soil-emissivity range, so literature is the
+        applicable method.
     identity:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      - ward2016-table2
+      note: Ward et al. introduce BSoil and publish the exact stored value for the two UK study configurations;
+        the stable path, raw origin and legacy ID preserve that migration identity.
   evidence:
-  - id: ward-table-2
+  - id: ward2016-table2
     source: ward2016
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 2, adjusted albedo and emissivity model inputs
-      url: https://doi.org/10.1016/j.uclim.2016.05.001
-      page: 8
-      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
-        explicitly carried forward from Järvi et al. (2011).
-  - id: jarvi-emissivity
-    source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2a, emissivity values by surface type
-      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
-      page: 223
-      note: Original table identified by Ward et al. as the source of the UK emissivities.
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:832508aa60712237b629c2252defbd8804b7ac6e3f595991f54634a8799fbc65
+      label: Table 2, Bare soil, emissivity row
+      page: 8
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Publishes BSoil emissivity 0.94 for the London and Swindon configurations. The accompanying
+        note says BSoil was not fully implemented in earlier SUEWS versions and its emissivity was based
+        on the range in Oke (1987).
+  - id: oke1987-table1-1
+    source: oke1987
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 1.1, Radiative properties of natural materials
+      page: 12
+      note: Gives soils an emissivity range from 0.90 for light, dry soil to 0.98 for dark, wet soil and
+        collectively cites Sellers (1965), List (1966), Paterson (1969), and Monteith (1973); it does not
+        identify a source per cell or the exact 0.94 selection.
+  scientific_note: >-
+    Ward et al. are the checked source that introduces the BSoil class and publishes the exact 0.94 model
+    parameter. Järvi et al. (2011) contain no bare-soil column, so Ward's general statement that emissivities
+    came from Järvi does not apply to this newly implemented BSoil cell. Ward instead states that the BSoil
+    emissivity was based on Oke, whose original table supports a soil interval of 0.90 to 0.98 but not the
+    exact 0.94 selection. The record therefore retains Ward as parameter source and records Oke as upstream
+    range evidence. Its value, stable path, raw origin and legacy ID remain unchanged; site reach reflects
+    its documented use in the London and Swindon study configurations rather than a regional determination.
+  evidence_revision: sha256:dcfb724e3330dc76d979df70e21eb4776af5a4f18f940c248aa6735ec974d7da
 verification:
   attestations: []
