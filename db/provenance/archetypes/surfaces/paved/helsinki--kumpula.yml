@@ -12,13 +12,13 @@ dependency_revisions:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/generic--unreferenced--paved: sha256:15123edba703f59b7bc19c8e62c3c10acc6d85aee62ce5f6a8a89c541a1a1066
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
-    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:5f90b4515200688451c6072434b9b8ab63aa7abe7da27f5d6c5924f76dc6b602
+    records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:d1836de71ad74964a567a9a1407ca079b9c38db41be613060211089da0c7dcd2
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:43:17Z'
+  assessed_at: '2026-09-02T16:29:17Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -80,9 +80,9 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares place helsinki. The albedo, emissivity, water_storage and snow_lim_patch
-        slots take records declaring place helsinki, so four of the seven components are the city's own
-        rows. The drainage and construction slots take records with place generic; records/ohm/generic--unreferenced--paved
+      note: The composite declares place helsinki. The albedo, water_storage and snow_lim_patch slots
+        take records declaring place helsinki, so three of the seven components are the city's own rows.
+        Emissivity, drainage and construction take records with place generic; records/ohm/generic--unreferenced--paved
         declares no place at all. That borrowing is forced. The database holds three paved drainage records,
         records/surfaces/paved/london--jarvi2011--drainage, records/surfaces/paved/se-england--ward2016--drainage
         and records/surfaces/paved/swindon--ward2013--drainage, and none carries place helsinki; no paved
@@ -98,8 +98,8 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The four Helsinki components declare city;
-        the drainage and construction records declare generic, which is broader rather than narrower,
+      note: The composite declares representativeness city. The three Helsinki components declare city;
+        emissivity, drainage and construction declare generic, which is broader rather than narrower,
         and records/ohm/generic--unreferenced--paved declares no
         representativeness at all. No component is classed below the composite's scale.
     method:
@@ -146,8 +146,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
     record: records/surfaces/paved/helsinki--jarvi2014--emissivity
     role: component
-    note: Fills the emissivity slot. The record declares target land_cover.paved, name Paved, place helsinki,
-      representativeness city and source jarvi2014, and carries emis.
+    note: Fills the emissivity slot. The stable Helsinki-path record declares target land_cover.paved,
+      name Paved, place generic, representativeness generic, applicable_scale land_cover, source jarvi2011
+      and method literature, and carries emis. Its path and origin preserve later Helsinki application lineage.
   - id: component-surfaces-paved-helsinki--jarvi2014--water-storage
     record: records/surfaces/paved/helsinki--jarvi2014--water-storage
     role: component
@@ -181,9 +182,10 @@ assessment:
       802, 901, 902, 903, 905, 906. [800]' and source unreferenced, carries a1, a2 and a3, and declares
       no place, no representativeness and no season_label.
   scientific_note: 'The selection itself holds up. archetypes/surfaces/paved/helsinki--kumpula declares
-    place helsinki and representativeness city, and its albedo, emissivity, water storage and snowpack
-    limit all come from Helsinki city rows in jarvi2014. The drainage and OHM slots leave the city because
-    no paved drainage record and no paved OHM record in the database carries place helsinki, and the construction
+    place helsinki and representativeness city; albedo, water storage and snowpack limit come from Helsinki
+    city rows, while emissivity is a generic Järvi et al. (2011) pavement parameter. Emissivity, drainage
+    and construction are generic, and the OHM record declares no place. No paved drainage or OHM record
+    in the database carries place helsinki, and the construction
     slot contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment. The question a maintainer has to settle is what this entry adds. Its name points at a district
     while its representativeness field reads city, and its components are identical, record for record
@@ -193,6 +195,6 @@ assessment:
     the files do not say which. archetypes/surfaces/paved/zurich--city-centre takes the same seven components
     again, so the decision reaches beyond this pair. The drainage record is now documented as generic
     literature evidence; the OHM record still declares source unreferenced, a question for that record''s own evidence review.'
-  evidence_revision: sha256:4f8aaf724334a7c243cff1c5d6d3d9a5479b0c33b7407c6f03d1804dc6b9754e
+  evidence_revision: sha256:e6ba6961f8d62c97b13ed25fc37d911a8213cd93422bf19489bd2e8a1ef8740c
 verification:
   attestations: []
