@@ -1,76 +1,119 @@
 provenance_record: records/surfaces/water/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:89927fb9e830bba0be26109d0cfd6a708bda0fca356c245470bfe30915a717c7
+record_revision: sha256:290f47b002706f6c1056514d13459951419fe7bdf2b99fe1e35112e27e38c0ea
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
   places:
-    se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T17:48:39Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The label identifies the published parameter class or model configuration.
+      - jarvi2011-table2
+      note: Järvi et al. (2011) labels the corresponding model surface Water, matching the database label.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - jarvi2011-table2
+      note: Table 2 assigns the albedo to the water surface column, matching the land_cover.water target.
     values:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: Järvi et al. (2011) publishes the exact albedo 0.10. Oke (1987), cited by that cell, includes
+        0.10 within its water ranges but does not by itself identify one all-angle scalar.
     source:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - jarvi2011-table2
+      - oke1987-table1-1
+      - ward2016-table2
+      note: Järvi et al. (2011) is the earliest checked source that states the exact stored model value.
+        Oke (1987) supplies the stated upstream property ranges; Ward et al. (2016) later carries 0.10
+        forward unchanged.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: The evidence presents a general water-surface parameter and typical water-property ranges,
+        not a value determined for SE England. Generic is the supported active place scope.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - jarvi2011-table2
+      - oke1987-table1-1
+      note: The evidence is a model parameter table backed by typical-property ranges, not a regional
+        survey. Generic is therefore the supported representativeness.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table2
+      note: Järvi et al. (2011) publishes the scalar for the Water surface class in SUEWS, supporting
+        application at the land-cover class scale.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - jarvi2011-table2
+      note: The record adopts an exact value from a published model parameter table, so literature is
+        the applicable method.
     identity:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      - jarvi2011-table2
+      - ward2016-table2
+      note: The stable SE England legacy path and origin preserve migration lineage, while active source
+        and scope fields now describe the exact parameter publication and its generic applicability.
   evidence:
-  - id: ward-table-2
-    source: ward2016
+  - id: jarvi2011-table2
+    source: jarvi2011
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2, adjusted albedo and emissivity model inputs
-      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      label: Table 2(a), Water, albedo row
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the exact water albedo 0.10 and marks the cell with footnote f to Oke (1987).
+  - id: oke1987-table1-1
+    source: oke1987
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 1.1, Radiative properties of natural materials, water rows
+      page: 12
+      note: Gives water albedo ranges of 0.03 to 0.10 at small zenith angles and 0.10 to 1.00 at large
+        zenith angles. It supports the upstream physical range, not the exact all-angle scalar selection.
+  - id: ward2016-table2
+    source: ward2016
+    role: compilation
+    locators:
+    - kind: table
+      label: Table 2, Water, original and adjusted albedo rows
       page: 8
-      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
-        explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:06921ef056f933631bbef4086de2ef84be56c6ad7bf31ecc0470f82ae532c110
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      note: Carries water albedo 0.10 forward unchanged in both columns; the surrounding adjustment text
+        discusses other surface classes and does not derive a new water value.
+  scientific_note: >-
+    Ward et al. (2016) is a later unchanged compilation for this value. Järvi et al. (2011) is the
+    earliest checked publication that states the exact 0.10 SUEWS water parameter. Its footnote leads
+    to Oke (1987), whose table supplies zenith-angle-dependent water ranges but does not itself select
+    one all-angle scalar. The record therefore cites Järvi et al. (2011) as parameter source and records
+    Oke (1987) as upstream input. The value, stable path and historical origin remain unchanged; active
+    place and representativeness are generic and applicable scale is land cover.
+  evidence_revision: sha256:a57596eca75b8d4aa47a23f4988699d55a6a147fc93b7a50b2b02bd803e3073e
 verification:
   attestations: []
