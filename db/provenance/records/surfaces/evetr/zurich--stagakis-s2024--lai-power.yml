@@ -8,7 +8,7 @@ dependency_revisions:
   places:
     zurich: sha256:ac3f30c60ab7b645281123d92f506c840b79885cbe720a54b085fc28088e1408
   records:
-    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
+    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:720c62cdb681b4577473d261f8563bc7f70e6ebe5466e4d89b0f2c84c6b4234d
     records/surfaces/grass/zurich--stagakis-s2024--lai-power: sha256:6fdea35f3b1098b33ef60611fe66017a163f689c4b62e2e2d576fab33dcfbaa5
 assessment:
   status: curation_required
@@ -107,6 +107,6 @@ assessment:
     for a four-park study whose parameters are not Zurich determinations at all. The LaiEq = 1 selector,
     carried in both the name and lai_type, is nowhere in the article or the supplement and should not
     be treated as verified.'
-  evidence_revision: sha256:327e5f62e0f5acfcc4f01660752ff7d20487e1722005193bc16010c91b388de5
+  evidence_revision: sha256:72b3f419eb6fc8216c92af04f25fda1c9fe72c6250888c27de7d3ae505816f5e
 verification:
   attestations: []

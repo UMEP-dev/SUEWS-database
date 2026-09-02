@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
     records/surfaces/dectr/zurich--jarvi2011--lai: sha256:669ffe9b3871af7ee48bb73c4a54443b4ce339d868e3ce7eed447eb90e789fe2
     records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2: sha256:f7c3fe36b5879b40a16d9f6f7e77042285e5e186d946e663b9344d7f35fbf247
-    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:a8dcb487b7bd2ad579be7c883feada203e5765023fc5ef05f4b4eb92c26afbb7
+    records/surfaces/dectr/zurich--stagakis-s2024--lai-power: sha256:720c62cdb681b4577473d261f8563bc7f70e6ebe5466e4d89b0f2c84c6b4234d
     records/surfaces/dectr/zurich--stagakis-s2024--max-conductance: sha256:97f58953282d688f623209f9f891f115d668b8e69fdec1793060b057b191cbd6
 assessment:
   status: curation_required
@@ -88,16 +88,17 @@ assessment:
         transfer. A maintainer should still record why the Nordic snow limit and phenology stand for Zurich,
         or replace them.'
     representativeness:
-      conclusion: supported
+      conclusion: correction_required
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Seven components are classed city, records/surfaces/dectr/se-england--ward2016--water-storage
-        is classed regional, drainage, albedo and porosity are generic and the OHM record declares no
-        class. Regional and generic values cover a city, and no component claims a narrower scale than
-        the composite does.
+      note: The composite claims representativeness city. The corrected leaf-growth-power component is
+        site-scoped to four Zurich parks, while records/surfaces/dectr/se-england--ward2016--water-storage
+        is regional, drainage, albedo and porosity are generic and the remaining place-bound components
+        are classed city. The site-scoped component is narrower than the composite's city claim and needs
+        maintainer adjudication at composition level.
     method:
       conclusion: supported
       evidence_ids:
@@ -183,27 +184,30 @@ assessment:
   - id: component-surfaces-dectr-zurich-stagakis-s2024-lai-power
     record: records/surfaces/dectr/zurich--stagakis-s2024--lai-power
     role: component
-    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place zurich and representativeness
-      city. It is named "Deciduous Tree, LaiEq = 1", carries source stagakis-s2024 and declares lai.lai_type
-      1, matching the leaf_area_index component.
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place zurich, representativeness
+      site and method literature. It is named "Deciduous Tree, LaiEq = 1", carries the exact Stagakis
+      tuple with per-leaf Järvi and SUEWS-documentation provenance, and declares lai.lai_type 1, matching
+      the leaf_area_index component.
   - id: component-surfaces-dectr-zurich-stagakis-s2024-max-conductance
     record: records/surfaces/dectr/zurich--stagakis-s2024--max-conductance
     role: component
     note: Fills max_vegetation_conductance. The record declares target land_cover.dectr, place zurich
       and representativeness city. It carries source breuer2003 and method literature.
   scientific_note: 'The Zurich-specific content is the configuration and application context rather than
-    a single common parameter source. Leaf growth power and the biogenic CO2 set come from stagakis-s2024
-    records placed at Zurich; maximum conductance is a Breuer 2003 literature value applied there; albedo
+    a single common parameter source. The leaf-growth-power record contains the exact mixed Stagakis/Järvi
+    tuple used in Zurich, and the biogenic CO2 set comes from a stagakis-s2024 record placed at Zurich;
+    maximum conductance is a Breuer 2003 literature value applied there; albedo
     is a generic Vargo literature constant; and the leaf area index is a Zurich-labelled archived sample
     with source unreferenced rather than a Stagakis parameter. The LAI pair agrees on lai.lai_type 1, the targets are right
     and the OHM mapping is the only one the entries allow. Two things need a decision. The label reads
     2024 while db/sources.yml registers stagakis-s2024 with year 2025 and a 2025 Biogeosciences doi, and
     the composite label still says 2024. And the snowpack limit and the four degree-day thresholds
     are Helsinki records, Dfb values standing in a Cfb city, which is the same transfer the Beijing composite
-    makes. Drainage is now explicit generic literature evidence. Neither remaining question touches a stored value; both are composition
-    decisions nobody wrote down. The components'' values remain subject to their own evidence assessments;
+    makes. Drainage is now explicit generic literature evidence. The corrected leaf-growth-power record
+    is site-scoped to four parks, so using it under this city-level composite is a further composition
+    decision. None of these questions touches a stored value. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them. The corrected biogen_co2 component has three values directly
     supported by Supplement Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:0e43eb79d301a8cc846fdf595d53a50665bf3ac9fb03d8d2d7c30eae93b6af25
+  evidence_revision: sha256:e9b14a3493c377aff0b0d4e284c2a4fbf11772f21bb98284d259aaf43da8e896
 verification:
   attestations: []

@@ -682,6 +682,13 @@ sources:
     type: dataRepository
     url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2020a/SUEWS_NonVeg.txt
     year: 2020
+  umep-dev2020a-docs:
+    author: UMEP-dev
+    journal: SUEWS Documentation
+    title: SUEWS Documentation, Release v2020a
+    type: Guideline
+    url: https://suews.readthedocs.io/_/downloads/en/2020a/pdf/
+    year: 2020
   umep-dev2020-sample-qf:
     author: UMEP-dev
     journal: GitHub
