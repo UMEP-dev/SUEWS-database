@@ -4,8 +4,9 @@ target: land_cover.bsoil
 name: Bare soil
 place: se-england
 origin: UK, SE England
-representativeness: regional
+representativeness: site
 source: ward2016
+method: literature
 legacy_id: 41240043
 parameters:
   alb: 0.18
