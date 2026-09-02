@@ -5,7 +5,9 @@ name: Suburban residential
 place: swindon
 origin: Swindon, UK
 representativeness: site
+applicable_scale: land_cover
 source: ward2016
+method: fitted
 legacy_id: 41240042
 parameters:
   alb: 0.12
