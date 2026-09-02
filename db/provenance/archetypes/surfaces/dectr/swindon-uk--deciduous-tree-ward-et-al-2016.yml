@@ -218,14 +218,17 @@ assessment:
     contains Swindon, while the emissivity component is the generic Oke literature value retained at
     its stable Swindon path. The two LAI records agree on lai.lai_type 1, and the OHM mapping is correct, the
     summer record filling both summer positions and the winter record both winter positions, each confirmed
-    by its own season_label. Two slots still do not follow the composite''s place. The phenology is the
+    by its own season_label. Two whole-record slots and one mixed-scope tuple still do not follow the
+    composite''s place. The phenology is the
     Helsinki Järvi 2014 record even though an SE England Ward 2016 phenology record exists with the localised
     base temperatures and is referenced by no archetype in the database, and the snowpack limit is a Helsinki
-    value in a Cfb city. The larger problem is not in this file alone: the London composite is identical
+    value in a Cfb city. The biogen_co2 tuple combines Ruimy''s generic fit with site-scoped Schmid
+    respiration coefficients and a site-scoped Järvi minimum-respiration floor without a published
+    composition rationale. The larger problem is not in this file alone: the London composite is identical
     to it in every component and in its name, so the database offers two entries for two different UK
-    sites that cannot be told apart by their content. A maintainer should settle the phenology and the
-    snow limit, and decide whether the two site typologies should differ at all. The components'' values
+    sites that cannot be told apart by their content. A maintainer should settle the phenology, snow
+    limit and mixed-scope biogenic tuple, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:d7674da1bdeaa54e60491567e65d82b6898adf524393ac6e31d5568dc66feec5
+  evidence_revision: sha256:585b3976a2e36d8be1b934ed0cb0bed6f40773b77ed8028d18d7872a4fa56318
 verification:
   attestations: []

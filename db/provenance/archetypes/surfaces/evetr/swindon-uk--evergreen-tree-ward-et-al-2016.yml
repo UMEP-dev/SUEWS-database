@@ -243,18 +243,20 @@ assessment:
       named "Code 201 x Multiplier for winter [2012]"; its source field reads ward2016, it declares season_label
       Winter and it declares no place or representativeness.
   scientific_note: 'This composite is the most internally consistent of the evergreen-tree set on everything
-    except two points. Six of its thirteen components declare source ward2016; maximum conductance is
+    except three points. Six of its thirteen components declare source ward2016; maximum conductance is
     a Breuer et al. literature value applied through an SE England record. Its two OHM records carry
     season_label Summer and Winter and are mapped to exactly those positions, and its two LAI components
     agree on lai_type 1. The first point is the phenology: vegetation_growth takes the Helsinki record
     when records/surfaces/evetr/se-england--ward2016--phenology, from the composite''s own region and
     source, exists and is used by no archetype at all, and the degree-day thresholds are a tight group
-    in schema/parameter_groups.yml. The second is duplication: this composite and its counterpart carry
+    in schema/parameter_groups.yml. The second is the biogen_co2 tuple, which combines Ruimy''s generic
+    fit with site-scoped Schmid respiration coefficients and a site-scoped Järvi minimum-respiration
+    floor without a published composition rationale. The third is duplication: this composite and its counterpart carry
     identical uses blocks, the identical name "Evergreen Tree Ward et al. (2016)", and no parameters of
     their own, so they deliver identical values under two labels, and the same pairing recurs in the bare-soil,
-    deciduous-tree and grass classes. Both questions are about selection, not about any component''s value,
-    and both are better settled once across the Ward et al. (2016) archetypes than one composite at a
+    deciduous-tree and grass classes. All three questions are about selection, not about any component''s
+    value, and are better settled once across the Ward et al. (2016) archetypes than one composite at a
     time.'
-  evidence_revision: sha256:103d242a8e436ae3c70cc3bc86720c6494c59354bb0d6e1f8a73cd6e35ea420d
+  evidence_revision: sha256:e99cf9e549a2c593dfe0907930e5e775c18c501b52869c984e2bcf91426b22e7
 verification:
   attestations: []
