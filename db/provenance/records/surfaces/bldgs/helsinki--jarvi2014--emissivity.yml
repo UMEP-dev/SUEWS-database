@@ -1,123 +1,128 @@
 provenance_record: records/surfaces/bldgs/helsinki--jarvi2014--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d6c63869352f30d241752210d7e4e01a513a9ef682e7c355c50ab416ac5e8be7
+record_revision: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
+    oke1987: sha256:c82ebaff6fc536bf99e37ea10f3d2f03439fb2658e42a704707469c18fad4f4e
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
 assessment:
-  status: curation_required
-  assessed_at: '2026-09-02T16:29:17Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T18:05:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: Building matches the record's land_cover.bldgs target.
+      - jarvi2011-table-2a
+      note: Building is the surface-class heading under which Järvi et al. publish the parameter.
     target:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: An emissivity is a land_cover.bldgs property.
+      - jarvi2011-table-2a
+      note: Emissivity is tabulated as a land_cover.bldgs parameter.
     values:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
+      - jarvi2011-table-2a
+      - jarvi2014-table-4a
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/183
-      note: The record now stores emis 0.95, which is what Table 4a gives in its Bldg column. It previously
-        stored 0.91, the figure published for the Pav column, and its paired record held the reverse,
-        so the two surfaces carried each other's emissivity. Column identity was verified by character
-        position in a layout-preserving extraction, not read off a flattened dump.
+      note: The record stores emis 0.95, the Building-column value in Järvi et al. (2011) Table 2(a)
+        and Järvi et al. (2014) Table 4(a). It previously stored the pavement value 0.91; issue 183
+        corrected that transposition.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
+      - jarvi2011-table-2a
+      - oke1987-table-8-2
+      - jarvi2014-table-4a
+      note: Järvi et al. (2011) are the earliest checked publication that maps the exact 0.95 value
+        to the SUEWS Building class. Their footnote points to Oke (1987), whose Table 8.2 gives an
+        average urban-area emissivity of approximately 0.95 but does not publish a SUEWS building-class
+        parameter. Järvi et al. (2014) later repeat the mapped value.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is the study location; the emissivity is an inherited value rather than a Helsinki
-        determination.
+      - jarvi2011-table-2a
+      - oke1987-table-8-2
+      note: The supporting tables present a model surface-class or mid-latitude urban-area value,
+        not a Helsinki determination, so generic is the supported evidence scope. The stable path
+        and origin retain migration lineage.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi2011-table-2a
+      - oke1987-table-8-2
+      note: The evidence supports a generic parameter rather than a site, city or regional empirical
+        determination.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi2011-table-2a
+      note: Järvi et al. tabulate the value for the Building surface class, so land_cover is the
+        supported application scale.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: A literature value carried into the model parameter table; the article performs no emissivity
-        measurement, so the production method belongs to whichever publication it came from.
+      - jarvi2011-table-2a
+      note: The database adopts a published model parameter without performing a new measurement or fit.
     identity:
       conclusion: supported
       evidence_ids:
-      - jarvi-table-4a
-      note: >-
-        Table 4a gives buildings and pavement separate emissivity cells, so two records are correct.
-        The earlier transposition has been corrected: the building record carries 0.95 and the pavement
-        sibling carries 0.91.
+      - jarvi2011-table-2a
+      - jarvi2014-table-4a
+      note: Both papers publish separate Building and Pavement cells. The records therefore remain
+        separate even though issue 183 found that their migrated values had been transposed.
       related_records:
       - records/surfaces/paved/helsinki--jarvi2014--emissivity
   evidence:
-  - id: jarvi-table-4a
+  - id: jarvi2011-table-2a
+    source: jarvi2011
+    role: parameter_source
+    locators:
+    - kind: table
+      label: Table 2(a), Building column, emissivity row
+      page: 223
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: Publishes the exact SUEWS Building emissivity epsilon_i = 0.95 and marks the cell with
+        footnote f to Oke (1987).
+  - id: oke1987-table-8-2
+    source: oke1987
+    role: input_data
+    locators:
+    - kind: table
+      label: Table 8.2, radiative properties of typical urban materials and areas
+      page: 281
+      note: Gives mid-latitude urban areas an emissivity range of 0.85-0.96 and an average of approximately
+        0.95. This is the upstream literature behind Järvi et al.'s footnote, but it does not itself
+        map the value to the SUEWS Building class.
+  - id: jarvi2014-table-4a
     source: jarvi2014
     role: compilation
     locators:
     - kind: table
-      label: Table 4a, parameters used in SUEWS by surface
+      label: Table 4(a), Building column, emissivity row
       page: 1701
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Seven surface columns: Bldg, Pav, Everg., Decid., Irr. veg, Grass, Water. Si 0.25, 0.48,
-        1.3, 0.3-0.8, blank, 1.9, 0; D0,i 10, 10, 0.013, 0.013, 10, 0.013; b 3, 3, 1.71, 1.71, 0.013,
-        1.71; alpha_i 0.15, 0.09a, 0.10, 0.16b, 0.19, 0.19b, 0.08b; epsilon_i 0.95, 0.91, 0.98, 0.98,
-        0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
-        and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
-        marks Vargo et al. (2013).'
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'Table 4a gives 0.95 in its Bldg column and this record now stores it. It previously
-    stored 0.91, the value published for the Pav column, while its paired record held the reverse: the
-    two emissivities were transposed. Both are plausible urban values, which is exactly why the swap survived
-    casual reading, and why it was corrected on the strength of the table rather than of any single reading
-    of it. Column alignment was verified by character position, because a flattened extraction of a seven-column
-    table cannot be trusted for it. What remains open is provenance rather than value: the Table 4 caption
-    makes every unfootnoted cell an inherited value, so the citation names a compiler, and the record
-    still claims city representativeness for a study whose footprints are 1 km circles.'
-  evidence_revision: sha256:99b7425816350caa216ec6d340558455c71e48b140cca205bc65745194bc3ac5
+      note: Later repeats Building emissivity 0.95; the caption says unfootnoted values use the sources
+        in Järvi et al. (2011).
+  scientific_note: Järvi et al. (2011) Table 2(a) is the earliest checked publication that states
+    the exact 0.95 as the SUEWS Building-class emissivity. Oke (1987) Table 8.2 is its explicitly
+    cited upstream literature and gives approximately 0.95 for the average mid-latitude urban area,
+    but the SUEWS surface-class mapping is made by Järvi et al. The canonical source is therefore
+    jarvi2011, while the sidecar retains the Oke lineage. Järvi et al. (2014) later repeat the value.
+    The record now describes a generic land-cover literature parameter while preserving its stable
+    path, origin and legacy identity. No value changes.
+  evidence_revision: sha256:5dd5694e2b8cf8ec615bc2b163fae8fe4a994fb2d582f74341ce67b72f65eb42
 verification:
   attestations: []
