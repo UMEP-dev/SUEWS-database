@@ -11,7 +11,7 @@ dependency_revisions:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
-    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
     records/surfaces/paved/se-england--ward2016--albedo: sha256:41cb05354813583a58eb85cfb36c0ce31a75c4f64d1e0cdea3f9ed3d1abbe563
     records/surfaces/paved/se-england--ward2016--drainage: sha256:dd70eb57a1ea89af450561e4db91eaa3c675b4896d8d427e1ff1e7c9aa933eb4
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
@@ -93,8 +93,8 @@ assessment:
         place swindon. The albedo, water_storage and drainage slots take records with place se-england,
         which db/places.yml records as ''SE England'', subnational: true, country united-kingdom, the
         region containing Swindon, so applying them to the town is a downscaling rather than a substitution.
-        The snow_lim_patch slot takes records/surfaces/paved/helsinki--jarvi2014--snow-lim, the only paved
-        snow_lim record in the database. The construction record declares place generic and the two OHM
+        The snow_lim_patch slot takes the generic Järvi paved-surface default, the only paved snow_lim
+        record in the database. The construction record declares place generic and the two OHM
         records declare no place. The database also holds records/surfaces/paved/swindon--ward2013--drainage,
         place swindon, representativeness site, source ward2018, referenced by no archetype, and the drainage
         slot takes the se-england record instead. Both drainage records now declare source ward2018 and
@@ -113,8 +113,8 @@ assessment:
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
       note: The composite declares representativeness city. Water storage and drainage are regional,
-        emissivity and snow limit are city, construction is generic, and the OHM records declare no
-        representativeness. The albedo is fitted site evidence from the Ward et al. study locations;
+        emissivity is city-scoped, snow limit and construction are generic, and the OHM records declare
+        no representativeness. The albedo is fitted site evidence from the Ward et al. study locations;
         extending that narrower evidence to a city claim requires human curation.
     method:
       conclusion: supported
@@ -183,9 +183,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
-      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
-      snowpack_limit.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.paved, name Paved, place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
   - id: component-ohm-generic--ward2016--paved
     record: records/ohm/generic--ward2016--paved
     role: component
@@ -213,9 +213,10 @@ assessment:
     differ. Preserving the regional reference keeps the established assembly stable, while deciding whether
     the duplicate records should be consolidated is separate curation.
     The remaining two slots leave the ward2016 set for want of alternatives: snow_lim_patch takes the
-    only paved snowpack-limit record there is, and construction takes an archived internal fixture that
+    generic Järvi paved-surface default, the only paved snowpack-limit record there is, and construction
+    takes an archived internal fixture that
     contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment.'
-  evidence_revision: sha256:87ff212f09cb2e158c36358e6a45dd8d1e3bfdddfba15714eacdbfdfc3605bf5
+  evidence_revision: sha256:a8cefe737d7ba32348d73545059fd1e2b0b43ea2043945d6a0487565a70384ba
 verification:
   attestations: []

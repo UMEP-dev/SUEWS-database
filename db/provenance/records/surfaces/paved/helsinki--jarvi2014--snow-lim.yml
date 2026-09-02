@@ -1,12 +1,13 @@
 provenance_record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+record_revision: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
 dependency_revisions:
   sources:
+    jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places:
-    helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
+    generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
@@ -14,61 +15,70 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T13:35:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: literature
   findings:
     name:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: Paved matches the surface column the value is read from.
+      note: Paved matches the Pav surface column from which the value is read.
     target:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: A snowpack limit is a land_cover.paved property.
+      note: Table 4(a) publishes SWE_i,max as a paved-surface model parameter, matching land_cover.paved.
     values:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: Table 4a gives SWE,i max as 190 mm in every surface column, so the stored 190 is the published
-        value.
+      note: Table 4(a) gives SWE_i,max as 190 mm in the Pav column, exactly matching the stored value.
     source:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: The Table 4 caption states that sources of the values are as in Järvi et al. (2011) unless
-        a footnote says otherwise, and this cell carries no footnote. Järvi et al. (2014) compiles the
-        value rather than deriving it.
+      - jarvi-table-4a
+      - jarvi2011-no-snow
+      note: Järvi et al. (2014) are the first accessible publication of the 190 mm SUEWS threshold.
+        The blanket Table 4 caption cannot make Järvi et al. (2011) its source because that paper explicitly
+        states that snow accumulation and melt were not yet modelled.
     place:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: Helsinki is where the study ran, but this cell is an inherited value rather than a Helsinki
-        determination.
+      - jarvi-table-4a
+      note: Table 4(a) presents one unqualified paved-surface model default used across the Helsinki and
+        Montreal applications. Generic records the absence of a source-specific place claim; it does
+        not assert universal empirical validity.
     representativeness:
-      conclusion: correction_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-sites
-      note: The record claims city representativeness. Table 1 characterises the Helsinki eddy covariance
-        footprints as 1 km radius circles and the two catchments as 23.8 and 44.8 ha; the study determines
-        neighbourhood-scale values, not city-wide ones.
+      - jarvi-table-4a
+      note: The publication gives the threshold as an unqualified model default rather than a fitted
+        Helsinki or Montreal result, so generic is the supported evidence class.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-table-4a
+      note: SWE_i,max is tabulated separately by SUEWS land-cover surface; the value therefore applies
+        at land-cover scale.
     method:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - jarvi-table-caption
-      note: A value carried forward from an earlier publication, so the production method belongs to that
-        publication rather than to this one.
+      - jarvi-table-4a
+      note: Literature records direct adoption of the published Table 4(a) model input without a new
+        calculation or fit in this database.
     identity:
       conclusion: supported
       evidence_ids:
       - jarvi-table-4a
-      note: Six records carry the same 190 mm under this citation, one per surface. That is what Table
-        4a prescribes, since the row is uniform, rather than an accidental duplication.
+      note: Table 4(a) assigns 190 mm to buildings, pavement, evergreen trees, deciduous trees, irrigated
+        vegetation and grass. The retained target-specific records therefore represent deliberate per-land-cover
+        applications rather than accidental duplicates; the bare-soil sibling remains unsupported because
+        the table has no bare-soil column.
       related_records:
       - records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
       - records/surfaces/bsoil/helsinki--jarvi2014--snow-lim
@@ -78,7 +88,7 @@ assessment:
   evidence:
   - id: jarvi-table-4a
     source: jarvi2014
-    role: compilation
+    role: parameter_source
     locators:
     - kind: table
       label: Table 4a, parameters used in SUEWS by surface
@@ -90,34 +100,20 @@ assessment:
         0.93, 0.93, 0.95; gi,max -, -, 7.4, 11.7, 40, 33.1; SWE,i max 190 for each of the six land surfaces
         and a dash for Water. Footnote a marks a value optimised using data from Helsinki, footnote b
         marks Vargo et al. (2013).'
-  - id: jarvi-table-caption
-    source: jarvi2014
-    role: compilation
+  - id: jarvi2011-no-snow
+    source: jarvi2011
+    role: validation
     locators:
-    - kind: text
-      label: Table 4 caption
-      page: 1701
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that sources of the values are as in Järvi et al. (2011) unless indicated otherwise
-        below, so an unfootnoted cell in this table is an inherited value rather than one this study determined.
-  - id: jarvi-sites
-    source: jarvi2014
-    role: compilation
-    locators:
-    - kind: table
-      label: Table 1, characteristics of the observational sites
-      page: 1696
-      url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: 'Five sites: Kumpula, Pasila and Pihlajamäki in Helsinki, and an urban and a suburban site
-        in Montreal. Each Helsinki eddy covariance footprint is a 1 km radius circle and the catchments
-        are 23.8 and 44.8 ha. London is not a study site; the word appears in the article only in a code-availability
-        address and in a publisher''s address in the reference list.'
-  scientific_note: 'The number is right and the table is unambiguous: SWE,i max is 190 mm in every surface
-    column, which is why six records share it. Two things sit behind it. The table caption makes this
-    an inherited value rather than a determination of this study, and the article''s own text says the
-    snow transport limits were estimated from maximum mass allowances at one Helsinki catchment with the
-    same values used at all sites because no further information was available. City representativeness
-    for Helsinki does not follow from that.'
-  evidence_revision: sha256:16d85da821eef55a893c16ea4d1358254fe56c30d4d9fe3d47e17a9ad02bfbde
+    - kind: section
+      label: Conclusions and future developments
+      page: 229
+      url: https://doi.org/10.1016/j.jhydrol.2011.10.001
+      note: States that snow accumulation and melt were not yet included in SUEWS, ruling this paper
+        out as the source of a snowpack threshold.
+  scientific_note: Järvi et al. (2014) Table 4(a) directly publishes paved-surface SWE_i,max as 190 mm.
+    It is distinct from the 40/100 mm SWE_Lim snow-transport thresholds discussed elsewhere in the paper.
+    The record now treats 190 mm as an unqualified land-cover default rather than a Helsinki city determination.
+    No value, stable path, name, target, origin or legacy ID changes.
+  evidence_revision: sha256:83ac0821226237824aa98c4d30798001a6e600cb34d44bf12ac9ab696be81242
 verification:
   attestations: []

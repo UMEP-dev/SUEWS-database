@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
-    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
 assessment:
   status: curation_required
   assessed_at: '2026-08-23T02:15:00Z'
@@ -118,6 +118,6 @@ assessment:
     snow transport limits were estimated from maximum mass allowances at one Helsinki catchment with the
     same values used at all sites because no further information was available. City representativeness
     for Helsinki does not follow from that.'
-  evidence_revision: sha256:2afdb6d7fb19dac9e625997934cf801e0ad98d08a2b23660db29cefce418aaa7
+  evidence_revision: sha256:83589ec68b3a548a7b30673a8506465487dbea72f56aa6c488abc749afbe9cb3
 verification:
   attestations: []

@@ -13,12 +13,12 @@ dependency_revisions:
     records/ohm/generic--unreferenced--paved: sha256:15123edba703f59b7bc19c8e62c3c10acc6d85aee62ce5f6a8a89c541a1a1066
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:51567ff980f3f6acdcf05b3eaddfb8ab5a560c46bb1ec5b930a0f4bacf5f3797
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
-    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:6897dd69061f655c953333d3fcbbf46fbf6e0824d5598bf2bd9ecc44307d77d0
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
-  assessed_at: '2026-09-02T16:29:17Z'
+  assessed_at: '2026-08-23T00:43:17Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -84,17 +84,17 @@ assessment:
       - archetypes/surfaces/paved/helsinki--city-centre
       - archetypes/surfaces/paved/helsinki--kumpula
       note: 'The composite declares place zurich, which db/places.yml records as Zurich, Koppen Cfb, country
-        switzerland. Not one of its seven components declares that place. The albedo and snow_lim_patch
-        slots take Helsinki records, which db/places.yml records as Koppen Dfb; emissivity, water_storage
-        and drainage take generic Järvi et al. (2011) literature records; the construction
+        switzerland. Not one of its seven components declares that place. Only the albedo slot takes a
+        Helsinki record, which db/places.yml records as Koppen Dfb; emissivity, water_storage, snow_lim_patch
+        and drainage take generic literature records; the construction
         record declares place generic and records/ohm/generic--unreferenced--paved declares no place.
         The database holds Zurich records elsewhere, under records/surfaces/evetr/, records/surfaces/grass/,
         records/surfaces/dectr/, records/surfaces/common/ and records/irrigation/, but none for land_cover.paved,
         so no Zurich paved value is being passed over. What makes this a decision rather than a forced
         gap is that the uses block is byte-identical to those of archetypes/surfaces/paved/helsinki--city-centre
-        and archetypes/surfaces/paved/helsinki--kumpula: the entry publishes the Helsinki paved set under
-        a Zurich label, including a snowpack_limit carried across a Dfb to Cfb difference the place registry
-        itself records. A maintainer has to decide whether that is a deliberate stand-in or an artefact
+        and archetypes/surfaces/paved/helsinki--kumpula: the entry publishes the same component set under
+        a Zurich label, including one Helsinki city row. A maintainer has to decide whether that is
+        a deliberate stand-in or an artefact
         of the migration.'
     representativeness:
       conclusion: curation_required
@@ -106,10 +106,10 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The snow-limit component declares city,
-        but the fitted albedo is site-scoped; emissivity, water storage, drainage and construction declare
-        generic; and the OHM record declares no representativeness. The site-to-city transfer compounds
-        the already documented Helsinki-to-Zurich place transfer and needs a composition-level rationale.
+      note: The composite declares representativeness city. The fitted albedo is site-scoped;
+        emissivity, water storage, snow limit, drainage and construction declare generic; and the OHM
+        record declares no representativeness. The site-to-city transfer compounds the already documented
+        Helsinki-to-Zurich place transfer and needs a composition-level rationale.
     method:
       conclusion: supported
       evidence_ids:
@@ -179,9 +179,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
-      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
-      snowpack_limit.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.paved, name Paved, place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
   - id: component-ohm-generic--unreferenced--paved
     record: records/ohm/generic--unreferenced--paved
     role: component
@@ -190,21 +190,20 @@ assessment:
       802, 901, 902, 903, 905, 906. [800]' and source unreferenced, carries a1, a2 and a3, and declares
       no place, no representativeness and no season_label.
   scientific_note: 'archetypes/surfaces/paved/zurich--city-centre is a Zurich typology with no Zurich
-    content. Its site-fitted albedo and city-scoped snowpack limit come from Helsinki; emissivity, water
-    storage and drainage are generic Järvi et al. (2011) literature records; its construction comes from
-    an archived internal fixture
+    content. Its site-fitted albedo comes from Helsinki; emissivity, water storage and drainage are generic
+    Järvi et al. (2011) literature records; snowpack limit is generic Järvi et al. (2014) literature
+    evidence; its construction comes from an archived internal fixture
     and its four OHM positions from a generic row whose source field reads unreferenced. Scarcity explains
     part of that, since the database holds no paved surface record for Zurich at all, and its Zurich records
     sit under vegetation, soil and irrigation instead. Scarcity does not explain the shape of the result.
     The uses block is identical, record for record and position for position, to those of archetypes/surfaces/paved/helsinki--city-centre
     and archetypes/surfaces/paved/helsinki--kumpula, so what this entry publishes is the Helsinki paved
-    set relabelled. That matters most for snowpack_limit, which arrives from a city db/places.yml classes
-    Dfb into an entry for a city it classes Cfb. Two readings fit and the files do not decide between
-    them: the Helsinki set may be a deliberate stand-in chosen because nothing closer exists, or the Zurich
-    row may simply have inherited its neighbours'' references during migration. The albedo additionally
-    moves from a site fit to a city typology without a stated rationale. A maintainer should settle
-    it, and should settle it together with the duplication between the two Helsinki entries, because the
-    same seven components carry all three.'
-  evidence_revision: sha256:da86fdf3c20feb4a1b350cc81127f696db25b0fbcfc8369cf6f6d46ab334c32b
+    set relabelled. Two readings fit and the files do not decide between them: the Helsinki-linked set may
+    be a deliberate stand-in chosen because nothing closer exists, or the Zurich row may simply have
+    inherited its neighbours'' references during migration. The albedo additionally moves from a site fit
+    to a city typology without a stated rationale. A maintainer should settle it, and should settle it
+    together with the duplication between the two Helsinki entries, because the same seven components
+    carry all three.'
+  evidence_revision: sha256:a6c5dc4bfe1734ef4bb27e480295c48a9521ccff2f6c1025dbbbafa1208f5a3d
 verification:
   attestations: []
