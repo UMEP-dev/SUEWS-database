@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/grass/beijing--zheng-y2023--max-conductance: sha256:61bee12cc6d664285f66efddf8eeb976d44277fe85cecc421e248d703e05f86a
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
-    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
+    records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:a231ae2f6b10bcaa9796cd2c0c39dfb7d43f4565fcc79ddbde25358997bc19c5
     records/surfaces/grass/helsinki--vargo2013--albedo: sha256:86904115545a68179ef83dab377e9f0be0280cb9f0539ddd20524e89174c6f5a
     records/surfaces/grass/london--havu-m2024--drainage: sha256:69e6d1e8b45069dee97da41aaa90004596cda10b825b5cc6656da0b2eed0abe9
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
@@ -75,7 +75,7 @@ assessment:
         a source, as the snow archetypes do for the scalars they assert themselves, and this entry carries
         none. Each component's own source belongs to that component's evidence assessment.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-grass-beijing-zheng-y2023-lai-power
       - component-surfaces-grass-beijing-zheng-y2023-max-conductance
@@ -83,17 +83,11 @@ assessment:
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-se-england-ward2016-emissivity
       - component-surfaces-grass-london-havu-m2024-drainage
-      note: The composite declares place beijing, which db/places.yml gives as lat 39.9, lon 116.41, koppen
-        Dwa. Two of the twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance;
-        biogen_co2 declares place espoo for its fitted lawn evidence, and no unused Beijing grass record
-        exists for any remaining slot. Two declare
-        place helsinki (koppen Dfb), filling snow_lim_patch and vegetation_growth, and one declares place
-        se-england (koppen Cfb, subnational), filling water_storage; drainage, albedo, emissivity,
-        leaf_area_index and porosity declare place generic; and the ohm component carries
-        no place field. Ten of twelve slots
-        are therefore filled from outside China because the database offers nothing closer, which is a
-        transparent transfer rather than a defect. The drainage component is a generic grass parameter
-        published by Järvi et al.; its Havu archive locator records later reuse rather than a Beijing fit.
+      note: The composite declares place beijing. Two of twelve components carry that place; one site-scoped
+        biogenic record carries place espoo, one site-scoped water-storage record carries place swindon,
+        the phenology record carries place helsinki, six components are generic and the OHM record carries
+        no place. Snowpack limit and drainage are generic literature inputs. The Espoo, Swindon and Helsinki
+        selections need an explicit composition rationale rather than being presented as Beijing evidence.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -104,12 +98,10 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-lai
       - component-surfaces-grass-helsinki-vargo2013-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: The composite declares representativeness city, but its leaf_growth_power component is now
-        correctly classed site because the coefficients were fitted to one park, and its biogenic CO2
-        component is site evidence from one Espoo lawn. A city archetype therefore contains two narrower
-        site-only fits. Whether to retain them knowingly or narrow the composite is
-        a separate composition-curation decision; the regional water-storage component and the five
-        generic components are broader than the composite and do not create the same over-claim.
+      note: The composite declares representativeness city. Six components are generic, two are city,
+        three are site-scoped—the Beijing leaf-growth fit, Espoo biogenic evidence and Swindon water-storage
+        input—and the OHM record declares no class. The site results are narrower than the city archetype
+        and require composition-level adjudication.
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -133,7 +125,7 @@ assessment:
     record: records/ohm/generic--unreferenced--grass
     role: component
     note: Fills all four ohm positions, summer_wet, summer_dry, winter_wet and winter_dry. The record
-      declares target ohm_coefficients, name "Short grass [30]" and source unreferenced; it carries no
+      declares target ohm_coefficients, name "Short grass [30]" and source grimmond1991b; it carries no
       place or representativeness field. It declares no season_label, so one set fills all four positions.
   - id: component-surfaces-grass-beijing-zheng-y2023-biogen-co2
     record: records/surfaces/grass/beijing--zheng-y2023--biogen-co2
@@ -165,8 +157,9 @@ assessment:
   - id: component-surfaces-grass-helsinki-jarvi2014-snow-lim
     record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.grass, name "Grass", place
-      helsinki, representativeness city and source jarvi2014.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.grass, name "Grass", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-grass-helsinki-vargo2013-albedo
     record: records/surfaces/grass/helsinki--vargo2013--albedo
     role: component
@@ -191,21 +184,24 @@ assessment:
   - id: component-surfaces-grass-se-england-ward2016-water-storage
     record: records/surfaces/grass/se-england--ward2016--water-storage
     role: component
-    note: Fills the water_storage slot. The record declares target land_cover.grass, name "Grass", place
-      se-england, representativeness regional and source jarvi2011.
+    note: Fills the water_storage slot. The stable path retains SE England migration lineage, while the
+      record declares target land_cover.grass, name "Grass", place swindon, representativeness site,
+      source ward2018 and method literature.
   scientific_note: 'The mapping is sound and the selection is defensible, but the entry is only in part
     a Beijing set. Two of its twelve components declare place beijing, filling leaf_growth_power and max_vegetation_conductance
     from zheng-y2023. The Zheng-sourced biogen_co2 component retains its stable Beijing path but is now
     correctly scoped to the Espoo lawn where beta was fitted, so the other ten slots have no Beijing evidence.
-    The radiative and hydrological slots come from
-    generic literature, Helsinki, London and SE England, and the ohm slot from an unreferenced generic set named "Short grass [30]".
+    The radiative and hydrological slots are mostly generic literature inputs, with site-scoped water
+    storage from Swindon; phenology comes from Helsinki while snowpack limit is generic, and the ohm
+    slot takes an unreferenced generic set named "Short grass [30]".
     A reader should treat the composite as the phenology and conductance parameters zheng-y2023 fitted
     for Beijing, carried on borrowed values elsewhere, rather than as a set observed in Beijing; every
     component''s own place is declared on its record, so the transfer is visible rather than hidden. The
-    leaf_growth_power component is a one-park site fit and the biogenic CO2 component is one-lawn site
-    evidence inside this city-classed composite, which requires explicit composition curation rather
+    leaf_growth_power component is a one-park site fit, the biogenic CO2 component is one-lawn site evidence
+    and the water-storage component is site-scoped to Swindon inside this city-classed composite, which
+    requires explicit composition curation rather
     than being treated as city-wide evidence. The drainage component
     is openly generic literature evidence rather than a Beijing observation.'
-  evidence_revision: sha256:feb81e7ac6badcb34dc1e49ff0a0609fed2a5723c8762c0124e427e86cb2be4f
+  evidence_revision: sha256:53f02180a024e4be874f1f448b9efed3ccad2e85bc2ec4eab4fda9c7481a7c3c
 verification:
   attestations: []

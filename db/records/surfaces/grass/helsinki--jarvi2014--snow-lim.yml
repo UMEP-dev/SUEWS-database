@@ -2,10 +2,12 @@ record: records/surfaces/grass/helsinki--jarvi2014--snow-lim
 schema_version: '2026.5'
 target: land_cover.grass
 name: Grass
-place: helsinki
+place: generic
 origin: Helsinki, Finland
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: jarvi2014
+method: literature
 legacy_id: 38240006
 parameters:
   snowpack_limit: 190
