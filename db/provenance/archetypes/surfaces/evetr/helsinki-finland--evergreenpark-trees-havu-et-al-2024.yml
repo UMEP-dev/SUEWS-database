@@ -17,13 +17,13 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
-    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
 assessment:
-  status: agent_assessed
-  assessed_at: '2026-08-24T15:01:54Z'
+  status: curation_required
+  assessed_at: '2026-09-02T16:17:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -73,17 +73,17 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-se-england-ward2016-lai
-      note: 'Five components take Helsinki rows. Albedo, emissivity, water storage and leaf area index
-        take SE England rows because the database holds no Helsinki record for those slots. Drainage
-        is a generic land-cover literature tuple also reused in Havu''s archived Helsinki configuration,
-        so it is compatible with this slot without being presented as a Helsinki fit.'
+      note: 'Five components take Helsinki rows. Albedo, emissivity and drainage are generic literature
+        parameters, and leaf area index is a regional SE England row. Water storage is a site-scoped
+        Swindon value; using that site result in a Helsinki city archetype needs an explicit composition
+        decision because the database records no Helsinki alternative or published transfer rationale.'
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-se-england-ward2016-emissivity
@@ -97,9 +97,10 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. The Helsinki rows are classed city, the four
-        SE England rows regional, drainage and porosity generic, and the OHM record carries no representativeness.
-        No component is narrower than the composite, so no site-only value is presented as city evidence.
+      note: The composite declares representativeness city. Five Helsinki rows are city, albedo, emissivity,
+        drainage and porosity are generic, leaf area index is regional, and water storage is a site-scoped
+        Swindon result. That site-to-city transfer requires human curation; the OHM record carries no
+        representativeness.
     method:
       conclusion: supported
       evidence_ids:
@@ -145,8 +146,9 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-albedo
     record: records/surfaces/evetr/se-england--ward2016--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills albedo. The stable SE England-path record declares target land_cover.evetr, place generic,
+      representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its path and origin preserve later UK application lineage.
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
@@ -209,10 +211,11 @@ assessment:
     CO2. It takes the Havu et al. variant named "Evergreen trees + grass", which reads as trees over grass
     and so as a park, while a fourth variant named for low vegetation sits unused in the database; the
     entries do not record which plot type each label came from, so the selection is undocumented rather
-    than contradicted. Helsinki rows fill the slots for which Helsinki evidence exists, SE England regional
-    rows fill four for which it does not, the two LAI components agree on lai_type 1, and one unlabelled
+    than contradicted. Helsinki rows fill the slots for which Helsinki evidence exists; the remaining
+    slots use generic albedo and emissivity, regional SE England leaf area index, and site-scoped Swindon
+    water storage. The water-storage transfer requires curation. The two LAI components agree on lai_type 1, and one unlabelled
     coefficient record fills all four OHM positions. Drainage is openly generic land-cover literature
     evidence, with Havu''s later Helsinki application recorded in its own sidecar.'
-  evidence_revision: sha256:74dc080e10a400070431091ba13e8ebd2ec723ab1034e5b6854b5f9224b252bc
+  evidence_revision: sha256:389fc4190b944321eb84eee5c0a352921e29fdb861b9863231379d36b37fa0bd
 verification:
   attestations: []

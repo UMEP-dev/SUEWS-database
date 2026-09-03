@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/evetr/london--havu-m2024--drainage: sha256:5d971c9b24cc831208b16b2dd8f30ca05dd8dd42da6a5c8930fba899d1ec9d2b
-    records/surfaces/evetr/se-england--ward2016--albedo: sha256:6f41b3e15e7cd44682a705aa879d9033553613fb05d21a8db82e0f49e1b13da5
+    records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
     records/surfaces/evetr/se-england--ward2016--lai: sha256:b178e6d7d90d451eb9493365044d21626d5c9aca785fcac6fa9e5754e1ceb7dc
     records/surfaces/evetr/se-england--ward2016--water-storage: sha256:a229a675eb04c5412b98dbd3214105307f09ba70d90824ea4cf7df9ee90e37be
@@ -21,7 +21,7 @@ dependency_revisions:
     records/surfaces/evetr/zurich--stagakis-s2024--max-conductance: sha256:070b5ef8c0326d83dfb688d2d7603e2d91351a84f5e62687943777b70d2c51c1
 assessment:
   status: curation_required
-  assessed_at: '2026-08-24T15:01:54Z'
+  assessed_at: '2026-09-02T16:17:07Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -74,16 +74,17 @@ assessment:
         for this assembly. The components' own sources belong to their evidence assessments, not to this
         review.
     place:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-evetr-london-havu-m2024-drainage
       - component-surfaces-evetr-se-england-ward2016-albedo
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
-      note: 'Three distinctive slots take Zurich rows. Albedo, emissivity, water storage and leaf area
-        index take SE England rows because no Zurich alternatives exist; the Helsinki snow limit is the
-        only evergreen-tree snow limit, and no Zurich phenology record exists. Drainage is a generic
-        land-cover literature tuple, so it is compatible with this slot without being presented as a Zurich fit.'
+      note: 'Three distinctive slots take Zurich rows. Albedo, emissivity and drainage are generic literature
+        parameters, leaf area index is a regional SE England row, and water storage is a site-scoped
+        Swindon value. The Helsinki snow limit and phenology rows are the only available evergreen-tree
+        records for those slots. Moving the Swindon site result into a Zurich city archetype needs an
+        explicit composition decision.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -99,11 +100,10 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-snow-lim
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares representativeness city. The corrected leaf-growth-power component is
-        site-scoped to four Zurich parks, while the remaining Zurich and Helsinki rows are classed city,
-        the four SE England rows are regional, drainage and porosity are generic, and the OHM record carries
-        no class. The site-scoped component is narrower than the composite's city claim and needs maintainer
-        adjudication at composition level.
+      note: The composite declares representativeness city. Four Zurich and Helsinki rows are city; albedo,
+        emissivity, drainage and porosity are generic; leaf area index is regional; and leaf-growth power
+        and water storage are site-scoped results from four Zurich parks and Swindon respectively. Those
+        site-to-city transfers require human curation; the OHM record carries no representativeness.
     method:
       conclusion: supported
       evidence_ids:
@@ -146,8 +146,9 @@ assessment:
   - id: component-surfaces-evetr-se-england-ward2016-albedo
     record: records/surfaces/evetr/se-england--ward2016--albedo
     role: component
-    note: Fills albedo. The record declares target land_cover.evetr, place se-england and representativeness
-      regional, and is named "Evergreen trees"; its source field reads ward2016.
+    note: Fills albedo. The stable SE England-path record declares target land_cover.evetr, place generic,
+      representativeness generic, applicable_scale land_cover, source jarvi2011 and method literature.
+      Its path and origin preserve later UK application lineage.
   - id: component-surfaces-evetr-se-england-ward2016-emissivity
     record: records/surfaces/evetr/se-england--ward2016--emissivity
     role: component
@@ -211,16 +212,15 @@ assessment:
       target ohm_coefficients and is named "Mixed Forest [20]  McCaughey (1985)"; its source field reads
       grimmond1991b, it declares method fitted, it carries no season_label and it declares no place or
       representativeness.
-  scientific_note: 'The composite takes Zurich rows for the three distinctive slots, falls back to SE
-    England regional rows and Helsinki city rows only where the database holds nothing for Zurich, and
-    uses a generic coniferous-tree literature tuple for drainage. The corrected leaf-growth-power component
-    is site-scoped to four parks, so using it under this city-level composite now requires maintainer adjudication.
-    The two
+  scientific_note: 'The composite takes Zurich rows for its three distinctive slots, Helsinki city rows
+    where no Zurich snow or phenology record exists, generic albedo, emissivity and drainage, regional
+    SE England leaf area index, and site-scoped Swindon water storage. The corrected Zurich leaf-growth-power
+    component is also site-scoped to four parks. Both site-to-city transfers need explicit curation. The two
     LAI components agree on lai_type 1, the slot set is complete, and the single unlabelled coefficient
     record across all four OHM positions is consistent with a record that declares no season. A separate
     source-registry point remains: the label says 2024 while db/sources.yml stores stagakis-s2024 with
     year 2025. The corrected biogen_co2 component has three values directly supported by Supplement
     Table S3 and three retained values whose provenance remains unresolved.'
-  evidence_revision: sha256:96262c334e898e2094081418e7206885faab2a79398ee378324d53391635730b
+  evidence_revision: sha256:0be8966b6f44802c40dd45228cef16e477bc44dc86f1339b636f202a72e9bb2c
 verification:
   attestations: []
