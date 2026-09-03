@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/grass/se-england--ward2016--drainage: sha256:5f7c6201ab21d0339d4190c95a18b2d17dcfe6686033a72b82254ae3b508d353
     records/surfaces/grass/se-england--ward2016--emissivity: sha256:b86e994e12bd5565a64fd94450a022eef8a9d2bf62fda52847be57bdc8a9796f
     records/surfaces/grass/se-england--ward2016--lai: sha256:5f5ff315352b24722f18ff4904437b82f144a453dea78f2988cd7230b69a6482
-    records/surfaces/grass/se-england--ward2016--lai-power: sha256:024d162599df1c08e2fa24aa44f6dc5d338c6c30907392eef2c9d0b63a117c83
+    records/surfaces/grass/se-england--ward2016--lai-power: sha256:3266861351582a53917c468883f4bd0b9f0a4282bd103dae4204e30c1b0d56d1
     records/surfaces/grass/se-england--ward2016--max-conductance: sha256:3788ddb2685a492f5e0bd94ffae79f012da2bbff15c3c57cc3e151fd62772fd9
     records/surfaces/grass/se-england--ward2016--phenology: sha256:2d70390a2e9047e423a2b9b9fbfb0e052a78f43a593d3c5a6dd96c22fc8cd8e0
     records/surfaces/grass/se-england--ward2016--water-storage: sha256:806010ec4f41f6a8abdd8ea828e77181a920350497fe6e0f6acec8b3d198ceae
@@ -128,13 +128,13 @@ assessment:
       - component-surfaces-grass-helsinki-jarvi2014-phenology
       - component-surfaces-grass-generic-unreferenced-porosity
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
-      note: 'The composite declares representativeness city. Two components declare regional, three declare
-        site (albedo, drainage and water storage), and two declare
-        city, being the Helsinki snow_lim_patch and vegetation_growth records; porosity, emissivity and
-        leaf_area_index declare generic; and the two ohm components carry no representativeness field.
-        The biogen_co2 component is mixed-scope: Ruimy''s alpha_bio_co2 and beta_bio_co2 are generic,
-        but Schmid''s resp_a and resp_b and Järvi''s min_res_bioco2 are site-scoped. The three site-scoped
-        records and mixed-scope biogenic input are narrower than the city composite, and no published composition rationale documents the
+      note: 'The composite declares representativeness city. One component declares regional, four declare
+        site (albedo, drainage, LAI-power and water storage), and two declare city, being the Helsinki
+        snow_lim_patch and vegetation_growth records; porosity, emissivity and leaf_area_index declare
+        generic; and the two ohm components carry no representativeness field. The biogen_co2 component
+        is mixed-scope: Ruimy''s alpha_bio_co2 and beta_bio_co2 are generic, but Schmid''s resp_a and resp_b
+        and Järvi''s min_res_bioco2 are site-scoped. The site-scoped records and mixed-scope biogenic input
+        are narrower than the city composite, and no published composition rationale documents the
         transplant, so city representativeness needs maintainer adjudication. The two city archetypes
         use the same shared component set and carry nothing specific
         to London, which is what
@@ -233,7 +233,8 @@ assessment:
     record: records/surfaces/grass/se-england--ward2016--lai-power
     role: component
     note: Fills the leaf_growth_power slot. The record declares target land_cover.grass, name "Grass (SE
-      England)", place se-england, representativeness regional and source jarvi2014.
+      England)", place se-england, representativeness site, source jarvi2014 and method fitted. Official
+      SUEWS documentation supplies the lai.lai_type 1 selector, matching the leaf_area_index component.
   - id: component-surfaces-grass-se-england-ward2016-max-conductance
     record: records/surfaces/grass/se-england--ward2016--max-conductance
     role: component
@@ -263,6 +264,6 @@ assessment:
     evetr archetypes for the same two cities, so the pattern should be settled once rather than surface
     by surface. Neither question can be closed from the composition layer: exchanging the phenology component
     changes a model input, and collapsing or differentiating two published typologies is a curation decision.'
-  evidence_revision: sha256:0944428d5ebb9598150bdc444f867e039963a190f5ac534e69f370b885f40691
+  evidence_revision: sha256:30d37f56251d14dec4529c493b703622f89cf19649189d3730a346ed42a15d73
 verification:
   attestations: []
