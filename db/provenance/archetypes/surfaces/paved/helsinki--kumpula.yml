@@ -11,7 +11,7 @@ dependency_revisions:
     archetypes/surfaces/paved/zurich--city-centre: sha256:fd6cb2199c5f1a160e5a866d5491452af212729e33fcf42e5444b7d9913c88ec
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/generic--unreferenced--paved: sha256:15123edba703f59b7bc19c8e62c3c10acc6d85aee62ce5f6a8a89c541a1a1066
-    records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:057a2b5d4356ba21a91dc325fb43e94d12c815bc45f3b5da2aee020e71c311cc
+    records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:51567ff980f3f6acdcf05b3eaddfb8ab5a560c46bb1ec5b930a0f4bacf5f3797
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:6897dd69061f655c953333d3fcbbf46fbf6e0824d5598bf2bd9ecc44307d77d0
@@ -89,7 +89,7 @@ assessment:
         OHM record carries place helsinki either. Nothing matching the composite's place is being passed
         over.
     representativeness:
-      conclusion: supported
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-paved-helsinki--jarvi2014--albedo
       - component-surfaces-paved-helsinki--jarvi2014--emissivity
@@ -98,10 +98,10 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The three Helsinki components declare city;
-        emissivity, water storage, drainage and construction declare generic, which is broader rather than narrower,
-        and records/ohm/generic--unreferenced--paved declares no
-        representativeness at all. No component is classed below the composite's scale.
+      note: The composite declares representativeness city. The snow-limit component declares city,
+        but the fitted albedo is site-scoped; emissivity, water storage, drainage and construction declare
+        generic; and the OHM record declares no representativeness. Using a site fit as a city typology
+        needs a composition-level rationale or a narrower composite class.
     method:
       conclusion: supported
       evidence_ids:
@@ -142,7 +142,7 @@ assessment:
     record: records/surfaces/paved/helsinki--jarvi2014--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place helsinki,
-      representativeness city and source jarvi2014, and carries alb.
+      representativeness site, source jarvi2014 and method fitted, and carries alb.
   - id: component-surfaces-paved-helsinki--jarvi2014--emissivity
     record: records/surfaces/paved/helsinki--jarvi2014--emissivity
     role: component
@@ -183,10 +183,10 @@ assessment:
       802, 901, 902, 903, 905, 906. [800]' and source unreferenced, carries a1, a2 and a3, and declares
       no place, no representativeness and no season_label.
   scientific_note: 'The selection itself holds up. archetypes/surfaces/paved/helsinki--kumpula declares
-    place helsinki and representativeness city. Albedo and snowpack limit come from Helsinki city rows;
-    emissivity, water storage and drainage come from generic Järvi et al. (2011) literature parameters;
-    construction is a generic archived fixture; and the OHM record declares no place. No paved drainage
-    or OHM record in the database carries place helsinki, and the construction
+    place helsinki and representativeness city. Its albedo is a Helsinki site fit and its snowpack limit
+    is a Helsinki city row; emissivity, water storage and drainage are generic Järvi et al. (2011)
+    literature parameters; construction is a generic archived fixture; and the OHM record declares no
+    place. No paved drainage or OHM record in the database carries place helsinki, and the construction
     slot contributes no exported value, since scripts/export_record.py keeps construction out of the surface
     fragment. The question a maintainer has to settle is what this entry adds. Its name points at a district
     while its representativeness field reads city, and its components are identical, record for record
@@ -194,8 +194,9 @@ assessment:
     the same place and the same class. Two entries that export the same fragment and differ only in label
     are either one entry with two names or two typologies whose distinct evidence has not been supplied;
     the files do not say which. archetypes/surfaces/paved/zurich--city-centre takes the same seven components
-    again, so the decision reaches beyond this pair. The drainage record is now documented as generic
+    again, so the decision reaches beyond this pair. The site-fitted albedo also needs an explicit rationale
+    before either composite can present it as city-representative. The drainage record is documented as generic
     literature evidence; the OHM record still declares source unreferenced, a question for that record''s own evidence review.'
-  evidence_revision: sha256:96c730b7f4cdd106d4df3be9ed22bb0f701552a9201b5c1ffd83c7528e370a54
+  evidence_revision: sha256:698c6b13a152cb9956d41cd67514eb2ac5997d2d33519cfff56a94d5711bc281
 verification:
   attestations: []

@@ -4,8 +4,9 @@ target: land_cover.paved
 name: Paved
 place: helsinki
 origin: Helsinki
-representativeness: city
+representativeness: site
 source: jarvi2014
+method: fitted
 legacy_id: 41240001
 parameters:
   alb: 0.09
