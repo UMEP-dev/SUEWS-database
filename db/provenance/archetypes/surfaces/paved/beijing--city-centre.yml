@@ -10,14 +10,14 @@ dependency_revisions:
     records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
     records/ohm/beijing--zheng-y2023--paved: sha256:d3840fc8c87eb3ee72d03958f65962a9315bb1b1ae50e4f88b6ec7cd58fb6990
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
-    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:6897dd69061f655c953333d3fcbbf46fbf6e0824d5598bf2bd9ecc44307d77d0
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
     records/surfaces/paved/shanghai--ao2016--albedo: sha256:118e7cc6bd0a53f843d5af025e2753a521f8b5606d440f23a522117e1be27212
     records/surfaces/paved/shanghai--ao2016--emissivity: sha256:11545d4292418609ee4470ad16f3c310d51f8b47498784dbdc3cc0d7eee02b44
 assessment:
   status: curation_required
-  assessed_at: '2026-09-02T16:29:17Z'
+  assessed_at: '2026-08-25T16:01:28Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -84,8 +84,8 @@ assessment:
       note: 'The composite declares place beijing, but none of its components carries that place. The
         OHM slot takes records/ohm/beijing--zheng-y2023--paved, site evidence from Alland; the albedo slot
         takes records/surfaces/paved/shanghai--ao2016--albedo, place shanghai;
-        emissivity and water_storage are generic literature records; snow_lim_patch takes a record with
-        place helsinki; and drainage and construction are generic. Most of that borrowing is forced, because the database
+        emissivity, water_storage, snow_lim_patch and drainage take generic literature records; construction
+        is a generic fixture. Most of that borrowing is forced, because the database
         holds no paved surface record with place beijing. The related record records/surfaces/paved/shanghai--ao2016--emissivity
         is now documented as generic Asphalt-road literature evidence from Oke (1987), with Shanghai retained
         only as its migrated origin. It is not a matched Shanghai CBD pair with the selected albedo and does not
@@ -100,8 +100,9 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-beijing--zheng-y2023--paved
-      note: The composite declares representativeness city. One component declares city, while emissivity,
-        water storage, drainage and construction are generic; the albedo is site evidence from a Shanghai central business district and
+      note: The composite declares representativeness city. No component declares city; emissivity, water_storage,
+        snow_lim_patch and drainage are generic literature records, and construction is generic; the albedo
+        is site evidence from a Shanghai central business district and
         the OHM tuple is site evidence from one road in Alland. Extending either site value to a Beijing
         city composite is an unsupported extrapolation that needs curation.
     method:
@@ -170,9 +171,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
-      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
-      snowpack_limit.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.paved, name Paved, place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
   - id: component-ohm-beijing--zheng-y2023--paved
     record: records/ohm/beijing--zheng-y2023--paved
     role: component
@@ -185,8 +186,8 @@ assessment:
     to all four season
     and wetness positions, and since it declares no season_label and is named ''Archived AN99 all-year
     paved configuration'' the four-way mapping contradicts nothing the record claims. Everything else is borrowed:
-    albedo from a site in a Shanghai central business district; emissivity, water storage and drainage from
-    generic Järvi et al. (2011) literature parameters; snowpack limit from Helsinki;
+    albedo from a site in a Shanghai central business district; emissivity, water storage, snowpack limit
+    and drainage from generic Järvi et al. literature parameters;
     and the construction reference from an archived internal construction fixture. The database holds no paved surface
     record for Beijing, so borrowing as such is the design docs/FORMAT.md describes rather than a defect.
     The related records/surfaces/paved/shanghai--ao2016--emissivity is no longer a paired Shanghai site record:
@@ -197,6 +198,6 @@ assessment:
     any case, because scripts/export_record.py deliberately keeps the construction slot out of the surface
     fragment. No composition source supports transferring the site-scale Shanghai albedo to city-scale
     Beijing.'
-  evidence_revision: sha256:ac7562b467ce3087c784cd33a7050bf7fecfd84d7198abb6d3538eff9dd6b2fc
+  evidence_revision: sha256:ba84a5d2a886453200d286bc4e5aaf75be157977f5e9fed0dacf611fb83d2b0e
 verification:
   attestations: []

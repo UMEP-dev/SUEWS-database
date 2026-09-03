@@ -13,12 +13,12 @@ dependency_revisions:
     records/ohm/generic--unreferenced--paved: sha256:15123edba703f59b7bc19c8e62c3c10acc6d85aee62ce5f6a8a89c541a1a1066
     records/surfaces/paved/helsinki--jarvi2014--albedo: sha256:51567ff980f3f6acdcf05b3eaddfb8ab5a560c46bb1ec5b930a0f4bacf5f3797
     records/surfaces/paved/helsinki--jarvi2014--emissivity: sha256:a2517a1887cecc381703218a535af7588148d7c5c74e157dc8e085fdab5af473
-    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:d9ca598decad62b24627c7a59c4766425a986ba5466d0cb26046026ef77154eb
+    records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
     records/surfaces/paved/helsinki--jarvi2014--water-storage: sha256:6897dd69061f655c953333d3fcbbf46fbf6e0824d5598bf2bd9ecc44307d77d0
     records/surfaces/paved/london--jarvi2011--drainage: sha256:43dbcdf34b8c592438f7c40aa08554ae5d9aba37df1bfa43931b4ac735d3ebf2
 assessment:
   status: curation_required
-  assessed_at: '2026-09-02T16:29:17Z'
+  assessed_at: '2026-08-23T00:43:17Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -80,8 +80,8 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares place helsinki. The albedo and snow_lim_patch slots take records declaring
-        place helsinki, so two of the seven components are the city's own rows. Emissivity, water_storage,
+      note: The composite declares place helsinki. Only the albedo slot takes a record declaring place
+        helsinki, so one of the seven components is the city's own row. Emissivity, water_storage, snow_lim_patch,
         drainage and construction take records with place generic; records/ohm/generic--unreferenced--paved
         declares no place at all. The generic literature records are within their stated scope. The database holds three paved drainage records,
         records/surfaces/paved/london--jarvi2011--drainage, records/surfaces/paved/se-england--ward2016--drainage
@@ -98,10 +98,10 @@ assessment:
       - component-constructions-generic--lindberg-f2020--placeholder
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--unreferenced--paved
-      note: The composite declares representativeness city. The snow-limit component declares city,
-        but the fitted albedo is site-scoped; emissivity, water storage, drainage and construction declare
-        generic; and the OHM record declares no representativeness. Using a site fit as a city typology
-        needs a composition-level rationale or a narrower composite class.
+      note: The composite declares representativeness city. The fitted albedo is site-scoped;
+        emissivity, water storage, snow limit, drainage and construction declare generic; and the OHM
+        record declares no representativeness. Using a site fit as a city typology needs a
+        composition-level rationale or a narrower composite class.
     method:
       conclusion: supported
       evidence_ids:
@@ -172,9 +172,9 @@ assessment:
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills the snow_lim_patch slot. The record declares target land_cover.paved, name Paved, place
-      helsinki, origin 'Helsinki, Finland', representativeness city and source jarvi2014, and carries
-      snowpack_limit.
+    note: Fills the snow_lim_patch slot. The stable path and origin retain Helsinki migration lineage,
+      while the record declares target land_cover.paved, name Paved, place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
   - id: component-ohm-generic--unreferenced--paved
     record: records/ohm/generic--unreferenced--paved
     role: component
@@ -183,11 +183,12 @@ assessment:
       802, 901, 902, 903, 905, 906. [800]' and source unreferenced, carries a1, a2 and a3, and declares
       no place, no representativeness and no season_label.
   scientific_note: 'The selection itself holds up. archetypes/surfaces/paved/helsinki--kumpula declares
-    place helsinki and representativeness city. Its albedo is a Helsinki site fit and its snowpack limit
-    is a Helsinki city row; emissivity, water storage and drainage are generic Järvi et al. (2011)
-    literature parameters; construction is a generic archived fixture; and the OHM record declares no
-    place. No paved drainage or OHM record in the database carries place helsinki, and the construction
-    slot contributes no exported value, since scripts/export_record.py keeps construction out of the surface
+    place helsinki and representativeness city. Its albedo is a Helsinki site fit; emissivity, water
+    storage and drainage are generic Järvi et al. (2011) literature parameters; snowpack_limit is generic
+    Järvi et al. (2014) literature evidence; construction is a generic archived fixture; and the OHM record
+    declares no place. No paved drainage or OHM record in the database carries place helsinki, and the
+    construction slot contributes no exported value, since scripts/export_record.py keeps construction out
+    of the surface
     fragment. The question a maintainer has to settle is what this entry adds. Its name points at a district
     while its representativeness field reads city, and its components are identical, record for record
     and position for position, to those of archetypes/surfaces/paved/helsinki--city-centre, which declares
@@ -197,6 +198,6 @@ assessment:
     again, so the decision reaches beyond this pair. The site-fitted albedo also needs an explicit rationale
     before either composite can present it as city-representative. The drainage record is documented as generic
     literature evidence; the OHM record still declares source unreferenced, a question for that record''s own evidence review.'
-  evidence_revision: sha256:698c6b13a152cb9956d41cd67514eb2ac5997d2d33519cfff56a94d5711bc281
+  evidence_revision: sha256:3c0d15df2531a119081d567283c620cd0868a1b67b090c7c587cb089ab059276
 verification:
   attestations: []
