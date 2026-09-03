@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:6081a2375d5404d1fb6e687e852feeb81a6ddae44e29ffabde5db5110b8df83a
     records/surfaces/dectr/se-england--ward2016--drainage: sha256:5b45ef55373ff342dcfb8a87e25a04bcab1d167a218166b2be7fe007e360348d
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
-    records/surfaces/dectr/se-england--ward2016--lai-power: sha256:1418cc1df7fed36451367b0297ad40849c2e005272e940221ecc8781d46d8a36
+    records/surfaces/dectr/se-england--ward2016--lai-power: sha256:9c094d75226be4a5ff0014f35db22b977b77c6231fc0f823b870127065c3900b
     records/surfaces/dectr/se-england--ward2016--max-conductance: sha256:4ef25b84129165ceb5be3ac8945325d577e8859546e202bf4675b1d806eec80f
     records/surfaces/dectr/se-england--ward2016--phenology: sha256:6e03c06ccebb5437ba7064249124e980afd4fd1d60238a7457fb29850640a16c
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
@@ -98,18 +98,19 @@ assessment:
       evidence_ids:
       - component-surfaces-dectr-se-england-ward2016-albedo
       - component-surfaces-dectr-se-england-ward2016-drainage
+      - component-surfaces-dectr-se-england-ward2016-lai-power
       - component-surfaces-dectr-se-england-ward2016-water-storage
       - component-surfaces-dectr-swindon-ward2016-emissivity
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-common-se-england-ruimy1995-biogen-co2
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
-      note: The composite claims representativeness city. Three components are classed regional (LAI,
-        LAI-power and maximum conductance), while albedo, drainage and water storage are site-scoped;
-        emissivity and porosity are generic; the two Helsinki records
-        are classed city; and the two OHM records declare no class. The biogen_co2 component has mixed scope. Ruimy's
-        alpha_bio_co2 and beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's
-        min_res_bioco2 are site-scoped. The site-scoped and mixed-scope inputs are narrower than the city composite, and no
+      note: The composite claims representativeness city. Two components are classed regional (LAI and
+        maximum conductance), while albedo, drainage, LAI-power and water storage are site-scoped;
+        emissivity and porosity are generic; the two Helsinki records are classed city; and the two OHM
+        records declare no class. The biogen_co2 component has mixed scope. Ruimy's alpha_bio_co2 and
+        beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's min_res_bioco2 are
+        site-scoped. The site-scoped and mixed-scope inputs are narrower than the city composite, and no
         published composition rationale documents the transplant, so city representativeness needs
         maintainer adjudication.
     method:
@@ -199,9 +200,9 @@ assessment:
   - id: component-surfaces-dectr-se-england-ward2016-lai-power
     record: records/surfaces/dectr/se-england--ward2016--lai-power
     role: component
-    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2014 and declares lai.lai_type
-      1, matching the leaf_area_index component.
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place se-england,
+      representativeness site, source jarvi2014 and method fitted. Official SUEWS documentation supplies
+      the lai.lai_type 1 selector, matching the leaf_area_index component.
   - id: component-surfaces-dectr-se-england-ward2016-max-conductance
     record: records/surfaces/dectr/se-england--ward2016--max-conductance
     role: component
@@ -221,8 +222,8 @@ assessment:
       generic. It is named "Deciduous trees", carries source oke1987 and declares method literature; its
       stable path retains the Swindon migration lineage.
   scientific_note: 'Four components are SE England application records for the region that contains Swindon,
-    while drainage and water storage are site-scoped Swindon records. Three components are regional and
-    albedo, drainage and water storage are site-scoped. The emissivity component is the generic Oke literature value retained at
+    where LAI and maximum conductance are regional and albedo and LAI-power are site-scoped; drainage and
+    water storage are site-scoped Swindon records. The emissivity component is the generic Oke literature value retained at
     its stable Swindon path. The two LAI records agree on lai.lai_type 1, and the OHM mapping is correct, the
     summer record filling both summer positions and the winter record both winter positions, each confirmed
     by its own season_label. Two whole-record slots and one mixed-scope tuple still do not follow the
@@ -236,6 +237,6 @@ assessment:
     sites that cannot be told apart by their content. A maintainer should settle the phenology, snow
     limit and mixed-scope biogenic tuple, and decide whether the two site typologies should differ at all. The components'' values
     remain subject to their own evidence assessments; this review does not revisit them.'
-  evidence_revision: sha256:fde4e6fa20ce8ea67479116f05d7b4bd17ce72581ed0c6c2d130e142cf3c3765
+  evidence_revision: sha256:c6a2cf3b585aa4eea2d953efc0d1fbe144a680b3f80d513027f88211a78b025b
 verification:
   attestations: []
