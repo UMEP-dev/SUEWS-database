@@ -10,7 +10,7 @@ dependency_revisions:
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:eeb8fac90af1f4dda8fb807f50881d995cd0d7923601f2a6e47ea2de6d027bcf
+    records/surfaces/grass/helsinki--jarvi2014--drainage: sha256:efd26d448c986d8e9b41f4a788bc5eacf3a8011f7eb3f3ba6bd15bf961f89e15
 assessment:
   status: agent_assessed
   assessed_at: '2026-09-02T11:27:35Z'
@@ -135,6 +135,6 @@ assessment:
     (2014) compilation as missing original evidence. Järvi et al. (2011) publishes the three physical parameters
     and equation directly; official SUEWS documentation establishes the separate selector mapping. The source
     and scope metadata are corrected without changing any parameter, target, stable path, origin or legacy ID.'
-  evidence_revision: sha256:f553dad3b50d1638aea1d96cbe0094c1dbad9acd73fbba52fa758f3c8d730e3f
+  evidence_revision: sha256:0d5e2e2f7a158e7c999dace5a279f5fe391b343bb6d5649966a430dfdef40eb9
 verification:
   attestations: []
