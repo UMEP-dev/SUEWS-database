@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/common/midwest-usa--schmid2000--biogen-co2: sha256:6f5c584ae6748b5063c95036486afa444757ffca80844930e4740ec10d560ef3
     records/surfaces/evetr/generic--unreferenced--porosity: sha256:f39fa7f5617d2a49c5716789470db32b64c93e5c011d5001318910d9cef000fa
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
-    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:8d2ef843e57cc68d2fc0b47b5ccf70a0ff642625bf640322f49cc16498374140
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:fa50f1584a2e5f7624a500f1d6d30383bfec6f54eeac147de6ef4720862384ca
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
@@ -83,11 +83,11 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey
-      note: The composite declares place tropics, and not one component declares a tropical place. Five
+      note: The composite declares place tropics, and not one component declares a tropical place. Six
         are generic, one is regional SE England, one is site-scoped Swindon, one Zurich, one Morgan-Monroe
-        State Forest, two Helsinki, and the two OHM records declare no place at all. The biogen_co2 component is a single Indiana
-        tower site named "Mixed Hardwood Forest"; the snow limit is a Helsinki record and the leaf growth
-        power a Zurich one. Whether a
+        State Forest, one Helsinki, and the two OHM records declare no place at all. The biogen_co2 component
+        is a single Indiana tower site named "Mixed Hardwood Forest"; snow limit is a generic Järvi default
+        and leaf growth power a Zurich row. Whether a
         tropical default should exist on this evidence, and if so which rows should fill it, is a maintainer's
         decision rather than something the entries settle.
     representativeness:
@@ -99,11 +99,11 @@ assessment:
       - component-surfaces-evetr-helsinki-jarvi2014-phenology
       - component-surfaces-common-midwest-usa-schmid2000-biogen-co2
       note: 'The composite declares representativeness regional, the class this database uses for a value
-        offered as typical of a region. Two of its thirteen components are classed city and three are classed
-        site, so they stand in for a regional default. The Helsinki snow-limit and phenology records are
-        city-classed; records/surfaces/evetr/zurich--stagakis-s2024--lai-power,
+        offered as typical of a region. One of its thirteen components is classed city and three are classed
+        site, so they stand in for a regional default. The Helsinki phenology record is city-classed;
+        records/surfaces/evetr/zurich--stagakis-s2024--lai-power,
         records/surfaces/common/midwest-usa--schmid2000--biogen-co2 and
-        records/surfaces/evetr/se-england--ward2016--water-storage are site-only. Five more are classed
+        records/surfaces/evetr/se-england--ward2016--water-storage are site-only. Six more are classed
         generic, the two OHM records carry no representativeness, and only leaf_area_index is regional.
         These scopes do not establish the composite''s tropical regional claim.'
     method:
@@ -198,8 +198,9 @@ assessment:
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.evetr, name "Evergreen Tree", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
     record: records/surfaces/evetr/helsinki--jarvi2014--phenology
     role: component
@@ -220,16 +221,16 @@ assessment:
   scientific_note: 'The assembly is structurally complete and the two LAI components agree on lai_type
     1, but the composite''s own claims are not supported by what it selects. It declares place tropics
     and representativeness regional, while its place-specific components are mid-latitude rows: SE England
-    for leaf area index, Swindon for water storage, Zurich for leaf growth power, Helsinki for
-    the snow limit and the phenology, and Morgan–Monroe State Forest in Indiana for biogenic CO2. Albedo,
-    emissivity, drainage, maximum conductance and porosity are generic rows. Two place-specific components
-    are classed city and three are classed site, and they stand in for a regional default, which is the
+    for leaf area index, Swindon for water storage, Zurich for leaf growth power, Helsinki for phenology,
+    and Morgan–Monroe State Forest in Indiana for biogenic CO2. Albedo, emissivity, drainage, snow limit,
+    maximum conductance and porosity are generic rows. One place-specific component is classed city and
+    three are classed site, and they stand in for a regional default, which is the
     substitution the scale test exists to catch. The generic rows do not compound that problem. The OHM
     mapping does: the summer positions take a record that declares
     season_label Summer and the winter positions a record that declares no season at all, in a place where
     a summer and winter split is not obviously meaningful. None of this is a claim about any component''s
     value; it is a claim that a tropical broad-leaf default cannot be read out of these rows, and a maintainer
     should decide whether the composite is rebuilt on tropical evidence, reclassified, or withdrawn.'
-  evidence_revision: sha256:f609227cccfc1b3c079fec45a7e371815b447e63b85d938cca6ca8a9a59e9edf
+  evidence_revision: sha256:462104027b125683e46025968b106fa97f065aa3c8a01989287e2e6712ebc05b
 verification:
   attestations: []

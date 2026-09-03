@@ -15,7 +15,7 @@ dependency_revisions:
     records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street: sha256:8569731d017f27d91401e5a477ff7a156f6e136bce644f5f0e6a6fcc9d1100a7
     records/surfaces/evetr/helsinki--havu-m2024--lai-power: sha256:beddf5d1e4afcef15fbf6dc11ad383b6101d010616cd2da763cc17eeacda788a
     records/surfaces/evetr/helsinki--jarvi2014--phenology: sha256:55eaa91d67c868b6bb25ba71bfbb9350cde181dd1015afdaf72a361745a18abb
-    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
+    records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:8d2ef843e57cc68d2fc0b47b5ccf70a0ff642625bf640322f49cc16498374140
     records/surfaces/evetr/london--jarvi2011--drainage: sha256:fa50f1584a2e5f7624a500f1d6d30383bfec6f54eeac147de6ef4720862384ca
     records/surfaces/evetr/se-england--ward2016--albedo: sha256:fc1d092d48ddc163f7178ed91b49ae81c1b8524297d04860b1c5f993039527e8
     records/surfaces/evetr/se-england--ward2016--emissivity: sha256:ceb78079a770f2f28ad1e311cf345aba626ebc9fd6cb2f35e243d7e8b81c5920
@@ -80,11 +80,11 @@ assessment:
       - component-surfaces-evetr-london-jarvi2011-drainage
       - component-surfaces-evetr-vancouver-jarvi2011-max-conductance
       - component-surfaces-evetr-se-england-ward2016-albedo
-      note: 'The composite claims helsinki, and four slots take Helsinki rows: leaf_growth_power, biogen_co2,
-        snow_lim_patch and vegetation_growth. drainage takes records/surfaces/evetr/london--jarvi2011--drainage,
+      note: 'The composite claims helsinki, and three slots take Helsinki rows: leaf_growth_power, biogen_co2
+        and vegetation_growth. drainage takes records/surfaces/evetr/london--jarvi2011--drainage,
         which now correctly declares place generic, representativeness generic and applicable_scale land_cover;
         its retained London origin records later application rather than parameter location. max_vegetation_conductance
-        also takes a generic record. Albedo and emissivity are generic, leaf_area_index is regional,
+        also takes a generic record. Albedo, emissivity and snow_lim_patch are generic, leaf_area_index is regional,
         and water_storage is a site-scoped Swindon value. Moving that site result into a Helsinki city
         archetype needs an explicit composition decision; the separate OHM-selection question is recorded
         under target.'
@@ -93,7 +93,7 @@ assessment:
       evidence_ids:
       - component-surfaces-evetr-london-jarvi2011-drainage
       note: 'The composite declares representativeness city. The Helsinki rows are city; albedo, emissivity,
-        drainage, max_vegetation_conductance and porosity are generic; leaf_area_index is regional; and
+        drainage, snow limit, max_vegetation_conductance and porosity are generic; leaf_area_index is regional; and
         water_storage is a site-scoped Swindon result. The site-to-city water-storage transfer needs human
         curation.'
     method:
@@ -190,8 +190,9 @@ assessment:
   - id: component-surfaces-evetr-helsinki-jarvi2014-snow-lim
     record: records/surfaces/evetr/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.evetr, place helsinki and representativeness
-      city, and is named "Evergreen Tree"; its source field reads jarvi2014.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.evetr, name "Evergreen Tree", place generic, representativeness
+      generic, applicable_scale land_cover, source jarvi2014 and method literature.
   - id: component-surfaces-evetr-helsinki-jarvi2014-phenology
     record: records/surfaces/evetr/helsinki--jarvi2014--phenology
     role: component
@@ -220,7 +221,8 @@ assessment:
     literature tuple applicable to the evergreen-tree land-cover class, while its London origin preserves
     later application history. What is sound is the slot set, which is complete, the LAI pair, which agrees
     on lai_type 1, and the generic drainage and maximum-conductance rows. The remaining questions are about
-    selection and mapping, so they can be settled inside the composite without touching any record.'
-  evidence_revision: sha256:255494809f706ad0fed9c8328596e5a5d8c953295c66ed5e77fa9afc8f74d769
+    selection and mapping, so they can be settled inside the composite without touching any record. Snowpack
+    limit is now explicitly the generic Järvi land-cover default.'
+  evidence_revision: sha256:a38412dea7f347ee0899fc6d25b5aded67f181867eadea117cd6f557dea610dd
 verification:
   attestations: []
