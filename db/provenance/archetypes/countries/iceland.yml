@@ -10,7 +10,7 @@ dependency_revisions:
     records/profiles/human-activity/lucy/iceland: sha256:f656158f1792557acff78cb1179b83baa11e3dcdbf36fa4bad0c96e4fbb356e1
     records/profiles/traffic/lucy/iceland: sha256:711f46e625ff733a7ba147653647d3536d05a2dadf694c0130252122e3784b44
 assessment:
-  status: agent_assessed
+  status: curation_required
   assessed_at: '2026-08-28T07:41:21Z'
   assessor:
     kind: agent
@@ -46,12 +46,12 @@ assessment:
         for this country default. The components' own sources belong to their evidence assessments, not
         to this review.
     place:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids: *id001
       note: 'Not every component belongs to this country: records/profiles/energy-use/helsinki--jarvi2019--energy-use
         carries place helsinki.'
     representativeness:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids: *id001
       note: A country default should assemble country-scale rows, but records/profiles/energy-use/helsinki--jarvi2019--energy-use
         is classed city.
@@ -93,6 +93,6 @@ assessment:
     no working_day counterpart, and the population profile falls back to supy''s uniform default. The
     components'' values remain subject to their own evidence assessments; this review does not revisit
     them.'
-  evidence_revision: sha256:a1f1f067283103e3e4c2358cf9b0b3bdf76084899d3aed0bc7a9a350b0d6cdf1
+  evidence_revision: sha256:8054b9b03d5fbd97549c291e1c9fa9eb925b23dc229d24fbfe2403072285cd5f
 verification:
   attestations: []
