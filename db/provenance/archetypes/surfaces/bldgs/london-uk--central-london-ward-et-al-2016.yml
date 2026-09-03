@@ -11,7 +11,7 @@ dependency_revisions:
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
     records/ohm/generic--ward2016--buildings: sha256:ac97725cf462e6cae47a1939e8c0f6ede4086fe8d1c1faa7f4ec002a9a589df2
     records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982: sha256:af6ecd3076ac0934babda997a6a65bb6f57feeeed365e8a47932c0a37ef4d864
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
     records/surfaces/bldgs/london--ward2016--emissivity: sha256:f5fc61959c50bebbed43c53d499d3e017df3eb1fd1dd334d91e996a6f865f061
     records/surfaces/bldgs/se-england--ward2016--drainage: sha256:e6122a33f039cae062fcb9b11010037c1d857d7e3ca49147caea73980d39bd36
@@ -86,9 +86,9 @@ assessment:
       - component-ohm-generic-ward2016-buildings-winter
       note: 'The composite claims place london. The albedo and emissivity rows and the construction are
         place london; the water storage and drainage rows are place se-england, a subnational place in
-        the same country. The snowpack limit is records/surfaces/bldgs/helsinki--jarvi2014--snow-lim,
-        place helsinki, the only buildings snowpack_limit record in the database and so a forced selection
-        rather than a chosen one. Two components declare no place at all: records/ohm/generic--ward2016--buildings
+        the same country. The snowpack limit is the database''s sole buildings snowpack_limit record,
+        now correctly documented as a generic Järvi land-cover default; its Helsinki path and origin retain
+        migration lineage. Two components declare no place at all: records/ohm/generic--ward2016--buildings
         and records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982 carry no place
         field, so nothing in them either supports or contradicts the London claim. The construction carries
         the name ''Central London [sample run]'' and its mapped roof and wall materials carry the sample-run
@@ -106,9 +106,8 @@ assessment:
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-generic-ward2016-buildings-summer
       - component-ohm-generic-ward2016-buildings-winter
-      note: The composite is classed city. The London construction and Helsinki snowpack limit are classed
-        city; the London albedo is site evidence, the emissivity is generic, and the two SE England water
-        rows are regional. Extending the site albedo to the city composite requires curation. The two OHM rows declare no representativeness
+      note: The composite is classed city. The London construction is classed city; the London albedo is
+        site evidence; emissivity and snowpack limit are generic; and the two SE England water rows are regional. Extending the site albedo to the city composite requires curation. The two OHM rows declare no representativeness
         field at all, so for a quarter of the assembly the scale the composite claims cannot be checked
         against the component. That is not universal among generic rows, since records/ohm/generic--unreferenced--paved--asphalt-902
         does declare both place and representativeness, so a maintainer should decide whether an OHM row
@@ -165,8 +164,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record declares target land_cover.bldgs, name 'Buildings', place helsinki
-      and representativeness city, and is the only buildings snowpack_limit record in the database.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-generic-ward2016-buildings-summer
     record: records/ohm/generic--ward2016--buildings
     role: component
@@ -192,8 +193,7 @@ assessment:
     is a sample configuration rather than surveyed stock. And the two OHM rows declare neither place nor
     representativeness, so for a quarter of the assembly the London and city claims cannot be checked against
     the component. These matter beyond one archetype because twelve region archetypes take this composite
-    as their buildings default. The Helsinki snowpack-limit transfer is forced because no other buildings
-    snowpack_limit record exists. This review does not revisit any component value.
-  evidence_revision: sha256:3192dc9a5bc91975857cd4f82797001ebc942ba6bd133446f1ccd4a966c38ef3
+    as their buildings default. The generic Järvi snowpack default is forced because no other buildings snowpack_limit record exists. This review does not revisit any component value.
+  evidence_revision: sha256:7fef224c75734a4cda76adba28e911de5c278dbfe5fd0ed9e401c9724c999c44
 verification:
   attestations: []

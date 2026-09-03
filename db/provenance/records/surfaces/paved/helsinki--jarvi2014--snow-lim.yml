@@ -9,7 +9,7 @@ dependency_revisions:
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bsoil/helsinki--jarvi2014--snow-lim: sha256:de37cde3db6d7975c33f28dfbdefb3a7ef3b404c0a598d95a0a4efead1ff06d1
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
@@ -114,6 +114,6 @@ assessment:
     It is distinct from the 40/100 mm SWE_Lim snow-transport thresholds discussed elsewhere in the paper.
     The record now treats 190 mm as an unqualified land-cover default rather than a Helsinki city determination.
     No value, stable path, name, target, origin or legacy ID changes.
-  evidence_revision: sha256:c3e55b8572a3a5682fcf738ea8f841371a2fd095220c741fd083729eba578366
+  evidence_revision: sha256:a686599c39c256f519e99f037362dccf28056d123fbc65966776b8c9ab60c42b
 verification:
   attestations: []

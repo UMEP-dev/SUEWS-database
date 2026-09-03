@@ -12,7 +12,7 @@ dependency_revisions:
     records/ohm/helsinki--jarvi2014--buildings: sha256:de4cbdafdfa8a2d9266cc504cdfbb245abdc69a6ec374bd03fadcca2968e68ec
     records/surfaces/bldgs/helsinki--jarvi2011--drainage: sha256:8b1ea6eba8a0ade3232ce59438ad9b49d81e3a61b98fcd728602d8930315c094
     records/surfaces/bldgs/helsinki--jarvi2014--emissivity: sha256:91644f5e826604a06c9dfe9280a0d9469a2d33567ff34cae94b6367ae48b653b
-    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
+    records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:10b16a93fcc643f7aec6b41713d228b613570e462695eff1fc1362a799534f8b
     records/surfaces/bldgs/helsinki--ward2016--water-storage: sha256:f316a03e797a28e8ef4065243a0b21994553806a901d2b8e9b6f00156d3b8e20
     records/surfaces/bldgs/london--ward2016--albedo: sha256:c8672d5e57524679e92d314ed210df6db2f43822e3669d986cf634d584a61df1
 assessment:
@@ -69,16 +69,9 @@ assessment:
       - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: 'The composite claims place sweden and only the construction is Swedish, declaring place gothenburg.
-        The albedo slot takes records/surfaces/bldgs/london--ward2016--albedo, named ''Central London''
-        and declaring place london; the snow limit and all four ohm positions take records declaring
-        place helsinki, which db/places.yml resolves to country finland; and emissivity, water storage
-        and drainage are generic.
-        For the Helsinki slots the database offers no Swedish alternative. For the albedo it does hold two
-        generic archived configurations with Gothenburg lineage: records/surfaces/bldgs/gothenburg--oke1987--albedo--wood,
-        named Wood, and records/surfaces/bldgs/gothenburg--oke1987--albedo, named ''Industry, dark roofs'';
-        neither describes a rendered or stone facade. The
-        composite takes the London row instead and records no reason, which only a maintainer can settle.'
+      note: The composite claims Sweden. Construction is the sole Swedish component, with place gothenburg.
+        Albedo declares london; OHM declares helsinki; emissivity, water storage, drainage and snow_lim_patch
+        are generic. The London albedo choice and predominantly non-Swedish assembly remain the curation questions.
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -89,10 +82,9 @@ assessment:
       - component-constructions-gothenburg-bjork2002-traditional-stone-neighbourhood-city-late-1800s-early-1900s
       - component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
       - component-ohm-helsinki-jarvi2014-buildings
-      note: The composite declares representativeness regional and not one of its seven components carries
-        that class. The construction, snow-limit and OHM components declare representativeness city;
-        the London albedo is site evidence; and emissivity, water storage and drainage are generic.
-        A country-scale Swedish default therefore rests entirely on narrower evidence.
+      note: The regional composite has one site component, albedo; two city components, construction
+        and OHM; and four generic components. None is regional, so the national-scale composition
+        remains a curation decision.
     method:
       conclusion: supported
       evidence_ids:
@@ -153,9 +145,10 @@ assessment:
   - id: component-surfaces-bldgs-helsinki-jarvi2014-snow-lim
     record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
     role: component
-    note: Fills snow_lim_patch. The record is named Buildings, declares target land_cover.bldgs, place
-      helsinki and representativeness city, and is the only record in the database declaring snowpack_limit
-      for buildings.
+    note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
+      record declares target land_cover.bldgs, name 'Buildings', place generic, representativeness generic,
+      applicable_scale land_cover, source jarvi2014 and method literature, and carries snowpack_limit.
+      It is the only buildings snowpack_limit record in the database.
   - id: component-ohm-helsinki-jarvi2014-buildings
     record: records/ohm/helsinki--jarvi2014--buildings
     role: component
@@ -165,15 +158,15 @@ assessment:
   scientific_note: 'The construction is the right record and it is Swedish: records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s,
     a rendered brick fabric from Gothenburg, matches the composite''s name exactly. Around it the assembly
     is entirely borrowed. The albedo is a London row named ''Central London'', chosen over the two generic
-    archived configurations with Gothenburg lineage, neither of which describes a rendered facade. Of the
-    remaining five slots, the snow-limit and OHM records are Helsinki rows and emissivity, water storage
-    and drainage are generic. The sharper problem is uniqueness.
+    archived configurations with Gothenburg lineage, neither of which describes a rendered facade. Of
+    the remaining five selected records, OHM declares Helsinki, while emissivity, water storage, drainage
+    and snowpack_limit are generic. The sharper problem is uniqueness.
     Slot for slot this composite selects the identical set to archetypes/surfaces/bldgs/helsinki--city-centre,
     so a Swedish regional stone typology and a Finnish city centre resolve to the same parameters and
     differ only in the labels on their envelopes. Its legacy_id, 20258001, does not share the form of
     its siblings either, which is consistent with a later addition. Whether the duplication is intended,
     and which of the two should change, is a curation decision; nothing here calls for a component value
     to change, and the components'' own values remain subject to their evidence assessments.'
-  evidence_revision: sha256:613785d0505ec07dbded9a164e301c6545f85f6544f10d6a5834dd3823f506be
+  evidence_revision: sha256:60811eb3e4afa99745cf2710cfab4b544a5456e3b7382c0c0b937407894cb57d
 verification:
   attestations: []

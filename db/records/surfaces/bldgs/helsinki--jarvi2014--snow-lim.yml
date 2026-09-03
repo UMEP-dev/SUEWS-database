@@ -2,10 +2,12 @@ record: records/surfaces/bldgs/helsinki--jarvi2014--snow-lim
 schema_version: '2026.5'
 target: land_cover.bldgs
 name: Buildings
-place: helsinki
+place: generic
 origin: Helsinki, Finland
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: jarvi2014
+method: literature
 legacy_id: 38240002
 parameters:
   snowpack_limit: 190

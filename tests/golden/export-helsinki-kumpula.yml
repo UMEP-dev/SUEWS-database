@@ -55,7 +55,7 @@ snowpack_limit:
   ref:
     ID: jarvi2014
     DOI: 10.5194/gmd-7-1691-2014
-    desc: helsinki, city
+    desc: generic, generic, land_cover
 ohm_coef:
   summer_wet:
     a1:
