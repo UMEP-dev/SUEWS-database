@@ -11,7 +11,7 @@ dependency_revisions:
     records/profiles/population/helsinki--jarvi2019--population-profile: sha256:b51df3c36cf6ad91bb335c253981794154347dfe2f2f11925a8e33f779c7734c
     records/profiles/traffic/helsinki--jarvi2019--traffic: sha256:b10ba1b44f1aa2151c1b935614001d5a671df2a04e202d98db6a60102fbcca57
 assessment:
-  status: agent_assessed
+  status: curation_required
   assessed_at: '2026-08-24T12:26:22Z'
   assessor:
     kind: agent
@@ -42,14 +42,14 @@ assessment:
         for this country default. The components' own sources belong to their evidence assessments, not
         to this review.
     place:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids: *id001
       note: 'Not every component belongs to this country: records/profiles/traffic/helsinki--jarvi2019--traffic
         carries place helsinki; records/profiles/energy-use/helsinki--jarvi2019--energy-use carries place
         helsinki; records/profiles/human-activity/helsinki--jarvi2019--human-activity carries place helsinki;
         records/profiles/population/helsinki--jarvi2019--population-profile carries place helsinki.'
     representativeness:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids: *id001
       note: A country default should assemble country-scale rows, but records/profiles/traffic/helsinki--jarvi2019--traffic
         is classed site; records/profiles/energy-use/helsinki--jarvi2019--energy-use is classed city;
@@ -98,6 +98,6 @@ assessment:
     for a country-scale value. Each slot takes a component declared for the field that slot fills, so
     the mapping itself is sound. The components'' values remain subject to their own evidence assessments;
     this review does not revisit them.'
-  evidence_revision: sha256:dcdf05ff9bcb80c3741fd774b333fca5b2cc65f9a3f407b5bec93a491ed648c4
+  evidence_revision: sha256:a584f08b330ab413fb37ef7953ee3df42002e69c8c6e19138f1b43f3fc4c149a
 verification:
   attestations: []
