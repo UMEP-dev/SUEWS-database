@@ -9,7 +9,7 @@ dependency_revisions:
     helsinki: sha256:d780f05f70d6ea2c77a3d94ec195162e64a5722f14d56049e8fb295792753a67
   records:
     records/surfaces/bldgs/helsinki--jarvi2014--snow-lim: sha256:70df17628b99f06421a4f05edf575962ba7edf1d099eec26b8bc4d47af5091da
-    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:cea4c50296996221375c88a2c526bb10e5ee948bf7a49a3af35effd0c6ddd3ab
+    records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/evetr/helsinki--jarvi2014--snow-lim: sha256:0ea386abca8ed70ab9bcdc95d3c917ae26a4d02a1cf5ce2b738a22f1f2376a41
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:d7c849e3bfaf920a294500d770f9784ce8e820a4d02e3cfc788433cdca80b84f
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
@@ -123,6 +123,6 @@ assessment:
     same values used at all sites because no further information was available. City representativeness
     for Helsinki does not follow from that. This record also asks the table for a surface it does not
     have: there is no bare soil column, and the value is carried across from the uniform row.'
-  evidence_revision: sha256:4d9d81285885aaef312ca8196e9f48883a20578df4df52f41569e181f44dc0b6
+  evidence_revision: sha256:28ddd6e0b66057ab6003bc81a299aebb92a87ce7b8d6cd3ba806b57bdfdf2f1b
 verification:
   attestations: []
