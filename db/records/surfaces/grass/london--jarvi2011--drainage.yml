@@ -1,11 +1,13 @@
 record: records/surfaces/grass/london--jarvi2011--drainage
 schema_version: '2026.5'
 target: land_cover.grass
-name: Grass [sample run]
-place: london
+name: Grass
+place: generic
 origin: London
-representativeness: city
+representativeness: generic
+applicable_scale: land_cover
 source: jarvi2011
+method: literature
 legacy_id: 45240009
 parameters:
   storage_drain_params:
