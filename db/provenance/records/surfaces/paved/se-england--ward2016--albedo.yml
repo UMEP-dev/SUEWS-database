@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/se-england--ward2016--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:cc7ef6e2b14072df96133144cf44438b8dbd914a35c977152ea288e03ef6e071
+record_revision: sha256:41cb05354813583a58eb85cfb36c0ce31a75c4f64d1e0cdea3f9ed3d1abbe563
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -9,68 +9,88 @@ dependency_revisions:
     se-england: sha256:9b3e4357b7b191d1bec5e46ff80080a36b4658bf9c587e12915116d1a9619961
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-26T20:30:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T20:10:00Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
-    run_url: https://github.com/UMEP-dev/SUEWS-database/issues/26
+  method: fitted
   findings:
     name:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The label identifies the published parameter class or model configuration.
+      - ward-albedo-adjustment
+      note: Paved identifies the surface class whose adjusted value Ward et al. publish.
     target:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source uses the parameter for the same SUEWS target represented by the record.
+      - ward-albedo-adjustment
+      note: Surface albedo is a land_cover.paved parameter.
     values:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited locator publishes the stored values at the available precision.
+      - ward-albedo-adjustment
+      note: Table 2 publishes original pavement albedo 0.12 and adjusted albedo 0.10; the record stores
+        the adjusted 0.10 exactly.
     source:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The cited source is a direct parameter publication or an explicit published model-input table.
+      - ward-albedo-adjustment
+      note: Ward et al. publish the adjusted pavement value and evaluate its effect on modelled outgoing
+        shortwave radiation at the two UK sites.
     place:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The source reports London and Swindon sites, not a south-east England regional determination.
+      - ward-albedo-adjustment
+      note: The shared se-england place describes the two-site application geography containing London
+        and Swindon; it is not a claim of regional empirical reach.
     representativeness:
-      conclusion: curation_required
+      conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The study is explicitly local/neighbourhood scale at two measurement sites; city or regional
-        evidence reach is not established.
+      - ward-albedo-adjustment
+      note: The adjusted input is evaluated against local radiometer observations at two neighbourhood-scale
+        sites, so site is the supported evidence reach.
+    applicable_scale:
+      conclusion: supported
+      evidence_ids:
+      - ward-albedo-adjustment
+      note: Ward et al. assign the value to the paved land-cover class, so land_cover is the supported
+        application scale.
     method:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: The production or literature-compilation method is stated in the source.
+      - ward-albedo-adjustment
+      note: Ward et al. manually lower the pavement input in response to the observed bulk-albedo mismatch
+        and evaluate the improvement. This is an observational calibration under the fitted vocabulary,
+        although no formal optimiser is documented.
     identity:
       conclusion: supported
       evidence_ids:
-      - ward-table-2
-      note: Stable path, target, source and values identify one retained database record.
+      - ward-albedo-adjustment
+      note: Stable path, target, source and value identify one retained database record.
   evidence:
-  - id: ward-table-2
+  - id: ward-albedo-adjustment
     source: ward2016
     role: parameter_source
     locators:
     - kind: table
-      label: Table 2, adjusted albedo and emissivity model inputs
+      label: Table 2, original and adjusted albedo values
       url: https://doi.org/10.1016/j.uclim.2016.05.001
       page: 8
-      note: Publishes the stored surface values used at the London and Swindon sites; emissivities are
-        explicitly carried forward from Järvi et al. (2011).
-  scientific_note: The publication supports the values used in its UK model runs, but the database currently
-    overstates evidence reach; emissivity rows also need original-source role separation.
-  evidence_revision: sha256:f7d60f6c5ef75e33e7a90b0df582d2f2fd9bed7af941286c4e93b4d4fbd71c4a
+      note: Publishes pavement albedo 0.12 as original and 0.10 as adjusted.
+    - kind: section
+      label: Section 4.2.2, Outgoing shortwave radiation
+      url: https://doi.org/10.1016/j.uclim.2016.05.001
+      page: 7
+      note: Explains that lower building and paved albedos were used because the original inputs overestimated
+        observed bulk albedo at London and Swindon, and reports improved model performance with the adjusted
+        inputs while cautioning against tuning exactly to radiometer observations.
+  scientific_note: Ward et al. manually reduce pavement albedo from 0.12 to 0.10 in response to the
+    observed bulk-albedo mismatch at the London and Swindon sites and evaluate the resulting improvement.
+    The record therefore classifies the method as fitted and evidence reach as site, while retaining the
+    shared SE England application geography. The value, source, stable path, target, origin and legacy
+    identity do not change.
+  evidence_revision: sha256:5ec8d272614b3520f2d96e01e2b5dde1df0dcbc2db3e8ccb4109043a0d91f13c
 verification:
   attestations: []
