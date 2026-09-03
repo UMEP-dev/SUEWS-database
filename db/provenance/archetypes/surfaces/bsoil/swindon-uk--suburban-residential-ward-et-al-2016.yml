@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/bsoil/se-england--ward2016--emissivity: sha256:8e422053541b6f7a7b3ad5466257a8c3d3e54a85f3fbb49b9ef331a5b8a6c9bb
     records/surfaces/bsoil/se-england--ward2016--water-storage: sha256:d948272514f446cf0303f884cc258976a070d7c2804aae5ad84b122786536e85
 assessment:
-  status: agent_assessed
+  status: curation_required
   assessed_at: '2026-08-24T17:31:58Z'
   assessor:
     kind: agent
@@ -76,7 +76,7 @@ assessment:
         this selection. Each component's own source belongs to that component's evidence assessment, not
         to this review.
     place:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-bsoil-se-england--ward2016--albedo
       - component-surfaces-bsoil-se-england--ward2016--emissivity
@@ -101,7 +101,7 @@ assessment:
         decision.
         The two OHM records declare no place.'
     representativeness:
-      conclusion: correction_required
+      conclusion: curation_required
       evidence_ids:
       - component-surfaces-bsoil-se-england--ward2016--albedo
       - component-surfaces-bsoil-se-england--ward2016--emissivity
@@ -224,6 +224,6 @@ assessment:
     site-scoped albedo and emissivity have to be adjudicated for each city claim. The London construction
     mismatch is
     non-exporting but remains a composition-provenance defect. A correction to any one component reaches both.'
-  evidence_revision: sha256:10c28b34e1baf5e1cf1796778b4747c9de036653758cd2647fe7133f31e1ec5c
+  evidence_revision: sha256:85370109610d46031ab105262e86e3412926d7a77f896f99c3e3c83b038f7c65
 verification:
   attestations: []
