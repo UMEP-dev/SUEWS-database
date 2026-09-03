@@ -1,7 +1,7 @@
 provenance_record: records/snow/helsinki--jarvi2014--albedo
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
+record_revision: sha256:cc807ff4d1a0b11ad9d53cf29c7545ed9a3455ad94e1472db2599b750f5c29c8
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -9,12 +9,13 @@ dependency_revisions:
     montreal-suburban: sha256:b10fe91ea2fb9cde2b197a0f807398c66c48abd4ead58d6314cb73eae75078c8
   records: {}
 assessment:
-  status: curation_required
-  assessed_at: '2026-08-23T02:15:00Z'
+  status: agent_assessed
+  assessed_at: '2026-09-02T15:49:20Z'
   assessor:
     kind: agent
     name: provenance-audit
     version: '1.0'
+  method: fitted
   findings:
     name:
       conclusion: supported
@@ -57,12 +58,21 @@ assessment:
       note: Site representativeness matches a determination from observations at the single Pr suburban
         site. The four locations in Figure 4 are surface types measured within that site, not four cities
         or a city-wide sample.
-    method:
-      conclusion: curation_required
+    applicable_scale:
+      conclusion: supported
       evidence_ids:
       - jarvi-snow
-      note: Set from observations by comparison with an existing ageing function rather than by a stated
-        fit, so whether the database should record it as measured or as fitted is a maintainer decision.
+      - jarvi-table-4b
+      note: Section 3.1.1 averages the observed surface types to match the simulation scale, and Table
+        4(b) lists the pair as overall-area parameters. Neighborhood is therefore the supported spatial
+        unit.
+    method:
+      conclusion: supported
+      evidence_ids:
+      - jarvi-snow
+      note: Section 3.1.1 explicitly places the parameters under Model optimization and states that the
+        minimum and maximum snow albedo were determined by optimization using observations at the suburban
+        Montreal site. This is a fitted parameter set, not a direct measurement record.
     identity:
       conclusion: supported
       evidence_ids:
@@ -74,12 +84,18 @@ assessment:
     role: parameter_source
     locators:
     - kind: section
-      label: Sect. 3.1, snow parameter determination, with Fig. 4
+      label: Sect. 3.1.1, Model optimization — Snow properties
+      page: 1698
+      url: https://doi.org/10.5194/gmd-7-1691-2014
+      note: States that the minimum and maximum snow albedo were determined by optimization using observations
+        at the suburban Montreal site.
+    - kind: section
+      label: Sect. 3.1.1 and Fig. 4, optimized albedo bounds
       page: 1699
       url: https://doi.org/10.5194/gmd-7-1691-2014
-      note: States that from the observations the minimum and maximum snow albedo are set to 0.18 and
-        0.85, differing from Lemonsu et al. (2010). Figure 4 shows that those observations are from the
-        suburban site in Montreal, January 2008 to April 2009.
+      note: Reports snow_albedo_min 0.18 and snow_albedo_max 0.85 after comparing the observations with
+        the earlier ageing function. Figure 4 compares the new model curve with observed medians from
+        four locations at the suburban Montreal site from January 2008 to April 2009.
   - id: jarvi-table-4b
     source: jarvi2014
     role: compilation
@@ -103,13 +119,14 @@ assessment:
       note: Table 1 locates the suburban Montreal site Pr at 45.501 N, 73.811 W. Section 2.2.2 identifies
         it as a single-family residential area in the Pierrefonds–Roxboro borough, and Section 2.3 says
         its snow density and albedo observations were used for model development.
-  scientific_note: Both values are the article's own, which is unusual in this group, and the text is
-    explicit that they were set from observations and differ from the earlier Lemonsu ageing function.
+  scientific_note: Both values are the article's own. Section 3.1.1 explicitly says they were determined
+    by optimization using observations, so the record classifies them as fitted rather than measured.
     Figure 4 and Sections 2.2.2–3.1 locate those observations at the Pr suburban site in Montreal, so
-    the record now declares that site and site-scale representativeness. Its stable path and origin remain
-    legacy migration identifiers rather than claims about where the parameters were determined. The only
-    unresolved question is whether a value set from observations by comparison with an existing ageing
-    function should be classed measured or fitted.
-  evidence_revision: sha256:df2da239535d940e2aafd26917dad4a98a1446ab7bb2e8a80f772ece5c953a24
+    the record declares that site and site-scale representativeness. The observed surface types were
+    averaged to the simulation's overall-area scale, recorded as neighborhood applicability. Its stable
+    path and origin remain legacy migration identifiers rather than claims about where the parameters
+    were determined. No value, stable path, name, target, place, representativeness, origin or legacy
+    ID changes.
+  evidence_revision: sha256:b52a4ebd1cd54514f14c4ade1ffd87e74d34317b5c677b6bd2d539f9fc0d8edb
 verification:
   attestations: []

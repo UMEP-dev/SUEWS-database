@@ -10,7 +10,7 @@ dependency_revisions:
     archetypes/snow/helsinki--snow: sha256:0359e6b231a5ede34f3794564fe631be9ed9e4255fecce0214bdfde8ba1bdb29
     archetypes/snow/se-england--not-used: sha256:73631ead1adf910361182b3e8035afdb828fe09a5322bb5958eea718f3559cd1
     records/ohm/helsinki--jarvi2014--snow: sha256:c33b6182ea7f11eb08c17412de2ab722028d67827098931a53879ea930b9d500
-    records/snow/helsinki--jarvi2014--albedo: sha256:b08ddbc2cdd631a8110dd8ca3c8e4340367b81fc7013e8f45b20e2935386de5e
+    records/snow/helsinki--jarvi2014--albedo: sha256:cc807ff4d1a0b11ad9d53cf29c7545ed9a3455ad94e1472db2599b750f5c29c8
     records/snow/helsinki--jarvi2014--emissivity: sha256:5630f4ff544637547e33cd9fdc2c6e7555b422904228798c9dd45f450d62ecc5
 assessment:
   status: curation_required
@@ -107,8 +107,8 @@ assessment:
     record: records/snow/helsinki--jarvi2014--albedo
     role: component
     note: Fills the albedo slot. The record declares target snow, name Snow, place montreal-suburban,
-      representativeness site and source jarvi2014, and carries snow_albedo_min and snow_albedo_max. Its
-      stable path and origin retain legacy Helsinki migration text.
+      representativeness site, source jarvi2014 and method fitted, and carries snow_albedo_min and snow_albedo_max.
+      Its stable path and origin retain legacy Helsinki migration text.
   - id: component-snow-helsinki-jarvi2014-emissivity
     record: records/snow/helsinki--jarvi2014--emissivity
     role: component
@@ -137,6 +137,6 @@ assessment:
     does, the components are a reasonable stand-in and it is the label that misleads; if it does not,
     the uses block should not be here at all. A maintainer with the model''s requirements to hand can
     settle all three findings in one decision.'
-  evidence_revision: sha256:cba4757f63b31d04ac7517b7aadac3c30ec9ffbdb317d6fc7c9ea91aa75dfbaf
+  evidence_revision: sha256:eaa6988883a1402ac8f3bc9b67313155b0d0b997e4fa3e0ff1a2f6e60cb32aee
 verification:
   attestations: []
