@@ -1,5 +1,7 @@
 # Working in this repository
 
+Shared instructions for Claude Code, Codex, and other coding agents. `AGENTS.md` is canonical; `CLAUDE.md` imports it for compatibility. Edit AGENTS.md (and AGENT_GUIDE.md where present), never the CLAUDE.md compatibility loader. Tool-specific commands below apply only when that tool is available; other agents should read the referenced procedure and use their equivalent tools.
+
 Instructions for any coding agent working on the SUEWS parameter database —
 Claude Code, Codex, Cursor, or anything else. This file is the canonical one;
 `CLAUDE.md` points here so the two cannot drift apart.
@@ -184,3 +186,8 @@ it off the site builds byte for byte as it did before. Remove it once the
 structure has settled. Nothing depends on it — the record button and the footer
 link stand on their own, and it leaves behind no template, label or stored
 state.
+
+## Agent workflow
+
+- Work in a git worktree when making changes; `main` is protected and a pull request is the only route in.
+- Claude Code discovers `.claude/skills/` automatically; other agents read the same `SKILL.md` files as ordinary Markdown.
