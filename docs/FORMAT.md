@@ -152,6 +152,19 @@ Envelope fields:
   being model inputs themselves (e.g. which QF formulation an emission set
   was fitted for, which conductance model a g-set belongs to).
 
+### "Archived" in a record name
+
+A record name beginning "Archived …" marks a configuration kept exactly as it
+stood in a SUEWS release input table, a published model-input dataset, or the
+legacy database, so that configurations built from it can still be traced. It
+is a model configuration, not a value that a publication measured, fitted or
+derived. Where the table or dataset it came from is itself citable, that is the
+record's `source`; otherwise the record carries `source: unreferenced`. Either
+way, its provenance sidecar cites the table row the values came from. The place
+in the name says where the configuration was used, not where a value was
+measured. Archived records are not recommended defaults: prefer a sourced
+record for the same parameter where one exists.
+
 ## Provenance assessment and human verification
 
 The record's `source` remains the backwards-compatible citation that travels
