@@ -400,10 +400,15 @@ tables:
       w1Thickness: wall[0].thickness
       wInsulation: wall_insulation_layer
     note: >
-      Layers 1..5 for both roof and wall follow the r1/w1 pattern. The
-      exporter compiles construction + material records into
-      vertical_layers.roofs/walls entries (thermal_layers dz/k/rho_cp plus
-      alb/emis per layer).
+      Layers 1..5 for both roof and wall follow the r1/w1 pattern, from
+      exterior to interior. rInsulation and wInsulation are preserved
+      unchanged: 1..5 is the 1-based position of the designated insulation
+      layer; 6 means no insulation layer is designated (not a sixth layer).
+      These are legacy construction selectors, not 0-based thermal_layers
+      indices or direct SUEWS inputs. The fragment exporter currently skips
+      uses.construction; it does not compile these assemblies into
+      vertical_layers. A direct construction export retains the local
+      fields. See docs/FORMAT.md#construction-insulation-layer-selectors.
 
   NonVeg:
     file: non_veg.yml

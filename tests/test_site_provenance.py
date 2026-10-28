@@ -60,6 +60,28 @@ class SiteProvenanceTests(unittest.TestCase):
             self.policy["revision"], load_verifier_policy()["revision"]
         )
 
+    def test_construction_pages_explain_designations_and_export_limits(self):
+        for path, rec in self.records.items():
+            if rec.get("target") != "construction":
+                continue
+            with self.subTest(path=path):
+                rendered = self.render(path)
+                for side in ("roof", "wall"):
+                    self.assertIn(
+                        f"1-based position of the designated {side} insulation",
+                        rendered,
+                    )
+                self.assertIn("exterior to interior (1–5)", rendered)
+                self.assertIn("Value 6 means no insulation layer is designated", rendered)
+                self.assertIn("not zero-based thermal-layer indices", rendered)
+                self.assertIn("#construction-insulation-layer-selectors", rendered)
+                self.assertIn("<h3>Construction record export</h3>", rendered)
+                self.assertNotIn("<h3>Model-ready fragment</h3>", rendered)
+                self.assertNotIn("Paste under <code>construction</code>", rendered)
+        surface = self.render("records/surfaces/bldgs/london--ward2016--albedo")
+        self.assertIn("<h3>Model-ready fragment</h3>", surface)
+        self.assertNotIn("<h3>Construction record export</h3>", surface)
+
     def test_awaiting_and_curation_pages_render_lineage(self):
         mixed = self.render(MIXED)
         self.assertIn("Awaiting sign-off", mixed)

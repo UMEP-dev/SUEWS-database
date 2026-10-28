@@ -610,7 +610,62 @@ per-country profiles live one level deeper (`traffic/lucy/<country>.yml`).
 Materials and constructions describe building fabric: a material record
 carries the five thermal/radiative properties of one material; a
 construction record layers materials with thicknesses for a roof and wall,
-ready to be compiled into supy's `vertical_layers`.
+for downstream preparation of supy's `vertical_layers`.
+
+### Construction insulation-layer selectors
+
+| Field | Definition |
+| --- | --- |
+| `roof_insulation_layer` | 1-based position of the designated roof insulation layer in the construction, ordered from exterior to interior (1–5). Value 6 means no insulation layer is designated; it is not a sixth layer. |
+| `wall_insulation_layer` | 1-based position of the designated wall insulation layer in the construction, ordered from exterior to interior (1–5). Value 6 means no insulation layer is designated; it is not a sixth layer. |
+
+These dimensionless selectors preserve `rInsulation` and `wInsulation` from
+the legacy **Spartacus Surface** table. Position 1 is the outermost material
+slot (`r1Material`/`w1Material`); positions increase inward, to at most 5.
+A designation identifies a role in the stored assembly, not a material
+classification or a measured thermal property. In particular, 6 does not
+establish that a real building has no insulating material or thermal
+resistance, and a missing field is not automatically equivalent to 6.
+Individual historical assignments still require their own source evidence.
+For example, the UK 1945–1964 pitched-roof record (legacy ID `37240897`)
+designates wall position 2, whose material is air.
+
+**Migration and indexing.** `migrate_constructions()` copies each selector
+unchanged and appends material slots 1 through 5 in order, omitting wholly
+empty slots. All 22 migrated constructions retain the original workbook's
+44 selector values; their populated slots have no internal gaps. Thus,
+for these records, designation `n` in 1–5 refers to `roof[n-1]` or
+`wall[n-1]` in a zero-based list. This is not a promise that an aggregated
+model layer has the same index. Never subtract 1 from the sentinel 6 or
+use it to index a list; if a future import has gaps, check its original
+slot mapping before interpreting a designation.
+
+**Export and calculation.** These fields are repository-local construction
+metadata, not direct SUEWS configuration parameters. The current
+`export_record.py` skips `uses.construction` when assembling an archetype;
+it does not compile constructions into roof/wall thermal arrays. Exporting
+a construction directly retains its local fields with reference wrappers,
+and the JSON release bundle preserves the stored record. Neither output
+therefore makes these selectors valid SUEWS input fields.
+
+The legacy UMEP Database Prepare path does use the selectors during
+preprocessing: `horizontal_aggregation()` groups materials outside the
+designated layer, the designated layer itself, and materials inside it.
+With 6, it aggregates all populated materials into one group. Consequently,
+changing a selector can change derived thermal inputs and model results.
+Current SUEWS consumes prepared properties such as `thermal_layers.dz`,
+`k` and `rho_cp`, with zero-based material indices 0–4 from the exposed
+surface inward; their use depends on the selected storage-heat method.
+These material indices are separate from SPARTACUS vertical height layers.
+
+Implementation evidence:
+
+- [Original Spartacus Surface table](https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml),
+  transcribed from the workbook identified by `schema/provenance.yml`.
+- [UMEP selector entry and the no-designation warning for both facets](https://github.com/UMEP-dev/UMEP/blob/0a4b7f97391ac1b9188ee49aa76f078bb3d389de/suews_database_manager/utilities/suews_SS.py#L117-L183).
+- [UMEP horizontal aggregation](https://github.com/UMEP-dev/UMEP/blob/0a4b7f97391ac1b9188ee49aa76f078bb3d389de/suews_prepare_database/Utilities/db_functions.py#L401-L612)
+  and its [roof/wall thermal-input caller](https://github.com/UMEP-dev/UMEP/blob/0a4b7f97391ac1b9188ee49aa76f078bb3d389de/suews_prepare_database/Utilities/ssParms.py#L568-L589).
+- [SUEWS material-layer conventions and method-specific use](https://github.com/UMEP-dev/SUEWS/blob/ac1e4964b450de738ff38f894d61b7e146ab1ce1/docs/source/inputs/yaml/layer-conventions.rst).
 
 ## An archetype
 
