@@ -207,7 +207,8 @@ FAMILY_NOTE = {
         "max_conductance is the maximum conductance of one vegetated surface "
         "(evergreen trees, deciduous trees or grass), set under land_cover. "
         "It is not g_max from the conductance family: SUEWS weights each "
-        "surface's max_conductance by its cover fraction and LAI/LAImax, sums "
+        "surface's max_conductance by its snow-free cover fraction and "
+        "LAI/LAImax, sums "
         "them, and multiplies that sum by the site-wide g_max and the "
         "environmental response functions."),
     "conductance": (
