@@ -189,13 +189,33 @@ FAMILY_LABEL = {
     "drainage": "Drainage", "water-state": "Water state",
     "snow-lim": "Snowpack limit", "soil": "Soil properties",
     "lai": "Leaf area index", "lai-power": "LAI growth coefficients",
-    "phenology": "Phenology thresholds", "max-conductance": "Maximum conductance",
+    "phenology": "Phenology thresholds",
+    "max-conductance": "Maximum vegetation conductance",
     "porosity": "Porosity", "biogen-co2": "Biogenic CO2",
     "thermal-layers": "Thermal layers", "ohm": "OHM coefficients",
     "conductance": "Surface conductance", "irrigation": "Irrigation",
     "anthropogenic": "Anthropogenic emissions", "materials": "Material",
     "constructions": "Construction", "snow": "Snow parameters",
     "surface": "Surface properties",
+}
+# families whose names invite confusion with another family: one line of
+# plain text, shown on record pages, on the filtered browse view and as the
+# coverage-matrix tooltip. g_max and max_conductance are distinct SUEWS
+# parameters that the model multiplies (suews_phys_resist.f95, SurfaceResistance)
+FAMILY_NOTE = {
+    "max-conductance": (
+        "max_conductance is the maximum conductance of one vegetated surface "
+        "(evergreen trees, deciduous trees or grass), set under land_cover. "
+        "It is not g_max from the conductance family: SUEWS weights each "
+        "surface's max_conductance by its cover fraction and LAI/LAImax, sums "
+        "them, and multiplies that sum by the site-wide g_max and the "
+        "environmental response functions."),
+    "conductance": (
+        "Site-wide coefficients of the Jarvis-type surface conductance model. "
+        "g_max here is the fitted coefficient that scales the whole product; "
+        "it is not max_conductance from the max-conductance family, the "
+        "per-surface maximum that enters through the LAI term. SUEWS "
+        "multiplies the two."),
 }
 SURFACE_LABEL = {
     "paved": "Paved", "bldgs": "Buildings", "evetr": "Evergreen trees",
@@ -1929,6 +1949,8 @@ def record_page(
                   if target in TARGET_DOC else None)
     row("Target", f"<code>{esc(target)}</code>"
         + (f" · <a href=\"{target_doc}\">docs</a>" if target_doc else ""))
+    if fam in FAMILY_NOTE:
+        row("Note", esc(FAMILY_NOTE[fam]))
     if rec.get("attaches_to"):
         row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>")
     if rec.get("origin"):
@@ -2546,6 +2568,10 @@ function render() {
       `aria-label="remove ${FACET_TITLE[f]} filter">` +
       `${FACET_TITLE[f]}: ${displayVal(f, state[f])} ×</button>`).join('');
   }
+  const fn = document.getElementById('famnote');
+  if (fn) {
+    fn.textContent = showOverview ? '' : (FAMILY_NOTE[state.family] || '');
+  }
   const nres = document.getElementById('nres');
   if (showOverview) {
     nres.textContent = '';
@@ -2899,7 +2925,7 @@ families</p>
             tds.append(f"<td style=\"background:rgba(247,181,56,{a:.3f})\">"
                        f"<a class=\"{ink}\" href=\"{esc(href)}\">{n}</a></td>")
         rows_html.append(
-            f"<tr><th><a title=\"{esc(fam)}\" href=\"#family={esc(fam)}\">"
+            f"<tr><th><a title=\"{esc(FAMILY_NOTE.get(fam, fam))}\" href=\"#family={esc(fam)}\">"
             f"{esc(fam)}</a><span class=\"rn\">{fam_counts[fam]}</span></th>"
             + "".join(tds) + "</tr>")
     cells = len(fam_counts) * len(cols)
@@ -2970,6 +2996,7 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
             + stats
             + f"<div class=\"layout\">{rail}<div>"
             + "<div id=\"afilters\" class=\"pill-row\"></div>"
+            + "<p id=\"famnote\" class=\"gcap\"></p>"
             + "<div id=\"nres\" role=\"status\" aria-live=\"polite\">"
               "loading the index…</div>"
               "<div id=\"results\" class=\"results2\"></div>"
@@ -2982,6 +3009,7 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
         f"const ACC = {json.dumps(SURFACE_ACC)};"
         f"const LC_LABEL = {json.dumps(SURFACE_LABEL)};"
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
+        f"const FAMILY_NOTE = {json.dumps(FAMILY_NOTE)};"
         f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
         f"const METHOD_LABEL = {json.dumps(METHOD_LABEL)};"
         f"const SCALE_LABEL = {json.dumps(APPLICABLE_SCALE_LABEL)};"
