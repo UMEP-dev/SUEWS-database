@@ -38,6 +38,7 @@ import hashlib
 import html
 import json
 import os
+import re
 import subprocess
 import sys
 import urllib.error
@@ -61,7 +62,14 @@ from export_record import PlainDumper, assemble  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 REPO_URL = "https://github.com/UMEP-dev/SUEWS-database"
 SUEWS_SITE = "https://suews.io"
-DOCS = "https://docs.suews.io/latest/inputs/yaml"
+# link the SUEWS manual for the supy release the records are validated
+# against (SUPY_VERSION in the Makefile), not the moving development build:
+# field names change between releases, and a link must name the field the
+# record's schema_version actually has. A SUPY_VERSION bump therefore
+# needs docs.suews.io/<version>/ to exist
+SUPY_VERSION = re.search(r"^SUPY_VERSION\s*:=\s*(\S+)",
+                         (ROOT / "Makefile").read_text(), re.M).group(1)
+DOCS = f"https://docs.suews.io/{SUPY_VERSION}/inputs/yaml"
 DOCS_REF = f"{DOCS}/config-reference"
 
 URBAN_SETTING_LABEL = {
@@ -422,7 +430,11 @@ def doc_url(target, dotted):
     if not target or target in ("material", "construction", "typology", "site"):
         return None
     if target.startswith("profile."):
-        return f"{DOCS_REF}/hourlyprofile.html"
+        # a profile's own leaves are working_day.<hour> / holiday.<hour>
+        part = dotted.split(".", 1)[0]
+        anchor = (f"#input-option-{part}"
+                  if part in ("working_day", "holiday") else "")
+        return f"{DOCS_REF}/hourlyprofile.html{anchor}"
     base = TARGET_DOC.get(target)
     if base is None:
         return None
@@ -435,6 +447,14 @@ def doc_url(target, dotted):
     if leaf.isdigit() or dotted.startswith("context"):
         return f"{DOCS_REF}/{page_slug}.html"
     return f"{DOCS_REF}/{page_slug}.html#input-option-{leaf}"
+
+
+def attach_doc_url(attaches_to):
+    """Docs entry for the model field a profile record attaches to."""
+    if not attaches_to or "." not in attaches_to:
+        return None
+    head, rest = attaches_to.split(".", 1)
+    return doc_url(head, rest)
 
 LIGHT_TOKENS = """
   color-scheme: light;
@@ -1945,15 +1965,21 @@ def record_page(
         setting = rec["urban_setting"]
         row("Urban setting", esc(URBAN_SETTING_LABEL.get(setting, setting)))
     target = rec.get("target")
-    target_doc = (f"{DOCS_REF}/hourlyprofile.html" if str(target).startswith("profile.")
+    is_profile = str(target).startswith("profile.")
+    target_doc = (None if is_profile
                   else f"{DOCS_REF}/{TARGET_DOC[target]}.html"
                   if target in TARGET_DOC else None)
     row("Target", f"<code>{esc(target)}</code>"
-        + (f" · <a href=\"{target_doc}\">docs</a>" if target_doc else ""))
+        + (f" · <a href=\"{target_doc}\">docs</a>" if target_doc else "")
+        + (f" · <a href=\"{DOCS_REF}/hourlyprofile.html\">profile "
+           "format</a>" if is_profile else ""))
     if fam in FAMILY_NOTE:
         row("Note", esc(FAMILY_NOTE[fam]))
     if rec.get("attaches_to"):
-        row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>")
+        attach_doc = attach_doc_url(rec["attaches_to"])
+        row("Attaches to", f"<code>{esc(rec['attaches_to'])}</code>"
+            + (f" · <a href=\"{esc(attach_doc)}\">docs</a>"
+               if attach_doc else ""))
     if rec.get("origin"):
         row("Origin", f"“{esc(rec['origin'])}” (verbatim legacy string)")
     if rec.get("season_label"):
