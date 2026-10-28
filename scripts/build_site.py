@@ -2047,7 +2047,34 @@ def record_page(
         params = {k: v for k, v in rec["parameters"].items() if k != "context"}
         context = rec["parameters"].get("context")
         if params:
-            main.append("<h3>Parameters</h3>"
+            main.append("<h3>Parameters</h3>")
+            if rec.get("target") == "construction":
+                main.append(
+                    "<p class=\"crumbs\">Repository-local construction fields; "
+                    "these are not direct SUEWS configuration parameters.</p>"
+                    "<dl>"
+                )
+                for side in ("roof", "wall"):
+                    if f"{side}_insulation_layer" in params:
+                        main.append(
+                            f"<dt><code>{side}_insulation_layer</code></dt>"
+                            f"<dd>1-based position of the designated {side} "
+                            "insulation layer in the construction, ordered from "
+                            "exterior to interior (1–5). Value 6 means no "
+                            "insulation layer is designated; it is not a sixth "
+                            "layer.</dd>"
+                        )
+                main.append(
+                    "</dl><p>A designation does not verify the material type "
+                    "or the physical absence of insulation. These legacy "
+                    "selectors are not zero-based thermal-layer indices. "
+                    "UMEP preprocessing can use them to derive thermal inputs. "
+                    f"<a href=\"{REPO_URL}/blob/{BUILD_REF}/docs/FORMAT.md"
+                    "#construction-insulation-layer-selectors\">"
+                    "Indexing, export behaviour and limitations</a>.</p>"
+                )
+            else:
+                main.append(
                         "<p class=\"crumbs\">Names follow the SUEWS YAML "
                         "specification; click one for its definition in the "
                         "configuration reference.</p>")
@@ -2082,7 +2109,15 @@ def record_page(
     try:
         frag = assemble(path, records, sources)
         if frag:
-            main.append("<h3>Model-ready fragment</h3>"
+            if rec.get("target") == "construction":
+                main.append(
+                    "<h3>Construction record export</h3>"
+                    "<p class=\"crumbs\">Local fields with citation wrappers. "
+                    "This is not a model-ready fragment: the exporter does not "
+                    "compile constructions into SUEWS thermal layers.</p>"
+                )
+            else:
+                main.append("<h3>Model-ready fragment</h3>"
                         "<p class=\"crumbs\">Paste under "
                         f"<code>{esc(rec.get('target'))}</code> in a SUEWS YAML "
                         "configuration; every value carries its citation.</p>")

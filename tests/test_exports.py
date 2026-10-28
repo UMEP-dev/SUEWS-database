@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 import subprocess
 import sys
@@ -65,6 +66,37 @@ class ExportCompatibilityTests(unittest.TestCase):
         self.assertIn("snow_profile_24hr", fragment["snow"])
         self.assertIn("working_day", fragment["irrigation"]["wuprofm_24hr"])
         self.assertIn("holiday", fragment["irrigation"]["wuprofa_24hr"])
+
+    def test_construction_designations_are_preserved_in_direct_exports(self):
+        records, sources, _ = load_all()
+        for path, rec in records.items():
+            if rec.get("target") != "construction":
+                continue
+            with self.subTest(path=path):
+                fragment = assemble(path, records, sources)
+                for side in ("roof", "wall"):
+                    field = f"{side}_insulation_layer"
+                    self.assertEqual(
+                        fragment[field]["value"], rec["parameters"][field]
+                    )
+                    self.assertEqual(
+                        [layer.get("material") for layer in fragment[side]],
+                        [layer.get("material") for layer in rec["parameters"][side]],
+                    )
+                self.assertNotIn("thermal_layers", fragment)
+                self.assertNotIn("vertical_layers", fragment)
+
+    def test_archetype_export_does_not_compile_construction_designations(self):
+        records, sources, _ = load_all()
+        path = "archetypes/surfaces/bldgs/helsinki--kumpula"
+        construction = records[path]["uses"]["construction"]
+        before = assemble(path, records, sources)
+        changed = deepcopy(records)
+        for side in ("roof", "wall"):
+            changed[construction]["parameters"][f"{side}_insulation_layer"] = 6
+        self.assertEqual(assemble(path, changed, sources), before)
+        self.assertNotIn("roof_insulation_layer", before)
+        self.assertNotIn("wall_insulation_layer", before)
 
     def test_country_export_inherits_region_and_attaches_local_profiles(self):
         records, sources, _ = load_all()
