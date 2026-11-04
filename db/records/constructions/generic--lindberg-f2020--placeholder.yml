@@ -1,7 +1,7 @@
 record: records/constructions/generic--lindberg-f2020--placeholder
 schema_version: '2026.5'
 target: construction
-name: Archived internal construction fixture
+name: Archived paved-surface stand-in from the legacy construction table (not a physical assembly)
 place: generic
 origin: Placeholder
 representativeness: generic

@@ -8,7 +8,7 @@ dependency_revisions:
     london: sha256:c217ea5e78aa2e76f07a4fc57b5a7aae0aaa98d23225b93078d7d3e488b8a4f4
   records:
     archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016: sha256:66e4bfd8c26d222b3dbddea8505e91872e65174da784d5d1de91fef53ec7d41a
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:1d31c940b245d6dba7c05b3691adba9923dbc4ae4176c2e64c2eb2ae75548534
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
@@ -18,7 +18,7 @@ dependency_revisions:
     records/surfaces/paved/se-england--ward2016--water-storage: sha256:f4d75b1e60f3100c35ac30c8a4dd0e019bd40a9f258484ea85587fda38bb3936
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T00:43:17Z'
+  assessed_at: '2026-11-04T12:42:04Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -104,10 +104,10 @@ assessment:
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
-      note: The composite declares representativeness city. Water storage and drainage are regional,
-        emissivity is city-scoped, snow limit and construction are generic, and the OHM records declare
-        no representativeness. The albedo is fitted site evidence from the Ward et al. study locations;
-        extending that narrower evidence to a city claim requires human curation.
+      note: The composite declares representativeness city. Water storage and drainage are regional, emissivity
+        is city-scoped, snow limit and construction are generic, and the OHM records declare no representativeness.
+        The albedo is fitted site evidence from the Ward et al. study locations; extending that narrower
+        evidence to a city claim requires human curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -147,7 +147,8 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place se-england,
-      representativeness site, applicable_scale land_cover, source ward2016 and method fitted, and carries alb.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted, and carries
+      alb.
   - id: component-surfaces-paved-london--ward2016--emissivity
     record: records/surfaces/paved/london--ward2016--emissivity
     role: component
@@ -168,10 +169,11 @@ assessment:
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: component
-    note: Fills the construction slot. The record declares target construction, name Archived internal construction fixture, place
-      generic, representativeness generic, source unreferenced and method assumed, and carries roof and wall layer lists
-      with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
-      slot out of the surface fragment, so this reference contributes no exported value.
+    note: Fills the construction slot. The record declares target construction, name Archived paved-surface
+      stand-in from the legacy construction table (not a physical assembly), place generic, representativeness
+      generic, source unreferenced and method assumed, and carries roof and wall layer lists with roof_insulation_layer
+      and wall_insulation_layer. scripts/export_record.py keeps the construction slot out of the surface
+      fragment, so this reference contributes no exported value.
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
@@ -196,18 +198,18 @@ assessment:
     and its drainage component is the Ward et al. (2018) publication of the SE England tuple. Where the
     named study reports a London value the composite takes it in the emissivity slot. Water storage and
     drainage use regional rows, while albedo uses the fitted site-scoped SE England row. That albedo-to-city
-    extrapolation remains a human curation question even though the selected value belongs to the named study.
-    The season mapping is right: the OHM record labelled Summer fills the two summer positions and the
-    one labelled Winter fills the two winter positions, and since neither record carries a wetness label
-    the wet and dry positions within a season taking the same coefficients contradicts nothing. Two slots
-    leave the ward2016 set. snow_lim_patch takes the generic Järvi paved-surface default because it is
-    the only paved snowpack-limit record in the database, and construction takes an archived internal
-    construction fixture, which changes no exported
-    number because scripts/export_record.py keeps the construction slot out of the surface fragment. Neither
-    is a selection error. Together with the water-storage and drainage source corrections, four component slots therefore
-    do not declare ward2016. The fixture identity is explicit rather than a physical construction claim;
-    the other components'' own values and any ''sample run'' labels remain subject to their own evidence
-    assessments, which this review does not revisit.'
-  evidence_revision: sha256:315b05888e3c3cab4b4f910e76c6108dd2ff0ec1324e4d857f517180e46dd592
+    extrapolation remains a human curation question even though the selected value belongs to the named
+    study. The season mapping is right: the OHM record labelled Summer fills the two summer positions
+    and the one labelled Winter fills the two winter positions, and since neither record carries a wetness
+    label the wet and dry positions within a season taking the same coefficients contradicts nothing.
+    Two slots leave the ward2016 set. snow_lim_patch takes the generic Järvi paved-surface default because
+    it is the only paved snowpack-limit record in the database, and construction takes an archived internal
+    construction fixture, which changes no exported number because scripts/export_record.py keeps the
+    construction slot out of the surface fragment. Neither is a selection error. Together with the water-storage
+    and drainage source corrections, four component slots therefore do not declare ward2016. The fixture
+    identity is explicit rather than a physical construction claim; the other components'' own values
+    and any ''sample run'' labels remain subject to their own evidence assessments, which this review
+    does not revisit.'
+  evidence_revision: sha256:8d0b90c183f611843a88655919bad707add47669b22817870fe30eeacb14b764
 verification:
   attestations: []

@@ -8,7 +8,7 @@ dependency_revisions:
     swindon: sha256:745e0504eabf864b62d2a0b08d623fb5b53d55d533c1b03b4f6446a65a4a19b4
   records:
     archetypes/surfaces/paved/london-uk--central-london-ward-et-al-2016: sha256:2905e4be32d1d41c9e3d3a2fa1f889007609acda6243ca5914e5db11fa66b06b
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:1d31c940b245d6dba7c05b3691adba9923dbc4ae4176c2e64c2eb2ae75548534
     records/ohm/generic--ward2016--paved: sha256:a3e1fa4752cc453683e17cd682aa5e570e6d0bcff6cf20a3abb800585d6203d5
     records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512: sha256:b26f5b924d1416aa7cc7c1c1a83ee464a8a01c195819a655e56abbf03a19fc62
     records/surfaces/paved/helsinki--jarvi2014--snow-lim: sha256:94211843325434e3c1873c41626d75d6a21eb7760a3f2c988db044e01968beda
@@ -19,7 +19,7 @@ dependency_revisions:
     records/surfaces/paved/swindon--ward2016--emissivity: sha256:5a77fc640794c3ab408ce8f62afe3385f620d445134d5158cf9d8c0a25358cf9
 assessment:
   status: curation_required
-  assessed_at: '2026-08-23T08:42:00Z'
+  assessed_at: '2026-11-04T12:42:04Z'
   assessor:
     kind: agent
     name: provenance-audit
@@ -94,8 +94,8 @@ assessment:
         which db/places.yml records as ''SE England'', subnational: true, country united-kingdom, the
         region containing Swindon, so applying them to the town is a downscaling rather than a substitution.
         The snow_lim_patch slot takes the generic Järvi paved-surface default, the only paved snow_lim
-        record in the database. The construction record declares place generic and the two OHM
-        records declare no place. The database also holds records/surfaces/paved/swindon--ward2013--drainage,
+        record in the database. The construction record declares place generic and the two OHM records
+        declare no place. The database also holds records/surfaces/paved/swindon--ward2013--drainage,
         place swindon, representativeness site, source ward2018, referenced by no archetype, and the drainage
         slot takes the se-england record instead. Both drainage records now declare source ward2018 and
         carry the same parameter values; they differ only in place and representativeness. This sidecar
@@ -112,10 +112,10 @@ assessment:
       - component-surfaces-paved-helsinki--jarvi2014--snow-lim
       - component-ohm-generic--ward2016--paved
       - component-ohm-generic--ward2016--paved--code-851-x-multiplier-for-winter-8512
-      note: The composite declares representativeness city. Water storage and drainage are regional,
-        emissivity is city-scoped, snow limit and construction are generic, and the OHM records declare
-        no representativeness. The albedo is fitted site evidence from the Ward et al. study locations;
-        extending that narrower evidence to a city claim requires human curation.
+      note: The composite declares representativeness city. Water storage and drainage are regional, emissivity
+        is city-scoped, snow limit and construction are generic, and the OHM records declare no representativeness.
+        The albedo is fitted site evidence from the Ward et al. study locations; extending that narrower
+        evidence to a city claim requires human curation.
     method:
       conclusion: supported
       evidence_ids:
@@ -155,7 +155,8 @@ assessment:
     record: records/surfaces/paved/se-england--ward2016--albedo
     role: component
     note: Fills the albedo slot. The record declares target land_cover.paved, name Paved, place se-england,
-      representativeness site, applicable_scale land_cover, source ward2016 and method fitted, and carries alb.
+      representativeness site, applicable_scale land_cover, source ward2016 and method fitted, and carries
+      alb.
   - id: component-surfaces-paved-swindon--ward2016--emissivity
     record: records/surfaces/paved/swindon--ward2016--emissivity
     role: component
@@ -176,10 +177,11 @@ assessment:
   - id: component-constructions-generic--lindberg-f2020--placeholder
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: component
-    note: Fills the construction slot. The record declares target construction, name Archived internal construction fixture, place
-      generic, representativeness generic, source unreferenced and method assumed, and carries roof and wall layer lists
-      with roof_insulation_layer and wall_insulation_layer. scripts/export_record.py keeps the construction
-      slot out of the surface fragment, so this reference contributes no exported value.
+    note: Fills the construction slot. The record declares target construction, name Archived paved-surface
+      stand-in from the legacy construction table (not a physical assembly), place generic, representativeness
+      generic, source unreferenced and method assumed, and carries roof and wall layer lists with roof_insulation_layer
+      and wall_insulation_layer. scripts/export_record.py keeps the construction slot out of the surface
+      fragment, so this reference contributes no exported value.
   - id: component-surfaces-paved-helsinki--jarvi2014--snow-lim
     record: records/surfaces/paved/helsinki--jarvi2014--snow-lim
     role: component
@@ -200,23 +202,21 @@ assessment:
       a1, a2 and a3, and declares no place and no representativeness.
   scientific_note: 'The selection follows the study the entry is named for. archetypes/surfaces/paved/swindon-uk--suburban-residential-ward-et-al-2016
     declares place swindon and representativeness city, and four of its eight components declare source
-    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; albedo takes the
-    fitted site-scoped se-england row from that study, water storage takes the regional Järvi et al. (2011)
-    row, and drainage takes the regional Ward et al. (2018) row. The albedo-to-city extrapolation therefore
-    remains a human curation question. The season mapping
-    is right, the Summer-labelled OHM record filling the two summer positions and the Winter-labelled
-    one the two winter positions, and neither record carries a wetness label, so nothing is asserted by
-    the wet and dry positions sharing coefficients. One alternative is worth naming so nobody has to rediscover
-    it: records/surfaces/paved/swindon--ward2013--drainage is a Swindon record, classed site, referenced
-    by no archetype, and the drainage slot passes over it for the regional row. Both drainage records
-    declare source ward2018 and carry identical parameter values; only their place and representativeness
-    differ. Preserving the regional reference keeps the established assembly stable, while deciding whether
-    the duplicate records should be consolidated is separate curation.
-    The remaining two slots leave the ward2016 set for want of alternatives: snow_lim_patch takes the
-    generic Järvi paved-surface default, the only paved snowpack-limit record there is, and construction
-    takes an archived internal fixture that
-    contributes no exported value, since scripts/export_record.py keeps construction out of the surface
-    fragment.'
-  evidence_revision: sha256:a8cefe737d7ba32348d73545059fd1e2b0b43ea2043945d6a0487565a70384ba
+    ward2016. The one slot with a Swindon-specific ward2016 record, emissivity, takes it; albedo takes
+    the fitted site-scoped se-england row from that study, water storage takes the regional Järvi et al.
+    (2011) row, and drainage takes the regional Ward et al. (2018) row. The albedo-to-city extrapolation
+    therefore remains a human curation question. The season mapping is right, the Summer-labelled OHM
+    record filling the two summer positions and the Winter-labelled one the two winter positions, and
+    neither record carries a wetness label, so nothing is asserted by the wet and dry positions sharing
+    coefficients. One alternative is worth naming so nobody has to rediscover it: records/surfaces/paved/swindon--ward2013--drainage
+    is a Swindon record, classed site, referenced by no archetype, and the drainage slot passes over it
+    for the regional row. Both drainage records declare source ward2018 and carry identical parameter
+    values; only their place and representativeness differ. Preserving the regional reference keeps the
+    established assembly stable, while deciding whether the duplicate records should be consolidated is
+    separate curation. The remaining two slots leave the ward2016 set for want of alternatives: snow_lim_patch
+    takes the generic Järvi paved-surface default, the only paved snowpack-limit record there is, and
+    construction takes an archived internal fixture that contributes no exported value, since scripts/export_record.py
+    keeps construction out of the surface fragment.'
+  evidence_revision: sha256:1895c32fedd5c5d567ca893357157d4fe0eb40246393986306a92f904e4c05ff
 verification:
   attestations: []
