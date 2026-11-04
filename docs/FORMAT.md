@@ -30,8 +30,11 @@ Two registries resolve the short names records use.
 - `db/sources.yml` — citation keys (`ward2016`, `jarvi2014`) with author,
   year, title, journal and DOI. An optional `url` preserves an authoritative
   publisher or repository landing page when a source has no DOI; a normal URL
-  must never be stored in `doi`. `unreferenced` marks legacy values that carried
-  no citation.
+  must never be stored in `doi`. `unreferenced` marks values with no
+  publication that states or derives them: the legacy database gave no
+  citation, or the reference it gave never resolved to a registered source,
+  or the citation it gave was checked and does not hold the value (see
+  `source_legacy_ref` below).
 - `db/places.yml` — place slugs (`helsinki`, `se-england`) for every
   location a record claims. `schema/origins_map.yml` records how each raw
   legacy `Origin` string was resolved, with a confidence flag.
@@ -97,6 +100,22 @@ Envelope fields:
   from `target`, the filename or the record name.
 - `method` (optional) — measured | fitted | literature | calculated | assumed.
   Not recoverable for migrated records; fill it in for new ones.
+- `source_legacy_ref` (optional) — the numeric reference ID the legacy
+  database cited for the row, kept as lineage whenever the record's `source`
+  no longer matches it: usually `source: unreferenced`, occasionally a record
+  later re-sourced to another publication. For an `unreferenced` record, when
+  it matches the `legacy_id` of an entry in
+  `db/sources.yml`, the legacy citation was checked against that publication
+  and found not to state or derive the stored values, and the record's
+  provenance sidecar records that check under its `source` finding. When it
+  matches no registered source, it is a dangling migration reference that
+  never resolved to a publication. Either way it never travels into a SUEWS
+  configuration.
+  The browse site shows such a record as **legacy citation not supported**
+  in place of "unreferenced", on listing cards, in the source filter and on
+  the record page, whose "Legacy citation" section names the cited
+  publication. "Unreferenced" on the site therefore means that no checked
+  citation is on file: none was given, or the reference never resolved.
 - `parameter_provenance` (optional, evidence records only) — controlled
   provenance metadata for exact numeric parameter leaves when a stable model
   tuple is not source-coherent or when a scalar model input represents one
