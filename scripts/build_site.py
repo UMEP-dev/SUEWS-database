@@ -646,6 +646,9 @@ input.ffind:focus { outline: 1px solid var(--sun-gold); }
   border-radius: 999px; border: 1px solid rgba(247,181,56,0.55);
   color: var(--gold-ink); font-size: 0.72rem; font-style: italic;
   vertical-align: 0.1em; }
+a.legacy-note { color: var(--gold-ink); font-size: 0.72rem;
+  text-decoration: underline dotted; text-underline-offset: 2px; }
+h2 a.legacy-note { font-weight: 400; vertical-align: 0.1em; }
 .results2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 0.8rem; }
 .card2 { border: 1px solid var(--border-light); border-top: 3px solid var(--acc);
@@ -1857,6 +1860,60 @@ def review_guide_page(policy):
 # ---------------- per-entry pages ----------------
 
 
+def checked_legacy_citation(rec, sources):
+    """Return the source key of a legacy citation that was checked and not
+    supported, or None.
+
+    A record states this case with ``source: unreferenced`` together with a
+    ``source_legacy_ref`` that resolves to the ``legacy_id`` of an entry in
+    ``db/sources.yml``: the legacy database cited that publication, and a
+    check of it found that it does not state or derive the stored values. A
+    ``source_legacy_ref`` that resolves to no registered source is a dangling
+    migration reference, not a checked citation, and returns None.
+    """
+    if rec.get("source") != "unreferenced":
+        return None
+    ref = rec.get("source_legacy_ref")
+    if ref is None:
+        return None
+    for key, src in sources.items():
+        if src.get("legacy_id") == ref:
+            return key
+    return None
+
+
+def source_short_label(key, sources):
+    """'Author Year' for a registered source, falling back to its key."""
+    src = sources.get(key) or {}
+    if src.get("year"):
+        return f"{src.get('author', key).split(',')[0]} {src['year']}"
+    return key
+
+
+def legacy_citation_section(rec, legacy_key, sources, rel):
+    """Record-page section explaining a checked, unsupported legacy citation."""
+    src = sources.get(legacy_key) or {}
+    authors = str(src.get("author", legacy_key))
+    who = authors.split(",")[0].strip()
+    if ";" in authors or " and " in authors:
+        who += " et al."
+    who = esc(who)
+    year = esc(src.get("year", "?"))
+    return (
+        "<h3 id=\"legacy-citation\">Legacy citation</h3>"
+        "<p>The legacy database cited "
+        f"<a href=\"{rel}source/{esc(legacy_key)}.html\">{who} ({year})</a> "
+        f"for this record (legacy reference {esc(rec.get('source_legacy_ref'))}). "
+        "That publication was checked and does not state or derive the stored "
+        "values, so the record carries "
+        "<span class=\"badge-unref\">unreferenced</span> rather than a citation "
+        "the paper does not support. The reference is kept as lineage only: it "
+        "does not travel with the values into a SUEWS configuration. The "
+        "<i>Source</i> finding under the provenance evidence records what was "
+        "checked.</p>"
+    )
+
+
 def record_page(
     path, rec, records, sources, used_by, cluster, image=None,
     sidecars=None, policy=None, blocked=None, invite=False
@@ -1867,6 +1924,7 @@ def record_page(
     kind_label = "evidence record" if kind == "record" else "composite"
     src_key = rec.get("source")
     src = sources.get(src_key) if src_key else None
+    legacy_key = checked_legacy_citation(rec, sources)
     fam = family_of(path)
     surface = surface_of(path, rec)
     is_region_fallback = path.startswith("archetypes/regions/")
@@ -1941,7 +1999,11 @@ def record_page(
             prov_rows.append(f"<div class=\"prow\"><span class=\"pk\">{esc(k)}"
                              f"</span><span>{v}</span></div>")
 
-    if src_key == "unreferenced":
+    if legacy_key:
+        row("Source", "<span class=\"badge-unref\">unreferenced</span> — "
+            f"<a class=\"legacy-note\" href=\"#legacy-citation\">legacy citation checked: value not in the cited paper</a> "
+            f"({esc(source_short_label(legacy_key, sources))})")
+    elif src_key == "unreferenced":
         row("Source", "<span class=\"badge-unref\">unreferenced</span> — no "
             "citation was recorded in the legacy database; treat with care")
     elif src:
@@ -2000,6 +2062,9 @@ def record_page(
 
     unref_badge = (" <span class=\"badge-unref\">unreferenced</span>"
                    if src_key == "unreferenced" else "")
+    if legacy_key:
+        unref_badge += (" <a class=\"legacy-note\" href=\"#legacy-citation\">"
+                        "legacy citation checked: value not in the cited paper</a>")
     body = [crumbs,
             f"<h2>{esc(title_text)}{qualifier}"
             + (f"<span class=\"stag {acc}\">{esc(surface)}</span>" if surface else "")
@@ -2147,6 +2212,8 @@ def record_page(
                         "under; not model inputs themselves.</p>")
             main.append(params_table({"context": context}, None, linked=False))
 
+    if legacy_key:
+        main.append(legacy_citation_section(rec, legacy_key, sources, rel))
     if provenance_main:
         main.append(provenance_main)
 
@@ -2615,8 +2682,14 @@ function render() {
     } else {
       out = hits.slice(0, 200).map(e => {
         const acc = ACC[e.surface] || 'acc-none';
-        const src = e.source === 'unreferenced'
+        let src = e.source === 'unreferenced'
           ? '<span class="badge-unref">unreferenced</span>' : e.source;
+        if (e.legacy_citation) {
+          src += ' <a class="legacy-note" href="' + e.path + '.html#legacy-citation" ' +
+                 'title="The legacy database cited ' + e.legacy_citation_label +
+                 '; the paper was checked and does not contain this value">' +
+                 'legacy citation checked: value not in the cited paper</a>';
+        }
         const meta = [e.family, TYP_LABEL[e.typology],
                       e.city || e.country, e.rep, SCALE_LABEL[e.scale],
                       SETTING_LABEL[e.setting],
@@ -2800,6 +2873,9 @@ def build_index_page(records, sources, places, by_place):
     )
     n_unref = sum(1 for p, r in records.items()
                   if p.startswith("records/") and r.get("source") == "unreferenced")
+    n_legacy = sum(1 for p, r in records.items()
+                   if p.startswith("records/")
+                   and checked_legacy_citation(r, sources))
     stats = (
         "<div class=\"statline\">"
         f"<span><b>{n_rec}</b>evidence records</span>"
@@ -2816,8 +2892,10 @@ def build_index_page(records, sources, places, by_place):
         "parameter paths. A mixed-source set labels its field-level citations. "
         "Every record exports as a fragment that pastes straight into "
         "a SUEWS YAML configuration, with its citation attached to every "
-        f"value. {n_unref} legacy records with no recorded source are "
-        "flagged <span class=\"badge-unref\">unreferenced</span>.</p></div>"
+        f"value. {n_unref} legacy records with no supported source are "
+        "flagged <span class=\"badge-unref\">unreferenced</span>; for "
+        f"{n_legacy} of them the legacy citation was checked and the value is "
+        "not in the cited paper.</p></div>"
     )
 
     # ---- arrival: two doors ------------------------------------------------
@@ -2923,7 +3001,7 @@ families</p>
 <a class="icell" href="#all=1"><b>{len(cited)}</b>
 <span>cited sources across {len(places)} places</span></a>
 <a class="icell quiet" href="#source=unreferenced"><b>{n_unref}</b>
-<span>records with no source on file</span></a>
+<span>records with no supported source on file</span></a>
 </div>"""
 
     # the coverage matrix replaces the old land-cover and typology tiles: it
@@ -3083,6 +3161,7 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
         )
         method = assessment.get("method") or rec.get("method")
         verification = provenance_state(sidecar, policy)
+        legacy_key = checked_legacy_citation(rec, sources)
         roles = sorted({
             item.get("role")
             for item in assessment.get("evidence", [])
@@ -3122,6 +3201,10 @@ def build_search_index(records, sources, places, sidecars=None, policy=None):
             "method": method,
             "review_type": review_type,
             "verification": verification, "role": roles,
+            "legacy_citation": legacy_key,
+            "legacy_citation_label": (
+                source_short_label(legacy_key, sources) if legacy_key else None
+            ),
             "vals": vals, "text": text,
         })
     # evidence records with values lead; bare pointer typologies trail, so a
