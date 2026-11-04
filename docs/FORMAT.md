@@ -232,10 +232,18 @@ database records:
 | `compilation` | source | Later republishes or collects the parameter values. |
 | `validation` | source | Later evaluates the parameter or method. |
 | `composition_source` | source | Explains or publishes the composite selection. |
+| `application` | source | Used the stored value in a model run or analysis, without stating or deriving it. |
 | `input` | record | Supplies a database value used in an internal calculation. |
 | `component` | record or archetype | Is selected into a reviewed composite slot. |
 | `possible_duplicate` | record | May represent the same scientific assertion. |
 | `related` | record | Helps adjudicate the finding without being a calculation input. |
+
+`application` records where a value has been used, which helps a reader judge
+how it has fared in practice. It is never evidence of where the value came
+from: it does not count as a `parameter_source` for sign-off, and the checker
+rejects a `supported` source finding that cites application evidence. The site
+lists application evidence under its own heading, "Used in", apart from the
+evidence for the value itself.
 
 Every source claim carries one or more structured locators: a table, figure,
 equation, section, page, supplementary file, dataset or exact text location.
