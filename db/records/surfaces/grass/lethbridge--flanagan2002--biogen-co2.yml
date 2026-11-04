@@ -7,6 +7,7 @@ origin: Lethbridge, Alberta, Canada
 representativeness: site
 source: unreferenced
 method: calculated
+source_legacy_ref: 90240046
 legacy_id: 30240009
 parameters:
   alpha_bio_co2: 0.0205

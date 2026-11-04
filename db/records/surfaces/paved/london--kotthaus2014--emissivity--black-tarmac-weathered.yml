@@ -8,6 +8,7 @@ representativeness: site
 applicable_scale: material
 source: unreferenced
 method: calculated
+source_legacy_ref: 90240055
 legacy_id: 40241248
 parameters:
   emis: 0.9533333333333333

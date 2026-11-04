@@ -8,6 +8,7 @@ representativeness: generic
 applicable_scale: land_cover
 source: unreferenced
 method: assumed
+source_legacy_ref: 90240015
 legacy_id: 51240011
 parameters:
   rho_cp_anohm: 1000000

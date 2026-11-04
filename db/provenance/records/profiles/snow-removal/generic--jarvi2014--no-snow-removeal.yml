@@ -1,13 +1,13 @@
 provenance_record: records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
+record_revision: sha256:c6eab3b6ba1a05dcbcb370b5f01ecadafb75c4c99dd83bae1b38ebd204fbeb7f
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places: {}
   records:
-    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
+    records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal: sha256:306e8ebc8aec37aa0f9cfa45c477d8a41e45475630f175e040bb56000a9ceab5
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
 assessment:
   status: curation_required
@@ -27,8 +27,8 @@ assessment:
       note: A 24-hour snow-removal profile is a profile.snow-removal record.
     values:
       conclusion: supported
-      note: Twenty-four zeroes consistently express the record's explicit no-removal assumption; they are
-        not presented as a measured or published diurnal profile.
+      note: Twenty-four zeroes consistently express the record's explicit no-removal assumption; they
+        are not presented as a measured or published diurnal profile.
     source:
       conclusion: not_applicable
       issue_urls:
@@ -46,8 +46,8 @@ assessment:
       note: Assumed is appropriate for a model switching profile with no parameter publication.
     identity:
       conclusion: curation_required
-      note: This all-zero assumption remains a separate curation decision. The related daytime record is
-        now retained as an archived Helsinki configuration on the evidence of its exact workbook rows;
+      note: This all-zero assumption remains a separate curation decision. The related daytime record
+        is now retained as an archived Helsinki configuration on the evidence of its exact workbook rows;
         that recovery does not establish the identity of this all-zero record.
       related_records:
       - records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
@@ -57,8 +57,8 @@ assessment:
   - source: jarvi2014
     attempted_at: '2026-08-24T10:20:00Z'
     outcome: not_found
-    note: The article describes snow transport through SWE,Lim and a site-specific clearing time, but does
-      not state or derive an all-zero 24-hour removal profile.
+    note: The article describes snow transport through SWE,Lim and a site-specific clearing time, but
+      does not state or derive an all-zero 24-hour removal profile.
   - description: SUEWS V2016a SUEWS_Profiles.txt
     attempted_at: '2026-08-24T10:20:00Z'
     outcome: incomplete
@@ -66,10 +66,10 @@ assessment:
       profile; no historical parameter publication for legacy ID 60240009 was located.
   scientific_note: 'Järvi et al. (2014) models snow transport with SWE,Lim and a site-specific clearing
     time, not an hourly schedule. Its Table 4 gives 40 mm for buildings and 100 mm for pavement, and the
-    paper contains no all-zero removal profile. The accessible V2016a profile table likewise contains only
-    a Helsinki daytime snow-removal row. This unchanged all-zero record is therefore an explicit model
-    configuration assumption: source unreferenced and method assumed. Its display name is corrected to
-    No snow removal; the stable path retains the historical misspelling because it is record identity.'
-  evidence_revision: sha256:e0563dc7b29ebef0b266d4589e3f4337709b7f88503a45371a02a9661c256442
+    paper contains no all-zero removal profile. The accessible V2016a profile table likewise contains
+    only a Helsinki daytime snow-removal row. This unchanged all-zero record is therefore an explicit
+    model configuration assumption: source unreferenced and method assumed. Its display name is corrected
+    to No snow removal; the stable path retains the historical misspelling because it is record identity.'
+  evidence_revision: sha256:c042052035ee80876428d226544788caec70016777474c0df34d818cd00065da
 verification:
   attestations: []

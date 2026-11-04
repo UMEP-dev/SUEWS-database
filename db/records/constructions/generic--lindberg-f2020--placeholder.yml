@@ -7,6 +7,7 @@ origin: Placeholder
 representativeness: generic
 source: unreferenced
 method: assumed
+source_legacy_ref: 90240057
 legacy_id: 37240000
 parameters:
   roof:

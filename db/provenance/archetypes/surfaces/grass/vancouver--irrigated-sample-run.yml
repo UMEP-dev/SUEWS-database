@@ -12,7 +12,7 @@ dependency_revisions:
     records/surfaces/grass/generic--unreferenced--porosity: sha256:4602e1781769cfe582816b1068d260a0157a49a45beb62be6767377eb3d60b0d
     records/surfaces/grass/helsinki--jarvi2014--phenology: sha256:9a2a470943f33f38ac8276258d3960020b7922e5bfdea7cd6c4128914f53b541
     records/surfaces/grass/helsinki--jarvi2014--snow-lim: sha256:a231ae2f6b10bcaa9796cd2c0c39dfb7d43f4565fcc79ddbde25358997bc19c5
-    records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:e32a48d742db6022eb20954c6ec4b1dd2fb658489ded6cff06c3f61c52fca571
+    records/surfaces/grass/lethbridge--flanagan2002--biogen-co2: sha256:ada14cda15130c99b6cdfefdc7632097caf3c36442713ea4c7e78ec828ab558c
     records/surfaces/grass/london--jarvi2011--drainage: sha256:2e4030e0bec64221184c856dc7b97fab73896a1024fd7d8295cacebca23e570c
     records/surfaces/grass/se-england--havu-m2024--lai: sha256:96509a43993223e0b857d8386771de663c50062c0aa202016eb3bac6b3253ab2
     records/surfaces/grass/se-england--ward2016--albedo: sha256:e445c0899d166e2ba3370eed007cd8a93c1f40757874ab5b773e3f732e4c2e1f
@@ -42,8 +42,8 @@ assessment:
         named "Irrigated Grass", so the label matches the assembly. The bracketed marker says the configuration
         comes from a demonstration run rather than from a description of a site. scripts/check_db.py lists
         "sample run" among its SUSPECT_MARKERS, so make check already reports the composite name as reading
-        like a test fixture rather than data. The label is honest about what the entry is; whether an entry
-        of that kind belongs in the published archetype set is taken under identity.
+        like a test fixture rather than data. The label is honest about what the entry is; whether an
+        entry of that kind belongs in the published archetype set is taken under identity.
     target:
       conclusion: supported
       evidence_ids: &id001
@@ -88,8 +88,8 @@ assessment:
       related_records:
       - records/surfaces/common/se-england--ruimy1995--biogen-co2
       note: 'The composite declares place vancouver, but no component carries that place. One component
-        carries place se-england, one carries swindon, two carry helsinki, one carries lethbridge, six are
-        generic and the OHM record carries no place. Snowpack limit is one of the generic Järvi inputs.
+        carries place se-england, one carries swindon, two carry helsinki, one carries lethbridge, six
+        are generic and the OHM record carries no place. Snowpack limit is one of the generic Järvi inputs.
         Three site-scoped slots need settling: albedo imports SE England evidence, water_storage imports
         Swindon evidence, and biogen_co2 takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
         which declares place lethbridge, given in db/places.yml as lat 49.69, lon -112.83, koppen BSk,
@@ -107,14 +107,14 @@ assessment:
       - component-surfaces-grass-se-england-ward2016-water-storage
       - component-surfaces-grass-se-england-ward2016-albedo
       - component-surfaces-grass-generic-unreferenced-porosity
-      note: 'The composite declares representativeness city. Two components declare city; drainage,
-        porosity, emissivity, snow limit, leaf_growth_power and max_vegetation_conductance declare generic; and three
-        declare site. The OHM component carries no representativeness field. The site-classed components
-        are records/surfaces/grass/lethbridge--flanagan2002--biogen-co2, the Ward grass albedo record and
-        the Ward 2018 water-storage record. Single-site evidence inside a city typology is exactly what the representativeness
-        field exists to make visible, and the composition layer cannot reconcile it: either the slot should
-        take a component classed at or above the composite''s scale, or a maintainer should accept the
-        site value knowingly and say so.'
+      note: 'The composite declares representativeness city. Two components declare city; drainage, porosity,
+        emissivity, snow limit, leaf_growth_power and max_vegetation_conductance declare generic; and
+        three declare site. The OHM component carries no representativeness field. The site-classed components
+        are records/surfaces/grass/lethbridge--flanagan2002--biogen-co2, the Ward grass albedo record
+        and the Ward 2018 water-storage record. Single-site evidence inside a city typology is exactly
+        what the representativeness field exists to make visible, and the composition layer cannot reconcile
+        it: either the slot should take a component classed at or above the composite''s scale, or a maintainer
+        should accept the site value knowingly and say so.'
     method:
       conclusion: supported
       evidence_ids: *id001
@@ -132,9 +132,9 @@ assessment:
         this uses block, so the entry is complete and unique. What is unsettled is whether it should be
         in the set at all. Its own name reads "Irrigated [sample run]", which scripts/check_db.py reports
         as a suspect name, and it is published beside entries that describe real sites with nothing but
-        that name to distinguish it. Whether
-        a demonstration configuration should stand in the published archetype set, and if it should whether
-        it needs marking beyond its name, is a curation decision this review cannot take.
+        that name to distinguish it. Whether a demonstration configuration should stand in the published
+        archetype set, and if it should whether it needs marking beyond its name, is a curation decision
+        this review cannot take.
   evidence:
   - id: component-ohm-generic-unreferenced-grass
     record: records/ohm/generic--unreferenced--grass
@@ -146,8 +146,8 @@ assessment:
     record: records/surfaces/grass/generic--unreferenced--porosity
     role: component
     note: Fills the porosity slot structurally. The assumed, unreferenced "Dummy value" adapter has an
-      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active
-      parameter and makes no literature-value claim.
+      empty parameters mapping and only preserved legacy -999 sentinels, so it contributes no active parameter
+      and makes no literature-value claim.
   - id: component-surfaces-grass-helsinki-jarvi2014-phenology
     record: records/surfaces/grass/helsinki--jarvi2014--phenology
     role: component
@@ -207,22 +207,21 @@ assessment:
     note: Fills the max_vegetation_conductance slot. The record declares target land_cover.grass, name
       "Irrigated Grass", place generic, representativeness generic and source jarvi2011, with method literature.
   scientific_note: 'The entry is a demonstration configuration and says so: its name reads "Irrigated
-    [sample run]". The mapping itself is sound, every slot receiving a component declared for it
-    and the ohm slot taking the grass-specific "Short grass [30]" set. None of the twelve components declares
+    [sample run]". The mapping itself is sound, every slot receiving a component declared for it and the
+    ohm slot taking the grass-specific "Short grass [30]" set. None of the twelve components declares
     place vancouver; drainage, leaf_growth_power and max_vegetation_conductance are generic Järvi literature
     parameters whose stable paths retain application lineage. Albedo comes from SE England, water storage
     from Swindon, two components from Helsinki and one from Lethbridge; drainage, porosity, emissivity,
-    snow limit, leaf-growth power and maximum conductance are generic, and the unreferenced coefficient set
-    carries no place. Three things need a maintainer. The biogen_co2 slot takes
-    records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
+    snow limit, leaf-growth power and maximum conductance are generic, and the unreferenced coefficient
+    set carries no place. Three things need a maintainer. The biogen_co2 slot takes records/surfaces/grass/lethbridge--flanagan2002--biogen-co2,
     a site-classed temperate grassland record from a semi-arid prairie location (koppen BSk) filling a
     slot in a marine west-coast city composite (koppen Cfb). The Ward grass albedo and Ward 2018 water
     storage are also site-scoped, so all three are narrower than the composite. The alternative the London
     and Swindon composites take, records/surfaces/common/se-england--ruimy1995--biogen-co2, is no more
     local, so the choice between two transplants is a maintainer''s and not a correction. The Swindon
-    site water-storage import needs a Vancouver composition rationale. And whether
-    a sample-run configuration belongs in the published archetype set beside descriptions of real sites
-    is a curation decision of the same kind.'
-  evidence_revision: sha256:a3832516f4cf3ebe276f5a80420fd46d0d18bc5f55a7530a638d9374d39d5d83
+    site water-storage import needs a Vancouver composition rationale. And whether a sample-run configuration
+    belongs in the published archetype set beside descriptions of real sites is a curation decision of
+    the same kind.'
+  evidence_revision: sha256:18452cd7624c449dfeafc73144a1accf54f4c18da34c9f7b37e3eb1928fb83b4
 verification:
   attestations: []

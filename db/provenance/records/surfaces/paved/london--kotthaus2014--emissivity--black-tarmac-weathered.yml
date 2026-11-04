@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:64f07d81043f89c2ae816161ea5115c9830cac4040c0d26823e32193fddff436
+record_revision: sha256:b7fdc24193b025baea129a97c78cbd4c07ce1d6144e7a18073e3444c6ccc9b91
 dependency_revisions:
   sources:
     kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
@@ -37,7 +37,8 @@ assessment:
       evidence_ids:
       - kotthaus-table-c1
       note: The mean is a database calculation not printed by Kotthaus et al.; source unreferenced avoids
-        crediting the publication with the derived value while the three located table rows preserve its evidence.
+        crediting the publication with the derived value while the three located table rows preserve its
+        evidence.
     place:
       conclusion: supported
       evidence_ids:
@@ -78,20 +79,29 @@ assessment:
     locators:
     - kind: table
       label: Appendix C, Table C.1, specimens A008-A010
-      page: '210-211'
+      page: 210-211
       url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
       note: Lists the three weathered black-tarmac specimens and their individual emissivities.
   derivation:
     kind: arithmetic_mean
     expression: (A008 + A009 + A010) / 3
     external_inputs:
-    - {id: a008, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.95}
-    - {id: a009, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.95}
-    - {id: a010, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
-  scientific_note: Kotthaus et al. publish three measured emissivities, not the stored mean. The mean remains
-    unchanged and is represented as an internal calculation over explicitly located source-table inputs;
-    its supported reach is the selected London specimen group, not the city as a whole, and its applicable
-    scale is the defined material-specimen group rather than a city or land-cover aggregate.
-  evidence_revision: sha256:5782129f1e410349ad5a192c2b79c6e1e39a8ce35f40c37ea52e3cfabeab0b24
+    - id: a008
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.95
+    - id: a009
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.95
+    - id: a010
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.96
+  scientific_note: Kotthaus et al. publish three measured emissivities, not the stored mean. The mean
+    remains unchanged and is represented as an internal calculation over explicitly located source-table
+    inputs; its supported reach is the selected London specimen group, not the city as a whole, and its
+    applicable scale is the defined material-specimen group rather than a city or land-cover aggregate.
+  evidence_revision: sha256:508d5148108c4335f103eb15dbeeaf3c3da84d4451c8d47734b64276bbf3e862
 verification:
   attestations: []

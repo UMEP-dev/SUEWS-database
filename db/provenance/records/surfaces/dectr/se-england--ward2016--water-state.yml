@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/dectr/se-england--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:76470a65ab22710f008bd91ed18eebf7b027c68f8bdfc3fcdd7b99d32529cf48
+record_revision: sha256:9b3b7a90c65d585674bdc4cbde2c8a1c567dc9f1b5024c26e9f4eec38b2366f9
 dependency_revisions:
   sources:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
@@ -57,8 +57,8 @@ assessment:
       conclusion: supported
       evidence_ids:
       - migration-row
-      note: Regional preserves the SE England configuration scope; it is not a claim that 0.8 was
-        regionally measured or validated.
+      note: Regional preserves the SE England configuration scope; it is not a claim that 0.8 was regionally
+        measured or validated.
     method:
       conclusion: supported
       evidence_ids:
@@ -67,8 +67,8 @@ assessment:
       - nonwater-statelimit-semantics
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/126
-      note: Assumed means that the exact legacy configuration cell is retained without a recoverable
-        scientific derivation.
+      note: Assumed means that the exact legacy configuration cell is retained without a recoverable scientific
+        derivation.
     identity:
       conclusion: supported
       evidence_ids:
@@ -85,8 +85,7 @@ assessment:
     - kind: dataset
       label: Pre-migration water_state.yml row 42240045
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L58-L64
-      note: Stores Deciduous Tree, SE England, StateLimit 0.8, WaterDepth -999 and legacy reference
-        90240002.
+      note: Stores Deciduous Tree, SE England, StateLimit 0.8, WaterDepth -999 and legacy reference 90240002.
     note: Establishes the exact migrated configuration identity and value only.
   - id: release-row
     source: umep-dev2016a
@@ -108,9 +107,9 @@ assessment:
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L3
       note: The option table states that StateLimit is currently only used for the water surface.
   scientific_note: This assessment establishes only that 0.8 is the exact archived SUEWS configuration
-    for this stable record. It does not establish 0.8 as a measured, fitted or literature-supported
-    non-water parameter. The honest classification is therefore source unreferenced and method assumed;
-    focused human review of assumed records remains appropriate.
-  evidence_revision: sha256:165951c7a548f73c3cbe8180ff1ebeabeef5aa3631316219a3097b810b7514be
+    for this stable record. It does not establish 0.8 as a measured, fitted or literature-supported non-water
+    parameter. The honest classification is therefore source unreferenced and method assumed; focused
+    human review of assumed records remains appropriate.
+  evidence_revision: sha256:4bb0309e9838ed21e7824127aca0dc23bcf6cd6d22e0d3d9843895b2b9ab0704
 verification:
   attestations: []

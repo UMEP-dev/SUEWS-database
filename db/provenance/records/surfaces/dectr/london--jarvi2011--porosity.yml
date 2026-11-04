@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/dectr/london--jarvi2011--porosity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
+record_revision: sha256:a8ff5d7348b751b745fb269a4d65e3a98a81439388f987802ce7f7fd99c3dd78
 dependency_revisions:
   sources:
     jarvi2011: sha256:c40522e721c027767eae1b9cd73748f954472b84ca83c411715958a70101f97f
@@ -75,6 +75,6 @@ assessment:
     instead hard-codes PorMin_dec = 0.2 and PorMax_dec = 0.6 for DecTr. The unchanged values are therefore
     represented as generic land-cover implementation assumptions: source unreferenced and method assumed.
     Stable path, legacy ID and origin London retain the migration identity without claiming London evidence.'
-  evidence_revision: sha256:926d5785db46518c816d46dca31873dd51a9d47865de8e9caf4c9c09afcc288f
+  evidence_revision: sha256:7fb919a19b46a2c454c9a65a00a812c5b201dd98c857dddb0319988c591583c0
 verification:
   attestations: []

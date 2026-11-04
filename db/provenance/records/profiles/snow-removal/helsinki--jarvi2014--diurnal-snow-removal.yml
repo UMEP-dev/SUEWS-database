@@ -1,13 +1,13 @@
 provenance_record: records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:80f048de14cfb6cbcddf9e0275c9b492fd0c1794dc089a571d5e4fa039eb225b
+record_revision: sha256:306e8ebc8aec37aa0f9cfa45c477d8a41e45475630f175e040bb56000a9ceab5
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
   places: {}
   records:
-    records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:5799e86c274f3d62d85c5c29840fe694d7632b890d3f323c87bd9502e8edba85
+    records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal: sha256:c6eab3b6ba1a05dcbcb370b5f01ecadafb75c4c99dd83bae1b38ebd204fbeb7f
     records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime: sha256:838e785647eae5a443863f1dd00b2e8561cc3d02275d189c0b5c31e4a598a78f
 assessment:
   status: curation_required
@@ -27,8 +27,8 @@ assessment:
       note: A 24-hour snow-removal switching profile belongs under profile.snow-removal.
     values:
       conclusion: supported
-      note: Twenty-four ones exactly reproduce the fixed SUEWS 2017b arbitrary constant profile; they are
-        represented as a configuration assumption rather than a measured diurnal schedule.
+      note: Twenty-four ones exactly reproduce the fixed SUEWS 2017b arbitrary constant profile; they
+        are represented as a configuration assumption rather than a measured diurnal schedule.
     source:
       conclusion: not_applicable
       issue_urls:
@@ -37,7 +37,8 @@ assessment:
         is the honest declaration for this release-preserved assumption.
     place:
       conclusion: not_applicable
-      note: The fixed arbitrary profile is not tied to Helsinki; the stable path and origin retain migration lineage.
+      note: The fixed arbitrary profile is not tied to Helsinki; the stable path and origin retain migration
+        lineage.
     representativeness:
       conclusion: not_applicable
       note: An arbitrary configuration switch carries no geographic evidence-reach claim.
@@ -65,12 +66,13 @@ assessment:
     url: https://github.com/UMEP-dev/SUEWS/blob/9b7ed6b1c0217a54dc461ea9932321ba940df29c/ReleaseRepo/Input/SUEWS_Profiles.txt#L15
     attempted_at: '2026-08-24T12:45:00Z'
     outcome: incomplete
-    note: The fixed release row exactly preserves the all-one vector and labels it arbitrary, but it is a
-      configuration artifact rather than a parameter publication.
-  scientific_note: Järvi et al. (2014) models removal through snow-water-equivalent thresholds, not an hourly
-    schedule. The fixed SUEWS 2017b release preserves this exact vector as row 90000, Arbitrary (constant all
-    day). The values remain unchanged as an explicit assumption; unsupported Helsinki/city evidence scope
-    and the paper attribution are removed while the stable path and origin preserve migration lineage.
-  evidence_revision: sha256:b57cb1949a51f4dfcc9523ecc80d8204c10058768c6d2a273911c4fd6a964042
+    note: The fixed release row exactly preserves the all-one vector and labels it arbitrary, but it is
+      a configuration artifact rather than a parameter publication.
+  scientific_note: Järvi et al. (2014) models removal through snow-water-equivalent thresholds, not an
+    hourly schedule. The fixed SUEWS 2017b release preserves this exact vector as row 90000, Arbitrary
+    (constant all day). The values remain unchanged as an explicit assumption; unsupported Helsinki/city
+    evidence scope and the paper attribution are removed while the stable path and origin preserve migration
+    lineage.
+  evidence_revision: sha256:b3ea1fc2ff7906dc14f476403cfc00432810887bea1acbe2edc37dcd0d6aa96c
 verification:
   attestations: []

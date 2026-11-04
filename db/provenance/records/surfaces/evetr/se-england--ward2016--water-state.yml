@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/evetr/se-england--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e30cc7371b7532e9354ba6cc15aeda79ba37c6a2dd38dada46785cd73dbb438b
+record_revision: sha256:8f23aca4d4477e271fc79cb46ad6ea7c6941f4a9305b73c187cb7c9125ebd4df
 dependency_revisions:
   sources:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
@@ -21,59 +21,76 @@ assessment:
   findings:
     name:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: The pre-migration row labels legacy ID 42240044 as Evergreen Tree.
     target:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Both artifacts place the cell under the evergreen-tree surface, matching land_cover.evetr.
     values:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Both artifacts store StateLimit 1.3 exactly. This supports preservation of the configuration
         cell, not scientific validation of a non-water parameter.
     source:
       conclusion: supported
-      evidence_ids: [migration-row, release-row, nonwater-statelimit-semantics]
-      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/127]
+      evidence_ids:
+      - migration-row
+      - release-row
+      - nonwater-statelimit-semantics
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/127
       note: Source unreferenced is correct. The artifacts establish configuration lineage; the linked
         adjudication found no Ward et al. (2016) publication or derivation of this non-water StateLimit.
     place:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: SE England is the explicit application origin stored in the pre-migration row.
     representativeness:
       conclusion: supported
-      evidence_ids: [migration-row]
-      note: Regional preserves the configuration scope; it does not claim that 1.3 was regionally
-        measured or validated.
+      evidence_ids:
+      - migration-row
+      note: Regional preserves the configuration scope; it does not claim that 1.3 was regionally measured
+        or validated.
     method:
       conclusion: supported
-      evidence_ids: [migration-row, release-row, nonwater-statelimit-semantics]
-      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/127]
-      note: Assumed means that the exact legacy configuration cell is retained without a recoverable
-        scientific derivation.
+      evidence_ids:
+      - migration-row
+      - release-row
+      - nonwater-statelimit-semantics
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/127
+      note: Assumed means that the exact legacy configuration cell is retained without a recoverable scientific
+        derivation.
     identity:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: Stable path, legacy ID 42240044, surface name, origin, value and WaterDepth -999 placeholder
         are preserved.
   evidence:
   - id: migration-row
     source: umep-dev2025-database
     role: compilation
-    parameter_paths: [parameters.state_limit]
+    parameter_paths:
+    - parameters.state_limit
     locators:
     - kind: dataset
       label: Pre-migration water_state.yml row 42240044
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L51-L57
-      note: Stores Evergreen Tree, SE England, StateLimit 1.3, WaterDepth -999 and legacy reference
-        90240002.
+      note: Stores Evergreen Tree, SE England, StateLimit 1.3, WaterDepth -999 and legacy reference 90240002.
     note: Establishes the exact migrated configuration identity and value only.
   - id: release-row
     source: umep-dev2016a
     role: compilation
-    parameter_paths: [parameters.state_limit]
+    parameter_paths:
+    - parameters.state_limit
     locators:
     - kind: dataset
       label: SUEWS v2016a SUEWS_Veg.txt evergreen-tree rows
@@ -89,9 +106,9 @@ assessment:
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L3
       note: The option table states that StateLimit is currently only used for the water surface.
   scientific_note: This assessment establishes only that 1.3 is the exact archived SUEWS configuration
-    for this stable record. It does not establish 1.3 as a measured, fitted or literature-supported
-    non-water parameter. The honest classification is source unreferenced and method assumed; focused
-    human review of assumed records remains appropriate.
-  evidence_revision: sha256:ce1b35ff7ae706c651124ff38f659e995d45b4283fd1877207317190b8fe82f0
+    for this stable record. It does not establish 1.3 as a measured, fitted or literature-supported non-water
+    parameter. The honest classification is source unreferenced and method assumed; focused human review
+    of assumed records remains appropriate.
+  evidence_revision: sha256:3166dcef4145447a595e4864d3dd9b4ec633976a0f6c6a7bf64be9e8d7bbb4e9
 verification:
   attestations: []

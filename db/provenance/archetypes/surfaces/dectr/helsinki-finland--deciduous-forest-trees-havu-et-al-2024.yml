@@ -17,7 +17,7 @@ dependency_revisions:
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
     records/surfaces/dectr/helsinki--vargo2013--albedo: sha256:efaf8aea925a9874d9b959303a74983a5d2c64bf6b3c4587b3b9defee16ed733
     records/surfaces/dectr/london--havu-m2024--drainage: sha256:72da5083a8f9eafce6ef846d43998c7b299b7e1bb513995db56c34ff74beccb7
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:a8ff5d7348b751b745fb269a4d65e3a98a81439388f987802ce7f7fd99c3dd78
     records/surfaces/dectr/london--ward2016--emissivity: sha256:1e8a4522cc509cb1c7aeb1dd71e4daf105df2ab5147814f033b7270f11f29bb3
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
     records/surfaces/dectr/se-england--ward2016--water-storage: sha256:796c6bd2400a300d567583fad2a4207d8e709153ef0bda756ef7085c30f8fc5e
@@ -75,15 +75,14 @@ assessment:
       - component-surfaces-dectr-london-havu-m2024-drainage
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-surfaces-dectr-helsinki-vargo2013-albedo
-      note: 'The composite claims place helsinki, and four of its twelve components carry that place. The
-        four degree-day thresholds are a Helsinki record, while snowpack_limit is a generic Järvi land-cover
-        default; neither imports evidence from another named place.
-        One component carries place swindon (water storage), one carries place se-england (leaf area
-        index), five are generic, and the OHM record carries no place. The site-scoped Swindon water-storage
-        import needs an explicit composition rationale. The leaf_area_index import
-        is forced: db/records/surfaces/dectr holds leaf-area-index records placed at beijing, se-england,
-        shanghai and zurich and none placed at helsinki, so that slot cannot be filled from the composite''s
-        own city.'
+      note: 'The composite claims place helsinki, and four of its twelve components carry that place.
+        The four degree-day thresholds are a Helsinki record, while snowpack_limit is a generic Järvi
+        land-cover default; neither imports evidence from another named place. One component carries place
+        swindon (water storage), one carries place se-england (leaf area index), five are generic, and
+        the OHM record carries no place. The site-scoped Swindon water-storage import needs an explicit
+        composition rationale. The leaf_area_index import is forced: db/records/surfaces/dectr holds leaf-area-index
+        records placed at beijing, se-england, shanghai and zurich and none placed at helsinki, so that
+        slot cannot be filled from the composite''s own city.'
     representativeness:
       conclusion: curation_required
       evidence_ids:
@@ -92,9 +91,9 @@ assessment:
       - component-surfaces-dectr-helsinki-vargo2013-albedo
       - component-surfaces-dectr-london-jarvi2011-porosity
       - component-ohm-generic-unreferenced-all-vegetation-mixed-forest-20-mccaughey-1985
-      note: The composite claims representativeness city. Four components are city, one is regional,
-        five are generic, the Swindon water-storage record is site-scoped and the OHM record declares
-        no class. The site result is narrower than the city archetype and needs composition-level adjudication.
+      note: The composite claims representativeness city. Four components are city, one is regional, five
+        are generic, the Swindon water-storage record is site-scoped and the OHM record declares no class.
+        The site result is narrower than the city archetype and needs composition-level adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -152,7 +151,8 @@ assessment:
     role: component
     note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
       record declares target land_cover.dectr, place generic, representativeness generic, applicable_scale
-      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover default.
+      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover
+      default.
   - id: component-surfaces-dectr-helsinki-vargo2013-albedo
     record: records/surfaces/dectr/helsinki--vargo2013--albedo
     role: component
@@ -167,8 +167,8 @@ assessment:
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
     note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
-      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
-      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies porosity_min_deciduous
+      and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-london-ward2016-emissivity
     record: records/surfaces/dectr/london--ward2016--emissivity
     role: component
@@ -178,8 +178,8 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2011, declares method
-      literature and has lai.lai_type 1.
+      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2011, declares method literature
+      and has lai.lai_type 1.
   - id: component-surfaces-dectr-se-england-ward2016-water-storage
     record: records/surfaces/dectr/se-england--ward2016--water-storage
     role: component
@@ -190,14 +190,15 @@ assessment:
     al. 2024, and the three slots that carry the vegetation behaviour of a forest canopy take havu-m2024
     records placed at Helsinki, two of them named for a forest in their own right. The degree-day thresholds
     are a Helsinki record, while snowpack limit is a generic Järvi land-cover default, so neither slot
-    imports evidence from another named place. The non-Helsinki inputs are the
-    site-scoped water storage from Swindon, regional leaf area index from SE England, generic emissivity and drainage,
-    a generic snowpack limit, a generic Vargo albedo, generic implementation porosity and one generic storage-heat set. The leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
+    imports evidence from another named place. The non-Helsinki inputs are the site-scoped water storage
+    from Swindon, regional leaf area index from SE England, generic emissivity and drainage, a generic
+    snowpack limit, a generic Vargo albedo, generic implementation porosity and one generic storage-heat
+    set. The leaf-area-index import is unavoidable because the database holds no Helsinki deciduous-tree
     leaf-area-index record at all. The two LAI records agree on lai.lai_type 1, so the slot pair does
     not mix equations. What is missing is only the written rationale for the imports, which no composite
-    in this family carries and which the format expects a composition sidecar to supply. The Swindon
-    site water-storage import also needs that rationale. The components'
-    values remain subject to their own evidence assessments; this review does not revisit them.
-  evidence_revision: sha256:bb04345a515f062e3b1430b0e9101eabf100abaf1a7ddaaa31572ad9fef4e6ba
+    in this family carries and which the format expects a composition sidecar to supply. The Swindon site
+    water-storage import also needs that rationale. The components' values remain subject to their own
+    evidence assessments; this review does not revisit them.
+  evidence_revision: sha256:097d2b8c838518dd974faf3733d8cfab1f3490f8141fbbd5c1de43cd04254024
 verification:
   attestations: []

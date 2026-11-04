@@ -13,7 +13,7 @@ dependency_revisions:
     records/surfaces/common/se-england--ruimy1995--biogen-co2: sha256:83e0780da5dd5c3ed135d3f5f54081d0536b48e6ed991275f59ba875c569c680
     records/surfaces/dectr/helsinki--jarvi2014--phenology: sha256:ab836366727a244854af35436cab8ca9f0bada2aac79ff65e310a2cb6ef4b762
     records/surfaces/dectr/helsinki--jarvi2014--snow-lim: sha256:eba4a453e2edafec40bfd2ef9d0cef661aeeb9b399b09fb2a448067fd1b47ec5
-    records/surfaces/dectr/london--jarvi2011--porosity: sha256:720a42ed6e262a2e11f52a7af690ef34bf053fd4e60f3412838461097be2d6a9
+    records/surfaces/dectr/london--jarvi2011--porosity: sha256:a8ff5d7348b751b745fb269a4d65e3a98a81439388f987802ce7f7fd99c3dd78
     records/surfaces/dectr/se-england--ward2016--albedo: sha256:6081a2375d5404d1fb6e687e852feeb81a6ddae44e29ffabde5db5110b8df83a
     records/surfaces/dectr/se-england--ward2016--drainage: sha256:5b45ef55373ff342dcfb8a87e25a04bcab1d167a218166b2be7fe007e360348d
     records/surfaces/dectr/se-england--ward2016--lai: sha256:4ec4ea9ebbc77be638fe8dca2a6291e1356a37f6a2870d33bd5a7252d3d82e2b
@@ -83,17 +83,16 @@ assessment:
         no component carries that place. Four carry place se-england, which db/places.yml marks subnational
         and which contains London, so those sit comfortably; emissivity and porosity are generic and likewise
         do not overreach. Three whole-record slots do not follow; drainage and water_storage use site-scoped
-        Swindon records, while the vegetation_growth slot takes
-        records/surfaces/dectr/helsinki--jarvi2014--phenology (base_temperature 5, base_temperature_senescence
-        10) although records/surfaces/dectr/se-england--ward2016--phenology exists with the composite's
-        own source and region (base_temperature 6, base_temperature_senescence 11) and is referenced by
-        no archetype in the database; schema/parameter_groups.yml classes those thresholds as a tightly
-        linked set whose base temperature was localised for SE England. Water storage and drainage import
-        site evidence from Swindon without a recorded London composition rationale. The snow_lim_patch
-        slot takes the generic Järvi land-cover default and creates no Helsinki-to-London transfer. The biogen_co2 slot also contains
-        site-scoped respiration coefficients from Morgan-Monroe State Forest and a site-scoped minimum
-        respiration floor from Finland, although its Ruimy light-response pair is generic. A maintainer
-        should settle these cross-site selections.
+        Swindon records, while the vegetation_growth slot takes records/surfaces/dectr/helsinki--jarvi2014--phenology
+        (base_temperature 5, base_temperature_senescence 10) although records/surfaces/dectr/se-england--ward2016--phenology
+        exists with the composite's own source and region (base_temperature 6, base_temperature_senescence
+        11) and is referenced by no archetype in the database; schema/parameter_groups.yml classes those
+        thresholds as a tightly linked set whose base temperature was localised for SE England. Water
+        storage and drainage import site evidence from Swindon without a recorded London composition rationale.
+        The snow_lim_patch slot takes the generic Järvi land-cover default and creates no Helsinki-to-London
+        transfer. The biogen_co2 slot also contains site-scoped respiration coefficients from Morgan-Monroe
+        State Forest and a site-scoped minimum respiration floor from Finland, although its Ruimy light-response
+        pair is generic. A maintainer should settle these cross-site selections.
       related_records:
       - records/surfaces/dectr/se-england--ward2016--phenology
     representativeness:
@@ -108,13 +107,12 @@ assessment:
       - component-ohm-generic-ward2016-all-vegetation
       - component-ohm-generic-ward2016-all-vegetation-code-201-x-multiplier-for-winter-2012
       note: The composite claims representativeness city. Two components are classed regional (LAI and
-        maximum conductance), while albedo, drainage, LAI-power and water storage are site-scoped;
-        emissivity, porosity and snow limit are generic; the phenology record is city; and the two OHM
-        records declare no class. The biogen_co2 component has mixed scope. Ruimy's alpha_bio_co2 and
-        beta_bio_co2 are generic, but Schmid's resp_a and resp_b and Järvi's min_res_bioco2 are
-        site-scoped. The site-scoped and mixed-scope inputs are narrower than the city composite, and no
-        published composition rationale documents the transplant, so city representativeness needs
-        maintainer adjudication.
+        maximum conductance), while albedo, drainage, LAI-power and water storage are site-scoped; emissivity,
+        porosity and snow limit are generic; the phenology record is city; and the two OHM records declare
+        no class. The biogen_co2 component has mixed scope. Ruimy's alpha_bio_co2 and beta_bio_co2 are
+        generic, but Schmid's resp_a and resp_b and Järvi's min_res_bioco2 are site-scoped. The site-scoped
+        and mixed-scope inputs are narrower than the city composite, and no published composition rationale
+        documents the transplant, so city representativeness needs maintainer adjudication.
     method:
       conclusion: supported
       evidence_ids:
@@ -157,12 +155,12 @@ assessment:
   - id: component-surfaces-common-se-england-ruimy1995-biogen-co2
     record: records/surfaces/common/se-england--ruimy1995--biogen-co2
     role: component
-    note: Fills biogen_co2. The record declares target land_cover.common and uses mixed leaf-level
-      provenance. Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped
-      Morgan-Monroe respiration pair, and Järvi supplies the site-scoped Finnish minimum-respiration
-      floor. It is named "Plant canopies"; docs/FORMAT.md defines land_cover.common as the
-      surface-agnostic target, so it is structurally admissible in a deciduous-tree composite, while the
-      cross-site selection remains a composition-level curation question.
+    note: Fills biogen_co2. The record declares target land_cover.common and uses mixed leaf-level provenance.
+      Ruimy supplies the generic light-response pair, Schmid supplies the site-scoped Morgan-Monroe respiration
+      pair, and Järvi supplies the site-scoped Finnish minimum-respiration floor. It is named "Plant canopies";
+      docs/FORMAT.md defines land_cover.common as the surface-agnostic target, so it is structurally admissible
+      in a deciduous-tree composite, while the cross-site selection remains a composition-level curation
+      question.
   - id: component-surfaces-dectr-helsinki-jarvi2014-phenology
     record: records/surfaces/dectr/helsinki--jarvi2014--phenology
     role: component
@@ -174,13 +172,14 @@ assessment:
     role: component
     note: Fills snow_lim_patch. The stable path and origin retain Helsinki migration lineage, while the
       record declares target land_cover.dectr, place generic, representativeness generic, applicable_scale
-      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover default.
+      land_cover, source jarvi2014 and method literature. It supplies the published 190 mm land-cover
+      default.
   - id: component-surfaces-dectr-london-jarvi2011-porosity
     record: records/surfaces/dectr/london--jarvi2011--porosity
     role: component
     note: Fills porosity. The record declares target land_cover.dectr, place generic, representativeness
-      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies
-      porosity_min_deciduous and porosity_max_deciduous to all eight deciduous-tree composites.
+      generic, applicable_scale land_cover, source unreferenced and method assumed. It supplies porosity_min_deciduous
+      and porosity_max_deciduous to all eight deciduous-tree composites.
   - id: component-surfaces-dectr-se-england-ward2016-albedo
     record: records/surfaces/dectr/se-england--ward2016--albedo
     role: component
@@ -197,14 +196,14 @@ assessment:
     record: records/surfaces/dectr/se-england--ward2016--lai
     role: component
     note: Fills leaf_area_index. The record declares target land_cover.dectr, place se-england and representativeness
-      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2011, declares method
-      literature and has lai.lai_type 1.
+      regional. It is named "Deciduous Tree (SE England)", carries source jarvi2011, declares method literature
+      and has lai.lai_type 1.
   - id: component-surfaces-dectr-se-england-ward2016-lai-power
     record: records/surfaces/dectr/se-england--ward2016--lai-power
     role: component
-    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place se-england,
-      representativeness site, source jarvi2014 and method fitted. Official SUEWS documentation supplies
-      the lai.lai_type 1 selector, matching the leaf_area_index component.
+    note: Fills leaf_growth_power. The record declares target land_cover.dectr, place se-england, representativeness
+      site, source jarvi2014 and method fitted. Official SUEWS documentation supplies the lai.lai_type
+      1 selector, matching the leaf_area_index component.
   - id: component-surfaces-dectr-se-england-ward2016-max-conductance
     record: records/surfaces/dectr/se-england--ward2016--max-conductance
     role: component
@@ -224,24 +223,23 @@ assessment:
       generic. It is named "Deciduous trees", carries source oke1987 and declares method literature; its
       stable path retains the Swindon migration lineage.
   scientific_note: Three of the thirteen components come from Ward et al. 2016, the study the label names,
-    while four components are placed at se-england, which contains London. The albedo is a site-scoped Ward
-    input, LAI-power is a site-scoped Järvi formulation evaluated in the UK, drainage and water storage
+    while four components are placed at se-england, which contains London. The albedo is a site-scoped
+    Ward input, LAI-power is a site-scoped Järvi formulation evaluated in the UK, drainage and water storage
     are site-scoped Swindon inputs, and maximum conductance is a Breuer literature value applied there;
-    the two LAI records agree on lai.lai_type
-    1; and the OHM mapping is the best in this family, with the summer record in both summer positions
-    and the winter record in both winter positions, each confirmed by its own season_label. The emissivity
-    component carries the generic Oke literature value, so its stable Swindon path does not create a place
-    mismatch or distinguish this composition from its Swindon counterpart. The Swindon water-storage
-    and drainage imports, one Helsinki whole-record slot and one mixed-scope tuple do not follow. The
-    phenology comes from Helsinki when an SE England Ward 2016 phenology record exists, carries the localised base temperatures,
-    and is referenced by no archetype at all. Snowpack limit is the generic Järvi land-cover default. The
-    biogen_co2 tuple combines Ruimy's generic fit with site-scoped Schmid respiration coefficients and
-    a site-scoped Järvi minimum-respiration floor without a published composition rationale. Separately,
-    this composite and the Swindon one are identical in every component and in their name, differing only
-    in place, origin and legacy_id, so nothing in the data tells the two UK sites apart. None of this
-    questions a stored value; all of it is selection and mapping, which is where a composition review
-    can act. The components' values remain subject to their own evidence assessments; this review does
-    not revisit them.
-  evidence_revision: sha256:6aa8bddcfde4142e04fb8bc503b75851ed269e79f874f8f869e62b8dd1170b6d
+    the two LAI records agree on lai.lai_type 1; and the OHM mapping is the best in this family, with
+    the summer record in both summer positions and the winter record in both winter positions, each confirmed
+    by its own season_label. The emissivity component carries the generic Oke literature value, so its
+    stable Swindon path does not create a place mismatch or distinguish this composition from its Swindon
+    counterpart. The Swindon water-storage and drainage imports, one Helsinki whole-record slot and one
+    mixed-scope tuple do not follow. The phenology comes from Helsinki when an SE England Ward 2016 phenology
+    record exists, carries the localised base temperatures, and is referenced by no archetype at all.
+    Snowpack limit is the generic Järvi land-cover default. The biogen_co2 tuple combines Ruimy's generic
+    fit with site-scoped Schmid respiration coefficients and a site-scoped Järvi minimum-respiration floor
+    without a published composition rationale. Separately, this composite and the Swindon one are identical
+    in every component and in their name, differing only in place, origin and legacy_id, so nothing in
+    the data tells the two UK sites apart. None of this questions a stored value; all of it is selection
+    and mapping, which is where a composition review can act. The components' values remain subject to
+    their own evidence assessments; this review does not revisit them.
+  evidence_revision: sha256:f67cf0b89b29474ad70a7e4859ed2145965aae5c47c228cf41ce357f19274796
 verification:
   attestations: []
