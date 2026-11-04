@@ -9,6 +9,8 @@ Structural pass (stdlib + PyYAML only):
   - `source:` keys resolve in db/sources.yml, `place:` slugs in db/places.yml
   - every `uses:` reference resolves to an existing record file
   - material references inside construction records resolve
+  - schema/families.yml lists every record family the site derives, with
+    values drawn from its own vocabularies
 
 Provenance pass (jsonschema + rfc8785, loaded only by main()):
   - sidecars validate against the Draft 2020-12 schema
@@ -41,6 +43,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db"
 URBAN_SETTINGS_FILE = ROOT / "schema" / "urban_settings.yml"
 APPLICABLE_SCALES_FILE = ROOT / "schema" / "applicable_scales.yml"
+FAMILIES_FILE = ROOT / "schema" / "families.yml"
 
 # Repo-local record targets that have no supy class
 LOCAL_TARGETS = {"material", "construction", "typology", "ohm_coefficients"}
@@ -68,6 +71,111 @@ def load_applicable_scales():
     """Return the controlled applicable-scale registry."""
     doc = yaml.safe_load(APPLICABLE_SCALES_FILE.read_text()) or {}
     return doc.get("applicable_scales") or {}
+
+
+# Surface-record families, matched as "--<family>" in the file name, in the
+# order they are tried. "--lai" also matches "--lai-power": LAI and its growth
+# coefficients are one coupled family (they are fitted together).
+SURFACE_FAMILIES = ("albedo", "emissivity", "anohm", "water-storage",
+                    "drainage", "water-state", "snow-lim", "soil",
+                    "lai", "phenology", "max-conductance", "porosity",
+                    "biogen-co2", "thermal-layers")
+# what a surface record matching none of the above falls back to
+SURFACE_FALLBACK_FAMILY = "surface"
+FAMILY_FIELDS = {"label", "note", "groups", "data_types", "confidence",
+                 "open_question", "scheme_reference"}
+
+
+def family_of(path):
+    """Derive the parameter family from an entry's path."""
+    parts = path.split("/")
+    if parts[0] == "records":
+        if parts[1] == "surfaces":
+            slug = parts[-1]
+            for fam in SURFACE_FAMILIES:
+                if f"--{fam}" in slug:
+                    return fam
+            return SURFACE_FALLBACK_FAMILY
+        if parts[1] == "profiles":
+            return f"profile: {parts[2]}"
+        return parts[1]
+    return parts[1]  # archetype group
+
+
+def load_families():
+    """Return the family registry document (families plus vocabularies)."""
+    return yaml.safe_load(FAMILIES_FILE.read_text()) or {}
+
+
+def derivable_record_families(records):
+    """Every family the site can derive for an evidence record: those the
+    current record paths produce, plus every surface family family_of can
+    return even when no record holds it yet."""
+    fams = {family_of(path) for path in records if path.startswith("records/")}
+    fams.update(SURFACE_FAMILIES)
+    fams.add(SURFACE_FALLBACK_FAMILY)
+    return fams
+
+
+def family_registry_check(records, sources, registry=None):
+    """schema/families.yml: complete, and every value from its vocabularies."""
+    doc = load_families() if registry is None else registry
+    where = "families.yml"
+    errors = []
+    groups = doc.get("groups") or {}
+    data_types = doc.get("data_types") or {}
+    confidence = doc.get("confidence_levels") or {}
+    for name, vocab in (("groups", groups), ("data_types", data_types),
+                        ("confidence_levels", confidence)):
+        if not isinstance(vocab, dict) or not vocab:
+            errors.append(f"{where}: {name} vocabulary missing or empty")
+    families = doc.get("families")
+    if not isinstance(families, dict):
+        return errors + [f"{where}: no families mapping"]
+    derivable = derivable_record_families(records)
+    for fam in sorted(derivable - set(families)):
+        errors.append(f"{where}: family {fam!r} is derived by the site but "
+                      "not listed")
+    for fam in sorted(set(families) - derivable):
+        errors.append(f"{where}: {fam!r} is not a family the site derives "
+                      "for any record")
+    for fam, entry in families.items():
+        prefix = f"{where}: {fam}"
+        if not isinstance(entry, dict):
+            errors.append(f"{prefix} must be a mapping")
+            continue
+        unknown = sorted(set(entry) - FAMILY_FIELDS)
+        if unknown:
+            errors.append(f"{prefix} has unknown fields {unknown}")
+        if not isinstance(entry.get("label"), str) or not entry["label"].strip():
+            errors.append(f"{prefix} needs a non-empty label")
+        for field in ("note", "open_question"):
+            if field in entry and (not isinstance(entry[field], str)
+                                   or not entry[field].strip()):
+                errors.append(f"{prefix} {field} must be non-empty text")
+        for field, vocab in (("groups", groups), ("data_types", data_types)):
+            values = entry.get(field)
+            if not isinstance(values, list):
+                errors.append(f"{prefix} {field} must be a list")
+                continue
+            if len(set(map(str, values))) != len(values):
+                errors.append(f"{prefix} {field} repeats a value")
+            for value in values:
+                if value not in vocab:
+                    errors.append(f"{prefix} {field} value {value!r} is not "
+                                  f"in the {field} vocabulary")
+        if entry.get("confidence") not in confidence:
+            errors.append(f"{prefix} confidence {entry.get('confidence')!r} "
+                          "is not in confidence_levels")
+        if "scheme_reference" in entry:
+            ref = entry["scheme_reference"]
+            if not isinstance(ref, str) or ref not in sources:
+                errors.append(f"{prefix} scheme_reference {ref!r} not in "
+                              "sources.yml")
+            elif ref == "unreferenced":
+                errors.append(f"{prefix} scheme_reference cannot be "
+                              "'unreferenced'")
+    return errors
 
 
 def load_all():
@@ -605,6 +713,18 @@ def main():
     print(f"structural: {len(records)} files checked, {len(errors)} errors")
     for e in errors[:30]:
         print("  -", e)
+
+    # repository-level, so kept out of structural_check(), which tests also
+    # run over synthetic record sets
+    registry = load_families()
+    family_errors = family_registry_check(records, sources, registry)
+    print(
+        f"families: {len(registry.get('families') or {})} families checked, "
+        f"{len(family_errors)} errors"
+    )
+    for e in family_errors[:30]:
+        print("  -", e)
+    errors += family_errors
 
     # Keep the provenance dependencies out of this module's import path:
     # build_site.py, export_record.py and migration checks reuse load_all()

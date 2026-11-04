@@ -52,8 +52,10 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_db import (  # noqa: E402
+    family_of,
     iter_uses,
     load_all,
+    load_families,
     load_applicable_scales,
     load_urban_settings,
 )
@@ -191,41 +193,68 @@ CONTAINER_DOC = [
     ("daywatper.", "weeklyprofile"),
 ]
 
-FAMILY_LABEL = {
-    "albedo": "Albedo", "emissivity": "Emissivity",
-    "anohm": "AnOHM coefficients", "water-storage": "Water storage",
-    "drainage": "Drainage", "water-state": "Water state",
-    "snow-lim": "Snowpack limit", "soil": "Soil properties",
-    "lai": "Leaf area index", "lai-power": "LAI growth coefficients",
-    "phenology": "Phenology thresholds",
-    "max-conductance": "Maximum vegetation conductance",
-    "porosity": "Porosity", "biogen-co2": "Biogenic CO2",
-    "thermal-layers": "Thermal layers", "ohm": "OHM coefficients",
-    "conductance": "Surface conductance", "irrigation": "Irrigation",
-    "anthropogenic": "Anthropogenic emissions", "materials": "Material",
-    "constructions": "Construction", "snow": "Snow parameters",
-    "surface": "Surface properties",
-}
-# families whose names invite confusion with another family: one line of
-# plain text, shown on record pages, on the filtered browse view and as the
-# coverage-matrix tooltip. g_max and max_conductance are distinct SUEWS
-# parameters that the model multiplies (suews_phys_resist.f95, SurfaceResistance)
-FAMILY_NOTE = {
-    "max-conductance": (
-        "max_conductance is the maximum conductance of one vegetated surface "
-        "(evergreen trees, deciduous trees or grass), set under land_cover. "
-        "It is not g_max from the conductance family: SUEWS weights each "
-        "surface's max_conductance by its snow-free cover fraction and "
-        "LAI/LAImax, sums "
-        "them, and multiplies that sum by the site-wide g_max and the "
-        "environmental response functions."),
-    "conductance": (
-        "Site-wide coefficients of the Jarvis-type surface conductance model. "
-        "g_max here is the fitted coefficient that scales the whole product; "
-        "it is not max_conductance from the max-conductance family, the "
-        "per-surface maximum that enters through the LAI term. SUEWS "
-        "multiplies the two."),
-}
+# Family labels, notes and classification live in schema/families.yml, read
+# by `make check` too, so the site and the checker cannot disagree. Notes are
+# one line of plain text for families whose names invite confusion with
+# another family, shown on record pages, on the filtered browse view and as
+# the coverage-matrix tooltip.
+FAMILIES = load_families()
+FAMILY_REGISTRY = FAMILIES.get("families") or {}
+FAMILY_LABEL = {fam: entry["label"] for fam, entry in FAMILY_REGISTRY.items()}
+FAMILY_NOTE = {fam: entry["note"] for fam, entry in FAMILY_REGISTRY.items()
+               if entry.get("note")}
+GROUP_ORDER = list(FAMILIES.get("groups") or {})
+DATA_TYPE_ORDER = list(FAMILIES.get("data_types") or {})
+GROUP_LABEL = {g: g.replace("_", " ").capitalize() for g in GROUP_ORDER}
+DATA_TYPE_LABEL = {t: t.replace("_", " ").capitalize() for t in DATA_TYPE_ORDER}
+UNCLASSIFIED = "unclassified"
+GROUP_LABEL[UNCLASSIFIED] = "Not yet classified"
+
+
+def family_tree(families):
+    """[(group, [(data type, [family, ...]), ...]), ...] in vocabulary order.
+
+    A family in two groups (or of two data types) is listed under each; a
+    family with no group yet falls under "Not yet classified".
+    """
+    tree = []
+    for group in GROUP_ORDER + [UNCLASSIFIED]:
+        types = []
+        for dtype in DATA_TYPE_ORDER + [UNCLASSIFIED]:
+            members = []
+            for fam in sorted(families):
+                entry = FAMILY_REGISTRY.get(fam) or {}
+                fgroups = entry.get("groups") or [UNCLASSIFIED]
+                ftypes = entry.get("data_types") or [UNCLASSIFIED]
+                if group in fgroups and dtype in ftypes:
+                    members.append(fam)
+            if members:
+                types.append((dtype, members))
+        if types:
+            tree.append((group, types))
+    return tree
+
+
+def family_class_html(fam):
+    """The record-page classification line: groups · data types, the
+    confidence when it is not settled, and the open question if any."""
+    entry = FAMILY_REGISTRY.get(fam)
+    if not entry:
+        return ""
+    groups = " / ".join(GROUP_LABEL.get(g, g) for g in entry.get("groups") or [])
+    types = " / ".join(DATA_TYPE_LABEL.get(t, t)
+                       for t in entry.get("data_types") or [])
+    label = " · ".join(x for x in (groups, types) if x) or "Not yet classified"
+    conf = entry.get("confidence")
+    conf_html = (f" <span class=\"chip\" title=\"a working classification, "
+                 f"not yet settled\">{esc(conf)}</span>"
+                 if conf and conf != "settled" else "")
+    question = entry.get("open_question")
+    q_html = (f"<p class=\"oq\">Open question: {esc(question)}</p>"
+              if question else "")
+    return (f"<div class=\"famclass\"><span class=\"fcl\" title=\"family "
+            f"classification from schema/families.yml\">{esc(label)}</span>"
+            f"{conf_html}{q_html}</div>")
 SURFACE_LABEL = {
     "paved": "Paved", "bldgs": "Buildings", "evetr": "Evergreen trees",
     "dectr": "Deciduous trees", "grass": "Grass", "bsoil": "Bare soil",
@@ -886,6 +915,18 @@ header.site .nav { margin-left: auto; font-size: 0.85rem; white-space: nowrap; }
 .tahead .k { color: var(--text-muted); font-size: 0.72rem;
   text-transform: uppercase; letter-spacing: 0.06em; margin-right: 0.45rem; }
 .famgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.3rem; }
+.famgroup { margin: 0.9rem 0 0.2rem; font-weight: 600; font-size: 0.86rem;
+  color: var(--text-primary); border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.15rem; }
+.famtype { margin: 0.35rem 0 0.1rem; font-size: 0.74rem; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-muted); }
+.fgh { margin: 0.6rem 0 0.15rem; font-size: 0.78rem; font-weight: 600;
+  color: var(--text-secondary); }
+.fgh .fdt { font-weight: 400; color: var(--text-muted); }
+.famclass { margin: -0.2rem 0 0.9rem; font-size: 0.86rem;
+  color: var(--text-secondary); }
+.famclass .fcl { font-weight: 600; color: var(--text-primary); }
+.famclass .oq { color: var(--text-muted); margin: 0.25rem 0 0; }
 a.grow { display: flex; justify-content: space-between; gap: 0.8rem;
   padding: 0.24rem 0; font-size: 0.88rem; color: var(--text-secondary);
   border-bottom: 1px solid var(--hairline); }
@@ -1155,27 +1196,6 @@ cite via the <a href="{REPO_URL}/releases">archived releases</a>
 
 
 # ---------------- entry metadata ----------------
-
-
-def family_of(path):
-    """Derive the parameter family from an entry's path."""
-    parts = path.split("/")
-    if parts[0] == "records":
-        if parts[1] == "surfaces":
-            slug = parts[-1]
-            # "--lai" also matches "--lai-power": LAI and its growth
-            # coefficients are one coupled family (they are fitted together)
-            for fam in ("albedo", "emissivity", "anohm", "water-storage",
-                        "drainage", "water-state", "snow-lim", "soil",
-                        "lai", "phenology", "max-conductance", "porosity",
-                        "biogen-co2", "thermal-layers"):
-                if f"--{fam}" in slug:
-                    return fam
-            return "surface"
-        if parts[1] == "profiles":
-            return f"profile: {parts[2]}"
-        return parts[1]
-    return parts[1]  # archetype group
 
 
 def geo_of(rec, places):
@@ -1933,6 +1953,8 @@ def record_page(
             label = f"{src.get('author', src_key).split(',')[0]} {src['year']}"
         chips.append(chip_link(f"{rel}source/{esc(src_key)}.html", label))
     chip_row = f"<div class=\"pill-row\">{''.join(chips)}</div>"
+    if kind == "record":
+        chip_row += family_class_html(fam)
 
     prov_rows = []
 
@@ -2561,6 +2583,31 @@ function render() {
       el.innerHTML = out;
       continue;
     }
+    if (f === 'family') {
+      // grouped by data group and data type (schema/families.yml); a family
+      // classified under two groups appears under both
+      const needle = (ffind[f] || '').toLowerCase();
+      const keep = v => counts[v] !== undefined || state[f] === v;
+      // the active family is pinned first, as in the other long facets,
+      // so it stays visible above the scrolling grouped list
+      let out = state[f]
+        ? itemHTML(f, state[f], counts[state[f]] || 0, true) +
+          '<div class="fdiv"></div>'
+        : '';
+      for (const [group, types] of FAMILY_TREE) {
+        for (const [dtype, members] of types) {
+          const vs = members.filter(v => keep(v) &&
+            (!needle || v.toLowerCase().includes(needle)));
+          if (!vs.length) continue;
+          const dt = DATA_TYPE_LABEL[dtype]
+            ? ` <span class="fdt">· ${DATA_TYPE_LABEL[dtype]}</span>` : '';
+          out += `<div class="fgh">${GROUP_LABEL[group] || group}${dt}</div>` +
+            vs.map(v => itemHTML(f, v, counts[v] || 0, state[f] === v)).join('');
+        }
+      }
+      el.innerHTML = out;
+      continue;
+    }
     // alphabetical by display label; the active value pinned first; long
     // groups scroll and can be narrowed by their filter box
     let entries = Object.entries(counts)
@@ -2851,8 +2898,21 @@ def build_index_page(records, sources, places, by_place):
         return (f"<a class=\"grow\" href=\"{esc(href)}\"><span>{esc(label)}</span>"
                 f"<span class=\"n\">{n}</span></a>")
 
-    fam_list = "".join(grow(f"#family={f}", f, n)
-                       for f, n in sorted(fam_counts.items()))
+    # grouped by data group, then data type (schema/families.yml); a family
+    # classified under two groups or types is listed under each
+    fam_parts = []
+    for group, types in family_tree(fam_counts):
+        fam_parts.append(f"<p class=\"famgroup\">{esc(GROUP_LABEL[group])}</p>")
+        for dtype, members in types:
+            if dtype != UNCLASSIFIED:
+                fam_parts.append(
+                    f"<p class=\"famtype\">{esc(DATA_TYPE_LABEL[dtype])}</p>")
+            fam_parts.append(
+                "<div class=\"famgrid\">"
+                + "".join(grow(f"#family={f}", f, fam_counts[f])
+                          for f in members)
+                + "</div>")
+    fam_list = "".join(fam_parts)
 
     def geo_col(title, counts, key, cap=None):
         rows = sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))
@@ -2888,7 +2948,7 @@ def build_index_page(records, sources, places, by_place):
 <div id="ta" class="tahead hidden" role="listbox"></div>
 <p class="dlab" style="margin-top:1rem">All {len(fam_counts)} parameter
 families</p>
-<div class="famgrid">{fam_list}</div>
+{fam_list}
 </section>
 <section class="door">
 <p class="dlab">I know my site</p>
@@ -3037,6 +3097,9 @@ Every record page has a <b class="report">Report an issue</b> button.</span></a>
         f"const LC_LABEL = {json.dumps(SURFACE_LABEL)};"
         f"const TYP_LABEL = {json.dumps(TYP_LABEL)};"
         f"const FAMILY_NOTE = {json.dumps(FAMILY_NOTE)};"
+        f"const FAMILY_TREE = {json.dumps(family_tree(fam_counts))};"
+        f"const GROUP_LABEL = {json.dumps(GROUP_LABEL)};"
+        f"const DATA_TYPE_LABEL = {json.dumps(DATA_TYPE_LABEL)};"
         f"const FACET_TITLE = {json.dumps(FACET_TITLE)};"
         f"const METHOD_LABEL = {json.dumps(METHOD_LABEL)};"
         f"const SCALE_LABEL = {json.dumps(APPLICABLE_SCALE_LABEL)};"

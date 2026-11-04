@@ -55,6 +55,8 @@ file says where things are.
   envelope an audit agent returns to the reproducible runner
 - `schema/provenance-verifier-policy.schema.yml` — verifier registry and
   sign-off threshold policy
+- `schema/families.yml` — the record-family registry: site labels and
+  notes, and each family's data group and data type
 - `schema/regional_axis.yml` — how the database slices by place and region
 - `scripts/` — the checking, export and migration tools
   - `provenance_runner.py` — deterministic evidence/composition packet,

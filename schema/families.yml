@@ -1,0 +1,216 @@
+# Family registry: what kind of thing each record family holds.
+#
+# The site derives a record's family from its path (family_of in
+# scripts/check_db.py). This file is the one place that says how each family
+# is labelled and how it is classified, so the site and `make check` read the
+# same answer. `make check` requires every family the site can derive for a
+# record to be listed here, every value to come from the vocabularies below,
+# and any scheme_reference to resolve in db/sources.yml.
+#
+# Fields per family:
+#   label            display name on the site
+#   note             optional plain-text note shown on record pages and the
+#                    browse view, for families easily confused with another
+#   groups           one or more data groups (vocabulary below)
+#   data_types       one or more data types (vocabulary below)
+#   confidence       settled or tentative, as in schema/parameter_groups.yml
+#   open_question    optional one line naming what is still undecided
+#   scheme_reference optional key into db/sources.yml for the publication that
+#                    defines the family's equation. Left absent everywhere
+#                    until a source has been verified for it; a key existing
+#                    in sources.yml is not evidence that it defines the scheme.
+#
+# Every classification here is tentative: a working assumption, recorded so
+# it can be discussed and corrected, not a settled scientific judgement.
+
+groups:
+  materials: Properties of a surface type or material as SUEWS represents it.
+  activities: Human activity and management inputs, such as emissions, irrigation and the daily profiles that drive them.
+  thermal_typologies: Building-fabric assemblies and layered thermal descriptions of the built form.
+  morphology: The geometry and bulk (neighbourhood-scale) character of the urban surface.
+
+data_types:
+  physical_parameter: A property of a surface or material.
+  model_coefficient: A coefficient that belongs to an equation or parametrisation and has meaning only within it.
+
+confidence_levels:
+  settled: The classification is agreed and can be relied on.
+  tentative: A working assumption that still needs confirming.
+
+families:
+  albedo:
+    label: Albedo
+    groups: [materials, morphology]
+    data_types: [physical_parameter]
+    confidence: tentative
+    open_question: >-
+      Bulk (neighbourhood) values belong under morphology; split by
+      applicable_scale?
+  anohm:
+    label: AnOHM coefficients
+    groups: [thermal_typologies]
+    data_types: [model_coefficient]
+    confidence: tentative
+    open_question: Grouped with OHM?
+  anthropogenic:
+    label: Anthropogenic emissions
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+    open_question: >-
+      Records hold the QF coefficients qf_a, qf_b, qf_c; physical or
+      coefficient?
+  biogen-co2:
+    label: Biogenic CO2
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+    open_question: Records hold resp_a, resp_b, beta_enh, min_res_bioco2.
+  conductance:
+    label: Surface conductance
+    note: >-
+      Site-wide coefficients of the Jarvis-type surface conductance model. g_max
+      here is the fitted coefficient that scales the whole product; it is not
+      max_conductance from the max-conductance family, the per-surface maximum
+      that enters through the LAI term. SUEWS multiplies the two.
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+  constructions:
+    label: Construction
+    groups: [thermal_typologies]
+    data_types: [physical_parameter]
+    confidence: tentative
+  drainage:
+    label: Drainage
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+  emissivity:
+    label: Emissivity
+    groups: [materials, morphology]
+    data_types: [physical_parameter]
+    confidence: tentative
+    open_question: >-
+      Bulk (neighbourhood) values belong under morphology; split by
+      applicable_scale?
+  irrigation:
+    label: Irrigation
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  lai:
+    label: Leaf area index
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+  materials:
+    label: Material
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+  max-conductance:
+    label: Maximum vegetation conductance
+    note: >-
+      max_conductance is the maximum conductance of one vegetated surface
+      (evergreen trees, deciduous trees or grass), set under land_cover. It is
+      not g_max from the conductance family: SUEWS weights each surface's
+      max_conductance by its snow-free cover fraction and LAI/LAImax, sums them,
+      and multiplies that sum by the site-wide g_max and the environmental
+      response functions.
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+    open_question: >-
+      Also a parameter of the Jarvis conductance scheme; physical or
+      coefficient?
+  ohm:
+    label: OHM coefficients
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+    open_question: Materials or thermal typologies?
+  phenology:
+    label: Phenology thresholds
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+  porosity:
+    label: Porosity
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+  snow:
+    label: Snow parameters
+    groups: [materials]
+    data_types: [physical_parameter, model_coefficient]
+    confidence: tentative
+    open_question: One family or two?
+  snow-lim:
+    label: Snowpack limit
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  soil:
+    label: Soil properties
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+  surface:
+    label: Surface properties
+    groups: []
+    data_types: []
+    confidence: tentative
+    open_question: Not yet classified.
+  thermal-layers:
+    label: Thermal layers
+    groups: [thermal_typologies]
+    data_types: [physical_parameter]
+    confidence: tentative
+    open_question: Link to materials and constructions?
+  water-state:
+    label: Water state
+    groups: [materials]
+    data_types: [model_coefficient]
+    confidence: tentative
+    open_question: Closest to drainage and runoff?
+  water-storage:
+    label: Water storage
+    groups: [materials]
+    data_types: [physical_parameter]
+    confidence: tentative
+  "profile: energy-use":
+    label: Energy use profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: human-activity":
+    label: Human activity profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: population":
+    label: Population profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: snow-removal":
+    label: Snow removal profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: traffic":
+    label: Traffic profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: water-use-automatic":
+    label: Water use automatic profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative
+  "profile: water-use-manual":
+    label: Water use manual profile
+    groups: [activities]
+    data_types: [model_coefficient]
+    confidence: tentative

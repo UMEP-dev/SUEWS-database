@@ -165,6 +165,34 @@ in the name says where the configuration was used, not where a value was
 measured. Archived records are not recommended defaults: prefer a sourced
 record for the same parameter where one exists.
 
+### Record families and their classification
+
+Every evidence record belongs to a family, derived from its path: the
+directory under `records/` (`ohm`, `materials`, `anthropogenic`, ...), the
+`--<family>` part of a surface record's file name (`albedo`, `lai`,
+`drainage`, ...), or `profile: <kind>` for a profile. `schema/families.yml`
+is the registry of those families. For each it gives the `label` the site
+shows, an optional `note`, and a classification on two axes:
+
+| Field | Vocabulary |
+| --- | --- |
+| `groups` | `materials`, `activities`, `thermal_typologies`, `morphology` |
+| `data_types` | `physical_parameter`: a property of a surface or material. `model_coefficient`: a coefficient that belongs to an equation or parametrisation and has meaning only within it. |
+| `confidence` | `settled` or `tentative`, as in `schema/parameter_groups.yml` |
+
+A family may sit in more than one group or have both data types; the site
+lists it under each. `open_question` records, in one line, what is still
+undecided about a classification. `scheme_reference` may name the
+`db/sources.yml` key of the publication that defines a family's equation; it
+is left absent until that publication has been checked, because a key that
+exists in the registry is not evidence that the paper defines the scheme.
+
+`make check` fails if a family the site can derive for a record is missing
+from the registry, if the registry lists a family the site cannot derive, if
+a value lies outside its vocabulary, or if a `scheme_reference` does not
+resolve. The classification is descriptive: it groups families for browsing
+and does not change how any value is checked or exported.
+
 ## Provenance assessment and human verification
 
 The record's `source` remains the backwards-compatible citation that travels
