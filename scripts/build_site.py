@@ -556,6 +556,10 @@ table.kv td, table.kv th { text-align: left; padding: 0.4rem 0.75rem;
   overflow-wrap: anywhere;
   border-bottom: 1px solid var(--border-light); font-size: 0.92rem; vertical-align: top; }
 table.kv th { color: var(--text-muted); font-weight: 500; width: 220px; }
+table.layers th { width: auto; }
+table.layers td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.layers tr.insul td { background: var(--bg-card); }
+.chip.insul { border-color: var(--sun-gold); color: var(--text-primary); }
 code, pre { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 code { background: var(--bg-card); padding: 0.1rem 0.35rem; border-radius: 5px;
   font-size: 0.88em; overflow-wrap: anywhere; }
@@ -1234,10 +1238,142 @@ def leaf_pairs(node, prefix=""):
             p = f"{prefix}.{k}" if prefix else str(k)
             out.extend(leaf_pairs(v, p))
     elif isinstance(node, list):
-        out.append((prefix, "[" + ", ".join(str(x) for x in node[:6]) + "]"))
+        if node and all(isinstance(x, dict) for x in node):
+            # a list of mappings (a construction's layers) has no readable
+            # one-line form: printing it gives a Python repr. Summarise it
+            # here; the page that owns the list renders it as a table.
+            out.append((prefix, mapping_list_summary(node)))
+        else:
+            out.append((prefix, "[" + ", ".join(str(x) for x in node[:6]) + "]"))
     elif node is not None:
         out.append((prefix, node))
     return out
+
+
+def mapping_list_summary(items):
+    """One-line stand-in for a list of mappings, e.g. ``3 layers``."""
+    n = len(items)
+    if all("material" in x for x in items):
+        return f"{n} layer" + ("" if n == 1 else "s")
+    return f"{n} entr" + ("y" if n == 1 else "ies")
+
+
+CONSTRUCTION_FACETS = ("roof", "wall")
+
+
+def construction_layer_tables(rec, records, sidecars, policy, rel):
+    """Render a construction's roof and wall as one layer table per facet.
+
+    Position counts from the exterior (1 = outermost), the order the
+    construction stores its layers in. Each material links to its record
+    page with the same place chip and provenance badge an archetype's
+    ``uses:`` row carries. The designated insulation layer is marked from
+    ``<facet>_insulation_layer``; 6 means no layer is designated and never
+    indexes a layer.
+    """
+    params = rec.get("parameters") or {}
+    out = []
+    for facet in CONSTRUCTION_FACETS:
+        layers = params.get(facet)
+        if not isinstance(layers, list) or not layers:
+            continue
+        selector = params.get(f"{facet}_insulation_layer")
+        rows = []
+        for pos, layer in enumerate(layers, start=1):
+            layer = layer if isinstance(layer, dict) else {}
+            ref = layer.get("material")
+            if isinstance(ref, str) and ref in records:
+                mat = records[ref]
+                nm = mat.get("name") or ref.rsplit("/", 1)[-1]
+                pl = mat.get("place")
+                extra = f" <span class=\"chip\">{esc(pl)}</span>" if pl else ""
+                extra += " " + _state_badge(
+                    provenance_state((sidecars or {}).get(ref), policy)
+                )
+                cell = f"<a href=\"{rel}{esc(ref)}.html\">{esc(nm)}</a>{extra}"
+            else:
+                cell = (f"<code>{esc(ref)}</code>" if ref else
+                        "<span class=\"provmeta\">no material recorded</span>")
+            thickness = layer.get("thickness")
+            thick = esc(thickness) if thickness is not None else "—"
+            insul = selector == pos
+            mark = (" <span class=\"chip insul\" title=\"designated by "
+                    f"{facet}_insulation_layer = {pos}\">insulation layer</span>"
+                    if insul else "")
+            tr_class = ' class="insul"' if insul else ""
+            rows.append(
+                f"<tr{tr_class}>"
+                f"<td class=\"num\">{pos}</td><td>{cell}{mark}</td>"
+                f"<td class=\"num\">{thick}</td></tr>"
+            )
+        if selector == 6:
+            note = (f"<code>{facet}_insulation_layer</code> = 6: no insulation "
+                    "layer is designated.")
+        elif isinstance(selector, int) and 1 <= selector <= len(layers):
+            note = (f"<code>{facet}_insulation_layer</code> = {selector}: "
+                    f"layer {selector} is the designated insulation layer.")
+        elif selector is None:
+            note = f"No <code>{facet}_insulation_layer</code> is recorded."
+        else:
+            note = (f"<code>{facet}_insulation_layer</code> = {esc(selector)} "
+                    "does not match a stored layer.")
+        out.append(
+            f"<h4>{esc(facet.capitalize())}</h4>"
+            "<table class=\"kv layers\"><thead><tr><th>Layer (from exterior)"
+            "</th><th>Material</th><th>Thickness (m)</th></tr></thead><tbody>"
+            + "".join(rows) + "</tbody></table>"
+            f"<p class=\"provmeta\">{note}</p>"
+        )
+    if not out:
+        return ""
+    return ("<p class=\"crumbs\">Each facet lists its layers "
+            "from the exterior (1) inward; thickness in metres. Follow a "
+            "material for its thermal and radiative properties.</p>"
+            + "".join(out))
+
+
+def construction_uses_of(material, records, used_by):
+    """(construction path, facet, position, thickness) for every layer that
+    references ``material``, in a stable order."""
+    hits = []
+    for path in sorted(set(used_by.get(material, []))):
+        rec = records.get(path) or {}
+        if rec.get("target") != "construction":
+            continue
+        params = rec.get("parameters") or {}
+        for facet in CONSTRUCTION_FACETS:
+            for pos, layer in enumerate(params.get(facet) or [], start=1):
+                if isinstance(layer, dict) and layer.get("material") == material:
+                    hits.append((path, facet, pos, layer.get("thickness")))
+    return hits
+
+
+def used_in_constructions(material, records, used_by, rel):
+    """The material page's back-reference list to its constructions."""
+    hits = construction_uses_of(material, records, used_by)
+    if not hits:
+        return ""
+    by_path = defaultdict(list)
+    for path, facet, pos, thickness in hits:
+        by_path[path].append((facet, pos, thickness))
+    items = []
+    for path, slots in by_path.items():
+        rec = records[path]
+        nm = rec.get("name") or path.rsplit("/", 1)[-1]
+        pl = rec.get("place")
+        chip = f" <span class=\"chip\">{esc(pl)}</span>" if pl else ""
+        where = "; ".join(
+            f"{facet} layer {pos}"
+            + (f", {esc(thickness)} m" if thickness is not None else "")
+            for facet, pos, thickness in slots
+        )
+        items.append(f"<li><a href=\"{rel}{esc(path)}.html\">{esc(nm)}</a>"
+                     f"{chip} <span class=\"provmeta\">{where}</span></li>")
+    n = len(by_path)
+    return (f"<h3>Used in constructions</h3><p class=\"crumbs\">{n} "
+            f"construction{'' if n == 1 else 's'} layer this material; layer "
+            "positions count from the exterior.</p>"
+            f"<ul class=\"linked\">{''.join(items)}</ul>")
 
 
 def params_table(params, target, muted=False, linked=True, rec=None,
@@ -2132,6 +2268,18 @@ def record_page(
                     "<p class=\"provmeta\">Labelled fields override the record-level "
                     "citation or scope; unlabelled fields use the record metadata.</p>"
                 )
+            if rec.get("target") == "construction":
+                layers_html = construction_layer_tables(
+                    rec, records, sidecars, policy, rel)
+                if layers_html:
+                    # the layer lists render as tables; the remaining
+                    # scalar fields (the insulation selectors) follow them
+                    params = {k: v for k, v in params.items()
+                              if not (k in CONSTRUCTION_FACETS
+                                      and isinstance(v, list))}
+                    main.append(layers_html)
+                    if params:
+                        main.append("<h4>Insulation-layer selectors</h4>")
             main.append(
                 params_table(
                     params,
@@ -2146,6 +2294,9 @@ def record_page(
                         "<p class=\"crumbs\">Conditions the set was derived "
                         "under; not model inputs themselves.</p>")
             main.append(params_table({"context": context}, None, linked=False))
+
+    if rec.get("target") == "material":
+        main.append(used_in_constructions(path, records, used_by, rel))
 
     if provenance_main:
         main.append(provenance_main)
@@ -2191,7 +2342,9 @@ def record_page(
     backlinks = sorted(set(used_by.get(path, [])))
     if backlinks:
         n = len(backlinks)
-        if kind == "record":
+        if all(p.startswith("records/constructions/") for p in backlinks):
+            label = "construction" if n == 1 else "constructions"
+        elif kind == "record":
             label = "typology" if n == 1 else "typologies"
         else:
             label = "entry" if n == 1 else "entries"
