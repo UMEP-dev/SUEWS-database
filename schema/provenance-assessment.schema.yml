@@ -694,6 +694,12 @@ $defs:
           - compilation
           - validation
           - composition_source
+          - application
+        description: >-
+          application marks a publication that used the stored value in a
+          model run or analysis without stating or deriving it. It never
+          counts as a parameter_source and cannot be cited by a supported
+          source finding.
       parameter_paths:
         type: array
         minItems: 1

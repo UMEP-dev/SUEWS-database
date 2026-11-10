@@ -820,6 +820,19 @@ def check_provenance(records, sources, places, sidecars, schema=None):
                         f"{label}: finding {scope!r} related record self-reference"
                     )
 
+        # A publication that only used the stored value is not evidence of
+        # where the value came from: it cannot settle a source finding, and
+        # (not being a parameter_source) it never covers a leaf for sign-off.
+        source_finding = findings.get("source", {})
+        if source_finding.get("conclusion") == "supported":
+            for evidence_id in source_finding.get("evidence_ids", []):
+                if evidence_by_id.get(evidence_id, {}).get("role") == "application":
+                    errors.append(
+                        f"{label}: supported source finding cites application "
+                        f"evidence {evidence_id!r}; a publication that used the "
+                        "value does not support its source"
+                    )
+
         method = assessment.get("method")
         if (
             derivation_kind

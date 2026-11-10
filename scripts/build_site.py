@@ -114,6 +114,7 @@ PROVENANCE_ROLE_LABEL = {
     "compilation": "Later compilation",
     "validation": "Validation",
     "composition_source": "Composition rationale",
+    "application": "Used in",
     "possible_duplicate": "Possible duplicate",
     "related": "Related record",
     "component": "Selected component",
@@ -1737,9 +1738,13 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
     ]
 
     evidence = assessment.get("evidence", [])
-    if evidence:
-        main.append("<div class=\"evidence-list\">")
-        for item in evidence:
+    # publications that only used the value are listed apart: they are not
+    # evidence of where it came from
+    applications = [item for item in evidence if item.get("role") == "application"]
+    evidence = [item for item in evidence if item.get("role") != "application"]
+
+    def evidence_items(items):
+        for item in items:
             role = item.get("role", "related")
             role_label = PROVENANCE_ROLE_LABEL.get(
                 role, role.replace("_", " ").title()
@@ -1786,6 +1791,19 @@ def provenance_blocks(path, sidecar, policy, rel, sources, records):
             if item.get("note"):
                 main.append(f"<p class=\"locator\">{esc(item['note'])}</p>")
             main.append("</div>")
+
+    if evidence:
+        main.append("<div class=\"evidence-list\">")
+        evidence_items(evidence)
+        main.append("</div>")
+    if applications:
+        main.append(
+            "<h3>Used in</h3><p class=\"provmeta\">Publications that used "
+            "this value in a model run or analysis without stating or deriving "
+            "it. They show where the value has been applied; they are not "
+            "evidence of its source.</p><div class=\"evidence-list\">"
+        )
+        evidence_items(applications)
         main.append("</div>")
 
     findings = assessment.get("findings", {})
