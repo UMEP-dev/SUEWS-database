@@ -127,6 +127,25 @@ groups:
         coefficient set is only valid for its own model. th, tl, s1, s2 and
         kmax are unassessed.
 
+  maximum_conductance:
+    label: Maximum conductance and its scaling coefficient
+    linkage: tight
+    confidence: settled
+    members:
+      - family: records/conductance/*
+        paths: [g_max]
+      - family: records/surfaces/*/*--max-conductance*
+        paths: [max_conductance]
+    rationale: >
+      Only the product of g_max and the per-surface max_conductance
+      (land_cover.dectr, land_cover.evetr and land_cover.grass) enters the
+      surface conductance, so a max_conductance value is used with the g_max
+      it was paired with. max_conductance is the physical attribute, a
+      conductance in mm s-1, and g_max the model coefficient
+      (schema/parameter_classification.yml). In the SUEWS form of the scheme
+      g_max is dimensionless: it scales the summed per-surface maxima to the
+      surface conductance.
+
   radiative_properties:
     label: Radiative surface properties
     linkage: independent
@@ -172,7 +191,6 @@ unclassified:
   - records/surfaces/*/*--snow-lim
   - records/surfaces/*/*--soil
   - records/surfaces/*/*--biogen-co2
-  - records/surfaces/*/*--max-conductance
   - records/surfaces/*/*--porosity
   - records/irrigation
   - records/anthropogenic

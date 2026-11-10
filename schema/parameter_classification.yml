@@ -46,9 +46,9 @@
 # was obtained stays in each record's `method` field and is not part of
 # this classification.
 #
-# Seeded with every path unclassified. Classifications arrive from a reviewed
-# pass against the baseline in UMEP-dev/SUEWS-database#1158; none is inferred
-# here. Record metadata, links and selectors (`context` fields, construction
+# Classifications come from a reviewed pass against the baseline in
+# UMEP-dev/SUEWS-database#1158; none is inferred here. A new path enters as
+# unclassified until it is reviewed. Record metadata, links and selectors (`context` fields, construction
 # `*.material` links and `*_insulation_layer` selectors) are marked
 # `not_a_parameter`, because they are not classified.
 
@@ -73,1878 +73,1922 @@ vocabulary:
 
 parameters:
   anthropogenic_emissions.co2.co2pointsource:
-    admission: held
+    admission: site_input
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.ef_umolco2perj:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.enef_v_jkm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.fcef_v_kgkm.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.fcef_v_kgkm.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.frfossilfuel_heat:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.frfossilfuel_nonheat:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.maxfcmetab:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.maxqfmetab:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.minfcmetab:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.minqfmetab:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.co2.trafficunits:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.context.qf_model:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   anthropogenic_emissions.heat.ah_min.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.ah_min.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.ah_slope_cooling.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.ah_slope_cooling.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.ah_slope_heating.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.ah_slope_heating.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.baset_cooling.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.baset_cooling.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.baset_heating.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.baset_heating.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_a.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_a.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_b.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_b.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_c.holiday:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   anthropogenic_emissions.heat.qf_c.working_day:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   conductance.context.surface_conductance_model:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   conductance.g_k:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.g_max:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
+    record_exceptions:
+      records/conductance/generic--stewart1988:
+        type: physical_attribute
+        status: clear
+        note: Stewart's K1 is the maximum surface conductance of a single canopy
   conductance.g_q_base:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.g_q_shape:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.g_sm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.g_t:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.kmax:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.s1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.s2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.th:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   conductance.tl:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   construction.roof.*.material:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   construction.roof.*.thickness:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   construction.roof_insulation_layer:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   construction.wall.*.material:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   construction.wall.*.thickness:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   construction.wall_insulation_layer:
     admission: not_a_parameter
     type: null
-    status: unclassified
+    status: clear
     reason: null
     activity: null
     note: null
   irrigation.daywat.friday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.monday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.saturday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.sunday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.thursday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.tuesday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywat.wednesday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.friday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.monday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.saturday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.sunday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.thursday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.tuesday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.daywatper.wednesday:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.faut:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.ie_end:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.ie_start:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   irrigation.internalwateruse_h:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   land_cover.bldgs.alb:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.bldgs.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.bldgs.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bldgs.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.alb:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.bsoil.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.bsoil.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.bsoil.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.alpha_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.beta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.min_res_bioco2:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: model_coefficient
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
   land_cover.common.resp_a:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.resp_b:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.saturated_hydraulic_conductivity:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.soil_density:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.soil_depth:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.soil_store_capacity:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.common.theta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.alb_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.alb_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.alpha_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.beta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.base_temperature:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.base_temperature_senescence:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.gdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_power.growth_gdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_power.growth_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_power.senescence_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_power.senescence_sdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.lai_type:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.lai.sdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.max_conductance:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.min_res_bioco2:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: model_coefficient
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
   land_cover.dectr.porosity_max_deciduous:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.porosity_min_deciduous:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.resp_a:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.resp_b:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.dectr.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.dectr.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.theta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.dectr.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.alb_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.alb_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.alpha_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.beta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.base_temperature:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.base_temperature_senescence:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.gdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_power.growth_gdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_power.growth_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_power.senescence_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_power.senescence_sdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.lai_type:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.lai.sdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.max_conductance:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.min_res_bioco2:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: model_coefficient
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
   land_cover.evetr.resp_a:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.resp_b:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.evetr.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.evetr.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.theta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.evetr.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.alb_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.alb_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.alpha_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.beta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.base_temperature:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.base_temperature_senescence:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.gdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_power.growth_gdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_power.growth_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_power.senescence_lai:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_power.senescence_sdd:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.lai_type:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.lai.sdd_full:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.max_conductance:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.min_res_bioco2:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: model_coefficient
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
   land_cover.grass.resp_a:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.resp_b:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.grass.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.grass.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.theta_bio_co2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.grass.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.alb:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.snowpack_limit:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
-    note: null
+    activity: false
+    note: classified by its use in the depletion curve; description mismatch reported upstream
   land_cover.paved.state_limit:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.storage_drain_params.drain_coef_1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.storage_drain_params.drain_coef_2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.storage_drain_params.drain_eq:
     admission: held
-    type: null
-    status: unclassified
+    type: model_setting
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.paved.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.paved.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.alb:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.ch_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.emis:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.k_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.rho_cp_anohm:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.state_limit:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: Settled by deciding whether the depth of a named water body is a site input or a held physical attribute; the water-state record scales follow that decision.
   land_cover.water.storage_drain_params.store_max:
     admission: held
-    type: null
-    status: unclassified
-    reason: null
-    activity: null
-    note: null
+    type: physical_attribute
+    status: pending_review
+    reason: conflicting_evidence
+    activity: false
+    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
   land_cover.water.storage_drain_params.store_min:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.thermal_layers.dz:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.thermal_layers.k:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.thermal_layers.rho_cp:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   land_cover.water.wet_threshold:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   material.albedo:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   material.density:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   material.emissivity:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   material.specific_heat:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   material.thermal_conductivity:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   ohm_coefficients.a1:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
+    record_exceptions:
+      records/ohm/generic--unreferenced--all-vegetation:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.215, 0.325, -19.85), so only its sources are kept.
+      records/ohm/nanjing--dou2023--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.845, 0.395, -13.295), so only its sources are kept.
+      records/ohm/helsinki--jarvi2014--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 8 other stored records (a1, a2, a3 = 0.19, 0.54, -15.125), so only its sources are kept.
   ohm_coefficients.a2:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
+    record_exceptions:
+      records/ohm/generic--unreferenced--all-vegetation:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.215, 0.325, -19.85), so only its sources are kept.
+      records/ohm/nanjing--dou2023--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.845, 0.395, -13.295), so only its sources are kept.
+      records/ohm/helsinki--jarvi2014--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 8 other stored records (a1, a2, a3 = 0.19, 0.54, -15.125), so only its sources are kept.
   ohm_coefficients.a3:
     admission: held
-    type: null
-    status: unclassified
+    type: model_coefficient
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
+    record_exceptions:
+      records/ohm/generic--unreferenced--all-vegetation:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.215, 0.325, -19.85), so only its sources are kept.
+      records/ohm/nanjing--dou2023--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 2 other stored records (a1, a2, a3 = 0.845, 0.395, -13.295), so only its sources are kept.
+      records/ohm/helsinki--jarvi2014--buildings:
+        admission: sources_only
+        status: clear
+        note: Exact component-wise mean of 8 other stored records (a1, a2, a3 = 0.19, 0.54, -15.125), so only its sources are kept.
   profile.anthropogenic-heat.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.anthropogenic-heat.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.energy-use.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.energy-use.public_holiday.*:
-    admission: held
+    admission: not_exported
     type: null
-    status: unclassified
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.energy-use.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.human-activity.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.human-activity.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.population.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.population.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.snow-removal.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.snow-removal.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.traffic.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.traffic.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.water-use-automatic.holiday.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   profile.water-use-manual.working_day.*:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: true
     note: null
   snow.narp_emissivity_snow:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   snow.snow_albedo_max:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null
   snow.snow_albedo_min:
     admission: held
-    type: null
-    status: unclassified
+    type: physical_attribute
+    status: clear
     reason: null
-    activity: null
+    activity: false
     note: null

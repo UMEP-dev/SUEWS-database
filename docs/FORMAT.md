@@ -768,8 +768,8 @@ A malformed registry (a list where a mapping belongs, a list-valued field, a
 duplicate or non-string key) is reported as a check error, never a crash.
 The check prints a one-line count by status.
 
-The registry starts with every path `unclassified` and `record_scale.yml`
-empty; results arrive from a reviewed pass. On the site, an evidence record's
+A new path enters the registry `unclassified`, and a record has no
+`record_scale.yml` entry until it is reviewed; results come from a reviewed pass. On the site, an evidence record's
 parameter row shows a type chip only for a `clear` entry and "under review"
 for a `pending_review` one, with any candidate type in the chip's tooltip;
 a reviewed scale appears beside the applicable-scale row with its basis and
