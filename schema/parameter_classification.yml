@@ -605,10 +605,10 @@ parameters:
   land_cover.bldgs.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.bldgs.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -717,10 +717,10 @@ parameters:
   land_cover.bsoil.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.bsoil.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -1039,10 +1039,10 @@ parameters:
   land_cover.dectr.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.dectr.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -1284,10 +1284,10 @@ parameters:
   land_cover.evetr.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.evetr.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -1529,10 +1529,10 @@ parameters:
   land_cover.grass.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.grass.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -1648,10 +1648,10 @@ parameters:
   land_cover.paved.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.paved.storage_drain_params.store_min:
     admission: not_exported
     type: null
@@ -1732,10 +1732,10 @@ parameters:
   land_cover.water.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: supy and the Rust bridge write store_max to different rows of the storage parameters, and the physics reads only one of them. Settled by the SUEWS fix deciding which row it maps to; whether it stays a live parameter is then re-read.
+    note: The surface's interception storage capacity (StorageMax in the legacy tables).
   land_cover.water.storage_drain_params.store_min:
     admission: not_exported
     type: null
