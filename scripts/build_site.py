@@ -53,12 +53,14 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_db import (  # noqa: E402
     effective_classification,
+    family_of,
     generalise_segment,
     generalised_paths,
     iter_uses,
     load_all,
     load_applicable_scales,
     load_classification,
+    load_families,
     load_record_scale,
     load_urban_settings,
 )
@@ -237,41 +239,15 @@ CONTAINER_DOC = [
     ("daywatper.", "weeklyprofile"),
 ]
 
-FAMILY_LABEL = {
-    "albedo": "Albedo", "emissivity": "Emissivity",
-    "anohm": "AnOHM coefficients", "water-storage": "Water storage",
-    "drainage": "Drainage", "water-state": "Water state",
-    "snow-lim": "Snowpack limit", "soil": "Soil properties",
-    "lai": "Leaf area index", "lai-power": "LAI growth coefficients",
-    "phenology": "Phenology thresholds",
-    "max-conductance": "Maximum vegetation conductance",
-    "porosity": "Porosity", "biogen-co2": "Biogenic CO2",
-    "thermal-layers": "Thermal layers", "ohm": "OHM coefficients",
-    "conductance": "Surface conductance", "irrigation": "Irrigation",
-    "anthropogenic": "Anthropogenic emissions", "materials": "Material",
-    "constructions": "Construction", "snow": "Snow parameters",
-    "surface": "Surface properties",
-}
-# families whose names invite confusion with another family: one line of
-# plain text, shown on record pages, on the filtered browse view and as the
-# coverage-matrix tooltip. g_max and max_conductance are distinct SUEWS
-# parameters that the model multiplies (suews_phys_resist.f95, SurfaceResistance)
-FAMILY_NOTE = {
-    "max-conductance": (
-        "max_conductance is the maximum conductance of one vegetated surface "
-        "(evergreen trees, deciduous trees or grass), set under land_cover. "
-        "It is not g_max from the conductance family: SUEWS weights each "
-        "surface's max_conductance by its snow-free cover fraction and "
-        "LAI/LAImax, sums "
-        "them, and multiplies that sum by the site-wide g_max and the "
-        "environmental response functions."),
-    "conductance": (
-        "Site-wide coefficients of the Jarvis-type surface conductance model. "
-        "g_max here is the fitted coefficient that scales the whole product; "
-        "it is not max_conductance from the max-conductance family, the "
-        "per-surface maximum that enters through the LAI term. SUEWS "
-        "multiplies the two."),
-}
+# Family labels and notes live in schema/families.yml, which `make check`
+# reads too, so the site and the checker cannot disagree. Notes are one line of
+# plain text for families whose names invite confusion with another family,
+# shown on record pages, on the filtered browse view and as the
+# coverage-matrix tooltip.
+FAMILY_REGISTRY = load_families().get("families") or {}
+FAMILY_LABEL = {fam: entry["label"] for fam, entry in FAMILY_REGISTRY.items()}
+FAMILY_NOTE = {fam: entry["note"] for fam, entry in FAMILY_REGISTRY.items()
+               if entry.get("note")}
 SURFACE_LABEL = {
     "paved": "Paved", "bldgs": "Buildings", "evetr": "Evergreen trees",
     "dectr": "Deciduous trees", "grass": "Grass", "bsoil": "Bare soil",
@@ -1205,27 +1181,6 @@ cite via the <a href="{REPO_URL}/releases">archived releases</a>
 
 
 # ---------------- entry metadata ----------------
-
-
-def family_of(path):
-    """Derive the parameter family from an entry's path."""
-    parts = path.split("/")
-    if parts[0] == "records":
-        if parts[1] == "surfaces":
-            slug = parts[-1]
-            # "--lai" also matches "--lai-power": LAI and its growth
-            # coefficients are one coupled family (they are fitted together)
-            for fam in ("albedo", "emissivity", "anohm", "water-storage",
-                        "drainage", "water-state", "snow-lim", "soil",
-                        "lai", "phenology", "max-conductance", "porosity",
-                        "biogen-co2", "thermal-layers"):
-                if f"--{fam}" in slug:
-                    return fam
-            return "surface"
-        if parts[1] == "profiles":
-            return f"profile: {parts[2]}"
-        return parts[1]
-    return parts[1]  # archetype group
 
 
 def geo_of(rec, places):
@@ -2217,9 +2172,6 @@ def record_page(
     # a title that says what the record physically is; the legacy name
     # becomes a qualifier rather than the headline
     fam_label = FAMILY_LABEL.get(fam)
-    if fam.startswith("profile:"):
-        fam_label = fam.split(":", 1)[1].strip().replace("-", " ").capitalize() \
-            + " profile"
     what = fam_label or fam
     if surface and fam not in ("conductance", "irrigation", "anthropogenic"):
         what = f"{SURFACE_LABEL.get(surface, surface)} · {what.lower() if fam_label else what}"

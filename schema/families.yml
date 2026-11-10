@@ -1,0 +1,97 @@
+# Family registry: how the site names each record family.
+#
+# The site derives a record's family from its path (family_of in
+# scripts/check_db.py). This file is the one place that gives each family its
+# display label and, where one is needed, a note, so the site and
+# `make check` read the same list. `make check` requires every family the site
+# can derive for an evidence record to be listed here, every listed family to
+# be one the site can derive, and any scheme_reference to resolve in
+# db/sources.yml.
+#
+# Fields per family:
+#   label            display name on the site
+#   note             optional one line of plain text, for families whose
+#                    names invite confusion with another family; shown on
+#                    record pages, on the filtered browse view and as the
+#                    coverage-matrix tooltip
+#   scheme_reference optional key into db/sources.yml for the publication that
+#                    defines the family's equation. Left absent until a source
+#                    has been verified for it: a key existing in sources.yml
+#                    is not evidence that the publication defines the scheme.
+#
+# Order is significant only for display: notes reach the browse page in the
+# order listed here.
+
+families:
+  albedo:
+    label: Albedo
+  emissivity:
+    label: Emissivity
+  anohm:
+    label: AnOHM coefficients
+  water-storage:
+    label: Water storage
+  drainage:
+    label: Drainage
+  water-state:
+    label: Water state
+  snow-lim:
+    label: Snowpack limit
+  soil:
+    label: Soil properties
+  lai:
+    label: Leaf area index
+  phenology:
+    label: Phenology thresholds
+  max-conductance:
+    label: Maximum vegetation conductance
+    # g_max and max_conductance are distinct SUEWS parameters that the model
+    # multiplies (suews_phys_resist.f95, SurfaceResistance)
+    note: >-
+      max_conductance is the maximum conductance of one vegetated surface
+      (evergreen trees, deciduous trees or grass), set under land_cover. It is
+      not g_max from the conductance family: SUEWS weights each surface's
+      max_conductance by its snow-free cover fraction and LAI/LAImax, sums them,
+      and multiplies that sum by the site-wide g_max and the environmental
+      response functions.
+  porosity:
+    label: Porosity
+  biogen-co2:
+    label: Biogenic CO2
+  thermal-layers:
+    label: Thermal layers
+  ohm:
+    label: OHM coefficients
+  conductance:
+    label: Surface conductance
+    note: >-
+      Site-wide coefficients of the Jarvis-type surface conductance model. g_max
+      here is the fitted coefficient that scales the whole product; it is not
+      max_conductance from the max-conductance family, the per-surface maximum
+      that enters through the LAI term. SUEWS multiplies the two.
+  irrigation:
+    label: Irrigation
+  anthropogenic:
+    label: Anthropogenic emissions
+  materials:
+    label: Material
+  constructions:
+    label: Construction
+  snow:
+    label: Snow parameters
+  surface:
+    label: Surface properties
+  "profile: energy-use":
+    label: Energy use profile
+  "profile: human-activity":
+    label: Human activity profile
+  "profile: population":
+    label: Population profile
+  "profile: snow-removal":
+    label: Snow removal profile
+  "profile: traffic":
+    label: Traffic profile
+  "profile: water-use-automatic":
+    label: Water use automatic profile
+  "profile: water-use-manual":
+    label: Water use manual profile
