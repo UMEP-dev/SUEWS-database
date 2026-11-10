@@ -7,7 +7,7 @@ dependency_revisions:
     lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
   places: {}
   records:
-    records/constructions/generic--lindberg-f2020--placeholder: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
+    records/constructions/generic--lindberg-f2020--placeholder: sha256:89ff1e6a525a332cd66bcd51c720b6e598ccbb469aa5529b3855994f4c6dc36f
     records/constructions/uk--lindberg-f2020--central-london-sample-run: sha256:0a538462b4cd4d132b0954b3b5caf1b744c33fa1aaa958d1e4b0c87ed7965cb1
 assessment:
   status: agent_assessed
@@ -24,8 +24,8 @@ assessment:
       evidence_ids:
       - legacy-material-row
       - estm-code-801
-      note: Archived code-801 roof-layer fixture identifies the retained release-layer configuration
-        without presenting it as one physical material or a verbatim Lindberg Table 2 value.
+      note: Archived code-801 roof-layer fixture identifies the retained release-layer configuration without
+        presenting it as one physical material or a verbatim Lindberg Table 2 value.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/251
     target:
@@ -43,10 +43,10 @@ assessment:
       - estm-code-801
       - lindberg-table-2
       note: The exact four-value tuple is supported only as preserved migration/configuration lineage.
-        Historical code 801 confirms roof-layer-one conductivity 1.142 and volumetric heat capacity
-        1.60662 MJ m-3 K-1. The migrated material row stores 1610 under specific_heat without density,
-        so it cannot honestly represent that volumetric quantity as a physical material property; the
-        optical values are not published by Lindberg Table 2.
+        Historical code 801 confirms roof-layer-one conductivity 1.142 and volumetric heat capacity 1.60662
+        MJ m-3 K-1. The migrated material row stores 1610 under specific_heat without density, so it cannot
+        honestly represent that volumetric quantity as a physical material property; the optical values
+        are not published by Lindberg Table 2.
     source:
       conclusion: supported
       evidence_ids:
@@ -81,8 +81,8 @@ assessment:
       - central-london-configuration
       - placeholder-configuration
       note: Legacy ID 36243784 preserves a distinct material-registry row. It remains selected as roof
-        layer one in code-801 lineage and in the internal placeholder fixture, so its stable identity is
-        retained while its non-physical catalogue role is made explicit.
+        layer one in code-801 lineage and in the internal placeholder fixture, so its stable identity
+        is retained while its non-physical catalogue role is made explicit.
   evidence:
   - id: legacy-material-row
     source: lindberg-f2020
@@ -121,13 +121,12 @@ assessment:
     record: records/constructions/generic--lindberg-f2020--placeholder
     role: related
     note: Selects this record for both its roof and wall layer-one fixture links.
-  scientific_note: >-
-    This record remains solely as an archived code-801 roof-layer fixture. Its stable path and exact legacy
-    values preserve two construction records, but it is not presented as a physical material published by
-    Lindberg et al. Historical code 801 supplies k 1.142 and rhoCp 1606620 for one roof layer, while the
-    migrated row stores 1610 under specific_heat with no density and adds optical values absent from Table 2.
-    Source unreferenced, method assumed and the archived display name make the boundary explicit without
-    guessing a density, changing values or rewriting downstream construction identities.
-  evidence_revision: sha256:f99be83aaa0636a5c407b7b47337f60d857a536cf228524876afaba060511463
+  scientific_note: This record remains solely as an archived code-801 roof-layer fixture. Its stable path
+    and exact legacy values preserve two construction records, but it is not presented as a physical material
+    published by Lindberg et al. Historical code 801 supplies k 1.142 and rhoCp 1606620 for one roof layer,
+    while the migrated row stores 1610 under specific_heat with no density and adds optical values absent
+    from Table 2. Source unreferenced, method assumed and the archived display name make the boundary
+    explicit without guessing a density, changing values or rewriting downstream construction identities.
+  evidence_revision: sha256:848262bd9947ef5e708ae59998901bf2ae28c255a281f8e0555bc684bc09c1ce
 verification:
   attestations: []

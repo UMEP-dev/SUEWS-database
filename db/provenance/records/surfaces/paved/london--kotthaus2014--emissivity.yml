@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/london--kotthaus2014--emissivity
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:bce2fa2a06fb0f37c1d07e71751ba6b8d96f1b23eb6c9a2eeb73bb350dfeb246
+record_revision: sha256:e70ec3124bef7c94370ec203c8361cbae6ca5f8be5a487c853c225a114953a50
 dependency_revisions:
   sources:
     kotthaus2014: sha256:3cc72592bc5e32cbc6fd4794369c625ed413e564ef95806509cbfadc7003fa6c
@@ -37,7 +37,8 @@ assessment:
       evidence_ids:
       - kotthaus-table-c1
       note: The mean is a database calculation not printed by Kotthaus et al.; source unreferenced avoids
-        crediting the publication with the derived value while the six located table rows preserve its evidence.
+        crediting the publication with the derived value while the six located table rows preserve its
+        evidence.
     place:
       conclusion: supported
       evidence_ids:
@@ -70,22 +71,40 @@ assessment:
     locators:
     - kind: table
       label: Appendix C, Table C.1, specimens A001-A006
-      page: '210-211'
+      page: 210-211
       url: https://doi.org/10.1016/j.isprsjprs.2014.05.005
       note: Lists the six black/grey weathered road-asphalt specimens and their individual emissivities.
   derivation:
     kind: arithmetic_mean
     expression: (A001 + A002 + A003 + A004 + A005 + A006) / 6
     external_inputs:
-    - {id: a001, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.96}
-    - {id: a002, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
-    - {id: a003, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
-    - {id: a004, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.94}
-    - {id: a005, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.93}
-    - {id: a006, evidence_id: kotthaus-table-c1, parameter: emis, value: 0.91}
+    - id: a001
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.96
+    - id: a002
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.94
+    - id: a003
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.94
+    - id: a004
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.94
+    - id: a005
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.93
+    - id: a006
+      evidence_id: kotthaus-table-c1
+      parameter: emis
+      value: 0.91
   scientific_note: Kotthaus et al. publish six measured emissivities, not the stored mean. The mean remains
     unchanged and is represented as an internal calculation over explicitly located source-table inputs;
     its supported reach is the selected London specimen group, not the city as a whole.
-  evidence_revision: sha256:8c12ce9d7b7103536d928d5cb2e1bdce91e1fe3cf81f756595226a8b0ef5968e
+  evidence_revision: sha256:9fcb7ad1d6ca5012fcc096bd84efdc5a264d5d42383a3e2bf6d146d296d53418
 verification:
   attestations: []

@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:7bb58308a7ffb06532ce7475099b51b8e177f351007badf03fea1a6d2952e0b6
+record_revision: sha256:646dfcd30d3f141aaf0b8b57a5d4c76a5032135931d04a9fa0ed972521750cb0
 dependency_revisions:
   sources:
     jarvi2014: sha256:745a5f003c8127da65fc8fc3c76a3d1d0367e2223bb5c57abf770aa7b11f24ed
@@ -11,7 +11,7 @@ dependency_revisions:
   places:
     generic: sha256:a8d0618a3e4abfaed2070fd449a8e967febccb3b25aa7100e35a9c40c4846408
   records:
-    records/surfaces/evetr/london--jarvi2014--anohm: sha256:af6e8ffcfa7ce896299758900a828d199ae7942deb915d78e5928809fe46ed57
+    records/surfaces/evetr/london--jarvi2014--anohm: sha256:17477a999837b026ca4a73b7d8b325e9693e50593a781d5d9b66bc783c68d1b1
 assessment:
   status: agent_assessed
   assessed_at: '2026-08-25T10:18:44Z'
@@ -31,7 +31,8 @@ assessment:
       conclusion: supported
       evidence_ids:
       - v2017a-evetr-row
-      note: The three AnOHM fields are stored on the EvergreenTreeB surface row and therefore belong to land_cover.evetr.
+      note: The three AnOHM fields are stored on the EvergreenTreeB surface row and therefore belong to
+        land_cover.evetr.
     values:
       conclusion: supported
       evidence_ids:
@@ -39,10 +40,10 @@ assessment:
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/207
-      note: The v2017a text table stores 1000000, 1.2 and 4 exactly. The earlier AnOHM table and the
-        generator workbook committed with v2017a both store 100000 instead, while Sun et al. publish
-        different generic and London values. The current tuple is therefore supported only as the
-        released text-table assumption, not as a scientific determination.
+      note: The v2017a text table stores 1000000, 1.2 and 4 exactly. The earlier AnOHM table and the generator
+        workbook committed with v2017a both store 100000 instead, while Sun et al. publish different generic
+        and London values. The current tuple is therefore supported only as the released text-table assumption,
+        not as a scientific determination.
     source:
       conclusion: supported
       evidence_ids:
@@ -50,10 +51,9 @@ assessment:
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/207
-      note: Unreferenced is correct. Author adjudication in issue 492 confirms that the tuple was
-        deliberately assumed and that Järvi et al. have no AnOHM parameter-provenance role. The
-        release table documents compilation lineage while Sun et al. validate AnOHM without
-        publishing this exact tuple.
+      note: Unreferenced is correct. Author adjudication in issue 492 confirms that the tuple was deliberately
+        assumed and that Järvi et al. have no AnOHM parameter-provenance role. The release table documents
+        compilation lineage while Sun et al. validate AnOHM without publishing this exact tuple.
     place:
       conclusion: supported
       evidence_ids:
@@ -61,29 +61,29 @@ assessment:
       - published-anohm-values
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/207
-      note: Generic is the active evidence place because no publication determines this tuple at a
-        study location. Author adjudication in issue 492 confirms that London is only the application
-        label retained in the stable path and origin.
+      note: Generic is the active evidence place because no publication determines this tuple at a study
+        location. Author adjudication in issue 492 confirms that London is only the application label
+        retained in the stable path and origin.
     representativeness:
       conclusion: supported
       evidence_ids:
       - v2017a-evetr-row
       - published-anohm-values
-      note: Generic scope records the deliberately assumed land-cover default; city would falsely
-        present the tuple as a London observational or fitted result.
+      note: Generic scope records the deliberately assumed land-cover default; city would falsely present
+        the tuple as a London observational or fitted result.
     applicable_scale:
       conclusion: supported
       evidence_ids:
       - v2017a-evetr-row
-      note: Author adjudication in issue 492 confirms that the tuple applies to the evergreen-tree
-        land-cover class rather than a whole-neighbourhood bulk calibration.
+      note: Author adjudication in issue 492 confirms that the tuple applies to the evergreen-tree land-cover
+        class rather than a whole-neighbourhood bulk calibration.
     method:
       conclusion: supported
       evidence_ids:
       - v2017a-evetr-row
-      note: Author adjudication in issue 492 confirms that the tuple was deliberately assumed, not
-        derived or calibrated; the companion workbook disagreement also rules out treating the text
-        row as a transparent calculation.
+      note: Author adjudication in issue 492 confirms that the tuple was deliberately assumed, not derived
+        or calibrated; the companion workbook disagreement also rules out treating the text row as a transparent
+        calculation.
     identity:
       conclusion: supported
       evidence_ids:
@@ -106,13 +106,13 @@ assessment:
     - kind: dataset
       label: SUEWS_Veg.txt, sibling code 661 EvergreenTreeA London row
       url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/SUEWS_Veg.txt#L10
-      note: Reuses the same AnOHM tuple but selects OHM code family 200 rather than the row 700 family 201,
-        establishing a separate full-row configuration identity rather than separate parameter evidence.
+      note: Reuses the same AnOHM tuple but selects OHM code family 200 rather than the row 700 family
+        201, establishing a separate full-row configuration identity rather than separate parameter evidence.
     - kind: dataset
       label: InputFiles_SUEWS_v2017a_SiteInfo.xlsm, SUEWS_Veg sheet
       url: https://github.com/UMEP-dev/SUEWS/blob/7704a4fd37b56fea59076acd4117dd7cd4f0b2fb/InputTables/InputFiles_SUEWS_v2017a_SiteInfo.xlsm
-      note: The generator workbook committed with the text table contains no code 700 row; its EveTr
-        rows store 100000/1.2/4, so it does not document how row 700 or its released value was produced.
+      note: The generator workbook committed with the text table contains no code 700 row; its EveTr rows
+        store 100000/1.2/4, so it does not document how row 700 or its released value was produced.
   - id: published-anohm-values
     source: sun2017
     role: validation
@@ -126,25 +126,25 @@ assessment:
       label: Table 3, UK-Ldn calibration
       page: 2883
       url: https://doi.org/10.5194/gmd-10-2875-2017
-      note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a
-        separate evergreen-tree tuple of 1.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
+      note: Publishes the bulk London calibration 2.4 MJ m-3 K-1, 2.8 W m-1 K-1 and 4.3, not a separate
+        evergreen-tree tuple of 1.0 MJ m-3 K-1, 1.2 W m-1 K-1 and 4.
   attempted_sources:
   - source: umep-dev2016-anohm-table-introduction
     attempted_at: '2026-08-24T23:03:46Z'
     outcome: not_found
-    note: The first non-reverted AnOHM input table was checked; it has no code 700 and stores
-      100000/1.2/4 throughout its vegetation rows, not the current tuple.
+    note: The first non-reverted AnOHM input table was checked; it has no code 700 and stores 100000/1.2/4
+      throughout its vegetation rows, not the current tuple.
   - source: jarvi2014
     attempted_at: '2026-08-24T23:03:46Z'
     outcome: not_found
-    note: The complete article was checked and does not mention AnOHM or publish its three input
-      parameters; author adjudication in issue 492 confirms that it has no role in this tuple's provenance.
-  scientific_note: The exact 1000000/1.2/4 tuple first appears in the SUEWS v2017a text table as a
-    London EveTr configuration, but its companion generator workbook retains 100000/1.2/4. Author
-    adjudication in issue 492 confirms that the tuple is a deliberately assumed generic land-cover
-    default, London is only its application label, and the two EveTr rows are meaningful complete
-    configurations. The v2017a table is compilation evidence, Sun et al. provide validation, and
-    Järvi et al. have no AnOHM parameter-provenance role.
-  evidence_revision: sha256:df367c7f64c0efdaae9488f2c817a8b604683420ad4e03512496472572fa63f0
+    note: The complete article was checked and does not mention AnOHM or publish its three input parameters;
+      author adjudication in issue 492 confirms that it has no role in this tuple's provenance.
+  scientific_note: The exact 1000000/1.2/4 tuple first appears in the SUEWS v2017a text table as a London
+    EveTr configuration, but its companion generator workbook retains 100000/1.2/4. Author adjudication
+    in issue 492 confirms that the tuple is a deliberately assumed generic land-cover default, London
+    is only its application label, and the two EveTr rows are meaningful complete configurations. The
+    v2017a table is compilation evidence, Sun et al. provide validation, and Järvi et al. have no AnOHM
+    parameter-provenance role.
+  evidence_revision: sha256:d225a57833e01af034e8d33ce112b93674d19236ddfee5a3b6e17f5c5cba018f
 verification:
   attestations: []

@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/bldgs/se-england--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:b8c1d6f5760897f96cf6da6f89007cb30897ed4d3930f919e32bdc715050c5f6
+record_revision: sha256:cbc6653835ae9c8c473bc53fd3892af5abd4d5f03773834310d71f605387d38d
 dependency_revisions:
   sources:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
@@ -30,15 +30,15 @@ assessment:
       evidence_ids:
       - migration-row-42240042
       - release-nonveg-buildings
-      note: Both pinned artifacts classify the cell under the buildings entry of the non-vegetated
-        surface table.
+      note: Both pinned artifacts classify the cell under the buildings entry of the non-vegetated surface
+        table.
     values:
       conclusion: supported
       evidence_ids:
       - migration-row-42240042
       - release-nonveg-buildings
-      note: The value 0.25 is supported as the exact preserved configuration cell only. This does
-        not validate it as a scientifically determined non-water StateLimit.
+      note: The value 0.25 is supported as the exact preserved configuration cell only. This does not
+        validate it as a scientifically determined non-water StateLimit.
     source:
       conclusion: supported
       evidence_ids:
@@ -49,8 +49,8 @@ assessment:
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/124
       note: Unreferenced is correct because the release artifacts preserve the cell but do not provide
-        a scientific derivation, the documented option is currently used only for water surfaces,
-        and Ward et al. (2016) do not publish this non-water StateLimit.
+        a scientific derivation, the documented option is currently used only for water surfaces, and
+        Ward et al. (2016) do not publish this non-water StateLimit.
     place:
       conclusion: supported
       evidence_ids:
@@ -72,16 +72,16 @@ assessment:
       - ward-no-statelimit
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/124
-      note: Assumed denotes retention of an exact historical configuration cell whose scientific
-        production method is not documented; it is not a claim that the value was measured, fitted,
-        calculated or published.
+      note: Assumed denotes retention of an exact historical configuration cell whose scientific production
+        method is not documented; it is not a claim that the value was measured, fitted, calculated or
+        published.
     identity:
       conclusion: supported
       evidence_ids:
       - migration-row-42240042
       - release-nonveg-buildings
-      note: Legacy ID 42240042, the Buildings label, SE England origin and value 0.25 establish the
-        stable archived configuration identity.
+      note: Legacy ID 42240042, the Buildings label, SE England origin and value 0.25 establish the stable
+        archived configuration identity.
   evidence:
   - id: migration-row-42240042
     source: umep-dev2025-database
@@ -92,8 +92,8 @@ assessment:
     - kind: dataset
       label: Pre-migration Water State row 42240042
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/water_state.yml#L37-L43
-      note: Stores Buildings, SE England, StateLimit 0.25, WaterDepth -999 and Ref 90240002. The Ref
-        records migration lineage and is not evidence that Ward et al. published the cell.
+      note: Stores Buildings, SE England, StateLimit 0.25, WaterDepth -999 and Ref 90240002. The Ref records
+        migration lineage and is not evidence that Ward et al. published the cell.
   - id: release-nonveg-buildings
     source: umep-dev2016a
     role: compilation
@@ -112,8 +112,8 @@ assessment:
     - kind: text
       label: StateLimit option applicability
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L2
-      note: The option table states that StateLimit in SUEWS_NonVeg.txt is currently only used for
-        the water surface.
+      note: The option table states that StateLimit in SUEWS_NonVeg.txt is currently only used for the
+        water surface.
   - id: ward-no-statelimit
     source: ward2016
     role: validation
@@ -122,9 +122,8 @@ assessment:
       label: SUEWS description, model setup and reported parameter tables
       page: 2-8
       url: https://doi.org/10.1016/j.uclim.2016.05.001
-      note: The paper discusses moisture storage capacity generally and reports adjusted albedo and
-        emissivity in Table 2, but it neither identifies StateLimit nor publishes 0.25 as a non-water
-        buildings StateLimit.
+      note: The paper discusses moisture storage capacity generally and reports adjusted albedo and emissivity
+        in Table 2, but it neither identifies StateLimit nor publishes 0.25 as a non-water buildings StateLimit.
   attempted_sources:
   - source: ward2016
     attempted_at: '2026-08-26T13:19:31Z'
@@ -135,9 +134,9 @@ assessment:
     validated non-water StateLimit determination. The exact 0.25 cell is present in both migration row
     42240042 and the pinned v2016a SUEWS_NonVeg.txt buildings rows. However, the option documentation
     says non-vegetated StateLimit is currently used only for water surfaces, and Ward et al. (2016) do
-    not publish this parameter. Source unreferenced and method assumed therefore preserve executable
-    configuration lineage without inventing scientific provenance. The record value, stable path,
-    origin, representativeness and legacy ID remain unchanged.
-  evidence_revision: sha256:ef3cfc133f2f241c9a5fcbbf021ae737345829c393d0d6f2fdd2202eaadf8db2
+    not publish this parameter. Source unreferenced and method assumed therefore preserve executable configuration
+    lineage without inventing scientific provenance. The record value, stable path, origin, representativeness
+    and legacy ID remain unchanged.
+  evidence_revision: sha256:6d7e6b38a625028083c44e076cd934126372d80e29669ba724d429b2dcd8222c
 verification:
   attestations: []

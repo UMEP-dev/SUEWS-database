@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/grass/lethbridge--flanagan2002--biogen-co2
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:e32a48d742db6022eb20954c6ec4b1dd2fb658489ded6cff06c3f61c52fca571
+record_revision: sha256:ada14cda15130c99b6cdfefdc7632097caf3c36442713ea4c7e78ec828ab558c
 dependency_revisions:
   sources:
     flanagan2002: sha256:4e179a1d835a361c7c3221b09354322a73c940af8c5edab2b915297a3f512636
@@ -45,10 +45,10 @@ assessment:
       - jarvi-winter-floor
       - migration-row-30240009
       note: Flanagan publishes annual alpha values 0.0254, 0.018 and 0.018 and annual Amax values 27.5,
-        12.9 and 8.6. Their arithmetic means are 0.0204667 and 16.333, which round to stored 0.0205
-        and 16.3, although neither the article nor archive documents who chose that aggregation.
-        Schmid Eq. (5) supplies resp_a 1.08 and resp_b 0.064; Järvi Eq. (11) and Appendix B supply
-        the later minimum respiration floor 0.60. The migration row is the exact five-value compilation.
+        12.9 and 8.6. Their arithmetic means are 0.0204667 and 16.333, which round to stored 0.0205 and
+        16.3, although neither the article nor archive documents who chose that aggregation. Schmid Eq.
+        (5) supplies resp_a 1.08 and resp_b 0.064; Järvi Eq. (11) and Appendix B supply the later minimum
+        respiration floor 0.60. The migration row is the exact five-value compilation.
     source:
       conclusion: supported
       evidence_ids:
@@ -56,9 +56,9 @@ assessment:
       - schmid-respiration
       - jarvi-winter-floor
       - migration-row-30240009
-      note: The derived alpha and beta remain unreferenced rather than being falsely attributed to
-        Flanagan, whose annual fits are recorded as calculation inputs. Parameter-level overrides cite
-        Schmid for resp_a and resp_b and Järvi for min_res_bioco2; the workbook is compilation lineage.
+      note: The derived alpha and beta remain unreferenced rather than being falsely attributed to Flanagan,
+        whose annual fits are recorded as calculation inputs. Parameter-level overrides cite Schmid for
+        resp_a and resp_b and Järvi for min_res_bioco2; the workbook is compilation lineage.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/371
     place:
@@ -86,17 +86,16 @@ assessment:
       - schmid-respiration
       - jarvi-winter-floor
       - migration-row-30240009
-      note: The record-level calculated method describes the rounded arithmetic means used for alpha
-        and beta. The resp_a and resp_b overrides are fitted coefficients published by Schmid, while
-        the minimum-respiration override is the measured chamber statistic published by Järvi.
+      note: The record-level calculated method describes the rounded arithmetic means used for alpha and
+        beta. The resp_a and resp_b overrides are fitted coefficients published by Schmid, while the minimum-respiration
+        override is the measured chamber statistic published by Järvi.
     identity:
       conclusion: supported
       evidence_ids:
       - migration-row-30240009
-      note: Biogen CO2 row 30240009 preserves the exact name, origin, five active values, three -999
-        legacy sentinels and reference ID 90240046. The stable path and legacy_id retain that identity;
-        the -999 theta, alpha_enh and beta_enh entries are unavailable legacy fields, not sourced
-        scientific values.
+      note: Biogen CO2 row 30240009 preserves the exact name, origin, five active values, three -999 legacy
+        sentinels and reference ID 90240046. The stable path and legacy_id retain that identity; the -999
+        theta, alpha_enh and beta_enh entries are unavailable legacy fields, not sourced scientific values.
   evidence:
   - id: flanagan-site
     source: flanagan2002
@@ -176,8 +175,8 @@ assessment:
         resp_a 1.08, resp_b 0.064, min_respi 0.6, three -999 inactive fields and Ref 90240046 in one row.
   derivation:
     kind: arithmetic_mean
-    description: Calculate alpha_bio_co2 and beta_bio_co2 as separate unweighted means of the three
-      annual Flanagan light-response fits, then round to the precision preserved by the database row.
+    description: Calculate alpha_bio_co2 and beta_bio_co2 as separate unweighted means of the three annual
+      Flanagan light-response fits, then round to the precision preserved by the database row.
     expression: alpha_bio_co2 = mean(0.0254, 0.018, 0.018); beta_bio_co2 = mean(27.5, 12.9, 8.6)
     external_inputs:
     - id: flanagan-alpha-1998
@@ -204,13 +203,12 @@ assessment:
       evidence_id: flanagan-light-response
       parameter: parameters.beta_bio_co2
       value: 8.6
-  scientific_note: >-
-    The tuple is not one publication's result. The Flanagan light-response pair is an undocumented
-    rounded aggregation of three annual fits, so the canonical source for those calculated leaves is
-    unreferenced and Flanagan is retained only as input data. The respiration coefficients are borrowed
-    from Schmid's hardwood forest, the 0.6 winter floor is later Finnish chamber evidence published by
-    Järvi et al., and the pre-migration workbook is the exact compilation. Field-level source, method and
-    place overrides now preserve those roles without changing any value or stable identity.
-  evidence_revision: sha256:a3ff0a063a03d0ccc637658be9448412045ad2e898b9e1624ad6178b6f8b51e7
+  scientific_note: The tuple is not one publication's result. The Flanagan light-response pair is an undocumented
+    rounded aggregation of three annual fits, so the canonical source for those calculated leaves is unreferenced
+    and Flanagan is retained only as input data. The respiration coefficients are borrowed from Schmid's
+    hardwood forest, the 0.6 winter floor is later Finnish chamber evidence published by Järvi et al.,
+    and the pre-migration workbook is the exact compilation. Field-level source, method and place overrides
+    now preserve those roles without changing any value or stable identity.
+  evidence_revision: sha256:2f0cd5f594449ae4fed857cd8e659830c98ce0a80d8fa379da9460c49c723e55
 verification:
   attestations: []

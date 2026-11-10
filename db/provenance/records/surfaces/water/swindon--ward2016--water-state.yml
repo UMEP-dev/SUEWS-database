@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/water/swindon--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:341ab479d4f14db8cc46eded061580593d60c8631e6d143e5eafc8a77ea8b9f5
+record_revision: sha256:70f1fc3a06766bc80bb37db9bbde601661f5295c5d1db55f2cb1b61e1ec69545
 dependency_revisions:
   sources:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
@@ -21,49 +21,71 @@ assessment:
   findings:
     name:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Both artifacts label the configuration Swindon, UK (not used).
     target:
       conclusion: supported
-      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
+      evidence_ids:
+      - migration-row
+      - release-row
+      - water-statelimit-semantics
       note: Both artifacts place the cell under the water surface, matching land_cover.water.
     values:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Both artifacts store StateLimit 1000 and WaterDepth 1000 exactly. This supports preservation
         of an unused configuration cell, not scientific validation as a Swindon parameter.
     source:
       conclusion: supported
-      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
-      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/131]
+      evidence_ids:
+      - migration-row
+      - release-row
+      - water-statelimit-semantics
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/131
       note: Source unreferenced is correct. The artifacts establish configuration lineage; the linked
         adjudication found that Ward et al. (2016) did not publish 1000 and that the Swindon setup had
         zero water fraction.
     place:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Swindon is the explicit archived application identity, qualified by the not-used label.
     representativeness:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: City preserves the archived configuration scope; it does not claim that 1000 was measured,
         derived or applied at Swindon.
     method:
       conclusion: supported
-      evidence_ids: [migration-row, release-row, water-statelimit-semantics]
-      issue_urls: [https://github.com/UMEP-dev/SUEWS-database/issues/131]
-      note: Assumed means that the exact unused configuration cell is retained without a recoverable
-        scientific derivation.
+      evidence_ids:
+      - migration-row
+      - release-row
+      - water-statelimit-semantics
+      issue_urls:
+      - https://github.com/UMEP-dev/SUEWS-database/issues/131
+      note: Assumed means that the exact unused configuration cell is retained without a recoverable scientific
+        derivation.
     identity:
       conclusion: supported
-      evidence_ids: [migration-row, release-row]
+      evidence_ids:
+      - migration-row
+      - release-row
       note: Stable path, legacy ID 42240047, name, origin, StateLimit and WaterDepth preserve the archived
         not-used configuration identity.
   evidence:
   - id: migration-row
     source: umep-dev2025-database
     role: compilation
-    parameter_paths: [parameters.state_limit]
+    parameter_paths:
+    - parameters.state_limit
     locators:
     - kind: dataset
       label: Pre-migration water_state.yml row 42240047
@@ -74,7 +96,8 @@ assessment:
   - id: release-row
     source: umep-dev2016a
     role: compilation
-    parameter_paths: [parameters.state_limit]
+    parameter_paths:
+    - parameters.state_limit
     locators:
     - kind: dataset
       label: SUEWS v2016a SUEWS_Water.txt code 551
@@ -94,6 +117,6 @@ assessment:
     water configuration. It does not establish 1000 as a measured, fitted or literature-supported local
     parameter. The honest classification is source unreferenced and method assumed; focused human review
     of assumed records remains appropriate.
-  evidence_revision: sha256:a2c9376b6c8554a94534fd18b644ba3ed1b03afee9be60d8ef70968a7d216912
+  evidence_revision: sha256:eb33cc990a6afa293cc58274a4cae8cefbb5153e95f1a787a624b8a12eb1f21a
 verification:
   attestations: []

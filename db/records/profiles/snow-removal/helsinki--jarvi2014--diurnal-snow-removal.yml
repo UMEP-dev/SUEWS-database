@@ -7,6 +7,7 @@ name: Arbitrary (constant all day)
 origin: Helsinki, Finland
 source: unreferenced
 method: assumed
+source_legacy_ref: 90240015
 legacy_id:
 - 60240015
 parameters:

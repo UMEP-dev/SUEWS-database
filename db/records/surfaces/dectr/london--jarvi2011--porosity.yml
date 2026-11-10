@@ -8,6 +8,7 @@ representativeness: generic
 applicable_scale: land_cover
 source: unreferenced
 method: assumed
+source_legacy_ref: 90240054
 legacy_id: 34240002
 parameters:
   porosity_min_deciduous: 0.2

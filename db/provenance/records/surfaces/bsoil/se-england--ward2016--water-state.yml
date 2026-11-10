@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/bsoil/se-england--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5fdc751109a2f9fc4f4028777e9809007c95967b756a9c18674716c6b771599a
+record_revision: sha256:e9347cdb45f746ded4bb5e85a12794d4d84fc736f8b87653cd8a5ae663ab1a85
 dependency_revisions:
   sources:
     umep-dev2016a: sha256:6a0251f5934f643f4bba1dc2c6d042900cef839fa13f49b6a109d664a5f02451
@@ -29,8 +29,8 @@ assessment:
       evidence_ids:
       - migration-row
       - release-row
-      note: The archived row and fixed V2016a table place this cell under the Bare Soil surface,
-        matching land_cover.bsoil.
+      note: The archived row and fixed V2016a table place this cell under the Bare Soil surface, matching
+        land_cover.bsoil.
     values:
       conclusion: supported
       evidence_ids:
@@ -57,8 +57,8 @@ assessment:
       conclusion: supported
       evidence_ids:
       - migration-row
-      note: Regional preserves the SE England configuration scope; it is not a claim that 0.8 was
-        regionally measured or validated.
+      note: Regional preserves the SE England configuration scope; it is not a claim that 0.8 was regionally
+        measured or validated.
     method:
       conclusion: supported
       evidence_ids:
@@ -67,8 +67,8 @@ assessment:
       - nonwater-statelimit-semantics
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/125
-      note: Assumed means that the exact legacy configuration cell is retained without a recoverable
-        scientific derivation.
+      note: Assumed means that the exact legacy configuration cell is retained without a recoverable scientific
+        derivation.
     identity:
       conclusion: supported
       evidence_ids:
@@ -105,12 +105,12 @@ assessment:
     - kind: text
       label: StateLimit option applicability
       url: https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/docs/source/inputs/tables/SUEWS_SiteInfo/csv-table/StateLimit.csv#L2
-      note: The option table states that StateLimit in SUEWS_NonVeg.txt is currently only used for
-        the water surface.
+      note: The option table states that StateLimit in SUEWS_NonVeg.txt is currently only used for the
+        water surface.
   scientific_note: This assessment establishes only that 0.8 is the exact archived SUEWS configuration
-    for this stable record. It does not establish 0.8 as a measured, fitted or literature-supported
-    non-water parameter. The honest classification is therefore source unreferenced and method assumed;
-    focused human review of assumed records remains appropriate.
-  evidence_revision: sha256:49589d162f8810fccbf51dc9817abaf603a497978a65b3db5211ea1457a23c38
+    for this stable record. It does not establish 0.8 as a measured, fitted or literature-supported non-water
+    parameter. The honest classification is therefore source unreferenced and method assumed; focused
+    human review of assumed records remains appropriate.
+  evidence_revision: sha256:942a5af6b06b9c216c06d6fc5876f45db1263379e47668d5ba049aa2a569ce8e
 verification:
   attestations: []

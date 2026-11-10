@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/paved/london--ward2016--anohm
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:75ad0c021b3b3a6feff5f027a5496b9f6c6c20750ed6d42766edb9253325d690
+record_revision: sha256:f64647cbd7d8f8ad311c321c727dfe86e00415f16e5e0490d5aeeb288b7dcee9
 dependency_revisions:
   sources:
     sun2017: sha256:db4668370c905c4555d8a11e7f6aa6aa9888e1bc4016442b1267287ad9e7fd9c
@@ -23,15 +23,15 @@ assessment:
       conclusion: supported
       evidence_ids:
       - release-paved-sample
-      note: Paved identifies the surface row, and retaining the sample-run qualifier makes explicit
-        that this is a preserved configuration assumption rather than a published calibration.
+      note: Paved identifies the surface row, and retaining the sample-run qualifier makes explicit that
+        this is a preserved configuration assumption rather than a published calibration.
     target:
       conclusion: supported
       evidence_ids:
       - release-paved-sample
       - sun-london-calibration
-      note: The sample table stores the tuple by SUEWS paved surface, while Sun et al. explain the
-        AnOHM physical parameters used to calculate storage heat flux.
+      note: The sample table stores the tuple by SUEWS paved surface, while Sun et al. explain the AnOHM
+        physical parameters used to calculate storage heat flux.
     values:
       conclusion: supported
       evidence_ids:
@@ -39,9 +39,9 @@ assessment:
       - sun-london-calibration
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/116
-      note: The v2020a legacy sample row stores rho_cp 1500000, k 0.1 and Ch 2 exactly. Sun et al.'s
-        published London bulk calibration is instead 2.4e6, 2.8 and 4.3 and does not publish a separate
-        paved tuple, so the stored values are supported only as the preserved sample-table assumption.
+      note: The v2020a legacy sample row stores rho_cp 1500000, k 0.1 and Ch 2 exactly. Sun et al.'s published
+        London bulk calibration is instead 2.4e6, 2.8 and 4.3 and does not publish a separate paved tuple,
+        so the stored values are supported only as the preserved sample-table assumption.
     source:
       conclusion: supported
       evidence_ids:
@@ -49,8 +49,8 @@ assessment:
       - sun-london-calibration
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/116
-      note: Unreferenced is correct because Ward et al. predate AnOHM and Sun et al. do not publish
-        this paved triple. The later release table is configuration lineage, not a parameter publication.
+      note: Unreferenced is correct because Ward et al. predate AnOHM and Sun et al. do not publish this
+        paved triple. The later release table is configuration lineage, not a parameter publication.
     place:
       conclusion: supported
       evidence_ids:
@@ -58,21 +58,21 @@ assessment:
       - sun-london-calibration
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/116
-      note: Generic is the active evidence place because no publication determines this tuple at a
-        study location. London remains in the stable path and origin as the sample row's application label.
+      note: Generic is the active evidence place because no publication determines this tuple at a study
+        location. London remains in the stable path and origin as the sample row's application label.
     representativeness:
       conclusion: supported
       evidence_ids:
       - release-paved-sample
       - sun-london-calibration
-      note: Generic marks an explicit configuration assumption without a supported geographic fit;
-        city would falsely present the tuple as London observational evidence.
+      note: Generic marks an explicit configuration assumption without a supported geographic fit; city
+        would falsely present the tuple as London observational evidence.
     applicable_scale:
       conclusion: supported
       evidence_ids:
       - release-paved-sample
-      note: The tuple is stored on the Paved surface row and describes the paved land-cover class,
-        not a whole-neighbourhood bulk calibration or material specimen.
+      note: The tuple is stored on the Paved surface row and describes the paved land-cover class, not
+        a whole-neighbourhood bulk calibration or material specimen.
     method:
       conclusion: supported
       evidence_ids:
@@ -86,8 +86,8 @@ assessment:
       - release-paved-sample
       - sun-london-calibration
       note: The stable path, London origin, legacy ID, target, name and values preserve the sample row;
-        correcting its active source and scope prevents that lineage from being mistaken for Ward or
-        Sun parameter evidence.
+        correcting its active source and scope prevents that lineage from being mistaken for Ward or Sun
+        parameter evidence.
   evidence:
   - id: release-paved-sample
     source: umep-dev2020a
@@ -96,8 +96,8 @@ assessment:
     - kind: dataset
       label: SUEWS_NonVeg.txt, code 661 Paved London row
       url: https://github.com/UMEP-dev/SUEWS/blob/0b3d64e2338ff5e1f123f79f505b004ef4ff0324/test/fixtures/legacy_tables/2020a/SUEWS_NonVeg.txt#L8
-      note: Stores AnOHM rho_cp 1.5e6, k 0.1 and Ch 2 on the London paved sample row without an
-        AnOHM parameter citation.
+      note: Stores AnOHM rho_cp 1.5e6, k 0.1 and Ch 2 on the London paved sample row without an AnOHM
+        parameter citation.
   - id: sun-london-calibration
     source: sun2017
     role: validation
@@ -106,13 +106,13 @@ assessment:
       label: Table 3, UK-Ldn calibration
       page: 2883
       url: https://doi.org/10.5194/gmd-10-2875-2017
-      note: Publishes the London bulk calibration Cp 2.4 MJ m-3 K-1, k 2.8 W m-1 K-1 and Ch 4.3
-        without a separate paved-surface tuple.
-  scientific_note: The exact 1500000/0.1/2 tuple is preserved in the SUEWS v2020a legacy sample
-    table, but Ward et al. predate AnOHM and Sun et al. publish a different bulk London calibration.
-    This record is therefore an explicit generic land-cover assumption with source unreferenced. The
-    sample-run label and stable London path/origin preserve configuration lineage; no parameter value,
-    target or legacy ID changed.
-  evidence_revision: sha256:0e505f6b06df00dac0bb8f603b15e450d4d7d46ee05d9108f7bc467e9038d239
+      note: Publishes the London bulk calibration Cp 2.4 MJ m-3 K-1, k 2.8 W m-1 K-1 and Ch 4.3 without
+        a separate paved-surface tuple.
+  scientific_note: The exact 1500000/0.1/2 tuple is preserved in the SUEWS v2020a legacy sample table,
+    but Ward et al. predate AnOHM and Sun et al. publish a different bulk London calibration. This record
+    is therefore an explicit generic land-cover assumption with source unreferenced. The sample-run label
+    and stable London path/origin preserve configuration lineage; no parameter value, target or legacy
+    ID changed.
+  evidence_revision: sha256:0f9d6a4d234ecdf6bd6376882b262c2c65b7e98a3b17774c025e36ce00f42b40
 verification:
   attestations: []

@@ -4,6 +4,7 @@ target: material
 name: Air
 source: unreferenced
 method: assumed
+source_legacy_ref: 90240045
 legacy_id: 36248155
 category: Insulation
 display_colour: Generic

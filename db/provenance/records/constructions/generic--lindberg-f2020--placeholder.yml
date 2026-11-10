@@ -1,7 +1,7 @@
 provenance_record: records/constructions/generic--lindberg-f2020--placeholder
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:8ade3334bebf07cb830d280128868445dc2ba9df56ed60403f293aed943b94a8
+record_revision: sha256:89ff1e6a525a332cd66bcd51c720b6e598ccbb469aa5529b3855994f4c6dc36f
 dependency_revisions:
   sources:
     lindberg-f2020: sha256:f5162d2c121007cf9e1536d2e7f5edb40f4b991282adc5d9b9c1a1625dfb7cc2
@@ -23,9 +23,9 @@ assessment:
       conclusion: supported
       evidence_ids:
       - placeholder-row-37240000
-      note: Archived internal construction fixture is an explicit catalogue label for the retained
-        configuration artifact. The historical Placeholder label remains verbatim in origin, while the
-        active display name prevents the record from reading as physical construction guidance.
+      note: Archived internal construction fixture is an explicit catalogue label for the retained configuration
+        artifact. The historical Placeholder label remains verbatim in origin, while the active display
+        name prevents the record from reading as physical construction guidance.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/253
     target:
@@ -76,9 +76,9 @@ assessment:
       evidence_ids:
       - placeholder-row-37240000
       - outer-roof-material-36243784
-      note: Legacy ID 37240000 and the exact material/thickness links establish a distinct preserved
-        fixture identity. Retaining that identity as an archived internal construction fixture preserves
-        downstream references while clearly separating it from evidence-backed physical constructions.
+      note: Legacy ID 37240000 and the exact material/thickness links establish a distinct preserved fixture
+        identity. Retaining that identity as an archived internal construction fixture preserves downstream
+        references while clearly separating it from evidence-backed physical constructions.
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/253
   evidence:
@@ -89,21 +89,20 @@ assessment:
     - kind: dataset
       label: Pre-migration Spartacus Surface row 37240000
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_surface.yml#L198-L224
-      note: Names the row Placeholder and stores material 36243784 with thickness 0.1 m for both r1
-        and w1, insulation index 1 for both assemblies, and null remaining layers. Ref 90240057 records
-        migration lineage; it does not turn this fixture into a published construction claim.
+      note: Names the row Placeholder and stores material 36243784 with thickness 0.1 m for both r1 and
+        w1, insulation index 1 for both assemblies, and null remaining layers. Ref 90240057 records migration
+        lineage; it does not turn this fixture into a published construction claim.
   - id: outer-roof-material-36243784
     record: records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete
     role: related
     note: This archived code-801 roof-layer fixture preserves legacy ID 36243784, the exact identifier
       selected for both layer-one links in pre-migration construction row 37240000.
-  scientific_note: >-
-    This record is retained in the catalogue solely as an archived internal construction fixture, not as
-    a recommended or evidence-backed physical assembly. Both roof[0] and wall[0] intentionally continue
-    to reference the same archived code-801 roof-layer fixture at 0.1 m because pinned row 37240000 stores that exact
-    pair; the separately available outer-wall material is not substituted without evidence. The stable
-    path, Placeholder origin, legacy ID, material links, layer thicknesses and insulation indices preserve
-    configuration lineage. The active display name makes the non-physical catalogue role explicit.
-  evidence_revision: sha256:a4feca2bd77953777728c1f6e1c38c94f2b0bf6503adbb5f833ddfa174aa1bf8
+  scientific_note: This record is retained in the catalogue solely as an archived internal construction
+    fixture, not as a recommended or evidence-backed physical assembly. Both roof[0] and wall[0] intentionally
+    continue to reference the same archived code-801 roof-layer fixture at 0.1 m because pinned row 37240000
+    stores that exact pair; the separately available outer-wall material is not substituted without evidence.
+    The stable path, Placeholder origin, legacy ID, material links, layer thicknesses and insulation indices
+    preserve configuration lineage. The active display name makes the non-physical catalogue role explicit.
+  evidence_revision: sha256:71cc5a23e34b001e9445b768ae25d50aa4d37cb65e5d8bb7cddd7f206948a6a2
 verification:
   attestations: []

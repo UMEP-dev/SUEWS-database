@@ -1,7 +1,7 @@
 provenance_record: records/surfaces/water/london--ward2016--water-state
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:5300c9584b05927b4fa7af756a3557e3518d79fe03c173e988c89131b8ccc247
+record_revision: sha256:6908b20fa9f7803d93bb04b8e4807f7cc0c43a8029d25afbbbce417bb5e37d64
 dependency_revisions:
   sources:
     ward2016: sha256:97c6129cb1bb06cc999b0e872c8a65bcd030705ca488daa18abc881580ae1da9
@@ -19,8 +19,8 @@ assessment:
   findings:
     name:
       conclusion: supported
-      note: The historical V2016a water row labels the entry London (River Thames), UK, matching the
-        preserved name and legacy identity.
+      note: The historical V2016a water row labels the entry London (River Thames), UK, matching the preserved
+        name and legacy identity.
     target:
       conclusion: supported
       note: StateLimit is a water-surface state parameter, matching the land_cover.water target.
@@ -59,13 +59,13 @@ assessment:
   - description: SUEWS V2016a Manual
     attempted_at: '2026-08-24T07:02:59Z'
     outcome: incomplete
-    note: The manual gives generic guidance to use a substantial river state limit and an example of
-      20000, but it does not publish the exact London value 30000.
-  scientific_note: 'The exact value is configuration evidence, not a literature parameter. The fixed
-    V2016a row at https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Water.txt#L5
+    note: The manual gives generic guidance to use a substantial river state limit and an example of 20000,
+      but it does not publish the exact London value 30000.
+  scientific_note: The exact value is configuration evidence, not a literature parameter. The fixed V2016a
+    row at https://github.com/UMEP-dev/SUEWS/blob/a665422686c8464f7829aa16a46134331e0c04af/test/fixtures/legacy_format/2016a/Input/SUEWS_Water.txt#L5
     stores StateLimit 30000 for London (River Thames), UK. Ward et al. do not publish that value. The
     record therefore remains a stable migration entry but now declares source unreferenced and method
-    assumed rather than assigning the configuration choice to the application paper.'
-  evidence_revision: sha256:53118f1b3356f316949e1380717a8855744423685ce7b04225bdd8244428774f
+    assumed rather than assigning the configuration choice to the application paper.
+  evidence_revision: sha256:bcf7df3e0fd3c34d20caf29aa5c12f5fca1f07b153a91101f0ec84282194c569
 verification:
   attestations: []

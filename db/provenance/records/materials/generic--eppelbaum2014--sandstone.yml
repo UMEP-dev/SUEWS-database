@@ -1,7 +1,7 @@
 provenance_record: records/materials/generic--eppelbaum2014--sandstone
 review_type: evidence
 provenance_format_version: '1.0'
-record_revision: sha256:61b4251de4ad44ef60e1c3a8f6824117694063377566198156926e0502164a50
+record_revision: sha256:5d72a9c5686a421cb702e4999b095dc55096e4787770ab87279cdb998b5c0bfc
 dependency_revisions:
   sources:
     eppelbaum2014: sha256:6ff9a5579a2808310838dc8996c38f09098c2563dddec90b233987934ec83597
@@ -20,30 +20,35 @@ assessment:
   findings:
     name:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: The pinned migration row identifies the retained generic Sandstone material configuration.
     target:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: The row is a material entry with radiative and thermophysical fields, matching target material.
     values:
       conclusion: supported
-      evidence_ids: [migration-row, book-close-read]
+      evidence_ids:
+      - migration-row
+      - book-close-read
       note: The migration row stores the complete five-value tuple exactly. The book close-read establishes
         that those values are not a coherent Eppelbaum sandstone row; support here means exact configuration
         preservation, not scientific validation.
     source:
       conclusion: supported
-      evidence_ids: [migration-row, book-close-read]
+      evidence_ids:
+      - migration-row
+      - book-close-read
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/390
       - https://github.com/UMEP-dev/SUEWS-database/issues/391
       - https://github.com/UMEP-dev/SUEWS-database/issues/392
       - https://github.com/UMEP-dev/SUEWS-database/issues/393
       - https://github.com/UMEP-dev/SUEWS-database/issues/394
-      note: >-
-        Source unreferenced is correct. The complete cited monograph was checked and does not publish any of
-        the five parameters as this generic Sandstone tuple; PR #479 removed the unsupported attribution.
+      note: 'Source unreferenced is correct. The complete cited monograph was checked and does not publish
+        any of the five parameters as this generic Sandstone tuple; PR #479 removed the unsupported attribution.'
     place:
       conclusion: not_applicable
       note: A generic material record makes no observation-place claim.
@@ -52,7 +57,9 @@ assessment:
       note: A generic material entry does not declare site, city or regional evidence reach.
     method:
       conclusion: supported
-      evidence_ids: [migration-row, book-close-read]
+      evidence_ids:
+      - migration-row
+      - book-close-read
       issue_urls:
       - https://github.com/UMEP-dev/SUEWS-database/issues/390
       - https://github.com/UMEP-dev/SUEWS-database/issues/391
@@ -63,7 +70,8 @@ assessment:
         assembly procedure have not been recovered.
     identity:
       conclusion: supported
-      evidence_ids: [migration-row]
+      evidence_ids:
+      - migration-row
       note: Stable path, legacy ID 36248175, name, category, display colour and exact tuple preserve the
         migrated material row.
   evidence:
@@ -74,8 +82,8 @@ assessment:
     - kind: dataset
       label: Pre-migration Spartacus material row 36248175
       url: https://github.com/UMEP-dev/SUEWS-database/blob/053c004ef46c14194fdc39bbb8932908db294abd/db/spartacus_material.yml#L329-L338
-      note: Stores Sandstone with albedo 0.35, emissivity 0.915, conductivity 1.8, specific heat 1000 and
-        density 2300, plus the legacy reference removed by PR #479.
+      note: Stores Sandstone with albedo 0.35, emissivity 0.915, conductivity 1.8, specific heat 1000
+        and density 2300, plus the legacy reference removed by PR
     note: Establishes migrated configuration identity and values only.
   - id: book-close-read
     source: eppelbaum2014
@@ -96,22 +104,21 @@ assessment:
       label: Complete-monograph radiative-property sweep
       page: 33 and Tables 1.7-1.8
       url: https://doi.org/10.1007/978-3-642-34023-9
-      note: Finds no rock albedo or emissivity table; the occurrences are planetary or the
-        Stefan-Boltzmann symbol.
+      note: Finds no rock albedo or emissivity table; the occurrences are planetary or the Stefan-Boltzmann
+        symbol.
     note: Establishes that the monograph does not support the stored generic Sandstone tuple.
   attempted_sources:
   - source: eppelbaum2014
     url: https://doi.org/10.1007/978-3-642-34023-9
     attempted_at: '2026-08-22T18:04:37Z'
     outcome: not_found
-    note: >-
-      The complete 757-page monograph was close-read under issues #390-#394. It contains no coherent row
-      matching the stored five parameters, and further acquisition of this source cannot recover the tuple.
-  scientific_note: >-
-    The evidence establishes an exact archived material configuration and rules out its former Eppelbaum
-    attribution. It does not establish the original optical or thermophysical sources. The values therefore
-    remain unchanged with source unreferenced and method assumed. This sidecar remains agent assessed and
-    should enter the focused human review of assumed records.
-  evidence_revision: sha256:e67f40210503c1c9c27590caf5b050badf617c38acce26d84edf8a89b2b0e6d0
+    note: 'The complete 757-page monograph was close-read under issues #390-#394. It contains no coherent
+      row matching the stored five parameters, and further acquisition of this source cannot recover the
+      tuple.'
+  scientific_note: The evidence establishes an exact archived material configuration and rules out its
+    former Eppelbaum attribution. It does not establish the original optical or thermophysical sources.
+    The values therefore remain unchanged with source unreferenced and method assumed. This sidecar remains
+    agent assessed and should enter the focused human review of assumed records.
+  evidence_revision: sha256:b727075b81ab085d508fffed6117f43aa5d009bfe168b8817904371acb1f9d74
 verification:
   attestations: []
