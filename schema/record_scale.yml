@@ -60,4 +60,4230 @@ vocabulary:
     grid_wide: The model applies the value across the whole grid.
     declaration_conflict: The record's own applicable_scale disagrees with the reviewed scale.
 
-records: {}
+records:
+  records/anthropogenic/aberdeen--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/aberdeen--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/belfast--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/belfast--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/birmingham--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/birmingham--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/cardiff--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/cardiff--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/edinburgh--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/edinburgh--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/helsinki--jarvi2014--unclear-two:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/helsinki--jarvi2014:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--unreferenced--sample-run:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--unreferenced:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--ward2016:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--detached-houses-with-air-source-heat-pumps-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--detached-houses-with-gas-boilers-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--detached-houses-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--low-rise-flats-with-air-source-heat-pumps-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--low-rise-flats-with-air-source-heat-pumps-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--low-rise-flats-with-gas-boiler-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024--low-rise-flats-with-gas-boilers-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/london--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/manchester--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/manchester--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/new-york--unreferenced:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/newcastle--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/newcastle--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/plymouth--xie2024--low-rise-flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/plymouth--xie2024:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/anthropogenic/swindon--ward2013:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/anthropogenic/swindon--ward2016:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: record_states
+    note: name 'Suburban residential'
+  records/conductance/generic--jarvi2011:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: target_only
+    flags: [footprint_fitted, grid_wide]
+    note: footprint-fitted set; scale follows the object the model applies it to
+  records/conductance/generic--stewart1988:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'pine stand; what g_max means for this record is open in #1160'
+  records/conductance/generic--ward2016:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: target_only
+    flags: [footprint_fitted, grid_wide]
+    note: footprint-fitted set; scale follows the object the model applies it to
+  records/constructions/generic--lindberg-f2020--placeholder:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/gothenburg--bjork2002--traditional-neighbourhood-early-1900s:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/gothenburg--bjork2002--traditional-stone-neighbourhood-city-late-1800s-early-1900s:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/stockholm--bjork2002--mixed-city-2000s:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/sweden--bjork2002--detached-houses-wood:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/sweden--bjork2002--high-rise-million-program-mid-1900s:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/sweden--bjork2002--nordic-functionalism-mid-1900s:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/sweden--unreferenced--industrial:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1945-1964-flat-roof-type-multi-family-apartment-blocks:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1945-1964-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1965-1980-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1965-1990-flat-roof-type-multi-family-apartment-blocks:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1981-1990-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1991-2003-flat-roof-type-multi-family-apartment-blocks:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-1991-2003-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-2004-2009-flat-roof-type-multi-family-apartment-blocks:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-2004-2009-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-from-2010-flat-roof-type-multi-family-apartment-blocks:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-from-2010-pitched-roof-type-terraced-detached-semi-detached:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--residential-pre-1900-1944-pitched-roof-type-all:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--hertwig2024a--uninhabited-structures-sheds-garages-outbuildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/constructions/uk--lindberg-f2020--central-london-sample-run:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/irrigation/beijing--zheng-y2023:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/irrigation/helsinki--jarvi2019:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/irrigation/se-england--ward2016:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/irrigation/vancouver--unreferenced:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/irrigation/zurich--stagakis-s2024:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/materials/generic--bellucco2017--air:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--brick-ceramic:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--concrete-block-heavyweight:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--concrete-block-lightweight:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--concrete-block-medium:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--limestone-bright:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--cibse2015--wood:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--eppelbaum2014--granite:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--eppelbaum2014--sandstone:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--autoclaved-aerated-concrete-block:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--ballast-chips-or-paving-slab:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--blown-fibre:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--brick-exposed:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--brick-protected:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--cast-concrete:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--dense-exposed-concrete-block:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--dense-exposed-precast-concrete:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--dense-protected-concrete-block:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--dense-protected-precast-concrete:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--expanded-polystyrene-eps:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--external-render-cement-sand:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--external-render-lime-sand:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--extruded-polystyrene:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--felt-sheathing:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--fire-resisting-plasterboard:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--lightweight-aggregate-concrete-block:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--mineral-wool-batts:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--mineral-wool-quilt:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--no-fines-concrete:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plaster-dense:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plaster-leightweight:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plasterboard-standard:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plywood-heavyweight:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plywood-lightweight:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--plywood-sheathing:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--polyurethane-foam:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--roof-tile:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--screed:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--stainless-steel:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--steel:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--terracotta-tile:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--timber-battens:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--urea-formaldehyde-uf-foam:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--waterproof-roof-covering:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--wood-particle-panels:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--hertwig2024a--wood-wool-slab:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--lindberg-f2020--asphalt-shingles:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--lindberg-f2020--concrete-sample-run:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--lindberg-f2020--outer-roof-sample-run-ceramic-tiles-slate-shingles-concrete:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--lindberg-f2020--outer-wall-sample-run-stone-concrete-brick-wood-concrete-35-glazed:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--clay-tile:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--concrete-tiles:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--copper:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--glass-fibre-quilt:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--glasswool:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--gypsum-plasterboard:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--gypsum:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--mineral-fibre-slab:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--plaster:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--roofing-felt:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--roofing-shingle:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/materials/generic--unreferenced--slate-tiles:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/ohm/beijing--zheng-y2023--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/ohm/beijing--zheng-y2023--paved:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--jarvi2014--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/ohm/generic--unreferenced--all-vegetation--mixed-forest-20-mccaughey-1985:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/generic--unreferenced--all-vegetation--vegetation-average-200-this-is-the-average-of-codes-20-30-50-51-52-53-60-i-e-includes-soil-and-water:
+    scale: null
+    status: pending_review
+    reason: insufficient_evidence
+    basis: record_states
+    note: Settled by a ruling on which object an average of OHM sets across land-cover classes that include soil and water describes (the name states codes 20, 30, 50-53 and 60), or by the source's statement of what the average represents.
+  records/ohm/generic--unreferenced--bare-soil--bare-soil-50:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/generic--unreferenced--bare-soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--unreferenced--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--unreferenced--grass:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/generic--unreferenced--paved--asphalt-902:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/generic--unreferenced--paved:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--unreferenced--water:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/generic--ward2016--all-vegetation--code-201-x-multiplier-for-winter-2012:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--all-vegetation:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--bare-soil--code-55-x-mulitplier-for-winter-552:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--bare-soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--buildings--code-798-x-multiplier-for-winter-7982:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; derived from a rooftop average
+  records/ohm/generic--ward2016--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; derived from a rooftop average
+  records/ohm/generic--ward2016--paved--code-851-x-multiplier-for-winter-8512:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--paved:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--water--code-60-x-multiplier-for-winter-602:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/generic--ward2016--water:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/helsinki--jarvi2014--snow:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/london--ward2016--all-nonveg:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/london--xie2024--buildings--detached-houses-with-air-source-heat-pumps-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--detached-houses-with-gas-boilers-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--detached-houses-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--flats-with-air-source-heat-pumps-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--flats-with-air-source-heat-pumps-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--flats-with-gas-boilers-operated-in-occupied-rooms-only:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings--flats-with-gas-boilers-operated-in-whole-buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/london--xie2024--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared land_cover; complete building typology
+  records/ohm/nanjing--wang2008--buildings--concrete-roof:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/nanjing--wang2008--buildings:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/tokyo--unreferenced--buildings--canyon-e-w-japan:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict]
+    note: declared facet; a canyon is more than one facet taken together
+  records/ohm/tokyo--unreferenced--buildings:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict, footprint_fitted]
+    note: declared facet; a canyon is more than one facet taken together
+  records/ohm/vancouver--grimmond1991b--buildings--roof-tar-and-gravel-summer-code-713:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--commercial-industrial-bitumen-mixed-wetness-code-705:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-0-1-4-code-702:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-1-5-2-0-code-703:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-dry-wind-below-1-code-701:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--commercial-industrial-gravel-wet-wind-0-9-1-9-code-704:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-1-0-1-4-code-707:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--meyn2009--buildings--residential-asphalt-shingle-dry-wind-below-1-code-706:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: declared
+    flags: [footprint_fitted]
+  records/ohm/vancouver--unreferenced--buildings:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: record_states
+    flags: [declaration_conflict, footprint_fitted]
+    note: declared facet; a canyon is more than one facet taken together
+  records/ohm/weishan--dou2023--cropland--maize-wheat:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/weishan--dou2023--cropland--wheat-maize:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/weishan--dou2023--cropland--wheat:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/ohm/weishan--dou2023--cropland:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/profiles/energy-use/generic--unreferenced--constant-profile:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/energy-use/helsinki--jarvi2019--energy-use:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/energy-use/london--iamarino2012--iamarino--2:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/energy-use/london--iamarino2012--iamarino:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/energy-use/se-england--ward2016--energy-use:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/energy-use/shanghai--ao2018--ao-et-al:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/helsinki--jarvi2019--human-activity:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/afghanistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/albania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/algeria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/american-samoa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/andorra:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/angola:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/anguilla:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/antigua-and-barbuda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/argentina:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/armenia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/aruba:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/australia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/austria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/azerbaijan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bahamas:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bahrain:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bangladesh:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/barbados:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/belarus:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/belgium:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/belize:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/benin:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bermuda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bhutan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bolivia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bosnia-herzegovina:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/botswana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/brazil:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/british-virgin-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/brunei-darussalam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/bulgaria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/burkina-faso:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/burundi:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cambodia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cameroon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/canada:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cape-verde:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cayman-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/central-african-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/chad:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/chile:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/china:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/colombia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/commonwealth-of-dominica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/comoros:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/congo-democratic-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/congo:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cook-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/costa-rica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/croatia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cuba:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/cyprus:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/czech-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/denmark:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/djibouti:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/dominican-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/east-timor:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ecuador:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/egypt:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/el-salvador:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/equatorial-guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/eritrea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/estonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ethiopia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/faeroe-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/falkland-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/federated-state-of-micronesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/fiji:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/finland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/france:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/french-guiana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/french-polynesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/gabon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/gambia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/georgia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/germany:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ghana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/gibraltar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/greece:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/greenland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/grenada:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guadeloupe:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guatemala:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guernsey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guinea-bissau:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/guyana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/haiti:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/honduras:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/hong-kong:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/hungary:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/iceland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/india:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/indonesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/iran:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/iraq:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ireland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/isle-of-man:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/israel:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/italy:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ivory-coast:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/jamaica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/japan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/jersey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/jordan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/kazakhstan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/kenya:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/kiribati:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/korea-dem-people-s-rep-of:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/korea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/kuwait:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/kyrgyz-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/lao-people-s-democratic-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/latvia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/lebanon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/lesotho:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/liberia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/libyan-arab-jamahiriya:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/liechtenstein:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/lithuania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/luxembourg:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/macao:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/macedonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/madagascar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/malawi:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/malaysia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/maldives:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mali:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/malta:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/marshall-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/martinique:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mauritania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mauritius:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mayotte-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mexico:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/monaco:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mongolia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/montserrat:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/morocco-includes-western-sahara:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/mozambique:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/myanmar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/namibia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/nauru:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/nepal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/netherland-antilles:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/netherlands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/new-caledonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/new-zealand:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/nicaragua:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/niger:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/nigeria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/niue:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/norfolk-island:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/northern-mariana-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/norway:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/occupied-palestinian-territory:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/oman:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/pakistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/palau:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/panama:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/papua-new-guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/paraguay:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/peru:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/philippines:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/pitcairn:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/poland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/portugal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/puerto-rico:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/qatar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/republic-of-moldova:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/reunion:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/romania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/russia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/rwanda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saint-helena-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saint-kitts-and-nevis:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saint-lucia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saint-pierre-and-miquelon-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saint-vincent:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/san-marino:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/sao-tome-and-principe:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/saudi-arabia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/senegal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/serbia-and-montenegro:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/seychelles:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/sierra-leone:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/singapore:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/slovakia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/slovenia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/solomon-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/somalia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/south-africa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/spain:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/sri-lanka:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/sudan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/suriname:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/svalbard-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/swaziland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/sweden:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/switzerland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/syrian-arab-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/taiwan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/tajikistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/thailand:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/togo:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/tokelau-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/tonga:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/trinidad-and-tobago:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/tunisia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/turkey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/turkmenistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/turks-and-caicos-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/tuvalu:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/uganda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/ukraine:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/united-arab-emirates:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/united-kingdom:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/united-rep-of-tanzania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/united-states-of-america:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/united-states-virgin-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/uruguay:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/uzbekistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/vanuatu:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/venezuela:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/viet-nam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/wallis-and-futuna-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/western-samoa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/yemen:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/human-activity/lucy/zambia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/population/helsinki--jarvi2019--population-profile:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/snow-removal/generic--jarvi2014--no-snow-removeal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/snow-removal/helsinki--jarvi2014--diurnal-snow-removal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/snow-removal/helsinki--jarvi2014--snow-removed-daytime:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/helsinki--jarvi2019--traffic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/afghanistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/albania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/algeria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/american-samoa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/andorra:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/angola:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/anguilla:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/antigua-and-barbuda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/argentina:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/armenia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/aruba:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/australia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/austria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/azerbaijan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bahamas:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bahrain:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bangladesh:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/barbados:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/belarus:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/belgium:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/belize:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/benin:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bermuda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bhutan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bolivia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bosnia-herzegovina:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/botswana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/brazil:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/british-virgin-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/brunei-darussalam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/bulgaria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/burkina-faso:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/burundi:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cambodia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cameroon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/canada:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cape-verde:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cayman-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/central-african-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/chad:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/chile:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/china:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/colombia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/commonwealth-of-dominica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/comoros:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/congo-democratic-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/congo:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cook-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/costa-rica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/croatia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cuba:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/cyprus:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/czech-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/denmark:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/djibouti:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/dominican-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/east-timor:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ecuador:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/egypt:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/el-salvador:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/equatorial-guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/eritrea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/estonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ethiopia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/faeroe-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/falkland-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/federated-state-of-micronesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/fiji:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/finland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/france:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/french-guiana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/french-polynesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/gabon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/gambia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/georgia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/germany:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ghana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/gibraltar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/greece:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/greenland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/grenada:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guadeloupe:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guatemala:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guernsey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guinea-bissau:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/guyana:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/haiti:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/honduras:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/hong-kong:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/hungary:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/iceland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/india:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/indonesia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/iran:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/iraq:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ireland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/isle-of-man:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/israel:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/italy:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ivory-coast:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/jamaica:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/japan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/jersey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/jordan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/kazakhstan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/kenya:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/kiribati:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/korea-dem-people-s-rep-of:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/korea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/kuwait:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/kyrgyz-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/lao-people-s-democratic-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/latvia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/lebanon:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/lesotho:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/liberia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/libyan-arab-jamahiriya:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/liechtenstein:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/lithuania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/luxembourg:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/macao:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/macedonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/madagascar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/malawi:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/malaysia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/maldives:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mali:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/malta:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/marshall-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/martinique:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mauritania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mauritius:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mayotte-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mexico:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/monaco:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mongolia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/montserrat:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/morocco-includes-western-sahara:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/mozambique:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/myanmar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/namibia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/nauru:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/nepal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/netherland-antilles:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/netherlands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/new-caledonia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/new-zealand:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/nicaragua:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/niger:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/nigeria:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/niue:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/norfolk-island:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/northern-mariana-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/norway:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/occupied-palestinian-territory:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/oman:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/pakistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/palau:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/panama:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/papua-new-guinea:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/paraguay:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/peru:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/philippines:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/pitcairn:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/poland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/portugal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/puerto-rico:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/qatar:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/republic-of-moldova:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/reunion:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/romania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/russia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/rwanda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saint-helena-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saint-kitts-and-nevis:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saint-lucia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saint-pierre-and-miquelon-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saint-vincent:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/san-marino:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/sao-tome-and-principe:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/saudi-arabia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/senegal:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/serbia-and-montenegro:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/seychelles:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/sierra-leone:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/singapore:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/slovakia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/slovenia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/solomon-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/somalia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/south-africa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/spain:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/sri-lanka:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/sudan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/suriname:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/svalbard-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/swaziland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/sweden:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/switzerland:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/syrian-arab-republic:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/taiwan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/tajikistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/thailand:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/togo:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/tokelau-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/tonga:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/trinidad-and-tobago:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/tunisia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/turkey:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/turkmenistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/turks-and-caicos-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/tuvalu:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/uganda:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/ukraine:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/united-arab-emirates:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/united-kingdom:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/united-rep-of-tanzania:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/united-states-of-america:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/united-states-virgin-islands:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/uruguay:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/uzbekistan:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/vanuatu:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/venezuela:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/viet-nam:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/wallis-and-futuna-qpp:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/western-samoa:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/yemen:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/traffic/lucy/zambia:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/water-use-automatic/los-angeles--lindberg2013--old-code-12:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/water-use-manual/los-angeles--loridan2011--old-code-11:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/profiles/water-use-manual/vancouver--unreferenced--old-code-10:
+    scale: null
+    status: not_applicable
+    reason: null
+    basis: record_states
+  records/snow/helsinki--jarvi2014--albedo:
+    scale: neighbourhood
+    status: clear
+    reason: null
+    basis: declared
+  records/snow/helsinki--jarvi2014--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/snow/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bldgs/basel--grimmond1986--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/gothenburg--oke1987--albedo--wood:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/gothenburg--oke1987--albedo:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/helsinki--jarvi2011--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/helsinki--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bldgs/helsinki--jarvi2014--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/helsinki--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/lodz--offerle2005--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/london--cleugh2001--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/london--jarvi2014--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/london--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/london--ward2016--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/london--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bldgs/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bldgs/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bldgs/shanghai--ao2016--albedo:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/shanghai--ao2016--emissivity:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/bldgs/swindon--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bldgs/swindon--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/helsinki--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/lodz--offerle2005--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'layered ground profile: a ground construction'
+  records/surfaces/bsoil/london--grimmond2002--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'layered ground profile: a ground construction'
+  records/surfaces/bsoil/london--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bsoil/london--ward2016--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/bsoil/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/se-england--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/bsoil/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/common/beijing--zheng-y2023--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/beijing--zheng-y2023--soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/generic--unreferenced--soil--clay-54:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/generic--unreferenced--soil--loam-53:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/generic--unreferenced--soil--silt-52:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/generic--unreferenced--soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/helsinki--havu-m2024--soil--below-low-vegetation:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/helsinki--havu-m2024--soil--mixed-forest:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/helsinki--havu-m2024--soil--mixed-park-trees:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/helsinki--havu-m2024--soil--mixed-street-trees:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/helsinki--havu-m2024--soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/midwest-usa--schmid2000--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/se-england--ruimy1995--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/se-england--ward2016--soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/zurich--stagakis-s2024--soil--below-grass:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/common/zurich--stagakis-s2024--soil:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/beijing--ward2013--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/beijing--zheng-y2023--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/beijing--zheng-y2023--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/generic--campbell2012--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'layered ground profile: a ground construction'
+  records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-grass:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-low-veg:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/helsinki--havu-m2024--biogen-co2--deciduous-trees-street:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/helsinki--havu-m2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/helsinki--havu-m2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/helsinki--havu-m2024--max-conductance--dec-tree:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/helsinki--havu-m2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/helsinki--jarvi2014--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/helsinki--vargo2013--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/dectr/london--havu-m2024--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/london--jarvi2011--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/london--jarvi2011--porosity:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/london--jarvi2014--anohm--dectree:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/london--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/london--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/se-england--ward2016--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/dectr/se-england--ward2016--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/se-england--ward2016--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/se-england--ward2016--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/shanghai--ao2018--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/swindon--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/vancouver--jarvi2011--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/vancouver--jarvi2011--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-b:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--jarvi2011--lai--deciduous-tree-sample-data-c:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--jarvi2011--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--stagakis-s2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--stagakis-s2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/dectr/zurich--stagakis-s2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/beijing--ward2016--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/beijing--zheng-y2023--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/beijing--zheng-y2023--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/generic--ulden1985--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'layered ground profile: a ground construction'
+  records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-grass:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-low-veg:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/evetr/helsinki--havu-m2024--biogen-co2--evergreen-trees-street:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/evetr/helsinki--havu-m2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/evetr/helsinki--havu-m2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/helsinki--havu-m2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/helsinki--jarvi2014--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/london--havu-m2024--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/london--jarvi2011--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/london--jarvi2014--anohm--evergreentreeb:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/london--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/se-england--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/se-england--ward2016--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/evetr/se-england--ward2016--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/se-england--ward2016--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/se-england--ward2016--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/shanghai--ao2018--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/vancouver--jarvi2011--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/vancouver--jarvi2011--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/zurich--stagakis-s2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/zurich--stagakis-s2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/evetr/zurich--stagakis-s2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/beijing--zheng-y2023--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/beijing--zheng-y2023--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/beijing--zheng-y2023--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/helsinki--havu-m2024--biogen-co2--mixed-low-vegetation:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/helsinki--havu-m2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/helsinki--havu-m2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/helsinki--havu-m2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/helsinki--jarvi2014--drainage--grass-irrigated:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/helsinki--jarvi2014--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/helsinki--jarvi2014--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/helsinki--vargo2013--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/lethbridge--flanagan2002--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/london--businger1971--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+    note: 'layered ground profile: a ground construction'
+  records/surfaces/grass/london--halldin1979--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/london--havu-m2024--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/london--jarvi2011--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/london--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/se-england--havu-m2024--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/se-england--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/se-england--ward2016--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/se-england--ward2016--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/grass/se-england--ward2016--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/se-england--ward2016--phenology:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/shanghai--ao2018--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/vancouver--jarvi2011--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/vancouver--jarvi2011--max-conductance--unirrigated-grass:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/vancouver--jarvi2011--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/grass/zurich--ao2018--lai:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/zurich--stagakis-s2024--biogen-co2:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/zurich--stagakis-s2024--lai-power:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/grass/zurich--stagakis-s2024--max-conductance:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/generic--kotthaus2014--emissivity--grey-cement-weathered:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/generic--kotthaus2014--emissivity--grey-concrete-weathered:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/generic--kotthaus2014--emissivity--grey-white-concrete-new:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/generic--kotthaus2014--emissivity--white-concrete-weathered:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/generic--kotthaus2014--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/helsinki--jarvi2014--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/helsinki--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/helsinki--jarvi2014--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/helsinki--jarvi2014--snow-lim:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/helsinki--jarvi2014--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/london--jarvi2011--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/london--kokkonen2018--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/london--kotthaus2014--emissivity--black-tarmac-weathered:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/london--kotthaus2014--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/london--onomura2015--thermal-layers:
+    scale: facet_typology
+    status: clear
+    reason: null
+    basis: record_states
+  records/surfaces/paved/london--ward2016--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/london--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/shanghai--ao2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/shanghai--ao2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/paved/swindon--ward2013--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/paved/swindon--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/water/generic--unreferenced--thermal-layers:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/water/helsinki--jarvi2014--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/water/helsinki--jarvi2014--water-state:
+    scale: null
+    status: pending_review
+    reason: conflicting_evidence
+    basis: record_states
+    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
+  records/surfaces/water/london--jarvi2014--anohm:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/water/london--unreferenced--water-state:
+    scale: null
+    status: pending_review
+    reason: conflicting_evidence
+    basis: record_states
+    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
+  records/surfaces/water/london--ward2016--water-state:
+    scale: null
+    status: pending_review
+    reason: conflicting_evidence
+    basis: record_states
+    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
+  records/surfaces/water/se-england--ward2016--albedo:
+    scale: material
+    status: clear
+    reason: null
+    basis: declared
+  records/surfaces/water/se-england--ward2016--drainage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/water/se-england--ward2016--emissivity:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/water/se-england--ward2016--water-storage:
+    scale: material
+    status: clear
+    reason: null
+    basis: target_only
+  records/surfaces/water/swindon--ward2016--water-state:
+    scale: null
+    status: pending_review
+    reason: conflicting_evidence
+    basis: target_only
+    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
