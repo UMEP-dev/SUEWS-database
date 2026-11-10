@@ -165,6 +165,27 @@ in the name says where the configuration was used, not where a value was
 measured. Archived records are not recommended defaults: prefer a sourced
 record for the same parameter where one exists.
 
+### Record families
+
+Every evidence record belongs to a family, derived from its path: the
+directory under `records/` (`ohm`, `materials`, `anthropogenic`, ...), the
+`--<family>` part of a surface record's file name (`albedo`, `lai`,
+`drainage`, ...), or `profile: <kind>` for a profile. `schema/families.yml`
+is the registry of those families. For each it gives the `label` the site
+shows and, for a family whose name invites confusion with another, an
+optional one-line `note`. `scheme_reference` may name the `db/sources.yml` key
+of the publication that defines a family's equation; it is left absent until
+that publication has been checked, because a key that exists in
+`db/sources.yml` is not evidence that the paper defines the scheme.
+
+`make check` fails if a family the site can derive for a record is missing
+from the registry, if the registry lists a family the site cannot derive, if
+an entry lacks a label or carries a field other than these three, or if a
+`scheme_reference` does not resolve. The family registry names families for
+display only: it does not change how any value is checked or exported, and it
+does not classify them. How each parameter is classified is recorded
+separately (see [Parameter classification](#parameter-classification)).
+
 ## Provenance assessment and human verification
 
 The record's `source` remains the backwards-compatible citation that travels
