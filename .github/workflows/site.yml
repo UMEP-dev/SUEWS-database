@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'db/**'
+      - 'schema/**'
       - 'scripts/**'
       - '.github/provenance-verifiers.yml'
       - '.github/ISSUE_TEMPLATE/provenance-signoff.yml'
