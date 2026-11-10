@@ -27,7 +27,8 @@
 #   note               free text: for a pending case, what would settle it
 #   record_exceptions  optional: <record path without .yml>: {type, status,
 #                      reason, note} for a record whose own evidence places
-#                      this path differently from the rest
+#                      this path differently from the rest; an exception
+#                      replaces these four fields, and any it omits are null
 #
 # Rules the checker enforces: a clear, held parameter has a type; a
 # pending_review entry has a reason; an entry whose admission is not `held`

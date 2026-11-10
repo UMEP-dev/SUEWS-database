@@ -716,7 +716,7 @@ reuse it. Each entry carries:
 | `reason` | `insufficient_evidence` or `conflicting_evidence`; required with `pending_review`, otherwise null |
 | `activity` | true or false for whether the parameter describes human activity; null until assessed |
 | `note` | free text, for a pending case what would settle it |
-| `record_exceptions` | optional: `<record path>: {type, status, reason, note}` for a record whose own evidence places the path differently |
+| `record_exceptions` | optional: `<record path>: {type, status, reason, note}` for a record whose own evidence places the path differently; it replaces those fields, and any it omits are null |
 
 **`schema/record_scale.yml`** holds per-record scale results, keyed by record
 path, because the same parameter can describe different objects in different
@@ -724,7 +724,8 @@ records. Each entry has a `scale` (`material`, `facet_typology`,
 `neighbourhood`, or null), a `status` (`clear`, `not_applicable`,
 `pending_review`), a `reason`, a `basis` (`declared` from the record's
 `applicable_scale`, `record_states`, `source_states`, `target_only`), a
-`note`, and optional `path_exceptions` keyed by generalised path. It is
+`note`, and optional `path_exceptions` keyed by generalised path, each
+replacing those fields for that path (omitted ones are null). It is
 separate from a record's own `applicable_scale` field, which is a claim the
 record states and counts as evidence for the result here.
 

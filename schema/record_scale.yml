@@ -22,7 +22,8 @@
 #   note             free text: for a pending case, what would settle it
 #   path_exceptions  optional: <generalised parameter path>: {scale, status,
 #                    reason, basis, note} for a parameter in this record that
-#                    describes a different object from the rest
+#                    describes a different object from the rest; an
+#                    exception replaces these fields, and any it omits are null
 #
 # Rules the checker enforces: every key is an existing evidence record; a
 # clear entry has a scale and a basis; not_applicable has a null scale;

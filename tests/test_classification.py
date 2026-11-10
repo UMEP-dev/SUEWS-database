@@ -273,6 +273,27 @@ class CheckTests(unittest.TestCase):
         self.assertError("is not a path this record carries",
                          self.errors(scales=scales))
 
+    def test_record_exception_replaces_rather_than_inherits(self):
+        pending = entry(status="pending_review", reason="conflicting_evidence",
+                        record_exceptions={PAVED: {
+                            "type": "physical_attribute", "status": "clear"}})
+        self.assertEqual(
+            self.errors(registry(**{"land_cover.paved.alb": pending})), [])
+
+    def test_path_exception_replaces_rather_than_inherits(self):
+        scales = scale_registry({PAVED: {
+            "status": "clear", "scale": "material", "basis": "declared",
+            "path_exceptions": {"land_cover.paved.alb": {
+                "status": "not_applicable"}}}})
+        self.assertEqual(self.errors(scales=scales), [])
+
+    def test_unreadable_registry_is_an_error_not_a_traceback(self):
+        from unittest import mock
+        with mock.patch("check_db.load_classification",
+                        side_effect=yaml.YAMLError("duplicate key")):
+            errors, _ = classification_check(RECORDS)
+        self.assertError("duplicate key", errors)
+
     def test_valid_record_scale_passes(self):
         scales = scale_registry({PAVED: {
             "status": "clear", "scale": "material", "basis": "declared",
@@ -361,6 +382,18 @@ class SiteDisplayTests(unittest.TestCase):
         self.assertIn("Reviewed scale", page)
         self.assertIn("Material · basis: declared applicable scale", page)
         self.assertNotIn("Reviewed scale", self.render(None, {}))
+
+    def test_switch_turns_the_display_off(self):
+        from unittest import mock
+        import build_site
+        with mock.patch.object(build_site, "SHOW_CLASSIFICATION", False):
+            page = self.render(
+                self.registry_with(
+                    entry(status="clear", type="physical_attribute")),
+                {self.path: {"scale": "material", "status": "clear",
+                             "basis": "declared"}})
+        self.assertNotIn(">physical attribute</span>", page)
+        self.assertNotIn("Reviewed scale", page)
 
     def test_hour_profile_row_maps_to_its_star_path(self):
         rec = RECORDS[PROFILE]

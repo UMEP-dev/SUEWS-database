@@ -15,6 +15,12 @@ Provenance pass (jsonschema + rfc8785, loaded only by main()):
   - evidence references, revision fingerprints and derivation graphs resolve
   - attestation envelopes remain offline unless authenticated facts are injected
 
+Classification pass (stdlib + PyYAML):
+  - schema/parameter_classification.yml has exactly one entry per
+    generalised parameter path carried by db/records, and no other
+  - vocabularies and consistency rules hold in it and in
+    schema/record_scale.yml, whose keys name existing evidence records
+
 Model pass (--supy, needs supy importable):
   - every evidence record's parameter fragment validates against the supy
     class its `target:` names (wrapped as RefValue with the record's citation,
@@ -715,8 +721,10 @@ def effective_classification(entry, record_path):
     exception = exceptions.get(record_path) if isinstance(exceptions, dict) \
         else None
     if isinstance(exception, dict):
-        out.update({k: v for k, v in exception.items()
-                    if k in CLASSIFICATION_EXCEPTION_FIELDS})
+        # an exception replaces the classification fields wholesale; any it
+        # omits are null, never inherited from the path's entry
+        out.update({k: exception.get(k)
+                    for k in CLASSIFICATION_EXCEPTION_FIELDS})
     return out
 
 
@@ -798,11 +806,15 @@ def classification_check(records, classification=None, record_scale=None):
     (``records/``) only: archetypes assemble evidence and are not
     classified in their own right.
     """
-    if classification is None:
-        classification = load_classification()
-    if record_scale is None:
-        record_scale = load_record_scale()
     errors = []
+    try:
+        if classification is None:
+            classification = load_classification()
+        if record_scale is None:
+            record_scale = load_record_scale()
+    except yaml.YAMLError as exc:
+        error = f"classification registries: {exc}".replace("\n", " ")
+        return [error], "classification: registry unreadable, 1 errors"
     reg_name = "parameter_classification.yml"
     scale_name = "record_scale.yml"
 
@@ -901,8 +913,8 @@ def classification_check(records, classification=None, record_scale=None):
             unknown = sorted(set(exception) - set(RECORD_SCALE_FIELDS))
             if unknown:
                 errors.append(f"{eprefix} has unknown fields {unknown}")
-            merged = {k: entry.get(k) for k in RECORD_SCALE_FIELDS}
-            merged.update(exception)
+            # replaces the record's scale fields; omitted ones are null
+            merged = {k: exception.get(k) for k in RECORD_SCALE_FIELDS}
             errors += _record_scale_value_errors(eprefix, merged)
 
     by_status = ", ".join(
