@@ -1,0 +1,52 @@
+# Per-record spatial scale.
+#
+# Scale is judged per record, because the same parameter can describe
+# different objects in different records. Each entry is keyed by an evidence
+# record path without `.yml` and says what object that record's values
+# describe, following the baseline in UMEP-dev/SUEWS-database#1158. Scale
+# follows what the value describes, not where it was observed, how widely it
+# applies, or where a model later uses it.
+#
+# This axis is separate from a record's optional `applicable_scale` field
+# (schema/applicable_scales.yml): that field is a claim stated in the record,
+# which counts as evidence here (basis `declared`); this file holds the
+# reviewed result. Results live here, beside the records, and are never
+# written into a record file.
+#
+# Each entry:
+#   scale            one of vocabulary.scale, or null
+#   status           one of vocabulary.status
+#   reason           one of vocabulary.reason; required with pending_review,
+#                    otherwise null
+#   basis            one of vocabulary.basis; required when status is clear
+#   note             free text: for a pending case, what would settle it
+#   path_exceptions  optional: <generalised parameter path>: {scale, status,
+#                    reason, basis, note} for a parameter in this record that
+#                    describes a different object from the rest
+#
+# Rules the checker enforces: every key is an existing evidence record; a
+# clear entry has a scale and a basis; not_applicable has a null scale;
+# pending_review has a reason; every path exception names a path the record
+# carries.
+#
+# Starts empty: results arrive from a reviewed pass, record by record.
+
+vocabulary:
+  scale:
+    material: A single material, a vegetation or soil type, or a land-cover class such as paved or grass that stands for an unspecified material.
+    facet_typology: A single facet assembled from materials (a roof, wall or ground construction), or a complete building of a stated typology.
+    neighbourhood: A quantity for a whole neighbourhood, aggregated from facets and materials or defined for a class of neighbourhoods, where the record's evidence supports it; never a default.
+  status:
+    clear: The evidence establishes the scale.
+    not_applicable: Positive evidence shows the quantity describes no spatial object, such as a model-wide constant; a generic record or a value used everywhere does not on its own qualify.
+    pending_review: The object is unknown, or the record's applicable_scale and its description conflict; both claims are kept and the entry names what would settle it.
+  reason:
+    insufficient_evidence: The available evidence is not enough to decide.
+    conflicting_evidence: The evidence points to more than one answer.
+  basis:
+    declared: The record's own applicable_scale field states it.
+    record_states: The record's description or name states it.
+    source_states: The cited source states it.
+    target_only: Only the record's target indicates it, with no statement in the record or its source.
+
+records: {}
