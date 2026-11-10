@@ -52,9 +52,14 @@ import yaml
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_db import (  # noqa: E402
+    effective_classification,
+    generalise_segment,
+    generalised_paths,
     iter_uses,
     load_all,
     load_applicable_scales,
+    load_classification,
+    load_record_scale,
     load_urban_settings,
 )
 from export_record import PlainDumper, assemble  # noqa: E402
@@ -147,6 +152,46 @@ COMPOSITION_FINDING_LABEL = {
 # button and the footer link stand on their own, and no issue template, label
 # or stored state outlives it.
 FLOATING_REPORT = True
+
+# Parameter classification (schema/parameter_classification.yml and
+# schema/record_scale.yml). On an evidence record page, a parameter whose
+# registry entry is clear shows its type as a chip and one pending review
+# shows "under review"; a record with a reviewed scale shows it beside the
+# applicable-scale row. Unclassified entries and not_a_parameter render
+# nothing, so a registry with no reviewed results leaves every page as it
+# was. Set this to False to switch the whole display off.
+SHOW_CLASSIFICATION = True
+CLASSIFICATION_TYPE_LABEL = {
+    "physical_attribute": "physical attribute",
+    "model_coefficient": "model coefficient",
+    "model_setting": "model setting",
+}
+RECORD_SCALE_LABEL = {
+    "material": "Material",
+    "facet_typology": "Facet typology",
+    "neighbourhood": "Neighbourhood",
+}
+RECORD_SCALE_BASIS_LABEL = {
+    "declared": "declared applicable scale",
+    "record_states": "stated in the record",
+    "source_states": "stated in the source",
+    "target_only": "target only",
+}
+RECORD_SCALE_FLAG_LABEL = {
+    "footprint_fitted": "fitted over a flux footprint",
+    "grid_wide": "applied grid-wide",
+    "declaration_conflict": "conflicts with the declared scale",
+}
+
+
+def _vocab_label(labels, value):
+    """The label for a vocabulary value, or None for anything else.
+
+    Registry values are only trusted as strings; a list or mapping (which
+    ``make check`` reports) renders nothing rather than raising.
+    """
+    return labels.get(value) if isinstance(value, str) else None
+
 
 # Typology photographs. The files are release assets rather than repository
 # content (db/images.yml explains why); the site serves its own verified copy
@@ -1377,11 +1422,149 @@ def used_in_constructions(material, records, used_by, rel):
             f"<ul class=\"linked\">{''.join(items)}</ul>")
 
 
+def row_classification_path(params, target, dotted):
+    """The generalised registry path behind one ``leaf_pairs`` row.
+
+    A row label is not itself a generalised path: a 24-hour profile row
+    ``working_day`` stands for ``<target>.working_day.*``. Walk to the
+    row's node and run the shared generalisation on it. Returns None when
+    the row covers several registry paths (a summarised list of mappings).
+    """
+    node = params
+    for segment in dotted.split("."):
+        if not isinstance(node, dict):
+            return None
+        match = [k for k in node if str(k) == segment]
+        if not match:
+            return None
+        node = node[match[0]]
+    prefix = ".".join(
+        [str(target)] + [generalise_segment(s) for s in dotted.split(".")])
+    paths = set(generalised_paths(node, prefix))
+    return paths.pop() if len(paths) == 1 else None
+
+
+def classification_chip(entry):
+    """A small type chip for a reviewed registry entry, else nothing.
+
+    A pending entry's non-null type is a candidate, not a result: the chip
+    still reads "under review", and the candidate appears only in its
+    title.
+    """
+    if not isinstance(entry, dict) \
+            or entry.get("admission") == "not_a_parameter":
+        return ""
+    status = entry.get("status")
+    type_label = _vocab_label(CLASSIFICATION_TYPE_LABEL, entry.get("type"))
+    if status == "clear" and type_label:
+        label = type_label
+        title = "parameter type, from the classification registry"
+    elif status == "pending_review":
+        label = "under review"
+        reason = entry.get("reason")
+        note = entry.get("note")
+        bits = ["classification pending review"]
+        if type_label:
+            bits.append(f"candidate: {type_label}")
+        if isinstance(reason, str):
+            bits.append(reason.replace("_", " "))
+        if isinstance(note, str) and note:
+            bits.append(note)
+        title = "; ".join(bits)
+    else:
+        return ""
+    return f' <span class="chip" title="{esc(title)}">{esc(label)}</span>'
+
+
+def record_scale_html(entry):
+    """Escaped one-line reading of a record_scale.yml entry for the rail.
+
+    A pending entry's non-null scale is a candidate: the text reads "under
+    review" and the candidate appears only in a title. Flags follow as
+    small text; an entry without flags shows none.
+    """
+    status = entry.get("status")
+    scale_label = _vocab_label(RECORD_SCALE_LABEL, entry.get("scale"))
+    if status == "pending_review":
+        text = "under review"
+        reason = entry.get("reason")
+        if isinstance(reason, str):
+            text += f" ({reason.replace('_', ' ')})"
+        out = esc(text)
+        if scale_label:
+            out = (f"<span title=\"{esc('candidate: ' + scale_label)}\">"
+                   f"{out}</span>")
+    elif status == "not_applicable":
+        out = esc("Not applicable")
+    elif status == "clear" and scale_label:
+        out = esc(scale_label)
+    else:
+        return ""
+    basis = _vocab_label(RECORD_SCALE_BASIS_LABEL, entry.get("basis"))
+    if basis:
+        out += esc(f" · basis: {basis}")
+    flags = entry.get("flags")
+    if isinstance(flags, list):
+        labels = [_vocab_label(RECORD_SCALE_FLAG_LABEL, f) for f in flags]
+        labels = [label for label in labels if label]
+        if labels:
+            out += f" <small>{esc('; '.join(labels))}</small>"
+    return out
+
+
+def load_classification_display():
+    """The registries' ``parameters`` and ``records`` mappings for display.
+
+    Never raises on a malformed registry (``make check`` reports it): an
+    unreadable file or a non-mapping where a mapping belongs is noted on
+    stderr and that part of the display is left off.
+    """
+    def part(loader, key, name):
+        try:
+            doc = loader()
+        except (OSError, yaml.YAMLError) as exc:
+            print(f"classification display off: {name} unreadable: "
+                  f"{exc}".replace("\n", " "), file=sys.stderr)
+            return None
+        if not isinstance(doc, dict):
+            print(f"classification display off: {name} top level is not a "
+                  f"mapping", file=sys.stderr)
+            return None
+        value = doc.get(key)
+        if value is None:
+            return {}
+        if not isinstance(value, dict):
+            print(f"classification display off: {name} {key} is not a "
+                  f"mapping", file=sys.stderr)
+            return None
+        return value
+
+    return (part(load_classification, "parameters",
+                 "parameter_classification.yml"),
+            part(load_record_scale, "records", "record_scale.yml"))
+
+
 def params_table(params, target, muted=False, linked=True, rec=None,
-                 sources=None, rel=""):
-    """Render a parameter block as a table: linked name, value, docs link."""
+                 sources=None, rel="", classification=None, record_path=None):
+    """Render a parameter block as a table: linked name, value, docs link.
+
+    ``classification`` is the registry's ``parameters`` mapping; given with
+    an evidence record, each row whose entry is reviewed carries a type
+    chip (see SHOW_CLASSIFICATION). ``record_path`` is the record's path
+    under db/ without ``.yml``, the key ``record_exceptions`` uses and the
+    checker validates; it defaults to the record's own ``record`` field.
+    """
     rows = []
+    if record_path is None:
+        record_path = (rec or {}).get("record")
+    if not isinstance(classification, dict):
+        classification = None
     for dotted, value in leaf_pairs(params):
+        class_chip = ""
+        if classification and record_path and target:
+            gpath = row_classification_path(params, target, dotted)
+            class_chip = classification_chip(effective_classification(
+                classification.get(gpath), record_path))
         url = doc_url(target, dotted) if linked else None
         name = (f"<a href=\"{esc(url)}\" title=\"definition in the SUEWS "
                 f"configuration reference\"><code>{esc(dotted)}</code></a>"
@@ -1460,7 +1643,7 @@ def params_table(params, target, muted=False, linked=True, rec=None,
                 )
         rows.append(f"<tr><td>{name}</td>"
                     f"<td><span class=\"{klass}\">{esc(value)}</span>"
-                    f"{''.join(field_provenance)}</td></tr>")
+                    f"{class_chip}{''.join(field_provenance)}</td></tr>")
     cls = "kv params muted" if muted else "kv params"
     return f"<table class=\"{cls}\">" + "".join(rows) + "</table>"
 
@@ -2013,9 +2196,12 @@ def review_guide_page(policy):
 
 def record_page(
     path, rec, records, sources, used_by, cluster, image=None,
-    sidecars=None, policy=None, blocked=None, invite=False
+    sidecars=None, policy=None, blocked=None, invite=False,
+    classification=None, record_scale=None,
 ):
     depth = path.count("/")
+    if not SHOW_CLASSIFICATION or not path.startswith("records/"):
+        classification = record_scale = None
     rel = "../" * depth
     kind = "record" if path.startswith("records/") else "typology"
     kind_label = "evidence record" if kind == "record" else "composite"
@@ -2115,6 +2301,10 @@ def record_page(
     if rec.get("applicable_scale"):
         scale = rec["applicable_scale"]
         row("Applicable scale", esc(APPLICABLE_SCALE_LABEL.get(scale, scale)))
+    scale_entry = (record_scale.get(path)
+                   if isinstance(record_scale, dict) else None)
+    if isinstance(scale_entry, dict):
+        row("Reviewed scale", record_scale_html(scale_entry))
     if rec.get("urban_setting"):
         setting = rec["urban_setting"]
         row("Urban setting", esc(URBAN_SETTING_LABEL.get(setting, setting)))
@@ -2305,6 +2495,8 @@ def record_page(
                     rec=rec,
                     sources=sources,
                     rel=rel,
+                    classification=classification,
+                    record_path=path,
                 )
             )
         if context:
@@ -3317,6 +3509,8 @@ def main():
     policy = load_site_policy()
     merge_github_signoffs(sidecars)
     used_by, cluster = build_graph(records)
+    classification, record_scale = (load_classification_display()
+                                    if SHOW_CLASSIFICATION else (None, None))
 
     images, unresolved, release = load_images()
     staged = stage_images(out, images, release, offline=args.offline)
@@ -3335,6 +3529,8 @@ def main():
                 # it has no photograph
                 invite=(path.startswith("archetypes/typologies/")
                         and path not in images),
+                classification=classification,
+                record_scale=record_scale,
             )
         )
 

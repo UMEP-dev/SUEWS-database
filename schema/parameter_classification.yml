@@ -1,0 +1,1950 @@
+# Parameter classification registry.
+#
+# One entry per generalised parameter path found in db/records. A generalised
+# path is `<target>.<dotted leaf path under parameters>`, with every integer
+# key (a layer index, an hour) written as `*` and a list of mappings (the
+# layers of a construction) summarised as `.*`, so construction layers give
+# `construction.roof.*.material` and hourly profiles give
+# `profile.traffic.working_day.*`. A list of scalars such as
+# `thermal_layers.dz` is one path. scripts/check_db.py holds the one function
+# that computes these paths; the site build and the tests reuse it.
+#
+# Classification lives here, beside the records, and is never written into a
+# record file. `make check` requires every path carried by an evidence record
+# to have exactly one entry here and every entry to match at least one
+# evidence record.
+#
+# Each entry:
+#   admission          one of vocabulary.admission
+#   type               one of vocabulary.type, or null; under pending_review
+#                      a non-null type is the candidate the review is
+#                      weighing, not a result
+#   status             one of vocabulary.status
+#   reason             one of vocabulary.reason; required with pending_review,
+#                      otherwise null
+#   activity           true when the parameter describes human activity
+#                      (anthropogenic heat, water use, daily activity
+#                      profiles), false when it does not, null when not yet
+#                      assessed; it cuts across every type and scale
+#   note               free text: for a pending case, what would settle it
+#   record_exceptions  optional: <record path without .yml>: {admission,
+#                      type, status, reason, note} for a record whose own
+#                      evidence places this path differently from the rest.
+#                      An exception replaces type, status, reason and note,
+#                      and any of those it omits are null. It may also set
+#                      admission, for instance sources_only for a record
+#                      derived exactly from other stored records; without
+#                      one the path's admission stays. Activity is always
+#                      the path's.
+#
+# Rules the checker enforces, on each entry and on each record with its
+# exception applied: an unclassified entry has a null type, activity and
+# reason (an exception, which cannot set activity, a null type and reason);
+# a clear, held parameter has a type; a pending_review entry has a reason,
+# and its type, if any, is a candidate (the site still shows it as under
+# review); an admission other than `held` requires a null type. How a value
+# was obtained stays in each record's `method` field and is not part of
+# this classification.
+#
+# Seeded with every path unclassified. Classifications arrive from a reviewed
+# pass against the baseline in UMEP-dev/SUEWS-database#1158; none is inferred
+# here. Record metadata, links and selectors (`context` fields, construction
+# `*.material` links and `*_insulation_layer` selectors) are marked
+# `not_a_parameter`, because they are not classified.
+
+vocabulary:
+  admission:
+    held: The database holds the parameter, because SUEWS uses it directly or through the database's preparation of a SUEWS input. Material-library and construction parameters stay in scope even though assembling them into SUEWS inputs is not yet implemented.
+    not_exported: SUEWS does not use it, directly or through the database's preparation of an input; it is not exported as a live parameter, but its sources stay in the database.
+    sources_only: It can be derived from other parameters without further assumptions, so only its sources are kept.
+    site_input: It belongs to one particular site (land-cover fractions, latitude and longitude, population density); users supply it and the database does not hold it.
+    not_a_parameter: Record metadata, a link or a selector, such as a context field, a construction's material link or its insulation-layer selector; it is not classified.
+  type:
+    model_setting: A numerical choice of equation or option; an observed schedule, such as a daily activity profile or an irrigation timetable, is a quantity, not a setting.
+    physical_attribute: The quantity has a definition independent of the model equation that uses it, such as thermal conductivity, interception capacity or albedo. Being fitted, calculated or assumed does not change this, nor do different estimates from different fitting procedures.
+    model_coefficient: Its meaning is defined by a particular equation or parameterisation, such as the OHM a2 and a3 or the drainage coefficients, whose units change with drain_eq. Physical units and empirical estimation alone do not settle the question either way.
+  status:
+    unclassified: Not yet assessed against the baseline; the default, and not a claim either way.
+    clear: The evidence establishes the classification.
+    pending_review: The evidence does not establish which definition applies; the entry names the reason and what would settle it, and a type given with it is only the candidate.
+  reason:
+    insufficient_evidence: The available evidence is not enough to decide.
+    conflicting_evidence: The evidence points to more than one answer.
+
+parameters:
+  anthropogenic_emissions.co2.co2pointsource:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.ef_umolco2perj:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.enef_v_jkm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.fcef_v_kgkm.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.fcef_v_kgkm.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.frfossilfuel_heat:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.frfossilfuel_nonheat:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.maxfcmetab:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.maxqfmetab:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.minfcmetab:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.minqfmetab:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.co2.trafficunits:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.context.qf_model:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_min.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_min.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_slope_cooling.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_slope_cooling.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_slope_heating.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.ah_slope_heating.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.baset_cooling.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.baset_cooling.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.baset_heating.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.baset_heating.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_a.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_a.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_b.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_b.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_c.holiday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  anthropogenic_emissions.heat.qf_c.working_day:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.context.surface_conductance_model:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_q_base:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_q_shape:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_sm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.g_t:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.kmax:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.s1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.s2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.th:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  conductance.tl:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.roof.*.material:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.roof.*.thickness:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.roof_insulation_layer:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.wall.*.material:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.wall.*.thickness:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  construction.wall_insulation_layer:
+    admission: not_a_parameter
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.friday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.monday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.saturday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.sunday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.thursday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.tuesday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywat.wednesday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.friday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.monday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.saturday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.sunday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.thursday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.tuesday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.daywatper.wednesday:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.faut:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.ie_end:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.ie_start:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  irrigation.internalwateruse_h:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.alb:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bldgs.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.alb:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.bsoil.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.alpha_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.beta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.min_res_bioco2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.resp_a:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.resp_b:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.saturated_hydraulic_conductivity:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.soil_density:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.soil_depth:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.soil_store_capacity:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.common.theta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.alb_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.alb_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.alpha_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.beta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.base_temperature:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.base_temperature_senescence:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.gdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_power.growth_gdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_power.growth_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_power.senescence_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_power.senescence_sdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.lai_type:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.lai.sdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.max_conductance:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.min_res_bioco2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.porosity_max_deciduous:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.porosity_min_deciduous:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.resp_a:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.resp_b:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.theta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.dectr.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.alb_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.alb_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.alpha_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.beta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.base_temperature:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.base_temperature_senescence:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.gdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_power.growth_gdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_power.growth_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_power.senescence_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_power.senescence_sdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.lai_type:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.lai.sdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.max_conductance:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.min_res_bioco2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.resp_a:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.resp_b:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.theta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.evetr.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.alb_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.alb_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.alpha_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.beta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.base_temperature:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.base_temperature_senescence:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.gdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_power.growth_gdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_power.growth_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_power.senescence_lai:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_power.senescence_sdd:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.lai_type:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.lai.sdd_full:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.max_conductance:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.min_res_bioco2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.resp_a:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.resp_b:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.theta_bio_co2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.grass.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.alb:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.snowpack_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.storage_drain_params.drain_coef_1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.storage_drain_params.drain_coef_2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.storage_drain_params.drain_eq:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.paved.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.alb:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.ch_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.emis:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.k_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.rho_cp_anohm:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.state_limit:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.storage_drain_params.store_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.storage_drain_params.store_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.thermal_layers.dz:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.thermal_layers.k:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.thermal_layers.rho_cp:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  land_cover.water.wet_threshold:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  material.albedo:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  material.density:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  material.emissivity:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  material.specific_heat:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  material.thermal_conductivity:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  ohm_coefficients.a1:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  ohm_coefficients.a2:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  ohm_coefficients.a3:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.anthropogenic-heat.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.anthropogenic-heat.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.energy-use.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.energy-use.public_holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.energy-use.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.human-activity.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.human-activity.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.population.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.population.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.snow-removal.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.snow-removal.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.traffic.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.traffic.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.water-use-automatic.holiday.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  profile.water-use-manual.working_day.*:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  snow.narp_emissivity_snow:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  snow.snow_albedo_max:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null
+  snow.snow_albedo_min:
+    admission: held
+    type: null
+    status: unclassified
+    reason: null
+    activity: null
+    note: null

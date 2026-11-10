@@ -15,6 +15,12 @@ Provenance pass (jsonschema + rfc8785, loaded only by main()):
   - evidence references, revision fingerprints and derivation graphs resolve
   - attestation envelopes remain offline unless authenticated facts are injected
 
+Classification pass (stdlib + PyYAML):
+  - schema/parameter_classification.yml has exactly one entry per
+    generalised parameter path carried by db/records, and no other
+  - vocabularies and consistency rules hold in it and in
+    schema/record_scale.yml, whose keys name existing evidence records
+
 Model pass (--supy, needs supy importable):
   - every evidence record's parameter fragment validates against the supy
     class its `target:` names (wrapped as RefValue with the record's citation,
@@ -593,6 +599,420 @@ def linkage_check(records):
     return warnings
 
 
+# ---------------- parameter classification registry ----------------
+#
+# Classification lives beside the records, never in them: editing a record
+# file stales its provenance sign-offs, and the classification of a quantity
+# is a judgement about the parameter, not a property of one stored value.
+# schema/parameter_classification.yml holds one entry per generalised
+# parameter path; schema/record_scale.yml holds per-record scale results.
+#
+# The check reports every problem as an error line and never raises on a
+# malformed registry: a list where a mapping belongs, a list-valued field,
+# a non-string or unhashable key.
+
+CLASSIFICATION_FILE = ROOT / "schema" / "parameter_classification.yml"
+RECORD_SCALE_FILE = ROOT / "schema" / "record_scale.yml"
+
+CLASSIFICATION_VOCABULARY = {
+    "admission": {"held", "not_exported", "sources_only", "site_input",
+                  "not_a_parameter"},
+    "type": {"model_setting", "physical_attribute", "model_coefficient"},
+    "status": {"unclassified", "clear", "pending_review"},
+    "reason": {"insufficient_evidence", "conflicting_evidence"},
+}
+RECORD_SCALE_VOCABULARY = {
+    "scale": {"material", "facet_typology", "neighbourhood"},
+    "status": {"clear", "not_applicable", "pending_review"},
+    "reason": CLASSIFICATION_VOCABULARY["reason"],
+    "basis": {"declared", "record_states", "source_states", "target_only"},
+    "flags": {"footprint_fitted", "grid_wide", "declaration_conflict"},
+}
+CLASSIFICATION_FIELDS = ("admission", "type", "status", "reason", "activity",
+                         "note")
+# an exception replaces these fields wholesale (omitted ones are null) ...
+CLASSIFICATION_EXCEPTION_FIELDS = ("type", "status", "reason", "note")
+# ... and may also set admission, which otherwise stays the path's
+CLASSIFICATION_EXCEPTION_ALLOWED = set(CLASSIFICATION_EXCEPTION_FIELDS) | {
+    "admission"}
+RECORD_SCALE_FIELDS = ("scale", "status", "reason", "basis", "flags", "note")
+
+
+def generalise_segment(segment):
+    """An integer key (a layer index, an hour) generalises to ``*``."""
+    if isinstance(segment, bool):
+        return str(segment)
+    if isinstance(segment, int) or (isinstance(segment, str)
+                                    and segment.isdigit()):
+        return "*"
+    return str(segment)
+
+
+def generalised_paths(node, prefix):
+    """Yield the generalised path of every leaf under ``node``.
+
+    ``prefix`` is the path of ``node`` itself (for a whole parameter block,
+    the record's target). Integer keys become ``*``; a list of mappings
+    (construction layers) is summarised as ``.*`` followed by the mapping's
+    keys; a list of scalars (``thermal_layers.dz``) is one leaf. A null leaf
+    counts as a path, because the record still carries the field. Empty
+    mappings and lists carry no leaf and yield nothing.
+    """
+    if isinstance(node, dict):
+        for key, value in node.items():
+            yield from generalised_paths(
+                value, f"{prefix}.{generalise_segment(key)}")
+    elif isinstance(node, list):
+        if not node:
+            return
+        if all(isinstance(item, dict) for item in node):
+            for item in node:
+                yield from generalised_paths(item, f"{prefix}.*")
+        else:
+            yield prefix
+    else:
+        yield prefix
+
+
+def record_parameter_paths(rec):
+    """The set of generalised parameter paths an evidence record carries."""
+    params = rec.get("parameters") or {}
+    target = rec.get("target")
+    if not isinstance(params, dict) or not target:
+        return set()
+    return set(generalised_paths(params, str(target)))
+
+
+class _UniqueKeyLoader(yaml.SafeLoader):
+    """SafeLoader that refuses duplicate and unhashable mapping keys.
+
+    Plain safe_load keeps the last of two identical keys silently, which
+    would let a registry carry two entries for one path unnoticed.
+    """
+
+
+def _construct_unique_mapping(loader, node, deep=False):
+    seen = set()
+    for key_node, _ in node.value:
+        key = loader.construct_object(key_node, deep=deep)
+        try:
+            duplicate = key in seen
+        except TypeError:
+            raise yaml.constructor.ConstructorError(
+                None, None, f"unhashable key of type {type(key).__name__}",
+                key_node.start_mark) from None
+        if duplicate:
+            raise yaml.constructor.ConstructorError(
+                None, None, f"duplicate key {key!r}", key_node.start_mark)
+        seen.add(key)
+    return yaml.SafeLoader.construct_mapping(loader, node, deep=deep)
+
+
+_UniqueKeyLoader.add_constructor(
+    yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, _construct_unique_mapping)
+
+
+def load_registry_text(text):
+    """Parse registry YAML, refusing duplicate and unhashable keys.
+
+    An empty document reads as an empty mapping; any other top level is
+    returned as it is, for the check to report.
+    """
+    doc = yaml.load(text, Loader=_UniqueKeyLoader)
+    return {} if doc is None else doc
+
+
+def load_classification(path=CLASSIFICATION_FILE):
+    """Return the parameter-classification document (empty if absent)."""
+    return load_registry_text(path.read_text()) if path.exists() else {}
+
+
+def load_record_scale(path=RECORD_SCALE_FILE):
+    """Return the record-scale document (empty if absent)."""
+    return load_registry_text(path.read_text()) if path.exists() else {}
+
+
+def effective_classification(entry, record_path):
+    """An entry with any record exception for ``record_path`` applied.
+
+    The exception replaces type, status, reason and note (any it omits are
+    null, never inherited); it may also set admission, which otherwise
+    stays the path's. Activity is always the path's.
+    """
+    if not isinstance(entry, dict):
+        return None
+    out = {k: entry.get(k) for k in CLASSIFICATION_FIELDS}
+    exceptions = entry.get("record_exceptions") or {}
+    exception = exceptions.get(record_path) if isinstance(exceptions, dict) \
+        else None
+    if isinstance(exception, dict):
+        out.update({k: exception.get(k)
+                    for k in CLASSIFICATION_EXCEPTION_FIELDS})
+        if "admission" in exception:
+            out["admission"] = exception["admission"]
+    return out
+
+
+def _in_vocabulary(value, values):
+    """True for a string in ``values``; never raises on a list or mapping."""
+    return isinstance(value, str) and value in values
+
+
+def _string_keys(mapping, prefix, errors):
+    """The items of ``mapping`` whose keys are strings; report the rest."""
+    items = []
+    for key, value in mapping.items():
+        if isinstance(key, str):
+            items.append((key, value))
+        else:
+            errors.append(f"{prefix}: key {key!r} must be a string")
+    return items
+
+
+def _vocabulary_block_errors(doc, expected, where):
+    """The file's documented vocabulary must match what the checker enforces."""
+    block = doc.get("vocabulary")
+    if not isinstance(block, dict):
+        return [f"{where}: missing vocabulary block"]
+    errors = []
+    for field, values in expected.items():
+        documented = block.get(field)
+        if not isinstance(documented, dict) or set(documented) != values:
+            errors.append(
+                f"{where}: vocabulary.{field} must document exactly "
+                f"{sorted(values)}")
+    return errors
+
+
+def _classification_value_errors(prefix, values, entry_level=True):
+    """Vocabulary and consistency rules shared by entries and exceptions.
+
+    ``values`` carries the effective admission. At entry level an
+    unclassified status also requires a null activity; an exception cannot
+    set activity, so that part does not apply to it.
+    """
+    errors = []
+    vocab = CLASSIFICATION_VOCABULARY
+    for field in ("admission", "type", "status", "reason"):
+        value = values.get(field)
+        if value is not None and not _in_vocabulary(value, vocab[field]):
+            errors.append(f"{prefix}: invalid {field} {value!r}")
+    admission = values.get("admission")
+    if admission is None:
+        errors.append(f"{prefix}: admission is required")
+    status = values.get("status")
+    if status is None:
+        errors.append(f"{prefix}: status is required")
+    activity = values.get("activity")
+    if activity is not None and not isinstance(activity, bool):
+        errors.append(f"{prefix}: activity must be true, false or null")
+    note = values.get("note")
+    if note is not None and not isinstance(note, str):
+        errors.append(f"{prefix}: note must be text or null")
+    if status == "unclassified":
+        fields = ("type", "activity", "reason") if entry_level \
+            else ("type", "reason")
+        set_fields = [f for f in fields if values.get(f) is not None]
+        if set_fields:
+            errors.append(f"{prefix}: unclassified requires null "
+                          f"{', '.join(set_fields)}")
+    if status == "pending_review" and values.get("reason") is None:
+        errors.append(f"{prefix}: pending_review requires a reason")
+    if status == "clear" and values.get("reason") is not None:
+        errors.append(f"{prefix}: reason is allowed only with pending_review")
+    if status == "clear" and admission == "held" and values.get("type") is None:
+        errors.append(f"{prefix}: a clear held parameter requires a type")
+    if admission != "held" and values.get("type") is not None:
+        errors.append(f"{prefix}: admission {admission!r} requires a null type")
+    return errors
+
+
+def _record_scale_value_errors(prefix, values):
+    errors = []
+    vocab = RECORD_SCALE_VOCABULARY
+    for field in ("scale", "status", "reason", "basis"):
+        value = values.get(field)
+        if value is not None and not _in_vocabulary(value, vocab[field]):
+            errors.append(f"{prefix}: invalid {field} {value!r}")
+    flags = values.get("flags")
+    if flags is not None:
+        if not isinstance(flags, list):
+            errors.append(f"{prefix}: flags must be a list or null")
+        else:
+            for flag in flags:
+                if not _in_vocabulary(flag, vocab["flags"]):
+                    errors.append(f"{prefix}: invalid flag {flag!r}")
+            names = [f for f in flags if isinstance(f, str)]
+            if len(names) != len(set(names)):
+                errors.append(f"{prefix}: flags repeat a value")
+    status = values.get("status")
+    if status is None:
+        errors.append(f"{prefix}: status is required")
+    if status == "clear":
+        if values.get("scale") is None:
+            errors.append(f"{prefix}: a clear scale requires a scale")
+        if values.get("basis") is None:
+            errors.append(f"{prefix}: a clear scale requires a basis")
+    if status == "not_applicable" and values.get("scale") is not None:
+        errors.append(f"{prefix}: not_applicable requires a null scale")
+    if status == "pending_review" and values.get("reason") is None:
+        errors.append(f"{prefix}: pending_review requires a reason")
+    if status != "pending_review" and values.get("reason") is not None:
+        errors.append(f"{prefix}: reason is allowed only with pending_review")
+    note = values.get("note")
+    if note is not None and not isinstance(note, str):
+        errors.append(f"{prefix}: note must be text or null")
+    return errors
+
+
+def classification_check(records, classification=None, record_scale=None):
+    """Check both classification registries against the evidence records.
+
+    Returns ``(errors, summary)`` where ``summary`` is a one-line count of
+    registry entries by status. Completeness runs over evidence records
+    (``records/``) only: archetypes assemble evidence and are not
+    classified in their own right.
+    """
+    errors = []
+    try:
+        if classification is None:
+            classification = load_classification()
+        if record_scale is None:
+            record_scale = load_record_scale()
+    except yaml.YAMLError as exc:
+        error = f"classification registries: {exc}".replace("\n", " ")
+        return [error], "classification: registry unreadable, 1 errors"
+    reg_name = "parameter_classification.yml"
+    scale_name = "record_scale.yml"
+    if not isinstance(classification, dict):
+        errors.append(f"{reg_name}: top level must be a mapping")
+        classification = {}
+    if not isinstance(record_scale, dict):
+        errors.append(f"{scale_name}: top level must be a mapping")
+        record_scale = {}
+
+    evidence = {p: r for p, r in records.items() if p.startswith("records/")}
+    carried = {}
+    for path, rec in evidence.items():
+        for gpath in record_parameter_paths(rec):
+            carried.setdefault(gpath, set()).add(path)
+
+    errors += _vocabulary_block_errors(
+        classification, CLASSIFICATION_VOCABULARY, reg_name)
+    entries = classification.get("parameters")
+    if not isinstance(entries, dict):
+        errors.append(f"{reg_name}: parameters must be a mapping")
+        entries = {}
+    entry_items = _string_keys(entries, reg_name, errors)
+    entry_paths = {gpath for gpath, _ in entry_items}
+
+    for gpath in sorted(set(carried) - entry_paths):
+        errors.append(f"{reg_name}: no entry for {gpath} "
+                      f"(carried by {len(carried[gpath])} records)")
+    for gpath in sorted(entry_paths - set(carried)):
+        errors.append(f"{reg_name}: {gpath} matches no evidence record")
+
+    counts = {}
+    not_param = 0
+    for gpath, entry in entry_items:
+        prefix = f"{reg_name}: {gpath}"
+        if not isinstance(entry, dict):
+            errors.append(f"{prefix}: entry must be a mapping")
+            continue
+        allowed = set(CLASSIFICATION_FIELDS) | {"record_exceptions"}
+        unknown = sorted(set(entry) - allowed, key=str)
+        if unknown:
+            errors.append(f"{prefix}: unknown fields {unknown}")
+        missing = [f for f in CLASSIFICATION_FIELDS if f not in entry]
+        if missing:
+            errors.append(f"{prefix}: missing fields {missing}")
+        errors += _classification_value_errors(prefix, entry)
+        status = entry.get("status")
+        key = status if _in_vocabulary(
+            status, CLASSIFICATION_VOCABULARY["status"]) else "invalid"
+        counts[key] = counts.get(key, 0) + 1
+        if entry.get("admission") == "not_a_parameter":
+            not_param += 1
+
+        exceptions = entry.get("record_exceptions") or {}
+        if not isinstance(exceptions, dict):
+            errors.append(f"{prefix}: record_exceptions must be a mapping")
+            continue
+        for rpath, exception in _string_keys(
+                exceptions, f"{prefix}: record_exceptions", errors):
+            eprefix = f"{prefix}: record_exceptions {rpath}"
+            if rpath not in evidence:
+                errors.append(f"{eprefix} is not an evidence record")
+                continue
+            if rpath not in carried.get(gpath, set()):
+                errors.append(f"{eprefix} does not carry this path")
+            if not isinstance(exception, dict) or not exception:
+                errors.append(f"{eprefix} must be a non-empty mapping")
+                continue
+            unknown = sorted(set(exception) - CLASSIFICATION_EXCEPTION_ALLOWED,
+                             key=str)
+            if unknown:
+                errors.append(f"{eprefix} has unknown fields {unknown}")
+            # rules apply after the exception, so an exception's admission
+            # decides whether its type must be null
+            errors += _classification_value_errors(
+                eprefix, effective_classification(entry, rpath),
+                entry_level=False)
+
+    errors += _vocabulary_block_errors(
+        record_scale, RECORD_SCALE_VOCABULARY, scale_name)
+    scales = record_scale.get("records")
+    if scales is None:
+        scales = {}
+    if not isinstance(scales, dict):
+        errors.append(f"{scale_name}: records must be a mapping")
+        scales = {}
+    for rpath, entry in _string_keys(scales, scale_name, errors):
+        prefix = f"{scale_name}: {rpath}"
+        if rpath not in evidence:
+            errors.append(f"{prefix} is not an evidence record")
+            continue
+        if not isinstance(entry, dict):
+            errors.append(f"{prefix}: entry must be a mapping")
+            continue
+        allowed = set(RECORD_SCALE_FIELDS) | {"path_exceptions"}
+        unknown = sorted(set(entry) - allowed, key=str)
+        if unknown:
+            errors.append(f"{prefix}: unknown fields {unknown}")
+        errors += _record_scale_value_errors(prefix, entry)
+        path_exceptions = entry.get("path_exceptions") or {}
+        if not isinstance(path_exceptions, dict):
+            errors.append(f"{prefix}: path_exceptions must be a mapping")
+            continue
+        own_paths = record_parameter_paths(evidence[rpath])
+        for gpath, exception in _string_keys(
+                path_exceptions, f"{prefix}: path_exceptions", errors):
+            eprefix = f"{prefix}: path_exceptions {gpath}"
+            if gpath not in own_paths:
+                errors.append(f"{eprefix} is not a path this record carries")
+            if not isinstance(exception, dict) or not exception:
+                errors.append(f"{eprefix} must be a non-empty mapping")
+                continue
+            unknown = sorted(set(exception) - set(RECORD_SCALE_FIELDS),
+                             key=str)
+            if unknown:
+                errors.append(f"{eprefix} has unknown fields {unknown}")
+            # replaces the record's scale fields, flags included; omitted
+            # ones are null
+            merged = {k: exception.get(k) for k in RECORD_SCALE_FIELDS}
+            errors += _record_scale_value_errors(eprefix, merged)
+
+    by_status = ", ".join(
+        f"{counts.get(s, 0)} {s}"
+        for s in ("unclassified", "clear", "pending_review"))
+    if counts.get("invalid"):
+        by_status += f", {counts['invalid']} invalid"
+    summary = (f"classification: {len(entry_items)} parameter paths "
+               f"({by_status}; {not_param} not_a_parameter), "
+               f"{len(scales)} record scales, {len(errors)} errors")
+    return errors, summary
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--supy", action="store_true", help="also validate against supy")
@@ -620,6 +1040,13 @@ def main():
     for e in provenance_errors[:30]:
         print("  -", e)
     errors += provenance_errors
+
+    classification_errors, classification_summary = classification_check(
+        records)
+    print(classification_summary)
+    for e in classification_errors[:30]:
+        print("  -", e)
+    errors += classification_errors
 
     warnings = linkage_check(records)
     print(f"linkage: {len(warnings)} warnings")

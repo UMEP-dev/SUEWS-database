@@ -688,6 +688,73 @@ Implementation evidence:
   and its [roof/wall thermal-input caller](https://github.com/UMEP-dev/UMEP/blob/0a4b7f97391ac1b9188ee49aa76f078bb3d389de/suews_prepare_database/Utilities/ssParms.py#L568-L589).
 - [SUEWS material-layer conventions and method-specific use](https://github.com/UMEP-dev/SUEWS/blob/ac1e4964b450de738ff38f894d61b7e146ab1ce1/docs/source/inputs/yaml/layer-conventions.rst).
 
+## Parameter classification
+
+How each parameter is classified (its type, and the spatial scale a record's
+values describe) follows the baseline in
+[#1158](https://github.com/UMEP-dev/SUEWS-database/issues/1158). The results
+live in two registries under `schema/`, beside the records. Classification is
+never written into a record file: editing a record stales its provenance
+sign-offs, and the type of a quantity is a judgement about the parameter
+rather than a property of one stored value.
+
+**`schema/parameter_classification.yml`** has one entry per *generalised
+parameter path*: `<target>.<dotted leaf path under parameters>`, with every
+integer key (a layer index, an hour) written as `*` and a list of mappings
+summarised as `.*`. Construction layers therefore give
+`construction.roof.*.material`, an hourly profile gives
+`profile.traffic.working_day.*`, and a list of scalars such as
+`land_cover.bldgs.thermal_layers.dz` stays one path. `generalised_paths()` in
+`scripts/check_db.py` is the only implementation; the site build and the tests
+reuse it. Each entry carries:
+
+| Field | Values |
+| --- | --- |
+| `admission` | `held`, `not_exported`, `sources_only`, `site_input`, or `not_a_parameter` for record metadata, links and selectors (`context` fields, construction `*.material` links and `*_insulation_layer` selectors), which are not classified |
+| `type` | `model_setting`, `physical_attribute`, `model_coefficient`, or null; under `pending_review` a non-null type is the candidate the review is weighing, not a result |
+| `status` | `unclassified` (not yet assessed; the default and not a claim, so `type`, `activity` and `reason` stay null), `clear`, or `pending_review` |
+| `reason` | `insufficient_evidence` or `conflicting_evidence`; required with `pending_review`, otherwise null |
+| `activity` | true or false for whether the parameter describes human activity; null until assessed |
+| `note` | free text, for a pending case what would settle it |
+| `record_exceptions` | optional: `<record path>: {admission, type, status, reason, note}`, the record path without `.yml`, for a record whose own evidence places the path differently. It replaces `type`, `status`, `reason` and `note`, and any of those it omits are null. It may also set `admission`, for instance `sources_only` for a record derived exactly from other stored records; without one the path's admission stays. `activity` is always the path's |
+
+**`schema/record_scale.yml`** holds per-record scale results, keyed by record
+path without `.yml`, because the same parameter can describe different
+objects in different records. Each entry has a `scale` (`material`,
+`facet_typology`, `neighbourhood`, or null; under `pending_review` a non-null
+scale is the candidate, and under `not_applicable` it is null), a `status`
+(`clear`, `not_applicable`, `pending_review`), a `reason`, a `basis`
+(`declared` from the record's `applicable_scale`, `record_states`,
+`source_states`, `target_only`), optional `flags`, a `note`, and optional
+`path_exceptions` keyed by generalised path, each replacing those fields for
+that path, flags included (omitted ones are null). The flags are
+`footprint_fitted` (fitted to observations over a flux footprint and
+assigned to a class), `grid_wide` (the model applies the value across the
+whole grid) and `declaration_conflict` (the record's own `applicable_scale`
+disagrees with the reviewed scale). The file is separate from a record's own
+`applicable_scale` field, which is a claim the record states and counts as
+evidence for the result here.
+
+Both files document their vocabularies at the top, and `make check` enforces
+them: every generalised path an evidence record carries has exactly one entry
+and every entry matches at least one evidence record; an `unclassified` entry
+has a null type, activity and reason; a `clear`, `held` parameter has a type;
+`pending_review` has a reason; any admission other than `held`, after a
+record exception is applied, has a null type; flags come from the
+vocabulary; every key in `record_scale.yml` and in `record_exceptions` is an
+existing evidence record. Archetypes are not classified in their own right.
+A malformed registry (a list where a mapping belongs, a list-valued field, a
+duplicate or non-string key) is reported as a check error, never a crash.
+The check prints a one-line count by status.
+
+The registry starts with every path `unclassified` and `record_scale.yml`
+empty; results arrive from a reviewed pass. On the site, an evidence record's
+parameter row shows a type chip only for a `clear` entry and "under review"
+for a `pending_review` one, with any candidate type in the chip's tooltip;
+a reviewed scale appears beside the applicable-scale row with its basis and
+any flags. `SHOW_CLASSIFICATION` in `scripts/build_site.py` switches the
+display off.
+
 ## An archetype
 
 ```yaml
