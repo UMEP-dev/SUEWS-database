@@ -16,7 +16,9 @@
 #
 # Each entry:
 #   admission          one of vocabulary.admission
-#   type               one of vocabulary.type, or null
+#   type               one of vocabulary.type, or null; under pending_review
+#                      a non-null type is the candidate the review is
+#                      weighing, not a result
 #   status             one of vocabulary.status
 #   reason             one of vocabulary.reason; required with pending_review,
 #                      otherwise null
@@ -25,15 +27,24 @@
 #                      profiles), false when it does not, null when not yet
 #                      assessed; it cuts across every type and scale
 #   note               free text: for a pending case, what would settle it
-#   record_exceptions  optional: <record path without .yml>: {type, status,
-#                      reason, note} for a record whose own evidence places
-#                      this path differently from the rest; an exception
-#                      replaces these four fields, and any it omits are null
+#   record_exceptions  optional: <record path without .yml>: {admission,
+#                      type, status, reason, note} for a record whose own
+#                      evidence places this path differently from the rest.
+#                      An exception replaces type, status, reason and note,
+#                      and any of those it omits are null. It may also set
+#                      admission, for instance sources_only for a record
+#                      derived exactly from other stored records; without
+#                      one the path's admission stays. Activity is always
+#                      the path's.
 #
-# Rules the checker enforces: a clear, held parameter has a type; a
-# pending_review entry has a reason; an entry whose admission is not `held`
-# has a null type. How a value was obtained stays in each record's `method`
-# field and is not part of this classification.
+# Rules the checker enforces, on each entry and on each record with its
+# exception applied: an unclassified entry has a null type, activity and
+# reason (an exception, which cannot set activity, a null type and reason);
+# a clear, held parameter has a type; a pending_review entry has a reason,
+# and its type, if any, is a candidate (the site still shows it as under
+# review); an admission other than `held` requires a null type. How a value
+# was obtained stays in each record's `method` field and is not part of
+# this classification.
 #
 # Seeded with every path unclassified. Classifications arrive from a reviewed
 # pass against the baseline in UMEP-dev/SUEWS-database#1158; none is inferred
@@ -43,19 +54,19 @@
 
 vocabulary:
   admission:
-    held: The database holds the parameter, because SUEWS uses it directly or through the database's preparation of a SUEWS input.
+    held: The database holds the parameter, because SUEWS uses it directly or through the database's preparation of a SUEWS input. Material-library and construction parameters stay in scope even though assembling them into SUEWS inputs is not yet implemented.
     not_exported: SUEWS does not use it, directly or through the database's preparation of an input; it is not exported as a live parameter, but its sources stay in the database.
     sources_only: It can be derived from other parameters without further assumptions, so only its sources are kept.
     site_input: It belongs to one particular site (land-cover fractions, latitude and longitude, population density); users supply it and the database does not hold it.
     not_a_parameter: Record metadata, a link or a selector, such as a context field, a construction's material link or its insulation-layer selector; it is not classified.
   type:
     model_setting: A numerical choice of equation or option; an observed schedule, such as a daily activity profile or an irrigation timetable, is a quantity, not a setting.
-    physical_attribute: The quantity has a definition independent of the model equation that uses it, such as thermal conductivity, interception capacity or albedo, however it was estimated.
-    model_coefficient: Its meaning is defined by a particular equation or parameterisation, such as the OHM a2 and a3 or the drainage coefficients, whose units change with drain_eq.
+    physical_attribute: The quantity has a definition independent of the model equation that uses it, such as thermal conductivity, interception capacity or albedo. Being fitted, calculated or assumed does not change this, nor do different estimates from different fitting procedures.
+    model_coefficient: Its meaning is defined by a particular equation or parameterisation, such as the OHM a2 and a3 or the drainage coefficients, whose units change with drain_eq. Physical units and empirical estimation alone do not settle the question either way.
   status:
     unclassified: Not yet assessed against the baseline; the default, and not a claim either way.
     clear: The evidence establishes the classification.
-    pending_review: The evidence does not establish which definition applies; the entry names the reason and what would settle it.
+    pending_review: The evidence does not establish which definition applies; the entry names the reason and what would settle it, and a type given with it is only the candidate.
   reason:
     insufficient_evidence: The available evidence is not enough to decide.
     conflicting_evidence: The evidence points to more than one answer.

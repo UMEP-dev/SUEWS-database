@@ -14,33 +14,39 @@
 # written into a record file.
 #
 # Each entry:
-#   scale            one of vocabulary.scale, or null
+#   scale            one of vocabulary.scale, or null; under pending_review
+#                    a non-null scale is the candidate the review is
+#                    weighing, not a result
 #   status           one of vocabulary.status
 #   reason           one of vocabulary.reason; required with pending_review,
 #                    otherwise null
 #   basis            one of vocabulary.basis; required when status is clear
+#   flags            optional list of vocabulary.flags values, each noting
+#                    something a reader of the scale should know
 #   note             free text: for a pending case, what would settle it
 #   path_exceptions  optional: <generalised parameter path>: {scale, status,
-#                    reason, basis, note} for a parameter in this record that
-#                    describes a different object from the rest; an
-#                    exception replaces these fields, and any it omits are null
+#                    reason, basis, flags, note} for a parameter in this
+#                    record that describes a different object from the
+#                    rest; an exception replaces these fields, flags
+#                    included, and any it omits are null
 #
-# Rules the checker enforces: every key is an existing evidence record; a
-# clear entry has a scale and a basis; not_applicable has a null scale;
-# pending_review has a reason; every path exception names a path the record
-# carries.
+# Rules the checker enforces: every key is an existing evidence record path
+# without `.yml`; a clear entry has a scale and a basis; not_applicable has
+# a null scale; pending_review has a reason, and its scale, if any, is a
+# candidate (the site still shows it as under review); flags come from the
+# vocabulary; every path exception names a path the record carries.
 #
 # Starts empty: results arrive from a reviewed pass, record by record.
 
 vocabulary:
   scale:
     material: A single material, a vegetation or soil type, or a land-cover class such as paved or grass that stands for an unspecified material.
-    facet_typology: A single facet assembled from materials (a roof, wall or ground construction), or a complete building of a stated typology.
-    neighbourhood: A quantity for a whole neighbourhood, aggregated from facets and materials or defined for a class of neighbourhoods, where the record's evidence supports it; never a default.
+    facet_typology: A single facet assembled from materials (a roof, wall or ground construction, with or without a named building type), or a complete building of a stated typology. Layered constructions sit here and link to their materials. A value stays here even when it was estimated across many buildings or is later used in a neighbourhood model.
+    neighbourhood: A quantity for more than one facet taken together, from a street canyon to a whole neighbourhood, aggregated from facets and materials or defined for a class of neighbourhoods, where the record's evidence supports that. Averaging across land-cover classes alone does not make a value a neighbourhood value, and Neighbourhood is never a default.
   status:
     clear: The evidence establishes the scale.
     not_applicable: Positive evidence shows the quantity describes no spatial object, such as a model-wide constant; a generic record or a value used everywhere does not on its own qualify.
-    pending_review: The object is unknown, or the record's applicable_scale and its description conflict; both claims are kept and the entry names what would settle it.
+    pending_review: The object is unknown, or the record's applicable_scale and its description conflict; both claims are kept and the entry names what would settle it, and a scale given with it is only the candidate.
   reason:
     insufficient_evidence: The available evidence is not enough to decide.
     conflicting_evidence: The evidence points to more than one answer.
@@ -49,5 +55,9 @@ vocabulary:
     record_states: The record's description or name states it.
     source_states: The cited source states it.
     target_only: Only the record's target indicates it, with no statement in the record or its source.
+  flags:
+    footprint_fitted: The value was fitted to observations over a flux footprint and assigned to a class.
+    grid_wide: The model applies the value across the whole grid.
+    declaration_conflict: The record's own applicable_scale disagrees with the reviewed scale.
 
 records: {}
