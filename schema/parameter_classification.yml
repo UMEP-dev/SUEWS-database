@@ -46,9 +46,9 @@
 # was obtained stays in each record's `method` field and is not part of
 # this classification.
 #
-# Seeded with every path unclassified. Classifications arrive from a reviewed
-# pass against the baseline in UMEP-dev/SUEWS-database#1158; none is inferred
-# here. Record metadata, links and selectors (`context` fields, construction
+# Classifications come from a reviewed pass against the baseline in
+# UMEP-dev/SUEWS-database#1158; none is inferred here. A new path enters as
+# unclassified until it is reviewed. Record metadata, links and selectors (`context` fields, construction
 # `*.material` links and `*_insulation_layer` selectors) are marked
 # `not_a_parameter`, because they are not classified.
 

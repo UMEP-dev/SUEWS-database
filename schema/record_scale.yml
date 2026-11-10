@@ -36,7 +36,8 @@
 # candidate (the site still shows it as under review); flags come from the
 # vocabulary; every path exception names a path the record carries.
 #
-# Starts empty: results arrive from a reviewed pass, record by record.
+# Results come from a reviewed pass, record by record; a record without an
+# entry has not been reviewed or holds no parameter.
 
 vocabulary:
   scale:
