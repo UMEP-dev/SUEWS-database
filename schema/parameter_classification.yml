@@ -1725,10 +1725,10 @@ parameters:
   land_cover.water.state_limit:
     admission: held
     type: physical_attribute
-    status: pending_review
-    reason: conflicting_evidence
+    status: clear
+    reason: null
     activity: false
-    note: Settled by deciding whether the depth of a named water body is a site input or a held physical attribute; the water-state record scales follow that decision.
+    note: null
   land_cover.water.storage_drain_params.store_max:
     admission: held
     type: physical_attribute
