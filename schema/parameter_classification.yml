@@ -772,11 +772,11 @@ parameters:
     note: null
   land_cover.common.min_res_bioco2:
     admission: held
-    type: model_coefficient
-    status: pending_review
-    reason: conflicting_evidence
+    type: physical_attribute
+    status: clear
+    reason: null
     activity: false
-    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
+    note: null
   land_cover.common.resp_a:
     admission: held
     type: model_coefficient
@@ -961,11 +961,11 @@ parameters:
     note: null
   land_cover.dectr.min_res_bioco2:
     admission: held
-    type: model_coefficient
-    status: pending_review
-    reason: conflicting_evidence
+    type: physical_attribute
+    status: clear
+    reason: null
     activity: false
-    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
+    note: null
   land_cover.dectr.porosity_max_deciduous:
     admission: held
     type: physical_attribute
@@ -1220,11 +1220,11 @@ parameters:
     note: null
   land_cover.evetr.min_res_bioco2:
     admission: held
-    type: model_coefficient
-    status: pending_review
-    reason: conflicting_evidence
+    type: physical_attribute
+    status: clear
+    reason: null
     activity: false
-    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
+    note: null
   land_cover.evetr.resp_a:
     admission: held
     type: model_coefficient
@@ -1465,11 +1465,11 @@ parameters:
     note: null
   land_cover.grass.min_res_bioco2:
     admission: held
-    type: model_coefficient
-    status: pending_review
-    reason: conflicting_evidence
+    type: physical_attribute
+    status: clear
+    reason: null
     activity: false
-    note: 'Settled by the cited sources'' definition of the stored value, read per record: a floor of the respiration scheme (model coefficient) or an observed minimum respiration rate (physical attribute).'
+    note: null
   land_cover.grass.resp_a:
     admission: held
     type: model_coefficient
