@@ -4240,28 +4240,25 @@ records:
     reason: null
     basis: target_only
   records/surfaces/water/helsinki--jarvi2014--water-state:
-    scale: null
-    status: pending_review
-    reason: conflicting_evidence
+    scale: material
+    status: clear
+    reason: null
     basis: record_states
-    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
   records/surfaces/water/london--jarvi2014--anohm:
     scale: material
     status: clear
     reason: null
     basis: declared
   records/surfaces/water/london--unreferenced--water-state:
-    scale: null
-    status: pending_review
-    reason: conflicting_evidence
+    scale: material
+    status: clear
+    reason: null
     basis: record_states
-    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
   records/surfaces/water/london--ward2016--water-state:
-    scale: null
-    status: pending_review
-    reason: conflicting_evidence
+    scale: material
+    status: clear
+    reason: null
     basis: record_states
-    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
   records/surfaces/water/se-england--ward2016--albedo:
     scale: material
     status: clear
@@ -4283,8 +4280,7 @@ records:
     reason: null
     basis: target_only
   records/surfaces/water/swindon--ward2016--water-state:
-    scale: null
-    status: pending_review
-    reason: conflicting_evidence
+    scale: material
+    status: clear
+    reason: null
     basis: target_only
-    note: 'Settled by the admission decision on land_cover.water.state_limit: if held, the scale is reviewed; if a site input, the record holds no parameter with a scale.'
