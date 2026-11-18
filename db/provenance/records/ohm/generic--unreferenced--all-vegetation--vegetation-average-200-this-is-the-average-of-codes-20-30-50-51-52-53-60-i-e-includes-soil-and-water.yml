@@ -99,6 +99,10 @@ assessment:
     note: Current atomic record for legacy code 60.
   derivation:
     kind: arithmetic_mean
+    description: >-
+      Legacy OHM code 200 gives equal weight to seven coefficient sets for mixed forest (20),
+      short grass (30), bare soil (50), wet bare soil (51), dry bare soil (52), bare soil (53)
+      and shallow turbid water (60). The surface mixture this set represents is under review.
     expression: round_componentwise((code20 + code30 + code50 + code51 + code52 + code53 + code60) / 7,
       [3, 3, 1] decimal places)
     external_inputs:
@@ -114,6 +118,6 @@ assessment:
   scientific_note: Grimmond and Oke publish the seven component triplets, while legacy SUEWS code 200 is
     their internally calculated, component-wise rounded mean. Current atomic records preserve codes 20, 30,
     50 and 60; external table inputs preserve codes 51-53. No parameter value has changed.
-  evidence_revision: sha256:f7518761cf8bfb0e08750d72bb5afe3dc048680ea6c8c83cdcb2a1aaea6a21eb
+  evidence_revision: sha256:b342a38637427406ae7433fb80f8c1cc72ffeda56e6136d3473c563cc7f12a6f
 verification:
   attestations: []
