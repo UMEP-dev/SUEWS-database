@@ -59,14 +59,15 @@ failure. Say what you found, what would settle it, and who could settle it.
 
 ## Procedures
 
-Repository procedures live in `.claude/skills/<name>/SKILL.md`. They are plain
-Markdown with YAML frontmatter and are readable by any agent — the directory
-name is a Claude Code convention, not a Claude Code dependency.
+Repository procedures live in `.agents/skills/<name>/SKILL.md` (with
+`.claude/skills` symlinked to `../.agents/skills` for Claude Code discovery).
+They are plain Markdown with YAML frontmatter following the Agent Skills
+convention and are readable by any agent.
 
-- **`.claude/skills/mend-record/SKILL.md`** — take a reported problem with a
+- **`.agents/skills/mend-record/SKILL.md`** — take a reported problem with a
   record from noticing to merged fix: record it as a structured issue,
   investigate it against the sources, then either fix it in a pull request that
-  closes the issue, or escalate. Its `.claude/skills/mend-record/reference/problem-classes.md` gives one
+  closes the issue, or escalate. Its `.agents/skills/mend-record/reference/problem-classes.md` gives one
   recipe per problem class, each stating what would settle the question and what
   would not.
 
@@ -190,4 +191,4 @@ state.
 ## Agent workflow
 
 - Work in a git worktree when making changes; `main` is protected and a pull request is the only route in.
-- Claude Code discovers `.claude/skills/` automatically; other agents read the same `SKILL.md` files as ordinary Markdown.
+- Skills live in `.agents/skills/` (discovered automatically by Codex, Antigravity, Gemini CLI, Cursor, and GitHub Copilot) and are exposed at `.claude/skills/` via a compatibility symlink for Claude Code; other agents can read the same `SKILL.md` files as ordinary Markdown.
